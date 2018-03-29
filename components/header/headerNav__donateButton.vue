@@ -11,9 +11,14 @@
         color: white;
         text-decoration: none;
         border-radius: 300px;
-        width: 100px;
+        width: 120px;
         text-align: center;
         text-transform: uppercase;
+        z-index: 2;
+        font-weight: 600;
+        padding: 1em 0;
+        letter-spacing: 2px;
+        margin-left: 1em;        
     }
 
     .headerNav__donateButton:hover {

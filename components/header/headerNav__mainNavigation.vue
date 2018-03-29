@@ -1,24 +1,63 @@
 <template>
     <div class="headerNav__mainNavigation">
-        <section-item location="/" value="Home" />
-        <section-item location="/" value="Effects" />
-        <section-item location="/" value="Replications" />
-        <section-item location="/" value="Reports" />        
-        <section-item location="/" value="Project" />
-        <section-item location="/" value="Community" />
+        <menu-item location="/" value="Home" />
+        <menu-item location="/" value="Effects" :subMenuItems="subMenuItems.effects" />
+        <menu-item location="/" value="Replications" :subMenuItems="subMenuItems.replications" />
+        <menu-item location="/" value="Reports" />        
+        <menu-item location="/" value="Project" :subMenuItems="subMenuItems.project" />
+        <menu-item location="/" value="Community" :subMenuItems="subMenuItems.community" />
         <donate-button />
     </div>
 </template>
 
 <script>
 
-import SectionItem from '@/components/header/headerNav__sectionItem';
+import MenuItem from '@/components/header/headerNav__menuItem';
 import DonateButton from '@/components/header/headerNav__donateButton';
 
 export default {
     components: {
-        SectionItem,
+        MenuItem,
         DonateButton
+    },
+    data() {
+        return {
+            subMenuItems: {
+                effects: [
+                    { name: 'All', location: '/' },
+                    { name: 'Sensory', location: '/sensory/' },
+                    { name: 'Cognitive', location: '/cognitive/' },
+                    { name: 'Physical', location: '/physical/' },
+                    { name: 'Psychedelics', location: '/psychedelics/' },
+                    { name: 'Dissociatives', location: '/dissociatives/' },
+                    { name: 'Deliriants', location: '/deliriants/' }
+                ],
+                replications: [
+                    { name: 'Gallery', location: '/gallery' },
+                    { name: 'Audio', location: '/audio' },
+                    { name: 'Tutorials', location: '/tutorials' },
+                    { name: 'Artists', location: '/artists' }
+                ],
+                project: [
+                    { name: 'Blog', location: '/blog/' },
+                    { name: 'Search', location: '/search' },
+                    { name: 'Contact', location: '/contact' },
+                    { name: 'About', location: '/about' },
+                    { name: 'Github',
+                        location: 'https://github.com/GabrielMorris/effect-index',
+                        external: true
+                    },
+                    { name: 'Form', 
+                        location: 'https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true',
+                        external: true
+                    }
+                ],
+                community: [
+                    { name: 'Discord', location: '/discord-chat/' },
+                    { name: 'Subreddit', location: 'http://reddit.com/r/replications', external: true }
+                ]
+            }
+        }
     }
 }
 
@@ -34,12 +73,4 @@ export default {
         font-size: 13px;
         font-weight: 600;
     }
-
-    .headerNav__mainNavigation a {
-        color: white;
-        font-weight: 600;
-        padding: 10px 0;
-        letter-spacing: 2px;
-    }
-
 </style>

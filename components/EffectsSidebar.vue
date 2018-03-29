@@ -61,11 +61,12 @@ export default {
         font-size: 14px;
         padding-bottom: 10.5px;
         font-weight: bold;
+        transition: opacity ease 100ms;
         opacity: 0.4;
     }
 
     .sidebar__listItem.active {
-        opacity: 1;
+        opacity: 0.8;
     }
 
     .sidebar__listItem a {
@@ -74,6 +75,6 @@ export default {
     }
 
     .sidebar__listItem:hover {
-        opacity: 1;
+        opacity: 0.8;
     }
 </style>

@@ -131,6 +131,7 @@ export default {
         font-weight: bold;
         letter-spacing: 2px;
         margin-left: 20px;
+        border-bottom: 3px dotted #CCC;
     }
 
     .effectList__actions {
@@ -162,6 +163,11 @@ export default {
         text-decoration: none;
         color: #3d9991;
         font-size: 18px;
+        transition: color ease 100ms;
+    }
+
+    .effectList__effect > li > a:hover {
+        color: #333;
     }
 
 </style>
