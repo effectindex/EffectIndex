@@ -23,7 +23,7 @@
     }
 
     .footer__social {
-        background-color: #333333;
+        background-color: #2e2e2e;
         padding: 2em;
     }
 
@@ -32,11 +32,11 @@
     }
 
     .footer__secret {
-        padding: 2em;
+        padding: 2em 0;
     }
 
     p {
-        padding: 2em;
+        padding: 2em 0;
     } 
 
     .memorium {

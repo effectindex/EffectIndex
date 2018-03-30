@@ -1,7 +1,13 @@
 <template>
-  <nav className="sidebar">
-      <h1 class="sidebar__title"> Effects </h1>
-        <ul class="sidebar__list">
+  <nav class="sidebar">
+      <h1 class="sidebar__title sidebar__title--screen"> Effects </h1>
+      <a class="sidebar__title--mobile" @click="toggleCollapse()"> 
+          <h1 class="sidebar__title">
+              <span v-if="collapsed"> + </span>
+              <span v-else> - </span> Effect Categories
+          </h1>
+       </a>
+        <ul :class="'sidebar__list ' + (this.collapsed ? 'collapsed' : '')">
           <li class="sidebar__listItem" v-bind:class="isActive('/')">
               <nuxt-link to="/"> All </nuxt-link>
           </li>
@@ -29,38 +35,74 @@
 
 <script>
 export default {
+    data () {
+        return {
+            collapsed: true
+        }
+    },
     methods: {
         isActive: function(route) {
             return (this.$route.path === route) ? 'active' : ''
+        },
+        toggleCollapse() {
+            this.collapsed = !this.collapsed;
+            console.log('toggle');
         }
     }
 }
 </script>
 
 <style>
+    .sidebar__title--mobile {
+        display: none;
+        cursor: pointer;
+    }
+
+    .sidebar__list {
+        padding: 0;
+        max-height: 300px;
+        list-style: none;
+        transition: 0.25s;
+    }
+
+    @media (max-width: 640px) {
+        .sidebar__title--screen {
+            display: none;
+        }
+
+        .sidebar__title--mobile { 
+            display: block;
+        }
+
+        .collapsed {
+            max-height: 0px;
+        }
+
+        .sidebar__list {
+            overflow: hidden;
+        }
+    }
+
     .sidebar {
         font-family: 'proxima-nova';
+        flex: 1;
     }
 
     .sidebar__title {
         color: rgb(0, 116, 107);
         font-size: 22px;
-        font-weight: 400;
+        font-weight: 300;
         padding-bottom: 10.5px;
     }
 
-    .sidebar__list {
-        padding: 0;
-        list-style: none;
-    }
+
 
     .sidebar__listItem {
         text-transform: uppercase;
         letter-spacing: 2px;
         line-height: 17.5px;
-        font-size: 14px;
+        font-size: 15px;
         padding-bottom: 10.5px;
-        font-weight: bold;
         transition: opacity ease 100ms;
         opacity: 0.4;
     }

@@ -1,0 +1,53 @@
+{
+    "Home": {
+        "location": "/"
+    },
+    "Effects": {
+        "location": "/all",
+        "children": [
+            { "name": "All", "location": "/" },
+            { "name": "Sensory", "location": "/sensory/" },
+            { "name": "Cognitive", "location": "/cognitive/" },
+            { "name": "Physical", "location": "/physical/" },
+            { "name": "Psychedelics", "location": "/psychedelics/" },
+            { "name": "Dissociatives", "location": "/dissociatives/" },
+            { "name": "Deliriants", "location": "/deliriants/" }
+        ]
+    },
+    "Replications": {
+        "location": "/gallery",
+        "children": [
+            { "name": "Gallery", "location": "/gallery" },
+            { "name": "Audio", "location": "/audio" },
+            { "name": "Tutorials", "location": "/tutorials" },
+            { "name": "Artists", "location": "/artists" }
+        ]
+    },
+    "Reports": {
+        "location": "/community-trip-reports"
+    },
+    "Project": {
+        "location": "/blog",
+        "children": [
+            { "name": "Blog", "location": "/blog/" },
+            { "name": "Search", "location": "/search" },
+            { "name": "Contact", "location": "/contact" },
+            { "name": "About", "location": "/about" },
+            { "name": "Github",
+                "location": "https://github.com/GabrielMorris/effect-index",
+                "external": true
+            },
+            { "name": "Forum", 
+                "location": "https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true",
+                "external": true
+            }
+        ]
+    },
+    "Community": {
+        "location": "/discord-chat",
+        "children": [
+            { "name": "Discord", "location": "/discord-chat/" },
+            { "name": "Subreddit", "location": "http://reddit.com/r/replications", "external": true }
+        ]
+    }
+}

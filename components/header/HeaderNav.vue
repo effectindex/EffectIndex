@@ -2,32 +2,29 @@
     <header class="navbar">
         <a href="/"> <img class="navbar__logo" src="/logo.png" /> </a>
         <main-navigation />
+        <hamburger :active="$store.state.navbar_pullout" />
     </header>
 </template>
 
 <script>
-    import MainNavigation from '@/components/header/headerNav__mainNavigation';
+    import MainNavigation from './headerNav__mainNavigation';
+    import Hamburger from './headerNav__hamburgerButton';
 
     export default {
         components: {
-            MainNavigation
+            MainNavigation,
+            Hamburger
         }
     }
 </script>
 
 <style>
-
     .navbar {
         display: flex;
         background-color: #2e2e2e;
-        width: 100%;
         height: 87px;
         padding: 20px;
         flex-direction: row;
+        justify-content: space-between;
     }
-
-    .navbar__logo {
-        align-self: left;
-    }
-
 </style>

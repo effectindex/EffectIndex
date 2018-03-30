@@ -1,8 +1,6 @@
 <template>
     <div class="pageContent">
-      <div style="flex: 1;">
-        <effects-sidebar />
-      </div>
+      <effects-sidebar />
       <div style="flex: 3;">
         <nuxt-child />
       </div>
@@ -24,14 +22,21 @@ export default {
 <style>
   .pageContent {
     display: flex;
-    flex-flow: row;
+    flex-direction: row;
+    padding: 0.5em;
+  }
+
+  @media (max-width: 640px) {
+    .pageContent {
+      flex-direction: column;
+    }
   }
 
   .pageContent__categoryIcon {
     float: right;
-    padding-left: 20px;
     font-size: 50px;
     opacity: 0.6;
+    margin: 3px 0px 5px 5px;
   }
 
   .pageContent p {
@@ -40,7 +45,7 @@ export default {
     font-size: 18px;
     font-weight: 400;
     line-height: 28.8px;
-    margin: 1em;
+    margin: 1em 0;
   }
 
   .pageContent__paragraph--bold {

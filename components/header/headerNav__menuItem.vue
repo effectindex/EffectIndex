@@ -1,6 +1,6 @@
 <template>
     <div class="headerNav__menuItem">
-        <a class="headerNav__menuItemLink" :href="location"> {{ value }} </a>
+        <a class="headerNav__menuItemLink" :href="location"> {{ name }} </a>
         <ul v-if="subMenuItems" class="headerNav__dropdown">
             <li v-for="(item, index) in subMenuItems" :key="index">
                 <a v-if="item.external" target="_blank" :href="item.location"> {{item.name}} </a>
@@ -13,7 +13,7 @@
 <script>
 
     export default {
-        props: ['location', 'value', 'subMenuItems']
+        props: ['location', 'name', 'subMenuItems']
     }
 </script>
 
@@ -21,13 +21,14 @@
     .headerNav__menuItem {
         position: relative;
         line-height: 32.5px;
+        align-self: center;
         transition: color 0.5s ease;
         margin: 0 1em;
     }
 
     .headerNav__menuItem a {
         color: #CCC;
-        font-weight: 600;
+        font-weight: 300;
         padding: 10px 0;
         letter-spacing: 2px;
         text-decoration: none;

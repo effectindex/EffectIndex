@@ -66,22 +66,16 @@
 </template>
 
 <script>
-import effects from '@/data/effects';
 import actionList from './effectList__actionList';
 
 export default {
-    data () {
-        return {
-            effects
-        }
-    },
     props: ['listType'],
     components: {
         actionList
     },
     methods: {
         getEffects(effectClass, effectSubclass, effectAction) {
-            return this.effects.filter((effect) => {
+            return this.$store.state.effects.filter((effect) => {
                 return ( (effect.class === effectClass)
                     && ( (effect.subclass === effectSubclass) || (!effectSubclass) )
                     && ( (effect.action === effectAction) || (!effectAction) )
@@ -102,6 +96,12 @@ export default {
         color: rgba(26, 26, 26, 0.7);
         font-size: 30px;
         width: 30px;
+    }
+
+    @media (max-width: 380px) {
+        .effectList__icon {
+            display: none;
+        }
     }
 
     .effectList__classes, .effectList__subclasses {
@@ -131,7 +131,6 @@ export default {
         font-weight: bold;
         letter-spacing: 2px;
         margin-left: 20px;
-        border-bottom: 3px dotted #CCC;
     }
 
     .effectList__actions {
