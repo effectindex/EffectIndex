@@ -125,6 +125,7 @@ export default {
         overflow: hidden;
         text-align: center;
         position: relative;
+        background-color: #F7F7F7;
     }
 
     .lightBoxControl {
