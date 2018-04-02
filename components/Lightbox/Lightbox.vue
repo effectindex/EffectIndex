@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import ImageDetails from './Lightbox__imageDetails.vue';
+import ImageDetails from './LightBox__imageDetails.vue';
 
 export default {
     data() {
