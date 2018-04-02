@@ -52,10 +52,14 @@
     font-size: 13px;
     font-weight: bold;
     transition: 0.25s;
+    text-decoration: none;
+    color: #CCC;
+    user-select: none;
 }
 
 .pulloutMenu__itemContainer a:hover {
-    color: rgb(128, 226, 221);
+    color: white;
+    text-shadow: 0px 0px 2px rgb(150, 219, 252);
 }
 
 </style>

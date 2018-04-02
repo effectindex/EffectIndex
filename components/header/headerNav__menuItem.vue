@@ -3,7 +3,7 @@
         <a class="headerNav__menuItemLink" :href="location"> {{ name }} </a>
         <ul v-if="subMenuItems" class="headerNav__dropdown">
             <li v-for="(item, index) in subMenuItems" :key="index">
-                <a v-if="item.external" target="_blank" :href="item.location"> {{item.name}} </a>
+                <a v-if="item.external" target="_blank" :href="item.location"> {{ item.name }} </a>
                 <nuxt-link v-else :to="item.location"> {{ item.name }} </nuxt-link>
             </li>
         </ul>
@@ -39,16 +39,32 @@
 
     .headerNav__menuItem:hover > a {
         color: #FFF;
+        text-shadow: 0px 0px 2px rgb(150, 219, 252);
     }
 
     .headerNav__menuItem:hover ul {
         max-height: 200px;
-    }
-    
-    .headerNav__menuItem:hover li {
-        opacity: 1;
+        
     }
 
+    .headerNav__dropdown > li {
+        display: none;
+        font-size: 13px;
+        text-transform: uppercase;
+        line-height: normal;
+        font-family: proxima-nova;
+        padding: 5px 20px;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .headerNav__menuItem:hover ul > li {
+        display: block;
+        animation-name: dropdownTextOpacity;
+        animation-duration: 0.75s;
+        animation-iteration-count: 1;
+    }
+    
     .headerNav__dropdown {
         position: absolute;
         overflow: hidden;
@@ -61,20 +77,15 @@
         transition: max-height .15s ease-out;
     }
 
-    .headerNav__dropdown > li {
-        font-size: 13px;
-        opacity: 0;
-        transition: opacity 0.15s ease-in;
-        text-transform: uppercase;
-        line-height: normal;
-        font-family: proxima-nova;
-        padding: 5px 20px;
-        margin: 0;
-        font-weight: bold;
-    }
 
     .headerNav__dropdown > li > a:hover {
         color: #FFF;
+        text-shadow: 0px 0px 2px rgb(150, 219, 252);
+    }
+
+    @keyframes dropdownTextOpacity {
+        from {opacity: 0;}
+        to {opacity: 1;}
     }
 
 </style>

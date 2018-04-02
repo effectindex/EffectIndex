@@ -29,8 +29,7 @@ export default {
     letter-spacing: 1px;
     top: 0;
     right: 0;
-    color: white;
-    width: 260px;
+    width: 220px;
     height: 100%;
     background-color: #2e2e2e;
     }
@@ -42,12 +41,6 @@ export default {
     .navbarPullout > ul > ol {
         text-transform: uppercase;
         margin-top: 8px;
-    }
-
-    a {
-        text-decoration: none;
-        color: white;
-        user-select: none;
     }
 
 </style>

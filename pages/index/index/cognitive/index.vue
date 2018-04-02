@@ -1,6 +1,6 @@
 <template>
     <div>
-        <i class="fa fa-user pageContent__categoryIcon"> </i>
+        <i class="fa fa-user categoryIcon"> </i>
         <p> The following is placeholder for a page which will contain a comprehensive collection
             of descriptions for all sensory subjective effect components </p>
         <effect-list listType="cognitive" />

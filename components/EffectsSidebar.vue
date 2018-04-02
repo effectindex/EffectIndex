@@ -46,7 +46,6 @@ export default {
         },
         toggleCollapse() {
             this.collapsed = !this.collapsed;
-            console.log('toggle');
         }
     }
 }
@@ -60,9 +59,9 @@ export default {
 
     .sidebar__list {
         padding: 0;
-        max-height: 300px;
+        max-height: 250px;
         list-style: none;
-        transition: 0.25s;
+        transition: 0.5s ease-out;;
     }
 
     @media (max-width: 640px) {
@@ -94,8 +93,6 @@ export default {
         font-weight: 300;
         padding-bottom: 10.5px;
     }
-
-
 
     .sidebar__listItem {
         text-transform: uppercase;
