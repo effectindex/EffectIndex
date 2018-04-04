@@ -7,6 +7,30 @@
             title="Trippy Forest (Auditory distortions)"
             artist="EmEx"
              />
+
+        <audio-player 
+            src="/audio/Auditory Hallucinations - DMT Drone.mp3"
+            title="DMT Drone (Auditory distortions)"
+            artist="EmEx"
+             />
+
+        <audio-player 
+            src="/audio/Auditory Hallucinations - Math Lecture.ogg"
+            title="Math Lecture (Auditory distortions)"
+            artist="EmEx"
+             />
+
+        <audio-player 
+            src="/audio/Auditory Hallucinations - Normal vs Suppressed.ogg"
+            title="Normal vs Suppressed (Auditory distortions)"
+            artist="EmEx"
+             />
+
+        <audio-player 
+            src="/audio/Auditory Hallucinations - Paranoid Voices.mp3"
+            title="Paranoid Voices"
+            artist="EmEx"
+             />                  
     </div>
 </template>
 

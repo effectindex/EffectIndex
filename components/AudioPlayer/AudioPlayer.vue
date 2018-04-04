@@ -30,6 +30,7 @@ export default {
             wavesurfer: undefined
         }
     },
+    props: ['src', 'title', 'artist'],
     methods: {
         play() {
             this.state = 'PLAYING';
@@ -41,6 +42,13 @@ export default {
         },
         ready() {
             this.length = this.wavesurfer.getDuration()
+        },
+        audioProcess() {
+            this.position = this.wavesurfer.getCurrentTime();
+        },
+        finish() {
+            this.state = 'STOPPED';
+            this.wavesurfer.seekTo(0);
         }
     },
     mounted() {
@@ -56,18 +64,25 @@ export default {
         this.wavesurfer.load(this.src);
 
         this.wavesurfer.on('ready', this.ready);
+        this.wavesurfer.on('audioprocess', this.audioProcess);
+        this.wavesurfer.on('finish')
 
-        this.wavesurfer.on('audioprocess', () => {
-            this.position = this.wavesurfer.getCurrentTime();
-        })
     },
-    props: ['src', 'title', 'artist']
+    beforeDestroy() {
+        this.wavesurfer.unAll();
+    }
+
+ 
 }
 
 </script>
 
 
 <style>
+
+    .audioPlayer {
+        margin-bottom: 2em;
+    }
 
     .audioPlayer--audioInfo {
         display: flex;
