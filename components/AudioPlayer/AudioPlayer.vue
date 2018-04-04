@@ -1,19 +1,18 @@
 <template>
     <div class="audioPlayer">
-        <div class="audioPlayer--audioInfo">
-            <div class="audioPlayer--titleBar"> 
-                <span class="audioPlayer--title"> {{ title }} </span> 
-                - <span class="audioPlayer--artist"> {{ artist }} </span> </div>
-            <div class="audioPlayer--positionBar">  {{ position.toFixed(2) }}/{{ length.toFixed(2) }} </div>
-
-        </div>
+        <div class="audioPlayer--positionBar">  {{ position.toFixed(2) }} / {{ length.toFixed(2) }} </div>
         <div class="audioPlayer--content">
             <div class="audioPlayer--playButton">
                 <a v-if="state === 'STOPPED' || state === 'PAUSED'" @mousedown="play()"> <i class="fa fa-play"> </i> </a>
                 <a v-else-if="state === 'PLAYING'" @mousedown="pause()"> <i class="fa fa-pause"> </i> </a>
             </div>
+            <div class="audioPlayer--audioInfo">
+                <div class="audioPlayer--titleBar"> 
+                    <div class="audioPlayer--title"> {{ title }} </div> 
+                    <div class="audioPlayer--artist"> {{ artist }} </div> 
+                </div>
+            </div>
             <div class="audioPlayer--waveform" ref="waveform"> 
-                <div class="audioPlayer--nonwaveform"> </div>
             </div>
         </div>
     </div>
@@ -55,6 +54,7 @@ export default {
         this.wavesurfer = WaveSurfer.create({
             container: this.$refs.waveform, 
             waveColor: '#555555',
+            cursorColor: '#CCCCCC',
             progressColor: '#3d9991', 
             height: '50',
             responsive: true, 
@@ -65,7 +65,7 @@ export default {
 
         this.wavesurfer.on('ready', this.ready);
         this.wavesurfer.on('audioprocess', this.audioProcess);
-        this.wavesurfer.on('finish')
+        this.wavesurfer.on('finish', this.finish)
 
     },
     beforeDestroy() {
@@ -84,34 +84,36 @@ export default {
         margin-bottom: 2em;
     }
 
-    .audioPlayer--audioInfo {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 10px;
-    }
-
     .audioPlayer--title {
         font-weight: bold;
         color: #3d9991;
+        font-size: 14px;
     }
 
     .audioPlayer--artist {
         font-style: italic;
+        font-size: 13px;
     }
 
     .audioPlayer--titleBar {
+        margin: 0 1em;
         flex-grow: 1;
+        flex: 1;
     }
 
     .audioPlayer--positionBar {
         text-align: right;
-        width: 120px;
+        font-style: italic;
+        font-size: 12px;
     }
 
     .audioPlayer--content {
         display: flex;
+        height: 50px;
+        background-color: #F5F5F5;
         flex-direction: row;
         position: relative;
+        border: 1px solid #CCC;
     }
 
     .audioPlayer--playButton {
@@ -119,23 +121,13 @@ export default {
         width: 50px;
         text-align: center;
         line-height: 50px;
-        border: 1px solid #CCC;
+        border-right: 2px solid #CCC;
     }
 
-    .audioPlayer--nonwaveform {
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        margin-left: 50px;
-        width: 100%;
-        height: 50px;
-    }
 
     .audioPlayer--waveform {
         height: 50px;
-        width: 100%;
-        margin: 0 1em;
+        flex-grow: 1;
     }
 
     .audioPlayer--playButton a {
