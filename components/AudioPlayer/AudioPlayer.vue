@@ -75,10 +75,6 @@ export default {
         margin-bottom: 10px;
     }
 
-    .audioPlayer--audioInfo > div {
-        flex: 1;
-    }
-
     .audioPlayer--title {
         font-weight: bold;
         color: #3d9991;
@@ -88,8 +84,13 @@ export default {
         font-style: italic;
     }
 
+    .audioPlayer--titleBar {
+        flex-grow: 1;
+    }
+
     .audioPlayer--positionBar {
         text-align: right;
+        width: 120px;
     }
 
     .audioPlayer--content {
