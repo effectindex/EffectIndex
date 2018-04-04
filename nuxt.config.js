@@ -16,6 +16,9 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', 'type': 'text/css', href: 'https://fonts.googleapis.com/css?family=Titillium+Web:400i,700,700i,400' }
+    ],
+    script: [
+      { src: "//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/2.0.5/wavesurfer.min.js" } 
     ]
   },
 

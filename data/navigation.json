@@ -3,7 +3,7 @@
         "location": "/"
     },
     "Effects": {
-        "location": "/all",
+        "location": "/",
         "children": [
             { "name": "All", "location": "/" },
             { "name": "Sensory", "location": "/sensory/" },
