@@ -20,18 +20,18 @@
             is credited for each replication wherever possible, if you would like your artwork removed
             or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
         </p>
-        <light-box title="Autonomous Entities" :image-set="$store.state.gallery.autonomous_entities" />
-        <light-box title="Colour Enhancement" :image-set="$store.state.gallery.colour_enhancement" />
-        <light-box title="Drifting" :image-set="$store.state.gallery.drifting" />
-        <light-box title="Environmental Cubism" :image-set="$store.state.gallery.environmental_cubism" />
-        <light-box title="Environmental Patterning" :image-set="$store.state.gallery.environmental_patterning" />
-        <light-box title="Geometry" :image-set="$store.state.gallery.geometry" />
-        <light-box title="Fractals" :image-set="$store.state.gallery.fractals" />
-        <light-box title="Scenery Slicing" :image-set="$store.state.gallery.scenery_slicing" />
-        <light-box title="Recursion" :image-set="$store.state.gallery.recursion" />
-        <light-box title="Symmetrical Texture Repetition" :image-set="$store.state.gallery.symmetrical_texture_repetition" />
-        <light-box title="Shadow People" :image-set="$store.state.gallery.shadow_people" />
-        <light-box title="Tracers" :image-set="$store.state.gallery.tracers" />
+        <light-box class="galleryItem" title="Autonomous Entities" :image-set="$store.state.gallery.autonomous_entities" />
+        <light-box class="galleryItem" title="Colour Enhancement" :image-set="$store.state.gallery.colour_enhancement" />
+        <light-box class="galleryItem" title="Drifting" :image-set="$store.state.gallery.drifting" />
+        <light-box class="galleryItem" title="Environmental Cubism" :image-set="$store.state.gallery.environmental_cubism" />
+        <light-box class="galleryItem" title="Environmental Patterning" :image-set="$store.state.gallery.environmental_patterning" />
+        <light-box class="galleryItem" title="Geometry" :image-set="$store.state.gallery.geometry" />
+        <light-box class="galleryItem" title="Fractals" :image-set="$store.state.gallery.fractals" />
+        <light-box class="galleryItem" title="Scenery Slicing" :image-set="$store.state.gallery.scenery_slicing" />
+        <light-box class="galleryItem" title="Recursion" :image-set="$store.state.gallery.recursion" />
+        <light-box class="galleryItem" title="Symmetrical Texture Repetition" :image-set="$store.state.gallery.symmetrical_texture_repetition" />
+        <light-box class="galleryItem" title="Shadow People" :image-set="$store.state.gallery.shadow_people" />
+        <light-box class="galleryItem" title="Tracers" :image-set="$store.state.gallery.tracers" />
     </div>
 </template>
 
@@ -44,3 +44,9 @@ export default {
     }
 }
 </script>
+
+<style scoped> 
+.galleryItem {
+    margin-top: 75px;
+}
+</style>

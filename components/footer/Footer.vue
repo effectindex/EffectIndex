@@ -8,7 +8,7 @@
         </div>
         <div class="footer__secret">
         <p> disregardeverythingisay@gmail.com </p>
-        <p class="memorium"> In loving memory of Phillip Edmunds. </p>
+        <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
         </div>
     </footer>
 </template>
@@ -39,7 +39,7 @@
         padding: 2em 0;
     } 
 
-    .memorium {
+    .footer__memorium {
         font-style: italic;
         color: #1f1f1f;
         padding: 0;

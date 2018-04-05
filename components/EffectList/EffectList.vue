@@ -92,6 +92,10 @@ export default {
         margin-top: 3em;
     }
 
+    .effectList ul {
+        margin-bottom: 2em;
+    }
+
     .effectList__icon {
         color: rgba(26, 26, 26, 0.7);
         font-size: 30px;
@@ -107,14 +111,11 @@ export default {
     .effectList__classes, .effectList__subclasses {
         list-style: none;
         padding-left: 0;
-        margin-top: 1em;
-        padding-bottom: 1em;
     }
 
     .effectList__classes > li, .effectList__subclasses > li {
         margin-top: 1em;
-        border-bottom: 1px solid #AAA;
-        margin-bottom: 20px;
+        border-bottom: 1px solid #CCC;
     }
 
     .effectList__classes > li:last-child, .effectList__subclasses > li:last-child {
@@ -135,7 +136,6 @@ export default {
 
     .effectList__actions {
         list-style: none;
-        margin-top: 1em;
         margin-left: 50px;
         padding: 0;
     }
@@ -146,14 +146,14 @@ export default {
         font-size: 16px;
         font-weight: 600;
         letter-spacing: 2px;
+        margin-top: 1em;
     }
 
     .effectList__actions > li {
-        margin: 1em 0;
+        margin: 0.25em 0;
     }
 
     .effectList__effect {
-        margin-top: 1em;
         list-style-type: disc;
         color: rgba(26, 26, 26, 0.7);
     }

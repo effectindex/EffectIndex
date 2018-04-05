@@ -106,9 +106,25 @@ export default {
     font-weight: bold;
   }
 
+  .pageContent .underline {
+    text-decoration: underline;
+  }
+
   .pageContent a {
-    color: rgb(61, 153, 145);
+    color: #3d9991;
     text-decoration: none;
+  }
+
+  .pageContent a:hover {
+    color: #27635d
+  }
+
+  .pageContent a[href^="http://"]:hover {
+    text-decoration: underline;
+  }
+
+  .pageContent a[href^="https://"]:hover {
+    text-decoration: underline;
   }
 
   .pageContent .blackButton {
@@ -145,10 +161,12 @@ export default {
       letter-spacing: 2px;
       font-weight: 400;
       color: rgb(74, 74, 74);
+      margin: 1em 0;
   }
 
   .pageContent ul {
-    padding: 15px 30px;
+    padding: 0;
+    padding-left: 30px;
     color: #999;
   }
 

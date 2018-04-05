@@ -1,7 +1,7 @@
 <template>
-    <div class="imageDetailsContainer">
-        <h3 class="title"> {{ title }} </h3>
-        <h4 class="artist"> by 
+    <div class="lightBox__imageDetails">
+        <h3 class="lightBox__title"> {{ title }} </h3>
+        <h4 class="lightBox__artist"> by 
             <a :href="artistWebpage" target="_blank">
                 {{ artist }}
             </a>

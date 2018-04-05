@@ -1,11 +1,11 @@
 <template>
-    <div class="lightBoxContainer">
+    <div class="lightBox">
         <h1 v-show="title"> {{ title }} </h1>
-        <div v-if="imageSet.length" class="canvasContainer">
+        <div v-if="imageSet.length" class="lightBox__canvas">
             <transition name="fade">
                 <div 
                     v-if="imageSet[current_image].image_fullsize"
-                    class="imageContainer"
+                    class="lightBox__image"
                     :style="'background-image: url(\'' + encodeURI(imageSet[current_image].image_fullsize) + '\');'"
                     :key="imageSet[current_image].image_fullsize"
                     >
@@ -32,27 +32,27 @@
                             :artist-webpage="imageSet[current_image].artist_webpage" />
                     </div>
             </transition>
-            <a v-show="current_image > 0" @click="previousImage()" class="lightBoxControl previousImage"> 
+            <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
                 <i class="fa fa-angle-double-left"> </i>
             </a>
-            <a @click="nextImage()" class="lightBoxControl nextImage">
+            <a @mousedown="nextImage()" class="lightBox__control nextImage">
                 <i class="fa fa-angle-double-right"> </i>
             </a>
         </div>
-        <div v-if="imageSet.length" class="thumbnailReel" ref="thumbnailReel">
-            <div class="thumbnailContainer" :style="'margin-left: ' + thumbnailOffset + 'px;'">
+        <div v-if="imageSet.length" class="lightBox__thumbnailReel" ref="thumbnailReel">
+            <div ref="thumbnailContainer" class="lightBox__thumbnailContainer" :style="'left: ' + thumbnailOffset + 'px;'">
                 <a
                     v-for="(image, index) in imageSet"
-                    @click="selectImage(index)"
-                    :key="image.title">
-                    <img ref="activeThumbnail"
+                    @mousedown="selectImage(index)"
+                    :key="index">
+                    <img class="lightBox__thumbnailImage" ref="activeThumbnail"
                         v-if="image.image_thumbnail"
                         :src="image.image_thumbnail"
-                        :style="current_image === index ? 'opacity: 1;': ''" />
-                    <img ref="activeThumbnail"
+                        :class="current_image === index ? {active: true}: {}" />
+                    <img class="lightBox__thumbnailImage" ref="activeThumbnail"
                         v-else-if="image.gfycat_name"
                         :src="'http://thumbs.gfycat.com/' + image.gfycat_name + '-thumb100.jpg'"
-                        :style="current_image === index ? 'opacity: 1;': ''" />    
+                        :class="current_image === index ? {active: true}: {}" />    
                 </a>
             </div>
         </div>
@@ -73,18 +73,20 @@ export default {
         ImageDetails
     },
     mounted() {
-        if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
-            this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2)
-            - this.$refs.activeThumbnail[this.current_image].offsetLeft;
-            if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
-        }
+        this.updateThumbnailOffset();
     },
     methods: {
         updateThumbnailOffset() {
             if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
+
                 this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2)
                 - this.$refs.activeThumbnail[this.current_image].offsetLeft;
+
                 if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
+
+                if ((this.$refs.thumbnailContainer.lastChild.offsetLeft + this.$refs.thumbnailContainer.lastChild.offsetWidth) <
+                this.$refs.thumbnailReel.offsetWidth) this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth - (this.$refs.thumbnailContainer.lastChild.offsetLeft
+                + this.$refs.thumbnailContainer.lastChild.offsetWidth)) / 2;
             }
         },
         selectImage(index) {
@@ -96,10 +98,8 @@ export default {
             this.updateThumbnailOffset();
         },
         previousImage() {
-            if (this.current_image === 0) { 
-                this.current_image = this.$props.imageSet.length - 1;
+            if (this.current_image === 0) this.current_image = this.$props.imageSet.length - 1;
 
-            }
             else this.current_image = (this.current_image - 1)
             this.updateThumbnailOffset();
         }
@@ -120,13 +120,7 @@ export default {
 
 <style>
 
-    .lightBoxContainer {
-        padding-top: 50px;
-        margin-bottom: 200px;
-        height: 600px;
-    }
-
-    .lightBoxContainer h1 {
+    .lightBox h1 {
         text-transform: uppercase;
         color: rgb(61, 153, 145);
         font-size: 22px;
@@ -134,18 +128,18 @@ export default {
         font-family: proxima-nova;
         font-weight: 400;
         letter-spacing: 2px;
+        margin-bottom: 1em;
     }
     
-    .canvasContainer {
-        height: 100%;
-        width: 100%;
+    .lightBox__canvas {
+        height: 600px;
         overflow: hidden;
         text-align: center;
         position: relative;
         background-color: #F7F7F7;
     }
 
-    .lightBoxControl {
+    .lightBox__control {
         display: block;
         height: 100px;
         width: 50px;
@@ -159,20 +153,20 @@ export default {
         border-radius: 5px;
     }
 
-    a.lightBoxControl {
+    a.lightBox__control  {
         color: white;
         cursor: pointer;
     }
 
-    a.lightBoxControl:hover {
+    a.lightBox__control:hover {
         opacity: 1;
     }
 
-    .lightBoxControl.nextImage {
+    .lightBox__control.nextImage {
         right: 0;
     }
 
-    .imageContainer {
+    .lightBox__image {
         display: inline-block;
         position: absolute;
         left: 0;
@@ -184,7 +178,7 @@ export default {
         width: 100%;
     }
 
-    .imageDetailsContainer {
+    .lightBox__imageDetails {
         position: absolute;
         top: 0;
         left: 0;
@@ -197,58 +191,63 @@ export default {
     }
 
     @media (max-width: 500px) {
-        .imageDetailsContainer {
+        .lightBox__imageDetails {
             margin: 5px;
             padding: 5px;
         }
     }
 
-    .imageDetailsContainer .title {
+    .lightBox__imageDetails .title {
         font-size: 20px;
         font-weight: bold;
         text-shadow: 0px 0px 2px black;
     }
 
-    .imageDetailsContainer .artist {
+    .lightBox__imageDetails .artist {
         font-size: 14px;
         text-shadow: 0px 0px 2px black;
         font-weight: bold;
         font-style: italic;
     }
 
-    .artist a {
+    .lightBox__artist a {
         color: white;
         text-decoration: underline;
     }
 
-    .lightBoxContainer img {
+    .lightBox img {
         height: 100%;
         cursor: pointer;
         opacity: 0.35;
+        transition: opacity 0.5s ease;
     }
 
-    .thumbnailReel {
+    .lightBox__thumbnailReel {
         overflow: hidden;
-        margin: 1em auto;
-        text-align: center;
+        margin: 1em 0;
+    }
+
+    .lightBox__thumbnailImage.active {
+        opacity: 1;
     }
 
     @media (max-width: 500px) {
-        .lightBoxContainer {
+        .lightBox__canvas {
             height: 400px;
         }
     }
 
     @media (max-width: 1000px) {
-        .lightBoxContainer {
+        .lightBox__canvas {
             height: 500px;
         }
     }
 
-    .thumbnailContainer {
+    .lightBox__thumbnailContainer {
         position: relative;
         height: 80px;
-        transition: margin-left 0.5s ease;
+        transition: left 0.5s ease;
+        width: 2000px;
     }
 
     .fade-enter-active, .fade-leave-active {

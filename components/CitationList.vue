@@ -1,7 +1,7 @@
 <template>
-<ol class="citationList">
-    <slot> </slot>
-</ol>
+    <ol class="citationList">
+        <slot> </slot>
+    </ol>
 </template>
 
 <style>
@@ -11,22 +11,25 @@
     column-width: 300px;
     padding-left: 0;
     font-size: 14px;
-    font-style: italic;
+    font-weight: bold;
 }
 
 .citationList li {
     margin-left: 30px;
     padding: 0.25em 0;
     min-width: 300px;
-    word-break: break-all;
+    hyphens: auto;
+    font-weight: bold;
+    break-inside: avoid;
 }
 
-.citationList a:target {
-    background-color: #F5F5F5;
+.citation__contents {
+    font-weight: normal;
+    margin-left: 5px;
 }
 
-.citationList a {
-    color: #333333;
+.citationList li:target {
+    background-color: #E6E6F6;
 }
 
 .citationList a:link {
