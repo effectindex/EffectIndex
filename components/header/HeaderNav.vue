@@ -1,6 +1,6 @@
 <template>
     <header class="navbar">
-        <a href="/"> <img class="navbar__logo" src="/logo.svg" height="47"/> </a>
+        <nuxt-link to="/"> <img class="navbar__logo" src="/logo.svg" /> </nuxt-link>
         <main-navigation />
         <hamburger :active="$store.state.navbar_pullout" />
     </header>
@@ -26,5 +26,11 @@
         padding: 20px;
         flex-direction: row;
         justify-content: space-between;
+        align-content: center;
+    }
+
+    .navbar__logo {
+        align-self: center;
+        height: 47px;
     }
 </style>

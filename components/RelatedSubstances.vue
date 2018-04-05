@@ -23,6 +23,7 @@ export default {
 
 .relatedSubstances p {
     margin: 1em 0;
+    
 }
 
 .relatedSubstances__list {

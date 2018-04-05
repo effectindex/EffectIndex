@@ -84,6 +84,8 @@ export default {
 
   .pageContent {
     flex: 3;
+    padding-bottom: 50px;
+    font-size: 18px;
   }
 
   .pageContent .categoryIcon {
@@ -96,7 +98,6 @@ export default {
   .pageContent p {
     font-family: Titillium Web;
     color: rgba(26, 26, 26, 0.7);
-    font-size: 18px;
     font-weight: 400;
     line-height: 28.8px;
     margin: 0 0 1em 0;

@@ -8,17 +8,15 @@
 
 .citationList {
     columns: 2;
-    column-width: 300px;
+    column-width: 325px;
     padding-left: 0;
     font-size: 14px;
     font-weight: bold;
 }
 
 .citationList li {
-    margin-left: 30px;
+    margin-left: 15px;
     padding: 0.25em 0;
-    min-width: 300px;
-    hyphens: auto;
     font-weight: bold;
     break-inside: avoid;
 }
@@ -26,6 +24,17 @@
 .citation__contents {
     font-weight: normal;
     margin-left: 5px;
+}
+
+@media (max-width: 640px) {
+
+    .citationList li {
+        word-break: break-all;
+    }
+
+    .citation__contents {
+        margin-left: 0;
+    }
 }
 
 .citationList li:target {
