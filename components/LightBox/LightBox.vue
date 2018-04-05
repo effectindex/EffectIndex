@@ -153,8 +153,8 @@ export default {
         font-size: 30px;
         position: absolute;
         top: calc(50% - 50px);
-        background-color:black;
-        opacity: 0.2;
+        background-color: rgba(0, 0, 0, 0.2);
+        opacity: 0.75;
         color: white;
         border-radius: 5px;
     }
@@ -165,7 +165,7 @@ export default {
     }
 
     a.lightBoxControl:hover {
-        opacity: 0.6;
+        opacity: 1;
     }
 
     .lightBoxControl.nextImage {
