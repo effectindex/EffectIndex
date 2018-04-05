@@ -1,10 +1,10 @@
 <template>
     <footer>
         <div class="footer__social">
-            <img src="/sm-icon-reddit.svg" height="32" width="32" />
-            <img src="/sm-icon-youtube.svg" height="32" width="32" />
-            <img src="/sm-icon-instagram.svg" height="32" width="32" />
-            <img src="/sm-icon-spotify.svg" height="32" width="32" />
+            <a href="http://reddit.com/r/replications"><img src="/sm-icon-reddit.svg" height="32" width="32" /></a>
+            <a href="https://www.youtube.com/channel/UCV5-ybqHFU6xQWhnFZBJlOA"><img src="/sm-icon-youtube.svg" height="32" width="32" /></a>
+            <a href="http://instagram.com/josikinz"><img src="/sm-icon-instagram.svg" height="32" width="32" /></a>
+            <a href="https://open.spotify.com/user/214qnn2x7bvwziyqdwfkqedja"><img src="/sm-icon-spotify.svg" height="32" width="32" /></a>
         </div>
         <div class="footer__secret">
         <p> disregardeverythingisay@gmail.com </p>
