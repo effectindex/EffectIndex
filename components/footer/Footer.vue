@@ -32,7 +32,7 @@
     }
 
     .footer__secret {
-        padding: 2em 0;
+        padding: 1em 0;
     }
 
     p {
@@ -42,5 +42,6 @@
     .memorium {
         font-style: italic;
         color: #1f1f1f;
+        padding: 0;
     }
 </style>
