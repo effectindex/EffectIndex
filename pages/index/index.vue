@@ -1,9 +1,7 @@
 <template>
     <div class="pageContentContainer">
       <effects-sidebar />
-      <div class="pageContent" style="flex: 3;">
-        <nuxt-child />
-      </div>
+      <nuxt-child class="pageContent" />
     </div>
 </template>
 

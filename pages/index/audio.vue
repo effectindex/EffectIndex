@@ -4,7 +4,7 @@
 
         <audio-player 
             src="/audio/Auditory Hallucinations - Distorted Forest.mp3"
-            title="Trippy Forest"
+            title="Trippy Foresttttttttttttttttttttt"
             artist="EmEx"
              />
 

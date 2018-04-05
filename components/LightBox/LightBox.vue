@@ -1,7 +1,7 @@
 <template>
     <div class="lightBoxContainer">
-        <h1> {{ title }} </h1>
-        <div class="canvasContainer">
+        <h1 v-show="title"> {{ title }} </h1>
+        <div v-if="imageSet.length" class="canvasContainer">
             <transition name="fade">
                 <div 
                     v-if="imageSet[current_image].image_fullsize"
@@ -32,10 +32,14 @@
                             :artist-webpage="imageSet[current_image].artist_webpage" />
                     </div>
             </transition>
-            <a @click="previousImage()" class="lightBoxControl previousImage"> <i class="fa fa-angle-double-left"> </i> </a>
-            <a @click="nextImage()" class="lightBoxControl nextImage"> <i class="fa fa-angle-double-right"> </i> </a>
+            <a v-show="current_image > 0" @click="previousImage()" class="lightBoxControl previousImage"> 
+                <i class="fa fa-angle-double-left"> </i>
+            </a>
+            <a @click="nextImage()" class="lightBoxControl nextImage">
+                <i class="fa fa-angle-double-right"> </i>
+            </a>
         </div>
-        <div class="thumbnailReel" ref="thumbnailReel">
+        <div v-if="imageSet.length" class="thumbnailReel" ref="thumbnailReel">
             <div class="thumbnailContainer" :style="'margin-left: ' + thumbnailOffset + 'px;'">
                 <a
                     v-for="(image, index) in imageSet"
@@ -62,18 +66,26 @@ export default {
     data() {
         return {
             current_image: 0,
-            thumbnailOffset: 0
+            thumbnailOffset: 0,
         }
     },
     components: {
         ImageDetails
     },
     mounted() {
-        this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2) - this.$refs.activeThumbnail[this.current_image].offsetLeft;
+        if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
+            this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2)
+            - this.$refs.activeThumbnail[this.current_image].offsetLeft;
+            if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
+        }
     },
     methods: {
         updateThumbnailOffset() {
-            this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2) - this.$refs.activeThumbnail[this.current_image].offsetLeft;
+            if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
+                this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2)
+                - this.$refs.activeThumbnail[this.current_image].offsetLeft;
+                if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
+            }
         },
         selectImage(index) {
             this.current_image = index;
@@ -92,7 +104,15 @@ export default {
             this.updateThumbnailOffset();
         }
     },
-    props: ['title', 'imageSet']
+    props: {
+        title: {
+            type: String
+        },
+        imageSet: {
+            default: () => [],
+            type: Array
+        }
+    }
 }
 
 </script>
@@ -101,12 +121,9 @@ export default {
 <style>
 
     .lightBoxContainer {
-        border-top: 1px solid #DDD;
         padding-top: 50px;
-        margin-top: 50px;
         margin-bottom: 200px;
         height: 600px;
-        width: 100%;
     }
 
     .lightBoxContainer h1 {
@@ -211,10 +228,9 @@ export default {
     }
 
     .thumbnailReel {
-        width: 100%;
         overflow: hidden;
-        margin-top: 1em;
-        text-align: left;
+        margin: 1em auto;
+        text-align: center;
     }
 
     @media (max-width: 500px) {
@@ -233,7 +249,6 @@ export default {
         position: relative;
         height: 80px;
         transition: margin-left 0.5s ease;
-        width: 3000px;
     }
 
     .fade-enter-active, .fade-leave-active {

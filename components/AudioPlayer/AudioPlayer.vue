@@ -1,22 +1,21 @@
 <template>
     <div class="audioPlayer">
         
-        <div class="audioPlayer--content">
-            <div class="audioPlayer--playButton">
+        <div class="audioPlayer__content">
+            <div class="audioPlayer__playButton">
                 <a v-if="state === 'STOPPED' || state === 'PAUSED'" @mousedown="play()"> <i class="fa fa-play"> </i> </a>
                 <a v-else-if="state === 'PLAYING'" @mousedown="pause()"> <i class="fa fa-pause"> </i> </a>
             </div>
-            <div class="audioPlayer--audioInfo">
-                <div class="audioPlayer--titleBar"> 
-                    <div class="audioPlayer--title"> {{ title }} </div> 
-                    <div class="audioPlayer--artist"> {{ artist }} </div> 
+            <div class="audioPlayer__audioInfo">
+                <div class="audioPlayer__titleBar"> 
+                    <div class="audioPlayer__title"> {{ title }} </div> 
+                    <div class="audioPlayer__artist"> {{ artist }} </div> 
                 </div>
             </div>
-            <div class="audioPlayer--waveform" ref="waveform"> 
-            </div>
-            <div class="audioPlayer--positionDownload">  
+            <div class="audioPlayer__waveform" ref="waveform" /> 
+            <div class="audioPlayer__positionDownload">  
                 <div> {{ getTime(position) }} / {{ getTime(length) }} </div>
-                <a :href="src"> Download </a>
+                <a :href="src" target="_blank"> Download </a>
             </div>
         </div>
     </div>
@@ -94,28 +93,59 @@ export default {
         margin-bottom: 2em;
     }
 
-    .audioPlayer--title {
+    .audioPlayer__content {
+        display: flex;
+        height: 50px;
+        background-color: #F5F5F5;
+        flex-direction: row;
+        position: relative;
+    }
+
+    .audioPlayer__titleBar {
+        display: flex;
+        height: 50px;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        margin: 0 1em;
+    }
+
+    .audioPlayer__title {
         color: #3d9991;
         font-size: 14px;
     }
 
-    .audioPlayer--artist {
+    .audioPlayer__artist {
         font-style: italic;
         font-size: 13px;
         color: #AAA;
     }
 
-    .audioPlayer--titleBar {
-        margin: 0 1em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex-grow: 1;
+    .audioPlayer__playButton {
         height: 50px;
-        flex: 1;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-right: 1px solid #DDD;
+        font-size: 20px;
     }
 
-    .audioPlayer--positionDownload {
+    .audioPlayer__playButton a {
+        color: #777;
+        margin: 0;
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        display: block;
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+    }
+
+    .audioPlayer__playButton a:hover {
+        background-color: #D6D6D6;
+    }
+
+    .audioPlayer__positionDownload {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -126,36 +156,10 @@ export default {
         margin: 0 1em;
     }
 
-    .audioPlayer--content {
-        display: flex;
-        height: 50px;
-        background-color: #F5F5F5;
-        flex-direction: row;
-        position: relative;
-    }
-
-    .audioPlayer--playButton {
-        height: 50px;
-        width: 50px;
-        text-align: center;
-        line-height: 50px;
-        border-right: 1px solid #DDD;
-    }
-
-
-    .audioPlayer--waveform {
+    .audioPlayer__waveform {
         height: 50px;
         flex-grow: 1;
     }
 
-    .audioPlayer--playButton a {
-        color: #555;
-        margin: 0;
-        padding: 0;
-        width: 50px;
-        height: 50px;
-        display: block;
-        cursor: pointer;
-    }
 
 </style>

@@ -73,12 +73,17 @@ export default {
     display: flex;
     flex-direction: row;
     padding: 0.5em;
+    max-width: 1000px;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 800px) {
     .pageContentContainer {
       flex-direction: column;
     }
+  }
+
+  .pageContent {
+    flex: 3;
   }
 
   .pageContent .categoryIcon {
@@ -127,10 +132,37 @@ export default {
       opacity: 0.8;
   }
 
-  .pageContent h1 {
+  .pageContent > h1 {
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 15px;
   }
+
+  .pageContent > h3, .pageContent > h4 {
+      text-transform: uppercase;
+      font-family: proxima-nova;
+      font-size: 22px;
+      letter-spacing: 2px;
+      font-weight: 400;
+      color: rgb(74, 74, 74);
+  }
+
+  .pageContent ul {
+    padding: 15px 30px;
+    color: #999;
+  }
+
+  .pageContent > h4 {
+    font-size: 18px;
+  }
+
+  .pageContent > hr {
+    margin: 50px 0;
+    border: 0;
+    border-top: 1px solid #CCC;
+  }
+  
+
+
 
 </style>

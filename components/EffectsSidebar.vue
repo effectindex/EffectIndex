@@ -64,7 +64,7 @@ export default {
         transition: 0.5s ease-out;;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 800px) {
         .sidebar__title--screen {
             display: none;
         }
