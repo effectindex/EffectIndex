@@ -88,7 +88,7 @@ export default {
 
   .pageContent .categoryIcon {
     float: right;
-    font-size: 50px;
+    font-size: 35px;
     opacity: 0.6;
     margin: 0px 0px 5px 5px;
   }
