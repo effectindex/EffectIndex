@@ -43,7 +43,7 @@
     }
 
     .headerNav__menuItem:hover ul {
-        max-height: 200px;
+        max-height: 250px;
         
     }
 
@@ -74,7 +74,7 @@
         padding: 1em 0 1em 0;
         max-height: 0;
         background-color: #2e2e2e;
-        transition: max-height .15s ease-out;
+        transition: max-height .20s ease-out;
     }
 
 

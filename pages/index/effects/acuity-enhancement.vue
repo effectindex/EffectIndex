@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pageContent">
         <h1> Acuity Enhancement  <i class="fa fa-eye categoryIcon"> </i> </h1>
         
         <p>
