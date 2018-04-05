@@ -1,6 +1,6 @@
 <template>
     <header class="navbar">
-        <a href="/"> <img class="navbar__logo" src="/logo.png" /> </a>
+        <a href="/"> <img class="navbar__logo" src="/logo.svg" height="47"/> </a>
         <main-navigation />
         <hamburger :active="$store.state.navbar_pullout" />
     </header>
