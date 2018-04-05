@@ -49,8 +49,8 @@
                 {
                     title: 'Moss on Tree Bark',
                     artist: 'Chelsea Morgan',
-                    image_fullsize: '/gallery/Moss_on_tree_Bark.jpg',
-                    image_thumbnail: '/gallery/thumbnails/Moss_on_tree_Bark.jpg'
+                    image_fullsize: '/gallery/Moss_on_tree_bark.jpg',
+                    image_thumbnail: '/gallery/thumbnails/Moss_on_tree_bark.jpg'
                 },                  
             ]"
          />
