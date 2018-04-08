@@ -1,6 +1,6 @@
 <template>
     <header class="navbar">
-        <nuxt-link to="/"> <img class="navbar__logo" src="/logo.svg" /> </nuxt-link>
+        <nuxt-link to="/"> <img class="navbar__logo" src="/logo2.svg" /> </nuxt-link>
         <main-navigation />
         <hamburger :active="$store.state.navbar_pullout" />
     </header>

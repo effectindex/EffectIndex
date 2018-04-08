@@ -30,7 +30,7 @@
             src="/audio/Auditory Hallucinations - Paranoid Voices.mp3"
             title="Paranoid Voices"
             artist="EmEx"
-             />                  
+             />         
     </div>
 </template>
 
@@ -40,7 +40,7 @@ import AudioPlayer from '@/components/AudioPlayer/AudioPlayer.vue';
 
 export default {
     components: {
-        AudioPlayer
+        AudioPlayer,
     }
 }
 

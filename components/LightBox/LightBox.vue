@@ -119,20 +119,9 @@ export default {
 
 
 <style>
-
-    .lightBox h1 {
-        text-transform: uppercase;
-        color: rgb(61, 153, 145);
-        font-size: 22px;
-        text-align: center;
-        font-family: proxima-nova;
-        font-weight: 400;
-        letter-spacing: 2px;
-        margin-bottom: 1em;
-    }
     
     .lightBox__canvas {
-        height: 600px;
+        height: 530px;
         overflow: hidden;
         text-align: center;
         position: relative;
@@ -183,10 +172,10 @@ export default {
         top: 0;
         left: 0;
         margin: 25px;
-        background-color: rgba(23, 23, 23, 0.3);
+        background-color: rgba(23, 23, 23, 0.5);
         font-family: 'Titillium Web';
         color: white;
-        padding: 1em;
+        padding: 10px;
         user-select: none;
     }
 
@@ -197,14 +186,20 @@ export default {
         }
     }
 
-    .lightBox__imageDetails .title {
-        font-size: 20px;
+    .lightBox__imageDetails .lightBox__title {
+        font-size: 16px;
         font-weight: bold;
+        text-transform: none;
+        color: white;
         text-shadow: 0px 0px 2px black;
+        margin: 10px;
     }
 
-    .lightBox__imageDetails .artist {
-        font-size: 14px;
+    .lightBox__imageDetails .lightBox__artist {
+        font-size: 13px;
+        text-transform: none;
+        color: white;
+        margin: 10px;
         text-shadow: 0px 0px 2px black;
         font-weight: bold;
         font-style: italic;
@@ -213,6 +208,10 @@ export default {
     .lightBox__artist a {
         color: white;
         text-decoration: underline;
+    }
+
+    .lightBox__artist a:hover {
+        color: white;
     }
 
     .lightBox img {
@@ -231,17 +230,35 @@ export default {
         opacity: 1;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 1000px) {
         .lightBox__canvas {
             height: 400px;
         }
-    }
+    }   
 
-    @media (max-width: 1000px) {
+    @media (max-width: 500px) {
         .lightBox__canvas {
-            height: 500px;
+            height: 300px;
+        }
+        
+        .lightBox__imageDetails {
+            display: none;
+        }        
+    } 
+
+    @media (max-width: 400px) {
+        .lightBox__canvas {
+            height: 200px;
+        }
+
+        .lightBox__imageDetails {
+            display: none;
         }
     }
+
+
+
+
 
     .lightBox__thumbnailContainer {
         position: relative;

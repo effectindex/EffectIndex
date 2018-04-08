@@ -94,6 +94,7 @@ export default {
 
     .effectList ul {
         margin-bottom: 2em;
+        padding-left: 0;
     }
 
     .effectList__icon {
@@ -102,11 +103,6 @@ export default {
         width: 30px;
     }
 
-    @media (max-width: 380px) {
-        .effectList__icon {
-            display: none;
-        }
-    }
 
     .effectList__classes, .effectList__subclasses {
         list-style: none;
@@ -136,7 +132,7 @@ export default {
 
     .effectList__actions {
         list-style: none;
-        margin-left: 50px;
+        margin-left: 3em;
         padding: 0;
     }
 
@@ -156,6 +152,7 @@ export default {
     .effectList__effect {
         list-style-type: disc;
         color: rgba(26, 26, 26, 0.7);
+        margin-left: 2em;
     }
 
     .effectList__effect > li > a {
@@ -168,5 +165,24 @@ export default {
     .effectList__effect > li > a:hover {
         color: #333;
     }
+
+    @media (max-width: 380px) {
+        .effectList__icon {
+            display: none;
+        }
+
+        .effectList__subclasses h2 {
+            margin-left: 0;
+        }
+
+        .effectList__actions {
+            margin-left: 1em;
+        }
+
+        .effectList__effect {
+            margin-left: 1em;
+        }
+    }
+    
 
 </style>

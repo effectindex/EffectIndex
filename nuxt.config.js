@@ -33,6 +33,24 @@ module.exports = {
   css: [
   ],
 
+  auth: {
+    redirect: {
+      login: '/admin/login',
+      home: '/admin/',
+      logout: '/admin/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+      }
+    }
+  },  
+
   /*
   ** Plugins to load before mounting the App
   */
@@ -45,6 +63,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/font-awesome'
   ],
 
@@ -73,5 +92,15 @@ module.exports = {
         })
       }
     }
+  },
+  
+  server: {
+    jwtSecret: 'a00znn302mMM#sn33az',
+    users: [
+      {
+        username: 'josie',
+        password: 'simplepass'
+      }
+    ]
   }
 }

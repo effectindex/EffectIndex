@@ -1,90 +1,33 @@
 <template>
-<div class="content">
-  <section :class="'sectionContainer ' + ($store.state.navbar_pullout ? 'sectionContainer--pulledout' : '')">
-    <header-nav />
-    <div class="page">
-        <nuxt-child class="pageContent" />
+
+<div class="pageContent admin">
+    <h1> Administration </h1>
+    <p> The place to do secret things when nobody's looking. </p>
+    <div v-if="$auth.loggedIn">
+        <ul>
+        <li>
+            <nuxt-link to="/blog/new"> Add a new blog entry </nuxt-link>
+        </li>
+        </ul>
     </div>
-    <custom-footer />
-  </section>
-  <pullout-menu />
+    <nuxt-link v-if="!$auth.loggedIn" to="/admin/login"> Log in </nuxt-link>
+    <nuxt-link v-else to="/admin/logout"> Log out </nuxt-link>
+    <nuxt-child style="margin: 2em 0;" />
 </div>
+
 </template>
 
-<script>
-import HeaderNav from '@/components/header/HeaderNav.vue';
-import CustomFooter from '@/components/footer/Footer.vue';
-import PulloutMenu from '@/components/PulloutMenu/PulloutMenu.vue';
-
-export default {
-  components: {
-    HeaderNav,
-    CustomFooter,
-    PulloutMenu
-  },
-}
-</script>
-
 <style>
-
-/* Container Styling */
-
-.content {
-  display: flex;
-  position: relative;
-  flex-direction: row;
+.admin {
+    background-color: white;
+    height: 100vh;
+    padding: 2em;
 }
 
-.sectionContainer {
-  transition: margin-left .25s ease-out;
-  z-index: 3;
-  min-height: 100vh;
-  width: 100%;
-  background-color: white;
-}
-
-.page {
-  margin: 0 auto;
-  padding: 96px 32px;
-  max-width: 1000px;
-  min-height: 100vh;
-}
-
-@media (max-width: 1000px) {
-  .sectionContainer--pulledout {
-    margin-left: -220px;
-  }
-
-  .page {
-    padding: 32px 16px;
-  }
-}
-
-@media (max-width: 400px) {
-  .page {
-    padding: 8px;
-  }
-}
-
-
-/* Page Content Styling */
-
-.pageContentContainer {
-    display: flex;
-    flex-direction: row;
-    padding: 0.5em;
-    max-width: 1000px;
-  }
-
-  @media (max-width: 800px) {
-    .pageContentContainer {
-      flex-direction: column;
-    }
-  }
-
-  .pageContent {
+.pageContent {
     padding-bottom: 50px;
     font-size: 18px;
+    height: 100vh;
   }
 
   .pageContent .categoryIcon {
@@ -168,6 +111,7 @@ export default {
     padding: 0;
     padding-left: 2em;
     color: #999;
+    margin-bottom: 2em;
   }
 
   .pageContent h4 {
@@ -180,7 +124,4 @@ export default {
     border-top: 1px solid #CCC;
   }
   
-
-
-
 </style>

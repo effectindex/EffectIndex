@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .sidebar__title--mobile {
         display: none;
         cursor: pointer;
@@ -59,6 +59,7 @@ export default {
 
     .sidebar__list {
         padding: 0;
+        margin: 0;
         max-height: 250px;
         list-style: none;
         transition: 0.5s ease-out;;
@@ -79,6 +80,7 @@ export default {
 
         .sidebar__list {
             overflow: hidden;
+            margin-bottom: 1em;
         }
     }
 
@@ -87,8 +89,12 @@ export default {
         flex: 1;
     }
 
+    .sidebar ul {
+        padding: 0;
+    }
+
     .sidebar__title {
-        color: rgb(0, 116, 107);
+        color: #3d9991;
         font-size: 22px;
         font-weight: 300;
         padding-bottom: 10.5px;

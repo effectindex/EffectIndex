@@ -12,4 +12,8 @@
     .reference:target {
         font-weight: bold;
     }
+
+    .short .reference {
+        display: none;
+    }
 </style>

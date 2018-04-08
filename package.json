@@ -1,7 +1,7 @@
 {
   "name": "effectindex",
   "version": "1.0.0",
-  "description": "A nuxt.js implmentation of the Subjective Effect Index",
+  "description": "A nuxt.js implementation of the Subjective Effect Index",
   "author": "Viscid",
   "private": true,
   "scripts": {
@@ -13,10 +13,22 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.0.1",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/font-awesome": "^1.0.3",
-    "express": "^4.15.3",
-    "nuxt": "^1.0.0"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.2.1",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-jwt": "^3.3.1",
+    "koa-router": "^7.4.0",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.13",
+    "npm": "^5.8.0",
+    "nuxt": "^1.0.0",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
     "cross-env": "^5.0.1",

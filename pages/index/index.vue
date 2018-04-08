@@ -1,7 +1,7 @@
 <template>
     <div class="pageContentContainer">
       <effects-sidebar />
-      <nuxt-child class="pageContent" />
+      <nuxt-child class="effectsContent" />
     </div>
 </template>
 
@@ -16,3 +16,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.effectsContent {
+  flex: 3;
+}
+
+.sidebar ul {
+  padding: 0;
+}
+
+</style>
