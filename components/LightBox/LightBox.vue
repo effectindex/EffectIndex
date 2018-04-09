@@ -14,23 +14,27 @@
                             :artist="imageSet[current_image].artist"
                             :artist-webpage="imageSet[current_image].artist_webpage" />
                 </div>
-                <div 
-                    v-if="imageSet[current_image].gfycat_name"
-                    :key="imageSet[current_image].gfycat_name"
-                    style='position:relative;height: 100%;'>
-                        <iframe :src="'https://gfycat.com/ifr/' + imageSet[current_image].gfycat_name"
-                            frameborder='0'
-                            scrolling='no'
-                            width='100%'
-                            height='100%'
-                            style='position:absolute;top:0;left:0'
-                            allowfullscreen
-                        ></iframe>
-                        <image-details 
-                            :title="imageSet[current_image].title"
-                            :artist="imageSet[current_image].artist"
-                            :artist-webpage="imageSet[current_image].artist_webpage" />
-                    </div>
+                <a
+                :href="imageSet[current_image].image_fullsize"
+                >
+                    <div 
+                        v-if="imageSet[current_image].gfycat_name"
+                        :key="imageSet[current_image].gfycat_name"
+                        style='position:relative;height: 100%;'>
+                            <iframe :src="'https://gfycat.com/ifr/' + imageSet[current_image].gfycat_name"
+                                frameborder='0'
+                                scrolling='no'
+                                width='100%'
+                                height='100%'
+                                style='position:absolute;top:0;left:0'
+                                allowfullscreen
+                            ></iframe>
+                            <image-details 
+                                :title="imageSet[current_image].title"
+                                :artist="imageSet[current_image].artist"
+                                :artist-webpage="imageSet[current_image].artist_webpage" />
+                        </div>
+                    </a>
             </transition>
             <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
                 <i class="fa fa-angle-double-left"> </i>
