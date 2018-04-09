@@ -27,7 +27,6 @@
 .pageContent {
     padding-bottom: 50px;
     font-size: 18px;
-    height: 100vh;
   }
 
   .pageContent .categoryIcon {

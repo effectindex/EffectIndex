@@ -27,7 +27,9 @@ export default {
                 title: this.title,
                 body: this.body
             });
-            console.log(submittedPost);
+            if (submittedPost) {
+                this.$router.push('/blog');
+            }
         }
     },
     middleware: ['auth']

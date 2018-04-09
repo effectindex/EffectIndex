@@ -29,15 +29,11 @@ router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) 
 });
 
 router.get('/', async(req, res) => {
-    await new Promise((resolve, reject) => {
-        Post.find((err, posts) => {
-            res.send({
-                posts
-            });
-            if(err) reject(err);
-            else resolve();
-        }).sort({ datetime: 'desc' });  
-    }); 
+    let posts = await Post
+        .find()
+        .sort({ datetime: 'desc' });
+
+    res.send({posts});
 });
 
 

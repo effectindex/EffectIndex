@@ -25,15 +25,18 @@ router.post('/login', (req, res) => {
                 res.send({
                     token
                 });
-            }
-        }      
-    } 
+            } else res.sendStatus(403);
+        } else res.sendStatus(403);
+    } else res.sendStatus(403);
+    
 });
 
 router.get('/user', protected({secret: config.server.jwtSecret}), (req, res) => {
-    res.send({
-        user: req.user
-    });
+    if (req.user) {
+        res.send({
+            user: req.user
+        });
+    } else res.sendStatus(403);
 });
 
 

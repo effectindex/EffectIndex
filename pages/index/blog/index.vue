@@ -17,18 +17,6 @@
         components: {
             BlogPost
         },
-        methods: {
-            async send () {
-                await  this.$axios.$post('/api/blog', {
-                    body: this.body,
-                    title: this.title
-                });
-
-                let { posts } = await this.$axios.$get('/api/blog');
-                this.posts = posts;
-
-            }
-        },
         data () {
             return {
                 body: '',
@@ -43,7 +31,7 @@
 </script>
 
 
-<style>
+<style scoped>
     .admin {
         background-color: white;
         height: 100vh;
