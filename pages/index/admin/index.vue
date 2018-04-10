@@ -8,6 +8,9 @@
         <li>
             <nuxt-link to="/blog/new"> Add a new blog entry </nuxt-link>
         </li>
+        <li>
+            <nuxt-link to="/blog/"> Go to blog </nuxt-link>
+        </li>
         </ul>
     </div>
     <nuxt-link v-if="!$auth.loggedIn" to="/admin/login"> Log in </nuxt-link>
@@ -16,6 +19,12 @@
 </div>
 
 </template>
+
+<script>
+export default {
+  scrollToTop: true
+}
+</script>
 
 <style>
 .admin {

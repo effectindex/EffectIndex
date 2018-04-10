@@ -1,11 +1,14 @@
 <template>
-
     <div class="blogPost">
-        <h4 class="blogPost__date"> {{ formatDate(post.datetime) }} </h4>
-        <h1 class="blogPost__title"> {{ post.title }} </h1>
+        <div class="blogPost__admin" v-if="$auth.loggedIn">
+            <nuxt-link class="blogPost__edit" :to="'/blog/' + post.slug + '/edit'"> Edit </nuxt-link>    
+            <a class="blogPost__delete" @click="$emit('delete-post', post.slug)"> Delete </a>
+        </div>
+        <h4 class="blogPost__date"> 
+            <nuxt-link :to="'/blog/' + post.slug + '/'"> {{ formatDate(post.datetime) }} </nuxt-link> </h4>
+        <h1 class="blogPost__title"> <nuxt-link :to="'/blog/' + post.slug + '/'"> {{ post.title }} </nuxt-link>  </h1>
         <div class="blogPost__body" v-html="$md.render(post.body)" /> 
     </div>
-
 </template>
 
 <script>
@@ -16,18 +19,38 @@ export default {
             return moment(date).format('LLL');
         }
     },
-    props: ['post']
+    props: ['post', 'loggedIn']
 }
 
 </script>
 
 <style scoped>
-    .blogPost {
-        margin-bottom: 3em;
-    }
-
     .blogPost__date {
         color: #999999;
-        font-size: 18px;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: normal;
+    }
+
+    .blogPost__date a {
+        color: #AAA;
+    }
+
+    .blogPost__title a {
+        color: black;
+    }
+
+    .blogPost__admin a {
+        padding-right: 0.5em;
+        cursor: pointer;
+        padding-right: 0.5em;
+    }
+
+    .blogPost__editButton {
+        color: rgb(35, 8, 155);
+    }
+
+    .blogPost__delete {
+        color: red;
     }
 </style>
