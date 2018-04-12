@@ -2,7 +2,7 @@
     <div class="blogPost">
         <div class="blogPost__admin" v-if="$auth.loggedIn">
             <nuxt-link class="blogPost__edit" :to="'/blog/' + post.slug + '/edit'"> Edit </nuxt-link>    
-            <a class="blogPost__delete" @click="$emit('delete-post', post.slug)"> Delete </a>
+            <a class="blogPost__delete" @click="$emit('delete-post', post._id)"> Delete </a>
         </div>
         <h4 class="blogPost__date"> 
             <nuxt-link :to="'/blog/' + post.slug + '/'"> {{ formatDate(post.datetime) }} </nuxt-link> </h4>

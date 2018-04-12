@@ -5,7 +5,7 @@
             <nuxt-link to="/blog/new"> ... submit a new blog post </nuxt-link>
         </div>
 
-        <blog-post v-if="post" :post="post" /> 
+        <blog-post v-if="post" :post="post" @delete-post="deletePost" /> 
 
         <nuxt-link to="/blog"> ... back </nuxt-link>
 </div>
@@ -19,8 +19,15 @@
         components: {
             BlogPost
         },
-        async asyncData ( {app, params} ) {
-            let { post } = await app.$axios.$get('/api/blog/' + params.slug);
+        methods: {
+            async deletePost( id ) {
+                this.$store.dispatch('deleteBlogPost', id)
+                .then(this.$router.push('/blog/'));
+            },
+        },
+        async asyncData(app) {
+            let slug = app.route.params.slug;
+            let post = await app.store.dispatch('getSingleBlogPost', slug);
             return { post };
         }
     }

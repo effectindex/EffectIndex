@@ -4,6 +4,7 @@ const config = require ('../../nuxt.config.js');
 const protected = require('express-jwt');
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
+const API_Error = require('./ApiError');
 
 mongoose.plugin(slug);
 mongoose.connect('mongodb://localhost:27017/effectindex');
@@ -18,51 +19,96 @@ const Post = mongoose.model('Post', {
 
 router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) => {
 
-    const post = new Post({
-        author: req.user.username,
-        datetime: Date.now(),
-        title: req.body.title,
-        body: req.body.body
-    });
+    try {
 
-    let returned = await post.save();
+        if (!req.body || (!req.body.title || !req.body.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.')
 
-    res.send({
-        post: returned
-    });
+        const post = new Post({
+            author: req.user.username,
+            datetime: Date.now(),
+            title: req.body.title,
+            body: req.body.body
+        });
 
-});
+        let returnedPost = await post.save().catch((err) => {
+            throw API_Error('USER_SAVE_ERROR', err);
+        });
 
-router.post('/:slug', protected({secret: config.server.jwtSecret}), async(req, res) => {
+        res.send({ post: returnedPost });
 
-   let returned = await Post.findOneAndUpdate({slug: req.params.slug}, {
-       title: req.body.title,
-       body: req.body.body
-   }).exec();
-
-   res.send({
-       post: returned
-   });
+    } catch (error) {
+        res.status(500).send({ error });
+    }
 
 });
 
-router.get('/:slug/delete', protected({secret: config.server.jwtSecret}), async(req, res) => {
-    let deleted = await Post.findOneAndRemove({slug: req.params.slug}).exec();
-    res.send(deleted);
+router.post('/:id', protected({secret: config.server.jwtSecret}), async(req, res) => {
+
+   try {
+
+        let post = await Post.findByIdAndUpdate(req.params.id, {
+            title: req.body.title,
+            body: req.body.body
+        }).exec().catch((err) =>  {
+            throw API_Error('POST_SAVE_ERROR', err);
+        });
+
+
+
+        res.send({ post });
+    } catch (error) {
+       res.status(500).send ({ error });
+    }
+});
+
+router.get('/:id/delete', protected({secret: config.server.jwtSecret}), async(req, res) => {
+
+    try {
+
+        let deleted = await Post.findByIdAndRemove(req.params.id).exec().catch((error) => {
+            throw API_Error('DELETE_POST_ERROR', error);   
+        });
+
+        res.send(deleted);
+
+    } catch (error) {
+        res.status(500).send({ error });
+    }
+
+
 })
 
 router.get('/:slug', async(req, res) => {
-    let post = await Post.findOne({ slug: req.params.slug });
-    res.send({post});
+
+    try {
+
+        let post = await Post.findOne({ slug: req.params.slug }).catch((err) => {
+            throw API_Error('POST_NOT_FOUND', err);
+        });
+
+        res.send({ post });
+
+    } catch (error) {
+        res.status(500).send({ error });
+    }
+
 });
 
 
 router.get('/', async(req, res) => {
+
+    try {
+
     let posts = await Post
         .find()
         .sort({ datetime: 'desc' });
 
-    res.send({posts});
+    res.send({ posts });
+
+    } catch (error) {
+        res.status(500).send({ error });
+    }
+
 });
 
 

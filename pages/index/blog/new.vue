@@ -14,10 +14,7 @@ export default {
     },
     methods: {
         async submitPost(post) {
-            let {post: submittedPost} = await this.$axios.$post('/api/blog', post);
-            if (submittedPost) {
-                this.$router.push('/blog');
-            }
+            this.$store.dispatch('submitBlogPost', post).then(this.$router.push('/blog/'));
         }
     },
     middleware: ['auth']

@@ -13,16 +13,14 @@ export default {
         PostEditor
     },
     async asyncData ({app, params}) {
-        let post = await app.$axios.$get('/api/blog/' + params.slug);
-        return post;
+        let post = await app.store.dispatch('getSingleBlogPost', params.slug);
+        return { post };
     },
     methods: {
-        async submitPost(p) {
-            console.log(p);
-            let {post: submittedPost} = await this.$axios.$post('/api/blog/' + p.slug, p);
-            if (submittedPost) {
-                this.$router.push('/blog');
-            }
+        async submitPost(post) {
+            post._id = this.post._id;
+            await this.$store.dispatch('updateBlogPost', post);
+            this.$router.push('/blog');
         }
     },
     middleware: ['auth']

@@ -5,7 +5,7 @@
             <nuxt-link to="/blog/new"> ... submit a new blog post </nuxt-link>
         </div>
 
-        <blog-post v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost" /> 
+        <blog-post v-for="post in $store.state.blogPosts" :key="post._id" :post="post" @delete-post="deletePost" /> 
 </div>
 
 </template>
@@ -18,19 +18,16 @@
             BlogPost
         },
         scrollToTop: true,
-        methods: {
-            async deletePost(slug) {
-                let deleted = await this.$axios.get('/api/blog/' + slug + '/delete');
-                this.getPosts();
+        methods: { 
+            async deletePost( id ) {
+                this.$store.dispatch('deleteBlogPost', id);
             },
             async getPosts() {
-                let { posts } = await this.$axios.$get('/api/blog');
-                this.posts = posts;
+                this.$store.dispatch('getPosts');
             }
         },
-        async asyncData ({ app }) {
-            let { posts } = await app.$axios.$get('/api/blog');
-            return { posts };
+        async asyncData ( { store } ) {
+            await store.dispatch('getBlogPosts');
         }
     }
 </script>
