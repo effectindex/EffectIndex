@@ -27,7 +27,12 @@
             }
         },
         async asyncData ( { store } ) {
-            await store.dispatch('getBlogPosts');
+            try {
+                await store.dispatch('getBlogPosts');
+            } catch (error) {
+                console.log(error);
+            }
+            
         }
     }
 </script>

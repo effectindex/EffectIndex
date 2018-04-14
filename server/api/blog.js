@@ -96,16 +96,19 @@ router.get('/:slug', async(req, res) => {
 
 
 router.get('/', async(req, res) => {
-
     try {
-
+        if (mongoose.connection.readyState === 0) throw API_Error('NO_MONGODB_CONNECTION', 'The mongodb server is down.');
+        console.log('a');
     let posts = await Post
         .find()
+        .setOptions({
+            maxTimeMS: 500
+        })
         .sort({ datetime: 'desc' });
-
+        console.log('b');
     res.send({ posts });
-
     } catch (error) {
+        console.log('c');
         res.status(500).send({ error });
     }
 

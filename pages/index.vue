@@ -91,7 +91,7 @@ export default {
     float: right;
     font-size: 35px;
     opacity: 0.6;
-    margin: 0px 0px 15px 15px;
+    margin: 5px 0px 0px 15px;
   }
 
   .pageContent p {
@@ -117,14 +117,6 @@ export default {
 
   .pageContent a:hover {
     color: #27635d
-  }
-
-  .pageContent a[href^="http://"]:hover {
-    text-decoration: underline;
-  }
-
-  .pageContent a[href^="https://"]:hover {
-    text-decoration: underline;
   }
 
   .pageContent .blackButton {
@@ -167,6 +159,7 @@ export default {
   .pageContent ul {
     padding: 0;
     padding-left: 2em;
+    margin-bottom: 1em;
     color: #999;
   }
 
