@@ -109,6 +109,7 @@ module.exports = {
         username: 'josie',
         password: 'simplepass'
       }
-    ]
+    ],
+    mongooseUri: 'mongodb://localhost:27017/effectindex'
   }
 }

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const config = require ('../../nuxt.config.js');
+const config = require ('../../../nuxt.config.js');
 const jwt = require('jsonwebtoken');
 const protected = require('express-jwt');
 
-const API_Error = require('./ApiError');
+const API_Error = require('../ApiError');
 
 router.post('/login', (req, res) => {
     let users = config.server.users;

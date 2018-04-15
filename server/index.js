@@ -2,7 +2,7 @@ const express = require('express');
 const { Nuxt, Builder } = require('nuxt');
 const bodyParser = require('body-parser');
 
-const api = require('./api/api.js');
+const api = require('./models/');
 
 const app = express()
 const host = process.env.HOST || '127.0.0.1'

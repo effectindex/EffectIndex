@@ -1,21 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const config = require ('../../nuxt.config.js');
+const config = require ('../../../nuxt.config.js');
 const protected = require('express-jwt');
-const mongoose = require('mongoose');
-const slug = require('mongoose-slug-generator');
-const API_Error = require('./ApiError');
 
-mongoose.plugin(slug);
-mongoose.connect('mongodb://localhost:27017/effectindex');
+const API_Error = require('../ApiError');
 
-const Post = mongoose.model('Post', {
-    slug: { type: String, slug: ['title', 'body'], unqiue: true},
-    author: String,
-    title: String,
-    datetime: Date,
-    body: String
-})
+const Post = require('./Post');
 
 router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) => {
 
@@ -53,9 +43,8 @@ router.post('/:id', protected({secret: config.server.jwtSecret}), async(req, res
             throw API_Error('POST_SAVE_ERROR', err);
         });
 
-
-
         res.send({ post });
+
     } catch (error) {
        res.status(500).send ({ error });
     }
@@ -97,18 +86,14 @@ router.get('/:slug', async(req, res) => {
 
 router.get('/', async(req, res) => {
     try {
-        if (mongoose.connection.readyState === 0) throw API_Error('NO_MONGODB_CONNECTION', 'The mongodb server is down.');
-        console.log('a');
-    let posts = await Post
-        .find()
-        .setOptions({
-            maxTimeMS: 500
-        })
-        .sort({ datetime: 'desc' });
-        console.log('b');
-    res.send({ posts });
+        let posts = await Post
+            .find()
+            .setOptions({
+                maxTimeMS: 500
+            })
+            .sort({ datetime: 'desc' });
+        res.send({ posts });
     } catch (error) {
-        console.log('c');
         res.status(500).send({ error });
     }
 
