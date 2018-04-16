@@ -11,6 +11,9 @@
         <li>
             <nuxt-link to="/blog/"> Go to blog </nuxt-link>
         </li>
+        <li>
+            <nuxt-link to="/admin/add-effect"> Add an effect </nuxt-link>
+        </li>
         </ul>
     </div>
     <nuxt-link v-if="!$auth.loggedIn" to="/admin/login"> Log in </nuxt-link>

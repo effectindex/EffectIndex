@@ -39,6 +39,50 @@ router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) 
 
 });
 
+router.get('/', async (req, res) => {
+
+    try {
+        let effects = await Effect.find();
+
+        res.send({effects});
+    } catch (error) {
+        res.status(500).send({error});
+    }
+
+});
+
+router.get('/:name', async (req, res) => {
+    try {
+        
+        let effect = await Effect.findOne({ name: req.params.name }).exec();
+        res.send ({ effect });
+    } catch (error) {
+        res.status(500).send({error});
+    }
+});
+
+router.post('/:id', async (req, res) => {
+    try {
+        let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
+            name: req.body.name,
+            description_formatted: req.body.description
+        }).exec();
+        
+        res.send({ effect: updatedEffect });
+    } catch (error) {
+        res.status(500).send ({ error });
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        let deletedEffect = await Effect.findByIdAndRemove(req.params.id).exec();
+        res.send({ effect: deletedEffect });
+    } catch (error) {
+        res.status(500).send ({ error });
+    }
+});
+
 // router.post('/:id', protected({secret: config.server.jwtSecret}), async(req, res) => {
 
 //    try {
