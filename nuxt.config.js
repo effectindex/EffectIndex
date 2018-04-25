@@ -65,14 +65,16 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/font-awesome',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
   ],
 
   markdownit: {
     preset: 'default',
     linkify: true,
     breaks: true,
-    injected: true
+    injected: true,
+    typographer: true,
+    quotes: '“”‘’'
   },
 
   /*

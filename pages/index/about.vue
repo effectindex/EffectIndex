@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pageContent">
         <h1> About <i class="fa fa-heart-o categoryIcon"> </i> </h1>
 
         <p> Effect Index serves as the platform for the Subjective Effect Index (SEI), 

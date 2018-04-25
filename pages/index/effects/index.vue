@@ -1,27 +1,18 @@
 <template>
-    <div>
-        <h1> Effects </h1>
-        <ul>
-            <li v-for="effect in $store.state.dbeffects" :key="effect._id"> 
-                <nuxt-link :to="'/effects/' + effect.name"> {{ effect.name }} </nuxt-link>
-            </li>
-        </ul>
-        <div v-if="$auth.loggedIn"> 
-            <nuxt-link to="/effects/add"> Add an effect </nuxt-link>
-        </div>
+    <div class="pageContentContainer">
+        <effects-sidebar />
+        <nuxt-child class="pageContent"> </nuxt-child>
     </div>
 </template>
 
 <script>
+import EffectsSidebar from '@/components/EffectsSidebar.vue';
+
 export default {
-    async asyncData(app) {
-        await app.store.dispatch('getEffects');
+    components: {
+        EffectsSidebar
     },
     scrollToTop: true
 }
 
 </script>
-
-<style>
-
-</style>

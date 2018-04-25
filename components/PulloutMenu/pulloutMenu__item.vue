@@ -27,7 +27,6 @@
                 this.expanded = !this.expanded;
             },
             togglePullout() {
-                console.log('doing it');
                 this.$store.commit('toggle_navbar');
             }
         },
@@ -37,13 +36,13 @@
 
 <style>
 
-.pulloutMenu__itemContainer ol {
+.pulloutMenu__itemContainer > ol {
     list-style: none;
     padding-left: 20px;
     margin-bottom: 30px;
 }
 
-.pulloutMenu__itemContainer li {
+.pulloutMenu__itemContainer > ol > li {
     margin-top: 0.75em;
 }
 

@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <effect-editor @new-effect="submitEffect" />
-    </div>
+    <effect-editor @new-effect="submitEffect" />
 </template>
 
 <script>
@@ -12,30 +10,9 @@ export default {
         EffectEditor
     },
     middleware: 'auth',
-    data() {
-        return {
-            name: '',
-            class: '',
-            subclass: '',
-            action: '',
-            substance_class: '',
-            description: '',
-            replications: [],
-            related_substances: [],
-            see_also: [],
-            external_links: [],
-            citations: []
-        }
-    },
     methods: {
         async submitEffect(effect) {
-            let newEffect = {
-                name: effect.name,
-                description: effect.description
-            }
-
-            let returnedEffect = await this.$store.dispatch('submitEffect', newEffect);
-
+            let returnedEffect = await this.$store.dispatch('submitEffect', effect);
             this.$router.push('/effects/');
         }
     }

@@ -30,7 +30,8 @@
     "mongoose": "^5.0.13",
     "mongoose-slug-generator": "^1.0.4",
     "npm": "^5.8.0",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "vue-scrollto": "^2.11.0"
   },
   "devDependencies": {
     "cross-env": "^5.0.1",

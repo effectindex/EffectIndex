@@ -132,8 +132,8 @@ import LightBox from '@/components/LightBox/LightBox.vue';
 import RelatedSubstances from '@/components/RelatedSubstances.vue';
 import MainArticleLink from '@/components/MainArticleLink.vue';
 import Ref from '@/components/Reference.vue';
-import Citation from '@/components/Citation.vue';
-import CitationList from '@/components/CitationList.vue';
+import Citation from '@/components/effects/Citation.vue';
+import CitationList from '@/components/effects/CitationList.vue';
 import ExtLink from '@/components/ExtLink.vue';
 
 export default {

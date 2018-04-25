@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pageContent">
         <h1> Tutorials  <i class="fa fa-list-ol categoryIcon"> </i> </h1>
 
         <p> This page serves as a dedicated index for information and resources on replicating specific subjective effects. </p>

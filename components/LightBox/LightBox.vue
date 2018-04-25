@@ -4,25 +4,25 @@
         <div v-if="imageSet.length" class="lightBox__canvas">
             <transition name="fade">
                 <a 
-                    v-if="imageSet[current_image].image_fullsize"
-                    :key="imageSet[current_image].image_fullsize"
-                    :href="imageSet[current_image].image_fullsize"
+                    v-if="imageSet[current_image].resource && (imageSet[current_image].type === 'image')"
+                    :key="imageSet[current_image].resource"
+                    :href="base + imageSet[current_image].resource"
                     target="_blank">
                     <div 
                         class="lightBox__image"
-                        :style="'background-image: url(\'' + encodeURI(imageSet[current_image].image_fullsize) + '\');'">
+                        :style="'background-image: url(\'' + encodeURI(base + imageSet[current_image].resource) + '\');'">
                         <image-details 
                                 :title="imageSet[current_image].title"
                                 :artist="imageSet[current_image].artist"
-                                :artist-webpage="imageSet[current_image].artist_webpage" />
+                                :artist-webpage="imageSet[current_image].artist_url" />
                     </div>
                 </a>
 
                 <div 
-                    v-if="imageSet[current_image].gfycat_name"
-                    :key="imageSet[current_image].gfycat_name"
+                    v-if="imageSet[current_image].resource && (imageSet[current_image].type === 'gfycat')"
+                    :key="imageSet[current_image].resource"
                     style='position:relative;height: 100%;'>
-                        <iframe :src="'https://gfycat.com/ifr/' + imageSet[current_image].gfycat_name"
+                        <iframe :src="'https://gfycat.com/ifr/' + imageSet[current_image].resource"
                             frameborder='0'
                             scrolling='no'
                             width='100%'
@@ -33,7 +33,7 @@
                         <image-details 
                             :title="imageSet[current_image].title"
                             :artist="imageSet[current_image].artist"
-                            :artist-webpage="imageSet[current_image].artist_webpage" />
+                            :artist-webpage="imageSet[current_image].artist_url" />
                 </div>
             </transition>
             <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
@@ -49,14 +49,12 @@
                     v-for="(image, index) in imageSet"
                     @mousedown="selectImage(index)"
                     :key="index">
-                    <img class="lightBox__thumbnailImage" ref="activeThumbnail"
-                        v-if="image.image_thumbnail"
-                        :src="image.image_thumbnail"
+                    <img v-if="image.type === 'image'" class="lightBox__thumbnailImage" ref="activeThumbnail"
+                        :src="base + '/thumbnails/' + image.resource"
                         :class="current_image === index ? {active: true}: {}" />
-                    <img class="lightBox__thumbnailImage" ref="activeThumbnail"
-                        v-else-if="image.gfycat_name"
-                        :src="'http://thumbs.gfycat.com/' + image.gfycat_name + '-thumb100.jpg'"
-                        :class="current_image === index ? {active: true}: {}" />    
+                    <img v-else class="lightBox__thumbnailImage" ref="activeThumbnail"
+                        :src="'http://thumbs.gfycat.com/' + image.resource + '-thumb100.jpg'"
+                        :class="current_image === index ? {active: true}: {}" /> 
                 </a>
             </div>
         </div>
@@ -115,6 +113,9 @@ export default {
         imageSet: {
             default: () => [],
             type: Array
+        },
+        base: {
+            type: String
         }
     }
 }

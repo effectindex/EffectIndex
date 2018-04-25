@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pageContent">
         <effect-editor :effect="effect" @edit-effect="submitEffect" />
     </div>
 </template>
@@ -14,18 +14,8 @@ export default {
     middleware: 'auth',
     methods: {
         async submitEffect(effect) {
-            let updatedEffect = {
-                name: effect.name,
-                description: effect.description
-            }
-
-            let returnedEffect = await this.$store.dispatch('updateEffect', {
-                id: this.effect._id,
-                name: updatedEffect.name,
-                description: updatedEffect.description
-            });
-            
-            this.$router.push('/effects/');
+            let returnedEffect = await this.$store.dispatch('updateEffect', effect);
+            this.$router.push('/effects/' + returnedEffect.url);
         }
     },
     async asyncData(app) {

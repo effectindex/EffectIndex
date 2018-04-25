@@ -10,5 +10,8 @@ export default {
     },
     set_effects (state, effects) {
       state.dbeffects = effects;
+    },
+    set_replications (state, replications) {
+      state.replications = replications;
     }
 };

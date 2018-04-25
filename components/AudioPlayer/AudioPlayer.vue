@@ -77,6 +77,11 @@ export default {
         this.wavesurfer.on('finish', this.finish)
 
     },
+    watch: {
+        src: function(val) {
+            this.wavesurfer.load(val);
+        }
+    },
     beforeDestroy() {
         this.wavesurfer.unAll();
     }

@@ -1,4 +1,5 @@
 export default {
+    // Blog Posts
     async deleteBlogPost ( { dispatch }, id ) {
       let deleted = await this.$axios.$get('/api/blog/' + id + '/delete');
       dispatch('getBlogPosts');
@@ -24,6 +25,7 @@ export default {
       dispatch('getBlogPosts');
       return updatedPost;
     },
+    // Effects
     async getEffects({ commit }) {
       try {
         let { effects } = await this.$axios.$get('/api/effects');
@@ -50,8 +52,39 @@ export default {
       dispatch ('getEffects');
       return deletedEffect;
     },
-    async getEffect({ commit }, name) {
-      let { effect } = await this.$axios.$get('/api/effects/' + name);
+    async getEffect({ commit }, snakeName) {
+      let { effect } = await this.$axios.$get('/api/effects/' + snakeName);
       return { effect };
-    }
+    },
+    // Replications
+    async getReplications({ commit }) {
+      try {
+        let { replications } = await this.$axios.$get('/api/replications');
+        commit ('set_replications', replications);
+      } catch (error) {
+        throw new Error(error)
+      }
+    },
+    async submitReplication({ dispatch }, replication) {
+        try {
+            let {replication: submittedReplication} = await this.$axios.$post('/api/replications', {replication});
+            return submittedReplication;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
+    async updateReplication({ dispatch }, replication) {
+      let { replication: updatedReplication } = await this.$axios.$post('/api/replications/' + replication.id, {replication});
+      dispatch('getReplications');
+      return updatedReplication;
+    },
+    async deleteReplication({ dispatch }, id) {
+      let { replication: deletedReplication } = await this.$axios.$delete('/api/replications/' + id);
+      dispatch ('getReplications');
+      return deletedReplication;
+    },
+    async getReplication({ commit }, snakeName) {
+      let { replication } = await this.$axios.$get('/api/replications/' + snakeName);
+      return { replication };
+    },    
 };

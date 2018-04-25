@@ -5,31 +5,31 @@
                 <ul class="effectList__subclasses">
                     <li> <i class="fa fa-eye effectList__icon"> </i> <h2>  Visual Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list title="Enhancements" :effects="getEffects('sensory', 'visual', 'enhancement')" />
-                            <action-list title="Suppressions" :effects="getEffects('sensory', 'visual', 'suppression')" />
-                            <action-list title="Distortions" :effects="getEffects('sensory', 'visual', 'distortion')" />
-                            <action-list title="Geometry" :effects="getEffects('sensory', 'visual', 'geometry')" />
-                            <action-list title="Hallucinatory States" :effects="getEffects('sensory', 'visual', 'hallucinatory state')" />               
+                            <action-list title="Enhancements" :effects="filterEffectByTag('visual', 'enhancement')" />
+                            <action-list title="Suppressions" :effects="filterEffectByTag('sensory', 'visual', 'suppression')" />
+                            <action-list title="Distortions" :effects="filterEffectByTag('sensory', 'visual', 'distortion')" />
+                            <action-list title="Geometry" :effects="filterEffectByTag('sensory', 'visual', 'geometry')" />
+                            <action-list title="Hallucinatory States" :effects="filterEffectByTag('sensory', 'visual', 'hallucinatory state')" />               
                         </ul>
                     </li>
                     <li> <i class="fa fa-volume-up effectList__icon"> </i> <h2>  Auditory Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list :effects="getEffects('sensory', 'auditory')" />            
+                            <action-list :effects="filterEffectByTag('sensory', 'auditory')" />            
                         </ul>
                     </li>
                     <li> <i class="fa fa-hand-paper-o effectList__icon"> </i> <h2>  Tactile Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list :effects="getEffects('sensory', 'tactile')" />            
+                            <action-list :effects="filterEffectByTag('sensory', 'tactile')" />            
                         </ul>
                     </li>
                     <li> <i class="fa fa-chain-broken effectList__icon"> </i> <h2>  Disconnective Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list :effects="getEffects('sensory', 'disconnective')" />            
+                            <action-list :effects="filterEffectByTag('sensory', 'disconnective')" />            
                         </ul>
                     </li>
                     <li> <i class="fa fa-cogs effectList__icon"> </i> <h2>  Multisensory Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list :effects="getEffects('sensory', 'multisensory')" />            
+                            <action-list :effects="filterEffectByTag('sensory', 'multisensory')" />            
                         </ul>
                     </li>     
                 </ul>
@@ -38,11 +38,11 @@
                 <ul class="effectList__subclasses">
                     <li> <i class="fa fa-user effectList__icon"> </i> <h2>  Cognitive Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list title="Enhancements" :effects="getEffects('cognitive', '', 'enhancement')" />
-                            <action-list title="Suppressions" :effects="getEffects('cognitive', '', 'suppression')" />
-                            <action-list title="Alterations" :effects="getEffects('cognitive', '', 'alteration')" />
-                            <action-list title="Psychological States" :effects="getEffects('cognitive', '', 'psychological state')" />
-                            <action-list title="Transpersonal States" :effects="getEffects('cognitive', '', 'transpersonal state')" />               
+                            <action-list title="Enhancements" :effects="filterEffectByTag('cognitive', '', 'enhancement')" />
+                            <action-list title="Suppressions" :effects="filterEffectByTag('cognitive', '', 'suppression')" />
+                            <action-list title="Alterations" :effects="filterEffectByTag('cognitive', '', 'alteration')" />
+                            <action-list title="Psychological States" :effects="filterEffectByTag('cognitive', '', 'psychological state')" />
+                            <action-list title="Transpersonal States" :effects="filterEffectByTag('cognitive', '', 'transpersonal state')" />               
                         </ul>
                     </li>
                 </ul>
@@ -51,12 +51,12 @@
                 <ul class="effectList__subclasses">
                     <li> <i class="fa fa-child effectList__icon"> </i> <h2>  Physical Effects </h2>
                         <ul class="effectList__actions">
-                            <action-list title="Enhancements" :effects="getEffects('physical', '', 'enhancement')" />
-                            <action-list title="Suppressions" :effects="getEffects('physical', '', 'suppression')" />
-                            <action-list title="Alterations" :effects="getEffects('physical', '', 'alteration')" />
-                            <action-list title="Cardiovascular" :effects="getEffects('physical', 'cardiovascular')" />
-                            <action-list title="Cerebrovascular" :effects="getEffects('physical', 'cerebrovascular')" />
-                            <action-list title="Bodily" :effects="getEffects('physical', 'bodily')" />             
+                            <action-list title="Enhancements" :effects="filterEffectByTag('physical', '', 'enhancement')" />
+                            <action-list title="Suppressions" :effects="filterEffectByTag('physical', '', 'suppression')" />
+                            <action-list title="Alterations" :effects="filterEffectByTag('physical', '', 'alteration')" />
+                            <action-list title="Cardiovascular" :effects="filterEffectByTag('physical', 'cardiovascular')" />
+                            <action-list title="Cerebrovascular" :effects="filterEffectByTag('physical', 'cerebrovascular')" />
+                            <action-list title="Bodily" :effects="filterEffectByTag('physical', 'bodily')" />             
                         </ul>
                     </li>
                 </ul>
@@ -73,14 +73,14 @@ export default {
     components: {
         actionList
     },
+    created () {
+        this.$store.dispatch('getEffects');
+    },
     methods: {
-        getEffects(effectClass, effectSubclass, effectAction) {
-            return this.$store.state.effects.filter((effect) => {
-                return ( (effect.class === effectClass)
-                    && ( (effect.subclass === effectSubclass) || (!effectSubclass) )
-                    && ( (effect.action === effectAction) || (!effectAction) )
-                    );
-            });
+        filterEffectByTag(...tags) {
+            return this.$store.state.dbeffects.filter(
+                (effect) => tags.every((tag) => (effect.tags.indexOf(tag) > -1))
+            );
         }
     }
 }
@@ -88,10 +88,6 @@ export default {
 
 
 <style>
-    .effectList {
-        margin-top: 3em;
-    }
-
     .effectList ul {
         margin-bottom: 2em;
         padding-left: 0;
@@ -112,6 +108,10 @@ export default {
     .effectList__classes > li, .effectList__subclasses > li {
         margin-top: 1em;
         border-bottom: 1px solid #CCC;
+    }
+
+    .effectList__classes li:first-child, .effectList__subclasses li:first-child {
+        margin-top: 0;
     }
 
     .effectList__classes > li:last-child, .effectList__subclasses > li:last-child {

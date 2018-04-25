@@ -12,6 +12,7 @@ const createStore = () => {
     state: {
       navbar_pullout: false,
       effects,
+      replications: [],
       dbeffects: [],
       navigation,
       gallery,

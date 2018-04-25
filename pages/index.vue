@@ -3,7 +3,7 @@
   <section :class="'sectionContainer ' + ($store.state.navbar_pullout ? 'sectionContainer--pulledout' : '')">
     <header-nav />
     <div class="page">
-        <nuxt-child class="pageContent" />
+        <nuxt-child />
     </div>
     <custom-footer />
   </section>
@@ -85,6 +85,7 @@ export default {
   .pageContent {
     padding-bottom: 50px;
     font-size: 18px;
+    flex: 3;
   }
 
   .pageContent .categoryIcon {
@@ -160,7 +161,7 @@ export default {
     padding: 0;
     padding-left: 2em;
     margin-bottom: 1em;
-    color: #999;
+    color: #666;
   }
 
   .pageContent h4 {

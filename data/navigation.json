@@ -3,24 +3,24 @@
         "location": "/"
     },
     "Effects": {
-        "location": "/",
+        "location": "/effects",
         "children": [
-            { "name": "All", "location": "/" },
-            { "name": "Sensory", "location": "/sensory/" },
-            { "name": "Cognitive", "location": "/cognitive/" },
-            { "name": "Physical", "location": "/physical/" },
-            { "name": "Psychedelics", "location": "/psychedelics/" },
-            { "name": "Dissociatives", "location": "/dissociatives/" },
-            { "name": "Deliriants", "location": "/deliriants/" }
+            { "name": "All", "location": "/effects" },
+            { "name": "Sensory", "location": "/effects/sensory/" },
+            { "name": "Cognitive", "location": "/effects/cognitive/" },
+            { "name": "Physical", "location": "/effects/physical/" },
+            { "name": "Psychedelics", "location": "/effects/psychedelics/" },
+            { "name": "Dissociatives", "location": "/effects/dissociatives/" },
+            { "name": "Deliriants", "location": "/effects/deliriants/" }
         ]
     },
     "Replications": {
-        "location": "/gallery",
+        "location": "/replications",
         "children": [
-            { "name": "Gallery", "location": "/gallery" },
-            { "name": "Audio", "location": "/audio" },
-            { "name": "Tutorials", "location": "/tutorials" },
-            { "name": "Artists", "location": "/artists" }
+            { "name": "Gallery", "location": "/replications/gallery" },
+            { "name": "Audio", "location": "/replications/audio" },
+            { "name": "Tutorials", "location": "/replications/tutorials" },
+            { "name": "Artists", "location": "/replications/artists" }
         ]
     },
     "Reports": {

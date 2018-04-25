@@ -8,27 +8,33 @@
           </h1>
        </a>
         <ul :class="'sidebar__list ' + (this.collapsed ? 'collapsed' : '')">
-          <li class="sidebar__listItem" v-bind:class="isActive('/')">
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/')">
               <nuxt-link to="/"> All </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/sensory/')"> 
-              <nuxt-link to="/sensory/"> Sensory </nuxt-link>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/sensory/')"> 
+              <nuxt-link to="/effects/sensory/"> Sensory </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/cognitive/')">
-              <nuxt-link to="/cognitive/"> Cognitive  </nuxt-link>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/cognitive/')">
+              <nuxt-link to="/effects/cognitive/"> Cognitive  </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/physical/')">
-              <nuxt-link to="/physical/"> Physical </nuxt-link>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/physical/')">
+              <nuxt-link to="/effects/physical/"> Physical </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/psychedelics/')">
-              <nuxt-link to="/psychedelics/"> Psychedelic  </nuxt-link>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/psychedelics/')">
+              <nuxt-link to="/effects/psychedelics/"> Psychedelic  </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/dissociatives/')">
-              <nuxt-link to="/dissociatives/"> Dissociative  </nuxt-link>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/dissociatives/')">
+              <nuxt-link to="/effects/dissociatives/"> Dissociative  </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/deliriants/')">
-              <nuxt-link to="/deliriants/"> Deliriant  </nuxt-link>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/deliriants/')">
+              <nuxt-link to="/effects/deliriants/"> Deliriant  </nuxt-link>
           </li>
+          <li 
+            v-show="$auth.loggedIn" 
+            class="sidebar__listItem"
+            :class="isActive('/effects/add')">
+            <nuxt-link to="/effects/add"> Add </nuxt-link>
+            </li>
         </ul>
   </nav>
 </template>
