@@ -15,7 +15,7 @@
             <nuxt-link to="/effects/add"> Add an effect </nuxt-link>
         </li>
         <li>
-            <nuxt-link to="/replications/manage"> Manage Replications </nuxt-link>
+            <nuxt-link to="/replications/add"> Manage Replications </nuxt-link>
         </li>
         </ul>
     </div>

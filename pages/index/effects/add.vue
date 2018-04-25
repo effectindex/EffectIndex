@@ -1,5 +1,7 @@
 <template>
-    <effect-editor @new-effect="submitEffect" />
+    <div class="pageContent">
+        <effect-editor @new-effect="submitEffect" />
+    </div>
 </template>
 
 <script>
