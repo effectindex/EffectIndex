@@ -6,6 +6,7 @@ const protected = require('express-jwt');
 const API_Error = require('../ApiError');
 
 const Replication = require('./Replication');
+const Effect = require('../effects/Effect');
 
 function kebab(text) {
     return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
@@ -43,6 +44,18 @@ router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) 
 
 });
 
+router.get('/gallery', async (req, res) => {
+    try {
+        let replications = await Replication.find().exec();
+        let replicated_effects = await Effect.find(
+            { _id: { $in: await Replication.distinct("associated_effects") } })
+        .select('name');
+        res.send({ replications, replicated_effects})
+    } catch (error) {
+        res.status(500).send({error});
+    }
+});
+
 router.get('/', async (req, res) => {
 
     try {
@@ -57,7 +70,6 @@ router.get('/', async (req, res) => {
 
 router.get('/:url', async (req, res) => {
     try {
-        
         let replication = await Replication.findOne({ url: req.params.url }).exec();
         res.send ({ replication });
     } catch (error) {

@@ -73,9 +73,6 @@ export default {
     components: {
         actionList
     },
-    created () {
-        this.$store.dispatch('getEffects');
-    },
     methods: {
         filterEffectByTag(...tags) {
             return this.$store.state.dbeffects.filter(

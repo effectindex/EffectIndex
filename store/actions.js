@@ -62,7 +62,7 @@ export default {
         let { replications } = await this.$axios.$get('/api/replications');
         commit ('set_replications', replications);
       } catch (error) {
-        throw new Error(error)
+        throw new Error(error);
       }
     },
     async submitReplication({ dispatch }, replication) {
@@ -86,5 +86,17 @@ export default {
     async getReplication({ commit }, snakeName) {
       let { replication } = await this.$axios.$get('/api/replications/' + snakeName);
       return { replication };
-    },    
+    },
+    // Gallery
+    async getGallery({ commit }) {
+      try {
+        let { replications, replicated_effects } = await this.$axios.$get('/api/replications/gallery');
+        commit ('set_gallery', { replications, replicated_effects });
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+    setGallerySelectedEffect({ commit }, effectId) {
+      commit ('set_gallery_selected_effect', effectId);
+    }
 };

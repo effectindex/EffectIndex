@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
       slug = require('mongoose-slug-generator');
 
 mongoose.plugin(slug);
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var Schema = mongoose.Schema;
 
 const Replication = mongoose.model('Replication', {
     title: {
@@ -27,7 +27,10 @@ const Replication = mongoose.model('Replication', {
         required: true
     },
     thumbnail: String,
-    associated_effects: [ObjectId]
+    associated_effects: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Effect'
+    }]
 });
 
 module.exports = Replication;

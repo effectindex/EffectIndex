@@ -8,7 +8,7 @@
         <effect-description :formattedDocument="effect.description_formatted" />
         <div class="effect__gallery">
             <hr v-show="effect.replications">
-            <h3> {{ effect.name }} Gallery </h3>
+            <h3> Gallery </h3>
             <light-box base="/gallery/" :imageSet="effect.replications" />
         </div>
         <div class="effect__external_links">

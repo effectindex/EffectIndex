@@ -5,7 +5,8 @@
             :key="citation.url"
             :from="citation.from"
             :no="citation.no">
-            {{ citation.text }} |
+            <span class="citationText"> {{ citation.text }} </span>
+            <span class="citationSeparator"> | </span>
             <ext-link :href="citation.url">
             {{ citation.url }}
             </ext-link>
@@ -30,9 +31,8 @@ export default {
 <style>
 
 .citationList {
-    column-width: 325px;
-    column-rule: 1px solid #EEE;
-    column-gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding-left: 0;
     font-size: 14px;
     font-weight: bold;
@@ -40,11 +40,22 @@ export default {
 
 .citationList li {
     margin-left: 15px;
+    min-width: 300px;
+    padding: 5px;
+    margin: 10px;
+    margin-bottom: 10px;
     padding: 0.25em 0;
-    min-height: 75px;
     font-weight: bold;
     break-inside: avoid;
     page-break-inside: avoid;
+}
+
+.citationText {
+    color: #444;
+}
+
+.citationSeparator {
+    color: #AAA;
 }
 
 .citation__contents {
@@ -53,6 +64,10 @@ export default {
 }
 
 @media (max-width: 640px) {
+
+    .citationList {
+        grid-template-columns: 1fr;
+    }
 
     .citationList li {
         word-break: break-all;
@@ -64,7 +79,7 @@ export default {
 }
 
 .citationList li:target {
-    background-color: #F6F6FF;
+    background-color: #EEE;
 }
 
 .citationList a:link {

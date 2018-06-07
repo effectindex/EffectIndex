@@ -9,9 +9,6 @@
         <div class="footer__secret">
         <p> disregardeverythingisay@gmail.com </p>
         <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
-        <div style="text-align: right; padding: 10px;">
-            <nuxt-link to="/admin/"> Admin </nuxt-link>
-        </div>
         </div>
     </footer>
 </template>

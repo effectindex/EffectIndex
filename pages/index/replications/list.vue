@@ -16,13 +16,10 @@
 </template>
 
 <script>
-import ExtLink from '@/components/ExtLink.vue';
 import ReplicationTableRow from '@/components/replications/ReplicationTableRow.vue';
-
 
 export default {
     components: {
-        ExtLink,
         ReplicationTableRow
     },
     mounted() {

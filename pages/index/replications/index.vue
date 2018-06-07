@@ -20,5 +20,30 @@
         is credited for each replication wherever possible, if you would like your artwork removed
         or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
     </p>
+
+    <light-box
+        title="Gallery"
+        :imageSet="replications.filter((effect) => effect.associated_effects.indexOf(selected_effect) >= 0)" base="/gallery/"
+        />
+    <effect-selector :effects="replicated_effects" :selected="this.$store.state.dbgallery.selected_effect" />
+
 </div>
 </template>
+
+<script>
+import EffectSelector from '@/components/EffectSelector.vue';
+import LightBox from '@/components/LightBox/LightBox.vue';
+
+export default {
+    components: {
+        EffectSelector,
+        LightBox
+    },
+    computed: {
+        replicated_effects () { return this.$store.state.dbgallery.replicated_effects; },
+        replications () { return this.$store.state.dbgallery.replications },
+        selected_effect () { return this.$store.state.dbgallery.selected_effect; }
+    },
+    async fetch ({ store, params }) { await store.dispatch('getGallery'); }
+}
+</script>

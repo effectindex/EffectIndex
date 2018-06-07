@@ -1,61 +1,64 @@
 <template>
     <div class="lightBox">
         <h1 v-show="title"> {{ title }} </h1>
-        <div v-if="imageSet.length" class="lightBox__canvas">
-            <transition name="fade">
-                <a 
-                    v-if="imageSet[current_image].resource && (imageSet[current_image].type === 'image')"
-                    :key="imageSet[current_image].resource"
-                    :href="base + imageSet[current_image].resource"
-                    target="_blank">
-                    <div 
-                        class="lightBox__image"
-                        :style="'background-image: url(\'' + encodeURI(base + imageSet[current_image].resource) + '\');'">
-                        <image-details 
-                                :title="imageSet[current_image].title"
-                                :artist="imageSet[current_image].artist"
-                                :artist-webpage="imageSet[current_image].artist_url" />
-                    </div>
-                </a>
+        <div v-if="currentImage">
+            <div class="lightBox__canvas">
+                <transition name="fade">
 
-                <div 
-                    v-if="imageSet[current_image].resource && (imageSet[current_image].type === 'gfycat')"
-                    :key="imageSet[current_image].resource"
-                    style='position:relative;height: 100%;'>
-                        <iframe :src="'https://gfycat.com/ifr/' + imageSet[current_image].resource"
-                            frameborder='0'
-                            scrolling='no'
-                            width='100%'
-                            height='100%'
-                            style='position:absolute;top:0;left:0'
-                            allowfullscreen
-                        ></iframe>
+                    <div 
+                        v-if="currentImage.resource && (currentImage.type === 'image')"
+                        :key="currentImage.resource"
+                        class="lightBox__image"
+                        :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'">
                         <image-details 
-                            :title="imageSet[current_image].title"
-                            :artist="imageSet[current_image].artist"
-                            :artist-webpage="imageSet[current_image].artist_url" />
-                </div>
-            </transition>
-            <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
-                <i class="fa fa-angle-double-left"> </i>
-            </a>
-            <a @mousedown="nextImage()" class="lightBox__control nextImage">
-                <i class="fa fa-angle-double-right"> </i>
-            </a>
-        </div>
-        <div v-if="imageSet.length" class="lightBox__thumbnailReel" ref="thumbnailReel">
-            <div ref="thumbnailContainer" class="lightBox__thumbnailContainer" :style="'left: ' + thumbnailOffset + 'px;'">
-                <a
-                    v-for="(image, index) in imageSet"
-                    @mousedown="selectImage(index)"
-                    :key="index">
-                    <img v-if="image.type === 'image'" class="lightBox__thumbnailImage" ref="activeThumbnail"
-                        :src="base + '/thumbnails/' + image.resource"
-                        :class="current_image === index ? {active: true}: {}" />
-                    <img v-else class="lightBox__thumbnailImage" ref="activeThumbnail"
-                        :src="'http://thumbs.gfycat.com/' + image.resource + '-thumb100.jpg'"
-                        :class="current_image === index ? {active: true}: {}" /> 
+                                :title="currentImage.title"
+                                :artist="currentImage.artist"
+                                :artist-webpage="currentImage.artist_url" />
+                    </div>
+
+                    <div 
+                        v-if="currentImage.resource && (currentImage.type === 'gfycat')"
+                        :key="currentImage.resource"
+                        style='position:relative;height: 100%;'>
+                            <iframe :src="'https://gfycat.com/ifr/' + currentImage.resource"
+                                frameborder='0'
+                                scrolling='no'
+                                width='100%'
+                                height='100%'
+                                style='position:absolute;top:0;left:0'
+                                allowfullscreen
+                            ></iframe>
+                            <image-details 
+                                :title="currentImage.title"
+                                :artist="currentImage.artist"
+                                :artist-webpage="currentImage.artist_url" />
+                    </div>
+
+                </transition>
+
+                <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
+                    <i class="fa fa-angle-double-left"> </i>
                 </a>
+                <a @mousedown="nextImage()" class="lightBox__control nextImage">
+                    <i class="fa fa-angle-double-right"> </i>
+                </a>
+                
+            </div>
+
+            <div class="lightBox__thumbnailReel" ref="thumbnailReel">
+                <div ref="thumbnailContainer" class="lightBox__thumbnailContainer" :style="'left: ' + (thumbnailOffset > 0 ? thumbnailOffset + 'px;' : '50%')">
+                    <a
+                        v-for="(image, index) in imageSet"
+                        @mousedown="selectImage(index)"
+                        :key="index">
+                        <img v-if="image.type === 'image'" class="lightBox__thumbnailImage" ref="activeThumbnail"
+                            :src="base + '/thumbnails/' + image.resource"
+                            :class="current_image === index ? {active: true}: {}" />
+                        <img v-else-if="image.type === 'gfycat'" class="lightBox__thumbnailImage" ref="activeThumbnail"
+                            :src="'http://thumbs.gfycat.com/' + image.resource + '-thumb100.jpg'"
+                            :class="current_image === index ? {active: true}: {}" /> 
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -73,6 +76,19 @@ export default {
     },
     components: {
         ImageDetails
+    },
+    computed: {
+        currentImage () {
+            if (this.imageSet.length > 0) {
+                if (this.current_image <= (this.imageSet.length - 1)) return this.imageSet[this.current_image];
+                else return this.imageSet[this.imageSet.length - 1];
+            } else return {};
+        }
+    },
+    watch: {
+        imageSet: function(oldImageSet, newImageSet) {
+            this.current_image = 0;
+        }
     },
     mounted() {
         this.updateThumbnailOffset();
@@ -261,14 +277,10 @@ export default {
         }
     }
 
-
-
-
-
     .lightBox__thumbnailContainer {
         position: relative;
         height: 80px;
-        transition: left 0.5s ease;
+        transition: left 0.5s ease-out;
         width: 2000px;
     }
 

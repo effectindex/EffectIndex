@@ -1,6 +1,6 @@
 <template>
 
-<div class="blog">
+<div class="pageContent blog">
         <div style="text-align: right;" v-if="$auth.loggedIn">
             <nuxt-link to="/blog/new"> ... submit a new blog post </nuxt-link>
         </div>
@@ -19,21 +19,9 @@
         },
         scrollToTop: true,
         methods: { 
-            async deletePost( id ) {
-                this.$store.dispatch('deleteBlogPost', id);
-            },
-            async getPosts() {
-                this.$store.dispatch('getPosts');
-            }
+            async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); }
         },
-        async asyncData ( { store } ) {
-            try {
-                await store.dispatch('getBlogPosts');
-            } catch (error) {
-                console.log(error);
-            }
-            
-        }
+        async fetch ( { store } ) { await store.dispatch('getBlogPosts'); }
     }
 </script>
 

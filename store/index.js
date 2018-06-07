@@ -15,6 +15,11 @@ const createStore = () => {
       replications: [],
       dbeffects: [],
       navigation,
+      dbgallery: {
+        selected_effect: undefined,
+        replications: [],
+        replicated_effects: []
+      },
       gallery,
       blogPosts: []
     },
