@@ -1,4 +1,16 @@
 {
+    "Admin": {
+        "location": "/admin",
+        "restricted": true,
+        "children": [
+            { "name": "New Effect", "location": "/effects/add" },
+            { "name": "New Replication", "location": "/replications/add" },
+            { "name": "New Blog", "location": "/blog/new" },
+            { "name": "List Replications", "location": "/replications/list" },
+            { "name": "List Effects", "location": "/effects/list" },
+            { "name": "Logout", "location": "/admin/logout" }
+        ]
+    },
     "Home": {
         "location": "/"
     },

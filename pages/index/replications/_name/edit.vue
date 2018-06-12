@@ -1,15 +1,15 @@
 <template>
     <div class="pageContent">
-        <replication-input :replication="replication" @edit-replication="submitReplication" />
+        <replication-editor :replication="replication" @edit-replication="submitReplication" />
     </div>
 </template>
 
 <script>
-import ReplicationInput from '@/components/replications/ReplicationInput';
+import ReplicationEditor from '@/components/replications/ReplicationEditor';
 
 export default {
     components: {
-        ReplicationInput
+        ReplicationEditor
     },
     middleware: 'auth',
     methods: {

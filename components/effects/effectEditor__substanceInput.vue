@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input class="input__singleLine" v-model="substanceInputText" @keyup="changeInput" />
+        <input class="effectEditor__input" v-model="substanceInputText" @keyup="changeInput" />
         <ul class="substanceList">
             <li class="substanceItem" v-for="(substance, index) in value" :key="substance">
                 {{ substance }}

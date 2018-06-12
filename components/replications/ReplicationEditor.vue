@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1> {{ replication ? 'Update' : 'Add' }} Replication </h1>
+        <h1> {{ replication ? 'Update' : 'Add' }} a Replication </h1>
         <div>
             <label> Title: </label>
             <input class="input__singleLine" v-model="title" />
@@ -54,12 +54,12 @@
             <input class="input__singleLine" v-model="thumbnail" />
         </div>
  
-        <div v-if="(type === 'image')" class="replicationInput__imagePreview">
+        <div v-if="(type === 'image')" class="replicationEditor__imagePreview">
             <img v-show="resource" :src="'/gallery/' + resource" height="200" />
             <img v-show="resource" :src="'/gallery/thumbnails/' + resource" />
         </div>
 
-        <div class="replicationInput__gfycatPreview" v-else-if="(type === 'gfycat')">
+        <div class="replicationEditor__gfycatPreview" v-else-if="(type === 'gfycat')">
             <iframe :src="'https://gfycat.com/ifr/' + resource"
                 frameborder='0'
                 scrolling='no'
@@ -68,12 +68,12 @@
             <img v-show="thumbnail" :src="'/gallery/thumbnails/' + thumbnail" />
         </div>
 
-        <div class="replicationInput__audioPreview" v-else-if="(type === 'audio')">
+        <div class="replicationEditor__audioPreview" v-else-if="(type === 'audio')">
             <audio-player :src="'/audio/' + resource" :title="title" :artist="artist" />
         </div>
 
         <div class="replication__buttons">
-            <button @click="submitReplication()"> Save </button> <nuxt-link tag="button" to="/replications/"> Cancel </nuxt-link>
+            <button @click="submitReplication()"> Save </button> <nuxt-link tag="button" to="/replications/list"> Cancel </nuxt-link>
         </div>
     </div>
 </template>
@@ -167,20 +167,20 @@ import AudioPlayer from '@/components/AudioPlayer/AudioPlayer.vue';
         padding: 1em;
     }
 
-    .replicationInput__gfycatPreview {
+    .replicationEditor__gfycatPreview {
         padding-top: 1em;
     }
 
-    .replicationInput__gfycatPreview img {
+    .replicationEditor__gfycatPreview img {
         margin-left: 1em;
     }
 
-    .replicationInput__imagePreview img {
+    .replicationEditor__imagePreview img {
         margin-top: 1em;
         margin-right: 1em;
     }
 
-    .replicationInput__audioPreview {
+    .replicationEditor__audioPreview {
         padding-top: 1em;
     }
 

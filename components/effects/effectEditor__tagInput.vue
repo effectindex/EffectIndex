@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input class="input__singleLine" v-model="tagInputText" @keyup="changeInput" />
+        <input class="effectEditor__input" v-model="tagInputText" @keyup="changeInput" />
         <ul class="tagList">
             <li class="tagItem" v-for="(tag, index) in value" :key="tag">
                 {{ tag }}

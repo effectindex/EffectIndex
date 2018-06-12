@@ -10,7 +10,11 @@
                     <td> Type </td>
                 </tr>
             </thead>
-            <replication-table-row v-for="replication in $store.state.replications" :key="replication._id" :replication="replication" />
+            <replication-table-row 
+                v-for="replication in $store.state.replications"
+                :key="replication._id"
+                :replication="replication"
+                @deleteReplication="deleteReplication" />
         </table>
     </div>
 </template>

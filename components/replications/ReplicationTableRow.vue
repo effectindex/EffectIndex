@@ -18,6 +18,11 @@ export default {
     props: ['replication'],
     components: {
         ExtLink
+    },
+    methods: {
+        deleteReplication(id) {
+            this.$emit('deleteReplication', id);
+        }
     }
 }
 </script>

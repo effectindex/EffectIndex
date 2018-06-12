@@ -1,5 +1,5 @@
 <template>
-    <div class="headerNav__menuItem">
+    <div class="headerNav__menuItem" v-if="access">
         <a class="headerNav__menuItemLink" :href="location"> {{ name }} </a>
         <ul v-if="subMenuItems" class="headerNav__dropdown">
             <li v-for="(item, index) in subMenuItems" :key="index">
@@ -11,9 +11,14 @@
 </template>
 
 <script>
-
     export default {
-        props: ['location', 'name', 'subMenuItems']
+        props: ['location', 'name', 'subMenuItems', 'restricted'],
+        computed: {
+            access () {
+                if (this.restricted && !this.$auth.loggedIn) return false
+                return true
+            }
+        }
     }
 </script>
 

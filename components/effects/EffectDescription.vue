@@ -36,7 +36,7 @@ export default {
 
         let elements = []
 
-        if ('formattedDocument' in context.props) {
+        if ('formattedDocument' in context.props && (typeof(context.props.formattedDocument) === 'string')) {
             let formattedDocument = JSON.parse(context.props.formattedDocument);
 
             if (formattedDocument.length) {
@@ -44,9 +44,11 @@ export default {
                     elements.push(handleType(element));
                 });
             }
+
+            return createElement('div', {  class: 'effectDescription' }, elements);
         }
         
-        return createElement('div', {  class: 'effectDescription' }, elements);
+        
     }
 }
 </script>

@@ -4,12 +4,12 @@
 
             <div>
                 <label> Name </label>
-                <input class="input__singleLine" v-model="name" />
+                <input class="effectEditor__input" v-model="name" />
             </div>
 
             <div>
                 <label> Description </label>
-                <textarea class="input__textarea" v-model="description"> </textarea>
+                <textarea class="effectEditor__textarea effectEditor__description" v-model="description"> </textarea>
             </div>
 
             <div class="effectEditor__showHide">
@@ -20,6 +20,16 @@
                 <div>
                     <label> Citations </label>
                     <citation-input v-model="citations" />
+                </div>
+
+                <div>
+                    <label> Short Summary </label>
+                    <textarea class="effectEditor__textarea effectEditor__summary" v-model="summary"> </textarea>
+                </div>
+
+                <div>
+                    <label> Analysis </label>
+                    <textarea class="effectEditor__textarea effectEditor__analysis" v-model="analysis"> </textarea>
                 </div>
 
                 <div>
@@ -72,7 +82,8 @@
                 external_links: this.effect ? this.effect.external_links : [],
                 see_also: this.effect ? this.effect.see_also : [],
                 tags: this.effect ? this.effect.tags : [],
-                substance_classes: this.effect ? this.effect.substance_classes : []
+                summary: this.effect ? this.effect.summary_raw : '',
+                analysis: this.effect ? this.effect.analysis_raw : ''
             }
         },
         methods: {
@@ -84,11 +95,13 @@
                     id: this.id,
                     name: this.name,
                     description: this.description,
-                    related_substances: this.related_substances,
                     citations: this.citations,
+                    related_substances: this.related_substances,
                     external_links: this.external_links,
                     see_also: this.see_also,
-                    tags: this.tags
+                    tags: this.tags,
+                    summary: this.summary,
+                    analysis: this.analysis
                 });
             }
         },
@@ -114,13 +127,20 @@
 
     }
 
-    .input__textarea {
+    .effectEditor__textarea {
         width: 100%;
-        min-height: 500px;
         padding: 1em;
     }
 
-    .input__singleLine, textarea {
+    .effectEditor__textarea.effectEditor__description {
+        min-height: 500px;
+    }
+
+    .effectEditor__textarea.effectEditor__analysis {
+        min-height: 300px;
+    }
+
+    .effectEditor__input, .effectEditor__textarea {
         font-family: 'Titillium Web';
         border: 1px solid #CCCCCC;
         padding: 0.5em 1em;

@@ -4,6 +4,7 @@
             :location="navItem.location"
             :name="name"
             :subMenuItems="navItem.children"
+            :restricted="navItem.restricted"
             :key="navItem.name" />
         <donate-button style="margin-left: 20px" />
     </div>

@@ -32,7 +32,11 @@ router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) 
             related_substances: e.related_substances,
             see_also: e.see_also,
             external_links: e.external_links,
-            citations: e.citations
+            citations: e.citations,
+            summary_raw: e.summary,
+            summary_formatted: JSON.stringify(parser.parse(e.summary)),
+            analysis_raw: e.analysis,
+            analysis_formatted: JSON.stringify(parser.parse(e.analysis)),
         })
 
         let returnedEffect = await effect.save().catch((err) => {
@@ -75,6 +79,10 @@ router.post('/:id', async (req, res) => {
             url: kebab(req.body.name),
             description_raw: req.body.description,
             description_formatted: JSON.stringify(parser.parse(req.body.description)),
+            summary_raw: req.body.summary,
+            summary_formatted: JSON.stringify(parser.parse(req.body.summary)),
+            analysis_raw: req.body.analysis,
+            analysis_formatted: JSON.stringify(parser.parse(req.body.analysis)),
             related_substances: req.body.related_substances,
             external_links: req.body.external_links,
             see_also: req.body.see_also,
@@ -84,6 +92,7 @@ router.post('/:id', async (req, res) => {
         
         res.send({ effect: updatedEffect });
     } catch (error) {
+        console.log(error);
         res.status(500).send ({ error });
     }
 });
