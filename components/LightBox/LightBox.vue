@@ -1,5 +1,5 @@
 <template>
-    <div class="lightBox">
+    <div class="lightBox" v-show="imageSet.length > 0">
         <h1 v-show="title"> {{ title }} </h1>
         <div v-if="currentImage">
             <div class="lightBox__canvas">

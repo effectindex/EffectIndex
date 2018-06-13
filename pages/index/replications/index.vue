@@ -20,12 +20,10 @@
         is credited for each replication wherever possible, if you would like your artwork removed
         or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
     </p>
-
+    <effect-selector :effects="replicated_effects" :selected="this.$store.state.dbgallery.selected_effect" />
     <light-box
-        title="Gallery"
         :imageSet="replications.filter((effect) => effect.associated_effects.indexOf(selected_effect) >= 0)" base="/gallery/"
         />
-    <effect-selector :effects="replicated_effects" :selected="this.$store.state.dbgallery.selected_effect" />
 
 </div>
 </template>

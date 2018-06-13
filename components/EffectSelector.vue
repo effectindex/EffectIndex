@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="gallery__effectSelectorContainer">
+        <h1> Effects </h1>
         <ul class="gallery__effectSelector" v-if="effects">
             <li class="gallery__effectSelectorItem" v-for="effect in effects" :key="effect._id">
                 <a @click="selectEffect(effect._id)" :class="(effect._id === selected ? 'active' : '')"> {{ effect.name }} </a>
@@ -18,6 +19,10 @@ export default {
 </script>
 
 <style scoped>
+.gallery__effectSelectorContainer {
+    margin-bottom: 2em;
+}
+
 .gallery__effectSelector {
     margin: 0; 
     padding: 0;
