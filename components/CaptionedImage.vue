@@ -1,5 +1,5 @@
 <template>
-<div class="captionedImage"
+<figure class="captionedImage"
     :style="{
         float: (align ? align : 'right'),
         width: (width ? width + 'px' : 'auto'),
@@ -7,30 +7,56 @@
         marginLeft: (align === 'right' ? '1em' : '0'),
         marginRight: (align === 'left' ? '1em' : '0')
         }" >
-    <img :src="src">
-    <p class="captionedImage__caption"> <slot></slot> </p>
-</div>
+    <img :src="src" width="100%" />
+    <figcaption class="captionedImage__caption">
+        <span class="artistTitle" v-show="title && artist">
+            <span class="title"> {{ title }} </span> by
+            <span class="artist"> {{ artist }} </span>
+            <span v-show="caption"> - </span>
+        </span>
+        {{ caption }}
+    </figcaption>
+</figure>
 
 </template>
 
 <script>
 export default {
-    props: ['src', 'align', 'width', 'height']
+    props: ['src', 'align', 'width', 'height', 'artist', 'title', 'caption']
 }
 </script>
 
 <style scoped>
 .captionedImage {
-    text-align: center;
+    box-sizing: border-box;
+    text-align: left;
     margin: 1em;
+}
+
+.artistTitle {
+    text-align: center;
 }
 
 .captionedImage__caption {
     font-size: 15px;
-    text-align: left;
-    color: black;
-    max-width: 100%;
-    padding: 0 0.5em;
+    text-align: center;
+    color: #666;
+    padding: 0.5em;
+    line-height: 1.25em;
 }
+
+.title {
+    font-weight: bold;
+}
+
+.artist {
+    font-style: italic;
+}
+
+.artistTitle {
+    font-size: 14px;
+}
+
+
 
 </style>

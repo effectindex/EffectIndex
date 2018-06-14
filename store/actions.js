@@ -48,9 +48,7 @@ export default {
       return updatedEffect;
     },
     async deleteEffect({ dispatch }, id) {
-      console.log(id);
       let { effect: deletedEffect } = await this.$axios.$delete('/api/effects/' + id);
-      console.log(deletedEffect);
       dispatch ('getEffects');
       return deletedEffect;
     },

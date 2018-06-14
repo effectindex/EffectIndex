@@ -71,7 +71,6 @@ export default {
             }
         },
         selectCitation(index) {
-            console.log('ya');
             let citation = this.value[index];
 
             if (citation) {

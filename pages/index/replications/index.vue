@@ -21,6 +21,7 @@
         or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
     </p>
     <effect-selector :effects="replicated_effects" :selected="this.$store.state.dbgallery.selected_effect" />
+    <h3> {{ selected_effect_name }} </h3>
     <light-box
         :imageSet="replications.filter((effect) => effect.associated_effects.indexOf(selected_effect) >= 0)" base="/gallery/"
         />
@@ -40,7 +41,12 @@ export default {
     computed: {
         replicated_effects () { return this.$store.state.dbgallery.replicated_effects; },
         replications () { return this.$store.state.dbgallery.replications },
-        selected_effect () { return this.$store.state.dbgallery.selected_effect; }
+        selected_effect () { return this.$store.state.dbgallery.selected_effect; },
+        selected_effect_name () {
+            let selected_effect = this.replicated_effects.find((val) => val._id === this.selected_effect);
+
+            return (selected_effect) ? selected_effect['name'] : '';
+        }
     },
     async fetch ({ store, params }) { await store.dispatch('getGallery'); }
 }

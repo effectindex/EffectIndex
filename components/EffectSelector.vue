@@ -1,6 +1,7 @@
 <template>
     <div class="gallery__effectSelectorContainer">
         <h1> Gallery </h1>
+        <p class="gallery__effectSelectorText"> Select an effect from the list below </p>
         <ul class="gallery__effectSelector" v-if="effects">
             <li class="gallery__effectSelectorItem" v-for="effect in effects" :key="effect._id">
                 <a @click="selectEffect(effect._id)" :class="(effect._id === selected ? 'active' : '')"> {{ effect.name }} </a>
@@ -20,7 +21,7 @@ export default {
 
 <style scoped>
 .gallery__effectSelectorContainer {
-    margin-bottom: 2em;
+    margin-bottom: 4em;
 }
 
 .gallery__effectSelector {
@@ -31,9 +32,20 @@ export default {
 .gallery__effectSelectorItem {
     display: inline-block;
     cursor: pointer;
-    margin-right: 2em;
+    padding: 0 1em;
     margin-left: 0;
-    font-size: 0.9em;
+    font-size: 1.1em;
+    font-style: italic;
+    border-right: 1px solid #EEE;
+}
+
+.gallery__effectSelectorItem:last-of-type {
+    border-right: none;
+}
+
+.gallery__effectSelectorText {
+    font-style: italic;
+    padding-left: 1em;
 }
 
 .active {

@@ -9,7 +9,7 @@
        </a>
         <ul :class="'sidebar__list ' + (this.collapsed ? 'collapsed' : '')">
           <li class="sidebar__listItem" v-bind:class="isActive('/effects/')">
-              <nuxt-link to="/"> All </nuxt-link>
+              <nuxt-link to="/effects/"> All </nuxt-link>
           </li>
           <li class="sidebar__listItem" v-bind:class="isActive('/effects/sensory/')"> 
               <nuxt-link to="/effects/sensory/"> Sensory </nuxt-link>
