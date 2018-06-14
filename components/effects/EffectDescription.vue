@@ -2,6 +2,7 @@
 import Reference from '@/components/Reference.vue';
 import ExtLink from '@/components/ExtLink.vue';
 import Markdown from '@/components/effects/effectDescription__markdown.vue';
+import CaptionedImage from '@/components/CaptionedImage.vue';
 
 export default {
     functional: true,
@@ -29,6 +30,8 @@ export default {
                 case 'int-link':
                     return createElement('nuxt-link', { props: element.props }, element.value);
                     break;
+                case 'cap-img':
+                    return createElement(CaptionedImage, { props: element.props }, element.value);
                 default:
                     break;
             }

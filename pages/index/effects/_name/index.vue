@@ -1,18 +1,20 @@
 <template>
     <div class="pageContent">
-        <div v-if="effect.name">
+        <div v-show="effect.name">
             <div v-if="$auth.loggedIn">
                 <nuxt-link :to="{ path: 'edit'}" append> Edit </nuxt-link>
                 <a @click="deleteEffect(effect._id)"> Delete </a>
             </div>
+            
+            <i :class="'fa ' + icon + ' fa-2x categoryIcon'"> </i>
             <h1> {{ effect.name }} </h1>
             <effect-description :formattedDocument="effect.description_formatted" />
-            <div class="effect__gallery">
-                <hr v-show="effect.replications">
+            <div v-if="hasSection('gallery')" class="effect__gallery">
+                <hr v-show="effect.replications" />
                 <h3> Gallery </h3>
                 <light-box base="/gallery/" :imageSet="effect.replications" />
             </div>
-            <div class="effect__external_links">
+            <div v-if="hasSection('external_links')" class="effect__external_links">
                 <hr />
                 <h3> External Links </h3>
                 <ul>
@@ -21,7 +23,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="effect__see_also">
+            <div v-if="hasSection('see_also')" class="effect__see_also">
                 <hr />
                 <h3> See Also </h3>
                 <ul>
@@ -29,11 +31,13 @@
                         <ext-link :href="link.url"> {{ link.title }} </ext-link>
                     </li>
                 </ul>
-            </div> 
-            <hr v-show="effect.citations" />
-            <citation-list :citations="effect.citations" />
+            </div>
+            <div v-if="hasSection('citations')">
+                <hr v-show="effect.citations" />
+                <citation-list :citations="effect.citations" />
+            </div>
         </div>
-        <div v-else>
+        <div v-if="!effect.name">
             <h1> Effect Not Found </h1>
         </div>
     </div>
@@ -60,6 +64,31 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+        hasSection(name) {
+            if (name in this.effect) {
+                if (Array.isArray(this.effect[name])) {
+                    if (this.effect[name].length > 0) return true;
+                } else if (typeof(this.name) === 'string') {
+                    if (this.effect[name].length > 0) return true;
+                } 
+            }
+            return false;
+        }
+    },
+    computed: {
+        icon () {
+            let tags = this.effect['tags'];
+            if (Array.isArray(tags)) {
+                if (tags.indexOf('cognitive') > -1) return 'fa-puzzle-piece';
+                if (tags.indexOf('visual') > -1) return 'fa-eye';
+                if (tags.indexOf('auditory') > -1) return 'fa-volume';
+                if (tags.indexOf('tactile') > -1) return 'fa-hand-paper-o';
+                if (tags.indexOf('disconnective') > -1) return 'fa-chain-broken';
+                if (tags.indexOf('multisensory') > -1) return 'fa-cogs';
+                if (tags.indexOf('physical') > -1) return 'fa-child';
+            }
+            return 'fa-question';
         }
     },
 
@@ -92,6 +121,10 @@ export default {
     color: black;
     margin: 0;
     padding: 0;
+}
+
+hr {
+    clear: both;
 }
 
 

@@ -9,10 +9,13 @@
 import EffectsSidebar from '@/components/EffectsSidebar.vue';
 
 export default {
+    scrollToTop: true,
     components: {
         EffectsSidebar
     },
-    scrollToTop: true
+    async fetch({ store }) {
+        await store.dispatch('getEffects');
+    }
 }
 
 </script>
