@@ -9,7 +9,7 @@
             <i :class="'fa ' + icon + ' fa-2x categoryIcon'"> </i>
             <h1> {{ effect.name }} </h1>
             <effect-description :formattedDocument="effect.description_formatted" />
-            <div v-if="hasSection('gallery')" class="effect__gallery">
+            <div v-if="hasSection('replications')" class="effect__gallery">
                 <hr v-show="effect.replications" />
                 <h3> Gallery </h3>
                 <light-box base="/gallery/" :imageSet="effect.replications" />
