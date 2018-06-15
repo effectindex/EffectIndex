@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style>
-.effectDescription ul {
+.effectDescription ul, .effectDescription ol {
     margin: 0;
     white-space: normal;
 }
@@ -117,10 +117,15 @@ export default {
     white-space: normal;
 }
 
-.effectDescription ul li {
+.effectDescription ul li, .effectDescription ol li {
     color: black;
     margin: 0;
+    margin-bottom: 1em;
     padding: 0;
+}
+
+.effectDescription ul li:last-of-type, .effectDescription ol li:last-of-type {
+    margin-bottom: 0;
 }
 
 hr {
