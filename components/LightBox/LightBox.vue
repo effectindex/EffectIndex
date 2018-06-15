@@ -36,12 +36,12 @@
 
                 </transition>
 
-                <div @mousedown="previousImage()" class="lightBox__control previousImage"> 
+                <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
                     <i class="fa fa-angle-double-left"> </i>
-                </div>
-                <div @mousedown="nextImage()" class="lightBox__control nextImage">
+                </a>
+                <a @mousedown="nextImage()" class="lightBox__control nextImage">
                     <i class="fa fa-angle-double-right"> </i>
-                </div>
+                </a>
                 
             </div>
 
@@ -98,17 +98,24 @@ export default {
     },
     methods: {
         updateThumbnailOffset() {
+            console.log('meep');
             setTimeout(() => {
-                if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
+            if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
 
-                    let thumbnailReel = this.$refs.thumbnailReel;
-                    let currentImage = this.$refs.activeThumbnail[this.current_image];
+                let thumbnailReel = this.$refs.thumbnailReel;
+                let currentImage = this.$refs.activeThumbnail[this.current_image];
 
-                    this.thumbnailOffset = (thumbnailReel.offsetWidth / 2)
-                    - currentImage.offsetLeft
-                    - (currentImage.offsetWidth / 2);
-                }
-            }, 0);
+                this.thumbnailOffset = (thumbnailReel.offsetWidth / 2)
+                - currentImage.offsetLeft
+                - (currentImage.offsetWidth / 2);
+
+                // if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
+
+                // if ((this.$refs.thumbnailContainer.lastChild.offsetLeft + this.$refs.thumbnailContainer.lastChild.offsetWidth) <
+                // this.$refs.thumbnailReel.offsetWidth) this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth - (this.$refs.thumbnailContainer.lastChild.offsetLeft
+                // + this.$refs.thumbnailContainer.lastChild.offsetWidth)) / 2;
+    
+            }}, 0);
         },
         selectImage(index) {
             this.current_image = index;
@@ -153,13 +160,14 @@ export default {
     }
 
     .lightBox__control {
+        display: block;
         height: 100px;
         width: 50px;
         line-height: 100px;
         font-size: 30px;
         position: absolute;
         top: calc(50% - 50px);
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.4);
         opacity: 0.75;
         color: white;
         border-radius: 5px;
@@ -172,6 +180,7 @@ export default {
 
     a.lightBox__control:hover {
         opacity: 1;
+        color: white;
     }
 
     .lightBox__control.nextImage {

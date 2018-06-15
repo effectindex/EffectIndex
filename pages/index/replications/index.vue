@@ -20,8 +20,9 @@
         is credited for each replication wherever possible, if you would like your artwork removed
         or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
     </p>
+    <hr />
     <effect-selector :effects="replicated_effects" :selected="selected_effect" />
-    <h3> {{ selected_effect_name }} </h3>
+    <h3 style="text-align: center;"> {{ selected_effect_name }} </h3>
     <light-box
         :imageSet="replications.filter((effect) => effect.associated_effects.indexOf(selected_effect) >= 0)" base="/gallery/"
         />
