@@ -20,7 +20,7 @@
         is credited for each replication wherever possible, if you would like your artwork removed
         or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
     </p>
-    <effect-selector :effects="replicated_effects" :selected="this.$store.state.dbgallery.selected_effect" />
+    <effect-selector :effects="replicated_effects" :selected="selected_effect" />
     <h3> {{ selected_effect_name }} </h3>
     <light-box
         :imageSet="replications.filter((effect) => effect.associated_effects.indexOf(selected_effect) >= 0)" base="/gallery/"
@@ -39,9 +39,9 @@ export default {
         LightBox
     },
     computed: {
-        replicated_effects () { return this.$store.state.dbgallery.replicated_effects; },
-        replications () { return this.$store.state.dbgallery.replications },
-        selected_effect () { return this.$store.state.dbgallery.selected_effect; },
+        replicated_effects () { return this.$store.state.gallery.replicated_effects; },
+        replications () { return this.$store.state.gallery.replications },
+        selected_effect () { return this.$store.state.gallery.selected_effect; },
         selected_effect_name () {
             let selected_effect = this.replicated_effects.find((val) => val._id === this.selected_effect);
 

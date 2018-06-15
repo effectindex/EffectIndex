@@ -35,8 +35,8 @@ module.exports = {
 
   auth: {
     redirect: {
-      login: '/admin/login',
-      home: '/admin/',
+      login: false,
+      home: false,
       logout: '/admin/'
     },
     strategies: {

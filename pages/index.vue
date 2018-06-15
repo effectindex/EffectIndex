@@ -22,6 +22,11 @@ export default {
     CustomFooter,
     PulloutMenu
   },
+  head() {
+    return {
+      title: 'Effect Index'
+    }
+  }
 }
 </script>
 

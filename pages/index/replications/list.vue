@@ -29,7 +29,7 @@ export default {
     mounted() {
         this.$store.dispatch('getReplications');
     },
-    middleware: 'auth',
+    middleware: ['auth'],
     scrollToTop: true,
     methods: {
         deleteReplication(id) {

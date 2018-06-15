@@ -11,7 +11,7 @@ export default {
     components: {
         ReplicationEditor
     },
-    middleware: 'auth',
+    middleware: ['auth'],
     methods: {
         async submitReplication(replication) {
             let returnedReplication = await this.$store.dispatch('updateReplication', replication);

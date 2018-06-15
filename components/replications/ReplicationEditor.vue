@@ -16,7 +16,7 @@
         <div>
             <label> Associated Effects: </label>
             <ul class="effectList">
-                <li v-for="effect in $store.state.dbeffects" :key="effect.id">
+                <li v-for="effect in $store.state.effects" :key="effect.id">
                     <input 
                         type="checkbox"
                         :id="effect.name"

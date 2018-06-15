@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <effect-table-row 
-                v-for="effect in $store.state.dbeffects"
+                v-for="effect in $store.state.effects"
                 :key="effect._id"
                 :effect="effect"
                 @deleteEffect="deleteEffect" />
@@ -27,7 +27,7 @@ export default {
     mounted() {
         this.$store.dispatch('getEffects');
     },
-    middleware: 'auth',
+    middleware: ['auth'],
     scrollToTop: true,
     methods: {
         deleteEffect(id) {

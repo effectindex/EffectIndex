@@ -11,7 +11,7 @@ export default {
     components: {
         EffectEditor
     },
-    middleware: 'auth',
+    middleware: ['auth'],
     methods: {
         async submitEffect(effect) {
             let returnedEffect = await this.$store.dispatch('submitEffect', effect);

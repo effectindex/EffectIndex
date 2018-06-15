@@ -36,18 +36,18 @@
 
                 </transition>
 
-                <a @mousedown="previousImage()" class="lightBox__control previousImage"> 
+                <div @mousedown="previousImage()" class="lightBox__control previousImage"> 
                     <i class="fa fa-angle-double-left"> </i>
-                </a>
-                <a @mousedown="nextImage()" class="lightBox__control nextImage">
+                </div>
+                <div @mousedown="nextImage()" class="lightBox__control nextImage">
                     <i class="fa fa-angle-double-right"> </i>
-                </a>
+                </div>
                 
             </div>
 
             <div class="lightBox__thumbnailReel" ref="thumbnailReel">
-                <div ref="thumbnailContainer" class="lightBox__thumbnailContainer" :style="'left: ' + (thumbnailOffset > 0 ? thumbnailOffset + 'px;' : '50%')">
-                    <a
+                <div ref="thumbnailContainer" class="lightBox__thumbnailContainer" :style="'left: ' + thumbnailOffset + 'px;'">
+                    <span
                         v-for="(image, index) in imageSet"
                         @mousedown="selectImage(index)"
                         :key="index">
@@ -57,7 +57,7 @@
                         <img v-else-if="image.type === 'gfycat'" class="lightBox__thumbnailImage" ref="activeThumbnail"
                             :src="'http://thumbs.gfycat.com/' + image.resource + '-thumb100.jpg'"
                             :class="current_image === index ? {active: true}: {}" /> 
-                    </a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -93,19 +93,22 @@ export default {
     mounted() {
         this.updateThumbnailOffset();
     },
+    updated() {
+        this.updateThumbnailOffset();
+    },
     methods: {
         updateThumbnailOffset() {
-            if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
+            setTimeout(() => {
+                if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
 
-                this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth / 2)
-                - this.$refs.activeThumbnail[this.current_image].offsetLeft;
+                    let thumbnailReel = this.$refs.thumbnailReel;
+                    let currentImage = this.$refs.activeThumbnail[this.current_image];
 
-                if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
-
-                if ((this.$refs.thumbnailContainer.lastChild.offsetLeft + this.$refs.thumbnailContainer.lastChild.offsetWidth) <
-                this.$refs.thumbnailReel.offsetWidth) this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth - (this.$refs.thumbnailContainer.lastChild.offsetLeft
-                + this.$refs.thumbnailContainer.lastChild.offsetWidth)) / 2;
-            }
+                    this.thumbnailOffset = (thumbnailReel.offsetWidth / 2)
+                    - currentImage.offsetLeft
+                    - (currentImage.offsetWidth / 2);
+                }
+            }, 0);
         },
         selectImage(index) {
             this.current_image = index;
@@ -150,7 +153,6 @@ export default {
     }
 
     .lightBox__control {
-        display: block;
         height: 100px;
         width: 50px;
         line-height: 100px;

@@ -1,6 +1,6 @@
 <template>
     <div class="headerNav__menuItem" v-if="access">
-        <a class="headerNav__menuItemLink" :href="location"> {{ name }} </a>
+        <nuxt-link class="headerNav__menuItemLink" :to="location"> {{ name }} </nuxt-link>
         <ul v-if="subMenuItems" class="headerNav__dropdown">
             <li v-for="(item, index) in subMenuItems" :key="index">
                 <a v-if="item.external" target="_blank" :href="item.location"> {{ item.name }} </a>
