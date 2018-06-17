@@ -7,7 +7,7 @@
         marginLeft: (align === 'right' ? '1em' : '0'),
         marginRight: (align === 'left' ? '1em' : '0')
         }" >
-    <img :src="src" width="100%" />
+    <a :href="src" target="_blank"> <img :src="src" width="100%" /> </a>
     <figcaption class="captionedImage__caption">
         <span class="artistTitle" v-show="title && artist">
             <span class="title"> {{ title }} </span> by

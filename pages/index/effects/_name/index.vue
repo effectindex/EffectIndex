@@ -7,8 +7,15 @@
             </div>
             
             <i :class="'fa ' + icon + ' fa-2x categoryIcon'"> </i>
-            <h1> {{ effect.name }} </h1>
-            <effect-description :formattedDocument="effect.description_formatted" />
+            <div v-if="hasSection('description_raw')">
+                <h1> {{ effect.name }} </h1>
+                <effect-description :formattedDocument="effect.description_formatted" />
+            </div>
+            <div v-if="hasSection('analysis_raw')">
+                <hr />
+                <h3> Analysis </h3>
+                <effect-description :formattedDocument="effect.analysis_formatted" />
+            </div>
             <div v-if="hasSection('replications')" class="effect__gallery">
                 <hr v-show="effect.replications" />
                 <h3> Gallery </h3>
@@ -69,7 +76,7 @@ export default {
             if (name in this.effect) {
                 if (Array.isArray(this.effect[name])) {
                     if (this.effect[name].length > 0) return true;
-                } else if (typeof(this.name) === 'string') {
+                } else if (typeof(this.effect[name]) === 'string') {
                     if (this.effect[name].length > 0) return true;
                 } 
             }

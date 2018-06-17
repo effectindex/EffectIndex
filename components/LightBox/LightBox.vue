@@ -220,7 +220,6 @@ export default {
 
     .lightBox__imageDetails .lightBox__title {
         font-size: 16px;
-        font-weight: bold;
         text-transform: none;
         color: white;
         text-shadow: 0px 0px 2px black;
@@ -233,13 +232,11 @@ export default {
         color: white;
         margin: 10px;
         text-shadow: 0px 0px 2px black;
-        font-weight: bold;
         font-style: italic;
     }
 
     .lightBox__artist a {
         color: white;
-        text-decoration: underline;
     }
 
     .lightBox__artist a:hover {
