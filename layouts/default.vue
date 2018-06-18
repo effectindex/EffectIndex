@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: 'proxima-nova';
-  src: url('/fonts/Mark Simonson - Proxima Nova Semibold-webfont.woff2')
+  src: url('/fonts/proxima-nova-medium.woff2')
 }
 
 *, *:before, *:after

@@ -9,32 +9,32 @@
             <i :class="'fa ' + icon + ' fa-2x categoryIcon'"> </i>
             <div v-if="hasSection('description_raw')">
                 <h1> {{ effect.name }} </h1>
-                <effect-description :formattedDocument="effect.description_formatted" />
+                <formatted-document :document="effect.description_formatted" />
             </div>
             <div v-if="hasSection('analysis_raw')">
                 <hr />
                 <h3> Analysis </h3>
-                <effect-description :formattedDocument="effect.analysis_formatted" />
+                <formatted-document :document="effect.analysis_formatted" />
             </div>
             <div v-if="hasSection('replications')" class="effect__gallery">
                 <hr v-show="effect.replications" />
                 <h3> Gallery </h3>
                 <light-box base="/gallery/" :imageSet="effect.replications" />
             </div>
-            <div v-if="hasSection('external_links')" class="effect__external_links">
-                <hr />
-                <h3> External Links </h3>
-                <ul>
-                    <li v-for="link in effect.external_links" :key="link.url">
-                        <ext-link :href="link.url"> {{ link.title }} </ext-link>
-                    </li>
-                </ul>
-            </div>
             <div v-if="hasSection('see_also')" class="effect__see_also">
                 <hr />
                 <h3> See Also </h3>
                 <ul>
                     <li v-for="link in effect.see_also" :key="link.url">
+                        <ext-link :href="link.url"> {{ link.title }} </ext-link>
+                    </li>
+                </ul>
+            </div>
+            <div v-if="hasSection('external_links')" class="effect__external_links">
+                <hr />
+                <h3> External Links </h3>
+                <ul>
+                    <li v-for="link in effect.external_links" :key="link.url">
                         <ext-link :href="link.url"> {{ link.title }} </ext-link>
                     </li>
                 </ul>
@@ -51,14 +51,14 @@
 </template>
 
 <script>
-import EffectDescription from '@/components/effects/EffectDescription.vue';
+import formattedDocument from '@/components/effects/formattedDocument.vue';
 import CitationList from '@/components/effects/CitationList.vue';
 import LightBox from '@/components/LightBox/LightBox.vue';
 import ExtLink from '@/components/ExtLink.vue';
 
 export default {
     components: {
-        EffectDescription,
+        formattedDocument,
         CitationList,
         LightBox,
         ExtLink
@@ -113,25 +113,25 @@ export default {
 </script>
 
 <style>
-.effectDescription ul, .effectDescription ol {
+.formattedDocument ul, .formattedDocument ol {
     margin: 0;
     white-space: normal;
 }
 
-.effectDescription p {
+.formattedDocument p {
     margin: 0;
     padding: 0;
     white-space: normal;
 }
 
-.effectDescription ul li, .effectDescription ol li {
+.formattedDocument ul li, .formattedDocument ol li {
     color: black;
     margin: 0;
     margin-bottom: 1em;
     padding: 0;
 }
 
-.effectDescription ul li:last-of-type, .effectDescription ol li:last-of-type {
+.formattedDocument ul li:last-of-type, .formattedDocument ol li:last-of-type {
     margin-bottom: 0;
 }
 

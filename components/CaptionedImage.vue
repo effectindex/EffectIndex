@@ -2,12 +2,29 @@
 <figure class="captionedImage"
     :style="{
         float: (align ? align : 'right'),
-        width: (width ? width + 'px' : 'auto'),
-        height: (height ? height + 'px' : 'auto'),
-        marginLeft: (align === 'right' ? '1em' : '0'),
-        marginRight: (align === 'left' ? '1em' : '0')
+        marginLeft: (align === 'right' || !align ? '5px' : '0'),
+        marginRight: (align === 'left' ? '5px' : '0'),
+        width: (width ? width + 'px' : '100%')
         }" >
-    <a :href="src" target="_blank"> <img :src="src" width="100%" /> </a>
+    <div v-if="src">
+        <a :href="src" target="_blank"> 
+            <img 
+                :src="src"
+                :width="(width ? width + 'px' : '100%')"
+                :height="(height ? height + 'px' : '100%')" />
+        </a>
+    </div>
+    <div 
+        v-else-if="gfycat" style="text-align: center;">
+            <iframe :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&controls=0'"
+                frameborder='0'
+                scrolling='no'
+                :width="width"
+                :height="height"
+                style='transform: scale(1); margin: 0 auto;'
+                allowfullscreen
+            ></iframe>
+    </div>
     <figcaption class="captionedImage__caption">
         <span class="artistTitle" v-show="title && artist">
             <span class="title"> {{ title }} </span> by
@@ -18,20 +35,17 @@
     </figcaption>
 </figure>
 
+
 </template>
+
 
 <script>
 export default {
-    props: ['src', 'align', 'width', 'height', 'artist', 'title', 'caption']
+    props: ['src', 'align', 'width', 'height', 'artist', 'title', 'caption', 'gfycat']
 }
 </script>
 
 <style scoped>
-.captionedImage {
-    box-sizing: border-box;
-    text-align: left;
-    margin: 1em;
-}
 
 .artistTitle {
     text-align: center;
@@ -41,8 +55,8 @@ export default {
     font-size: 15px;
     text-align: center;
     color: #666;
-    padding: 0.5em;
     line-height: 1.25em;
+    width: 100%;
 }
 
 .title {

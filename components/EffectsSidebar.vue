@@ -29,12 +29,6 @@
           <li class="sidebar__listItem" v-bind:class="isActive('/effects/deliriants/')">
               <nuxt-link to="/effects/deliriants/"> Deliriant  </nuxt-link>
           </li>
-          <li 
-            v-show="$auth.loggedIn" 
-            class="sidebar__listItem"
-            :class="isActive('/effects/add')">
-            <nuxt-link to="/effects/add"> Add </nuxt-link>
-            </li>
         </ul>
   </nav>
 </template>

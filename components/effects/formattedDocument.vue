@@ -1,7 +1,7 @@
 <script>
     import Reference from '@/components/Reference.vue';
     import ExtLink from '@/components/ExtLink.vue';
-    import Markdown from '@/components/effects/effectDescription__markdown.vue';
+    import Markdown from '@/components/effects/formattedDocument__markdown.vue';
     import CaptionedImage from '@/components/CaptionedImage.vue';
 
     export default {
@@ -39,16 +39,16 @@
 
             let elements = []
 
-            if ('formattedDocument' in context.props && (typeof(context.props['formattedDocument']) === 'string')) {
-                let formattedDocument = JSON.parse(context.props['formattedDocument']);
+            if ('document' in context.props && (typeof(context.props['document']) === 'string')) {
+                let doc = JSON.parse(context.props['document']);
 
-                if (formattedDocument.length) {
-                    formattedDocument.forEach((element) => {
+                if (doc.length) {
+                    doc.forEach((element) => {
                         elements.push(handleType(element));
                     });
                 }
 
-                return createElement('div', {  class: 'effectDescription' }, elements);
+                return createElement('div', {  class: 'formattedDocument' }, elements);
             }
         }
     }
