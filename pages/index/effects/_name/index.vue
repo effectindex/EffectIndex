@@ -135,9 +135,14 @@ export default {
     margin-bottom: 0;
 }
 
+.formattedDocument p {
+    color: black;
+}
+
 hr {
     clear: both;
 }
+
 
 
 </style>
