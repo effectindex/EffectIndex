@@ -1,9 +1,6 @@
 <template>
-<figure class="captionedImage"
+<figure :class="'captionedImage ' + float + ' unfloat'"
     :style="{
-        float: (align ? align : 'right'),
-        marginLeft: (align === 'right' || !align ? '5px' : '0'),
-        marginRight: (align === 'left' ? '5px' : '0'),
         width: (width ? width + 'px' : '100%')
         }" >
     <div v-if="src">
@@ -41,11 +38,37 @@
 
 <script>
 export default {
-    props: ['src', 'align', 'width', 'height', 'artist', 'title', 'caption', 'gfycat']
+    props: ['src', 'align', 'width', 'height', 'artist', 'title', 'caption', 'gfycat'],
+    computed: {
+        float() {
+            if (!this.align) return 'floatRight';
+            else if (this.align.toLowerCase() === 'right') return 'floatRight';
+            else if (this.align.toLowerCase() === 'left') return 'floatLeft';
+        }
+    }
 }
 </script>
 
 <style scoped>
+
+.floatRight {
+    float: right;
+    margin: 1em;
+    margin-right: 0;
+}
+
+.floatLeft {
+    float: left;
+    margin: 1em;
+    margin-left: 0;
+}
+
+@media (max-width: 500px) {
+    .unfloat {
+        float: none;
+        margin: 1em auto;
+    }
+}
 
 .artistTitle {
     text-align: center;
@@ -70,7 +93,5 @@ export default {
 .artistTitle {
     font-size: 14px;
 }
-
-
 
 </style>
