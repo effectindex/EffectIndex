@@ -63,13 +63,6 @@ export default {
     margin-left: 0;
 }
 
-@media (max-width: 500px) {
-    .unfloat {
-        float: none;
-        margin: 1em auto;
-    }
-}
-
 .artistTitle {
     text-align: center;
 }
@@ -92,6 +85,13 @@ export default {
 
 .artistTitle {
     font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    .unfloat {
+        float: none;
+        margin: 1em auto;
+    }
 }
 
 </style>

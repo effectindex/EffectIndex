@@ -6,6 +6,7 @@
             <thead>
                 <tr>
                     <td> Title </td>
+                    <td> Tags </td>
                 </tr>
             </thead>
             <effect-table-row 

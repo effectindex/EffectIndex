@@ -43,6 +43,11 @@
                 <hr v-show="effect.citations" />
                 <citation-list :citations="effect.citations" />
             </div>
+            <div v-if="hasSection('tags')" class="effect__tags">
+                <hr />
+                <h3> Tags </h3>
+                <tag v-for="tag in effect.tags" :key="tag" :value="tag" />
+            </div>
         </div>
         <div v-if="!effect.name">
             <h1> Effect Not Found </h1>
@@ -55,13 +60,15 @@ import formattedDocument from '@/components/effects/formattedDocument.vue';
 import CitationList from '@/components/effects/CitationList.vue';
 import LightBox from '@/components/LightBox/LightBox.vue';
 import ExtLink from '@/components/ExtLink.vue';
+import Tag from '@/components/effects/Tag.vue';
 
 export default {
     components: {
         formattedDocument,
         CitationList,
         LightBox,
-        ExtLink
+        ExtLink,
+        Tag
     },
     methods: {
         async deleteEffect(id) {
@@ -137,6 +144,10 @@ export default {
 
 .formattedDocument p {
     color: black;
+}
+
+.tagList {
+    list-style: none;
 }
 
 hr {
