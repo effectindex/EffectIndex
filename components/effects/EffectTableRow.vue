@@ -3,9 +3,9 @@
         <td style="min-width: 300px"> <nuxt-link :to="effect.url"> {{ effect.name }} </nuxt-link> </td>
         <td> <span class="tagItem" v-for="tag in effect.tags" :key="tag"> {{ tag }} </span>
         <td style="padding-right: 2em">
-            <nuxt-link :to="'/effects/' + effect.url + '/edit'"> Edit </nuxt-link>
+            <nuxt-link :to="'/effects/' + effect.url + '/edit'"> [Edit] </nuxt-link>
         </td>
-        <td> <a style="color: red; cursor: pointer;" @click="deleteEffect(effect._id)"> Delete </a> </td>
+        <td> <a style="color: red; cursor: pointer;" @click="deleteEffect(effect._id)"> [Delete] </a> </td>
     </tr>
 </template>
 

@@ -2,8 +2,8 @@
     <div class="pageContent">
         <div v-show="effect.name">
             <div v-if="$auth.loggedIn">
-                <nuxt-link :to="{ path: 'edit'}" append> Edit </nuxt-link>
-                <a @click="deleteEffect(effect._id)"> Delete </a>
+                <nuxt-link :to="{ path: 'edit'}" append> [Edit] </nuxt-link>
+                <a @click="deleteEffect(effect._id)" style="color: red; float:right;"> [Delete] </a>
             </div>
             
             <i :class="'fa ' + icon + ' fa-2x categoryIcon'"> </i>
@@ -21,29 +21,32 @@
                 <h3> Gallery </h3>
                 <light-box base="/gallery/" :imageSet="effect.replications" />
             </div>
-            <div v-if="hasSection('see_also')" class="effect__see_also">
+            <div v-if="hasSection('see_also') || hasSection('external_links')">
                 <hr />
-                <h3> See Also </h3>
-                <ul>
-                    <li v-for="link in effect.see_also" :key="link.url">
-                        <ext-link :href="link.url"> {{ link.title }} </ext-link>
-                    </li>
-                </ul>
+                <div v-if="hasSection('see_also')">
+                    <h3> See Also </h3>
+                    <ul>
+                        <li v-for="link in effect.see_also" :key="link.url">
+                            <ext-link :href="link.url"> {{ link.title }} </ext-link>
+                        </li>
+                    </ul>
+                </div>
+                <div v-if="hasSection('external_links')">
+                    <h3> External Links </h3>
+                    <ul>
+                        <li v-for="link in effect.external_links" :key="link.url">
+                            <ext-link :href="link.url"> {{ link.title }} </ext-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div v-if="hasSection('external_links')" class="effect__external_links">
-                <hr />
-                <h3> External Links </h3>
-                <ul>
-                    <li v-for="link in effect.external_links" :key="link.url">
-                        <ext-link :href="link.url"> {{ link.title }} </ext-link>
-                    </li>
-                </ul>
-            </div>
+
             <div v-if="hasSection('citations')">
-                <hr v-show="effect.citations" />
+                <hr />
+                <h3> References </h3>
                 <citation-list :citations="effect.citations" />
             </div>
-            <div v-if="hasSection('tags')" class="effect__tags">
+            <div v-if="hasSection('tags')">
                 <hr />
                 <h3> Tags </h3>
                 <tag v-for="tag in effect.tags" :key="tag" :value="tag" />

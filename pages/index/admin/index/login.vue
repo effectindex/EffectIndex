@@ -2,16 +2,16 @@
 
 <div>
 
-<h2> Login </h2>
-<div class="login__formContainer">
-    <div>  
-        <label> Username </label> <input v-model="username" />
+    <h2> Login </h2>
+    <div class="login__formContainer">
+        <div>  
+            <label> Username </label> <input v-model="username" />
+        </div>
+        <div> 
+            <label> Password </label> <input v-model="password" type="password" />
+        </div>
+        <button @click="login()"> Login </button>
     </div>
-    <div> 
-        <label> Password </label> <input v-model="password" type="password" />
-    </div>
-    <button @click="login()"> Login </button>
-</div>
 
 </div>
 
@@ -61,6 +61,7 @@ button {
     height: 30px;
     width: 100px;
     font-size: 18px;
+    padding: 0;
 }
 
 </style>

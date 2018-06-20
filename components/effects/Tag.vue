@@ -1,5 +1,5 @@
 <template>
-    <div class="tag"> {{ value }} </div>
+    <div class="effectDescription__tag"> {{ value }} </div>
 </template>
 
 <script>
@@ -9,26 +9,25 @@
 </script>
 
 <style>
-    .tag {
+    .effectDescription__tag {
         position: relative;
         display: inline-block;
-        color: #555;
+        color: white;
         top: 0;
         left: 0;
-        background-color: #F5F5F5;
+        background-color: #2E2E2E;
         padding-left: 10px;
-        border: 1px dotted #CCC;
         margin: 10px 10px 0 0;
-        padding: 7px;
+        padding: 12px;
         border-radius: 15px;
         cursor: pointer;
         opacity: 0.85;
-        transition: top 0.2s, left 0.2s, opacity 0.2s;
+        transition: all 0.2s;
     }
 
-    .tag:hover {
-        background-color: #EEE;
+    .effectDescription__tag:hover {
         opacity: 1;
+        box-shadow: 5px 5px 3px #AAA;
         top: -5px;
         left: -5px;
     }
