@@ -30,6 +30,11 @@
 
 <script>
 export default {
+    head () {
+      return {
+        title: "Admin – Effect Index",
+      }
+    },
   scrollToTop: true
 }
 </script>

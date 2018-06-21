@@ -43,6 +43,11 @@ import ExtLink from '@/components/ExtLink';
 export default {
     components: {
         ExtLink
+    },
+    head () {
+      return {
+        title: "About – Effect Index",
+      }
     }
 }
 </script>

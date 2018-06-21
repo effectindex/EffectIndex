@@ -49,6 +49,11 @@ export default {
             return (selected_effect) ? selected_effect['name'] : '';
         }
     },
+    head () {
+      return {
+        title: "Replications – Effect Index",
+      }
+    },
     async fetch ({ store, params }) { await store.dispatch('getGallery'); }
 }
 </script>

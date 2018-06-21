@@ -21,6 +21,11 @@ import ExtLink from '@/components/ExtLink';
 export default {
     components: {
         ExtLink
+    },
+    head () {
+      return {
+        title: "Donate – Effect Index",
+      }
     }
 }
 </script>

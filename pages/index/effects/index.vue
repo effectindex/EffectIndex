@@ -13,6 +13,11 @@ export default {
     components: {
         EffectsSidebar
     },
+    head () {
+      return {
+        title: "Effects – Effect Index",
+      }
+    },
     async fetch({ store }) {
         await store.dispatch('getEffects');
     }

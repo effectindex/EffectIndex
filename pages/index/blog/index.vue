@@ -21,6 +21,11 @@
         methods: { 
             async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); }
         },
+        head () {
+        return {
+            title: "Blog – Effect Index",
+        }
+        },
         async fetch ( { store } ) { await store.dispatch('getBlogPosts'); }
     }
 </script>

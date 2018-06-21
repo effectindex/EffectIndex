@@ -28,6 +28,11 @@ import ExtLink from '@/components/ExtLink';
 export default {
     components: {
         ExtLink
+    },
+    head () {
+      return {
+        title: "Discord – Effect Index",
+      }
     }
 }
 </script>
