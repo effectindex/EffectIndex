@@ -1,6 +1,11 @@
+const chalk = require('chalk');
+const log = console.log;
+
 const express = require('express');
 const { Nuxt, Builder } = require('nuxt');
 const bodyParser = require('body-parser');
+
+const mongoose = require('mongoose');
 
 const api = require('./models/');
 
@@ -30,12 +35,40 @@ async function start() {
   if (config.dev) {
     const builder = new Builder(nuxt)
     await builder.build()
-  } 
+  }
+
   // Listen the server
-  app.listen(port, host)
-  console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console
+  log(chalk.yellow("Attempting mongoose connection..."));
+
+  mongoose.connect(config.server.mongooseUri, { reconnectTries: 5 }, function(err, db) {
+    if (!err) {
+      console.clear();
+      log(logo);
+      log(chalk.green("Connected to database: ") + db.name);
+      app.listen(port, host);
+      log(chalk.green.bold('Effect Index up on ' + host + ':' + port)) // eslint-disable-line no-console
+    } else {
+      log(chalk.red.bold('Error connecting to database.'));
+      process.exit(1);
+    }
+  });
+
 }
 
-
-
 start();
+
+let logo = chalk.grey(`
+                   ddddhyyyyyhdddd                                           
+              ddhs+:.\`         \`.:+shdd                                      
+            ddy/-\`    ${chalk.red(`.:+syyys+:\``)}     ./shd                                   
+          dy/.      ${chalk.keyword('orange')(`-ohhs+/:/ohddo.`)}      \`:sdd                                
+        ds-\`       ${chalk.keyword('yellow')(`:hd+.    `) + chalk.white(`-yd`) + chalk.keyword('yellow')(` ddh:`)}        .+hd                              
+      ds-         ${chalk.green(`.sd+\`     `) + chalk.white(`.+ys/`) + chalk.green(`+ds.`)}         .od                             
+      y-          ${chalk.blue(`:yd:           /dy-`)}          -y                             
+      h/.        ${chalk.keyword('indigo')(`.sdo.         .ods.`)}        \`:y                              
+        dh+.       ${chalk.keyword('violet')(`-sdy:\`     .:yds-`)}       \`:yd                               
+          hs:.     ${chalk.red(`\`/shhysosyhhs:\``)}     \`-ohd                                 
+            dhs+-\`    ${chalk.keyword('orange')(`.-/+++/-.`)}    \`-/shd                                    
+                dhyo+:-.......-:+oyhd                                        
+                      dddhhhddd
+                      `);               

@@ -1,7 +1,3 @@
-const mongoose = require('mongoose');
-const config = require('../../nuxt.config.js');
-mongoose.connect(config.server.mongooseUri);
-
 const express = require('express');
 const router = express.Router();
 const auth = require('./auth/index'),
