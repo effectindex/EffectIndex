@@ -15,7 +15,10 @@ const createStore = () => {
         replications: [],
         replicated_effects: []
       },
-      blogPosts: []
+      blogPosts: [],
+      admin: {
+        userlist: []
+      }
     },
     mutations: mutations,
     actions: actions

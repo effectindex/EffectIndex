@@ -23,5 +23,8 @@ export default {
     },
     set_replications (state, replications) {
       state.replications = replications;
+    },
+    set_admin_user_list (state, userlist) {
+      state.admin.userlist = userlist;
     }
 };

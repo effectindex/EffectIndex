@@ -98,5 +98,15 @@ export default {
     },
     setGallerySelectedEffect({ commit }, effectId) {
       commit ('set_gallery_selected_effect', effectId);
+    },
+    // Users
+    async getAllUsers({ commit }) {
+      try {
+        let userList = await this.$axios.$get('/api/users/');
+        console.log(userList);
+        commit ('set_admin_user_list', userList);
+      } catch (error) {
+        throw new Error(error);
+      }
     }
 };

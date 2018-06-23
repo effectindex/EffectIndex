@@ -1,15 +1,18 @@
-const slug = require('mongoose-slug-generator');
-
 const mongoose = require('mongoose');
-mongoose.plugin(slug);
 
 const User = mongoose.model('User', {
-    username: String,
+    username: {
+        type: String,
+        unique: true
+    },
     password: String,
     role: {
         type: String,
-        enum: ['admin', 'artist', 'user']
-    }
+        enum: ['admin', 'artist', 'editor', 'user']
+    },
+    firstName: String,
+    lastName: String,
+    url: String
 })
 
 module.exports = User;

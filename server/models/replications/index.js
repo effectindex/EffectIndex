@@ -8,16 +8,9 @@ const API_Error = require('../ApiError');
 const Replication = require('./Replication');
 const Effect = require('../effects/Effect');
 
-function kebab(text) {
-    return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
-}
-
 router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) => {
 
     try {
-
-        
-
         let r = req.body.replication;
 
         const replication = new Replication({
