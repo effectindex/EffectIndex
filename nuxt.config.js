@@ -62,7 +62,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    ['@nuxtjs/pwa', { icon: false }],
+    '@nuxtjs/pwa',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/font-awesome',
