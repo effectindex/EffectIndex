@@ -73,6 +73,7 @@ export default {
         ExtLink,
         Tag
     },
+    scrollToTop: true,
     methods: {
         async deleteEffect(id) {
             try {
