@@ -51,8 +51,11 @@
                         v-for="(image, index) in imageSet"
                         @mousedown="selectImage(index)"
                         :key="index">
-                        <img v-if="image.type === 'image'" class="lightBox__thumbnailImage" ref="activeThumbnail"
+                        <img v-if="(image.type === 'image')" class="lightBox__thumbnailImage" ref="activeThumbnail"
                             :src="base + '/thumbnails/' + image.resource"
+                            :class="current_image === index ? {active: true}: {}" />
+                        <img v-else-if="(image.thumbnail)" class="lightBox__thumbnailImage" ref="activeThumbnail"
+                            :src="base + '/thumbnails/' + image.thumbnail"
                             :class="current_image === index ? {active: true}: {}" />
                         <img v-else-if="image.type === 'gfycat'" class="lightBox__thumbnailImage" ref="activeThumbnail"
                             :src="'http://thumbs.gfycat.com/' + image.resource + '-thumb100.jpg'"
