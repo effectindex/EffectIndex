@@ -8,6 +8,7 @@
             { "name": "New Blog", "location": "/blog/new" },
             { "name": "List Replications", "location": "/replications/list" },
             { "name": "List Effects", "location": "/effects/list" },
+            { "name": "Users", "location": "/admin/users" },
             { "name": "Logout", "location": "/admin/logout" }
         ]
     },

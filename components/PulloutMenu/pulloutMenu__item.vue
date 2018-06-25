@@ -1,5 +1,5 @@
 <template>
-    <div class="pulloutMenu__itemContainer">
+    <li class="pulloutMenu__itemContainer">
         <a v-if="!children" :href="location"> {{ name }} </a>
         <a v-else @click="toggleExpanded()">
             <span v-if="!expanded"> + </span> 
@@ -12,7 +12,7 @@
                 <a v-else :href="child.location" target="_blank"> {{ child.name }} </a>
             </li>
         </ol>
-    </div>
+    </li>
 </template>
 
 <script>

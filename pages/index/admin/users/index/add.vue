@@ -65,7 +65,7 @@ export default {
                 this.success = true;
             } catch (err) {
                 this.error.didError = true;
-                if ('name' in err.response.data) this.error.name = err.response.data['name'];
+                if ('message' in err.response.data) this.error.name = err.response.data['message'];
                 this.$refs.submitButton.enabled = true;
             }
             

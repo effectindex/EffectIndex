@@ -33,7 +33,9 @@
     "mongoose-slug-generator": "^1.0.4",
     "npm": "^5.10.0",
     "nuxt": "^1.4.1",
-    "vue-scrollto": "^2.11.0"
+    "vue-scrollto": "^2.11.0",
+    "vuejs-datepicker": "^1.5.2",
+    "wavesurfer.js": "^2.0.6"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.4",

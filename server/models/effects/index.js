@@ -53,7 +53,7 @@ router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) 
 
 router.get('/', async (req, res) => {
     try {
-        let effects = await Effect.find().select('name url tags').sort({name: 1}).exec();
+        let effects = await Effect.find().sort({name: 1}).exec();
         res.send({effects});
     } catch (error) {
         res.status(500).send({error});

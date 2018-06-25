@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import WaveSurfer from 'wavesurfer.js';
+
 export default {
     data() {
         return {

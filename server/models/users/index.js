@@ -7,7 +7,7 @@ const API_Error = require('../ApiError');
 
 const User = require('./User');
 
-router.post('/add', protected({secret: config.server.jwtSecret}), async (req, res) => {
+router.post('/add', protected({secret: config.server.jwtSecret}), async (req, res, next) => {
 
     const user = req.body.user;
 
@@ -17,12 +17,12 @@ router.post('/add', protected({secret: config.server.jwtSecret}), async (req, re
             let returnedUser = await newUser.save();
             res.send({user: returnedUser});
         } else {
-            throw API_Error("Invalid user data.")
+            throw API_Error("VALIDATION_ERROR", "New user data invalid.")
         }
     } catch (err) {
-        if (err.code === 11000) res.status(500).send(API_Error("Username already in use."));
-        if (err.name === 'ValidationError') res.status(500).send(API_Error("Validation Error."));
-        else res.status(500).send(err);
+        if (err.code === 11000) next(API_Error("DUPLICATE_USER_ERROR", "Username already in use."));
+        else if (err.name === 'ValidationError') next(API_Error("VALIDDDDATION_ERROR", "New user data invalid."));
+        else next(err);
     }
 });
 
@@ -34,7 +34,7 @@ router.get('/', protected({secret: config.server.jwtSecret}), async (req, res) =
         .exec();
         res.send(userList);
     } catch (err) {
-        res.status(500).send(err);
+        next(err);
     }
 
 });
@@ -45,11 +45,11 @@ router.post('/:id', protected({secret: config.server.jwtSecret}), async(req, res
     const userData = req.body.user;
 
     try {
-        if (!userData) throw API_Error("Invalid user data.");
+        if (!userData) throw API_Error("VALIDATION_ERROR", "New user data invalid.");
         let updatedUser = await User.findByIdAndUpdate(id, userData);
         res.send(updatedUser);
     } catch (err) {
-        res.status(500).send(err);
+        next(err);
     }
 
 });
@@ -62,7 +62,7 @@ router.delete('/:id', protected({secret: config.server.jwtSecret}), async (req, 
         let deletedUser = await User.findByIdAndRemove(id);
         res.send({user: deletedUser});
     } catch (err) {
-        res.status(500).send(err);
+        next(err);
     }
 });
 

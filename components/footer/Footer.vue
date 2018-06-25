@@ -7,8 +7,8 @@
             <a href="https://open.spotify.com/user/214qnn2x7bvwziyqdwfkqedja"><img src="/sm-icon-spotify.svg" height="32" width="32" /></a>
         </div>
         <div class="footer__secret">
-        <p> disregardeverythingisay@gmail.com </p>
-        <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
+            <p> disregardeverythingisay@gmail.com </p>
+            <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
         </div>
     </footer>
 </template>

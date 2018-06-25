@@ -16,16 +16,13 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', 'type': 'text/css', href: 'https://fonts.googleapis.com/css?family=Titillium+Web:400i,700,700i,400' }
-    ],
-    script: [
-      { src: "//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/2.0.5/wavesurfer.min.js" } 
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#FFFFFF' },
 
   /*
   ** Global CSS
@@ -49,7 +46,24 @@ module.exports = {
         // tokenType: 'bearer',
       }
     }
-  },  
+  },
+
+  workbox: {
+    runtimeCaching: [
+        {
+            urlPattern: 'https://fonts.googleapis.com/.*',
+            handler: 'cacheFirst',
+            method: 'GET',
+            strategyOptions: {cacheableResponse: {statuses: [0, 200]}}
+        },
+        {
+            urlPattern: 'https://fonts.gstatic.com/.*',
+            handler: 'cacheFirst',
+            method: 'GET',
+            strategyOptions: {cacheableResponse: {statuses: [0, 200]}}
+        },
+    ]
+  },
 
   /*
   ** Plugins to load before mounting the App

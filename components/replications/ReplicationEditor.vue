@@ -109,6 +109,7 @@ import AudioPlayer from '@/components/AudioPlayer/AudioPlayer.vue';
                     id: this.id,
                     type: this.type,
                     resource: this.resource,
+                    thumbnail: this.thumbnail,
                     title: this.title,
                     artist: this.artist,
                     artist_url: this.artist_url,

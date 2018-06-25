@@ -1,10 +1,10 @@
 <template>
   <div :class="'navbarPullout ' + ($store.state.navbar_pullout ? 'active' : '')">
     <div class="navbarPullout__menu">
-        <ol v-for="(item, name) in $store.state.navigation" :key="name">
+        <ul v-for="(item, name) in $store.state.navigation" :key="name">
             <pullout-item :name="name" :location="item.location" :children="item.children" />
-        </ol>
-        <ol> <donate-button style="margin-top: 1.5em;" /> </ol>
+        </ul>
+        <donate-button style="margin-top: 1.5em; margin-left: 40px;" />
     </div>
   </div>
 </template>
@@ -38,9 +38,10 @@ export default {
         padding: 20px 0;
     }
 
-    .navbarPullout__menu > ol {
+    .navbarPullout__menu > ul {
         text-transform: uppercase;
         margin-top: 8px;
+        list-style: none;
     }
 
 </style>

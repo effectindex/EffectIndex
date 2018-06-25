@@ -19,7 +19,12 @@
         <ul>
           <li> <nuxt-link to="/blog/new"> New Blog Entry </nuxt-link> </li>
           <li> <nuxt-link to="/blog"> See all Entries </nuxt-link> </li>
-        </ul>         
+        </ul>
+        <h3> User Management </h3>
+        <ul>
+          <li> <nuxt-link to="/admin/users/list"> User List </nuxt-link> </li>
+          <li> <nuxt-link to="/admin/users/add"> Add User </nuxt-link> </li>
+        </ul>      
     </div>
     <nuxt-link v-if="!$auth.loggedIn" to="/admin/login"> Log in </nuxt-link>
     <nuxt-link v-else to="/admin/logout"> Log out </nuxt-link>

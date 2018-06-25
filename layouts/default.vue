@@ -6,6 +6,7 @@
 
 @font-face {
   font-family: 'proxima-nova';
+  font-display: swap;
   src: url('/fonts/proxima-nova-medium.woff2')
 }
 
