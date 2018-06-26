@@ -55,7 +55,7 @@
                 <div>
                     <label> Gallery Order </label>
                     <ol v-if="!gallery_order.length">
-                        <li v-for="(replication, index) in associated_replications" :key="replication._id"> g
+                        <li v-for="(replication, index) in associated_replications" :key="replication._id">
                             {{ replication.title }}
                             <a @click="moveReplicationUp(index)"> Up </a>
                             | <a @click="moveReplicationDown(index)"> Down </a>
