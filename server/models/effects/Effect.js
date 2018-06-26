@@ -9,6 +9,7 @@ const Effect = mongoose.model('Effect', {
     tags: Array,
     description_raw: String,
     description_formatted: String,
+    gallery_order: Array,
     summary_raw: String,
     summary_formatted: String,
     analysis_raw: String,

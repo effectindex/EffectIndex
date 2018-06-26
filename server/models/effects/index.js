@@ -88,6 +88,7 @@ router.post('/:id', async (req, res) => {
             see_also: req.body.see_also,
             tags: req.body.tags,
             citations: req.body.citations,
+            gallery_order: req.body.gallery_order,
         }, { new: true }).exec();
         
         res.send({ effect: updatedEffect });

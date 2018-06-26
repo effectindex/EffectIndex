@@ -48,7 +48,7 @@
             <div class="lightBox__thumbnailReel" ref="thumbnailReel">
                 <div ref="thumbnailContainer" class="lightBox__thumbnailContainer" :style="'left: ' + thumbnailOffset + 'px;'">
                     <span
-                        v-for="(image, index) in imageSet"
+                        v-for="(image, index) in thumbs"
                         @mousedown="selectImage(index)"
                         :key="index">
                         <img v-if="(image.type === 'image')" class="lightBox__thumbnailImage" ref="activeThumbnail"
@@ -82,10 +82,24 @@ export default {
     },
     computed: {
         currentImage () {
-            if (this.imageSet.length > 0) {
+            if (this.thumbs.length > 0) {
+                if (this.current_image <= (this.thumbs.length - 1)) return this.thumbs[this.current_image];
+                else return this.imageSet[this.thumbs.length - 1];              
+            } else if (this.imageSet.length > 0) {
                 if (this.current_image <= (this.imageSet.length - 1)) return this.imageSet[this.current_image];
                 else return this.imageSet[this.imageSet.length - 1];
             } else return {};
+        },
+        thumbs () {
+            if (this.order.length) {
+                let thumbs = [];
+                this.order.forEach((order) => {
+                    thumbs.push(this.imageSet.find((image) => image._id === order._id));
+                });
+                return thumbs;
+            } else {
+                return this.imageSet;
+            }
         }
     },
     watch: {
@@ -101,7 +115,6 @@ export default {
     },
     methods: {
         updateThumbnailOffset() {
-            console.log('meep');
             setTimeout(() => {
             if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
 
@@ -111,13 +124,6 @@ export default {
                 this.thumbnailOffset = (thumbnailReel.offsetWidth / 2)
                 - currentImage.offsetLeft
                 - (currentImage.offsetWidth / 2);
-
-                // if (this.thumbnailOffset > 0) this.thumbnailOffset = 0;
-
-                // if ((this.$refs.thumbnailContainer.lastChild.offsetLeft + this.$refs.thumbnailContainer.lastChild.offsetWidth) <
-                // this.$refs.thumbnailReel.offsetWidth) this.thumbnailOffset = (this.$refs.thumbnailReel.offsetWidth - (this.$refs.thumbnailContainer.lastChild.offsetLeft
-                // + this.$refs.thumbnailContainer.lastChild.offsetWidth)) / 2;
-    
             }}, 0);
         },
         selectImage(index) {
@@ -140,6 +146,10 @@ export default {
             type: String
         },
         imageSet: {
+            default: () => [],
+            type: Array
+        },
+        order: {
             default: () => [],
             type: Array
         },

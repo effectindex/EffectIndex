@@ -42,8 +42,8 @@ router.get('/gallery', async (req, res) => {
         let replications = await Replication.find().exec();
         let replicated_effects = await Effect.find(
             { _id: { $in: await Replication.distinct("associated_effects") } })
-        .select('name');
-        res.send({ replications, replicated_effects})
+        .select('name gallery_order');
+        res.send({ replications, replicated_effects })
     } catch (error) {
         res.status(500).send({error});
     }

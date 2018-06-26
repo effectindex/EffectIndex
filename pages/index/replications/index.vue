@@ -24,7 +24,9 @@
     <effect-selector :effects="replicated_effects" :selected="selected_effect" />
     <h3 style="text-align: center;"> {{ selected_effect_name }} </h3>
     <light-box
-        :imageSet="replications.filter((effect) => effect.associated_effects.indexOf(selected_effect) >= 0)" base="/gallery/"
+        :imageSet="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect) >= 0)"
+        :order="replicated_effects.find((effect) => (effect._id === selected_effect))['gallery_order']"
+        base="/gallery/"
         />
 
 </div>

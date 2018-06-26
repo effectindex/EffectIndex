@@ -50,7 +50,25 @@
                 <div>
                     <label> Tags </label>
                     <tag-input v-model="tags" />
-                </div>  
+                </div>
+
+                <div>
+                    <label> Gallery Order </label>
+                    <ol v-if="!gallery_order.length">
+                        <li v-for="(replication, index) in associated_replications" :key="replication._id"> g
+                            {{ replication.title }}
+                            <a @click="moveReplicationUp(index)"> Up </a>
+                            | <a @click="moveReplicationDown(index)"> Down </a>
+                        </li>
+                    </ol>
+                    <ol v-else>
+                        <li v-for="(replication, index) in gallery_order" :key="replication._id">
+                            {{ replication.title }}
+                            <a @click="moveReplicationUp(index)"> Up </a>
+                            | <a @click="moveReplicationDown(index)"> Down </a>
+                        </li>
+                    </ol>
+                </div>
 
             </div>
 
@@ -83,8 +101,18 @@
                 see_also: this.effect ? this.effect.see_also : [],
                 tags: this.effect ? this.effect.tags : [],
                 summary: this.effect ? this.effect.summary_raw : '',
-                analysis: this.effect ? this.effect.analysis_raw : ''
+                analysis: this.effect ? this.effect.analysis_raw : '',
+                gallery_order: this.effect ? this.effect.gallery_order : [],
             }
+        },
+        computed: {
+            associated_replications()  {
+                let replications =  this.$store.state.gallery.replications;
+                return replications.filter((replication) => replication.associated_effects.indexOf(this.id) >= 0)
+            }  
+        },
+        mounted () {
+            this.$store.dispatch('getGallery');
         },
         methods: {
             toggleDetails() {
@@ -101,8 +129,30 @@
                     see_also: this.see_also,
                     tags: this.tags,
                     summary: this.summary,
-                    analysis: this.analysis
+                    analysis: this.analysis,
+                    gallery_order: this.gallery_order
                 });
+            },
+            makeGalleryOrder() {
+                this.associated_replications.forEach((replication) => {
+                    this.gallery_order.push({_id: replication._id, title: replication.title})
+                });
+            },
+            moveReplicationDown(index) {
+                if (!this.gallery_order.length) this.makeGalleryOrder();
+                if (index < (this.gallery_order.length - 1)) {
+                    let swap = this.gallery_order[index];
+                    this.gallery_order.splice(index, 1, this.gallery_order[index + 1]);
+                    this.gallery_order.splice(index + 1, 1, swap);
+                }
+            },
+            moveReplicationUp(index) {
+                if (!this.gallery_order.length) this.makeGalleryOrder();
+                if (index > 0) {
+                    let swap = this.gallery_order[index];
+                    this.gallery_order.splice(index, 1, this.gallery_order[index - 1]);
+                    this.gallery_order.splice(index - 1, 1, swap);
+                }
             }
         },
         props: ['effect'],
