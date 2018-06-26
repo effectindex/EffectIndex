@@ -18,7 +18,7 @@
         background-color: #2E2E2E;
         padding-left: 10px;
         margin: 10px 10px 0 0;
-        padding: 12px;
+        padding: 6px 12px;
         border-radius: 15px;
         cursor: pointer;
         opacity: 0.85;

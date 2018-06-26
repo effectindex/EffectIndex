@@ -57,15 +57,17 @@
                     <ol v-if="!gallery_order.length">
                         <li v-for="(replication, index) in associated_replications" :key="replication._id">
                             {{ replication.title }}
-                            <a @click="moveReplicationUp(index)"> Up </a>
+                            [<a @click="moveReplicationUp(index)">Up </a>
                             | <a @click="moveReplicationDown(index)"> Down </a>
+                            | <a @click="removeReplication(index)"> Remove</a>]
                         </li>
                     </ol>
                     <ol v-else>
-                        <li v-for="(replication, index) in gallery_order" :key="replication._id">
+                        <li v-for="(replication, index) in combined_order" :key="replication._id">
                             {{ replication.title }}
-                            <a @click="moveReplicationUp(index)"> Up </a>
+                            [<a @click="moveReplicationUp(index)">Up </a>
                             | <a @click="moveReplicationDown(index)"> Down </a>
+                            | <a @click="removeReplication(index)"> Remove</a>]
                         </li>
                     </ol>
                 </div>
@@ -106,6 +108,16 @@
             }
         },
         computed: {
+            combined_order() {
+                let combined = this.gallery_order;
+
+                this.associated_replications.forEach((replication) => {
+                    let foundInOrder = this.gallery_order.find((order_item) => order_item._id === replication._id);
+                    if (!foundInOrder) combined.push({ _id: replication._id, title: replication.title });
+                });
+
+                return combined;
+            },
             associated_replications()  {
                 let replications =  this.$store.state.gallery.replications;
                 return replications.filter((replication) => replication.associated_effects.indexOf(this.id) >= 0)
@@ -153,6 +165,10 @@
                     this.gallery_order.splice(index, 1, this.gallery_order[index - 1]);
                     this.gallery_order.splice(index - 1, 1, swap);
                 }
+            },
+            removeReplication(index) {
+                if (!this.gallery_order.length) this.makeGalleryOrder();
+                this.gallery_order.splice(index, 1);
             }
         },
         props: ['effect'],

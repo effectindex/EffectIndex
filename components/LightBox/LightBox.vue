@@ -93,10 +93,13 @@ export default {
         thumbs () {
             if (this.order.length) {
                 let thumbs = [];
-                this.order.forEach((order) => {
-                    thumbs.push(this.imageSet.find((image) => image._id === order._id));
+                this.order.forEach((order) => thumbs.push(this.imageSet.find((image) => image._id === order._id)));
+
+                let filteredImageSet = this.imageSet.filter((image) => {
+                    return !this.order.find((orderItem) => orderItem._id === image._id);
                 });
-                return thumbs;
+                console.log(filteredImageSet);
+                return thumbs.concat(filteredImageSet);
             } else {
                 return this.imageSet;
             }
