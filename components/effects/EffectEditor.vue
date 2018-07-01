@@ -109,7 +109,7 @@
         },
         computed: {
             combined_order() {
-                let combined = this.gallery_order;
+                let combined = this.gallery_order || [];
 
                 this.associated_replications.forEach((replication) => {
                     let foundInOrder = this.gallery_order.find((order_item) => order_item._id === replication._id);

@@ -40,7 +40,7 @@ async function start() {
   // Listen the server
   log(chalk.yellow("Attempting mongoose connection..."));
 
-  mongoose.connect(config.server.mongooseUri, { reconnectTries: 5 }, function(err, db) {
+  mongoose.connect(config.server.mongooseUri, function(err, db) {
     if (!err) {
       console.clear();
       log(logo);
@@ -62,8 +62,10 @@ let logo = chalk.grey(`
               ddhs+:.\`         \`.:+shdd                                      
             ddy/-\`    ${chalk.red(`.:+syyys+:\``)}     ./shd                                   
           dy/.      ${chalk.keyword('orange')(`-ohhs+/:/ohddo.`)}      \`:sdd                                
-        ds-\`       ${chalk.keyword('yellow')(`:hd+.    `) + chalk.white(`-yd`) + chalk.keyword('yellow')(` ddh:`)}        .+hd                              
-      ds-         ${chalk.green(`.sd+\`     `) + chalk.white(`.+ys/`) + chalk.green(`+ds.`)}         .od                             
+        ds-\`       ${chalk.keyword('yellow')(`:hd+.    `) + chalk.white(`-yd`)
+         + chalk.keyword('yellow')(` ddh:`)}        .+hd                              
+      ds-         ${chalk.green(`.sd+\`     `) + chalk.white(`.+ys/`)
+       + chalk.green(`+ds.`)}         .od                             
       y-          ${chalk.blue(`:yd:           /dy-`)}          -y                             
       h/.        ${chalk.keyword('indigo')(`.sdo.         .ods.`)}        \`:y                              
         dh+.       ${chalk.keyword('violet')(`-sdy:\`     .:yds-`)}       \`:yd                               

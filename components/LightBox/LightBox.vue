@@ -9,7 +9,9 @@
                         v-if="currentImage.resource && (currentImage.type === 'image')"
                         :key="currentImage.resource"
                         class="lightBox__image"
-                        :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'">
+                        :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'"
+                        @click="openImage(currentImage.resource)"
+                        >
                         <image-details 
                                 :title="currentImage.title"
                                 :artist="currentImage.artist"
@@ -75,6 +77,7 @@ export default {
         return {
             current_image: 0,
             thumbnailOffset: 0,
+            thumbs: []
         }
     },
     components: {
@@ -89,34 +92,34 @@ export default {
                 if (this.current_image <= (this.imageSet.length - 1)) return this.imageSet[this.current_image];
                 else return this.imageSet[this.imageSet.length - 1];
             } else return {};
-        },
-        thumbs () {
-            if (this.order.length) {
-                let thumbs = [];
-                this.order.forEach((order) => thumbs.push(this.imageSet.find((image) => image._id === order._id)));
-
-                let filteredImageSet = this.imageSet.filter((image) => {
-                    return !this.order.find((orderItem) => orderItem._id === image._id);
-                });
-                console.log(filteredImageSet);
-                return thumbs.concat(filteredImageSet);
-            } else {
-                return this.imageSet;
-            }
         }
     },
     watch: {
         imageSet: function(oldImageSet, newImageSet) {
             this.current_image = 0;
+            this.updateThumbs();
         }
     },
     mounted() {
+        this.updateThumbs();
         this.updateThumbnailOffset();
     },
     updated() {
         this.updateThumbnailOffset();
     },
     methods: {
+        updateThumbs() {
+            if (this.order.length) {
+                let thumbs = [];
+                this.order.forEach((order) => thumbs.push(this.imageSet.find((image) => image._id === order._id)));
+                let filteredImageSet = this.imageSet.filter((image) => {
+                    return !this.order.find((orderItem) => orderItem._id === image._id);
+                });
+                this.thumbs = thumbs.concat(filteredImageSet);
+            } else {
+                this.thumbs = this.imageSet;
+            }     
+        },
         updateThumbnailOffset() {
             setTimeout(() => {
             if (this.$refs.thumbnailReel && this.$refs.activeThumbnail) {
@@ -142,7 +145,8 @@ export default {
 
             else this.current_image = (this.current_image - 1)
             this.updateThumbnailOffset();
-        }
+        },
+        openImage(url) { window.open('/gallery/' + url);  }
     },
     props: {
         title: {
@@ -205,6 +209,7 @@ export default {
 
     .lightBox__image {
         display: inline-block;
+        cursor: pointer;
         position: absolute;
         left: 0;
         top: 0;

@@ -15,6 +15,9 @@
                     case 'string':
                         return createElement('span', { style: { whiteSpace: 'pre-wrap' }}, element.value);
                         break;
+                    case 'bullet':
+                        return createElement('span', { class: 'bullet' }, element.value);
+                        break;
                     case 'ref':
                         return createElement(Reference, { props: element.props });
                         break;

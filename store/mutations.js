@@ -26,5 +26,8 @@ export default {
     },
     set_admin_user_list (state, userlist) {
       state.admin.userlist = userlist;
+    },
+    set_invitations (state, invitations) {
+      state.admin.invitations = invitations;
     }
 };

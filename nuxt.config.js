@@ -121,6 +121,7 @@ module.exports = {
   
   server: {
     jwtSecret: 'a00znn302mMM#sn33az',
+    salt: 'z99zm2m0a0h3b8gf8llx$kd9',
     users: [
       {
         username: 'josie',

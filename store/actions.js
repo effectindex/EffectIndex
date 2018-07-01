@@ -103,8 +103,16 @@ export default {
     async getAllUsers({ commit }) {
       try {
         let userList = await this.$axios.$get('/api/users/');
-        console.log(userList);
         commit ('set_admin_user_list', userList);
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+    // Invitations
+    async getInvitations({ commit }) {
+      try {
+        let invitations = await this.$axios.$get('/api/invitations/');
+        commit ('set_invitations', invitations);
       } catch (error) {
         throw new Error(error);
       }

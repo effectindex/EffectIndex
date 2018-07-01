@@ -5,7 +5,7 @@ const User = mongoose.model('User', {
         type: String,
         unique: true
     },
-    password: String,
+    hash: String,
     role: {
         type: String,
         enum: ['admin', 'artist', 'editor', 'user']

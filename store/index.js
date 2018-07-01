@@ -17,7 +17,8 @@ const createStore = () => {
       },
       blogPosts: [],
       admin: {
-        userlist: []
+        userlist: [],
+        invitations: []
       }
     },
     mutations: mutations,

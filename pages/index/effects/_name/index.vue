@@ -158,6 +158,17 @@ hr {
     clear: both;
 }
 
+.formattedDocument .bullet {
+    padding-left: 3em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.formattedDocument .bullet::before {
+    content: '●';
+    padding-right: 1em;
+}
+
 
 
 </style>

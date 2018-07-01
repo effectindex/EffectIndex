@@ -33,15 +33,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-    .admin__userListTable thead {
-        font-weight: bold;
-    }
-
-    .admin__userListTable td {
-        min-width: 150px;
-    }
-
-</style>
-

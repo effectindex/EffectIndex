@@ -8,16 +8,23 @@ const auth = require('./auth/index'),
       invitations = require('./invitations/index');
 
 
-router.use('/auth', auth);
-router.use('/blog', blog);
-router.use('/effects', effects);
-router.use('/replications', replications);
-router.use('/users', users);
-router.use('/invitations', invitations);
+router.use('/auth', auth)
+      .use('/blog', blog)
+      .use('/effects', effects)
+      .use('/replications', replications)
+      .use('/users', users)
+      .use('/invitations', invitations)
+      
+      .use(function (err, req, res, next) {
 
-router.use(function (err, req, res, next) {
-      let error = (err['type'] === 'API' ? { name: err.name, message: err.message} : err)
-      res.status(500).send(error);
+      if (err['type'] === 'API') {
+            let error = { name: err['name'], message: err['message'] };
+            res.status(400).send({ error });
+      } else {
+            console.log(err);
+            res.status(500).send(err);
+      }
+
 });
 
 module.exports = router;
