@@ -10,7 +10,7 @@ const Invitation = mongoose.model('Invitation', {
         type: Boolean,
         default: false,
     },
-    used_by: {
+    usedBy: {
         type: String
     }
 })

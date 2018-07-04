@@ -106,6 +106,10 @@ input {
     padding: 5px;
 }
 
+input[type=checkbox] {
+    width: auto;
+}
+
 button {
     margin-right: 1em;
 }

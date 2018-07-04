@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="adminManagement">
         <nuxt-child />
     </div>
 </template>
@@ -7,7 +7,7 @@
 <style>
 
 
-   label {
+   .adminManagement label {
         display: block;
         margin: 1em 0;
         font-family: 'proxima-nova';
@@ -15,7 +15,7 @@
         letter-spacing: 1px;
     }
 
-    input {
+    .adminManagement input {
         font-family: 'Titillium Web';
         border: 1px solid #CCCCCC;
         padding: 0.5em 1em;
@@ -24,7 +24,7 @@
         margin-top: 5px;
     }
 
-    select {
+    .adminManagement select {
         width: 20em;
         font-size: 16px;
         font-family: 'proxima-nova';
@@ -32,7 +32,7 @@
         border: 1px solid #CCCCCC;
     }
 
-    button {
+    .adminManagement button {
         font-family: 'proxima-nova';
         display: inline-block;
         font-size: 16px;
@@ -46,16 +46,16 @@
         cursor: pointer;
     }
 
-    button:hover {
+    .adminManagement button:hover {
         opacity: 1;
     }
 
-    .errorMessage {
+    .adminManagement .errorMessage {
         font-weight: bold;
         color: red;
     }
 
-    .success {
+    .adminManagement .success {
         color: green;
     }
 

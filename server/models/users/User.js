@@ -6,6 +6,7 @@ const User = mongoose.model('User', {
         unique: true
     },
     hash: String,
+    used_by: String,
     scope: {
         type: Object,
         default: {

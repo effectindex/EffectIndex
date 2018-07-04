@@ -10,8 +10,9 @@
             <tr v-for="invitation in invitations" :key="invitation._id">
                 <td> {{ formatDate(invitation.created) }} </td>
                 <td> {{ Boolean(invitation.used) ? 'Yes' : 'No' }} </td>
-                <td> {{ Boolean(invitation.used) ? invitation.used_by : '' }} </td>
-                <td> {{ hostname + 'user/register/' + invitation._id }} </td>
+                <td> {{ Boolean(invitation.used) ? invitation.usedBy : '' }} </td>
+                <td> {{ hostname + (hostname.charAt(hostname.length -1) === '/' ? '' :'/')
+            + 'user/register/' + invitation._id }} </td>
                 <td> <a class="delete" @click="deleteInvitation(invitation._id)"> Delete </a> </td>
             </tr>
 

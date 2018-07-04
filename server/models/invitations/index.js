@@ -14,7 +14,6 @@ router.post('/generate', protected({secret: config.server.jwtSecret}), hasRoles(
     try {
         
         let invitation = new Invitation({ expiration });
-        console.log(invitation);
         let returnedInvitation = await invitation.save()
             .catch((err) => { console.log(err); throw API_Error("SAVE_ERROR", "The invitation failed to save."); });
         res.send({ invitation: returnedInvitation });

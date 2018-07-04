@@ -59,7 +59,7 @@ router.post('/register', async (req, res, next) => {
 
         let returnedUser = await newUser.save();
    
-        if (returnedUser && invitation) await invitation.update({ used: true }).exec();
+        if (returnedUser && invitation) await invitation.update({ used: true, usedBy: returnedUser.username }).exec();
 
         res.send({ user: { username: returnedUser.username, _id: returnedUser._id } });
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="pageContent">
+    <div class="pageContent userManagement">
         <h1> User Management </h1>
         <nuxt-link class="userManagement__link" to="/admin/users/list"> List Users </nuxt-link>
         <nuxt-link class="userManagement__link" to="/admin/users/invite"> Invite Users </nuxt-link>
@@ -22,7 +22,7 @@
         margin-right: 1em;
     }
 
-   label {
+   .userManagement label {
         display: block;
         margin: 1em 0;
         font-family: 'proxima-nova';
@@ -31,7 +31,7 @@
 
     }
 
-    input {
+    .userManagement input {
         font-family: 'Titillium Web';
         border: 1px solid #CCCCCC;
         padding: 0.5em 1em;
@@ -39,7 +39,11 @@
         width: 100%;
     }
 
-    select {
+    .userManagement input[type=checkbox] {
+        width: auto;
+    }
+
+    .userManagement select {
         width: 20em;
         font-size: 16px;
         font-family: 'proxima-nova';
@@ -47,7 +51,7 @@
         border: 1px solid #CCCCCC;
     }
 
-    button {
+    .userManagement button {
         font-family: 'proxima-nova';
         display: inline-block;
         font-size: 16px;
@@ -61,24 +65,24 @@
         cursor: pointer;
     }
 
-    button:hover {
+    .userManagement button:hover {
         opacity: 1;
     }
 
-    .errorMessage {
+    .userManagement .errorMessage {
         font-weight: bold;
         color: red;
     }
 
-    .success {
+    .userManagement .success {
         color: green;
     }
 
-    thead {
+    .userManagement thead {
         font-weight: bold;
     }
 
-    td {
+    .userManagement td {
         min-width: 150px;
     }
 
