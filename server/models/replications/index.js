@@ -4,11 +4,12 @@ const config = require ('../../../nuxt.config.js');
 const protected = require('express-jwt');
 
 const API_Error = require('../ApiError');
+const hasRoles = require('../HasRoles');
 
 const Replication = require('./Replication');
 const Effect = require('../effects/Effect');
 
-router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) => {
+router.post('/', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
 
     try {
         let r = req.body.replication;
@@ -70,7 +71,7 @@ router.get('/:url', async (req, res) => {
     }
 });
 
-router.post('/:id', async (req, res) => {
+router.post('/:id', hasRoles(['admin', 'editor']), async (req, res) => {
     try {
         if (!('replication' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.')
         let replication = req.body.replication;
@@ -95,7 +96,7 @@ router.post('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', hasRoles(['admin', 'editor']), async (req, res) => {
     try {
         let deletedReplication = await Replication.findByIdAndRemove(req.params.id).exec();
         res.send({ replication: deletedReplication });

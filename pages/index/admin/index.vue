@@ -26,8 +26,8 @@
           <li> <nuxt-link to="/admin/users/add"> Add User </nuxt-link> </li>
         </ul>      
     </div>
-    <nuxt-link v-if="!$auth.loggedIn" to="/admin/login"> Log in </nuxt-link>
-    <nuxt-link v-else to="/admin/logout"> Log out </nuxt-link>
+    <nuxt-link v-if="!$auth.loggedIn" to="/user/login"> Log in </nuxt-link>
+    <nuxt-link v-else to="/user/logout"> Log out </nuxt-link>
     <nuxt-child style="margin: 2em 0;" />
 </div>
 

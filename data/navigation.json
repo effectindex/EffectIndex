@@ -9,7 +9,7 @@
             { "name": "List Replications", "location": "/replications/list" },
             { "name": "List Effects", "location": "/effects/list" },
             { "name": "Users", "location": "/admin/users" },
-            { "name": "Logout", "location": "/admin/logout" }
+            { "name": "Logout", "location": "/user/logout" }
         ]
     },
     "Home": {
@@ -56,8 +56,8 @@
             },
             { "name": "DoseBot", "location": "/dosebot" },
             {
-                "name": "Admin",
-                "location": "/admin/"
+                "name": "Login",
+                "location": "/user/login"
             }
         ]
     },

@@ -40,7 +40,9 @@ export default {
     },
     computed: {
         disabledDates() { return { to: new Date(Date.now()) }; },
-        inviteURL() { return this.generatedInvitation ? this.hostname + 'user/register/' + this.generatedInvitation._id : ''; },
+        inviteURL() { return this.generatedInvitation ? this.hostname
+            + (this.hostname.charAt(this.hostname.length -1) === '/' ? '' :'/')
+            + 'user/register/' + this.generatedInvitation._id : ''; },
         hostname() { return this.$axios.defaults.baseURL; }
     },
     methods: {

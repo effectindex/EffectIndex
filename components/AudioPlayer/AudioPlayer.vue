@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import WaveSurfer from 'wavesurfer.js';
+let WaveSurfer = undefined;
+if (process.browser) WaveSurfer = require('wavesurfer.js');
 
 export default {
     data() {

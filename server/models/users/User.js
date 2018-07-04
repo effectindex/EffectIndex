@@ -6,13 +6,13 @@ const User = mongoose.model('User', {
         unique: true
     },
     hash: String,
-    role: {
-        type: String,
-        enum: ['admin', 'artist', 'editor', 'user']
-    },
-    firstName: String,
-    lastName: String,
-    url: String
+    scope: {
+        type: Object,
+        default: {
+            admin: false,
+            editor: false
+        }
+    }
 })
 
 module.exports = User;

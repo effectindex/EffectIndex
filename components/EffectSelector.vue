@@ -33,7 +33,6 @@ export default {
     cursor: pointer;
     padding: 0 1em;
     margin-left: 0;
-    border-right: 1px solid #EEE;
     text-transform: uppercase;
     letter-spacing: 1px;
 }

@@ -13,7 +13,6 @@
         font-family: 'proxima-nova';
         text-transform: uppercase;
         letter-spacing: 1px;
-
     }
 
     input {
@@ -22,6 +21,7 @@
         padding: 0.5em 1em;
         font-size: 16px;
         width: 100%;
+        margin-top: 5px;
     }
 
     select {

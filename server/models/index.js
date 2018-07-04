@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('./auth/index'),
-      blog = require('./blog/index'),
+const blog = require('./blog/index'),
       effects = require('./effects/index'),
       replications = require('./replications/index'),
       users = require('./users/index'),
       invitations = require('./invitations/index');
 
 
-router.use('/auth', auth)
-      .use('/blog', blog)
+router.use('/blog', blog)
       .use('/effects', effects)
       .use('/replications', replications)
       .use('/users', users)

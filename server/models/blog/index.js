@@ -4,10 +4,11 @@ const config = require ('../../../nuxt.config.js');
 const protected = require('express-jwt');
 
 const API_Error = require('../ApiError');
+const hasRoles = require('../HasRoles');
 
 const Post = require('./Post');
 
-router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) => {
+router.post('/', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
 
     try {
 
@@ -32,7 +33,7 @@ router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) 
 
 });
 
-router.post('/:id', protected({secret: config.server.jwtSecret}), async(req, res) => {
+router.post('/:id', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
 
    try {
 
@@ -50,7 +51,7 @@ router.post('/:id', protected({secret: config.server.jwtSecret}), async(req, res
     }
 });
 
-router.get('/:id/delete', protected({secret: config.server.jwtSecret}), async(req, res) => {
+router.get('/:id/delete', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
 
     try {
 

@@ -2,7 +2,7 @@
   <div :class="'navbarPullout ' + ($store.state.navbar_pullout ? 'active' : '')">
     <div class="navbarPullout__menu">
         <ul v-for="(item, name) in $store.state.navigation" :key="name">
-            <pullout-item :name="name" :location="item.location" :children="item.children" />
+            <pullout-item v-if="checkAccess(item)" :name="name" :location="item.location" :children="item.children" />
         </ul>
         <donate-button style="margin-top: 1.5em; margin-left: 40px;" />
     </div>
@@ -17,6 +17,14 @@ export default {
     components: {
         DonateButton,
         PulloutItem
+    },
+    methods: {
+        checkAccess(item) {
+            if (item.restricted) {
+                if (this.$auth.loggedIn) return true;
+                else return false;
+            } else return true;
+        }
     }
 }
 </script>

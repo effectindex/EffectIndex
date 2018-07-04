@@ -4,6 +4,7 @@ const config = require ('../../../nuxt.config.js');
 const protected = require('express-jwt');
 
 const API_Error = require('../ApiError');
+const hasRoles = require('../HasRoles');
 
 const Effect = require('./Effect');
 const Replication = require('../replications/Replication');
@@ -15,7 +16,7 @@ function kebab(text) {
     return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
 }
 
-router.post('/', protected({secret: config.server.jwtSecret}), async (req, res) => {
+router.post('/', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
 
     try {
 
@@ -72,7 +73,7 @@ router.get('/:url', async (req, res) => {
     }
 });
 
-router.post('/:id', async (req, res) => {
+router.post('/:id', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
     try {
         let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
             name: req.body.name,

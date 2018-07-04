@@ -32,20 +32,22 @@ module.exports = {
 
   auth: {
     redirect: {
-      login: '/admin/',
-      home: '/admin/',
-      logout: '/admin/'
+      login: '/user/login',
+      home: '/',
+      logout: '/'
     },
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
-          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+          login: { url: '/api/users/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/users/logout', method: 'post' },
+          user: { url: '/api/users/user', method: 'get', propertyName: 'user' }
         },
         // tokenRequired: true,
         // tokenType: 'bearer',
       }
-    }
+    },
+    scopeKey: 'scope'
   },
 
   workbox: {

@@ -4,10 +4,11 @@ const config = require ('../../../nuxt.config.js');
 const protected = require('express-jwt');
 
 const API_Error = require('../ApiError');
+const hasRoles = require('../HasRoles');
 
 const Invitation = require('./Invitation');
 
-router.post('/generate', protected({secret: config.server.jwtSecret}), async (req, res, next) => {
+router.post('/generate', protected({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
     let { expiration } = req.body;
 
     try {
@@ -23,7 +24,7 @@ router.post('/generate', protected({secret: config.server.jwtSecret}), async (re
     }
 });
 
-router.delete('/:id', protected({secret: config.server.jwtSecret}), async (req, res, next) => {
+router.delete('/:id', protected({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
     try {
         if ('id' in req.params) {
             let id = req.params.id;
@@ -36,7 +37,7 @@ router.delete('/:id', protected({secret: config.server.jwtSecret}), async (req, 
     }
 });
 
-router.get('/', protected({secret: config.server.jwtSecret}), async (req, res, next) => {
+router.get('/', protected({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
     try {
         let invitations = await Invitation.find().exec();
         res.send(invitations);

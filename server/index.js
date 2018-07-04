@@ -42,7 +42,6 @@ async function start() {
 
   mongoose.connect(config.server.mongooseUri, function(err, db) {
     if (!err) {
-      console.clear();
       log(logo);
       log(chalk.green("Connected to database: ") + db.name);
       app.listen(port, host);
