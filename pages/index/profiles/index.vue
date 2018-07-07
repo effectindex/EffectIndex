@@ -2,7 +2,7 @@
     <div class="pageContent">
         <h1> People </h1>
 
-        <p> This page lists the decription and portfolios of various dedicated individuals who have contributed significant amounts of work or something something something </p>
+        <p> This page lists the profiles of the Effect Index team and various dedicated individuals who have contributed significant amounts of work to this project. </p>
 
         <ul class="profileList">
             <li class="profileListItem" v-for="profile in profiles" :key="profile._id">
@@ -58,6 +58,7 @@ export default {
 }
 
 .profileImage {
+    border-radius: 50%;
     display: block;
     margin: 0 auto;
 }
