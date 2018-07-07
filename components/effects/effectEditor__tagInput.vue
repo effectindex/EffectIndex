@@ -22,7 +22,7 @@ export default {
         changeInput(e) {
             if (e.keyCode === 13) {
                 if (this.value.indexOf(e.target.value) === -1) {
-                    this.$emit('input', [e.target.value.trim()].concat(this.value).sort());
+                    this.$emit('input', [e.target.value.trim()].concat(this.value));
                 }
                 this.tagInputText = '';
             } else if (e.target.value.indexOf(',') > -1) {
@@ -36,7 +36,7 @@ export default {
                     }
                 });
 
-                this.$emit('input', newValue.concat(this.value).sort());
+                this.$emit('input', newValue.concat(this.value));
                 this.tagInputText = '';
             }
         },

@@ -74,7 +74,7 @@
         position: absolute;
         overflow: hidden;
         left: -20px;
-        z-index: 1;
+        z-index: 3;
         list-style: none;
         padding: 1em 0 1em 0;
         max-height: 0;
