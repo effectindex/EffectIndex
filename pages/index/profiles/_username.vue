@@ -2,7 +2,7 @@
     <div class="pageContent">
         <div v-if="profile.username">
             <h1> {{ profile.username }} </h1>
-            <profile-image :filename="profile.profileImage" :username="profile.username" style="float: right; border: 1px solid #E5E5E5; padding: 0.2em;" />
+            <profile-image :filename="profile.profileImage" :username="profile.username" class="float"/>
             <div v-if="profile.body" v-html="$md.render(profile.body)"> </div>
             <div v-if="replications.length > 0" style="clear: both; margin-top: 2em;">
                 <hr />
@@ -45,3 +45,18 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+  .float {
+    float: right; 
+    border: 1px solid #E5E5E5; 
+    padding: 0.2em;
+  }
+
+  @media (max-width: 650px) {
+    .float {
+        float: none;
+        margin: 1em auto;
+    }
+}
+</style>
