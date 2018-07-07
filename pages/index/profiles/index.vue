@@ -58,6 +58,7 @@ export default {
 }
 
 .profileImage {
+    border: 1px solid #CCC;
     border-radius: 50%;
     display: block;
     margin: 0 auto;
