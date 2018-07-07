@@ -48,6 +48,8 @@ export default {
 
 <style scoped>
   .float {
+    height: 420px;
+    width: 420px;
     float: right; 
     border: 1px solid #E5E5E5; 
     padding: 0.2em;
