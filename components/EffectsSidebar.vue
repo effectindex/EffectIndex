@@ -11,15 +11,6 @@
           <li class="sidebar__listItem" v-bind:class="isActive('/effects/')">
               <nuxt-link to="/effects/"> All </nuxt-link>
           </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/effects/sensory/')"> 
-              <nuxt-link to="/effects/sensory/"> Sensory </nuxt-link>
-          </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/effects/cognitive/')">
-              <nuxt-link to="/effects/cognitive/"> Cognitive  </nuxt-link>
-          </li>
-          <li class="sidebar__listItem" v-bind:class="isActive('/effects/physical/')">
-              <nuxt-link to="/effects/physical/"> Physical </nuxt-link>
-          </li>
           <li class="sidebar__listItem" v-bind:class="isActive('/effects/psychedelics/')">
               <nuxt-link to="/effects/psychedelics/"> Psychedelic  </nuxt-link>
           </li>
@@ -28,6 +19,15 @@
           </li>
           <li class="sidebar__listItem" v-bind:class="isActive('/effects/deliriants/')">
               <nuxt-link to="/effects/deliriants/"> Deliriant  </nuxt-link>
+          </li>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/sensory/')"> 
+              <nuxt-link to="/effects/sensory/"> Sensory </nuxt-link>
+          </li>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/cognitive/')">
+              <nuxt-link to="/effects/cognitive/"> Cognitive  </nuxt-link>
+          </li>
+          <li class="sidebar__listItem" v-bind:class="isActive('/effects/physical/')">
+              <nuxt-link to="/effects/physical/"> Physical </nuxt-link>
           </li>
         </ul>
   </nav>
