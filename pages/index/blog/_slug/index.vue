@@ -1,6 +1,6 @@
 <template>
 
-<div class="blog">
+<div class="pageContent blog">
         <div style="text-align: right;" v-if="$auth.loggedIn">
             <nuxt-link to="/blog/new"> ... submit a new blog post </nuxt-link>
         </div>
