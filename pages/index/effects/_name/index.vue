@@ -46,10 +46,18 @@
                 <h3> References </h3>
                 <citation-list :citations="effect.citations" />
             </div>
+
             <div v-if="hasSection('tags')">
                 <hr />
                 <h3> Tags </h3>
                 <tag v-for="tag in effect.tags" :key="tag" :value="tag" />
+            </div>
+
+            <div v-if="hasSection('contributors')">
+                <hr />
+                <h3> Contributors </h3>
+                <p> The following people contributed to the content of this article: </p>
+                <span class="contributor" v-for="contributor in effect.contributors" :key="contributor"><nuxt-link :to="'/profiles/' + contributor">{{ contributor }}</nuxt-link></span>
             </div>
         </div>
         <div v-if="!effect.name">
@@ -169,6 +177,13 @@ hr {
     padding-right: 1em;
 }
 
+.contributor::after {
+    content: ', ';
+}
+
+.contributor:last-of-type::after {
+    content: '';
+}
 
 
 </style>

@@ -17,6 +17,7 @@ const Effect = mongoose.model('Effect', {
     summary_formatted: String,
     analysis_raw: String,
     analysis_formatted: String,
+    contributors: Array,
     citations: Array,
     related_substances: Array,
     see_also: Array,

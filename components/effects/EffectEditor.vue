@@ -53,6 +53,11 @@
                 </div>
 
                 <div>
+                    <label> Contributors </label>
+                    <contributor-input v-model="contributors" />
+                </div>
+
+                <div>
                     <label> Gallery Order </label>
                     <ol v-if="!gallery_order.length">
                         <li v-for="(replication, index) in associated_replications" :key="replication._id">
@@ -88,6 +93,7 @@
     import LinkInput from '@/components/effects/effectEditor__linkInput.vue';
     import SeeAlsoInput from '@/components/effects/effectEditor__seeAlsoInput.vue';
     import TagInput from '@/components/effects/effectEditor__tagInput.vue';
+    import ContributorInput from '@/components/effects/effectEditor__contributorInput.vue';
 
     export default {
         data () {
@@ -102,6 +108,7 @@
                 external_links: this.effect ? this.effect.external_links : [],
                 see_also: this.effect ? this.effect.see_also : [],
                 tags: this.effect ? this.effect.tags : [],
+                contributors: this.effect ? this.effect.contributors : [],
                 summary: this.effect ? this.effect.summary_raw : '',
                 analysis: this.effect ? this.effect.analysis_raw : '',
                 gallery_order: this.effect ? this.effect.gallery_order : [],
@@ -142,6 +149,7 @@
                     tags: this.tags,
                     summary: this.summary,
                     analysis: this.analysis,
+                    contributors: this.contributors,
                     gallery_order: this.gallery_order
                 });
             },
@@ -178,7 +186,8 @@
             SubstanceInput,
             LinkInput,
             SeeAlsoInput,
-            TagInput
+            TagInput,
+            ContributorInput
         }
     }
 </script>
