@@ -55,8 +55,8 @@
         </div>
  
         <div v-if="(type === 'image')" class="replicationEditor__imagePreview">
-            <img v-show="resource" :src="'/gallery/' + resource" height="200" />
-            <img v-show="resource" :src="'/gallery/thumbnails/' + resource" />
+            <img v-show="resource" :src="'/img/gallery/' + resource" height="200" />
+            <img v-show="resource" :src="'/img/gallery/thumbnails/' + resource" />
         </div>
 
         <div class="replicationEditor__gfycatPreview" v-else-if="(type === 'gfycat')">
@@ -65,7 +65,7 @@
                 scrolling='no'
                 height='200'
             ></iframe>
-            <img v-show="thumbnail" :src="'/gallery/thumbnails/' + thumbnail" />
+            <img v-show="thumbnail" :src="'/img/gallery/thumbnails/' + thumbnail" />
         </div>
 
         <div class="replicationEditor__audioPreview" v-else-if="(type === 'audio')">

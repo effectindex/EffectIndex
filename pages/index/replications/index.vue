@@ -14,8 +14,8 @@
         This page will serve as a dedicated index of as many replication examples as possible in 
         the form of images, animations, and videos. These are primarily sourced from our subreddit, 
         through <nuxt-link to="/artists"> dedicated artists </nuxt-link> such as 
-        <nuxt-link to="/people/StingrayZ"> StingrayZ </nuxt-link>,
-        <nuxt-link to="/people/Zenx2"> Zenx2 </nuxt-link>, 
+        <nuxt-link to="/profiles/StingrayZ"> StingrayZ </nuxt-link>,
+        <nuxt-link to="/profiles/Zenx2"> Zenx2 </nuxt-link>, 
         and from various sources throughout the internet. It is worth noting that while the artist 
         is credited for each replication wherever possible, if you would like your artwork removed
         or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
@@ -26,7 +26,7 @@
     <light-box
         :imageSet="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect) >= 0)"
         :order="replicated_effects.find((effect) => (effect._id === selected_effect))['gallery_order']"
-        base="/gallery/"
+        base="/img/gallery/"
         />
 
 </div>

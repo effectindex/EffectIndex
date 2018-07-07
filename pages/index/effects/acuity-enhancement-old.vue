@@ -40,20 +40,20 @@
                 {
                     title: 'Towel',
                     artist: 'Chelsea Morgan',
-                    image_fullsize: '/gallery/Towel.jpg',
-                    image_thumbnail: '/gallery/thumbnails/Towel.jpg'
+                    image_fullsize: '/img/gallery/Towel.jpg',
+                    image_thumbnail: '/img/gallery/thumbnails/Towel.jpg'
                 },
                 {
                     title: 'LSD Tree Bark',
                     artist: 'Chelsea Morgan',
-                    image_fullsize: '/gallery/Tree_Bark.jpg',
-                    image_thumbnail: '/gallery/thumbnails/Tree_Bark.jpg'
+                    image_fullsize: '/img/gallery/Tree_Bark.jpg',
+                    image_thumbnail: '/img/gallery/thumbnails/Tree_Bark.jpg'
                 },
                 {
                     title: 'Moss on Tree Bark',
                     artist: 'Chelsea Morgan',
-                    image_fullsize: '/gallery/Moss_on_tree_bark.jpg',
-                    image_thumbnail: '/gallery/thumbnails/Moss_on_tree_bark.jpg'
+                    image_fullsize: '/img/gallery/Moss_on_tree_bark.jpg',
+                    image_thumbnail: '/img/gallery/thumbnails/Moss_on_tree_bark.jpg'
                 },                  
             ]"
         />

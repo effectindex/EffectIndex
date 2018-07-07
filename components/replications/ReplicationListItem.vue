@@ -1,10 +1,10 @@
 <template>
     <li class="replication">
         <div v-if="replication.type === 'image'">
-            <img v-if="replication.resource" :src="'/gallery/thumbnails/' + replication.resource" />
+            <img v-if="replication.resource" :src="'/img/gallery/thumbnails/' + replication.resource" />
         </div>
         <div v-else-if="replication.type === 'gfycat'">
-            <img v-if="replication.thumbnail" :src="'/gallery/thumbnails/' + replication.thumbnail" />
+            <img v-if="replication.thumbnail" :src="'/img/gallery/thumbnails/' + replication.thumbnail" />
             <iframe v-else-if="replication.resource" :src="'https://gfycat.com/ifr/' + replication.resource"
                 frameborder='0'
                 scrolling='no'

@@ -64,6 +64,7 @@
     "Community": {
         "location": "/discord-chat",
         "children": [
+            { "name": "People", "location": "/profiles/" },
             { "name": "Discord", "location": "/discord-chat/" },
             { "name": "Subreddit", "location": "http://reddit.com/r/replications", "external": true }
         ]

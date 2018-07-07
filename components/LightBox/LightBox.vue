@@ -146,7 +146,7 @@ export default {
             else this.current_image = (this.current_image - 1)
             this.updateThumbnailOffset();
         },
-        openImage(url) { window.open('/gallery/' + url);  }
+        openImage(url) { window.open('/img/gallery/' + url);  }
     },
     props: {
         title: {

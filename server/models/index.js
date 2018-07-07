@@ -4,7 +4,8 @@ const blog = require('./blog/index'),
       effects = require('./effects/index'),
       replications = require('./replications/index'),
       users = require('./users/index'),
-      invitations = require('./invitations/index');
+      invitations = require('./invitations/index')
+      profiles = require('./profiles/index');
 
 
 router.use('/blog', blog)
@@ -12,6 +13,7 @@ router.use('/blog', blog)
       .use('/replications', replications)
       .use('/users', users)
       .use('/invitations', invitations)
+      .use('/profiles', profiles)
       
       .use(function (err, req, res, next) {
 

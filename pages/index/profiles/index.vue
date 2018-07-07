@@ -1,0 +1,65 @@
+<template>
+    <div class="pageContent">
+        <h1> People </h1>
+
+        <p> This page lists the decription and portfolios of various dedicated individuals who have contributed significant amounts of work or something something something </p>
+
+        <ul class="profileList">
+            <li class="profileListItem" v-for="profile in profiles" :key="profile._id">
+                <nuxt-link :to="'/profiles/' + profile.username"> 
+                    <img class="profileImage" :src="'/img/profiles/cropped/' + profile.profileImage" :alt="profile.username" />
+                </nuxt-link>
+                <span class="profile__username"> {{ profile.username }} </span>
+            </li>
+        </ul>
+
+    </div>
+
+
+</template>
+
+<script>
+export default {
+    async asyncData(app) {
+        try {
+            let { profiles } = await app.$axios.$get('/api/profiles/');
+            if (profiles) return { profiles };
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+</script>
+
+<style scoped>
+
+.profileList {
+    padding: 0;
+}
+
+.profileListItem {
+    text-align: center;
+    width: 300px;
+    list-style: none;
+    margin: 0.25em;
+    display: inline-block;
+}
+
+.profileListItem:first-of-type {
+    margin-left: 0;
+}
+
+.profileListItem:last-of-type {
+    margin-right: 0;
+}
+
+.profile__username {
+    color: black;
+}
+
+.profileImage {
+    display: block;
+    margin: 0 auto;
+}
+
+</style>

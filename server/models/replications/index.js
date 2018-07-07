@@ -61,6 +61,15 @@ router.get('/', async (req, res) => {
 
 });
 
+router.get('/byartist/:artist', async (req, res, next) => {
+    let artist = req.params.artist;
+    try {
+        let replications = await Replication.find({ artist }).exec();
+        res.send({replications});
+    } catch (error) {
+        next(error);
+    }
+})
 
 router.get('/:url', async (req, res) => {
     try {

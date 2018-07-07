@@ -4,6 +4,7 @@
         <nuxt-link class="userManagement__link" to="/admin/users/list"> List Users </nuxt-link>
         <nuxt-link class="userManagement__link" to="/admin/users/invite"> Invite Users </nuxt-link>
         <nuxt-link class="userManagement__link" to="/admin/users/invitations"> Invitations </nuxt-link>
+        <nuxt-link class="userManagemetn__link" to="/admin/users/profiles/"> Profiles </nuxt-link>
         <nuxt-child />
     </div>
 </template>
@@ -43,6 +44,11 @@
         width: auto;
     }
 
+    .userManagement input[type=radio] {
+        width: auto;
+        margin-left: 0 1em;
+    }
+
     .userManagement select {
         width: 20em;
         font-size: 16px;
@@ -63,6 +69,15 @@
         margin: 1em 1em 0 0;
         opacity: 0.6;
         cursor: pointer;
+    }
+
+    .userManagement textarea {
+        font-family: 'Titillium Web';
+        border: 1px solid #CCCCCC;
+        padding: 0.5em 1em;
+        font-size: 16px;
+        height: 400px;
+        width: 100%;     
     }
 
     .userManagement button:hover {
