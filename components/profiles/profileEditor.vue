@@ -9,7 +9,7 @@
             <textarea v-model="profile.body"> </textarea> </label>
 
             <label> Profile Image 
-            <input v-model="profile.profileImage" type="text"> </label>
+            <image-uploader v-model="profile.profileImage" /> </label>
 
             <profile-image :filename="profile.profileImage" :username="profile.username"></profile-image>
 
@@ -30,6 +30,7 @@
 <script>
 
 import ProfileImage from '@/components/profiles/profileImage.vue';
+import ImageUploader from '@/components/profiles/profileEditor__imageUpload.vue';
 
 export default {
     data() {
@@ -83,7 +84,8 @@ export default {
         this.grabProfile();
     },
     components: {
-        ProfileImage
+        ProfileImage,
+        ImageUploader
     },
     props: ['id']
 }

@@ -80,7 +80,7 @@ router.get('/:url', async (req, res) => {
     }
 });
 
-router.post('/:id', hasRoles(['admin', 'editor']), async (req, res) => {
+router.post('/:id', protected({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res) => {
     try {
         if (!('replication' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.')
         let replication = req.body.replication;
@@ -105,7 +105,7 @@ router.post('/:id', hasRoles(['admin', 'editor']), async (req, res) => {
     }
 });
 
-router.delete('/:id', hasRoles(['admin', 'editor']), async (req, res) => {
+router.delete('/:id', protected({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res) => {
     try {
         let deletedReplication = await Replication.findByIdAndRemove(req.params.id).exec();
         res.send({ replication: deletedReplication });
