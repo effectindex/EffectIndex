@@ -11,15 +11,15 @@
                 <h1> {{ effect.name }} </h1>
                 <formatted-document :document="effect.description_formatted" />
             </div>
-            <div v-if="hasSection('analysis_raw')">
-                <hr />
-                <h3> Analysis </h3>
-                <formatted-document :document="effect.analysis_formatted" />
-            </div>
             <div v-if="hasSection('replications')" class="effect__gallery">
                 <hr v-show="effect.replications" />
                 <h3> Gallery </h3>
                 <light-box base="/img/gallery/" :imageSet="effect.replications" :order="effect.gallery_order"/>
+            </div>
+            <div v-if="hasSection('analysis_raw')">
+                <hr />
+                <h3> Analysis </h3>
+                <formatted-document :document="effect.analysis_formatted" />
             </div>
             <div v-if="hasSection('see_also') || hasSection('external_links')">
                 <hr />
