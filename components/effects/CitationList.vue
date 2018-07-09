@@ -1,7 +1,7 @@
 <template>
     <ol class="citationList">
-        <citation v-if="citations"
-            v-for="citation in citations"
+        <citation v-if="filteredCitations"
+            v-for="citation in filteredCitations"
             :key="citation.url"
             :from="citation.from"
             :no="citation.no">
@@ -23,6 +23,11 @@ export default {
     components: {
         Citation,
         ExtLink
+    },
+    computed: {
+        filteredCitations() {
+            return (this.citations ?  this.citations.filter((citation) => citation) : []);
+        }
     },
     props: ['citations']
 }

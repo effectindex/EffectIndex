@@ -86,8 +86,7 @@ export default {
             this.update(citationList);
         },
         update(citationList) {
-            this.$emit('input', citationList);
-
+            this.$emit('input', citationList.filter((citation) => citation));
         },
         clear() {
             this.url = '',
