@@ -13,5 +13,11 @@ export default {
 <style scoped>
 .profileImage {
     padding: 0.5em;
+    text-align: center;
+}
+
+.profileImage img {
+    max-width: 350px;
+    max-height: 500px;
 }
 </style>

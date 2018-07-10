@@ -59,6 +59,8 @@ export default {
 
 .profileImage {
     border-radius: 50%;
+    max-width: 300px;
+    max-height: 300px;
     display: block;
     margin: 0 auto;
 }
