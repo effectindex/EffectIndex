@@ -50,7 +50,6 @@ export default {
   .float {
     float: right; 
     border: 1px solid #E5E5E5; 
-    padding: 0.2em;
   }
 
   @media (max-width: 650px) {

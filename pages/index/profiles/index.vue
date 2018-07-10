@@ -54,15 +54,20 @@ export default {
 }
 
 .profile__username {
-    color: black;
+    font-size: 20px;
+    letter-spacing: 2px;
+    top: 1em;
+    color: #333;
 }
 
 .profileImage {
-    border-radius: 50%;
+    border-radius: 42%;
     max-width: 200px;
     max-height: 200px;
+    
     display: block;
     margin: 0 auto;
+    margin-bottom: 0.25em;
 }
 
 </style>
