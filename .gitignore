@@ -11,4 +11,11 @@ npm-debug.log
 dist
 
 # Service Worker
-sw.*
+sw.js
+
+static/img/gallery/thumbnails/*
+static/img/gallery/*
+!static/img/gallery/*/
+static/img/profiles/cropped/*
+static/img/profiles/*
+!static/img/profiles/*/*

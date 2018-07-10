@@ -3,6 +3,9 @@ const router = express.Router();
 const config = require ('../../../nuxt.config.js');
 const protected = require('express-jwt');
 
+const multer = require('multer');
+const mime = require('mime');
+
 const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
@@ -20,9 +23,28 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), async(req, res, next) => {
+const storage = multer.diskStorage({
+    filename: function (req, file, cb) {
+        let username;
+        if ('profile' in req.body) {
+            if (typeof(req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
+            username = req.body.profile.username;
+        }
+        let fileExtension = mime.extension(file.mimetype);
+        cb(null, (username ? username : 'unknown') + '.' + fileExtension)
+    },
+    destination: function (req, file, cb) {
+        if (file.fieldname === 'fullImageData') cb(null, 'static/img/profiles/');
+        if (file.fieldname === 'croppedImageData') cb(null, 'static/img/profiles/cropped/');
+    }
+});
+
+const upload = multer({ storage });
+
+router.post('/', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), upload.any(), async(req, res, next) => {
     try {
         if (!('profile' in req.body)) throw API_Error('PROFILE_ADD_ERROR', 'The submitted request is invalid.');
+        if (typeof(req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
         let profile = new Profile(req.body.profile);
         let returnedProfile = await profile.save();
         if (returnedProfile) res.send({ profile: returnedProfile });
@@ -34,11 +56,11 @@ router.post('/', protected({ secret: config.server.jwtSecret }), hasRoles(['admi
     }
 });
 
-router.put('/:id', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), async(req, res, next) => {
+router.put('/:id', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), upload.any(), async(req, res, next) => {
     let id = req.params.id;
     try {
         if (!('profile' in req.body)) throw API_Error('PROFILE_UPDATE_ERROR', 'The submitted request is invalid.');
-        let profile = req.body.profile;
+        if (typeof(req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
         let updatedRecord = await Profile.findByIdAndUpdate(id, profile).exec();
         if (updatedRecord) res.sendStatus(200);
         else throw API_Error('PROFILE_UPDATE_ERROR', 'Failed to save updated profile.');

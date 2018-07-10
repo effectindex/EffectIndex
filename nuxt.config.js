@@ -98,7 +98,6 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-	baseURL: 'https://beta.effectindex.com'
     // See https://github.com/nuxt-community/axios-module#options
   },
 
