@@ -6,7 +6,8 @@ const Profile = mongoose.model('Profile', {
         required: true,
         unique: true
     },
-    profileImage: String,
+    profileImageFull: String,
+    profileImageCropped: String,
     body: String
 })
 

@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <form @submit.prevent="submit" enctype="multipart/form-data">
 
             <label> Username
@@ -7,9 +8,6 @@
 
             <label> Profile Body 
             <textarea v-model="profile.body"> </textarea> </label>
-
-            <label> Profile Image 
-            <image-uploader v-model="imageData" /> </label>
 
             <button type="submit"> {{ id ? 'Update' : 'Save' }} </button>
         </form>
@@ -22,6 +20,7 @@
             <span class="success" > Profile {{ id ? 'updated' : 'added' }}! </span>
         </p>
 
+        <image-uploader v-show="this.profile._id" :username="profile.username" />
     </div>
 </template>
 
@@ -38,7 +37,6 @@ export default {
                 username: '',
                 profileBody: ''
             },
-            imageData: undefined,
             success: false,
             errorMessage: ''
         }
@@ -55,22 +53,15 @@ export default {
 
             try {
                 let response = await this.$axios.$post('/api/profiles/', { profile });
-                if (response) this.success = true;
+                if (response) {
+                    this.success = true;
+                    this.profile = response.profile;
+                }
             } catch (error) {
                 if ('error' in error.response.data) this.errorMessage = error.response.data.error.message;
             }
         },
         async submitModified() {
-            let fullImageData = (this.imageData ? this.imageData.full : undefined);
-            let croppedImageData = (this.imageData ? this.imageData.cropped : undefined);
-
-            let formData = new FormData();
-            const json = JSON.stringify(this.profile);
-            formData.append("profile", json);
-            if (fullImageData) formData.append('fullImageData', fullImageData);
-            if (croppedImageData) formData.append('croppedImageData', croppedImageData);
-
-
             try {
                 let response = await this.$axios.$put('/api/profiles/' + this.profile._id, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
                 if (response) this.success = true;

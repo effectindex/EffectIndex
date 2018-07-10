@@ -7,7 +7,7 @@
         <ul class="profileList">
             <li class="profileListItem" v-for="profile in profiles" :key="profile._id">
                 <nuxt-link :to="'/profiles/' + profile.username"> 
-                    <img class="profileImage" :src="'/img/profiles/cropped/' + profile.profileImage" :alt="profile.username" />
+                    <img class="profileImage" :src="'/img/profiles/cropped/' + profile.profileImageCropped" :alt="profile.username" />
                 </nuxt-link>
                 <span class="profile__username"> {{ profile.username }} </span>
             </li>

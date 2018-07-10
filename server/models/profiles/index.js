@@ -26,12 +26,10 @@ router.get('/', async (req, res, next) => {
 const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         let username;
-        if ('profile' in req.body) {
-            if (typeof(req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
-            username = req.body.profile.username;
-        }
+        if ('username' in req.body) username = req.body.username;
         let fileExtension = mime.extension(file.mimetype);
-        cb(null, (username ? username : 'unknown') + '.' + fileExtension)
+        let filename = (username ? username : 'unknown') + '.' + fileExtension;
+        cb(null, filename.toLowerCase());
     },
     destination: function (req, file, cb) {
         if (file.fieldname === 'fullImageData') cb(null, 'static/img/profiles/');
@@ -41,7 +39,25 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post('/', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), upload.any(), async(req, res, next) => {
+router.post('/upload', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), upload.any(), async(req, res, next) => {
+    try {
+        let profile = { profileImageFull: undefined, profileImageCropped: undefined };
+        if (req.files && req.files.length) {
+            req.files.forEach((file) => {
+                if (file.fieldname === 'fullImageData') profile.profileImageFull = file.filename;
+                if (file.fieldname === 'croppedImageData') profile.profileImageCropped = file.filename;
+            });
+            
+            let updatedRecord = await Profile.findOneAndUpdate({ username: req.body.username }, profile);
+            if (updatedRecord) res.sendStatus(200);
+            else throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
+        }
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post('/', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), async(req, res, next) => {
     try {
         if (!('profile' in req.body)) throw API_Error('PROFILE_ADD_ERROR', 'The submitted request is invalid.');
         if (typeof(req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
@@ -56,7 +72,7 @@ router.post('/', protected({ secret: config.server.jwtSecret }), hasRoles(['admi
     }
 });
 
-router.put('/:id', protected({ secret: config.server.jwtSecret }), hasRoles(['admin']), upload.any(), async(req, res, next) => {
+router.put('/:id', protected({ secret: config.server.jwtSecret }), upload.any(), async(req, res, next) => {
     let id = req.params.id;
     try {
         if (!('profile' in req.body)) throw API_Error('PROFILE_UPDATE_ERROR', 'The submitted request is invalid.');

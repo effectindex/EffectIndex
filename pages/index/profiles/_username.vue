@@ -2,7 +2,7 @@
     <div class="pageContent">
         <div v-if="profile.username">
             <h1> {{ profile.username }} </h1>
-            <profile-image :filename="profile.profileImage" :username="profile.username" class="float"/>
+            <profile-image :filename="profile.profileImageFull" :username="profile.username" class="float"/>
             <div v-if="profile.body" v-html="$md.render(profile.body)"> </div>
             <div v-if="replications.length > 0" style="clear: both; margin-top: 2em;">
                 <hr />
