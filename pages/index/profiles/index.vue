@@ -39,7 +39,7 @@ export default {
 
 .profileListItem {
     text-align: center;
-    width: 300px;
+    width: 250px;
     list-style: none;
     margin: 0.25em;
     display: inline-block;
@@ -59,8 +59,8 @@ export default {
 
 .profileImage {
     border-radius: 50%;
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 200px;
+    max-height: 200px;
     display: block;
     margin: 0 auto;
 }
