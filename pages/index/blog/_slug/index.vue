@@ -34,7 +34,7 @@
 </script>
 
 
-<style>
+<style scoped>
     .blogPost {
         padding-bottom: 2em;
         margin-bottom: 3em;
@@ -44,4 +44,5 @@
     .blogPost:last-of-type {
         border-bottom: 0;
     }
+
 </style>

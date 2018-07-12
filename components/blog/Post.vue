@@ -5,8 +5,8 @@
             <a class="blogPost__delete" @click="$emit('delete-post', post._id)"> Delete </a>
         </div>
         <h4 class="blogPost__date"> 
-            <nuxt-link :to="'/blog/' + post.slug + '/'"> {{ formatDate(post.datetime) }} </nuxt-link> </h4>
-        <h1 class="blogPost__title"> <nuxt-link :to="'/blog/' + post.slug + '/'"> {{ post.title }} </nuxt-link>  </h1>
+            <nuxt-link :to="'/blog/' + post.slug + '/'" style="text-decoration: none;"> {{ formatDate(post.datetime) }} </nuxt-link> </h4>
+        <h1 class="blogPost__title"> <nuxt-link :to="'/blog/' + post.slug + '/'" style="text-decoration: none;"> {{ post.title }} </nuxt-link>  </h1>
         <div class="blogPost__body" v-html="$md.render(post.body)" /> 
     </div>
 </template>

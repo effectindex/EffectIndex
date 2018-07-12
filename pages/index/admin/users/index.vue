@@ -102,5 +102,9 @@
         min-width: 150px;
     }
 
+.nuxt-link-exact-active {
+  text-decoration: underline;
+}
+
 
 </style>

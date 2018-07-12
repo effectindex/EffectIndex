@@ -37,4 +37,8 @@
     .blogPost:last-of-type {
         border-bottom: 0;
     }
+
+    .nuxt-link-exact-active a {
+        text-decoration: none;
+    }
 </style>

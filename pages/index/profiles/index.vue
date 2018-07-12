@@ -19,26 +19,36 @@
 </template>
 
 <script>
-export default {
-    async asyncData({ store }) {
-        await store.dispatch('getProfiles');
+    export default {
+        async asyncData({ store }) {
+            await store.dispatch('getProfiles');
+        }
     }
-}
 </script>
 
 <style scoped>
 
 .profileList {
     padding: 0;
+    display: flex;
+    flex-flow: wrap;
 }
 
 .profileListItem {
+    flex: 1;
     text-align: center;
-    width: 250px;
+    min-width: 200px;
     list-style: none;
-    margin: 0.25em;
+    margin: 20px 20px;
     display: inline-block;
+    opacity: 0.8;
+    transition: opacity 0.25s ease-in-out;
 }
+
+.profileListItem:hover {
+    opacity: 1;
+}
+
 
 .profileListItem:first-of-type {
     margin-left: 0;
@@ -56,13 +66,14 @@ export default {
 }
 
 .profileImage {
-    border-radius: 42%;
+    border-radius: 50%;
     max-width: 200px;
     max-height: 200px;
     
     display: block;
     margin: 0 auto;
     margin-bottom: 0.25em;
+    box-shadow: 4px 4px 5px #AAA;
 }
 
 </style>

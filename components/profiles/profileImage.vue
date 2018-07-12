@@ -10,8 +10,11 @@ export default {
 
 <style scoped>
 .profileImage {
-    padding: 1em;
-    background-color: #F3F3F3;
+    padding: 0.5em;
+    margin: 0 1em;
+    float: right; 
+    border: 1px solid #E5E5E5;
+    background-color: #f5f5f5;
 }
 
 .profileImage img {
@@ -19,5 +22,12 @@ export default {
     max-height: 500px;
     display: block;
     margin: 0 auto;
+}
+
+  @media (max-width: 600px) {
+    .profileImage {
+        float: none;
+        margin: 1em auto;
+    }
 }
 </style>

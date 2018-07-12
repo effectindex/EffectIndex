@@ -121,6 +121,10 @@ export default {
     text-decoration: none;
   }
 
+  .pageContent .nuxt-link-exact-active {
+    text-decoration: underline;
+  }
+
   .pageContent a:hover {
     color: #27635d
   }
