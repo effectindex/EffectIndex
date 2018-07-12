@@ -1,5 +1,6 @@
 <template>
     <div class="pageContent">
+        <hr />
         <replication-editor @new-replication="submitReplication" />
     </div>
 </template>
@@ -15,7 +16,7 @@ export default {
     methods: {
         async submitReplication(replication) {
             let returnedReplication = await this.$store.dispatch('submitReplication', replication);
-            this.$router.push('/replications/list');
+            this.$router.push('/admin/replications/list');
         }
     }
 }

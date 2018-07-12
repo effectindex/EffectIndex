@@ -1,7 +1,6 @@
 <template>
     <div class="pageContent">
-        <nuxt-link v-show="$auth.loggedIn" to="/replications/add"> Add new </nuxt-link>
-        <h1> Replications </h1>
+        <hr />
         <table class="replicationTable">
             <thead>
                 <tr>

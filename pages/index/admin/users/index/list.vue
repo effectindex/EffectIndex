@@ -11,7 +11,7 @@
             <tr v-for="user in users" :key="user._id">
                 <td> <nuxt-link :to="'/profiles/' + user.username"> {{ user.username }} </nuxt-link> </td>
                 <td> {{ listRoles(user) }} </td>
-                <td> <nuxt-link :to="'/admin/users/modify/' + user._id"> Modify </nuxt-link> </td>
+                <td> <nuxt-link :to="'/admin/users/' + user._id"> Modify </nuxt-link> </td>
             </tr>
         </table>
     </div>

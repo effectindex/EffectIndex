@@ -116,5 +116,14 @@ export default {
       } catch (error) {
         throw new Error(error);
       }
+    },
+    // Profiles
+    async getProfiles({ commit }) {
+      try {
+        let { profiles } = await this.$axios.$get('/api/profiles/');
+        commit ('set_profiles', profiles);
+      } catch (error) {
+        throw new Error(error);
+      }
     }
 };

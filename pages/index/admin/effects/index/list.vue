@@ -1,7 +1,7 @@
 <template>
     <div class="pageContent">
-        <nuxt-link v-show="$auth.loggedIn" to="/effects/add"> Add new </nuxt-link>
-        <h1> Effects </h1>
+        <hr />
+        <h4> Effects </h4>
         <table class="effectTable">
             <thead>
                 <tr>
@@ -40,16 +40,6 @@ export default {
 </script>
 
 <style scoped>
-
-.replicationList {
-    padding: 0;
-    list-style: none;
-}
-
-.replicationTable {
-    width: 100%;
-    max-width: 800px;
-}
 
 thead {
     font-weight: bold;

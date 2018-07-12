@@ -1,13 +1,14 @@
 <template>
     <div class="postEditor">
         <div>
-            <input class="postEditor__inputTitle" v-model="title" />
+            <label> Title 
+            <input class="postEditor__inputTitle" v-model="title" /> </label>
         </div>
         <div>
             <textarea class="postEditor__inputBody" v-model="body"> </textarea>
         </div>
         <div class="postEditor__inputPostButtonContainer">
-            <nuxt-link class="postEditor__cancelLink" to="/blog"> Cancel </nuxt-link>
+            <nuxt-link class="postEditor__cancelLink" to="/admin/blog/list"> Cancel </nuxt-link>
             <button @click="submitPost()" class="postEditor__inputPostButton"> {{this.post ? 'Update' : 'Post'}} </button>
         </div>
     </div>
@@ -57,14 +58,20 @@ export default {
         text-align: right;
     }
 
+    
     .postEditor__inputPostButton {
-        height: 50px;
-        width: 140px;
-        font-size: 20px;
-        margin: 1em 0;
         background-color: transparent;
-        border: 2px solid black;
+        border: 1px solid #CCC;
+        font-size: 18px;
+        width: 100px;
+        padding: 1em;
+        margin-top: 1em;
+        opacity: 0.6;
         cursor: pointer;
+    }
+
+    .postEditor__inputPostButton:hover {
+        opacity: 1;
     }
 
     .postEditor__cancelLink {

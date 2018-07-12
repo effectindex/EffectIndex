@@ -5,7 +5,7 @@
         <p> This page lists the profiles of the Effect Index team and various dedicated individuals who have contributed significant amounts of work to this project. </p>
 
         <ul class="profileList">
-            <li class="profileListItem" v-for="profile in profiles" :key="profile._id">
+            <li class="profileListItem" v-for="profile in $store.state.profiles" :key="profile._id">
                 <nuxt-link :to="'/profiles/' + profile.username"> 
                     <img class="profileImage" :src="'/img/profiles/cropped/' + profile.profileImageCropped" :alt="profile.username" />
                 </nuxt-link>
@@ -20,13 +20,8 @@
 
 <script>
 export default {
-    async asyncData(app) {
-        try {
-            let { profiles } = await app.$axios.$get('/api/profiles/');
-            if (profiles) return { profiles };
-        } catch (error) {
-            console.log(error);
-        }
+    async asyncData({ store }) {
+        await store.dispatch('getProfiles');
     }
 }
 </script>

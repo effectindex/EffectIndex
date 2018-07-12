@@ -6,7 +6,7 @@
         </td>
         <td> {{ replication.type }} </td>
         <td>
-            <nuxt-link :to="'/replications/' + replication.url + '/edit'"> [Edit] </nuxt-link>
+            <nuxt-link :to="'/admin/replications/' + replication.url"> [Edit] </nuxt-link>
         </td>
         <td> <a style="color: red; cursor: pointer;" @click="deleteReplication(replication._id)"> [Delete] </a> </td>
     </tr>

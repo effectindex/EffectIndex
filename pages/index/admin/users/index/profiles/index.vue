@@ -1,17 +1,16 @@
 <template>
     <div>
         <hr />
-        <h1> User Profiles </h1>
-        <nuxt-link to="/admin/users/profiles/add"> Add New Profile </nuxt-link>
-
-        <ul v-if="profiles.length" class="profileList">
-            <li class="profileListItem" v-for="profile in profiles" :key="profile._id">
-               <nuxt-link class="profileList__username" :to="'/profiles/' + profile.username"> {{ profile.username }} </nuxt-link>
-               <nuxt-link :to="'/admin/users/profiles/edit/' + profile._id"> [Edit] </nuxt-link>
-               <a class="delete" @click="deleteProfile(profile._id)"> [Delete] </a>
-               
-                </li>
-        </ul>
+        <table>
+            <thead>
+                <td> Username </td> <td> </td> <td> </td>
+            </thead>
+            <tr v-for="profile in profiles" :key="profile._id">
+                <td>  <nuxt-link class="profileList__username" :to="'/profiles/' + profile.username"> {{ profile.username }} </nuxt-link> </td>
+                <td>  <nuxt-link :to="'/admin/users/profiles/' + profile._id"> [Edit] </nuxt-link> </td>
+                <td>  <a class="delete" @click="deleteProfile(profile._id)"> [Delete] </a> </td>
+            </tr>
+        </table>
     </div>
 
 
@@ -45,6 +44,10 @@
 </script>
 
 <style scoped>
+.delete {
+    color: red;
+}
+
 .profileList {
     margin-top: 1em;
     padding-left: 1em;

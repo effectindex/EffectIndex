@@ -1,7 +1,7 @@
 <template>
     <div class="pageContent">
-            <h1> Submit a Post </h1>
-            <post-editor @new-post="this.submitPost" />
+        <hr />
+        <post-editor @new-post="this.submitPost" />
     </div>
 </template>
 

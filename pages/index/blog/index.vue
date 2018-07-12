@@ -1,10 +1,6 @@
 <template>
 
 <div class="pageContent blog">
-        <div style="text-align: right;" v-if="$auth.loggedIn">
-            <nuxt-link to="/blog/new"> ... submit a new blog post </nuxt-link>
-        </div>
-
         <blog-post v-for="post in $store.state.blogPosts" :key="post._id" :post="post" @delete-post="deletePost" /> 
 </div>
 

@@ -7,7 +7,7 @@
              {{ name }}
         </a>
         <ol v-if="expanded && children">
-            <li v-for="child in children" :key="child.name"> 
+            <li v-for="child in children" :key="child.name" v-if="checkItemAccess(child.scope)"> 
                 <nuxt-link @click.native="togglePullout()" v-if="!child.external" :to="child.location"> {{ child.name }} </nuxt-link>
                 <a v-else :href="child.location" target="_blank"> {{ child.name }} </a>
             </li>
@@ -28,6 +28,14 @@
             },
             togglePullout() {
                 this.$store.commit('toggle_navbar');
+            },
+            checkItemAccess (scope) {
+                if (Array.isArray(scope)) {
+                    for (let i = 0; i < scope.length; i++) {
+                        if (this.$auth.hasScope(scope[i])) return true;
+                    }
+                    return false;
+                } else return true;
             }
         },
         props: ['name', 'location', 'children']

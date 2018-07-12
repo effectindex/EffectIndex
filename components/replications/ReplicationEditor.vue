@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1> {{ replication ? 'Update' : 'Add' }} a Replication </h1>
         <div>
             <label> Title: </label>
             <input class="input__singleLine" v-model="title" />

@@ -5,25 +5,11 @@
     <h1> Administration </h1>
     <p> The place to do secret things when nobody's looking. </p>
     <div v-if="$auth.loggedIn">
-        <h3> Effects </h3>
         <ul> 
-          <li> <nuxt-link to="/effects/add"> Add an effect </nuxt-link> </li>
-          <li> <nuxt-link to="/effects/list"> List all effects </nuxt-link> </li>
-        </ul>
-        <h3> Replications </h3>
-        <ul> 
-          <li> <nuxt-link to="/replications/add"> Add a replications </nuxt-link> </li>
-          <li> <nuxt-link to="/replications/list"> List all replications </nuxt-link> </li>
-        </ul>
-        <h3> Blog </h3>
-        <ul>
-          <li> <nuxt-link to="/blog/new"> New Blog Entry </nuxt-link> </li>
-          <li> <nuxt-link to="/blog"> See all Entries </nuxt-link> </li>
-        </ul>
-        <h3> User Management </h3>
-        <ul>
-          <li> <nuxt-link to="/admin/users/list"> User List </nuxt-link> </li>
-          <li> <nuxt-link to="/admin/users/add"> Add User </nuxt-link> </li>
+          <li> <nuxt-link to="/admin/effects/"> Manage Effects </nuxt-link> </li>
+          <li> <nuxt-link to="/admin/replications/"> Manage Replications </nuxt-link> </li>
+          <li> <nuxt-link to="/admin/blog"> Manage Blog </nuxt-link> </li>
+          <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
         </ul>      
     </div>
     <nuxt-link v-if="!$auth.loggedIn" to="/user/login"> Log in </nuxt-link>
@@ -53,6 +39,7 @@ export default {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 p {

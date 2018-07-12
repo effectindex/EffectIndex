@@ -15,7 +15,7 @@ export default {
     methods: {
         async submitReplication(replication) {
             let returnedReplication = await this.$store.dispatch('updateReplication', replication);
-            this.$router.push('/replications/');
+            this.$router.push('/admin/replications/list');
         }
     },
     async asyncData(app) {

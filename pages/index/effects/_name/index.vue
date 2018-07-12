@@ -2,7 +2,7 @@
     <div class="pageContent">
         <div v-show="effect.name">
             <div v-if="$auth.loggedIn">
-                <nuxt-link :to="{ path: 'edit'}" append> [Edit] </nuxt-link>
+                <nuxt-link :to="'/admin/effects/' + effect.url" append> [Edit] </nuxt-link>
                 <a @click="deleteEffect(effect._id)" style="color: red; float:right;"> [Delete] </a>
             </div>
             

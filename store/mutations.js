@@ -29,5 +29,8 @@ export default {
     },
     set_invitations (state, invitations) {
       state.admin.invitations = invitations;
+    },
+    set_profiles (state, profiles) {
+      state.profiles = profiles;
     }
 };

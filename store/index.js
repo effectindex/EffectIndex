@@ -16,6 +16,7 @@ const createStore = () => {
         replicated_effects: []
       },
       blogPosts: [],
+      profiles: [],
       admin: {
         userlist: [],
         invitations: []

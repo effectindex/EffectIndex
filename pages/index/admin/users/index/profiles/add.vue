@@ -1,5 +1,6 @@
 <template>
     <div>
+        <hr />
         <profile-editor />
     </div>
 </template>

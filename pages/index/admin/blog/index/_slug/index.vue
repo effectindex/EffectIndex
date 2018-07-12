@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1> Edit a Post </h1>
+        <hr />
         <post-editor @edit-post="this.submitPost" :post="post" />
     </div>
 </template>

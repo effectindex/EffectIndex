@@ -1,7 +1,5 @@
     <template>
         <div>
-            <h1> {{ (this.effect ? 'Update' : 'Add') }} an Effect </h1>
-
             <div>
                 <label> Name </label>
                 <input class="effectEditor__input" v-model="name" />

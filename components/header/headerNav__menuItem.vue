@@ -2,7 +2,7 @@
     <div class="headerNav__menuItem" v-if="access">
         <nuxt-link class="headerNav__menuItemLink" :to="location"> {{ name }} </nuxt-link>
         <ul v-if="subMenuItems" class="headerNav__dropdown">
-            <li v-for="(item, index) in subMenuItems" :key="index">
+            <li v-for="(item, index) in subMenuItems" :key="index" v-if="itemAccess(item.scope)">
                 <a v-if="item.external" target="_blank" :href="item.location"> {{ item.name }} </a>
                 <nuxt-link v-else :to="item.location"> {{ item.name }} </nuxt-link>
             </li>
@@ -12,11 +12,25 @@
 
 <script>
     export default {
-        props: ['location', 'name', 'subMenuItems', 'restricted'],
+        props: ['location', 'name', 'subMenuItems', 'scope'],
         computed: {
             access () {
-                if (this.restricted && !this.$auth.loggedIn) return false
-                return true
+                if (Array.isArray(this.scope)) {
+                    for (let i = 0; i < this.scope.length; i++) {
+                        if (this.$auth.hasScope(this.scope[i])) return true;
+                    }
+                    return false;
+                } else return true;
+            }
+        },
+        methods: {
+            itemAccess (scope) {
+                if (Array.isArray(scope)) {
+                    for (let i = 0; i < scope.length; i++) {
+                        if (this.$auth.hasScope(scope[i])) return true;
+                    }
+                    return false;
+                } else return true;
             }
         }
     }

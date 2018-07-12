@@ -1,15 +1,14 @@
 {
     "Admin": {
         "location": "/admin",
-        "restricted": true,
+        "scope": ["admin", "editor", "artist", "user"],
         "children": [
-            { "name": "New Effect", "location": "/effects/add" },
-            { "name": "New Replication", "location": "/replications/add" },
-            { "name": "New Blog", "location": "/blog/new" },
-            { "name": "List Replications", "location": "/replications/list" },
-            { "name": "List Effects", "location": "/effects/list" },
-            { "name": "Users", "location": "/admin/users" },
-            { "name": "Logout", "location": "/user/logout" }
+            { "name": "Effects", "location": "/admin/effects/list", "scope": ["admin", "editor"] },
+            { "name": "Replications", "location": "/admin/replications/list", "scope": ["admin", "editor", "artist"] },
+            { "name": "Blog", "location": "/admin/blog/list", "scope": ["admin"] },
+            { "name": "Users", "location": "/admin/users/list", "scope": ["admin"] },
+            { "name": "Reports", "location": "/admin/reports/list", "scope": ["admin", "editor"] },
+            { "name": "Logout", "location": "/user/logout", "scope": ["admin", "editor", "artist", "user"] }
         ]
     },
     "Home": {
@@ -42,10 +41,10 @@
     "Project": {
         "location": "/blog",
         "children": [
+            { "name": "About", "location": "/about" },
             { "name": "Blog", "location": "/blog" },
             { "name": "Search", "location": "/search" },
             { "name": "Contact", "location": "/contact" },
-            { "name": "About", "location": "/about" },
             { "name": "Github",
                 "location": "https://github.com/GabrielMorris/effect-index",
                 "external": true
@@ -55,10 +54,7 @@
                 "external": true
             },
             { "name": "DoseBot", "location": "/dosebot" },
-            {
-                "name": "Login",
-                "location": "/user/login"
-            }
+            { "name": "Login", "location": "/user/login" }
         ]
     },
     "Community": {
