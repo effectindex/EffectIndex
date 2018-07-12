@@ -1,5 +1,6 @@
 <template>
     <div class="pageContent">
+        <hr />
         <effect-editor @new-effect="submitEffect" />
     </div>
 </template>
