@@ -2,6 +2,8 @@
     <div class="pageContent">
         <hr />
         <h4> Effects </h4>
+        <label for="effectFilter" > Filter by Tag: 
+        <input type="text" v-model="filter" class="filterInput"> <a @click="clearFilter"> (clear) </a> </label>
         <table class="effectTable">
             <thead>
                 <tr>
@@ -10,7 +12,7 @@
                 </tr>
             </thead>
             <effect-table-row 
-                v-for="effect in $store.state.effects"
+                v-for="effect in filteredEffects"
                 :key="effect._id"
                 :effect="effect"
                 @deleteEffect="deleteEffect" />
@@ -25,14 +27,30 @@ export default {
     components: {
         EffectTableRow
     },
+    data() {
+        return {
+            filter: ''
+        }
+    },
     mounted() {
         this.$store.dispatch('getEffects');
+    },
+    computed: {
+        filteredEffects() {
+            if (this.filter) {
+                let effects = this.$store.state.effects
+                return effects.filter((effect) => effect.tags.some((tag) => tag.indexOf(this.filter) > -1));
+            } else return this.$store.state.effects;
+        }
     },
     middleware: ['auth'],
     scrollToTop: true,
     methods: {
         deleteEffect(id) {
             this.$store.dispatch('deleteEffect', id);
+        },
+        clearFilter() {
+            this.filter = '';
         }
     }
 }
@@ -46,6 +64,18 @@ thead {
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+table {
+    margin-top: 1em;
+}
+
+.filterInput {
+    height: 30px;
+    padding: 0.25em;
+    margin-left: 1em;
+    font-size: 16px;
+    border: 1px solid #CCC;
 }
 
 </style>
