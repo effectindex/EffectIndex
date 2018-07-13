@@ -118,7 +118,7 @@ export default {
 
 .alignCenter {
   display: block;
-  margin: 30px auto;
+  margin: 0 auto;
 }
 
 .artistTitle {
