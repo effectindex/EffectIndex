@@ -44,12 +44,13 @@ export default {
   list-style: none;
   margin: 20px 20px;
   display: inline-block;
-  opacity: 0.8;
-  transition: opacity 0.25s ease-in-out;
+  transition: filter 0.25s ease-in-out;
+  filter: grayscale(1);
+  
 }
 
 .profileListItem:hover {
-  opacity: 1;
+  filter: grayscale(0);
 }
 
 .profileListItem:first-of-type {
@@ -61,9 +62,10 @@ export default {
 }
 
 .profile__username {
+  display: block;
   font-size: 20px;
+  margin-top: 1em;
   letter-spacing: 2px;
-  top: 1em;
   color: #333;
 }
 
@@ -71,10 +73,10 @@ export default {
   border-radius: 50%;
   max-width: 200px;
   max-height: 200px;
-
+  border: 5px solid #444;
   display: block;
   margin: 0 auto;
   margin-bottom: 0.25em;
-  box-shadow: 4px 4px 5px #aaa;
+  box-shadow: 4px 4px 5px #666;
 }
 </style>

@@ -157,7 +157,6 @@ export default {
   },
   methods: {
     updateThumbs() {
-      console.log(this.thumbs);
       if (this.order.length) {
         let thumbs = [];
         this.order.forEach(order => {
@@ -171,7 +170,6 @@ export default {
       } else {
         this.thumbs = this.imageSet;
       }
-      console.log(this.thumbs);
     },
     updateThumbnailOffset() {
       setTimeout(() => {
