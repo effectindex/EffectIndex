@@ -1,104 +1,93 @@
 const express = require('express');
 const router = express.Router();
 const config = require ('../../../nuxt.config.js');
-const protected = require('express-jwt');
+const secured = require('express-jwt');
 
 const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
 const Post = require('./Post');
 
-router.post('/', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+  try {
 
-    try {
+    if (!req.body || (!req.body.title || !req.body.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
 
-        if (!req.body || (!req.body.title || !req.body.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.')
+    const post = new Post({
+      author: req.user.username,
+      datetime: Date.now(),
+      title: req.body.title,
+      body: req.body.body
+    });
 
-        const post = new Post({
-            author: req.user.username,
-            datetime: Date.now(),
-            title: req.body.title,
-            body: req.body.body
-        });
+    let returnedPost = await post.save().catch((err) => {
+      throw API_Error('USER_SAVE_ERROR', err);
+    });
 
-        let returnedPost = await post.save().catch((err) => {
-            throw API_Error('USER_SAVE_ERROR', err);
-        });
+    res.send({ post: returnedPost });
 
-        res.send({ post: returnedPost });
-
-    } catch (error) {
-        res.status(500).send({ error });
-    }
-
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 });
 
-router.post('/:id', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
+router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
+  try {
 
-   try {
+    let post = await Post.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      body: req.body.body
+    }).exec().catch((err) => {
+      throw API_Error('POST_SAVE_ERROR', err);
+    });
 
-        let post = await Post.findByIdAndUpdate(req.params.id, {
-            title: req.body.title,
-            body: req.body.body
-        }).exec().catch((err) =>  {
-            throw API_Error('POST_SAVE_ERROR', err);
-        });
+    res.send({ post });
 
-        res.send({ post });
-
-    } catch (error) {
-       res.status(500).send ({ error });
-    }
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 });
 
-router.get('/:id/delete', protected({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
+router.get('/:id/delete', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
+  try {
 
-    try {
+    let deleted = await Post.findByIdAndRemove(req.params.id).exec().catch((error) => {
+      throw API_Error('DELETE_POST_ERROR', error);
+    });
 
-        let deleted = await Post.findByIdAndRemove(req.params.id).exec().catch((error) => {
-            throw API_Error('DELETE_POST_ERROR', error);   
-        });
+    res.send(deleted);
 
-        res.send(deleted);
-
-    } catch (error) {
-        res.status(500).send({ error });
-    }
-
-
-})
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
 
 router.get('/:slug', async(req, res) => {
+  try {
+    let post = await Post.findOne({ slug: req.params.slug }).catch((err) => {
+      throw API_Error('POST_NOT_FOUND', err);
+    });
 
-    try {
+    res.send({ post });
 
-        let post = await Post.findOne({ slug: req.params.slug }).catch((err) => {
-            throw API_Error('POST_NOT_FOUND', err);
-        });
-
-        res.send({ post });
-
-    } catch (error) {
-        res.status(500).send({ error });
-    }
-
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 });
 
 
 router.get('/', async(req, res) => {
-    try {
-        let posts = await Post
-            .find()
-            .setOptions({
-                maxTimeMS: 500
-            })
-            .sort({ datetime: 'desc' });
-        res.send({ posts });
-    } catch (error) {
-        res.status(500).send({ error });
-    }
-
+  try {
+    let posts = await Post
+      .find()
+      .setOptions({
+        maxTimeMS: 500
+      })
+      .sort({ datetime: 'desc' });
+    res.send({ posts });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 });
-
 
 module.exports = router;

@@ -1,34 +1,40 @@
 <template>
-    <tr>
-        <td> {{ replication.title }} </td>
-        <td>
-            <ext-link :href="replication.artist_url"> {{ replication.artist }} </ext-link>
-        </td>
-        <td> {{ replication.type }} </td>
-        <td>
-            <nuxt-link :to="'/admin/replications/' + replication.url"> [Edit] </nuxt-link>
-        </td>
-        <td> <a style="color: red; cursor: pointer;" @click="deleteReplication(replication._id)"> [Delete] </a> </td>
-    </tr>
+  <tr>
+    <td> <nuxt-link :to="'/admin/replications/' + replication.url"> {{ replication.title }} </nuxt-link> </td>
+    <td>
+      <ext-link :href="replication.artist_url"> {{ replication.artist }} </ext-link>
+    </td>
+    <td> {{ replication.type }} </td>
+    <td>
+      <a 
+        style="color: red; cursor: pointer;"
+        @click="deleteReplication(replication._id)"> [Delete] </a>
+    </td>
+  </tr>
 </template>
 
 <script>
-import ExtLink from '@/components/ExtLink.vue';
+import ExtLink from "@/components/ExtLink.vue";
 export default {
-    props: ['replication'],
-    components: {
-        ExtLink
-    },
-    methods: {
-        deleteReplication(id) {
-            this.$emit('deleteReplication', id);
-        }
+  components: {
+    ExtLink
+  },
+  props: {
+    replication: {
+      type: Object,
+      default: () => null
     }
-}
+  },
+  methods: {
+    deleteReplication(id) {
+      this.$emit("deleteReplication", id);
+    }
+  }
+};
 </script>
 
 <style>
-    .replicationTableRow__delete a {
-        color: red;
-    }
+.replicationTableRow__delete a {
+  color: red;
+}
 </style>

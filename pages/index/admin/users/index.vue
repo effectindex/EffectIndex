@@ -1,110 +1,118 @@
 <template>
-    <div class="pageContent userManagement">
-        <h1> User Management </h1>
-        <nuxt-link class="userManagement__link" to="/admin/users/list"> List Users </nuxt-link>
-        <nuxt-link class="userManagement__link" to="/admin/users/invite"> Invite Users </nuxt-link>
-        <nuxt-link class="userManagement__link" to="/admin/users/invitations"> Invitations </nuxt-link>
-        <nuxt-link class="userManagement__link" to="/admin/users/profiles/"> List Profiles </nuxt-link>
-        <nuxt-link class="userManagement__link" to="/admin/users/profiles/add"> Add Profile </nuxt-link>
-        <nuxt-child />
-    </div>
+  <div class="pageContent userManagement">
+    <h1> User Management </h1>
+    <nuxt-link 
+      class="userManagement__link"
+      to="/admin/users/list"> List Users </nuxt-link>
+    <nuxt-link 
+      class="userManagement__link"
+      to="/admin/users/invite"> Invite Users </nuxt-link>
+    <nuxt-link 
+      class="userManagement__link"
+      to="/admin/users/invitations"> Invitations </nuxt-link>
+    <nuxt-link 
+      class="userManagement__link"
+      to="/admin/users/profiles/"> List Profiles </nuxt-link>
+    <nuxt-link 
+      class="userManagement__link" 
+      to="/admin/users/profiles/add"> Add Profile </nuxt-link>
+    <nuxt-child />
+  </div>
 </template>
 
 <script>
     export default {
         middleware: ['auth']
-    }
+    };
 </script>
 
 <style>
-    .userManagement__link
-    {
-        display: inline-block;
-        padding: 0.25em;
-        margin-right: 1em;
-    }
+  .userManagement__link
+  {
+      display: inline-block;
+      padding: 0.25em;
+      margin-right: 1em;
+  }
 
-   .userManagement label {
-        display: block;
-        margin: 1em 0;
-        font-family: 'proxima-nova';
-        text-transform: uppercase;
-        letter-spacing: 1px;
+  .userManagement label {
+      display: block;
+      margin: 1em 0;
+      font-family: 'proxima-nova';
+      text-transform: uppercase;
+      letter-spacing: 1px;
 
-    }
+  }
 
-    .userManagement input {
-        font-family: 'Titillium Web';
-        border: 1px solid #CCCCCC;
-        padding: 0.5em 1em;
-        font-size: 16px;
-        width: 100%;
-    }
+  .userManagement input {
+      font-family: 'Titillium Web';
+      border: 1px solid #CCCCCC;
+      padding: 0.5em 1em;
+      font-size: 16px;
+      width: 100%;
+  }
 
-    .userManagement input[type=checkbox] {
-        width: auto;
-    }
+  .userManagement input[type=checkbox] {
+      width: auto;
+  }
 
-    .userManagement input[type=radio] {
-        width: auto;
-        margin-left: 0 1em;
-    }
+  .userManagement input[type=radio] {
+      width: auto;
+      margin-left: 0 1em;
+  }
 
-    .userManagement select {
-        width: 20em;
-        font-size: 16px;
-        font-family: 'proxima-nova';
-        padding: 0.5em 1em;
-        border: 1px solid #CCCCCC;
-    }
+  .userManagement select {
+      width: 20em;
+      font-size: 16px;
+      font-family: 'proxima-nova';
+      padding: 0.5em 1em;
+      border: 1px solid #CCCCCC;
+  }
 
-    .userManagement button {
-        font-family: 'proxima-nova';
-        display: inline-block;
-        font-size: 16px;
-        background-color: transparent;
-        transition: opacity 0.25s ease;
-        border: 1px solid #CCC;
-        width: 100px;
-        padding: 1em;
-        margin: 1em 1em 0 0;
-        opacity: 0.6;
-        cursor: pointer;
-    }
+  .userManagement button {
+      font-family: 'proxima-nova';
+      display: inline-block;
+      font-size: 16px;
+      background-color: transparent;
+      transition: opacity 0.25s ease;
+      border: 1px solid #CCC;
+      width: 100px;
+      padding: 1em;
+      margin: 1em 1em 0 0;
+      opacity: 0.6;
+      cursor: pointer;
+  }
 
-    .userManagement textarea {
-        font-family: 'Titillium Web';
-        border: 1px solid #CCCCCC;
-        padding: 0.5em 1em;
-        font-size: 16px;
-        height: 400px;
-        width: 100%;     
-    }
+  .userManagement textarea {
+      font-family: 'Titillium Web';
+      border: 1px solid #CCCCCC;
+      padding: 0.5em 1em;
+      font-size: 16px;
+      height: 400px;
+      width: 100%;     
+  }
 
-    .userManagement button:hover {
-        opacity: 1;
-    }
+  .userManagement button:hover {
+      opacity: 1;
+  }
 
-    .userManagement .errorMessage {
-        font-weight: bold;
-        color: red;
-    }
+  .userManagement .errorMessage {
+      font-weight: bold;
+      color: red;
+  }
 
-    .userManagement .success {
-        color: green;
-    }
+  .userManagement .success {
+      color: green;
+  }
 
-    .userManagement thead {
-        font-weight: bold;
-    }
+  .userManagement thead {
+      font-weight: bold;
+  }
 
-    .userManagement td {
-        min-width: 150px;
-    }
+  .userManagement td {
+      min-width: 150px;
+  }
 
-.nuxt-link-exact-active {
-  text-decoration: underline;
-}
-
-
+  .nuxt-link-exact-active {
+    text-decoration: underline;
+  }
 </style>

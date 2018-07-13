@@ -1,13 +1,13 @@
 <template>
-    <effect-list listType="all" />
+  <effect-list list-type="all" />
 </template>
 
 <script>
-import EffectList from '@/components/EffectList/EffectList.vue';
+import EffectList from "@/components/EffectList/EffectList.vue";
 
 export default {
-    components: {
-        EffectList
-    }
-}
+  components: {
+    EffectList
+  }
+};
 </script>

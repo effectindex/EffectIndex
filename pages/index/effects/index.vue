@@ -1,26 +1,25 @@
 <template>
-    <div class="pageContentContainer">
-        <effects-sidebar />
-        <nuxt-child class="pageContent"> </nuxt-child>
-    </div>
+  <div class="pageContentContainer">
+    <effects-sidebar />
+    <nuxt-child class="pageContent" />
+  </div>
 </template>
 
 <script>
-import EffectsSidebar from '@/components/EffectsSidebar.vue';
+import EffectsSidebar from "@/components/EffectsSidebar.vue";
 
 export default {
-    scrollToTop: true,
-    components: {
-        EffectsSidebar
-    },
-    head () {
-      return {
-        title: "Effects – Effect Index",
-      }
-    },
-    async fetch({ store }) {
-        await store.dispatch('getEffects');
-    }
-}
-
+  scrollToTop: true,
+  components: {
+    EffectsSidebar
+  },
+  head() {
+    return {
+      title: "Effects – Effect Index"
+    };
+  },
+  async fetch({ store }) {
+    await store.dispatch("getEffects");
+  }
+};
 </script>

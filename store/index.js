@@ -1,7 +1,7 @@
-import Vuex from 'vuex'
-import navigation from '@/data/navigation.json';
-import actions from './actions';
-import mutations from './mutations';
+import Vuex from "vuex";
+import navigation from "@/data/navigation.json";
+import actions from "./actions";
+import mutations from "./mutations";
 
 const createStore = () => {
   return new Vuex.Store({
@@ -11,7 +11,7 @@ const createStore = () => {
       effects: [],
       navigation,
       gallery: {
-        selected_effect: '',
+        selected_effect: "",
         replications: [],
         replicated_effects: []
       },
@@ -24,7 +24,7 @@ const createStore = () => {
     },
     mutations: mutations,
     actions: actions
-  })
-}
+  });
+};
 
-export default createStore
+export default createStore;

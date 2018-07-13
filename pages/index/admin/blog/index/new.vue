@@ -1,23 +1,23 @@
 <template>
-    <div class="pageContent">
-        <hr />
-        <post-editor @new-post="this.submitPost" />
-    </div>
+  <div class="pageContent">
+    <hr>
+    <post-editor
+      @new-post="submitPost" />
+  </div>
 </template>
 
 <script>
-import PostEditor from '@/components/blog/PostEditor.vue'
+  import PostEditor from '@/components/blog/PostEditor.vue';
 
-export default {
+  export default {
     components: {
-        PostEditor
+      PostEditor
     },
     methods: {
-        async submitPost(post) {
-            this.$store.dispatch('submitBlogPost', post).then(this.$router.push('/blog/'));
-        }
+      async submitPost(post) {
+        this.$store.dispatch('submitBlogPost', post).then(this.$router.push('/blog/'));
+      }
     },
     middleware: ['auth']
-}
-
+  };
 </script>

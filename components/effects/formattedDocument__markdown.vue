@@ -1,7 +1,14 @@
-<template><span v-html="$md.render(body)" /></template>
+<template>
+  <span v-html="$md.render(body)" />
+</template>
 
 <script>
 export default {
-    props: ['body']
-}
+  props: {
+    body: {
+      type: String,
+      default: ""
+    }
+  }
+};
 </script>

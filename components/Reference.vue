@@ -1,19 +1,39 @@
 <template>
-    <sup class="reference" :id="'ref-' + to + (no ? '-' + no : '')"> <a :href="'#cite-' + to"> [{{text ? text : to}}] </a> </sup> 
+  <sup 
+    :id="'ref-' + to + (no ? '-' + no : '')"
+    class="reference"
+  >
+    <a :href="'#cite-' + to">
+      [{{ text ? text : to }}]
+    </a>
+  </sup>
 </template>
 
 <script>
-    export default {
-        props: ['to', 'no', 'text']
+export default {
+  props: {
+    to: {
+      type: String,
+      default: ""
+    },
+    no: {
+      type: String,
+      default: ""
+    },
+    text: {
+      type: String,
+      default: ""
     }
+  }
+};
 </script>
 
 <style>
-    .reference:target {
-        font-weight: bold;
-    }
+.reference:target {
+  font-weight: bold;
+}
 
-    .short .reference {
-        display: none;
-    }
+.short .reference {
+  display: none;
+}
 </style>

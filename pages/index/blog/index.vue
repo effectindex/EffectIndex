@@ -1,44 +1,44 @@
 <template>
-
-<div class="pageContent blog">
-        <blog-post v-for="post in $store.state.blogPosts" :key="post._id" :post="post" @delete-post="deletePost" /> 
-</div>
-
+  <div class="pageContent blog">
+    <blog-post 
+      v-for="post in $store.state.blogPosts"
+      :key="post._id"
+      :post="post"
+      @delete-post="deletePost" /> 
+  </div>
 </template>
 
 <script>
-    import BlogPost from '@/components/blog/Post.vue';
+import BlogPost from "@/components/blog/Post.vue";
 
-    export default {
-        components: {
-            BlogPost
-        },
-        scrollToTop: true,
-        methods: { 
-            async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); }
-        },
-        head () {
-        return {
-            title: "Blog – Effect Index",
-        }
-        },
-        async fetch ( { store } ) { await store.dispatch('getBlogPosts'); }
+export default {
+  components: {
+    BlogPost
+  },
+  scrollToTop: true,
+  methods: {
+    async deletePost(id) {
+      this.$store.dispatch("deleteBlogPost", id);
     }
+  },
+  head () {
+    return { title: "Blog – Effect Index" };
+  },
+  async fetch({ store }) {
+    await store.dispatch("getBlogPosts");
+  }
+};
 </script>
 
 
 <style>
-    .blogPost {
-        padding-bottom: 2em;
-        margin-bottom: 3em;
-        border-bottom: 1px solid #DDD;
-    }
+.blogPost {
+  padding-bottom: 2em;
+  margin-bottom: 3em;
+  border-bottom: 1px solid #ddd;
+}
 
-    .blogPost:last-of-type {
-        border-bottom: 0;
-    }
-
-    .nuxt-link-exact-active a {
-        text-decoration: none;
-    }
+.blogPost:last-of-type {
+  border-bottom: 0;
+}
 </style>
