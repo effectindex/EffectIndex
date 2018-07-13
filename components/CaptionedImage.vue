@@ -16,7 +16,8 @@
       v-else-if="gfycat"
       :style="{
         maxWidth: width ? width + 'px' : 'none',
-        maxHeight: height ? height + 'px' : 'none'
+        maxHeight: height ? height + 'px' : 'none',
+        marginBottom: '0.5em'
       }"
       style="position:relative; padding-bottom:56.25%;"
     >
