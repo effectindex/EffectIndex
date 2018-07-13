@@ -1,7 +1,7 @@
 <template>
   <figure 
     :class="'captionedImage ' + float + ' unfloat'"
-    :style="{ width: (width ? width + 'px' : '100%') }">
+    :style="{ maxWidth: (width ? width + 'px' : '100%') }">
     <div v-if="src">
       <a 
         :href="src"
@@ -13,15 +13,20 @@
       </a>
     </div>
     <div 
-      v-else-if="gfycat" 
-      style="text-align: center;">
-      <iframe 
-        :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&controls=0'"
-        :width="(width ? width + 'px' : '100%')"
-        :height="(height ? height + 'px' : '100%')" 
+      v-else-if="gfycat"
+      :style="{
+        maxWidth: width ? width + 'px' : 'none',
+        maxHeight: height ? height + 'px' : 'none'
+      }"
+      style="position:relative; padding-bottom:56.25%;"
+    >
+      <iframe
+        :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&controls=0&wmmode=opaque'"
         frameborder="0"
         scrolling="no"
-        style="transform: scale(1); margin: 0 auto;"
+        width="100%"
+        height="100%"
+        style="position:absolute;top:0;left:0;"
         allowfullscreen />
     </div>
     <figcaption class="captionedImage__caption">
@@ -100,19 +105,19 @@ export default {
 <style scoped>
 .floatRight {
   float: right;
-  margin: 1em;
+  margin: 2em;
   margin-right: 0;
 }
 
 .floatLeft {
   float: left;
-  margin: 1em;
+  margin: 2em;
   margin-left: 0;
 }
 
 .alignCenter {
   display: block;
-  margin: 1em auto;
+  margin: 30px auto;
 }
 
 .artistTitle {
