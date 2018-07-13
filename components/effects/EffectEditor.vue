@@ -69,26 +69,30 @@
           <li 
             v-for="(replication, index) in associated_replications"
             :key="replication._id">
-            {{ replication.title }} [
-            <a @click="moveReplicationUp(index)">Up </a>
-            |
-            <a @click="moveReplicationDown(index)"> Down </a>
-            |
-            <a @click="removeReplication(index)"> Remove</a>]
+            <nuxt-link 
+              :to="'/admin/replications/' + replication.url"
+              style="font-weight: bold;"
+            > {{ replication.title }} </nuxt-link> -
+            [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
+            Down </a> | <a @click="removeReplication(index)"> Remove</a>]
           </li>
         </ol>
-        <ol v-else>
-          <li 
-            v-for="(replication, index) in combined_order"
-            :key="replication._id">
-            {{ replication.title }} [
-            <a @click="moveReplicationUp(index)">Up </a>
-            |
-            <a @click="moveReplicationDown(index)"> Down </a>
-            |
-            <a @click="removeReplication(index)"> Remove</a>]
-          </li>
-        </ol>
+        <div v-else>
+          <ol>
+            <li 
+              v-for="(replication, index) in combined_order"
+              :key="replication._id">
+              <nuxt-link 
+                :to="'/admin/replications/' + replication.url"
+                style="font-weight: bold;"
+              > {{ replication.title }} </nuxt-link> -
+              [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
+              Down </a> | <a @click="removeReplication(index)"> Remove</a>]
+            </li>
+          </ol>
+          <br >
+          <a @click="resetGalleryOrder"> Reset Order </a>
+        </div>
       </div>
 
     </div>
@@ -155,7 +159,7 @@ export default {
           order_item => order_item._id === replication._id
         );
         if (!foundInOrder)
-          combined.push({ _id: replication._id, title: replication.title });
+          combined.push({ _id: replication._id, title: replication.title, url: replication.url });
       });
 
       return combined;
@@ -194,9 +198,13 @@ export default {
       this.associated_replications.forEach(replication => {
         this.gallery_order.push({
           _id: replication._id,
-          title: replication.title
+          title: replication.title,
+          url: replication.url
         });
       });
+    },
+    resetGalleryOrder() {
+      this.gallery_order = [];
     },
     moveReplicationDown(index) {
       if (!this.gallery_order.length) this.makeGalleryOrder();

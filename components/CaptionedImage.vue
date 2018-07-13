@@ -17,8 +17,8 @@
       style="text-align: center;">
       <iframe 
         :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&controls=0'"
-        :width="width"
-        :height="height" 
+        :width="(width ? width + 'px' : '100%')"
+        :height="(height ? height + 'px' : '100%')" 
         frameborder="0"
         scrolling="no"
         style="transform: scale(1); margin: 0 auto;"
@@ -78,9 +78,20 @@ export default {
   },
   computed: {
     float() {
-      if (!this.align) return "floatRight";
-      else if (this.align.toLowerCase() === "right") return "floatRight";
-      else if (this.align.toLowerCase() === "left") return "floatLeft";
+      switch (this.align.toLowerCase()) {
+        case 'right':
+          return 'floatRight';
+          break;
+        case 'left':
+          return 'floatLeft';
+          break;
+        case 'center':
+          return 'alignCenter';
+          break;
+        default: 
+          return 'floatRight';
+          break;
+      }
     }
   }
 };
@@ -97,6 +108,11 @@ export default {
   float: left;
   margin: 1em;
   margin-left: 0;
+}
+
+.alignCenter {
+  display: block;
+  margin: 1em auto;
 }
 
 .artistTitle {
