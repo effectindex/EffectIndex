@@ -14,7 +14,6 @@ const Effect = mongoose.model("Effect", {
     default: []
   },
   summary_raw: String,
-  summary_formatted: String,
   analysis_raw: String,
   analysis_formatted: String,
   contributors: Array,

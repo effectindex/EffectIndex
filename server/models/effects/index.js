@@ -36,7 +36,6 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       citations: e.citations,
       summary_raw: e.summary,
       contributors: e.contributors,
-      summary_formatted: JSON.stringify(parser.parse(e.summary)),
       analysis_raw: e.analysis,
       analysis_formatted: JSON.stringify(parser.parse(e.analysis))
     });
@@ -55,7 +54,11 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
 
 router.get('/', async (req, res) => {
   try {
-    let effects = await Effect.find().sort({ name: 1 }).exec();
+    let effects = await Effect
+      .find()
+      .sort({ name: 1 })
+      .select('-description_raw -description_formatted -analysis_raw -analysis_formatted')
+      .exec();
     res.send({ effects });
   } catch (error) {
     res.status(500).send({ error });
@@ -82,7 +85,6 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
       description_raw: req.body.description,
       description_formatted: JSON.stringify(parser.parse(req.body.description)),
       summary_raw: req.body.summary,
-      summary_formatted: JSON.stringify(parser.parse(req.body.summary)),
       analysis_raw: req.body.analysis,
       analysis_formatted: JSON.stringify(parser.parse(req.body.analysis)),
       contributors: req.body.contributors,
