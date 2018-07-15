@@ -35,18 +35,18 @@
           <td> Title 
             <a 
               class="sortArrow"
-              @click="sortBy('title', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+              @click="sortBy('title', 'descending')"> <i class="fa fa-arrow-down" /> </a>
             <a 
               class="sortArrow"
-              @click="sortBy('title', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+              @click="sortBy('title', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
           </td>
           <td> Artist 
             <a 
               class="sortArrow"
-              @click="sortBy('artist', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+              @click="sortBy('artist', 'descending')"> <i class="fa fa-arrow-down" /> </a>
             <a 
               class="sortArrow"
-              @click="sortBy('artist', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+              @click="sortBy('artist', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
           </td>
           <td style="text-align: center;"> Thumb
             <input
@@ -56,10 +56,10 @@
           <td> Type 
             <a 
               class="sortArrow"
-              @click="sortBy('type', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+              @click="sortBy('type', 'descending')"> <i class="fa fa-arrow-down" /> </a>
             <a 
               class="sortArrow"
-              @click="sortBy('type', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+              @click="sortBy('type', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
           </td>
         </tr>
       </thead>
@@ -134,7 +134,7 @@ export default {
           a = a[column].toUpperCase();
           b = b[column].toUpperCase();
           
-          return (sortBy.direction === 'ascending' ? (a > b) : (a <= b));
+          return (sortBy.direction === 'ascending' ? (a <= b) : (a >= b));
         };
       };
 
