@@ -1,23 +1,30 @@
 <template>
   <div class="pageContent">
     <hr>
-    <label for="effectFilter" > Filter by Effect:
+    <label for="effectFilter" > 
+      <span style="font-style: italic;"> Filter by Effect: </span>
       <div class="inputContainer">
         <input
           :value="filter"
           type="text"
           class="filterInput"
           @input="debouncedInput"
-          @focus="toggleFocus"
-          @blur="toggleFocus"> <a @click="clearFilter"> (clear) </a>
+          @focus="focus"
+          @blur="blur">
+        <a 
+          style="font-style: italic;"
+          @click="clearFilter"> (clear) </a>
         <div 
-          v-show="focused"
+          :class="{ active: focused }"
           class="filterListContainer">
           <ul
             class="filterList"> 
             <li 
-              v-for="effect in filteredEffects"
-              :key="effect._id"> {{ effect.name }} </li>
+              v-for="effect in filteredEffects.slice(0, 5)"
+              :key="effect._id"> <a @click="selectEffectName(effect.name)"> {{ effect.name }} </a> </li>
+            <li 
+              v-show="filteredEffects.length > 5"
+              style="font-weight: bold"> ... </li>
           </ul>
         </div>
       </div>
@@ -92,11 +99,13 @@ export default {
       this.filter = "";
     },
     selectEffectName(name) {
-      console.log(name);
-      this.filter = name;
+      this.filter = name.toLowerCase();
     },
-    toggleFocus() {
-      this.focused = !this.focused;
+    focus() {
+      this.focused = true;
+    },
+    blur() {
+      setTimeout(() => this.focused = false, 100);
     },
     debouncedInput: debounce(function(e) {
       this.filter = e.target.value;
@@ -109,6 +118,7 @@ export default {
 .replicationList {
   padding: 0;
   list-style: none;
+
 }
 
 .replicationTable {
@@ -122,18 +132,32 @@ export default {
 }
 
 .filterListContainer {
-  background-color: #FFFFFF;
-  padding: 1em;
+  background-color: #F5F5F5;
+  padding: 0 1em;
+  margin-left: 20px;
   min-width: 300px;
-  max-height: 200px;
+  max-height: 0;
+  transition: all 0.25s ease-out;
   position: absolute;
   overflow: hidden;
+  border: 1px solid #EEE;
+  border-top: 0;
   left: 0;
+  filter: opacity(0);
+}
+
+.active {
+  max-height: 300px;
+  filter: opacity(0.9);
 }
 
 .filterList {
   list-style: none;
   padding: 0;
+}
+
+.filterList > li {
+  cursor: pointer;
 }
 
 thead {
@@ -147,12 +171,13 @@ table {
   margin-top: 1.5em;
 }
 
-
 .filterInput {
+  box-sizing: border-box;
   height: 30px;
   padding: 0.25em;
-  margin-left: 1em;
+  margin-left: 20px;
   font-size: 16px;
+  width: 300px;
   border: 1px solid #ccc;
 }
 </style>
