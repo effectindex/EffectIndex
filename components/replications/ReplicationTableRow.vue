@@ -1,11 +1,12 @@
 <template>
   <tr>
     <td> <nuxt-link :to="'/admin/replications/' + replication.url"> {{ replication.title }} </nuxt-link> </td>
-    <td>
+    <td style="width: 150px;">
       <ext-link :href="replication.artist_url"> {{ replication.artist }} </ext-link>
     </td>
-    <td> 
+    <td style="width: 150px; text-align: center;"> 
       <img
+        v-show="thumbs"
         :src="'/img/gallery/thumbnails/' + 
         (replication.thumbnail ? replication.thumbnail : replication.resource)"
         class="replicationTableRow__thumbnail">
@@ -29,6 +30,10 @@ export default {
     replication: {
       type: Object,
       default: () => null
+    },
+    thumbs: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

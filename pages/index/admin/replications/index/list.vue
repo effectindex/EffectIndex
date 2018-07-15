@@ -32,10 +32,35 @@
     <table class="replicationTable">
       <thead>
         <tr>
-          <td> Title </td>
-          <td> Artist </td>
-          <td> Thumbnail </td>
-          <td> Type </td>
+          <td> Title 
+            <a 
+              class="sortArrow"
+              @click="sortBy('title', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+            <a 
+              class="sortArrow"
+              @click="sortBy('title', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+          </td>
+          <td> Artist 
+            <a 
+              class="sortArrow"
+              @click="sortBy('artist', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+            <a 
+              class="sortArrow"
+              @click="sortBy('artist', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+          </td>
+          <td style="text-align: center;"> Thumb
+            <input
+              v-model="options.thumbs"
+              style="display: inline"
+              type="checkbox" > </td>
+          <td> Type 
+            <a 
+              class="sortArrow"
+              @click="sortBy('type', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+            <a 
+              class="sortArrow"
+              @click="sortBy('type', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+          </td>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +68,7 @@
           v-for="replication in filteredReplications"
           :key="replication._id"
           :replication="replication"
+          :thumbs="options.thumbs"
           @deleteReplication="deleteReplication" />
       </tbody>
     </table>
@@ -60,7 +86,14 @@ export default {
   data() {
     return {
       filter: "",
-      focused: false
+      focused: false,
+      options: {
+        thumbs: false,
+        sortBy: {
+          column: 'title',
+          direction: 'descending'
+        }
+      }
     };
   },
   computed: {
@@ -75,7 +108,7 @@ export default {
     filteredReplications() {
       let replications = this.$store.state.replications;
       let filter = this.filter.toLowerCase();
-      if (!this.filter) return replications;
+      if (!this.filter) return this.sortReplications(replications);
     
       let effectIds = this.filteredEffects.map((effect) => effect._id);
 
@@ -83,7 +116,7 @@ export default {
         replication.associated_effects.some((associated_effect) =>
           effectIds.indexOf(associated_effect) > -1));
       
-      return matchedReplications;
+      return this.sortReplications(matchedReplications);
     }
   },
   async asyncData({ store }) {
@@ -93,6 +126,30 @@ export default {
   middleware: ["auth"],
   scrollToTop: true,
   methods: {
+    sortReplications(replicationList) {
+      let sortBy = this.options.sortBy;
+
+      let compareFunction = (column, direction) => {
+        return function(a, b) {
+          a = a[column].toUpperCase();
+          b = b[column].toUpperCase();
+          
+          return (sortBy.direction === 'ascending' ? (a > b) : (a <= b));
+        };
+      };
+
+      if (sortBy.column && sortBy.direction) {
+        replicationList.sort(compareFunction(sortBy.column));
+        return replicationList;
+      } else return replicationList;
+    },
+    sortBy(column, direction) {
+      if (column && direction) {
+      console.log(column, direction);
+        this.options.sortBy.column = column;
+        this.options.sortBy.direction = direction;
+      } 
+    },
     deleteReplication(id) {
       this.$store.dispatch("deleteReplication", id);
     },
@@ -119,7 +176,6 @@ export default {
 .replicationList {
   padding: 0;
   list-style: none;
-
 }
 
 .replicationTable {
@@ -130,6 +186,11 @@ export default {
 .inputContainer {
   display: inline-block;
   position: relative;
+}
+
+.sortArrow {
+  cursor: pointer;
+  color: black;
 }
 
 .filterListContainer {
