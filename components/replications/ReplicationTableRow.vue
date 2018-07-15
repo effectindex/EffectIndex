@@ -4,7 +4,7 @@
     <td style="width: 150px;">
       <ext-link :href="replication.artist_url"> {{ replication.artist }} </ext-link>
     </td>
-    <td style="width: 150px; text-align: center;"> 
+    <td style="width: 150px;"> 
       <img
         v-show="thumbs"
         :src="'/img/gallery/thumbnails/' + 
@@ -15,7 +15,7 @@
     <td>
       <a 
         style="color: red; cursor: pointer; font-weight: bold;"
-        @click="deleteReplication(replication._id)"> [Delete] </a>
+        @click="deleteReplication(replication._id)"> <i class="fa fa-times" /> </a>
     </td>
   </tr>
 </template>

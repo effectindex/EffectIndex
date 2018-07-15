@@ -2,7 +2,7 @@
   <div class="pageContent">
     <hr>
     <label for="effectFilter" > 
-      <span style="font-style: italic;"> Filter by Effect: </span>
+      <span style="font-weight: bold;"> Filter by Effect: </span>
       <div class="inputContainer">
         <input
           :value="filter"
@@ -12,8 +12,8 @@
           @focus="focus"
           @blur="blur">
         <a 
-          style="font-style: italic;"
-          @click="clearFilter"> (clear) </a>
+          style="color: #BBB; padding: 0.5em;"
+          @click="clearFilter"> <i class="fa fa-times" /> </a>
         <div 
           :class="{ active: (focused && filter) }"
           class="filterListContainer">
@@ -31,7 +31,7 @@
     </label>
     <table class="replicationTable">
       <thead>
-        <tr>
+        <tr class="replicationTableHeaderRow">
           <td> Title 
             <a 
               class="sortArrow"
@@ -48,10 +48,10 @@
               class="sortArrow"
               @click="sortBy('artist', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
           </td>
-          <td style="text-align: center;"> Thumb
+          <td> Thumb
             <input
               v-model="options.thumbs"
-              style="display: inline"
+              style="display: inline; margin-left: 0.5em;"
               type="checkbox" > </td>
           <td> Type 
             <a 
@@ -227,6 +227,10 @@ thead {
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.replicationTableHeaderRow > td{
+  padding-bottom: 0.5em;
 }
 
 table {
