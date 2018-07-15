@@ -13,48 +13,40 @@ export default {
           return createElement(Markdown, {
             props: { body: element.value || "" }
           });
-          break;
         case "string":
           return createElement(
             "span",
             { style: { whiteSpace: "pre-wrap" } },
             element.value
           );
-          break;
         case "bullet":
           return createElement("span", { class: "bullet" }, element.value);
-          break;
         case "ref":
           return createElement(Reference, { props: element.props });
-          break;
         case "i":
           return createElement(
             "span",
             { style: { fontStyle: "italic" } },
             element.value
           );
-          break;
         case "b":
           return createElement(
             "span",
             { style: { fontWeight: "bold" } },
             element.value
           );
-          break;
         case "ext-link":
           return createElement(
             ExtLink,
             { props: element.props },
             element.value
           );
-          break;
         case "int-link":
           return createElement(
             "nuxt-link",
             { props: element.props },
             element.value
           );
-          break;
         case "cap-img":
           return createElement(
             CaptionedImage,

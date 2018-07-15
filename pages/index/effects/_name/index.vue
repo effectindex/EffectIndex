@@ -108,15 +108,23 @@ export default {
   computed: {
     icon() {
       let tags = this.effect["tags"];
+              
+      let icons = {
+        cognitive: "fa-puzzle-piece",
+        visual: "fa-eye",
+        auditory: "fa-volume",
+        tactile: "fa-fa-hand-paper-o",
+        disconnective: "fa-chain-broken",
+        multisensory: "fa-cogs",
+        physical: "fa-child"
+      };
+
       if (Array.isArray(tags)) {
-        if (tags.indexOf("cognitive") > -1) return "fa-puzzle-piece";
-        if (tags.indexOf("visual") > -1) return "fa-eye";
-        if (tags.indexOf("auditory") > -1) return "fa-volume";
-        if (tags.indexOf("tactile") > -1) return "fa-hand-paper-o";
-        if (tags.indexOf("disconnective") > -1) return "fa-chain-broken";
-        if (tags.indexOf("multisensory") > -1) return "fa-cogs";
-        if (tags.indexOf("physical") > -1) return "fa-child";
+        for (let tag in icons) {
+          if (tags.indexOf(tag) > -1) return icons[tag];
+        }
       }
+      
       return "fa-question";
     }
   },

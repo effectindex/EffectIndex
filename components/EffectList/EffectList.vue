@@ -69,7 +69,7 @@
       </li>
       <li v-if="(listType === 'all' || listType === 'physical')">
         <ul class="effectList__subclasses">
-          <li> <i class="fa fa-child effectList__icon" /> <h2>  Physical Effects </h2>
+          <li> <i class="fa fa-cutlery effectList__icon" /> <h2>  Physical Effects </h2>
             <ul class="effectList__actions">
               <action-list
                 :effects="filterEffectByTag('physical', 'enhancement')" 
@@ -112,10 +112,11 @@ export default {
   },
   methods: {
     filterEffectByTag(...tags) {
-      return this.$store.state.effects.filter(effect =>
-        tags.every(tag => effect.tags.indexOf(tag) > -1)
-      );
+    return this.$store.state.effects.filter(effect =>
+            tags.every(tag => effect.tags.indexOf(tag) > -1)
+          );
     }
+
   }
 };
 </script>

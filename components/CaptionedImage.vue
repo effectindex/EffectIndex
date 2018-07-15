@@ -16,7 +16,7 @@
       v-else-if="gfycat"
       :style="{
         maxWidth: width ? width + 'px' : 'none',
-        maxHeight: height ? height + 'px' : 'none',
+        height: height ? height + 'px' : 'none',
         marginBottom: '0.5em'
       }"
       style="position:relative; padding-bottom:56.25%;"
@@ -85,18 +85,14 @@ export default {
   computed: {
     float() {
       switch (this.align.toLowerCase()) {
-        case 'right':
-          return 'floatRight';
-          break;
-        case 'left':
-          return 'floatLeft';
-          break;
-        case 'center':
-          return 'alignCenter';
-          break;
-        default: 
-          return 'floatRight';
-          break;
+        case "right":
+          return "floatRight";
+        case "left":
+          return "floatLeft";
+        case "center":
+          return "alignCenter";
+        default:
+          return "floatRight";
       }
     }
   }
