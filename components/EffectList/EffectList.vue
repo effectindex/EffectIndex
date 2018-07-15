@@ -37,6 +37,16 @@
               <action-list :effects="filterEffectByTag('disconnective')" />            
             </ul>
           </li>
+          <li> <i class="fa fa-cutlery effectList__icon" /> <h2>  Smell and Taste Effects </h2>
+            <ul class="effectList__actions">
+              <action-list 
+              :effects="filterEffectByTag('gustatory')"
+              title="Gustatory effects" />          
+              <action-list
+              :effects="filterEffectByTag('olfactory')"
+              title="Olfactory effects" />  
+            </ul>
+          </li>
           <li> <i class="fa fa-cogs effectList__icon" /> <h2>  Multisensory Effects </h2>
             <ul class="effectList__actions">
               <action-list :effects="filterEffectByTag('multisensory')" />            
