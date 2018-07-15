@@ -4,10 +4,16 @@
     <td>
       <ext-link :href="replication.artist_url"> {{ replication.artist }} </ext-link>
     </td>
-    <td> {{ replication.type }} </td>
+    <td> 
+      <img
+        :src="'/img/gallery/thumbnails/' + 
+        (replication.thumbnail ? replication.thumbnail : replication.resource)"
+        class="replicationTableRow__thumbnail">
+    </td>
+    <td style="font-style: italic;"> {{ replication.type }} </td>
     <td>
       <a 
-        style="color: red; cursor: pointer;"
+        style="color: red; cursor: pointer; font-weight: bold;"
         @click="deleteReplication(replication._id)"> [Delete] </a>
     </td>
   </tr>
@@ -36,5 +42,9 @@ export default {
 <style>
 .replicationTableRow__delete a {
   color: red;
+}
+
+.replicationTableRow__thumbnail {
+  height: 50px;
 }
 </style>

@@ -15,7 +15,7 @@
           style="font-style: italic;"
           @click="clearFilter"> (clear) </a>
         <div 
-          :class="{ active: focused }"
+          :class="{ active: (focused && filter) }"
           class="filterListContainer">
           <ul
             class="filterList"> 
@@ -24,7 +24,7 @@
               :key="effect._id"> <a @click="selectEffectName(effect.name)"> {{ effect.name }} </a> </li>
             <li 
               v-show="filteredEffects.length > 5"
-              style="font-weight: bold"> ... </li>
+              style="font-weight: bold;"> ... </li>
           </ul>
         </div>
       </div>
@@ -34,6 +34,7 @@
         <tr>
           <td> Title </td>
           <td> Artist </td>
+          <td> Thumbnail </td>
           <td> Type </td>
         </tr>
       </thead>
@@ -72,15 +73,15 @@ export default {
       return foundEffects;
     },
     filteredReplications() {
-      let filter = this.filter.toLowerCase();
       let replications = this.$store.state.replications;
-      if (!filter.length) return replications;
-
+      let filter = this.filter.toLowerCase();
+      if (!this.filter) return replications;
+    
       let effectIds = this.filteredEffects.map((effect) => effect._id);
 
       let matchedReplications = replications.filter((replication) =>
         replication.associated_effects.some((associated_effect) =>
-          (effectIds.indexOf(associated_effect) > -1)));
+          effectIds.indexOf(associated_effect) > -1));
       
       return matchedReplications;
     }
@@ -109,7 +110,7 @@ export default {
     },
     debouncedInput: debounce(function(e) {
       this.filter = e.target.value;
-    }, 300)
+    }, 150)
   }
 };
 </script>
