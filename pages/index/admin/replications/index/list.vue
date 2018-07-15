@@ -4,6 +4,7 @@
     <label for="effectFilter" > Filter by Effect:
       <div class="inputContainer">
         <input
+          :value="filter"
           type="text"
           class="filterInput"
           @input="debouncedInput"
