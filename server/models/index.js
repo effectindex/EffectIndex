@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const blog = require("./blog/index"),
-  effects = require("./effects/index"),
-  replications = require("./replications/index"),
-  users = require("./users/index"),
-  invitations = require("./invitations/index");
-profiles = require("./profiles/index");
+const blog = require("./blog/"),
+  effects = require("./effects/"),
+  replications = require("./replications/"),
+  users = require("./users/"),
+  invitations = require("./invitations/"),
+  profiles = require("./profiles/"),
+  reports = require("./reports/");
 
 router
   .use("/blog", blog)
@@ -14,6 +15,7 @@ router
   .use("/users", users)
   .use("/invitations", invitations)
   .use("/profiles", profiles)
+  .use("/reports", reports)
 
   .use(function(err, req, res, next) {
     if (err["type"] === "API") {

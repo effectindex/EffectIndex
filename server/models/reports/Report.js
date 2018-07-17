@@ -1,27 +1,23 @@
+const slug = require("mongoose-slug-generator", {
+  truncate: 35
+});
+
 const mongoose = require("mongoose");
+mongoose.plugin(slug);
+
 
 const Report = mongoose.model("Report", {
   title: {
     type: String,
     required: true
   },
-  url: String,
-  tags: Array,
-  description_raw: String,
-  description_formatted: String,
-  gallery_order: {
-    type: Array,
-    default: []
-  },
-  summary_raw: String,
-  summary_formatted: String,
-  analysis_raw: String,
-  analysis_formatted: String,
-  contributors: Array,
-  citations: Array,
-  related_substances: Array,
-  see_also: Array,
-  external_links: Array
+  slug: { type: String, slug: ["title"], unqiue: true },
+  description: String,
+  form_link: String,
+  trip_date: Date,
+  submit_date: Date,
+  author: String,
+  tags: [String]
 });
 
-module.exports = Effect;
+module.exports = Report;

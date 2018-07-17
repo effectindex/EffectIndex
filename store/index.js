@@ -17,6 +17,7 @@ const createStore = () => {
       },
       blogPosts: [],
       profiles: [],
+      reports: [],
       admin: {
         userlist: [],
         invitations: []

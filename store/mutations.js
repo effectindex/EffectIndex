@@ -36,5 +36,8 @@ export default {
   },
   set_profiles(state, profiles) {
     state.profiles = profiles;
+  },
+  set_reports(state, reports) {
+    state.reports = reports;
   }
 };

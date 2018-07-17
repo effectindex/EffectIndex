@@ -3,26 +3,30 @@
     <hr>
     <table>
       <thead>
-        <td> Username </td> <td /> <td />
+        <tr>
+          <td> Username </td> <td /> <td />
+        </tr>
       </thead>
-      <tr 
-        v-for="profile in profiles"
-        :key="profile._id">
-        <td>  
-          <nuxt-link
-            :to="'/profiles/' + profile.username" 
-            class="profileList__username"> {{ profile.username }} </nuxt-link>
-        </td>
-        <td>
-          <nuxt-link 
-            :to="'/admin/users/profiles/' + profile._id"> [Edit] </nuxt-link>
-        </td>
-        <td>
-          <a
-            class="delete" 
-            @click="deleteProfile(profile._id)"> [Delete] </a>
-        </td>
-      </tr>
+      <tbody>
+        <tr 
+          v-for="profile in profiles"
+          :key="profile._id">
+          <td>  
+            <nuxt-link
+              :to="'/profiles/' + profile.username" 
+              class="profileList__username"> {{ profile.username }} </nuxt-link>
+          </td>
+          <td>
+            <nuxt-link 
+              :to="'/admin/users/profiles/' + profile._id"> [Edit] </nuxt-link>
+          </td>
+          <td>
+            <a
+              class="delete" 
+              @click="deleteProfile(profile._id)"> <i class="fa fa-times" /> </a>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>

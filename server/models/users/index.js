@@ -67,7 +67,6 @@ router.post('/register', async (req, res, next) => {
     if (err.code === 11000) next(API_Error('REGISTRATION_ERROR', 'Username already in use.'));
     else next(err);
   }
-  res.sendStatus(500);
 });
 
 router.get('/user', secured({secret: config.server.jwtSecret}), (req, res, next) => {

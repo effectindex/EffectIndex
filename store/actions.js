@@ -53,7 +53,7 @@ export default {
       "/api/effects/" + effect.id,
       effect
     );
-    dispatch("getEffects");
+    await dispatch("getEffects");
     return updatedEffect;
   },
   async deleteEffect({ dispatch }, id) {
@@ -88,25 +88,37 @@ export default {
     }
   },
   async updateReplication({ dispatch }, replication) {
-    let { replication: updatedReplication } = await this.$axios.$post(
-      "/api/replications/" + replication.id,
-      { replication }
-    );
-    dispatch("getReplications");
-    return updatedReplication;
+    try {
+      let { replication: updatedReplication } = await this.$axios.$post(
+        "/api/replications/" + replication.id,
+        { replication }
+      );
+      await dispatch("getReplications");
+      return updatedReplication;
+    } catch (error) {
+      throw new Error(error);
+    }
   },
   async deleteReplication({ dispatch }, id) {
-    let { replication: deletedReplication } = await this.$axios.$delete(
-      "/api/replications/" + id
-    );
-    dispatch("getReplications");
-    return deletedReplication;
+    try {
+      let { replication: deletedReplication } = await this.$axios.$delete(
+        "/api/replications/" + id
+      );
+      await dispatch("getReplications");
+      return deletedReplication;
+    } catch (error) {
+      throw new Error(error);
+    }
   },
   async getReplication({ commit }, snakeName) {
-    let { replication } = await this.$axios.$get(
-      "/api/replications/" + snakeName
-    );
-    return { replication };
+    try {
+      let { replication } = await this.$axios.$get(
+        "/api/replications/" + snakeName
+      );
+      return { replication };
+    } catch (error) {
+      throw new Error(error);
+    }
   },
   // Gallery
   async getGallery({ commit }) {
@@ -145,6 +157,40 @@ export default {
     try {
       let { profiles } = await this.$axios.$get("/api/profiles/");
       commit("set_profiles", profiles);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  // Reports 
+  async getReports({ commit }) {
+    try {
+      let { reports } = await this.$axios.$get("/api/reports/");
+      commit("set_reports", reports);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async deleteReport({ dispatch }, id) {
+    try {
+      let response = await this.$axios.$delete("/api/reports/" + id);
+      await dispatch("getReports");
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async updateReport({ dispatch }, report) {
+    try {
+      let response = await this.$axios.$put("/api/reports/" + report._id, { report });
+      await dispatch("getReports");
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async submitReport({ dispatch }, report) {
+    try {
+      let response = await this.$axios.$post("/api/reports/", { report });
+      await dispatch("getReports");
+      return response;
     } catch (error) {
       throw new Error(error);
     }

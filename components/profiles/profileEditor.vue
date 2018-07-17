@@ -14,7 +14,7 @@
         <textarea v-model="profile.body" />
       </label>
 
-      <button type="submit"> {{ id ? 'Update' : 'Save' }} </button>
+      <button type="submit"> {{ profile._id ? 'Update' : 'Save' }} </button>
     </form>
 
     <p v-show="errorMessage">
@@ -22,7 +22,7 @@
     </p>
 
     <p v-show="success">
-      <span class="success"> Profile {{ id ? 'updated' : 'added' }}! </span>
+      <span class="success"> Profile {{ profile._id ? 'updated' : 'added' }}! </span>
     </p>
 
     <image-uploader 
@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     submit() {
-      this.id ? this.submitModified() : this.submitNew();
+      this.profile._id ? this.submitModified() : this.submitNew();
     },
 
     async submitNew() {
@@ -81,11 +81,11 @@ export default {
       }
     },
     async submitModified() {
+      let profile = this.profile;
       try {
         let response = await this.$axios.$put(
-          "/api/profiles/" + this.profile._id,
-          formData,
-          { headers: { "Content-Type": "multipart/form-data" } }
+          "/api/profiles/" + profile._id,
+          { profile }
         );
         if (response) this.success = true;
       } catch (error) {

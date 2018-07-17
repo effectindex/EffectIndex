@@ -76,7 +76,7 @@ router.put('/:id', secured({ secret: config.server.jwtSecret }), upload.any(), a
   let id = req.params.id;
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_UPDATE_ERROR', 'The submitted request is invalid.');
-    if (typeof (req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
+    let { profile } = req.body;
     let updatedRecord = await Profile.findByIdAndUpdate(id, profile).exec();
     if (updatedRecord) res.sendStatus(200);
     else throw API_Error('PROFILE_UPDATE_ERROR', 'Failed to save updated profile.');

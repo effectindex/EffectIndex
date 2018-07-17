@@ -36,7 +36,7 @@
         ]
     },
     "Reports": {
-        "location": "/community-trip-reports"
+        "location": "/trip-reports"
     },
     "Project": {
         "location": "/blog",
