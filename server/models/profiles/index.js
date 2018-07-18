@@ -47,9 +47,7 @@ router.post('/upload', secured({ secret: config.server.jwtSecret }), hasRoles(['
         if (file.fieldname === 'fullImageData') profile.profileImageFull = file.filename;
         if (file.fieldname === 'croppedImageData') profile.profileImageCropped = file.filename;
       });
-      console.log(req.body.username, profile);
       let updatedRecord = await Profile.findOneAndUpdate({ username: req.body.username }, profile);
-      console.log(updatedRecord);
       if (updatedRecord) res.sendStatus(200);
       else throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
     } else throw API_Error('UPLOAD_IMAGE_ERROR', 'No files were selected for upload.');
@@ -113,11 +111,8 @@ router.get('/:id', secured({ secret: config.server.jwtSecret}), hasRoles(['admin
 
 router.get('/user/:username', async(req, res, next) => {
   let username = req.params.username;
-
   try {
     let profile = await Profile.findOne({ username }).exec();
-    if (!profile) throw API_Error('PROFILE_FIND_ERROR', 'The profile for the specified user cannot be found.');
-
     res.status(200).send({ profile });
   } catch (error) {
     next(error);

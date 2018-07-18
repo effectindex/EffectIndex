@@ -39,13 +39,15 @@ export default {
       replications: []
     };
   },
-  async asyncData({ store, params }) {
+  async asyncData({ store, params, error }) {
       let username = params.username;
 
-      let { profile } = await store.dispatch("getProfileByName", username);
+      let { profile } = await store.dispatch("getProfileByName", username); 
+      if (!profile) error({statusCode: 404});
+
       let { replications } = await store.dispatch("getReplicationsByArtist", username);
 
-      return { profile: profile ? profile : {}, replications: replications ? replications : [] };
+      return { profile, replications };
   }
 };
 </script>

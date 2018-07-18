@@ -4,6 +4,7 @@
       v-if="error.statusCode === 404"
       class="errorMessageContainer">
       <h1> 404 </h1>
+      <p> {{ error.message ? error.message : "" }} </p>
       <p> You expected satisfaction, you obtained emptiness. </p>
     </div>
     <div 
@@ -27,7 +28,7 @@ export default {
   props: {
     error: {
       type: Object,
-      default: () => {}
+      default: undefined
     }
   },
   layout: 'blog' // you can set a custom layout for the error page

@@ -49,12 +49,17 @@ export default {
     }
   },
   async updateEffect({ dispatch }, effect) {
+    try {
     let { effect: updatedEffect } = await this.$axios.$post(
       "/api/effects/" + effect.id,
       effect
     );
     await dispatch("getEffects");
     return updatedEffect;
+  } catch (error) {
+    throw new Error(error);
+  }
+    
   },
   async deleteEffect({ dispatch }, id) {
     let { effect: deletedEffect } = await this.$axios.$delete(
