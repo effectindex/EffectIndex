@@ -52,16 +52,13 @@ export default {
       this.errorMessage = "";
 
       try {
-        let returnedUser = await this.$axios.$post("api/users/register", {
-          user: this.user
-        });
-        if (returnedUser && "user" in returnedUser) {
+        let newUser = await this.$store.dispatch("register", this.user);
+        if (newUser) {
           this.success = true;
           this.$router.push("/user/login");
         }
       } catch (error) {
-        if ("error" in error.response.data)
-          this.errorMessage = error.response.data.error.message;
+          this.errorMessage = error.message;
       }
     },
     clear() {

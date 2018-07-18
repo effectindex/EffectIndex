@@ -10,7 +10,7 @@ export default {
   },
   async getSingleBlogPost({ commit }, slug) {
     let { post } = await this.$axios.$get("/api/blog/" + slug);
-    return post;
+    return { post };
   },
   async submitBlogPost({ dispatch }, post) {
     try {
@@ -63,15 +63,35 @@ export default {
     dispatch("getEffects");
     return deletedEffect;
   },
-  async getEffect({ commit }, snakeName) {
-    let { effect } = await this.$axios.$get("/api/effects/" + snakeName);
-    return { effect };
+  async getEffect({ commit }, name) {
+    try {
+      let { effect } = await this.$axios.$get("/api/effects/" + name);
+      return { effect };
+    } catch (error) {
+      throw new Error(error);
+    }
   },
   // Replications
   async getReplications({ commit }) {
     try {
       let { replications } = await this.$axios.$get("/api/replications");
       commit("set_replications", replications);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async getReplication({}, name) {
+    try {
+      let { replication } = await this.$axios.$get("/api/replications/" + name);
+      return { replication };
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async getReplicationsByArtist({}, artist) {
+    try {
+      let { replications } = await this.$axios.$get("/api/replications/byartist/" + artist);
+      return { replications };
     } catch (error) {
       throw new Error(error);
     }
@@ -143,6 +163,43 @@ export default {
       throw new Error(error);
     }
   },
+  async getUser({}, id) {
+    try {
+      let { user } = await this.$axios.$get("/api/users/" + id);
+      return { user };
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async register({}, user) {
+    try {
+      let { user: registeredUser } = await this.$axios.$post("api/users/register", { user });
+      return { user: registeredUser };
+    } catch (error) {
+      if ("response" in error && "data" in error.response) 
+        throw new Error(error.response.data.error.message);
+      else throw new Error(error);
+    }
+  },
+  async deleteUser({ dispatch }, id) {
+    try {
+      let response = await this.$axios.$delete("/api/users/" + id);
+      dispatch("getAllUsers");
+      return response;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async updateUser({ dispatch }, { user }) {
+    try {
+      let response = await this.$axios.$post("/api/users/" 
+        + user._id, { user });
+      await dispatch("getAllUsers");
+      return response;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
   // Invitations
   async getInvitations({ commit }) {
     try {
@@ -152,11 +209,71 @@ export default {
       throw new Error(error);
     }
   },
+  async deleteInvitation({ dispatch}, id) {
+    try {
+      let response = await this.$axios.$delete("/api/invitations/" + id);
+      await dispatch("getInvitations");
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async generateInvitation({}, expiration) {
+    try {
+      let { invitation } = await this.$axios.$post(
+        "/api/invitations/generate",
+        { expiration }
+      );
+      return { invitation };
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
   // Profiles
   async getProfiles({ commit }) {
     try {
       let { profiles } = await this.$axios.$get("/api/profiles/");
       commit("set_profiles", profiles);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async getProfileByName({}, name) {
+    try {
+      let { profile } = await this.$axios.$get("/api/profiles/user/" + name);
+      return { profile };
+    } catch (error){
+      throw new Error(error);
+    }
+  },
+  async getProfileById({}, id) {
+    try {
+      let { profile } = await this.$axios.$get("/api/profiles/" + id);
+      return { profile };
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async submitProfile({ dispatch }, { profile }) {
+    try {
+      let response = await this.$axios.$post("/api/profiles/", { profile });
+      await dispatch("getProfiles");
+      return response;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async updateProfile({ dispatch }, { profile }) {
+    try {
+      let response = await this.$axios.$put("/api/profiles/" + profile._id, { profile });
+      return response;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async deleteProfile({ dispatch }, id) {
+    try {
+      let response = await this.$axios.$delete("/api/profiles/" + id);
+      await dispatch("getProfiles");
     } catch (error) {
       throw new Error(error);
     }

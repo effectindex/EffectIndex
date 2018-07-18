@@ -20,8 +20,8 @@ export default {
       this.$router.push("/effects/" + returnedEffect.url);
     }
   },
-  async asyncData(app) {
-    let { effect } = await app.$axios.$get("/api/effects/" + app.params.name);
+  async asyncData({ store, params }) {
+    let { effect } = await store.dispatch("getEffect", params.name);
     return { effect };
   }
 };

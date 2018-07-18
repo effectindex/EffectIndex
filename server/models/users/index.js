@@ -98,7 +98,7 @@ router.post('/logout', async (req, res, next) => {
   res.sendStatus(500);
 });
 
-router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res) => {
+router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
   try {
     let userList = await User.find()
       .select('_id username scope')
@@ -109,7 +109,7 @@ router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']),
   }
 });
 
-router.get('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res) => {
+router.get('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
   const id = req.params.id;
   try {
     let user = await User.findById(id)
@@ -122,7 +122,7 @@ router.get('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin'
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async(req, res) => {
+router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async(req, res, next) => {
 
   const id = req.params.id;
   const userData = req.body.user;
@@ -138,7 +138,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   }
 });
 
-router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res) => {
+router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
   const id = req.params.id;
 
   try {

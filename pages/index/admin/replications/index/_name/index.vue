@@ -23,10 +23,8 @@ export default {
       this.$router.push("/admin/replications/list");
     }
   },
-  async asyncData(app) {
-    let { replication } = await app.$axios.$get(
-      "/api/replications/" + app.params.name
-    );
+  async asyncData({ store, params }) {
+    let { replication } = await store.dispatch("getReplication", params.name);
     return { replication };
   }
 };

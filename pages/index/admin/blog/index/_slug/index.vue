@@ -14,8 +14,8 @@
     components: {
       PostEditor
     },
-    async asyncData ({app, params}) {
-      let post = await app.store.dispatch('getSingleBlogPost', params.slug);
+    async asyncData ({ store, params }) {
+      let { post } = await store.dispatch('getSingleBlogPost', params.slug);
       return { post };
     },
     methods: {

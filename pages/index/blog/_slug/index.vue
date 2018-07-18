@@ -1,12 +1,6 @@
 <template>
 
   <div class="pageContent blog">
-    <div
-      v-if="$auth.loggedIn"
-      style="text-align: right;">
-      <nuxt-link to="/blog/new"> ... submit a new blog post </nuxt-link>
-    </div>
-
     <blog-post 
       v-if="post"
       :post="post"
@@ -31,9 +25,8 @@ export default {
         .then(this.$router.push("/blog/"));
     }
   },
-  async asyncData(app) {
-    let slug = app.route.params.slug;
-    let post = await app.store.dispatch("getSingleBlogPost", slug);
+  async asyncData({ store, params }) {
+    let post = await store.dispatch("getSingleBlogPost", params.slug);
     return { post };
   }
 };

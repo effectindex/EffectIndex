@@ -18,7 +18,8 @@
         <td>
           <a 
             class="delete"
-            @click="deleteInvitation(invitation._id)"> Delete </a> </td>
+            style="color: red; cursor: pointer;"
+            @click="deleteInvitation(invitation._id)"> <i class="fa fa-times" /> </a> </td>
       </tr>
 
     </table>
@@ -39,16 +40,13 @@ export default {
   },
   methods: {
     async deleteInvitation(id) {
-      let deletedInvitation = await this.$axios.delete(
-        "/api/invitations/" + id
-      );
-      this.$store.dispatch("getInvitations");
+      await this.$store.dispatch("deleteInvitation", id);
     },
     formatDate(date) {
       return fecha.format(new Date(date), "MMMM D, YYYY");
     }
   },
-  async asyncData({ store }) {
+  async fetch({ store }) {
     await store.dispatch("getInvitations");
   }
 };

@@ -44,13 +44,11 @@ export default {
       return { to: new Date(Date.now()) };
     },
     inviteURL() {
+      let hostname = this.hostname;
       return this.generatedInvitation
-        ? this.hostname +
-            (this.hostname.charAt(this.hostname.length - 1) === "/"
-              ? ""
-              : "/") +
-            "user/register/" +
-            this.generatedInvitation._id
+        ? hostname +
+            (hostname.charAt(hostname.length - 1) === "/" ? "" : "/") +
+            "user/register/" + this.generatedInvitation._id
         : "";
     },
     hostname() {
@@ -59,15 +57,8 @@ export default {
   },
   methods: {
     async generateInviteURL() {
-      try {
-        let { invitation } = await this.$axios.$post(
-          "/api/invitations/generate",
-          { expiration: this.expiration }
-        );
-        this.generatedInvitation = invitation;
-      } catch (err) {
-        console.log(err);
-      }
+      let { invitation } = await this.$store.dispatch("generateInvitation", this.expiration);
+      this.generatedInvitation = invitation;
     },
     clearExpiration() {
       this.expiration = undefined;

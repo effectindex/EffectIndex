@@ -62,40 +62,31 @@ export default {
   },
   methods: {
     submit() {
-      this.profile._id ? this.submitModified() : this.submitNew();
+      this.profile._id ? this.updateProfile() : this.submitProfile();
     },
 
-    async submitNew() {
+    async submitProfile() {
       let profile = this.profile;
       delete profile._id;
 
-      try {
-        let response = await this.$axios.$post("/api/profiles/", { profile });
-        if (response) {
-          this.success = true;
-          this.profile = response.profile;
-        }
-      } catch (error) {
-        if ("error" in error.response.data)
-          this.errorMessage = error.response.data.error.message;
+      let response = await this.$store.dispatch("submitProfile", { profile });
+      if (response) {
+        this.success = true;
+        this.profile = response.profile;
       }
     },
-    async submitModified() {
+    async updateProfile() {
       let profile = this.profile;
-      try {
-        let response = await this.$axios.$put(
-          "/api/profiles/" + profile._id,
-          { profile }
-        );
-        if (response) this.success = true;
-      } catch (error) {
-        if ("error" in error.response.data)
-          this.errorMessage = error.response.data.error.message;
+      let response = await this.$store.dispatch("updateProfile", { profile });
+      
+      if (response) {
+        this.success = true;
+        this.grabProfile();
       }
     },
     async grabProfile() {
       if (this.id) {
-        let { profile } = await this.$axios.$get("/api/profiles/" + this.id);
+        let { profile } = await this.$store.dispatch("getProfileById", this.id);
         if (profile) this.profile = profile;
       }
     }

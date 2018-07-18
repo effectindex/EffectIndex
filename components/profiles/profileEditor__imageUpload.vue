@@ -52,7 +52,8 @@ export default {
         file: undefined,
         content: undefined
       },
-      uploadStatus: ""
+      uploadStatus: "",
+      errorMessage: ""
     };
   },
   updated () {
@@ -96,6 +97,11 @@ export default {
         if (response) this.uploadStatus = "Uploaded!";
       } catch (error) {
         this.uploadStatus = "Error!";
+        if ('response' in error) {
+          if ('data' in error.response) {
+            this.uploadStatus = this.uploadStatus + " " + error.response.data.error.message;
+          }
+        }
       }
     }
   },

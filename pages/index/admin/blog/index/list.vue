@@ -20,7 +20,7 @@
         <td> 
           <a 
             style="color: red; cursor: pointer;"
-            @click="deletePost(post._id)"> [Delete] </a>
+            @click="deletePost(post._id)"> <i class="fa fa-times" /> </a>
         </td>
       </tr>
     </table>

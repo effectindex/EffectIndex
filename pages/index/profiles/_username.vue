@@ -39,18 +39,13 @@ export default {
       replications: []
     };
   },
-  async asyncData(app) {
-    try {
-      let { profile } = await app.$axios.$get(
-        "/api/profiles/user/" + app.params.username
-      );
-      let { replications } = await app.$axios.$get(
-        "/api/replications/byartist/" + app.params.username
-      );
-      return { profile, replications };
-    } catch (error) {
-      console.log(error);
-    }
+  async asyncData({ store, params }) {
+      let username = params.username;
+
+      let { profile } = await store.dispatch("getProfileByName", username);
+      let { replications } = await store.dispatch("getReplicationsByArtist", username);
+
+      return { profile: profile ? profile : {}, replications: replications ? replications : [] };
   }
 };
 </script>

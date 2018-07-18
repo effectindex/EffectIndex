@@ -33,26 +33,18 @@
 
 <script>
 export default {
-  methods: {
-    async deleteProfile(id) {
-      try {
-        let response = await this.$axios.$delete("/api/profiles/" + id);
-        if (response) {
-          let { profiles } = await this.$axios.$get("/api/profiles/");
-          this.profiles = profiles;
-        }
-      } catch (error) {
-        console.log(error);
-      }
+  computed: {
+    profiles() {
+      return this.$store.state.profiles;
     }
   },
-  async asyncData(app) {
-    try {
-      let profiles = await app.$axios.$get("/api/profiles/");
-      return profiles;
-    } catch (error) {
-      console.log(error);
+  methods: {
+    async deleteProfile(id) {
+      await this.$store.dispatch("deleteProfile", id);
     }
+  },
+  async fetch({ store }) {
+    await store.dispatch("getProfiles");
   }
 };
 </script>

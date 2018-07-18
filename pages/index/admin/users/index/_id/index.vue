@@ -31,49 +31,27 @@ export default {
   data() {
     return {
       success: false,
-      errorMessage: ""
+      errorMessage: "",
+      user: {
+        _id: undefined,
+        username: undefined,
+        scope: {
+          admin: false,
+          editor: false
+        }
+      }
     };
   },
   methods: {
     async submit() {
       this.success = false;
-      let user = {
-        username: this.user.username,
-        scope: {
-          admin: this.user.scope.admin,
-          editor: this.user.scope.editor
-        }
-      };
-
-      try {
-        let response = await this.$axios.$post("/api/users/" + this.user._id, {
-          user
-        });
-        if (response) this.success = true;
-      } catch (error) {
-        console.log(error);
-      }
+      let response = await this.$store.dispatch("updateUser", { user: this.user });
+      if (response) this.success = true;
     }
   },
-  async asyncData(app) {
-    try {
-      let id = app.route.params.id;
-      let user = await app.$axios.$get("/api/users/" + id);
-      if (user) return user;
-      else
-        return {
-          user: {
-            _id: undefined,
-            username: undefined,
-            scope: {
-              admin: false,
-              editor: false
-            }
-          }
-        };
-    } catch (error) {
-      console.log(error);
-    }
+  async asyncData({ store, params }) {
+    let { user } = await store.dispatch("getUser", params.id);
+    return { user };
   }
 };
 </script>

@@ -149,14 +149,9 @@ export default {
       return false;
     }
   },
-  async asyncData(app) {
-    try {
+  async asyncData({ store, params }) {
       let { effect } = await app.store.dispatch("getEffect", app.params.name);
       return { effect };
-    } catch (error) {
-      console.log(error);
-      return { effect: {} };
-    }
   }
 };
 </script>

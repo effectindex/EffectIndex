@@ -119,7 +119,7 @@ export default {
       return this.sortReplications(matchedReplications);
     }
   },
-  async asyncData({ store }) {
+  async fetch({ store }) {
     await store.dispatch("getReplications");
     await store.dispatch("getEffects");
   },

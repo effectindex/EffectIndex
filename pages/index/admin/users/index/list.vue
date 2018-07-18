@@ -19,7 +19,7 @@
           <td> {{ listRoles(user) }} </td>
           <td> <nuxt-link :to="'/admin/users/' + user._id"> Modify </nuxt-link> </td>
           <td> 
-            <a @click="deleteUser(user)"> 
+            <a @click="deleteUser(user._id)"> 
               <i 
                 style="color: red; cursor: pointer;"
                 class="fa fa-times" />
@@ -40,21 +40,16 @@ export default {
   },
   methods: {
     listRoles(user) {
-      let roles = "";
+      let roles = [];
 
       for (let role in user.scope) {
-        if (user.scope[role] === true) roles = roles + " " + role;
+        if (user.scope[role] === true) roles.push(role);
       }
 
-      return roles;
+      return roles.join(", ");
     },
-    async deleteUser(user) {
-      try {
-        let response = await this.$axios.$delete('/api/users/' + user._id);
-        if (response) await this.$store.dispatch("getAllUsers");
-      } catch (error) {
-        console.log(error);
-      }
+    async deleteUser(id) {
+      await this.$store.dispatch("deleteUser", id);
     }
   },
   async fetch({ store }) {

@@ -47,11 +47,12 @@ router.post('/upload', secured({ secret: config.server.jwtSecret }), hasRoles(['
         if (file.fieldname === 'fullImageData') profile.profileImageFull = file.filename;
         if (file.fieldname === 'croppedImageData') profile.profileImageCropped = file.filename;
       });
-
+      console.log(req.body.username, profile);
       let updatedRecord = await Profile.findOneAndUpdate({ username: req.body.username }, profile);
+      console.log(updatedRecord);
       if (updatedRecord) res.sendStatus(200);
       else throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
-    }
+    } else throw API_Error('UPLOAD_IMAGE_ERROR', 'No files were selected for upload.');
   } catch (error) {
     next(error);
   }

@@ -28,6 +28,7 @@ export default {
   float: right;
   border: 1px solid #e5e5e5;
   background-color: #f5f5f5;
+  margin-bottom: 2em;
 }
 
 .profileImage img {
