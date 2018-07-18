@@ -149,8 +149,9 @@ export default {
       return false;
     }
   },
-  async asyncData({ store, params }) {
+  async asyncData({ store, params, error }) {
       let { effect } = await store.dispatch("getEffect", params.name);
+      if (!effect) error({statusCode: 404, message: "Effect not found."});
       return { effect };
   }
 };

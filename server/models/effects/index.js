@@ -69,8 +69,10 @@ router.get('/', async (req, res) => {
 router.get('/:url', async (req, res) => {
   try {
     let effect = await Effect.findOne({ url: req.params.url }).exec();
-    effect = effect.toJSON();
-    effect.replications = await Replication.find({ associated_effects: effect._id }).exec();
+    if (effect) {
+      effect = effect.toJSON();
+      effect.replications = await Replication.find({ associated_effects: effect._id }).exec();
+    }
     res.send({ effect });
   } catch (error) {
     res.status(500).send({ error });

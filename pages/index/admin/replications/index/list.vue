@@ -145,7 +145,6 @@ export default {
     },
     sortBy(column, direction) {
       if (column && direction) {
-      console.log(column, direction);
         this.options.sortBy.column = column;
         this.options.sortBy.direction = direction;
       } 

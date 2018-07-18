@@ -25,8 +25,9 @@ export default {
         .then(this.$router.push("/blog/"));
     }
   },
-  async asyncData({ store, params }) {
-    let post = await store.dispatch("getSingleBlogPost", params.slug);
+  async asyncData({ store, params, error }) {
+    let { post } = await store.dispatch("getSingleBlogPost", params.slug);
+    if (!post) error({statusCode: 404, message: 'Blog post not found.'});
     return { post };
   }
 };

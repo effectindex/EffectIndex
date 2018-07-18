@@ -42,7 +42,7 @@
         v-for="(citation, index) in value"
         :key="citation.url"
         :from="citation.from"
-        :no="citation.no"
+        :no="String(citation.no)"
         class="cite"
         @click="selectCitation(index)">
         {{ citation.text }}

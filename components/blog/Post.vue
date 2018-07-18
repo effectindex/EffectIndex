@@ -30,8 +30,8 @@ import fecha from "fecha";
 export default {
   props: {
     post: {
-      type: String,
-      default: ""
+      type: Object,
+      default: undefined
     },
     loggedIn: {
       type: String,
