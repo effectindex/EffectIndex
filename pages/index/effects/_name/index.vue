@@ -150,7 +150,7 @@ export default {
     }
   },
   async asyncData({ store, params }) {
-      let { effect } = await app.store.dispatch("getEffect", app.params.name);
+      let { effect } = await store.dispatch("getEffect", params.name);
       return { effect };
   }
 };
