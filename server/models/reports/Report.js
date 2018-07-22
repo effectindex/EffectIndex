@@ -11,12 +11,35 @@ const Report = mongoose.model("Report", {
     type: String,
     required: true
   },
-  slug: { type: String, slug: ["title"], unqiue: true },
-  description: String,
   form_link: String,
-  trip_date: Date,
-  submit_date: Date,
-  author: String,
+  slug: { type: String, slug: ["title"], unqiue: true },
+  subject: {
+    name: String,
+    age: Number,
+    location: String,
+    gender: String,
+    trip_date: Date
+  },
+  substance: {
+    name: String,
+    dose: String,
+    roa: String
+  },
+  introduction: String,
+  description: String,
+  onset: [{
+    time: String,
+    description: String,
+  }],
+  peak: [{
+    time: String,
+    description: String,
+  }],
+  offset: [{
+    time: String,
+    description: String,
+  }],
+  conclusion: String,
   tags: [String]
 });
 

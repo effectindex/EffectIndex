@@ -6,7 +6,8 @@ const blog = require("./blog/"),
   users = require("./users/"),
   invitations = require("./invitations/"),
   profiles = require("./profiles/"),
-  reports = require("./reports/");
+  reports = require("./reports/"),
+  server = require("./server/");
 
 router
   .use("/blog", blog)
@@ -16,6 +17,7 @@ router
   .use("/invitations", invitations)
   .use("/profiles", profiles)
   .use("/reports", reports)
+  .use("/server", server)
 
   .use(function(err, req, res, next) {
     if (err["type"] === "API") {

@@ -316,5 +316,14 @@ export default {
     } catch (error) {
       throw new Error(error);
     }
+  },
+  // Server 
+  async restartServer({ dispatch }) {
+    try {
+      let response = await this.$axios.$get("/api/server/restart");
+      return respose;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 };

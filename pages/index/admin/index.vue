@@ -9,6 +9,7 @@
         <li> <nuxt-link to="/admin/replications/"> Manage Replications </nuxt-link> </li>
         <li> <nuxt-link to="/admin/blog"> Manage Blog </nuxt-link> </li>
         <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
+        <li>  <a @click="restartServer"> Restart Server </a> </li>
       </ul>      
     </div>
     <nuxt-link 
@@ -23,6 +24,11 @@
 
 <script>
 export default {
+  methods: {
+    async restartServer() {
+      this.$store.dispatch("restartServer");
+    }
+  },
   head() {
     return {
       title: "Admin – Effect Index"

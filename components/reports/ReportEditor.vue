@@ -5,11 +5,16 @@
         v-model="reportData.title"
         class="reportEditor__inputTitle">
     </label>
-    <label> Author 
-      <input
-        v-model="reportData.author"
-        class="reportEditor__inputTitle">
-    </label>
+    <div class="section reportEditor__subjectContainer">
+      <h3> Subject Information </h3>
+      <label> Name 
+        <input
+          v-model="reportData.author"
+          class="reportEditor__inputTitle">
+      </label>
+    </div>
+
+
     <label> Description
       <textarea
         v-model="reportData.description" 
@@ -95,5 +100,9 @@ export default {
 
 .reportEditor__cancelLink {
   padding-right: 2em;
+}
+
+.reportEditor .section {
+  padding: 0.5em 1em;
 }
 </style>
