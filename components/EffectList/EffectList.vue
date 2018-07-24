@@ -68,6 +68,9 @@
                 :effects="filterEffectByTag('cognitive', 'alteration')"
                 title="Alterations" />
               <action-list
+                :effects="filterEffectByTag('cognitive', 'novel')"
+                title="Novel States" />
+              <action-list
                 :effects="filterEffectByTag('cognitive', 'psychological state')"
                 title="Psychological States" />
               <action-list 
