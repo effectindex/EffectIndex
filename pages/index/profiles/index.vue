@@ -58,14 +58,6 @@ export default {
   filter: grayscale(0);
 }
 
-.profileListItem:first-of-type {
-  margin-left: 0;
-}
-
-.profileListItem:last-of-type {
-  margin-right: 0;
-}
-
 .profile__username {
   display: block;
   font-size: 20px;
