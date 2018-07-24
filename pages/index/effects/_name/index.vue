@@ -2,10 +2,10 @@
   <div class="pageContent">
     <div v-show="effect.name">
       <div v-if="$auth.loggedIn">
-        <nuxt-link 
+        <nuxt-link
           :to="'/admin/effects/' + effect.url"
           append> [Edit] </nuxt-link>
-        <a 
+        <a
           style="color: red; float:right;"
           @click="deleteEffect(effect._id)"> [Delete] </a>
       </div>
@@ -15,12 +15,12 @@
         <formatted-document :document="effect.description_formatted" />
       </div>
 
-      <div 
+      <div
         v-if="hasSection('replications')"
         class="effect__gallery">
         <hr>
         <h3> Gallery </h3>
-        <light-box 
+        <light-box
           :image-set="effect.replications"
           :order="effect.gallery_order"
           base="/img/gallery/" />
@@ -37,7 +37,7 @@
         <div v-if="hasSection('see_also')">
           <h3> See Also </h3>
           <ul>
-            <li 
+            <li
               v-for="link in effect.see_also"
               :key="link.url">
               <ext-link :href="link.url"> {{ link.title }} </ext-link>
@@ -48,8 +48,8 @@
         <div v-if="hasSection('external_links')">
           <h3> External Links </h3>
           <ul>
-            <li 
-              v-for="link in effect.external_links" 
+            <li
+              v-for="link in effect.external_links"
               :key="link.url">
               <ext-link :href="link.url"> {{ link.title }} </ext-link>
             </li>
@@ -66,7 +66,7 @@
       <div v-if="hasSection('tags')">
         <hr>
         <h3> Tags </h3>
-        <tag 
+        <tag
           v-for="tag in effect.tags"
           :key="tag"
           :value="tag" />
@@ -76,7 +76,7 @@
         <hr>
         <h3> Contributors </h3>
         <p> The following people contributed to the content of this article: </p>
-        <span 
+        <span
           v-for="contributor in effect.contributors"
           :key="contributor"
           class="contributor">
@@ -108,7 +108,7 @@ export default {
   computed: {
     icon() {
       let tags = this.effect["tags"];
-              
+
       let icons = {
         cognitive: "fa-puzzle-piece",
         visual: "fa-eye",
@@ -116,7 +116,9 @@ export default {
         tactile: "fa-fa-hand-paper-o",
         disconnective: "fa-chain-broken",
         multisensory: "fa-cogs",
-        physical: "fa-child"
+        physical: "fa-child",
+        gustatory: "fa-cutlery",
+        olfactory: "fa-cutlery"
       };
 
       if (Array.isArray(tags)) {
@@ -124,7 +126,7 @@ export default {
           if (tags.indexOf(tag) > -1) return icons[tag];
         }
       }
-      
+
       return "fa-question";
     }
   },
@@ -150,9 +152,9 @@ export default {
     }
   },
   async asyncData({ store, params, error }) {
-      let { effect } = await store.dispatch("getEffect", params.name);
-      if (!effect) error({statusCode: 404, message: "Effect not found."});
-      return { effect };
+    let { effect } = await store.dispatch("getEffect", params.name);
+    if (!effect) error({ statusCode: 404, message: "Effect not found." });
+    return { effect };
   }
 };
 </script>

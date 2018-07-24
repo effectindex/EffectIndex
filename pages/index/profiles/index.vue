@@ -1,16 +1,16 @@
 <template>
   <div class="pageContent">
-    <h1> People </h1>
+    <h1> People <i class="fa fa-users categoryIcon" /> </h1>
 
     <p> This page lists the profiles of the Effect Index team and various dedicated individuals who have contributed significant amounts of work to this project. </p>
 
     <ul class="profileList">
-      <li 
+      <li
         v-for="profile in $store.state.profiles"
         :key="profile._id"
         class="profileListItem" >
-        <nuxt-link :to="'/profiles/' + profile.username"> 
-          <img 
+        <nuxt-link :to="'/profiles/' + profile.username">
+          <img
             :src="'/img/profiles/cropped/' + profile.profileImageCropped"
             :alt="profile.username"
             class="profileImage">
@@ -31,6 +31,12 @@ export default {
 </script>
 
 <style scoped>
+.pageContent .categoryIcon {
+  float: right;
+  font-size: 35px;
+  opacity: 0.6;
+  margin: 5px 0px 0px 15px;
+}
 .profileList {
   padding: 0;
   display: flex;
@@ -46,7 +52,6 @@ export default {
   display: inline-block;
   transition: filter 0.25s ease-in-out;
   filter: grayscale(1);
-  
 }
 
 .profileListItem:hover {
@@ -73,10 +78,8 @@ export default {
   border-radius: 50%;
   max-width: 200px;
   max-height: 200px;
-  border: 5px solid #444;
   display: block;
   margin: 0 auto;
   margin-bottom: 0.25em;
-  box-shadow: 4px 4px 5px #666;
 }
 </style>

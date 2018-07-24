@@ -1,68 +1,92 @@
 {
-    "Admin": {
-        "location": "/admin",
-        "scope": ["admin", "editor", "artist", "user"],
-        "children": [
-            { "name": "Effects", "location": "/admin/effects/list", "scope": ["admin", "editor"] },
-            { "name": "Replications", "location": "/admin/replications/list", "scope": ["admin", "editor", "artist"] },
-            { "name": "Blog", "location": "/admin/blog/list", "scope": ["admin"] },
-            { "name": "Users", "location": "/admin/users/list", "scope": ["admin"] },
-            { "name": "Reports", "location": "/admin/reports/list", "scope": ["admin", "editor"] },
-            { "name": "Logout", "location": "/user/logout", "scope": ["admin", "editor", "artist", "user"] }
-        ]
-    },
-    "Home": {
-        "location": "/"
-    },
-    "Effects": {
-        "location": "/effects",
-        "children": [
-            { "name": "All", "location": "/effects" },
-            { "name": "Sensory", "location": "/effects/sensory/" },
-            { "name": "Cognitive", "location": "/effects/cognitive/" },
-            { "name": "Physical", "location": "/effects/physical/" },
-            { "name": "Psychedelics", "location": "/effects/psychedelics/" },
-            { "name": "Dissociatives", "location": "/effects/dissociatives/" },
-            { "name": "Deliriants", "location": "/effects/deliriants/" }
-        ]
-    },
-    "Replications": {
-        "location": "/replications",
-        "children": [
-            { "name": "Gallery", "location": "/replications/" },
-            { "name": "Audio", "location": "/replications/audio" },
-            { "name": "Tutorials", "location": "/replications/tutorials" },
-            { "name": "Artists", "location": "/replications/artists" }
-        ]
-    },
-    "Reports": {
-        "location": "/trip-reports"
-    },
-    "Project": {
-        "location": "/blog",
-        "children": [
-            { "name": "About", "location": "/about" },
-            { "name": "Blog", "location": "/blog" },
-            { "name": "Search", "location": "/search" },
-            { "name": "Contact", "location": "/contact" },
-            { "name": "Github",
-                "location": "https://github.com/GabrielMorris/effect-index",
-                "external": true
-            },
-            { "name": "Form", 
-                "location": "https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true",
-                "external": true
-            },
-            { "name": "DoseBot", "location": "/dosebot" },
-            { "name": "Login", "location": "/user/login" }
-        ]
-    },
-    "Community": {
-        "location": "/discord-chat",
-        "children": [
-            { "name": "People", "location": "/profiles/" },
-            { "name": "Discord", "location": "/discord-chat/" },
-            { "name": "Subreddit", "location": "http://reddit.com/r/replications", "external": true }
-        ]
-    }
+  "Admin": {
+    "location": "/admin",
+    "scope": ["admin", "editor", "artist", "user"],
+    "children": [
+      {
+        "name": "Effects",
+        "location": "/admin/effects/list",
+        "scope": ["admin", "editor"]
+      },
+      {
+        "name": "Replications",
+        "location": "/admin/replications/list",
+        "scope": ["admin", "editor", "artist"]
+      },
+      { "name": "Blog", "location": "/admin/blog/list", "scope": ["admin"] },
+      { "name": "Users", "location": "/admin/users/list", "scope": ["admin"] },
+      {
+        "name": "Reports",
+        "location": "/admin/reports/list",
+        "scope": ["admin", "editor"]
+      },
+      {
+        "name": "Logout",
+        "location": "/user/logout",
+        "scope": ["admin", "editor", "artist", "user"]
+      }
+    ]
+  },
+  "Home": {
+    "location": "/"
+  },
+  "Effects": {
+    "location": "/effects",
+    "children": [
+      { "name": "All", "location": "/effects" },
+      { "name": "Sensory", "location": "/effects/sensory/" },
+      { "name": "Cognitive", "location": "/effects/cognitive/" },
+      { "name": "Physical", "location": "/effects/physical/" },
+      { "name": "Psychedelics", "location": "/effects/psychedelics/" },
+      { "name": "Dissociatives", "location": "/effects/dissociatives/" },
+      { "name": "Deliriants", "location": "/effects/deliriants/" }
+    ]
+  },
+  "Replications": {
+    "location": "/replications",
+    "children": [
+      { "name": "Gallery", "location": "/replications/" },
+      { "name": "Audio", "location": "/replications/audio" },
+      { "name": "Tutorials", "location": "/replications/tutorials" },
+      { "name": "Artists", "location": "/replications/artists" }
+    ]
+  },
+  "Reports": {
+    "location": "/trip-reports"
+  },
+  "Project": {
+    "location": "/blog",
+    "children": [
+      { "name": "About", "location": "/about" },
+      { "name": "Blog", "location": "/blog" },
+      { "name": "Search", "location": "/search" },
+      { "name": "Contact", "location": "/contact" },
+      {
+        "name": "Github",
+        "location": "https://github.com/GabrielMorris/effect-index",
+        "external": true
+      },
+      {
+        "name": "Form",
+        "location":
+          "https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true",
+        "external": true
+      },
+      { "name": "DoseBot", "location": "/dosebot" },
+      { "name": "PsySim", "location": "/psysim" },
+      { "name": "Login", "location": "/user/login" }
+    ]
+  },
+  "Community": {
+    "location": "/discord-chat",
+    "children": [
+      { "name": "People", "location": "/profiles/" },
+      { "name": "Discord", "location": "/discord-chat/" },
+      {
+        "name": "Subreddit",
+        "location": "http://reddit.com/r/replications",
+        "external": true
+      }
+    ]
+  }
 }

@@ -19,3 +19,4 @@ static/img/gallery/*
 static/img/profiles/cropped/*
 static/img/profiles/*
 !static/img/profiles/*/*
+.DS_Store
