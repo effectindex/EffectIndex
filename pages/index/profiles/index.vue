@@ -26,7 +26,8 @@
 export default {
   async asyncData({ store }) {
     await store.dispatch("getProfiles");
-  }
+  },
+  scrollToTop: true
 };
 </script>
 

@@ -2,13 +2,13 @@
   <div class="pageContent">
     <div v-if="profile.username">
       <h1> {{ profile.username }} </h1>
-      <profile-image 
+      <profile-image
         :filename="profile.profileImageFull"
         :username="profile.username" />
-      <div 
+      <div
         v-if="profile.body"
         v-html="$md.render(profile.body)" />
-      <div 
+      <div
         v-if="replications.length > 0"
         style="clear: both; margin-top: 2em;">
         <hr>
@@ -33,6 +33,7 @@ export default {
     ProfileImage,
     LightBox
   },
+  scrollToTop: true,
   data() {
     return {
       profile: {},
@@ -40,14 +41,17 @@ export default {
     };
   },
   async asyncData({ store, params, error }) {
-      let username = params.username;
+    let username = params.username;
 
-      let { profile } = await store.dispatch("getProfileByName", username); 
-      if (!profile) error({statusCode: 404});
+    let { profile } = await store.dispatch("getProfileByName", username);
+    if (!profile) error({ statusCode: 404 });
 
-      let { replications } = await store.dispatch("getReplicationsByArtist", username);
+    let { replications } = await store.dispatch(
+      "getReplicationsByArtist",
+      username
+    );
 
-      return { profile, replications };
+    return { profile, replications };
   }
 };
 </script>

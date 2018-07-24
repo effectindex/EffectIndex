@@ -1,27 +1,27 @@
 <template>
   <div class="audioPlayer">
-      
+
     <div class="audioPlayer__content">
       <div class="audioPlayer__playButton">
-        <a 
+        <a
           v-if="state === 'STOPPED' || state === 'PAUSED'"
           @mousedown="play()"> <i class="fa fa-play" /> </a>
-        <a 
+        <a
           v-else-if="state === 'PLAYING'"
           @mousedown="pause()"> <i class="fa fa-pause" /> </a>
       </div>
       <div class="audioPlayer__audioInfo">
-        <div class="audioPlayer__titleBar"> 
-          <div class="audioPlayer__title"> {{ title }} </div> 
-          <div class="audioPlayer__artist"> {{ artist }} </div> 
+        <div class="audioPlayer__titleBar">
+          <div class="audioPlayer__title"> {{ title }} </div>
+          <div class="audioPlayer__artist"> {{ artist }} </div>
         </div>
       </div>
       <div
-        ref="waveform"  
-        class="audioPlayer__waveform" /> 
-      <div class="audioPlayer__positionDownload">  
+        ref="waveform"
+        class="audioPlayer__waveform" />
+      <div class="audioPlayer__positionDownload">
         <div> {{ getTime(position) }} / {{ getTime(length) }} </div>
-        <a 
+        <a
           :href="src"
           target="_blank"> Download </a>
       </div>

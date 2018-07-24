@@ -48,7 +48,8 @@
       { "name": "Gallery", "location": "/replications/" },
       { "name": "Audio", "location": "/replications/audio" },
       { "name": "Tutorials", "location": "/replications/tutorials" },
-      { "name": "Artists", "location": "/replications/artists" }
+      { "name": "Artists", "location": "/replications/artists" },
+      { "name": "PsySim", "location": "/psysim" }
     ]
   },
   "Reports": {
@@ -62,18 +63,12 @@
       { "name": "Search", "location": "/search" },
       { "name": "Contact", "location": "/contact" },
       {
-        "name": "Github",
-        "location": "https://github.com/GabrielMorris/effect-index",
-        "external": true
-      },
-      {
         "name": "Form",
         "location":
           "https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true",
         "external": true
       },
       { "name": "DoseBot", "location": "/dosebot" },
-      { "name": "PsySim", "location": "/psysim" },
       { "name": "Login", "location": "/user/login" }
     ]
   },
