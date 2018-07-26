@@ -152,6 +152,12 @@ export default {
       return false;
     }
   },
+  head() {
+    return {
+      title: `${this.effect.name} - Effect Index`,
+      description: `${this.effect.summary_raw}`
+    };
+  },
   async asyncData({ store, params, error }) {
     let { effect } = await store.dispatch("getEffect", params.name);
     if (!effect) error({ statusCode: 404, message: "Effect not found." });
