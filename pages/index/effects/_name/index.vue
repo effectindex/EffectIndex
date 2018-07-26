@@ -154,8 +154,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.effect.name} - Effect Index`,
-      description: `${this.effect.summary_raw}`
+      title: `${this.effect.name} - Effect Index`
     };
   },
   async asyncData({ store, params, error }) {
