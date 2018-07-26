@@ -20,7 +20,8 @@ export default {
   components: {
     HeaderNav,
     CustomFooter,
-    PulloutMenu
+    PulloutMenu,
+    EffectList
   },
   head() {
     return {

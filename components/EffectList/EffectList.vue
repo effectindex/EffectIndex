@@ -1,14 +1,17 @@
+// Defines the template for the list of effects displayed on the homepage
+// and on /effects
 <template>
   <div class="effectList">
     <ul class="effectList__classes">
       <li v-if="(listType === 'all' || listType === 'sensory')">
         <ul class="effectList__subclasses">
+          <!-- Visual effects -->
           <li> <i class="fa fa-eye effectList__icon" /> <h2>  Visual Effects </h2>
             <ul class="effectList__actions">
               <action-list
                 :effects="filterEffectByTag('visual', 'enhancement')"
                 title="Enhancements" />
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('visual', 'suppression')"
                 title="Suppressions" />
               <action-list
@@ -17,52 +20,58 @@
               <action-list
                 :effects="filterEffectByTag('visual', 'geometry')"
                 title="Geometry" />
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('visual', 'hallucinatory state')"
-                title="Hallucinatory States" />               
+                title="Hallucinatory States" />
             </ul>
           </li>
-          <li> <i class="fa fa-volume-up effectList__icon" /> <h2>  Auditory Effects </h2>
+          <!-- Auditory effects -->
+          <li> <i class="fa fa-volume-up effectList__icon" /> <h2 class="effectList__childless">  Auditory Effects </h2>
             <ul class="effectList__actions">
-              <action-list :effects="filterEffectByTag('auditory')" />            
+              <action-list :effects="filterEffectByTag('auditory')" />
             </ul>
           </li>
-          <li> <i class="fa fa-hand-paper-o effectList__icon" /> <h2>  Tactile Effects </h2>
+          <!-- Tactile effects -->
+          <li> <i class="fa fa-hand-paper-o effectList__icon" /> <h2 class="effectList__childless">  Tactile Effects </h2>
             <ul class="effectList__actions">
-              <action-list :effects="filterEffectByTag('tactile')" />            
+              <action-list :effects="filterEffectByTag('tactile')" />
             </ul>
           </li>
-          <li> <i class="fa fa-chain-broken effectList__icon" /> <h2>  Disconnective Effects </h2>
+          <!-- Disconnective effects -->
+          <li> <i class="fa fa-chain-broken effectList__icon" /> <h2 class="effectList__childless">  Disconnective Effects </h2>
             <ul class="effectList__actions">
-              <action-list :effects="filterEffectByTag('disconnective')" />            
+              <action-list :effects="filterEffectByTag('disconnective')" />
             </ul>
           </li>
+          <!-- Smell and taste effects -->
           <li> <i class="fa fa-cutlery effectList__icon" /> <h2>  Smell and Taste Effects </h2>
             <ul class="effectList__actions">
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('gustatory')"
-                title="Gustatory effects" />          
+                title="Gustatory effects" />
               <action-list
                 :effects="filterEffectByTag('olfactory')"
-                title="Olfactory effects" />  
+                title="Olfactory effects" />
             </ul>
           </li>
-          <li> <i class="fa fa-cogs effectList__icon" /> <h2>  Multisensory Effects </h2>
+          <!-- Multisensory effects -->
+          <li> <i class="fa fa-cogs effectList__icon" /> <h2 class="effectList__childless">  Multisensory Effects </h2>
             <ul class="effectList__actions">
-              <action-list :effects="filterEffectByTag('multisensory')" />            
+              <action-list :effects="filterEffectByTag('multisensory')" />
             </ul>
-          </li>     
+          </li>
         </ul>
       </li>
+      <!-- Cognitive effects -->
       <li v-if="(listType === 'all' || listType === 'cognitive')">
         <ul class="effectList__subclasses">
           <li> <i class="fa fa-user effectList__icon" /> <h2>  Cognitive Effects </h2>
             <ul class="effectList__actions">
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('cognitive', 'enhancement')"
                 title="Enhancements" />
-              <action-list 
-                :effects="filterEffectByTag('cognitive', 'suppression')" 
+              <action-list
+                :effects="filterEffectByTag('cognitive', 'suppression')"
                 title="Suppressions" />
               <action-list
                 :effects="filterEffectByTag('cognitive', 'alteration')"
@@ -73,19 +82,20 @@
               <action-list
                 :effects="filterEffectByTag('cognitive', 'psychological state')"
                 title="Psychological States" />
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('cognitive', 'transpersonal state')"
-                title="Transpersonal States" />               
+                title="Transpersonal States" />
             </ul>
           </li>
         </ul>
       </li>
+      <!-- Physical effects -->
       <li v-if="(listType === 'all' || listType === 'physical')">
         <ul class="effectList__subclasses">
-          <li> <i class="fa fa-cutlery effectList__icon" /> <h2>  Physical Effects </h2>
+          <li> <i class="fa fa-child effectList__icon" /> <h2>  Physical Effects </h2>
             <ul class="effectList__actions">
               <action-list
-                :effects="filterEffectByTag('physical', 'enhancement')" 
+                :effects="filterEffectByTag('physical', 'enhancement')"
                 title="Enhancements" />
               <action-list
                 :effects="filterEffectByTag('physical', 'suppression')"
@@ -96,12 +106,30 @@
               <action-list
                 :effects="filterEffectByTag('physical', 'cardiovascular')"
                 title="Cardiovascular" />
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('physical', 'cerebrovascular')"
                 title="Cerebrovascular" />
-              <action-list 
+              <action-list
                 :effects="filterEffectByTag('physical', 'bodily')"
-                title="Bodily" />             
+                title="Bodily" />
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <!-- Uncomfortable Physical Effects -->
+      <li v-if="(listType === 'all' || listType === 'uncomfortable')">
+        <ul class="effectList__subclasses">
+          <li> <i class="fa fa-frown-o effectList__icon" /> <h2>  Uncomfortable Physical Effects </h2>
+            <ul class="effectList__actions">
+              <action-list
+                :effects="filterEffectByTag('uncomfortable', 'cardiovascular')"
+                title="Cardiovascular" />
+              <action-list
+                :effects="filterEffectByTag('uncomfortable', 'cerebrovascular')"
+                title="Cerebrovascular" />
+              <action-list
+                :effects="filterEffectByTag('uncomfortable', 'bodily')"
+                title="Bodily" />
             </ul>
           </li>
         </ul>
@@ -125,11 +153,10 @@ export default {
   },
   methods: {
     filterEffectByTag(...tags) {
-    return this.$store.state.effects.filter(effect =>
-            tags.every(tag => effect.tags.indexOf(tag) > -1)
-          );
+      return this.$store.state.effects.filter(effect =>
+        tags.every(tag => effect.tags.indexOf(tag) > -1)
+      );
     }
-
   }
 };
 </script>
@@ -184,6 +211,10 @@ export default {
   list-style: none;
   margin-left: 3em;
   padding: 0;
+}
+
+.effectList__childless {
+  margin-bottom: 0.5em;
 }
 
 .effectList__actions h3 {

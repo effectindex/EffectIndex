@@ -110,7 +110,7 @@ export default {
       let tags = this.effect["tags"];
 
       let icons = {
-        cognitive: "fa-puzzle-piece",
+        cognitive: "fa-user",
         visual: "fa-eye",
         auditory: "fa-volume",
         tactile: "fa-fa-hand-paper-o",
@@ -118,7 +118,8 @@ export default {
         multisensory: "fa-cogs",
         physical: "fa-child",
         gustatory: "fa-cutlery",
-        olfactory: "fa-cutlery"
+        olfactory: "fa-cutlery",
+        uncomfortable: "fa-frown-o"
       };
 
       if (Array.isArray(tags)) {

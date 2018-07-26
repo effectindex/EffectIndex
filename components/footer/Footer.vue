@@ -2,28 +2,29 @@
   <footer>
     <div class="footer__social">
       <a href="http://reddit.com/r/replications">
-        <img 
-          src="/sm-icon-reddit.svg" 
+        <img
+          src="/sm-icon-reddit.svg"
           height="32"
           width="32">
       </a>
       <a href="https://www.youtube.com/channel/UCV5-ybqHFU6xQWhnFZBJlOA">
-        <img 
+        <img
           src="/sm-icon-youtube.svg"
           height="32"
           width="32">
       </a>
-      <a href="http://instagram.com/josikinz">
-        <img 
-          src="/sm-icon-instagram.svg"
+      <a href="https://www.facebook.com/EffectIndex/">
+        <img
+          src="/sm-icon-facebook.svg"
           height="32"
           width="32">
       </a>
-      <a href="https://open.spotify.com/user/214qnn2x7bvwziyqdwfkqedja">
-        <img 
-          src="/sm-icon-spotify.svg"
-          height="32"
-          width="32">
+      <a href="https://github.com/Viscid/effectindex">
+        <img
+          src="/sm-icon-github.svg"
+          height="37"
+          width="37"
+          style="margin-bottom: 3.1px; margin-top: 0px;">
       </a>
     </div>
     <div class="footer__secret">
