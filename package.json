@@ -39,6 +39,7 @@
     "nuxt": "^1.4.1",
     "shelljs": "^0.8.2",
     "vue-scrollto": "^2.11.0",
+    "vue-tabs-component": "^1.4.0",
     "vuejs-datepicker": "^1.5.2",
     "wavesurfer.js": "^2.0.6"
   },
