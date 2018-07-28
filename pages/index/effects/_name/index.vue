@@ -4,10 +4,10 @@
       <div v-if="$auth.loggedIn">
         <nuxt-link
           :to="'/admin/effects/' + effect.url"
-          append> [Edit] </nuxt-link>
+          append> <i class="fa fa-edit" /> </nuxt-link>
         <a
           style="color: red; float:right;"
-          @click="deleteEffect(effect._id)"> [Delete] </a>
+          @click="deleteEffect(effect._id)"> <i class="fa fa-times" /> </a>
       </div>
       <i :class="'fa ' + icon + ' fa-2x categoryIcon'" />
       <div v-if="hasSection('description_raw')">

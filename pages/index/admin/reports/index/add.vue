@@ -15,7 +15,12 @@
     },
     methods: {
       async submitReport(report) {
-        this.$store.dispatch("submitReport", report).then(this.$router.push("/admin/reports/"));
+        try {
+          let result = this.$store.dispatch("submitReport", report);
+          this.$router.push("/admin/reports/");
+        } catch (error) {
+          console.log(error);
+        }
       }
     },
     middleware: ["auth"]

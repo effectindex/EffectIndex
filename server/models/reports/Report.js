@@ -15,10 +15,10 @@ const Report = mongoose.model("Report", {
   slug: { type: String, slug: ["title"], unqiue: true },
   subject: {
     name: String,
+    trip_date: String,
     age: Number,
     location: String,
     gender: String,
-    trip_date: Date
   },
   substance: {
     name: String,
@@ -40,7 +40,8 @@ const Report = mongoose.model("Report", {
     description: String,
   }],
   conclusion: String,
-  tags: [String]
+  tags: [String],
+  sectionVisibility: Object
 });
 
 module.exports = Report;

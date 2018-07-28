@@ -10,7 +10,7 @@
         <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }} </nuxt-link>
         <nuxt-link 
           v-if="$auth.loggedIn"
-          :to="'/admin/effects/' + effect.url"> [edit] </nuxt-link>
+          :to="'/admin/effects/' + effect.url"> <i class="fa fa-edit" /> </nuxt-link>
       </li>
     </ul>
   </li>

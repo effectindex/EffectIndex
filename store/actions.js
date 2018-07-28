@@ -292,6 +292,14 @@ export default {
       throw new Error(error);
     }
   },
+  async getReportById({ commit }, id) {
+    try {
+      let { reportData, sectionVisibility } = await this.$axios.$get("/api/reports/" + id);
+      return { reportData, sectionVisibility };
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
   async deleteReport({ dispatch }, id) {
     try {
       let response = await this.$axios.$delete("/api/reports/" + id);
@@ -302,15 +310,16 @@ export default {
   },
   async updateReport({ dispatch }, report) {
     try {
-      let response = await this.$axios.$put("/api/reports/" + report._id, { report });
+      console.log(report);
+      let response = await this.$axios.$put("/api/reports/" + report.reportData._id, report);
       await dispatch("getReports");
     } catch (error) {
       throw new Error(error);
     }
   },
-  async submitReport({ dispatch }, report) {
+  async submitReport({ dispatch }, reportData) {
     try {
-      let response = await this.$axios.$post("/api/reports/", { report });
+      let response = await this.$axios.$post("/api/reports/", reportData);
       await dispatch("getReports");
       return response;
     } catch (error) {

@@ -16,7 +16,7 @@
         :key="post._id" >
         <td> <nuxt-link :to="'/blog/' + post.slug"> {{ post.title }} </nuxt-link> </td>
         <td> {{ formatDate(post.datetime) }} </td>
-        <td> <nuxt-link :to="'/admin/blog/' + post.slug"> [Edit] </nuxt-link> </td>
+        <td> <nuxt-link :to="'/admin/blog/' + post.slug"> <i class="fa fa-edit" /> </nuxt-link> </td>
         <td> 
           <a 
             style="color: red; cursor: pointer;"

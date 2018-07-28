@@ -18,7 +18,7 @@
           </td>
           <td>
             <nuxt-link 
-              :to="'/admin/users/profiles/' + profile._id"> [Edit] </nuxt-link>
+              :to="'/admin/users/profiles/' + profile._id"> <i class="fa fa-edit" /> </nuxt-link>
           </td>
           <td>
             <a

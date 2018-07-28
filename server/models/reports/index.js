@@ -11,7 +11,9 @@ const Report = require('./Report');
 router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
   if (!'report' in req.body) throw API_Error('SUBMIT_REPORT_ERROR', 'The request was invalid.');
   try {
-    let report = new Report(req.body.report);
+    let report = req.body.reportData;
+    if ('sectionVisibility' in req.body) report.sectionVisibility = req.body.sectionVisibility;
+    report = new Report(report);
     let savedReport = await report.save();
     if (!savedReport) throw API_Error('SUBMIT_REPORT_ERROR', 'The report failed to save.');
 
@@ -23,12 +25,13 @@ router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin'
 });
 
 router.put('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
-  if (!'report' in req.body) throw API_Error('UPDATE_REPORT_ERROR', 'The request was invalid.');
+  if (!'reportData' in req.body) throw API_Error('UPDATE_REPORT_ERROR', 'The request was invalid.');
   try {
-    let report = req.body.report;
+    let { reportData, sectionVisibility } = req.body;
+    reportData.sectionVisibility = sectionVisibility;
 
     let result = await Report
-      .findByIdAndUpdate(req.params.id, report)
+      .findByIdAndUpdate(req.params.id, reportData)
       .exec();
 
     if (!result) throw API_Error('UPDATE_REPORT_ERROR', 'The report failed to update.');
@@ -48,6 +51,21 @@ router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['a
     if (!response) throw API_Error('DELETE_REPORT_ERROR', 'The report failed to delete.');
 
     res.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async(req, res, next) => {
+  try {
+    let reportData = await Report
+      .findById(req.params.id)
+      .exec();
+
+    if (!reportData) throw API_Error('GET_REPORT_ERROR', 'The report could not be found.');
+    const sectionVisibility = reportData.sectionVisibility;
+    delete reportData.sectionVisibility;
+    res.send({ reportData, sectionVisibility });
   } catch (error) {
     next(error);
   }

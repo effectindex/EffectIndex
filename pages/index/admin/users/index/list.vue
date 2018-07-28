@@ -17,7 +17,7 @@
           :key="user._id">
           <td> <nuxt-link :to="'/profiles/' + user.username"> {{ user.username }} </nuxt-link> </td>
           <td> {{ listRoles(user) }} </td>
-          <td> <nuxt-link :to="'/admin/users/' + user._id"> Modify </nuxt-link> </td>
+          <td> <nuxt-link :to="'/admin/users/' + user._id"> <i class="fa fa-edit" /> </nuxt-link> </td>
           <td> 
             <a @click="deleteUser(user._id)"> 
               <i 

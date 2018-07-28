@@ -42,8 +42,8 @@
       v-show="$auth.loggedIn"
       class="replication__controls"
     >
-      <nuxt-link :to="'/replications/' + replication.url + '/edit'"> Edit </nuxt-link>
-      <a @click="deleteReplication(replication._id)"> Delete </a>
+      <nuxt-link :to="'/replications/' + replication.url + '/edit'"> <i class="fa fa-edit" /> </nuxt-link>
+      <a @click="deleteReplication(replication._id)"> <i class="fa fa-times" /> </a>
     </div>
   </li>
 

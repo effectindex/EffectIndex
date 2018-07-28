@@ -78,7 +78,6 @@
       border: 1px solid #CCCCCC;
       padding: 0.5em 1em;
       font-size: 16px;
-      height: 400px;
       width: 100%;     
   }
 
@@ -105,5 +104,9 @@
 
   .nuxt-link-exact-active {
     text-decoration: underline;
+  }
+
+  .reportManagement .reportListTable {
+    width: 100%;
   }
 </style>

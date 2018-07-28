@@ -1,8 +1,8 @@
 <template>
   <div>
     <hr>
-    <h3> EffectIndex User List </h3>
-    <table class="admin__reportListTable">
+    <h3> Reports </h3>
+    <table class="reportListTable">
       <thead>
         <tr>
           <td> Title </td>
@@ -15,8 +15,10 @@
         <tr 
           v-for="report in reports"
           :key="report._id">
-          <td> {{ report.title }} </td>
-          <td> {{ report.author }} </td>
+          <td> 
+            <nuxt-link :to="'/admin/reports/' + report._id"> {{ report.title }} </nuxt-link>
+          </td>
+          <td> {{ report.subject ? report.subject.name : '' }} </td>
           <td>
             <span 
               v-for="tag in report.tags"
@@ -26,6 +28,7 @@
             </span>
           </td>
           <td> <i class="fa fa-times" /> </td>
+          <td> <i class="fa fa-edit" /> </td>
         </tr>
       </tbody>
     </table>
@@ -44,3 +47,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.reportListTable {
+  width: 100%;
+}
+</style>
