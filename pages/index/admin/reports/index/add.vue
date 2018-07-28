@@ -17,7 +17,7 @@
       async submitReport(report) {
         try {
           let result = this.$store.dispatch("submitReport", report);
-          this.$router.push("/admin/reports/");
+          this.$router.push("/admin/reports/list");
         } catch (error) {
           console.log(error);
         }

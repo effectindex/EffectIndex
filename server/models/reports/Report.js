@@ -5,8 +5,9 @@ const slug = require("mongoose-slug-generator", {
 const mongoose = require("mongoose");
 mongoose.plugin(slug);
 
+const Schema = mongoose.Schema;
 
-const Report = mongoose.model("Report", {
+const reportSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -42,6 +43,10 @@ const Report = mongoose.model("Report", {
   conclusion: String,
   tags: [String],
   sectionVisibility: Object
-});
+}, 
+  {minimize: false}
+);
+
+const Report = mongoose.model("Report", reportSchema);
 
 module.exports = Report;

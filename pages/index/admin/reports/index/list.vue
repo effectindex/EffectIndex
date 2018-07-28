@@ -16,7 +16,7 @@
           v-for="report in reports"
           :key="report._id">
           <td> 
-            <nuxt-link :to="'/admin/reports/' + report._id"> {{ report.title }} </nuxt-link>
+            <nuxt-link :to="'/reports/' + report.slug"> {{ report.title }} </nuxt-link>
           </td>
           <td> {{ report.subject ? report.subject.name : '' }} </td>
           <td>
@@ -27,8 +27,14 @@
               {{ tag }}
             </span>
           </td>
-          <td> <i class="fa fa-times" /> </td>
-          <td> <i class="fa fa-edit" /> </td>
+          <td> 
+            <a @click="deleteReport(report._id)"> 
+              <i 
+                class="fa fa-times"
+                style="color: red; cursor: pointer;" />
+            </a>
+          </td>
+          <td> <nuxt-link :to="'/admin/reports/' + report._id"> <i class="fa fa-edit" /> </nuxt-link> </td>
         </tr>
       </tbody>
     </table>
@@ -40,6 +46,11 @@ export default {
   computed: {
     reports () {
       return this.$store.state.reports;
+    }
+  },
+  methods: {
+    async deleteReport(id) {
+      await this.$store.dispatch('deleteReport', id);
     }
   },
   async fetch({ store }) {

@@ -310,7 +310,6 @@ export default {
   },
   async updateReport({ dispatch }, report) {
     try {
-      console.log(report);
       let response = await this.$axios.$put("/api/reports/" + report.reportData._id, report);
       await dispatch("getReports");
     } catch (error) {
