@@ -9,15 +9,14 @@ const Schema = mongoose.Schema;
 
 const reportSchema = new Schema({
   title: {
-    type: String,
-    required: true
+    type: String
   },
   form_link: String,
   slug: { type: String, slug: ["title"], unqiue: true },
   subject: {
     name: String,
     trip_date: String,
-    age: Number,
+    age: String,
     location: String,
     gender: String,
   },
