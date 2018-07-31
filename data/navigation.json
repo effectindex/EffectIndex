@@ -52,8 +52,8 @@
       { "name": "PsySim", "location": "/psysim" }
     ]
   },
-  "Reports": {
-    "location": "/trip-reports"
+  "Trip Reports": {
+    "location": "/reports/"
   },
   "Project": {
     "location": "/blog",

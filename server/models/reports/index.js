@@ -71,6 +71,26 @@ router.get('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admi
   }
 });
 
+router.get('/slug/:slug', async(req, res, next) => {
+  let slug = req.params.slug;
+  try {
+    let report = await Report
+      .findOne({ slug })
+      .lean()
+      .exec();
+
+    if (!report) throw API_Error('GET_REPORT_ERROR', 'The specified report could not be found.');
+
+    delete report.sectionVisibility;
+    delete report._id;
+
+    res.send({ report });
+
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/', async (req, res, next) => {
   try {
     let reports = await Report

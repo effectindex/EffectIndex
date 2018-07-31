@@ -20,11 +20,11 @@ const reportSchema = new Schema({
     location: String,
     gender: String,
   },
-  substance: {
+  substances: [{
     name: String,
     dose: String,
     roa: String
-  },
+  }],
   introduction: String,
   description: String,
   onset: [{

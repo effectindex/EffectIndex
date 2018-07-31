@@ -44,30 +44,14 @@
     </div>
 
     <section-header
-      :visibility="sectionVisibility.substance" 
+      :visibility="sectionVisibility.substances" 
       title="Substance Information"
-      name="substance"
+      name="substances"
       @toggle="toggleVisibility" />
     
-    <div 
-      v-show="sectionVisibility['substance']"
-      class="section">
-      <label> Name 
-        <input
-          v-model="reportData.substance.name"
-          class="reportEditor__inputTitle">
-      </label>
-      <label> Dose
-        <input
-          v-model="reportData.substance.dose"
-          class="reportEditor__inputTitle">
-      </label>
-      <label> Route of Administration 
-        <input
-          v-model="reportData.substance.roa"
-          class="reportEditor__inputTitle">
-      </label>
-    </div>
+    <substances-input
+      v-show="sectionVisibility.substances"
+      v-model="reportData.substances" />
 
     <section-header
       :visibility="sectionVisibility.introduction" 
@@ -121,15 +105,6 @@
       v-show="sectionVisibility['offset']"
       v-model="reportData.offset" />
 
-    <section-header
-      :visibility="sectionVisibility.tags"
-      title="Tags"
-      name="tags"
-      @toggle="toggleVisibility" />
-
-    <tag-input
-      v-show="sectionVisibility.tags"
-      v-model="reportData.tags" />
 
     <section-header
       :visibility="sectionVisibility.conclusion" 
@@ -142,10 +117,20 @@
       v-model="reportData.conclusion" 
       class="reportEditor__textarea" />
 
+    <section-header
+      :visibility="sectionVisibility.tags"
+      title="Tags"
+      name="tags"
+      @toggle="toggleVisibility" />
+
+    <tag-input
+      v-show="sectionVisibility.tags"
+      v-model="reportData.tags" />
+
     <div class="reportEditor__inputReportButtonContainer">
       <nuxt-link
         class="reportEditor__cancelLink"
-        to="/admin/blog/list"> Cancel </nuxt-link>
+        to="/admin/reports/list"> Cancel </nuxt-link>
       <button 
         class="reportEditor__inputReportButton"
         @click="submitReport()"> {{ report ? 'Update' : 'Submit' }} </button>
@@ -157,12 +142,14 @@
 <script>
 import LogInput from './reportEditor__logInput';
 import SectionHeader from './reportEditor__sectionHeader';
+import SubstancesInput from './reportEditor__substancesInput';
 import TagInput from './reportEditor__tagInput';
 
 export default {
   components: {
-    LogInput,
     SectionHeader,
+    LogInput,
+    SubstancesInput,
     TagInput
   },
   props: {
@@ -183,18 +170,8 @@ export default {
         _id: this.report ? this.report._id : undefined,
         title: this.report ? this.report.title : undefined,
         form_link: this.report ? this.report.form_link : undefined,
-        subject: {
-          name: this.report ? this.report.subject.name : undefined,
-          trip_date: this.report ? this.report.subject.trip_date : undefined,
-          age: this.report ? this.report.subject.age : undefined,
-          location: this.report ? this.report.subject.location : undefined,
-          gender: this.report ? this.report.subject.gender : undefined,
-        },
-        substance: {
-          name: this.report ? this.report.substance.name : undefined,
-          dose: this.report ? this.report.substance.dose : undefined,
-          roa: this.report ? this.report.substance.roa : undefined,
-        },
+        subject: this.report ? this.report.subject : {},
+        substances: this.report ? this.report.substances : [],
         introduction: this.report ? this.report.introduction : undefined,
         description: this.report ? this.report.description : undefined,
         onset: this.report ? this.report.onset : [],
@@ -203,17 +180,10 @@ export default {
         conclusion: this.report ? this.report.conclusion : undefined,
         tags: this.report ? this.report.tags : []
       },
-      sectionVisibility: {
-        subject: this.visibility ? this.visibility.subject : false,
-        substance: this.visibility ? this.visibility.substance : false,
-        onset: this.visibility ? this.visibility.onset : false,
-        peak: this.visibility ? this.visibility.peak : false,
-        offset: this.visibility ? this.visibility.offset : false,
-        introduction: this.visibility ? this.visibility.introduction : false,
-        description: this.visibility ? this.visibility.description : false,
-        conclusion: this.visibility ? this.visibility.conclusion : false,
-        tags: this.visibility ? this.visibility.tags : false,
-      }
+      sectionVisibility: this.visibility ? this.visibility : 
+      (() => { return ['subject', 'substances', 'onset', 'peak', 'offset',
+        'introduction', 'description', 'conclusion', 'tags']
+        .reduce((o, p) => { o[p] = false; return o; }, {}); })(),
     };
   },
   methods: {
@@ -300,7 +270,7 @@ export default {
   display: block;
 }
 
-.log .addButton {
+.log .addButton, .substancesInput .addButton {
   background-color: rgb(222, 241, 222);
 }
 

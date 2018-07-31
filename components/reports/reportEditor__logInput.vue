@@ -18,6 +18,7 @@
       @click="addItem"> Add </button>
     <button 
       class="clearButton"
+      @click="clear"
     > Clear </button>
     <table class="logTable">
       <tbody>

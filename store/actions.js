@@ -300,6 +300,14 @@ export default {
       throw new Error(error);
     }
   },
+  async getReportBySlug({ commit }, slug) {
+    try {
+      let { report } = await this.$axios.$get("/api/reports/slug/" + slug);
+      return { report };
+    } catch (error) {
+      return undefined;
+    }
+  },
   async deleteReport({ dispatch }, id) {
     try {
       let response = await this.$axios.$delete("/api/reports/" + id);
@@ -329,7 +337,7 @@ export default {
   async restartServer({ dispatch }) {
     try {
       let response = await this.$axios.$get("/api/server/restart");
-      return respose;
+      return response;
     } catch (error) {
       throw new Error(error);
     }
