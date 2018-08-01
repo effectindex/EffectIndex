@@ -70,7 +70,7 @@ export default {
 .outer {
   position: relative;
   display: inline-block;
-  border-right: 3px solid #666;
+  border-right: 1px solid #666;
   padding: 60px 25px;
 }
 

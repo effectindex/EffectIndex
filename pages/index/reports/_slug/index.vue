@@ -132,9 +132,8 @@ h1 {
 .report__textBox {
   margin: 1em 0;
   background-color: #FBFBFB;
-  border: 3px solid #666;
+  border: 1px solid #666;
   box-shadow: 2px 2px 2px #CCC;
-  border-radius: 8px;
   overflow: hidden;
   white-space: pre-wrap;
 }
@@ -149,7 +148,7 @@ h1 {
 
 .report__textBoxHeader {
   background-color: #EEE;
-  border-bottom: 3px solid #666;
+  border-bottom: 1px solid #666;
   padding: 0.25em 0.5em;
 }
 
@@ -158,8 +157,7 @@ h1 {
   background-color: #FBFBFB;
   flex: 1;
   overflow: hidden;
-  border-radius: 10px;
-  border: 3px solid #666;
+  border: 1px solid #666;
 }
 
 .report__infoBox label {
@@ -170,8 +168,8 @@ h1 {
 .report__infoBoxHeader {
   padding: 0.25em 0.5em;
   display: flex;
-  background-color: rgb(215, 229, 255);
-  border-bottom: 3px solid #666;
+  background-color: #EEE;
+  border-bottom: 1px solid #666;
   align-items: center;
 }
 
@@ -180,18 +178,36 @@ h1 {
   padding: 1em;
 }
 
-.report__infoBoxTable {
-  width: 100%;
+.report__infoBoxTableContainer {
   padding: 1em;
 }
 
-.report__infoBoxTable thead {
+.report__infoBoxTable {
+  width: 100%;
+}
+
+.report__infoBoxTable {
+  border-collapse: collapse;
+}
+
+.report__infoBoxTableHeader {
+  background-color: #D6D6D6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   font-weight: bold;
+  border-bottom: 2px solid #CCC;
+}
+
+.report__infoBoxTable td {
+  padding: 0.5em;
+}
+
+.report__infoBoxTable tbody {
+  background-color: #E5E5E5;
 }
 
 .report__logBox {
-  border: 3px solid #666;
-  border-radius: 10px;
+  border: 1px solid #666;
   overflow: hidden;
   margin-bottom: 0.5em;
   background-color: #FBFBFB;
