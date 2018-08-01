@@ -77,7 +77,9 @@ export default {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 15px;
 }
 
 .report .icon {
@@ -88,6 +90,14 @@ h1 {
 .report__topSection {
   display: flex;
   flex-direction: row;
+}
+
+.report__infoBox {
+  box-shadow: 2px 2px 2px #CCC;
+}
+
+.report__infoBoxHeader {
+  font-weight: 400;
 }
 
 .report__infoBox:first-child {
@@ -102,9 +112,14 @@ h1 {
   margin: 1em 0;
   background-color: #FBFBFB;
   border: 3px solid #666;
+  box-shadow: 2px 2px 2px #CCC;
   border-radius: 8px;
   overflow: hidden;
   white-space: pre-wrap;
+}
+
+.report__textBoxHeader {
+  font-weight: 400;
 }
 
 .report__textBoxText {
@@ -159,6 +174,7 @@ h1 {
   overflow: hidden;
   margin-bottom: 0.5em;
   background-color: #FBFBFB;
+  box-shadow: 2px 2px 2px #CCC;
 }
 
 @media (max-width: 600px) {
