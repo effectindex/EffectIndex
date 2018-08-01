@@ -1,0 +1,117 @@
+<template>
+  <section class="report__logBox">
+    <h2
+      :style="{ backgroundColor: headerColour }"
+      class="report__logBoxHeader"> {{ header }} </h2>
+    <div class="report__logBoxContainer">
+      <div
+        :style="{ backgroundColor: headerColour }"
+        class="outer" >
+        <div class="inner rotate"> {{ header }} </div>
+      </div>
+      <div class="content">
+        <table class="logTable">
+          <tbody>
+            <tr 
+              v-for="(item, index) in log"
+              :key="index">
+              <td class="logTable__time"> {{ item.time }}: </td>
+              <td 
+                class="logTable__description"
+                v-html="$md.render(item.description)" />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  props: {
+    log: {
+      type: Array,
+      default: () => []
+    },
+    headerColour: {
+      type: String,
+      default: "#FFFFFF"
+    },
+    header: {
+      type: String,
+      default: "Log"
+    }
+  }
+};
+</script>
+
+<style scoped>
+
+.report__logBoxContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.report__logBoxHeader {
+  display: none;
+  padding: 0.5em;
+}
+
+.outer {
+  position: relative;
+  display: inline-block;
+  border-right: 3px solid #666;
+  padding: 60px 25px;
+}
+
+.rotate {
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.inner {
+  position: absolute;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 25px;
+  top: 50%;
+  left: 50%;
+}
+
+.content {
+  padding: 1em;
+}
+
+.logTable__time {
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.logTable__description {
+  white-space: pre-line;
+  padding: 0 1em 1em 1em;
+}
+
+@media (max-width: 600px) {
+  .outer {
+    display: none;
+  }
+
+  .content {
+    padding: 0.25em;
+  }
+
+  .report__logBoxHeader {
+    display: block;
+  }
+
+  .logTable__description {
+    padding: 0 0.25em 1em 0.25em;
+  }
+
+  .logTable__time {
+    font-size: 14px;
+  }
+}
+</style>

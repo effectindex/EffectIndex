@@ -1,67 +1,66 @@
 <template>
-  <div class="report">
+  <article class="report">
     <h1 class="report__title"> {{ report.title }} </h1>
 
     <div class="report__topSection">
-      <div class="report__infoBox">
-        <h2 class="report__infoBoxHeader"> <i class="fa fa-user icon" /> Subject </h2>
-        <ul class="report__infoBoxList">
-          <li v-show="report.subject.name"> <label> Name: </label> {{ report.subject.name }} </li>
-          <li v-show="report.subject.trip_date"> <label> Trip Date: </label> {{ report.subject.trip_date }} </li>
-          <li v-show="report.subject.age"> <label> Age: </label> {{ report.subject.age }} </li>
-          <li v-show="report.subject.location"> <label> Location: </label> {{ report.subject.location }} </li>
-          <li v-show="report.subject.gender"> <label> Gender: </label> {{ report.subject.gender }} </li>
-        </ul>
-      </div>
-
-      <div class="report__infoBox">
-        <h2 class="report__infoBoxHeader"> <i class="fa fa-cubes icon" /> Substances </h2>
-        <table
-          v-show="report.substances.length"
-          class="report__infoBoxTable">
-          <thead>
-            <tr>
-              <td> Name </td>
-              <td> Dose </td>
-              <td> RoA </td>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr
-              v-for="(substance, index) in report.substances"
-              :key="index">
-              <td> {{ substance.name }} </td>
-              <td> {{ substance.dose }} </td>
-              <td> {{ substance.roa }} </td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
+      <subject-box :subject="report.subject" />
+      <substances-box :substances="report.substances" />
     </div>
 
     <text-box 
       v-if="report.introduction"
       :text="report.introduction"
       header-colour="#EEE"
+      icon="sun-o"
       header="Introduction" />
 
     <text-box
       v-if="report.description"
       :text="report.description"
       header-colour="#EEE"
+      icon="comment-o"
       header="Description" />
 
-  </div>
+    <log-box
+      v-if="report.onset.length"
+      :log="report.onset"
+      header-colour="#DDFFDD"
+      header="Onset" />
+
+    <log-box
+      v-if="report.peak.length"
+      :log="report.peak"
+      header-colour="#FFDDDD"
+      header="Peak" />
+
+    <log-box
+      v-if="report.offset.length"
+      :log="report.offset"
+      header-colour="#DDDDFF"
+      header="Offset" />
+
+    <text-box
+      v-if="report.conclusion"
+      :text="report.conclusion"
+      icon="moon-o"
+      header-colour="#EEE"
+      header="Conclusion / Aftermath" />
+
+  </article>
 </template>
 
 <script>
 import TextBox from '@/components/reports/report__textBox';
+import SubjectBox from '@/components/reports/report__subjectBox';
+import SubstancesBox from '@/components/reports/report__substancesBox';
+import LogBox from '@/components/reports/report__logBox';
 
 export default {
   components: {
-    TextBox
+    TextBox,
+    SubjectBox,
+    SubstancesBox,
+    LogBox
   },
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("getReportBySlug", params.slug);
@@ -101,7 +100,7 @@ h1 {
 
 .report__textBox {
   margin: 1em 0;
-  background-color: #F5F5F5;
+  background-color: #FBFBFB;
   border: 3px solid #666;
   border-radius: 8px;
   overflow: hidden;
@@ -120,7 +119,7 @@ h1 {
 
 .report__infoBox {
   margin: 0.5em;
-  background-color: #F6F6F6;
+  background-color: #FBFBFB;
   flex: 1;
   overflow: hidden;
   border-radius: 10px;
@@ -154,6 +153,13 @@ h1 {
   font-weight: bold;
 }
 
+.report__logBox {
+  border: 3px solid #666;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+  background-color: #FBFBFB;
+}
 
 @media (max-width: 600px) {
   .report__topSection {

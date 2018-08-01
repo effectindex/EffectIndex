@@ -80,6 +80,7 @@ export default {
       this.$emit('input', list);
       this.clear();
     },
+
     removeItem(index) {
       let list = [ ...this.value ];
 
@@ -87,6 +88,7 @@ export default {
 
       this.$emit('input', list);
     },
+    
     moveItemUp(index) {
       let list = [ ...this.value ];
 
