@@ -18,7 +18,7 @@
               <td class="logTable__time"> {{ item.time }}: </td>
               <td 
                 class="logTable__description"
-                v-html="$md.render(item.description)" />
+                v-html="trimmedMarkdown(item.description)" />
             </tr>
           </tbody>
         </table>
@@ -41,6 +41,14 @@ export default {
     header: {
       type: String,
       default: "Log"
+    }
+  },
+  methods: {
+    trimmedMarkdown(text) {
+      if (!text) return "";
+      let rendered = this.$md.render(text);
+      if (rendered) rendered = rendered.trim();
+      return rendered;
     }
   }
 };
@@ -88,10 +96,15 @@ export default {
   vertical-align: top;
 }
 
-.logTable__description {
-  white-space: pre-line;
-  padding: 0 1em 1em 1em;
+.logTable {
+  border-collapse: collapse;
 }
+
+.logTable__description {
+  padding: 0 1em 1em 1em;
+  white-space: pre-wrap;
+}
+
 
 @media (max-width: 600px) {
   .outer {
