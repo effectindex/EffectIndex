@@ -51,6 +51,12 @@ export default {
   methods: {
     async deleteReport(id) {
       await this.$store.dispatch('deleteReport', id);
+
+      this.$notify({
+        title: 'Report Deleted.',
+        text: 'The report has been deleted.'
+      });
+
     }
   },
   async fetch({ store }) {

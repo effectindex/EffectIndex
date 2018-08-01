@@ -151,6 +151,12 @@ export default {
     },
     deleteReplication(id) {
       this.$store.dispatch("deleteReplication", id);
+
+      this.$notify({
+        title: 'Replication Deleted.',
+        text: 'The replication has been deleted.'
+      });
+
     },
     clearFilter() {
       this.filter = "";

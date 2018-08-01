@@ -1,6 +1,15 @@
 <template>
   <article class="report">
-    <h1 class="report__title"> {{ report.title }} </h1>
+
+    <div class="report__headerContainer">
+      <h1 class="report__title"> {{ report.title }} </h1>
+      <div class="report__tagsContainer">
+        <tag 
+          v-for="(tag, index) in report.tags"
+          :key="index"
+          :value="tag" />
+      </div>
+    </div>
 
     <div class="report__topSection">
       <subject-box :subject="report.subject" />
@@ -54,13 +63,15 @@ import TextBox from '@/components/reports/report__textBox';
 import SubjectBox from '@/components/reports/report__subjectBox';
 import SubstancesBox from '@/components/reports/report__substancesBox';
 import LogBox from '@/components/reports/report__logBox';
+import Tag from '@/components/reports/report__tag';
 
 export default {
   components: {
     TextBox,
     SubjectBox,
     SubstancesBox,
-    LogBox
+    LogBox,
+    Tag
   },
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("getReportBySlug", params.slug);
@@ -80,6 +91,16 @@ h1 {
   font-size: 32px;
   font-weight: 400;
   margin-bottom: 15px;
+}
+
+.report__headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.report__tagsContainer {
+  display: inline-block;
 }
 
 .report .icon {
@@ -178,6 +199,11 @@ h1 {
 }
 
 @media (max-width: 600px) {
+
+  .report__headerContainer {
+    flex-direction: column;
+  }
+
   .report__topSection {
     display: block;
   }

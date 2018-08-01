@@ -52,6 +52,12 @@ export default {
   methods: {
     deleteEffect(id) {
       this.$store.dispatch("deleteEffect", id);
+
+      this.$notify({
+        title: 'Effect Deleted.',
+        text: 'The effect has been deleted.'
+      });
+
     },
     clearFilter() {
       this.filter = "";

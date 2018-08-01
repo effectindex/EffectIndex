@@ -50,6 +50,12 @@ export default {
     },
     async deleteUser(id) {
       await this.$store.dispatch("deleteUser", id);
+
+      this.$notify({
+        title: 'User Deleted',
+        text: 'The user was deleted.'
+      });
+
     }
   },
   async fetch({ store }) {

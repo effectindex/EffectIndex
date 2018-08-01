@@ -59,6 +59,12 @@ export default {
     async generateInviteURL() {
       let { invitation } = await this.$store.dispatch("generateInvitation", this.expiration);
       this.generatedInvitation = invitation;
+
+      this.$notify({
+        title: 'Invitation Generated',
+        text: 'Copy and send the generated invitation to the person you\'d like to invite.'
+      });
+
     },
     clearExpiration() {
       this.expiration = undefined;

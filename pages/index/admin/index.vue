@@ -9,11 +9,18 @@
         <li> <nuxt-link to="/admin/replications/"> Manage Replications </nuxt-link> </li>
         <li> <nuxt-link to="/admin/blog"> Manage Blog </nuxt-link> </li>
         <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
-        <li>
-          <a 
-            style="cursor: pointer; color: red;"
-            @click="restartServer"> Restart Server </a>
-        </li>
+        <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/reports/"> Manage Reports </nuxt-link> </li>
+
+        <div class="serverOptionsContainer">
+          <h3> Danger Zone </h3>
+          <li>
+            <a 
+              style="cursor: pointer; color: red;"
+              @click="restartServer"> Restart Server </a>
+          </li>
+        </div>
+
       </ul>      
     </div>
     <nuxt-link 
@@ -31,6 +38,12 @@ export default {
   methods: {
     async restartServer() {
       this.$store.dispatch("restartServer");
+      this.$notify({
+        type: 'error',
+        title: 'Server Restarting',
+        text: 'Please wait ~2 minutes as the server restarts.'
+
+      });
     }
   },
   head() {
@@ -43,6 +56,18 @@ export default {
 </script>
 
 <style scoped>
+.serverOptionsContainer {
+  background-color: #FFCCCC;
+  padding: 0.5em;
+  border: 2px solid #666;
+  margin: 1em 0;
+  width: 300px;
+}
+
+.serverOptionsContainer h3 {
+  margin: 0.25em 0 1em 0;
+}
+
 .admin {
   background-color: white;
   height: 100vh;

@@ -19,11 +19,11 @@ export default {
     async updateReport(report) {
       try {
         let response = await this.$store.dispatch('updateReport', report);
-        if (response) {
-          let { reportData, sectionVisibility } = await store.dispatch('getReportById', this.reportData._id);
-          this.reportData = reportData;
-          this.sectionVisibility = sectionVisibility;
-        }
+
+        this.$notify({
+          title: 'Report Updated.',
+          text: 'The report has been successfully updated.'
+        });
       } catch (error) {
         console.log(error);
       }

@@ -41,8 +41,14 @@ export default {
         let response = await this.$auth.loginWith("local", {
           data: { user: this.user }
         });
+
+
+        this.$notify({
+          title: 'Login Success.',
+          text: 'You have been successfully logged in.'
+        });
+
       } catch (error) {
-        console.log(error);
         if ("error" in error.response.data)
           this.errorMessage = error.response.data.error.message;
       }

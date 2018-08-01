@@ -73,6 +73,13 @@ export default {
       if (response) {
         this.success = true;
         this.profile = response.profile;
+
+
+        this.$notify({
+          title: 'Profile Added',
+          text: 'The profile has been succesfully added.'
+        });
+
       }
     },
     async updateProfile() {
@@ -82,6 +89,12 @@ export default {
       if (response) {
         this.success = true;
         this.grabProfile();
+
+        this.$notify({
+          title: 'Profile Updated',
+          text: 'The profile has been succesfully updated.'
+        });
+
       }
     },
     async grabProfile() {

@@ -57,6 +57,13 @@ export default {
           this.success = true;
           this.$router.push("/user/login");
         }
+
+
+        this.$notify({
+          title: 'Registraiton Success.',
+          text: 'Log in using your chosen credentials to access additional site functionality.'
+        });
+
       } catch (error) {
           this.errorMessage = error.message;
       }

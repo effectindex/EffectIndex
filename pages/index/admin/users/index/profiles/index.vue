@@ -41,6 +41,11 @@ export default {
   methods: {
     async deleteProfile(id) {
       await this.$store.dispatch("deleteProfile", id);
+
+      this.$notify({
+        title: 'Profile Deleted.',
+        text: 'You are a horrible person.'
+      });
     }
   },
   async fetch({ store }) {

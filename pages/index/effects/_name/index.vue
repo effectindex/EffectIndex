@@ -5,9 +5,6 @@
         <nuxt-link
           :to="'/admin/effects/' + effect.url"
           append> <i class="fa fa-edit" /> </nuxt-link>
-        <a
-          style="color: red; float:right;"
-          @click="deleteEffect(effect._id)"> <i class="fa fa-times" /> </a>
       </div>
       <i :class="'fa ' + icon + ' fa-2x categoryIcon'" />
       <div v-if="hasSection('description_raw')">
@@ -133,14 +130,6 @@ export default {
   },
   scrollToTop: true,
   methods: {
-    async deleteEffect(id) {
-      try {
-        let deletedEffect = await this.$store.dispatch("deleteEffect", id);
-        this.$router.push("/effects/");
-      } catch (error) {
-        console.log(error);
-      }
-    },
     hasSection(name) {
       if (name in this.effect) {
         if (Array.isArray(this.effect[name])) {

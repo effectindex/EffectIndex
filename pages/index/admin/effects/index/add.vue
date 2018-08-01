@@ -16,6 +16,12 @@ export default {
   methods: {
     async submitEffect(effect) {
       let returnedEffect = await this.$store.dispatch("submitEffect", effect);
+
+      this.$notify({
+        title: 'Effect Submitted.',
+        text: 'The new effect has been successfully submitted.'
+      });
+
       this.$router.push("/admin/effects/list");
     }
   }

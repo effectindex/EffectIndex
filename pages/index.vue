@@ -8,6 +8,7 @@
       <custom-footer />
     </section>
     <pullout-menu />
+    <notifications />
   </div>
 </template>
 
