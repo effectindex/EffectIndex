@@ -94,6 +94,7 @@ export default {
 .logTable__time {
   font-weight: bold;
   vertical-align: top;
+  white-space: pre;
 }
 
 .logTable {
@@ -101,7 +102,7 @@ export default {
 }
 
 .logTable__description {
-  padding: 0 1em 1em 1em;
+  padding: 0 1em 1em 0.5em;
   white-space: pre-wrap;
 }
 
@@ -117,6 +118,8 @@ export default {
 
   .report__logBoxHeader {
     display: block;
+    font-weight: 400;
+    padding: 0.25em 0.5em;
   }
 
   .logTable__description {
@@ -125,6 +128,7 @@ export default {
 
   .logTable__time {
     font-size: 14px;
+    white-space: normal;
   }
 }
 </style>

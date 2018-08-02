@@ -111,6 +111,7 @@ h1 {
 .report__topSection {
   display: flex;
   flex-direction: row;
+  align-items: baseline;
 }
 
 .report__infoBox {
@@ -154,15 +155,10 @@ h1 {
 
 .report__infoBox {
   margin: 0.5em;
-  background-color: #FBFBFB;
-  flex: 1;
+  background-color: #E8E8E8;
   overflow: hidden;
   border: 1px solid #666;
-}
-
-.report__infoBox label {
-  font-weight: bold;
-  padding-right: 0.25em;
+  flex: 1;
 }
 
 .report__infoBoxHeader {
@@ -173,16 +169,8 @@ h1 {
   align-items: center;
 }
 
-.report__infoBoxList {
-  list-style: none;
-  padding: 1em;
-  height: 100%;
-  background-color: #E8E8E8;
-}
-
-.report__infoBoxListItem label {
-  display: inline-block;
-  min-width: 100px;
+.report__infoBoxTableContainer {
+  padding: 0.5em;
 }
 
 .report__infoBoxTable {
@@ -200,7 +188,7 @@ h1 {
 }
 
 .report__infoBoxTable td {
-  padding: 0.5em;
+  padding: 0.25em;
 }
 
 .report__infoBoxTable tbody {
