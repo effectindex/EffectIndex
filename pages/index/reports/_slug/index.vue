@@ -155,7 +155,7 @@ h1 {
 
 .report__infoBox {
   margin: 0.5em;
-  background-color: #E8E8E8;
+  background-color: #fbfbfb;
   overflow: hidden;
   border: 1px solid #666;
   flex: 1;
@@ -182,7 +182,7 @@ h1 {
 }
 
 .report__infoBoxTableHeader {
-  background-color: #fbfbfb;
+  background-color: #f5F5F5;
   font-weight: bold;
   border-bottom: 2px solid #ccc;
 }

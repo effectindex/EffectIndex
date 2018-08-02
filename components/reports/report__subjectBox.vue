@@ -26,12 +26,7 @@
 </template>
 
 <script>
-import SubjectBoxListItem from '@/components/reports/report__subjectBoxListItem';
-
 export default {
-  components: {
-    SubjectBoxListItem
-  },
   props: {
     subject: {
       type: Object,
