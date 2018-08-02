@@ -2,7 +2,11 @@
   <article class="report">
 
     <div class="report__headerContainer">
-      <h1 class="report__title"> {{ report.title }} </h1>
+      <h1 class="report__title"> {{ report.title }}
+        <span 
+          v-show="report.subject.name"
+          class="report__titleAuthor"> by {{ report.subject.name }} </span>
+      </h1>
       <div class="report__tagsContainer">
         <tag
           v-for="(tag, index) in report.tags"
@@ -93,6 +97,10 @@ h1 {
   margin-bottom: 15px;
 }
 
+.report__titleAuthor {
+  font-size: 0.6em;
+}
+
 .report__headerContainer {
   display: flex;
   flex-direction: row;
@@ -112,6 +120,7 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  padding-bottom: 0.5em;
 }
 
 .report__infoBox {
@@ -157,7 +166,7 @@ h1 {
   margin: 0.5em;
   background-color: #fbfbfb;
   overflow: hidden;
-  border: 1px solid #666;
+  border: 1px solid #cccccc;
   flex: 1;
 }
 
