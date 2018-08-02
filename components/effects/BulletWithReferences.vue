@@ -2,7 +2,7 @@
   <ul class="bulletList">
     <li
       class="bulletListItem">
-      {{ text }} 
+      <slot />
       <reference
         v-for="(reference, index) in references"
         :to="getTo(reference)"

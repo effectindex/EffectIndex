@@ -23,7 +23,7 @@ export default {
         case "bullet":
           return createElement("span", { class: "bullet" }, element.value);
         case "refbull":
-          return createElement(BulletWithReferences, { props: element.props });
+          return createElement(BulletWithReferences, { props: element.props }, element.value);
         case "ref":
           return createElement(Reference, { props: element.props });
         case "i":
