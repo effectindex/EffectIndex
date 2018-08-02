@@ -176,19 +176,13 @@ h1 {
 .report__infoBoxList {
   list-style: none;
   padding: 1em;
-}
-
-.report__infoBoxListItem {
-  line-height: 2em;
+  height: 100%;
+  background-color: #E8E8E8;
 }
 
 .report__infoBoxListItem label {
   display: inline-block;
   min-width: 100px;
-}
-
-.report__infoBoxTableContainer {
-  padding: 1em;
 }
 
 .report__infoBoxTable {
@@ -201,7 +195,6 @@ h1 {
 
 .report__infoBoxTableHeader {
   background-color: #D6D6D6;
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
   border-bottom: 2px solid #CCC;
