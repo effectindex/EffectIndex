@@ -35,11 +35,11 @@ export default {
   },
   methods: {
     getTo(reference) {
-      return reference.split('.')[0];
+      return reference.split('.')[0].trim();
     },
     getNo(reference) {
-      let no = reference.split('.')[1];
-      return (no ? no : '');
+      let ref = reference.split('.');
+      return ref[1] ? ref[1].trim() : '';
     }
   }
 };
