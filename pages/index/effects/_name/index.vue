@@ -171,7 +171,7 @@ export default {
 .formattedDocument ol li {
   color: black;
   margin: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   padding: 0;
 }
 
