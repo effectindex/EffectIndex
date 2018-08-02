@@ -4,7 +4,7 @@
     <div class="report__headerContainer">
       <h1 class="report__title"> {{ report.title }} </h1>
       <div class="report__tagsContainer">
-        <tag 
+        <tag
           v-for="(tag, index) in report.tags"
           :key="index"
           :value="tag" />
@@ -16,7 +16,7 @@
       <substances-box :substances="report.substances" />
     </div>
 
-    <text-box 
+    <text-box
       v-if="report.introduction"
       :text="report.introduction"
       header-colour="#EEE"
@@ -59,11 +59,11 @@
 </template>
 
 <script>
-import TextBox from '@/components/reports/report__textBox';
-import SubjectBox from '@/components/reports/report__subjectBox';
-import SubstancesBox from '@/components/reports/report__substancesBox';
-import LogBox from '@/components/reports/report__logBox';
-import Tag from '@/components/reports/report__tag';
+import TextBox from "@/components/reports/report__textBox";
+import SubjectBox from "@/components/reports/report__subjectBox";
+import SubstancesBox from "@/components/reports/report__substancesBox";
+import LogBox from "@/components/reports/report__logBox";
+import Tag from "@/components/reports/report__tag";
 
 export default {
   components: {
@@ -75,14 +75,14 @@ export default {
   },
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("getReportBySlug", params.slug);
-    if (!report) error({ statusCode: 404, message: 'That report does not exist.' });
+    if (!report)
+      error({ statusCode: 404, message: "That report does not exist." });
     return report;
   }
 };
 </script>
 
 <style>
-
 .report {
   color: #333;
 }
@@ -114,7 +114,7 @@ h1 {
 }
 
 .report__infoBox {
-  box-shadow: 2px 2px 2px #CCC;
+  box-shadow: 2px 2px 2px #ccc;
 }
 
 .report__infoBoxHeader {
@@ -131,9 +131,9 @@ h1 {
 
 .report__textBox {
   margin: 1em 0;
-  background-color: #FBFBFB;
-  border: 1px solid #666;
-  box-shadow: 2px 2px 2px #CCC;
+  background-color: #fbfbfb;
+  border: 1px solid #cccccc;
+  box-shadow: 2px 2px 2px #ccc;
   overflow: hidden;
   white-space: pre-wrap;
 }
@@ -144,8 +144,8 @@ h1 {
 
 .report__textBoxHeader {
   font-weight: 400;
-  background-color: #EEE;
-  border-bottom: 1px solid #666;
+  background-color: #eee;
+  border-bottom: 1px solid #cccccc;
   padding: 0.25em 0.5em;
   display: flex;
   flex-direction: row;
@@ -154,10 +154,10 @@ h1 {
 
 .report__infoBox {
   margin: 0.5em;
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
   flex: 1;
   overflow: hidden;
-  border: 1px solid #666;
+  border: 1px solid #cccccc;
 }
 
 .report__infoBox label {
@@ -168,8 +168,8 @@ h1 {
 .report__infoBoxHeader {
   padding: 0.25em 0.5em;
   display: flex;
-  background-color: #EEE;
-  border-bottom: 1px solid #666;
+  background-color: #eee;
+  border-bottom: 1px solid #cccccc;
   align-items: center;
 }
 
@@ -177,7 +177,6 @@ h1 {
   list-style: none;
   padding: 1em;
   height: 100%;
-  background-color: #E8E8E8;
 }
 
 .report__infoBoxListItem label {
@@ -194,9 +193,9 @@ h1 {
 }
 
 .report__infoBoxTableHeader {
-  background-color: #D6D6D6;
+  background-color: #fbfbfb;
   font-weight: bold;
-  border-bottom: 2px solid #CCC;
+  border-bottom: 2px solid #ccc;
 }
 
 .report__infoBoxTable td {
@@ -204,19 +203,17 @@ h1 {
 }
 
 .report__infoBoxTable tbody {
-  background-color: #E5E5E5;
 }
 
 .report__logBox {
-  border: 1px solid #666;
+  border: 1px solid #cccccc;
   overflow: hidden;
   margin-bottom: 0.5em;
-  background-color: #FBFBFB;
-  box-shadow: 2px 2px 2px #CCC;
+  background-color: #fbfbfb;
+  box-shadow: 2px 2px 2px #ccc;
 }
 
 @media (max-width: 600px) {
-
   .report__headerContainer {
     flex-direction: column;
   }
@@ -233,5 +230,4 @@ h1 {
     padding: 0.25em;
   }
 }
-
 </style>

@@ -22,9 +22,8 @@
       <a href="https://github.com/Viscid/effectindex">
         <img
           src="/sm-icon-github.svg"
-          height="37"
-          width="37"
-          style="margin-bottom: 3.1px; margin-top: 0px;">
+          height="32"
+          width="32">
       </a>
     </div>
     <div class="footer__secret">

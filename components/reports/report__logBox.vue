@@ -12,11 +12,11 @@
       <div class="content">
         <table class="logTable">
           <tbody>
-            <tr 
+            <tr
               v-for="(item, index) in log"
               :key="index">
               <td class="logTable__time"> {{ item.time }}: </td>
-              <td 
+              <td
                 class="logTable__description"
                 v-html="trimmedMarkdown(item.description)" />
             </tr>
@@ -55,7 +55,6 @@ export default {
 </script>
 
 <style scoped>
-
 .report__logBoxContainer {
   display: flex;
   flex-direction: row;
@@ -70,7 +69,7 @@ export default {
 .outer {
   position: relative;
   display: inline-block;
-  border-right: 1px solid #666;
+  border-right: 1px solid #cccccc;
   padding: 60px 25px;
 }
 
@@ -104,7 +103,6 @@ export default {
   padding: 0 1em 1em 1em;
   white-space: pre-wrap;
 }
-
 
 @media (max-width: 600px) {
   .outer {
