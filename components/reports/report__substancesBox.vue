@@ -8,7 +8,7 @@
 
         <thead>
           <tr class="report__infoBoxTableHeader">
-            <td> Name </td> <td> Dose </td> <td> RoA </td>
+            <td> Name </td> <td> Dosage </td> <td> Route of Administration </td>
           </tr>
         </thead>
 

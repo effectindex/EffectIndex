@@ -138,18 +138,18 @@ h1 {
   white-space: pre-wrap;
 }
 
-.report__textBoxHeader {
-  font-weight: 400;
-}
-
 .report__textBoxText {
   padding: 1em;
 }
 
 .report__textBoxHeader {
+  font-weight: 400;
   background-color: #EEE;
   border-bottom: 1px solid #666;
   padding: 0.25em 0.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .report__infoBox {
@@ -195,7 +195,6 @@ h1 {
 
 .report__infoBoxTableHeader {
   background-color: #D6D6D6;
-  letter-spacing: 2px;
   font-weight: bold;
   border-bottom: 2px solid #CCC;
 }
