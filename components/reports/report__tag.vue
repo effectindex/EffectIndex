@@ -32,8 +32,8 @@ export default {
 
 .tag:hover {
   opacity: 1;
-  box-shadow: 5px 5px 3px #aaa;
-  top: -5px;
-  left: -5px;
+  box-shadow: 2px 2px 4px #aaa;
+  top: -2px;
+  left: -2px;
 }
 </style>

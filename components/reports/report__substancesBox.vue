@@ -1,6 +1,6 @@
 <template>
   <section class="report__infoBox">
-    <h2 class="report__infoBoxHeader"> <i class="fa fa-cubes icon" /> Substances </h2>
+    <h2 class="report__infoBoxHeader"> <i class="fa fa-flask icon" /> Substances </h2>
     <div class="report__infoBoxTableContainer">
       <table
         v-show="substances.length"
