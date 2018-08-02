@@ -1,23 +1,39 @@
 <template>
   <section class="report__infoBox">
     <h2 class="report__infoBoxHeader"> <i class="fa fa-user-o icon" /> Subject </h2>
-    <ul class="report__infoBoxList">
-      <li v-show="subject.name"> <label> Name: </label> {{ subject.name }} </li>
-      <li v-show="subject.trip_date"> <label> Trip Date: </label> {{ subject.trip_date }} </li>
-      <li v-show="subject.age"> <label> Age: </label> {{ subject.age }} </li>
-      <li v-show="subject.location"> <label> Location: </label> {{ subject.location }} </li>
-      <li v-show="subject.gender"> <label> Gender: </label> {{ subject.gender }} </li>
-    </ul>
+
+    <div class="report__infoBoxList">
+      <subject-box-list-item
+        :value="subject.name"
+        label="Name: " />
+      <subject-box-list-item
+        :value="subject.trip_date"
+        label="Trip Date: " />
+      <subject-box-list-item
+        :value="subject.age"
+        label="Age: " />
+      <subject-box-list-item
+        :value="subject.location"
+        label="Location: " />
+      <subject-box-list-item
+        :value="subject.gender"
+        label="Gender: " />
+    </div>
   </section>
 </template>
 
 <script>
+import SubjectBoxListItem from '@/components/reports/report__subjectBoxListItem';
+
 export default {
+  components: {
+    SubjectBoxListItem
+  },
   props: {
     subject: {
       type: Object,
       default: () => {}
     }
-  }
+  },
 };
 </script>

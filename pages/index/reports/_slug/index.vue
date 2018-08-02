@@ -178,6 +178,15 @@ h1 {
   padding: 1em;
 }
 
+.report__infoBoxListItem {
+  line-height: 2em;
+}
+
+.report__infoBoxListItem label {
+  display: inline-block;
+  min-width: 100px;
+}
+
 .report__infoBoxTableContainer {
   padding: 1em;
 }
