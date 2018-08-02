@@ -1,5 +1,5 @@
 import Vuex from "vuex";
-import navigation from "@/data/navigation.json";
+import navigation from "./navigation.json";
 import actions from "./actions";
 import mutations from "./mutations";
 

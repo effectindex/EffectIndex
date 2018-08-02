@@ -92,6 +92,7 @@ module.exports = {
     breaks: true,
     injected: true,
     typographer: true,
+    html: true,
     quotes: '“”‘’'
   },
 

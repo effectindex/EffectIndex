@@ -3,6 +3,7 @@ import Reference from "@/components/Reference.vue";
 import ExtLink from "@/components/ExtLink.vue";
 import Markdown from "@/components/effects/formattedDocument__markdown.vue";
 import CaptionedImage from "@/components/CaptionedImage.vue";
+import BulletWithReferences from "@/components/effects/BulletWithReferences.vue";
 
 export default {
   functional: true,
@@ -21,6 +22,8 @@ export default {
           );
         case "bullet":
           return createElement("span", { class: "bullet" }, element.value);
+        case "refbull":
+          return createElement(BulletWithReferences, { props: element.props });
         case "ref":
           return createElement(Reference, { props: element.props });
         case "i":

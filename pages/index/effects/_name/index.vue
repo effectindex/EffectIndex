@@ -88,11 +88,11 @@
 </template>
 
 <script>
-import formattedDocument from "@/components/effects/formattedDocument.vue";
-import CitationList from "@/components/effects/CitationList.vue";
-import LightBox from "@/components/LightBox/LightBox.vue";
-import ExtLink from "@/components/ExtLink.vue";
-import Tag from "@/components/effects/Tag.vue";
+import formattedDocument from "@/components/effects/formattedDocument";
+import CitationList from "@/components/effects/CitationList";
+import LightBox from "@/components/LightBox/LightBox";
+import ExtLink from "@/components/ExtLink";
+import Tag from "@/components/effects/Tag";
 
 export default {
   components: {
