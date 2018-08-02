@@ -158,6 +158,7 @@ export default {
 .formattedDocument ul,
 .formattedDocument ol {
   margin: 0;
+  display: inline-block;
   white-space: normal;
 }
 

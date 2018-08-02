@@ -47,8 +47,10 @@ export default {
 
 <style scoped>
   .bulletList {
+    display: inline-block;
     padding-left: 2em;
     margin: 0;
+    margin-bottom: 0.5em;
     white-space: normal;
   }
 
