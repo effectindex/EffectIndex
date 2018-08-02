@@ -1,6 +1,6 @@
 <template>
   <section class="report__infoBox">
-    <h2 class="report__infoBoxHeader"> <i class="fa fa-user-o icon" /> Subject </h2>
+    <h2 class="report__infoBoxHeader"> <i class="fa fa-user-o icon" /> Context </h2>
     <div class="report__infoBoxTableContainer">
       <table class="report__infoBoxTable">
         <tbody>
@@ -14,7 +14,7 @@
             <td class="label"> Age: </td> <td class="text"> {{ subject.age }} </td>
           </tr>
           <tr v-show="subject.location">
-            <td class="label"> Location: </td> <td class="text">  {{ subject.location }} </td> 
+            <td class="label"> Setting: </td> <td class="text">  {{ subject.location }} </td> 
           </tr>
           <tr v-show="subject.gender">
             <td class="label"> Gender: </td> <td class="text"> {{ subject.gender }} </td>
