@@ -151,7 +151,7 @@ export default {
         { name: 'og:image', hid: 'og:image', content: this.$axios.defaults.baseURL + this.effect.social_media_image },
         { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.effect.name}` },
         { name: 'twitter:description', hid: 'twitter:description', content: this.effect.summary_raw },
-        { name: 'twitter:image', hid: 'twitter:image', content: this.$axios.defaults.baseURL + this.social_media_image },
+        { name: 'twitter:image', hid: 'twitter:image', content: this.$axios.defaults.baseURL + this.effect.social_media_image },
       ]
     };
   },
