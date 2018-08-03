@@ -115,7 +115,7 @@
       <img 
         v-show="thumbnail || (type === 'gfycat')" 
         :src="thumbnail ?
-        ('/img/gallery/thumbnails/' + thumbnail) : 'http://thumbs.gfycat.com/' + resource + '-size_restricted.gif'" 
+        ('/img/gallery/thumbnails/' + thumbnail) : 'http://thumbs.gfycat.com/' + resource + '-mobile.jpg'" 
       >
     </div>
 
