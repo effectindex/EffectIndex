@@ -17,8 +17,11 @@ const reportSchema = new Schema({
     name: String,
     trip_date: String,
     age: String,
-    location: String,
+    setting: String,
     gender: String,
+    height: String,
+    weight: String,
+    pdf_url: String
   },
   substances: [{
     name: String,

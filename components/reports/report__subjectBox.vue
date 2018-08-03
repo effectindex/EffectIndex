@@ -13,20 +13,37 @@
           <tr v-show="subject.age"> 
             <td class="label"> Age: </td> <td class="text"> {{ subject.age }} </td>
           </tr>
-          <tr v-show="subject.location">
-            <td class="label"> Setting: </td> <td class="text">  {{ subject.location }} </td> 
+          <tr v-show="subject.setting">
+            <td class="label"> Setting: </td> <td class="text">  {{ subject.setting }} </td> 
           </tr>
           <tr v-show="subject.gender">
             <td class="label"> Gender: </td> <td class="text"> {{ subject.gender }} </td>
           </tr>
+          <tr v-show="subject.height">
+            <td class="label"> Height: </td> <td class="text"> {{ subject.height }} </td>
+          </tr>
+          <tr v-show="subject.weight">
+            <td class="label"> Weight: </td> <td class="text"> {{ subject.weight }} </td>
+          </tr>
         </tbody>
       </table>
+      <div 
+        v-show="subject.pdf_url"
+        class="tracker_pdf">
+        <ext-link :href="subject.pdf_url"> Subjective Effect Tracker PDF </ext-link>
+      </div>
+
     </div>
   </section>
 </template>
 
 <script>
+import ExtLink from '@/components/ExtLink';
+
 export default {
+  components: {
+    ExtLink
+  },
   props: {
     subject: {
       type: Object,
@@ -43,6 +60,18 @@ export default {
   vertical-align: top;
   white-space: pre;
   padding-right: 1em;
+}
+
+.tracker_pdf {
+  margin-top: 1em;
+  padding: 0 0.5em;
+}
+
+.tracker_pdf a {
+  margin-top: 1em;
+  font-size: 1.1em;
+  color: #3d9991;
+  text-decoration: none;
 }
 
 </style>

@@ -31,14 +31,29 @@
           v-model="reportData.subject.age"
           class="reportEditor__inputTitle">
       </label>
-      <label> Location 
+      <label> Setting 
         <input
-          v-model="reportData.subject.location"
+          v-model="reportData.subject.setting"
           class="reportEditor__inputTitle">
       </label>
       <label> Gender 
         <input
           v-model="reportData.subject.gender"
+          class="reportEditor__inputTitle">
+      </label>
+      <label> Height 
+        <input
+          v-model="reportData.subject.height"
+          class="reportEditor__inputTitle">
+      </label>
+      <label> Weight 
+        <input
+          v-model="reportData.subject.weight"
+          class="reportEditor__inputTitle">
+      </label>
+      <label> Tracker PDF 
+        <input
+          v-model="reportData.subject.pdf_url"
           class="reportEditor__inputTitle">
       </label>
     </div>
