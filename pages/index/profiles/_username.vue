@@ -55,7 +55,16 @@ export default {
   },
   head() {
     return {
-      title: this.profile.username
+      title: this.profile.username,
+      meta: [
+        { name: 'description', hid: 'description', content: `Profile of Effect Index contributor ${this.profile.username}` },
+        { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.profile.username}` },
+        { name: 'og:description', hid: 'og:description', content: `Profile of Effect Index contributor ${this.profile.username}` },
+        { name: 'og:image', hid: 'og:image', content: `${this.$axios.defaults.baseURL}/img/profiles/${this.effect.social_media_image}` },
+        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.profile.username}` },
+        { name: 'twitter:description', hid: 'twitter:description', content: `Profile of Effect Index contributor ${this.profile.username}` },
+        { name: 'twitter:image', hid: 'twitter:image', content: `${this.$axios.defaults.baseURL}/img/profiles/${this.effect.social_media_image}` },
+      ]
     };
   }
 };
