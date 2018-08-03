@@ -63,12 +63,12 @@ export default {
 }
 
 .tracker_pdf {
-  margin-top: 1em;
+  margin-top: 0.25em;
   padding: 0 0.5em;
 }
 
 .tracker_pdf a {
-  margin-top: 1em;
+  margin-top: 0.5em;
   font-size: 1.1em;
   color: #3d9991;
   text-decoration: none;
