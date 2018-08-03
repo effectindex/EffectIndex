@@ -148,6 +148,9 @@ export default {
         { name: 'description', hid: 'description', content: this.effect.summary_raw },
         { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.effect.name}` },
         { name: 'og:description', hid: 'og:description', content: this.effect.summary_raw },
+        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.effect.name}` },
+        { name: 'twitter:description', hid: 'twitter:description', content: this.effect.summary_raw },
+ 
       ]
     };
   },
