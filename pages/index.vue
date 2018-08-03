@@ -100,7 +100,8 @@ export default {
 }
 
 .pageContent p {
-  font-family: Titillium Web;
+  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   color: rgba(26, 26, 26, 0.7);
   font-weight: 400;
   line-height: 28.8px;
