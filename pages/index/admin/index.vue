@@ -11,7 +11,7 @@
         <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
         <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
         <li> <nuxt-link to="/admin/reports/"> Manage Reports </nuxt-link> </li>
-
+        <li> <nuxt-link to="/admin/cheatsheet"> Viscidcode Cheat Sheet </nuxt-link> </li>
         <div class="serverOptionsContainer">
           <h3> Danger Zone </h3>
           <li>
