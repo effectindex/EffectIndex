@@ -64,6 +64,13 @@
       </div>
 
       <div>
+        <label> Social Media Image </label>
+        {{ $axios.defaults.baseURL + (social_media_image ? social_media_image : "") }}<input 
+          v-model="social_media_image"
+          class="effectEditor__input">
+      </div>
+
+      <div>
         <label> Gallery Order </label>
         <ol v-if="!gallery_order.length">
           <li 
@@ -147,7 +154,8 @@ export default {
       contributors: this.effect ? this.effect.contributors : [],
       summary: this.effect ? this.effect.summary_raw : "",
       analysis: this.effect ? this.effect.analysis_raw : "",
-      gallery_order: this.effect ? this.effect.gallery_order : []
+      gallery_order: this.effect ? this.effect.gallery_order : [],
+      social_media_image: this.effect ? this.effect.social_media_image : ""
     };
   },
   computed: {
@@ -191,7 +199,8 @@ export default {
         summary: this.summary,
         analysis: this.analysis,
         contributors: this.contributors,
-        gallery_order: this.gallery_order
+        gallery_order: this.gallery_order,
+        social_media_image: this.social_media_image
       });
     },
     makeGalleryOrder() {

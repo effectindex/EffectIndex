@@ -116,6 +116,7 @@
         v-show="thumbnail || (type === 'gfycat')" 
         :src="thumbnail ?
         ('/img/gallery/thumbnails/' + thumbnail) : 'http://thumbs.gfycat.com/' + resource + '-mobile.jpg'" 
+        style="max-width: 300px;"
       >
     </div>
 

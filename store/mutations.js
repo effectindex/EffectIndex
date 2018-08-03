@@ -17,13 +17,13 @@ export default {
     if (
       data.replicated_effects &&
       data.replicated_effects.length > 0 &&
-      !state.gallery.selected_effect
+      !state.gallery.selected_effect_id
     ) {
-      state.gallery.selected_effect = data.replicated_effects[0]._id;
+      state.gallery.selected_effect_id = data.replicated_effects[0]._id;
     }
   },
   set_gallery_selected_effect(state, effectId) {
-    state.gallery.selected_effect = effectId;
+    state.gallery.selected_effect_id = effectId;
   },
   set_replications(state, replications) {
     state.replications = replications;

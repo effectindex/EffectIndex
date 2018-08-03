@@ -13,8 +13,7 @@
         <td> {{ formatDate(invitation.created) }} </td>
         <td> {{ Boolean(invitation.used) ? 'Yes' : 'No' }} </td>
         <td> {{ Boolean(invitation.used) ? invitation.usedBy : '' }} </td>
-        <td> {{ hostname + (hostname.charAt(hostname.length -1) === '/' ? '' :'/')
-        + 'user/register/' + invitation._id }} </td>
+        <td> {{ hostname + 'user/register/' + invitation._id }} </td>
         <td>
           <a 
             class="delete"

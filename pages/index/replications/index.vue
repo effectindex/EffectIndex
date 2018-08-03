@@ -22,13 +22,16 @@
     </p>
     <hr>
 
-    <h3 
-      ref="lightbox"
-      style="text-align: center;"> {{ selected_effect_name }} </h3>
+    <nuxt-link 
+      :to="'/effects/' + selected_effect.url">
+      <h3 
+        ref="lightbox"
+        style="text-align: center;"> {{ selected_effect.name }} </h3>
+    </nuxt-link>
     <light-box
       
-      :image-set="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect) >= 0)"
-      :order="replicated_effects.find((effect) => (effect._id === selected_effect))['gallery_order']"
+      :image-set="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect_id) >= 0)"
+      :order="replicated_effects.find((effect) => (effect._id === selected_effect_id))['gallery_order']"
       base="/img/gallery/"
       @listEnd="selectNextEffect"
       @listStart="selectPrevEffect" />
@@ -37,7 +40,7 @@
     <h3> Effect Galleries </h3>
     <effect-selector 
       :effects="replicated_effects"
-      :selected="selected_effect"
+      :selected="selected_effect_id"
       @effectSelected="scroll" />
 
 
@@ -60,15 +63,15 @@ export default {
     replications() {
       return this.$store.state.gallery.replications;
     },
-    selected_effect() {
-      return this.$store.state.gallery.selected_effect;
+    selected_effect_id() {
+      return this.$store.state.gallery.selected_effect_id;
     },
-    selected_effect_name() {
+    selected_effect() {
       let selected_effect = this.replicated_effects.find(
-        val => val._id === this.selected_effect
+        val => val._id === this.selected_effect_id
       );
 
-      return selected_effect ? selected_effect["name"] : "";
+      return selected_effect ? selected_effect : {};
     },
   },
   methods: {
@@ -76,8 +79,9 @@ export default {
       this.$scrollTo(this.$refs.lightbox, 800);
     },
     selectNextEffect() {
+      if (!this.replicated_effects.length) return;
       let currentIndex = this.replicated_effects.findIndex(
-        val => val._id === this.selected_effect
+        val => val._id === this.selected_effect_id
       );
 
       if ((currentIndex + 1) >= this.replicated_effects.length) {
@@ -87,8 +91,9 @@ export default {
       }
     },
     selectPrevEffect() {
+      if (!this.replicated_effects.length) return;
       let currentIndex = this.replicated_effects.findIndex(
-        val => val._id === this.selected_effect
+        val => val._id === this.selected_effect_id
       );
 
       if ((currentIndex - 1) <= 0) {

@@ -45,11 +45,7 @@ export default {
     },
     inviteURL() {
       let hostname = this.hostname;
-      return this.generatedInvitation
-        ? hostname +
-            (hostname.charAt(hostname.length - 1) === "/" ? "" : "/") +
-            "user/register/" + this.generatedInvitation._id
-        : "";
+      return this.generatedInvitation ? hostname + "user/register/" + this.generatedInvitation._id : "";
     },
     hostname() {
       return this.$axios.defaults.baseURL;

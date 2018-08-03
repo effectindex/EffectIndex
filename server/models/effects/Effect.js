@@ -20,7 +20,8 @@ const Effect = mongoose.model("Effect", {
   citations: Array,
   related_substances: Array,
   see_also: Array,
-  external_links: Array
+  external_links: Array,
+  social_media_image: String
 });
 
 module.exports = Effect;

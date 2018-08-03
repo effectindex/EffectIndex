@@ -11,7 +11,7 @@ const createStore = () => {
       effects: [],
       navigation,
       gallery: {
-        selected_effect: "",
+        selected_effect_id: "",
         replications: [],
         replicated_effects: []
       },

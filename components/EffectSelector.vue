@@ -51,6 +51,7 @@ export default {
 .gallery__effectSelectorItem {
   cursor: pointer;
   margin-left: 0;
+  padding: 2px 0;
 }
 
 .gallery__effectSelectorItem:last-of-type {
