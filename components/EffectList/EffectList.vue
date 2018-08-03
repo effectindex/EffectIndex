@@ -219,7 +219,8 @@ export default {
 
 .effectList__actions h3 {
   text-transform: uppercase;
-  font-family: Titillium Web;
+  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 2px;
