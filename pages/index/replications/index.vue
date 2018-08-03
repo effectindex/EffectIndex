@@ -29,7 +29,9 @@
       
       :image-set="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect) >= 0)"
       :order="replicated_effects.find((effect) => (effect._id === selected_effect))['gallery_order']"
-      base="/img/gallery/" />
+      base="/img/gallery/"
+      @listEnd="selectNextEffect"
+      @listStart="selectPrevEffect" />
 
     <hr>
     <h3> Effect Galleries </h3>
@@ -67,12 +69,33 @@ export default {
       );
 
       return selected_effect ? selected_effect["name"] : "";
-    }
+    },
   },
   methods: {
     scroll() {
-      console.log(this.$refs.lightbox);
       this.$scrollTo(this.$refs.lightbox, 800);
+    },
+    selectNextEffect() {
+      let currentIndex = this.replicated_effects.findIndex(
+        val => val._id === this.selected_effect
+      );
+
+      if ((currentIndex + 1) >= this.replicated_effects.length) {
+        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[0]._id);
+      } else {
+        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[currentIndex + 1]._id);
+      }
+    },
+    selectPrevEffect() {
+      let currentIndex = this.replicated_effects.findIndex(
+        val => val._id === this.selected_effect
+      );
+
+      if ((currentIndex - 1) <= 0) {
+        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[this.replicated_effects.length - 1]._id);
+      } else {
+        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[currentIndex - 1]._id);
+      }
     }
   },
   head() {
