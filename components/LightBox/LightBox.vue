@@ -86,7 +86,7 @@
             <img
               v-else-if="image.type === 'gfycat'"
               ref="activeThumbnail"
-              :src="'http://thumbs.gfycat.com/' + image.resource + '-thumb100.jpg'"
+              :src="'http://thumbs.gfycat.com/' + image.resource + '-size_restricted.gif'"
               :class="current_image === index ? {active: true}: {}" 
               class="lightBox__thumbnailImage"
             >

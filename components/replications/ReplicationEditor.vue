@@ -113,8 +113,9 @@
         height="200" 
       />
       <img 
-        v-show="thumbnail" 
-        :src="'/img/gallery/thumbnails/' + thumbnail" 
+        v-show="thumbnail || (type === 'gfycat')" 
+        :src="thumbnail ?
+        ('/img/gallery/thumbnails/' + thumbnail) : 'http://thumbs.gfycat.com/' + resource + '-size_restricted.gif'" 
       >
     </div>
 
