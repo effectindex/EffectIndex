@@ -24,7 +24,7 @@ export default {
   padding-left: 10px;
   margin: 10px 10px 0 0;
   padding: 6px 12px;
-  border-radius: 15px;
+  border-radius: 5%;
   cursor: pointer;
   opacity: 0.85;
   transition: all 0.2s;
