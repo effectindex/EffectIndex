@@ -35,7 +35,7 @@ export default {
   },
   head() {
     return {
-      title: "Contact – Effect Index"
+      title: "Contact"
     };
   }
 };

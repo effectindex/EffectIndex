@@ -46,7 +46,7 @@ export default {
   },
   head() {
     return {
-      title: "About – Effect Index"
+      title: "About"
     };
   }
 };

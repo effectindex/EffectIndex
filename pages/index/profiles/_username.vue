@@ -52,6 +52,11 @@ export default {
     );
 
     return { profile, replications };
+  },
+  head() {
+    return {
+      title: this.profile.username
+    };
   }
 };
 </script>

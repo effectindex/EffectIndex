@@ -34,6 +34,11 @@ import AudioPlayer from "@/components/AudioPlayer/AudioPlayer.vue";
 export default {
   components: {
     AudioPlayer
+  },
+  head() {
+    return {
+      title: "Audio Replications"
+    };
   }
 };
 </script>

@@ -77,7 +77,7 @@ export default {
   },
   head() {
     return {
-      title: "Replications – Effect Index"
+      title: "Replications"
     };
   },
   async fetch({ store, params }) {

@@ -29,6 +29,11 @@ export default {
     let { post } = await store.dispatch("getSingleBlogPost", params.slug);
     if (!post) error({statusCode: 404, message: 'Blog post not found.'});
     return { post };
+  },
+  head() {
+    return {
+      title: this.post.title
+    };
   }
 };
 </script>

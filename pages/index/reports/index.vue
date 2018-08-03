@@ -39,6 +39,11 @@ export default {
     spacer(index, length) {
       return (index < (length - 1) ? ", " : "");
     }
+  },
+  head() {
+    return {
+      title: 'Trip Reports'
+    };
   }
 };
 </script>

@@ -25,7 +25,8 @@ export default {
   },
   head() {
     return {
-      title: "Effect Index"
+      titleTemplate: "Effect Index - %s",
+      title: "Home"
     };
   }
 };

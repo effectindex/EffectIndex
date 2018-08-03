@@ -24,7 +24,7 @@ export default {
   },
   head() {
     return {
-      title: "Donate – Effect Index"
+      title: "Donate"
     };
   }
 };

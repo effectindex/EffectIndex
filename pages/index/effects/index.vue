@@ -15,7 +15,7 @@ export default {
   },
   head() {
     return {
-      title: "Effects – Effect Index"
+      title: "Effects"
     };
   },
   async fetch({ store }) {

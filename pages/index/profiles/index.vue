@@ -27,7 +27,12 @@ export default {
   async asyncData({ store }) {
     await store.dispatch("getProfiles");
   },
-  scrollToTop: true
+  scrollToTop: true,
+  head() {
+    return {
+      title: "Contributors"
+    };
+  }
 };
 </script>
 

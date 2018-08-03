@@ -29,7 +29,7 @@ export default {
   },
   head() {
     return {
-      title: "DoseBot – Effect Index"
+      title: "DoseBot"
     };
   }
 };

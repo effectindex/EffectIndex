@@ -22,7 +22,7 @@ export default {
     }
   },
   head () {
-    return { title: "Blog – Effect Index" };
+    return { title: "Blog" };
   },
   async fetch({ store }) {
     await store.dispatch("getBlogPosts");

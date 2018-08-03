@@ -13,7 +13,12 @@
 
 <script>
 export default {
-  middleware: ["auth"]
+  middleware: ["auth"],
+  head() {
+    return {
+      title: "Modify Replications"
+    };
+  }
 };
 </script>
 

@@ -48,7 +48,7 @@ export default {
   },
   head() {
     return {
-      title: "Admin – Effect Index"
+      title: "Admin"
     };
   },
   scrollToTop: true

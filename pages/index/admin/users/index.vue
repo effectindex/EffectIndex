@@ -21,9 +21,14 @@
 </template>
 
 <script>
-    export default {
-        middleware: ['auth']
-    };
+  export default {
+    middleware: ['auth'],
+    head() {
+      return {
+        title: "Modify Users"
+      };
+    }
+  };
 </script>
 
 <style>

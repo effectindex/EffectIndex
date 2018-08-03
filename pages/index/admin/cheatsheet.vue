@@ -170,6 +170,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: "I AM THE ONE WHO KNOCKS"
+    };
+  }
+};
+</script>
+
 <style scoped>
 
 .cheatsheet_section {
@@ -194,13 +204,3 @@ thead > tr > td:first-child {
 }
 
 </style>
-
-      <table>
-        <thead>
-          <tr> <td> Property </td> <td> Description </td> </tr>
-        </thead>
-        <tbody>
-          <tr> 
-          </tr>
-        </tbody>
-      </table>

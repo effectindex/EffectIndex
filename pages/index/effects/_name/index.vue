@@ -143,7 +143,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.effect.name} - Effect Index`
+      title: this.effect.name
     };
   },
   async asyncData({ store, params, error }) {

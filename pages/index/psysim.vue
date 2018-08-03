@@ -36,7 +36,7 @@ export default {
   },
   head() {
     return {
-      title: "PsySim – Effect Index"
+      title: "PsySim"
     };
   }
 };

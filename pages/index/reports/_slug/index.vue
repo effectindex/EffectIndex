@@ -83,6 +83,11 @@ export default {
     if (!report)
       error({ statusCode: 404, message: "That report does not exist." });
     return report;
+  },
+  head() {
+    return {
+      title: this.report.title
+    };
   }
 };
 </script>
