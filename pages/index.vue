@@ -26,7 +26,22 @@ export default {
   head() {
     return {
       titleTemplate: "Effect Index - %s",
-      title: "Home"
+      title: "Home",
+      meta: [
+        { name: 'description', hid: 'description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
+        // Open Graph
+        { name: 'og:title', content: "Effect Index" },
+        { name: 'og:description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:url', content: 'https://beta.effectindex.org' },
+        { name: 'og:image', content: 'https://beta.effectindex.org/logo-letter.png' },
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: "Effect Index" },
+        { name: 'twitter:description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
+        { name: 'twitter:image', content: 'https://beta.effectindex.org/logo-letter.png' },
+        { name: 'twitter:image:alt', content: 'Effect Index Logo' }
+      ]
     };
   }
 };
