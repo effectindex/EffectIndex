@@ -1,6 +1,5 @@
 <template>
   <div class="gallery__effectSelectorContainer">
-    <h1> Gallery </h1>
     <ul 
       v-if="effects"
       class="gallery__effectSelector"
@@ -34,28 +33,24 @@ export default {
   methods: {
     selectEffect(effectId) {
       this.$store.dispatch("setGallerySelectedEffect", effectId);
+      this.$emit('effectSelected');
     }
   }
 };
 </script>
 
 <style scoped>
-.gallery__effectSelectorContainer {
-  margin-bottom: 4em;
-}
 
 .gallery__effectSelector {
   margin: 0;
   padding: 0;
+  list-style: none;
+  columns: 200px;
 }
 
 .gallery__effectSelectorItem {
-  display: inline-block;
   cursor: pointer;
-  padding: 0 1em;
   margin-left: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .gallery__effectSelectorItem:last-of-type {

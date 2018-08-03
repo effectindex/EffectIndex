@@ -21,14 +21,23 @@
       or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
     </p>
     <hr>
-    <effect-selector 
-      :effects="replicated_effects"
-      :selected="selected_effect" />
-    <h3 style="text-align: center;"> {{ selected_effect_name }} </h3>
+
+    <h3 
+      ref="lightbox"
+      style="text-align: center;"> {{ selected_effect_name }} </h3>
     <light-box
+      
       :image-set="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect) >= 0)"
       :order="replicated_effects.find((effect) => (effect._id === selected_effect))['gallery_order']"
       base="/img/gallery/" />
+
+    <hr>
+    <h3> Effect Galleries </h3>
+    <effect-selector 
+      :effects="replicated_effects"
+      :selected="selected_effect"
+      @effectSelected="scroll" />
+
 
   </div>
 </template>
@@ -58,6 +67,12 @@ export default {
       );
 
       return selected_effect ? selected_effect["name"] : "";
+    }
+  },
+  methods: {
+    scroll() {
+      console.log(this.$refs.lightbox);
+      this.$scrollTo(this.$refs.lightbox, 800);
     }
   },
   head() {
