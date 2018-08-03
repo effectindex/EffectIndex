@@ -143,7 +143,12 @@ export default {
   },
   head() {
     return {
-      title: this.effect.name
+      title: this.effect.name,
+      meta: [
+        { name: 'description', hid: 'description', content: this.effect.summary_raw },
+        { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.effect.name}` },
+        { name: 'og:description', hid: 'og:description', content: this.effect.summary_raw },
+      ]
     };
   },
   async asyncData({ store, params, error }) {
