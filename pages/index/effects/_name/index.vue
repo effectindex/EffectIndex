@@ -38,7 +38,6 @@
               v-for="link in effect.see_also"
               :key="link.location">
               <nuxt-link
-                v-scroll-to="{el: '#__nuxt' }"
                 :to="link.location"> {{ link.title }} </nuxt-link>
             </li>
           </ul>
