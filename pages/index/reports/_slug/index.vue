@@ -4,7 +4,7 @@
     <div class="report__headerContainer">
       <div class="report__headerTitleContainer">
         <h1 class="report__title"> {{ report.title }} </h1>
-        <div 
+        <div
           v-show="report.subject.name"
           class="report__titleAuthor"> by {{ report.subject.name }} </div>
       </div>
@@ -102,8 +102,6 @@ h1 {
   font-weight: 400;
   margin-bottom: 15px;
 }
-
-
 
 .report__title {
   margin: 0;
@@ -204,9 +202,8 @@ h1 {
 }
 
 .report__infoBoxTableHeader {
-  background-color: #f5F5F5;
   font-weight: bold;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1.5px solid #ccc;
 }
 
 .report__infoBoxTable td {
