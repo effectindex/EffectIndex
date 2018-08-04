@@ -3,10 +3,19 @@
 
     <div class="report__headerContainer">
       <div class="report__headerTitleContainer">
-        <h1 class="report__title"> {{ report.title }} </h1>
+        <h1 
+          class="report__title"
+          style="margin-bottom: 0;"> {{ report.title }} </h1>
         <div 
           v-show="report.subject.name"
-          class="report__titleAuthor"> by {{ report.subject.name }} </div>
+          class="report__titleAuthor">
+          <span v-if="profile"> 
+            by <nuxt-link :to="'/profiles/' + profile.username"> {{ report.subject.name }} </nuxt-link>
+          </span>
+          <span v-else>
+            by {{ report.subject.name }} 
+          </span>
+        </div>
       </div>
       <div class="report__tagsContainer">
         <tag
@@ -78,11 +87,22 @@ export default {
     LogBox,
     Tag
   },
+  computed: {
+    profile() {
+      let profile = undefined;
+      let profiles = this.$store.state.profiles;
+      profile = profiles.find((profile) => (profile.username === this.report.subject.name));
+      return profile;
+    }
+  },
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("getReportBySlug", params.slug);
     if (!report)
       error({ statusCode: 404, message: "That report does not exist." });
     return report;
+  },
+  async fetch({ store }) {
+    await store.dispatch("getProfiles");
   },
   head() {
     return {
@@ -97,20 +117,27 @@ export default {
   color: #333;
 }
 
+.report a {
+  color: #3d9991;
+}
+
 h1 {
   font-size: 32px;
   font-weight: 400;
   margin-bottom: 15px;
 }
 
-
-
 .report__title {
   margin: 0;
+  padding: 0;
 }
 
 .report__titleAuthor {
   padding: 0.25em 0;
+}
+
+.report__titleAuthor a {
+  text-decoration: none;
 }
 
 .report__headerContainer {

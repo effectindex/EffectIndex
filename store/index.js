@@ -2,6 +2,7 @@ import Vuex from "vuex";
 import navigation from "./navigation.json";
 import actions from "./actions";
 import mutations from "./mutations";
+import getters from "./getters";
 
 const createStore = () => {
   return new Vuex.Store({
@@ -23,8 +24,9 @@ const createStore = () => {
         invitations: []
       }
     },
-    mutations: mutations,
-    actions: actions
+    mutations,
+    actions,
+    getters
   });
 };
 
