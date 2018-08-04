@@ -6,7 +6,7 @@
 
     <ul class="profileList">
       <li
-        v-for="profile in $store.state.profiles"
+        v-for="profile in profiles"
         :key="profile._id"
         class="profileListItem" >
         <nuxt-link :to="'/profiles/' + profile.username">
@@ -26,6 +26,11 @@
 export default {
   async asyncData({ store }) {
     await store.dispatch("getProfiles");
+  },
+  computed: {
+    profiles() {
+      return this.$store.state.profiles;
+    }
   },
   scrollToTop: true,
   head() {

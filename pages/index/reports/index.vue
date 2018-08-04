@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="report in $store.state.reports"
+          v-for="report in reports"
           :key="report._id">
           <td> 
             <nuxt-link :to="'/reports/' + report.slug"> {{ report.title }} </nuxt-link>
@@ -34,6 +34,11 @@
 export default {
   async fetch({ store }) {
     await store.dispatch("getReports");
+  },
+  computed: {
+    reports() {
+      return this.$store.state.reports;
+    }
   },
   methods: {
     spacer(index, length) {

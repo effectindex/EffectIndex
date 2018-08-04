@@ -1,7 +1,7 @@
 <template>
   <div class="headerNav__mainNavigation">
     <menu-item
-      v-for="(navItem, name) in $store.state.navigation"
+      v-for="(navItem, name) in navigation"
       :location="navItem.location"
       :name="name"
       :sub-menu-items="navItem.children"
@@ -24,7 +24,11 @@ export default {
     return {
       subMenuItems: {}
     };
-  }
+  },
+  computed: {
+    navigation() { return this.$store.state.navigation; }
+  },
+
 };
 </script>
 

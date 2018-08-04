@@ -11,18 +11,20 @@
           <td />
         </tr>
       </thead>
-      <tr 
-        v-for="post in $store.state.blogPosts"
-        :key="post._id" >
-        <td> <nuxt-link :to="'/blog/' + post.slug"> {{ post.title }} </nuxt-link> </td>
-        <td> {{ formatDate(post.datetime) }} </td>
-        <td> <nuxt-link :to="'/admin/blog/' + post.slug"> <i class="fa fa-edit" /> </nuxt-link> </td>
-        <td> 
-          <a 
-            style="color: red; cursor: pointer;"
-            @click="deletePost(post._id)"> <i class="fa fa-times" /> </a>
-        </td>
-      </tr>
+      <tbody>
+        <tr 
+          v-for="post in blogPosts"
+          :key="post._id" >
+          <td> <nuxt-link :to="'/blog/' + post.slug"> {{ post.title }} </nuxt-link> </td>
+          <td> {{ formatDate(post.datetime) }} </td>
+          <td> <nuxt-link :to="'/admin/blog/' + post.slug"> <i class="fa fa-edit" /> </nuxt-link> </td>
+          <td> 
+            <a 
+              style="color: red; cursor: pointer;"
+              @click="deletePost(post._id)"> <i class="fa fa-times" /> </a>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -34,6 +36,11 @@
   export default {
       components: { EffectTableRow },
       scrollToTop: true,
+      computed: {
+        blogPosts() {
+          return this.$store.state.blogPosts;
+        }
+      },
       methods: { 
         async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); },
         formatDate: (date) => fecha.format(new Date(date), 'MMMM D, YYYY hh:mm:ss')

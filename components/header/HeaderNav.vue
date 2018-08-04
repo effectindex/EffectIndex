@@ -6,7 +6,7 @@
         src="/logo2.svg">
     </nuxt-link>
     <main-navigation />
-    <hamburger :active="$store.state.navbar_pullout" />
+    <hamburger :active="navbarPullout" />
   </header>
 </template>
 
@@ -18,6 +18,11 @@ export default {
   components: {
     MainNavigation,
     Hamburger
+  },
+  computed: {
+    navbarPullout() {
+      return this.$store.state.navbar_pullout;
+    }
   }
 };
 </script>

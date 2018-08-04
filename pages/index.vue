@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <section :class="'sectionContainer ' + ($store.state.navbar_pullout ? 'sectionContainer--pulledout' : '')">
+    <section :class="'sectionContainer ' + (navbarPullout ? 'sectionContainer--pulledout' : '')">
       <header-nav />
       <div class="page">
         <nuxt-child />
@@ -22,6 +22,11 @@ export default {
     HeaderNav,
     CustomFooter,
     PulloutMenu
+  },
+  computed: {
+    navbarPullout() {
+      return this.$store.state.navbar_pullout;
+    }
   },
   head() {
     return {

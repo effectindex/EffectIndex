@@ -121,6 +121,7 @@ export default {
   font-size: 22px;
   font-weight: 300;
   padding-bottom: 10.5px;
+  user-select: none;
 }
 
 .sidebar__listItem {

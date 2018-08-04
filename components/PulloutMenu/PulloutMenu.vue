@@ -1,8 +1,8 @@
 <template>
-  <div :class="'navbarPullout ' + ($store.state.navbar_pullout ? 'active' : '')">
+  <div :class="'navbarPullout ' + (navbarPullout ? 'active' : '')">
     <div class="navbarPullout__menu">
       <ul 
-        v-for="(item, name) in $store.state.navigation"
+        v-for="(item, name) in navigation"
         :key="name">
         <pullout-item 
           v-if="checkItemAccess(item.scope)"
@@ -23,6 +23,10 @@ export default {
   components: {
     DonateButton,
     PulloutItem
+  },
+  computed: {
+    navbarPullout() { return this.$store.state.navbar_pullout; },
+    navigation() { return this.$store.state.navigation; }
   },
   methods: {
     checkItemAccess(scope) {

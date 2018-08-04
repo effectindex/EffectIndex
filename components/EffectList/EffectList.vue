@@ -151,9 +151,14 @@ export default {
       default: ""
     }
   },
+  computed: {
+    effects() {
+      return this.$store.state.effects;
+    }
+  },
   methods: {
     filterEffectByTag(...tags) {
-      return this.$store.state.effects.filter(effect =>
+      return this.effects.filter(effect =>
         tags.every(tag => effect.tags.indexOf(tag) > -1)
       );
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent blog">
     <blog-post 
-      v-for="post in $store.state.blogPosts"
+      v-for="post in blogPosts"
       :key="post._id"
       :post="post"
       @delete-post="deletePost" /> 
@@ -16,6 +16,11 @@ export default {
     BlogPost
   },
   scrollToTop: true,
+  computed: {
+    blogPosts() {
+      return this.$store.state.blogPosts;
+    }
+  },
   methods: {
     async deletePost(id) {
       this.$store.dispatch("deleteBlogPost", id);
