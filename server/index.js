@@ -39,8 +39,9 @@ async function start() {
   // Listen the server
   log(chalk.yellow("Attempting mongoose connection..."));
 
-  mongoose.connect(
+  await mongoose.connect(
     config.server.mongooseUri,
+    { useNewUrlParser: true },
     function(err, db) {
       if (!err) {
         log(logo);

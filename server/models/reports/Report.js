@@ -21,7 +21,8 @@ const reportSchema = new Schema({
     gender: String,
     height: String,
     weight: String,
-    pdf_url: String
+    medications: String,
+    pdf_url: String,
   },
   substances: [{
     name: String,

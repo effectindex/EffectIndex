@@ -25,6 +25,9 @@
           <tr v-show="subject.weight">
             <td class="label"> Weight: </td> <td class="text"> {{ subject.weight }} </td>
           </tr>
+          <tr v-show="subject.medications">
+            <td class="label"> Medications: </td> <td class="text"> {{ subject.medications }} </td>
+          </tr>
         </tbody>
       </table>
       <div 

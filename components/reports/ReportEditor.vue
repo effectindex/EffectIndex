@@ -51,6 +51,11 @@
           v-model="reportData.subject.weight"
           class="reportEditor__inputTitle">
       </label>
+      <label> Medications 
+        <input
+          v-model="reportData.subject.medications"
+          class="reportEditor__inputTitle">
+      </label>
       <label> Tracker PDF 
         <input
           v-model="reportData.subject.pdf_url"
