@@ -5,28 +5,32 @@
       <table class="report__infoBoxTable">
         <tbody>
           <tr v-show="subject.name">
-            <td class="label"> Name: </td> <td class="text"> {{ subject.name }} </td>
+            <td class="label"> Name: </td> 
+            <td> 
+              <span v-if="profile"> <nuxt-link :to="'/profiles/' + profile.username">{{ subject.name }}</nuxt-link>  </span>
+              <span v-else>{{ subject.name }}</span>
+            </td>
           </tr>
           <tr v-show="subject.trip_date">
-            <td class="label"> Trip Date: </td> <td class="text"> {{ subject.trip_date }} </td> 
+            <td class="label"> Trip Date: </td> <td> {{ subject.trip_date }} </td> 
           </tr>
           <tr v-show="subject.age"> 
-            <td class="label"> Age: </td> <td class="text"> {{ subject.age }} </td>
+            <td class="label"> Age: </td> <td> {{ subject.age }} </td>
           </tr>
           <tr v-show="subject.setting">
-            <td class="label"> Setting: </td> <td class="text">  {{ subject.setting }} </td> 
+            <td class="label"> Setting: </td> <td>  {{ subject.setting }} </td> 
           </tr>
           <tr v-show="subject.gender">
-            <td class="label"> Gender: </td> <td class="text"> {{ subject.gender }} </td>
+            <td class="label"> Gender: </td> <td> {{ subject.gender }} </td>
           </tr>
           <tr v-show="subject.height">
-            <td class="label"> Height: </td> <td class="text"> {{ subject.height }} </td>
+            <td class="label"> Height: </td> <td> {{ subject.height }} </td>
           </tr>
           <tr v-show="subject.weight">
-            <td class="label"> Weight: </td> <td class="text"> {{ subject.weight }} </td>
+            <td class="label"> Weight: </td> <td> {{ subject.weight }} </td>
           </tr>
           <tr v-show="subject.medications">
-            <td class="label"> Medications: </td> <td class="text"> {{ subject.medications }} </td>
+            <td class="label"> Medications: </td> <td> {{ subject.medications }} </td>
           </tr>
         </tbody>
       </table>
@@ -39,7 +43,16 @@
     </div>
   </section>
 </template>
-
+        <div 
+          v-show="report.subject.name"
+          class="report__titleAuthor">
+          <span v-if="profile"> 
+            by <nuxt-link :to="'/profiles/' + profile.username"> {{ report.subject.name }} </nuxt-link>
+          </span>
+          <span v-else>
+            by {{ report.subject.name }} 
+          </span>
+        </div>
 <script>
 import ExtLink from '@/components/ExtLink';
 
@@ -51,12 +64,25 @@ export default {
     subject: {
       type: Object,
       default: () => {}
+    },
+    profile: {
+      type: Object,
+      default: undefined
     }
   },
 };
 </script>
 
 <style scoped>
+
+.report__infoBox a {
+  color: #3d9991;
+  text-decoration: none;
+}
+
+.report__infoBoxTable {
+  width: auto;
+}
 
 .label {
   font-weight: bold;
@@ -73,8 +99,7 @@ export default {
 .tracker_pdf a {
   margin-top: 0.5em;
   font-size: 1.1em;
-  color: #3d9991;
-  text-decoration: none;
+
 }
 
 </style>

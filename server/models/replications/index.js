@@ -86,17 +86,12 @@ router.post('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['adm
     let replication = req.body.replication;
     if (replication) {
 
-      let updatedReplication = await Replication.findByIdAndUpdate(req.params.id, {
-        title: replication.title,
-        artist: replication.artist,
-        artist_url: replication.artist_url,
-        description: replication.description,
-        date: replication.date,
-        resource: replication.resource,
-        thumbnail: replication.thumbnail,
-        type: replication.type,
-        associated_effects: replication.associated_effects
-      }, { new: true }).exec();
+      let r = await Replication.findById(req.params.id).exec();
+      ['title', 'artist', 'artist_url', 'description', 'date', 'resource', 'thumbnail', 'type', 'associated_effects']
+      .forEach((field) => r[field] = replication[field]);
+
+      let updatedReplication = await r.save();
+      if (!updatedReplication) throw API_Error('UPDATE_REPLICATION_ERROR', 'The replication was not successfully updated.');
       res.send({ effect: updatedReplication });
     }
   } catch (error) {

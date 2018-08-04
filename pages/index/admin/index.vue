@@ -5,12 +5,12 @@
     <p> The place to do secret things when nobody's looking. </p>
     <div v-if="$auth.loggedIn">
       <ul> 
-        <li> <nuxt-link to="/admin/effects/"> Manage Effects </nuxt-link> </li>
-        <li> <nuxt-link to="/admin/replications/"> Manage Replications </nuxt-link> </li>
-        <li> <nuxt-link to="/admin/blog"> Manage Blog </nuxt-link> </li>
-        <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
-        <li> <nuxt-link to="/admin/users"> Manage Users </nuxt-link> </li>
-        <li> <nuxt-link to="/admin/reports/"> Manage Reports </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/effects/list"> Manage Effects </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/replications/list"> Manage Replications </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/blog/list"> Manage Blog </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/users/list"> Manage Users </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/users/profiles"> Manage Profiles </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/reports/list"> Manage Reports </nuxt-link> </li>
         <li> <nuxt-link to="/admin/cheatsheet"> Viscidcode Cheat Sheet </nuxt-link> </li>
         <div class="serverOptionsContainer">
           <h3> Danger Zone </h3>

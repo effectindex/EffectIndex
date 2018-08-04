@@ -34,14 +34,13 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
   try {
 
-    let post = await Post.findByIdAndUpdate(req.params.id, {
-      title: req.body.title,
-      body: req.body.body
-    }).exec().catch((err) => {
-      throw API_Error('POST_SAVE_ERROR', err);
-    });
+    let post = await Post.findById(req.params.id).exec();
+    post.title = req.body.title;
+    post.body = req.body.body;
 
-    res.send({ post });
+    let result = await post.save();
+
+    res.sendStatus(200);
 
   } catch (error) {
     res.status(500).send({ error });

@@ -1,9 +1,6 @@
-const slug = require("mongoose-slug-generator", {
-  truncate: 35
-});
+const slugs = require("mongoose-url-slugs");
 
 const mongoose = require("mongoose");
-mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;
 
@@ -12,7 +9,6 @@ const reportSchema = new Schema({
     type: String
   },
   form_link: String,
-  slug: { type: String, slug: ["title"], unqiue: true },
   subject: {
     name: String,
     trip_date: String,
@@ -49,6 +45,11 @@ const reportSchema = new Schema({
 }, 
   {minimize: false}
 );
+
+reportSchema.plugin(slugs('title', {
+  update: true,
+  alwaysRecreate: true
+}));
 
 const Report = mongoose.model("Report", reportSchema);
 

@@ -26,7 +26,9 @@
     </div>
 
     <div class="report__topSection">
-      <subject-box :subject="report.subject" />
+      <subject-box 
+        :profile="profile" 
+        :subject="report.subject" />
       <substances-box :substances="report.substances" />
     </div>
 

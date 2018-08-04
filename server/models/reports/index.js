@@ -30,12 +30,14 @@ router.put('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admi
     let { reportData, sectionVisibility } = req.body;
     reportData.sectionVisibility = sectionVisibility;
 
-    let result = await Report
-      .findByIdAndUpdate(req.params.id, reportData)
+    let report = await Report
+      .findById(req.params.id)
       .exec();
 
+    if (!report) throw API_Error('UPDATE_REPORT_ERROR', 'The report could not be found.');
+    for (let field in reportData) report[field] = reportData[field];
+    let result = report.save();
     if (!result) throw API_Error('UPDATE_REPORT_ERROR', 'The report failed to update.');
-
     res.sendStatus(200);
   } catch (error) {
     next(error);
