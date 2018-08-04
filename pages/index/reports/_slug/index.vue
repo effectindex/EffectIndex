@@ -231,9 +231,8 @@ h1 {
 }
 
 .report__infoBoxTableHeader {
-  background-color: #f5F5F5;
   font-weight: bold;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1.5px solid #ccc;
 }
 
 .report__infoBoxTable td {

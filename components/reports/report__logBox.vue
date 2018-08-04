@@ -14,7 +14,8 @@
           <tbody>
             <tr
               v-for="(item, index) in log"
-              :key="index">
+              :key="index"
+              class="logTable__row">
               <td class="logTable__time"> {{ item.time }}: </td>
               <td
                 class="logTable__description"
@@ -90,10 +91,15 @@ export default {
   padding: 1em;
 }
 
+.logTable__row:not(:last-child) {
+  border-bottom: 1px solid rgba(170, 170, 170, 0.35);
+}
+
 .logTable__time {
   font-weight: bold;
   vertical-align: top;
   white-space: pre;
+  padding-top: 0.5em;
 }
 
 .logTable {
@@ -101,7 +107,7 @@ export default {
 }
 
 .logTable__description {
-  padding: 0 1em 1em 0.5em;
+  padding: 0.5em 1em 0.5em 0.5em;
   white-space: pre-wrap;
 }
 
@@ -121,7 +127,7 @@ export default {
   }
 
   .logTable__description {
-    padding: 0 0.25em 1em 0.25em;
+    padding: 0.25em 0.25em 1em 0.25em;
   }
 
   .logTable__time {
