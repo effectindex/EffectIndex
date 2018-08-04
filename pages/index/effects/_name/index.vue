@@ -35,10 +35,11 @@
           <h3> See Also </h3>
           <ul>
             <li
-              v-scroll-to="{el: '#__nuxt' }"
               v-for="link in effect.see_also"
               :key="link.location">
-              <nuxt-link :to="link.location"> {{ link.title }} </nuxt-link>
+              <nuxt-link
+                v-scroll-to="{el: '#__nuxt' }"
+                :to="link.location"> {{ link.title }} </nuxt-link>
             </li>
           </ul>
         </div>
