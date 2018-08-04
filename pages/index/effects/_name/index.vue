@@ -36,8 +36,8 @@
           <ul>
             <li
               v-for="link in effect.see_also"
-              :key="link.url">
-              <ext-link :href="link.url"> {{ link.title }} </ext-link>
+              :key="link.location">
+              <nuxt-link :to="link.location"> {{ link.title }} </nuxt-link>
             </li>
           </ul>
         </div>
