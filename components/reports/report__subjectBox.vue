@@ -43,16 +43,7 @@
     </div>
   </section>
 </template>
-        <div 
-          v-show="report.subject.name"
-          class="report__titleAuthor">
-          <span v-if="profile"> 
-            by <nuxt-link :to="'/profiles/' + profile.username"> {{ report.subject.name }} </nuxt-link>
-          </span>
-          <span v-else>
-            by {{ report.subject.name }} 
-          </span>
-        </div>
+
 <script>
 import ExtLink from '@/components/ExtLink';
 
