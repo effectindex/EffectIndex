@@ -95,6 +95,7 @@ module.exports = {
     html: true,
     quotes: '“”‘’'
   },
+  
   router: {
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) return savedPosition;

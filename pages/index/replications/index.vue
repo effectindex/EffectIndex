@@ -22,19 +22,18 @@
     </p>
     <hr>
 
-    <nuxt-link 
-      :to="'/effects/' + selected_effect.url">
-      <h3 
-        ref="lightbox"
-        style="text-align: center;"> {{ selected_effect.name }} </h3>
-    </nuxt-link>
+    <h3 
+      ref="lightbox"
+      style="text-align: center;">
+      <nuxt-link :to="'/effects/' + selected_effect.url"> {{ selected_effect.name }} </nuxt-link>
+    </h3>
+
     <light-box
-      
-      :image-set="replications.filter((replication) => replication.associated_effects.indexOf(selected_effect_id) >= 0)"
-      :order="replicated_effects.find((effect) => (effect._id === selected_effect_id))['gallery_order']"
+      :image-set="image_set"
+      :order="gallery_order"
       base="/img/gallery/"
-      @listEnd="selectNextEffect"
-      @listStart="selectPrevEffect" />
+      @listEnd="switchEffect"
+      @listStart="switchEffect(true)" />
 
     <hr>
     <h3> Effect Galleries </h3>
@@ -42,7 +41,6 @@
       :effects="replicated_effects"
       :selected="selected_effect_id"
       @effectSelected="scroll" />
-
 
   </div>
 </template>
@@ -73,42 +71,42 @@ export default {
 
       return selected_effect ? selected_effect : {};
     },
+    image_set() {
+      return this.replications.filter(
+        (replication) => replication.associated_effects.includes(this.selected_effect_id));
+    },
+    gallery_order() {
+      return this.replicated_effects.find(
+        (effect) => (effect._id === this.selected_effect_id))['gallery_order'];
+    },
+    current_index() {
+      return this.replicated_effects.findIndex(
+        val => val._id === this.selected_effect_id
+      );
+    }
   },
   methods: {
     scroll() {
       this.$scrollTo(this.$refs.lightbox, 800);
     },
-    selectNextEffect() {
+    switchEffect(prev) {
       if (!this.replicated_effects.length) return;
-      let currentIndex = this.replicated_effects.findIndex(
-        val => val._id === this.selected_effect_id
-      );
 
-      if ((currentIndex + 1) >= this.replicated_effects.length) {
-        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[0]._id);
+      if (!prev) {
+        let index = ((this.current_index + 1) >= this.replicated_effects.length) ? 0 : this.current_index + 1;
+        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[index]._id);
       } else {
-        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[currentIndex + 1]._id);
+        let index = ((this.current_index - 1) <= 0) ? this.replicated_effects.length - 1 : this.current_index - 1;
+        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[index]._id);
       }
     },
-    selectPrevEffect() {
-      if (!this.replicated_effects.length) return;
-      let currentIndex = this.replicated_effects.findIndex(
-        val => val._id === this.selected_effect_id
-      );
-
-      if ((currentIndex - 1) <= 0) {
-        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[this.replicated_effects.length - 1]._id);
-      } else {
-        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[currentIndex - 1]._id);
-      }
-    }
   },
   head() {
     return {
       title: "Replications"
     };
   },
-  async fetch({ store, params }) {
+  async fetch({ store }) {
     await store.dispatch("getGallery");
   }
 };

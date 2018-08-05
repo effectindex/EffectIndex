@@ -1,7 +1,7 @@
 <template>
   <figure 
-    :class="'captionedImage ' + float + ' unfloat'"
-    :style="{ maxWidth: (width ? width + 'px' : '100%') }">
+    :class="'captionedImage ' + float "
+    :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? 0 : '2em') }">
     <div v-if="src">
       <a 
         :href="src"
@@ -80,6 +80,10 @@ export default {
     gfycat: {
       type: String,
       default: ""
+    },
+    top: {
+      type: String,
+      default: ""
     }
   },
   computed: {
@@ -142,7 +146,7 @@ export default {
 }
 
 @media (max-width: 500px) {
-  .unfloat {
+  .floatRight, .floatLeft {
     float: none;
     margin: 1em auto;
   }
