@@ -1,7 +1,7 @@
 <template>
   <figure 
-    :class="'captionedImage ' + float "
-    :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? 0 : '2em') }">
+    :class="'captionedImage ' + float"
+    :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }">
     <div v-if="src">
       <a 
         :href="src"
