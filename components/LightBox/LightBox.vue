@@ -5,12 +5,12 @@
     <h1 v-show="title"> {{ title }} </h1>
     <div v-if="currentImage">
       <div
-        v-touch:swipe.left="previousImage"
-        v-touch:swipe.right="nextImage"
         class="lightBox__canvas">
         <transition name="fade">
 
           <div 
+            v-touch:swipe.left="nextImage"
+            v-touch:swipe.right="previousImage"
             v-if="currentImage.resource && (currentImage.type === 'image')"
             :key="currentImage.resource"
             :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'"
@@ -28,7 +28,9 @@
             :key="currentImage.resource"
             style="position:relative;height: 100%;"
           >
-            <iframe 
+            <iframe
+              v-touch:swipe.left="nextImage"
+              v-touch:swipe.right="previousImage"
               :src="'https://gfycat.com/ifr/' + currentImage.resource"
               frameborder="0"
               scrolling="no"
