@@ -2,21 +2,20 @@
   <figure 
     :class="'captionedImage ' + float"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }">
-    <div v-if="src">
-      <a 
-        :href="src"
-        target="_blank">
-        <img 
-          :src="src" 
-          :width="(width ? width + 'px' : '100%')" 
-          :height="(height ? height + 'px' : '100%')">
-      </a>
-    </div>
+    <a 
+      :href="src"
+      target="_blank">
+      <img 
+        v-show="src"
+        :src="src" 
+        :width="(width ? width + 'px' : 'auto')" 
+        :height="(height ? height + 'px' : 'auto')">
+    </a>
     <div 
-      v-else-if="gfycat"
+      v-if="gfycat"
       :style="{
         maxWidth: width ? width + 'px' : 'none',
-        height: height ? height + 'px' : 'none',
+        height: height ? height + 'px' : 'auto',
         marginBottom: '0.5em'
       }"
       style="position:relative; padding-bottom:56.25%;"
