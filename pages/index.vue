@@ -39,13 +39,13 @@ export default {
         { name: 'og:title', hid: 'og:title', content: "Effect Index" },
         { name: 'og:description', hid: 'og:description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
         { name: 'og:type', hid: 'og:type', content: 'website' },
-        { name: 'og:url', hid: 'og:url', content: 'https://beta.effectindex.com' },
-        { name: 'og:image', hid: 'og:image', content: 'https://beta.effectindex.com/logo-letter.png' },
+        { name: 'og:url', hid: 'og:url', content: 'https://effectindex.com' },
+        { name: 'og:image', hid: 'og:image', content: 'https://effectindex.com/logo-letter.png' },
         // Twitter Card
         { name: 'twitter:card', hid: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', hid: 'twitter:title', content: "Effect Index" },
         { name: 'twitter:description', hid: 'twitter:description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
-        { name: 'twitter:image', hid: 'twitter:image', content: 'https://beta.effectindex.com/logo-letter.png' },
+        { name: 'twitter:image', hid: 'twitter:image', content: 'https://effectindex.com/logo-letter.png' },
         { name: 'twitter:image:alt', hid: 'twitter:image:alt', content: 'Effect Index Logo' }
       ]
     };

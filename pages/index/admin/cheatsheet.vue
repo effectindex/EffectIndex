@@ -8,9 +8,9 @@
         ##md
         <p> Allows you to use markdown in an effect. </p>
         <label> Example </label>
-        <div style="white-space: pre-wrap;">##md[ - List item one
+        <div style="white-space: pre-wrap;">##md{ - List item one
         - list item two
-        - list item three]
+        - list item three}
         </div>
       </div>
 
@@ -37,6 +37,9 @@
             </tr>
             <tr>
               <td> height </td> <td> Height of the image (in pixels)</td>
+            </tr>
+            <tr>
+              <td> top </td> <td> Remove top margin if image is floated at the top of the document. ('true') </td>
             </tr>
             <tr>
               <td> artist </td> <td> Artist name </td>
@@ -99,7 +102,7 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##refbull|refs="2,4.2,5"[This is a bullet list item with a bunch of references at the end of it.]
+        <div style="white-space: pre-wrap;">##refbull|refs="2,4.2,5"{This is a bullet list item with a bunch of references at the end of it.}
         </div>
       </div>
 
@@ -120,7 +123,7 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##int-link|to="/replications/"[our replication gallery]
+        <div style="white-space: pre-wrap;">##int-link|to="/replications/"{our replication gallery}
         </div>
       </div>
 
@@ -143,7 +146,7 @@
 
 
       <label style="display: block; margin-top: 1em;"> Example </label>
-      <div style="white-space: pre-wrap;">##ext-link|href="http://www.puppies.com"[I wish I had a puppy.]
+      <div style="white-space: pre-wrap;">##ext-link|href="http://www.puppies.com"{I wish I had a puppy.}
       </div>
     </div>
 
@@ -152,7 +155,7 @@
       ##b
       <p> It's fucking bold. </p>
       <label style="display: block; margin-top: 1em;"> Example </label>
-      <div style="white-space: pre-wrap;">##b[I REALLY WISH I HAD A PUPPY.]
+      <div style="white-space: pre-wrap;">##b{I REALLY WISH I HAD A PUPPY.}
       </div>
     </div>
 
@@ -163,7 +166,7 @@
       ##i
       <p> I'm <span style="font-style: italic;"> sooooooo </span> done with writing this cheatsheet. </p>
       <label style="display: block; margin-top: 1em;"> Example </label>
-      <div style="white-space: pre-wrap;">##i[soooooo done]
+      <div style="white-space: pre-wrap;">##i{soooooo done}
       </div>
     </div>
   
