@@ -4,7 +4,10 @@
     class="lightBox">
     <h1 v-show="title"> {{ title }} </h1>
     <div v-if="currentImage">
-      <div class="lightBox__canvas">
+      <div
+        v-touch:swipe.left="previousImage"
+        v-touch:swipe.right="nextImage"
+        class="lightBox__canvas">
         <transition name="fade">
 
           <div 
@@ -44,12 +47,12 @@
 
         <a 
           class="lightBox__control previousImage"
-          @mousedown="previousImage()" >
+          @mousedown="previousImage" >
           <i class="fa fa-angle-double-left" />
         </a>
         <a
           class="lightBox__control nextImage"
-          @mousedown="nextImage()"
+          @mousedown="nextImage"
         >
           <i class="fa fa-angle-double-right" />
         </a>

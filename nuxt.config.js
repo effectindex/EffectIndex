@@ -77,7 +77,10 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ["~/plugins/vue-notification", "~/plugins/vue-scrollto"],
+  plugins: [
+    "~/plugins/vue-notification",
+    "~/plugins/vue-scrollto",
+    "~/plugins/vue2-touch-events"],
 
   /*
   ** Nuxt.js modules
