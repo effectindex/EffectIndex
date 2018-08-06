@@ -7,7 +7,6 @@
       <div
         class="lightBox__canvas">
         <transition name="fade">
-
           <div 
             v-touch:swipe.left="nextImage"
             v-touch:swipe.right="previousImage"
@@ -28,9 +27,8 @@
             :key="currentImage.resource"
             style="position:relative;height: 100%;"
           >
+
             <iframe
-              v-touch:swipe.left="nextImage"
-              v-touch:swipe.right="previousImage"
               :src="'https://gfycat.com/ifr/' + currentImage.resource"
               frameborder="0"
               scrolling="no"
@@ -39,6 +37,13 @@
               style="position:absolute;top:0;left:0"
               allowfullscreen
             />
+            
+            <div
+              v-touch:swipe.left="nextImage"
+              v-touch:swipe.right="previousImage"
+              class="lightBox__touchControls"
+              @click="openImage('https://gfycat.com/' + currentImage.resource, true)" />
+
             <image-details
               :title="currentImage.title"
               :artist="currentImage.artist"
@@ -206,8 +211,8 @@ export default {
       } else this.current_image = this.current_image - 1;
       this.updateThumbnailOffset();
     },
-    openImage(url) {
-      window.open("/img/gallery/" + url);
+    openImage(url, absolute) {
+      absolute ? window.open(url) : window.open("/img/gallery/" + url);
     }
   }
 };
@@ -240,6 +245,12 @@ export default {
 a.lightBox__control {
   color: white;
   cursor: pointer;
+}
+
+.lightBox__touchControls {
+  height: 75%;
+  width: 100%;
+  opacity: 0;
 }
 
 a.lightBox__control:hover {
