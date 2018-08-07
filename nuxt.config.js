@@ -128,8 +128,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.BASE_URL,
-    browserBaseURL: process.env.BROWSER_BASE_URL
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    browserBaseURL: process.env.BROWSER_BASE_URL || 'http://localhost:3000'
   },
 
   /*
