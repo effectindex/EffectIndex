@@ -14,6 +14,8 @@
 *:after {
   box-sizing: border-box;
   margin: 0;
+  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
