@@ -3,17 +3,17 @@
 
     <div class="report__headerContainer">
       <div class="report__headerTitleContainer">
-        <h1 
+        <h1
           class="report__title"
           style="margin-bottom: 0;"> {{ report.title }} </h1>
-        <div 
+        <div
           v-show="report.subject.name"
           class="report__titleAuthor">
-          <span v-if="profile"> 
+          <span v-if="profile">
             by <nuxt-link :to="'/profiles/' + profile.username"> {{ report.subject.name }} </nuxt-link>
           </span>
           <span v-else>
-            by {{ report.subject.name }} 
+            by {{ report.subject.name }}
           </span>
         </div>
       </div>
@@ -26,8 +26,8 @@
     </div>
 
     <div class="report__topSection">
-      <subject-box 
-        :profile="profile" 
+      <subject-box
+        :profile="profile"
         :subject="report.subject" />
       <substances-box :substances="report.substances" />
     </div>
@@ -93,10 +93,13 @@ export default {
     profile() {
       let profile = undefined;
       let profiles = this.$store.state.profiles;
-      profile = profiles.find((profile) => (profile.username === this.report.subject.name));
+      profile = profiles.find(
+        profile => profile.username === this.report.subject.name
+      );
       return profile;
     }
   },
+  scrollToTop: true,
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("getReportBySlug", params.slug);
     if (!report)
