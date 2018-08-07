@@ -29,7 +29,7 @@
           >
 
             <iframe
-              :src="'https://gfycat.com/ifr/' + currentImage.resource"
+              :src="'https://gfycat.com/ifr/' + currentImage.resource + '?autoplay=1'"
               frameborder="0"
               scrolling="no"
               width="100%"
