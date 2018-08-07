@@ -99,7 +99,6 @@ export default {
       return profile;
     }
   },
-  scrollToTop: true,
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("getReportBySlug", params.slug);
     if (!report)
