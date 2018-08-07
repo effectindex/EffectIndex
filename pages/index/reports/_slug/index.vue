@@ -110,7 +110,8 @@ export default {
     return {
       title: this.report.title
     };
-  }
+  },
+  scrollToTop: true
 };
 </script>
 
