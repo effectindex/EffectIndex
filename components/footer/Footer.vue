@@ -1,6 +1,12 @@
 <template>
   <footer>
     <div class="footer__social">
+      <a href="https://www.facebook.com/EffectIndex/">
+        <img
+          src="/sm-icon-facebook.svg"
+          height="32"
+          width="32">
+      </a>
       <a href="http://reddit.com/r/replications">
         <img
           src="/sm-icon-reddit.svg"
@@ -10,12 +16,6 @@
       <a href="https://www.youtube.com/channel/UCV5-ybqHFU6xQWhnFZBJlOA">
         <img
           src="/sm-icon-youtube.svg"
-          height="32"
-          width="32">
-      </a>
-      <a href="https://www.facebook.com/EffectIndex/">
-        <img
-          src="/sm-icon-facebook.svg"
           height="32"
           width="32">
       </a>
