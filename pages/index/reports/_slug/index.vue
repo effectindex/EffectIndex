@@ -187,8 +187,12 @@ h1 {
   background-color: #fbfbfb;
   border: 1px solid #cccccc;
   box-shadow: 2px 2px 2px #ccc;
-  overflow: hidden;
   white-space: pre-wrap;
+  
+}
+
+.report ul, .report ol {
+  white-space: normal;
 }
 
 .report__textBoxText {
