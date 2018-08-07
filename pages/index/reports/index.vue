@@ -1,6 +1,16 @@
 <template>
   <div class="pageContent">
     <h1> Trip Reports </h1>
+    <div class="reportItemContainer">
+      <report-item 
+        v-for="report in reports"
+        :key="report._id"
+        :report="report"
+        :profile-name="hasProfile(report.subject.name)" />
+    </div>
+  </div>
+</template>
+
     <table class="tripReports__listTable">
       <thead class="tripReports__listTableHead">
         <tr>
@@ -27,22 +37,29 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</template>
 
 <script>
+import reportItem from '@/components/reports/reportList__item';
+
 export default {
+  components: {
+    reportItem
+  },
   async fetch({ store }) {
     await store.dispatch("getReports");
+    await store.dispatch("getProfiles");
   },
   computed: {
     reports() {
       return this.$store.state.reports;
+    },
+    profileNames() {
+      return this.$store.state.profiles.map((profile) => profile.username);
     }
   },
   methods: {
-    spacer(index, length) {
-      return (index < (length - 1) ? ", " : "");
+    hasProfile(name) {
+      return this.profileNames[this.profileNames.indexOf(name)];
     }
   },
   head() {
@@ -54,13 +71,5 @@ export default {
 </script>
 
 <style>
-  .tripReports__listTable {
-    width: 100%;
-    color: #333;
-  }
-
-  .tripReports__listTableHead {
-    font-weight: bold;
-  }
 
 </style>
