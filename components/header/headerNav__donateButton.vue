@@ -9,7 +9,8 @@
   display: block;
   border: 2px solid white;
   font-size: 13px;
-  font-family: proxima-nova;
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;;
   padding: 0.75em 0;
   letter-spacing: 1px;
   border-radius: 50px;

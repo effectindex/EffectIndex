@@ -153,7 +153,8 @@ export default {
 
 .pageContent .blackButton {
   display: block;
-  font-family: proxima-nova;
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -181,7 +182,8 @@ export default {
 .pageContent h3,
 .pageContent h4 {
   text-transform: uppercase;
-  font-family: proxima-nova;
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 22px;
   letter-spacing: 2px;
   font-weight: 400;

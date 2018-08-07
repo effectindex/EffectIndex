@@ -281,7 +281,8 @@ a.lightBox__control:hover {
   left: 0;
   margin: 25px;
   background-color: rgba(23, 23, 23, 0.5);
-  font-family: "Titillium Web";
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   color: white;
   padding: 10px;
   user-select: none;

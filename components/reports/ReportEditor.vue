@@ -233,7 +233,8 @@ export default {
   width: 100%;
   font-size: 18px;
   height: 200px;
-  font-family: "titillium web";
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   padding: 10px;
 }
 
@@ -276,7 +277,8 @@ export default {
   text-transform: none;
   font-weight: normal;
   letter-spacing: 0;
-  font-family: "Titillium Web", Arial, sans-serif;
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .reportEditor .section {

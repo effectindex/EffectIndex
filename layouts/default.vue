@@ -4,7 +4,7 @@
 
 <style>
 @font-face {
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova";
   font-display: swap;
   src: url("/fonts/proxima-nova-medium.woff2");
 }
@@ -14,7 +14,6 @@
 *:after {
   box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
 }
 
 html {

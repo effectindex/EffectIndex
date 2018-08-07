@@ -244,7 +244,8 @@ export default {
 label {
   display: block;
   margin: 1em 0;
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -264,7 +265,8 @@ label {
 
 .effectEditor__input,
 .effectEditor__textarea {
-  font-family: "Titillium Web";
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   border: 1px solid #cccccc;
   padding: 0.5em 1em;
   font-size: 16px;

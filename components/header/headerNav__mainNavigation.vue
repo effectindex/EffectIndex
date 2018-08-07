@@ -37,7 +37,8 @@ export default {
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;;
   font-size: 13px;
 }
 

@@ -205,7 +205,8 @@ export default {
   color: #3d9991;
   display: inline-block;
   text-transform: uppercase;
-  font-family: proxima-nova;
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 2px;

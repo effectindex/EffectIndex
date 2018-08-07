@@ -108,7 +108,8 @@ export default {
 }
 
 .sidebar {
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;;
   flex: 1;
 }
 

@@ -38,7 +38,8 @@ footer {
   background-color: #1f1f1f;
   text-align: center;
   color: #666;
-  font-family: Titillium Web;
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
 }
 

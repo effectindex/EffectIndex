@@ -8,13 +8,15 @@
 .adminManagement label {
   display: block;
   margin: 1em 0;
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .adminManagement input {
-  font-family: "Titillium Web";
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   border: 1px solid #cccccc;
   padding: 0.5em 1em;
   font-size: 16px;
@@ -25,13 +27,15 @@
 .adminManagement select {
   width: 20em;
   font-size: 16px;
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   padding: 0.5em 1em;
   border: 1px solid #cccccc;
 }
 
 .adminManagement button {
-  font-family: "proxima-nova";
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   display: inline-block;
   font-size: 16px;
   background-color: transparent;

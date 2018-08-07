@@ -101,7 +101,8 @@ export default {
   font-size: 13px;
   text-transform: uppercase;
   line-height: normal;
-  font-family: proxima-nova;
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;;
   padding: 5px 20px;
   margin: 0;
   font-weight: bold;

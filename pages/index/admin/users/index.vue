@@ -42,14 +42,16 @@
   .userManagement label {
       display: block;
       margin: 1em 0;
-      font-family: 'proxima-nova';
+      font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
 
   }
 
   .userManagement input {
-      font-family: 'Titillium Web';
+      font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
       border: 1px solid #CCCCCC;
       padding: 0.5em 1em;
       font-size: 16px;
@@ -68,13 +70,15 @@
   .userManagement select {
       width: 20em;
       font-size: 16px;
-      font-family: 'proxima-nova';
+      font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
       padding: 0.5em 1em;
       border: 1px solid #CCCCCC;
   }
 
   .userManagement button {
-      font-family: 'proxima-nova';
+      font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
       display: inline-block;
       font-size: 16px;
       background-color: transparent;
@@ -88,7 +92,8 @@
   }
 
   .userManagement textarea {
-      font-family: 'Titillium Web';
+      font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
       border: 1px solid #CCCCCC;
       padding: 0.5em 1em;
       font-size: 16px;

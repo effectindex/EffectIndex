@@ -64,7 +64,8 @@ export default {
   margin-top: 2em;
   min-height: 500px;
   font-size: 18px;
-  font-family: "titillium web";
+  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   padding: 10px;
 }
 
