@@ -80,7 +80,8 @@ module.exports = {
   plugins: [
     "~/plugins/vue-notification",
     "~/plugins/vue-scrollto",
-    "~/plugins/vue2-touch-events"],
+    "~/plugins/vue2-touch-events"
+  ],
 
   /*
   ** Nuxt.js modules
@@ -127,6 +128,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: process.env.BASEURL,
+    browerBaseURL: process.env.BROWERBASEURL
   },
 
   /*
