@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent">
-    
+
     <h1> Discord chat <i class="fa fa-heart-o categoryIcon" /> </h1>
 
-    <iframe 
+    <iframe
       class="float"
       src="https://discordapp.com/widget?id=332288651394547712&amp;theme=dark"
       width="350"
@@ -20,10 +20,10 @@
     <h3> Rules </h3>
     <ul>
       <li>Do not discuss RC/drug sources</li>
-      <li>Do not encourage dangerous behaviours</li>
-      <li>Do not be a deliberately offensive.</li>
+      <li>Do not encourage dangerous behaviours, such as overly risky drug use or suicide</li>
+      <li>Do not be a deliberately offensive or an edgelord</li>
       <li>Try to keep specific topics within their relevant channels</li>
-      <li>Please 18+ years old</li>
+      <li>Be at least 18+ years old</li>
     </ul>
   </div>
 </template>

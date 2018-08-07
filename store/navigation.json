@@ -37,9 +37,7 @@
       { "name": "Sensory", "location": "/effects/sensory/" },
       { "name": "Cognitive", "location": "/effects/cognitive/" },
       { "name": "Physical", "location": "/effects/physical/" },
-      { "name": "Psychedelics", "location": "/effects/psychedelics/" },
-      { "name": "Dissociatives", "location": "/effects/dissociatives/" },
-      { "name": "Deliriants", "location": "/effects/deliriants/" }
+      { "name": "Substances", "location": "/effects/substances/" }
     ]
   },
   "Replications": {
