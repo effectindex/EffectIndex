@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <div 
+    <div
       v-if="error.statusCode === 404"
       class="errorMessageContainer">
-      <h1> 404 </h1>
-      <p> {{ error.message ? error.message : "" }} </p>
-      <p> You expected satisfaction, you obtained emptiness. </p>
+      <div style="">
+        <h1> 404 </h1>
+        <p> {{ error.message ? error.message : "" }} </p>
+        <p> You expected satisfaction, you obtained emptiness. </p>
+      </div>
     </div>
-    <div 
+    <div
       v-else-if="error.statusCode === 401"
       class="errorMessageContainer">
       <h1> 401 </h1>
@@ -18,7 +20,11 @@
       <p> Something bad happened. </p>
     </div>
     <div class="backContainer">
-      <nuxt-link to="/">Return to the Effect Index</nuxt-link>
+      <img
+        src="../static/error.png"
+        style="height: 350px;"
+      >
+      <p> <nuxt-link to="/">Return to Effect Index</nuxt-link> </p>
     </div>
   </div>
 </template>
@@ -31,12 +37,11 @@ export default {
       default: undefined
     }
   },
-  layout: 'blog' // you can set a custom layout for the error page
+  layout: "blog" // you can set a custom layout for the error page
 };
 </script>
 
 <style>
-
 a {
   text-decoration: none;
   color: black;
@@ -47,7 +52,15 @@ p {
   font-style: italic;
 }
 
+p a {
+  color: #3d9991;
+  font-style: normal;
+  /* font-weight: 600; */
+}
+
 h1 {
+  color: #404040;
+
   font-size: 80px;
 }
 
@@ -64,5 +77,4 @@ h1 {
 .errorMessageContainer {
   padding-top: 3em;
 }
-
 </style>

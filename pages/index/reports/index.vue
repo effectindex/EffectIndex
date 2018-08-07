@@ -1,8 +1,11 @@
 <template>
   <div class="pageContent">
     <h1> Trip Reports </h1>
+
+    <p>The Trip Reports section of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports which describe the subjective expereinces our contributors undergo while under the influence of various hallucinogenic substances.</p>
+    <p>These reports adhere to the standardized terminology of the Subjective Effect Index and include quantitative data from a subjective effect tracking survey. They are analyzed to provide information which document all of the various subjective effects of specific compounds through the use of a standardized formal methodology.</p>
     <div class="reportItemContainer">
-      <report-item 
+      <report-item
         v-for="report in reports"
         :key="report._id"
         :report="report"
@@ -23,12 +26,12 @@
         <tr
           v-for="report in reports"
           :key="report._id">
-          <td> 
+          <td>
             <nuxt-link :to="'/reports/' + report.slug"> {{ report.title }} </nuxt-link>
           </td>
           <td> {{ report.subject.name }} </td>
-          <td> 
-            <span 
+          <td>
+            <span
               v-for="(substance, index) in report.substances"
               :key="index">
               {{ substance.name + spacer(index, report.substances.length) }}
@@ -39,7 +42,7 @@
     </table>
 
 <script>
-import reportItem from '@/components/reports/reportList__item';
+import reportItem from "@/components/reports/reportList__item";
 
 export default {
   components: {
@@ -54,7 +57,7 @@ export default {
       return this.$store.state.reports;
     },
     profileNames() {
-      return this.$store.state.profiles.map((profile) => profile.username);
+      return this.$store.state.profiles.map(profile => profile.username);
     }
   },
   methods: {
@@ -64,12 +67,14 @@ export default {
   },
   head() {
     return {
-      title: 'Trip Reports'
+      title: "Trip Reports"
     };
   }
 };
 </script>
 
 <style>
-
+p:last-of-type {
+  padding-bottom: 1em;
+}
 </style>
