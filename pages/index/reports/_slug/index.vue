@@ -46,23 +46,25 @@
       icon="comment-o"
       header="Description" />
 
-    <log-box
-      v-if="report.onset.length"
-      :log="report.onset"
-      header-colour="#DDFFDD"
-      header="Onset" />
+    <div class="report__logsContainer">
+      <log-box
+        v-if="report.onset.length"
+        :log="report.onset"
+        header-colour="#DDFFDD"
+        header="Onset" />
 
-    <log-box
-      v-if="report.peak.length"
-      :log="report.peak"
-      header-colour="#FFDDDD"
-      header="Peak" />
+      <log-box
+        v-if="report.peak.length"
+        :log="report.peak"
+        header-colour="#FFDDDD"
+        header="Peak" />
 
-    <log-box
-      v-if="report.offset.length"
-      :log="report.offset"
-      header-colour="#DDDDFF"
-      header="Offset" />
+      <log-box
+        v-if="report.offset.length"
+        :log="report.offset"
+        header-colour="#DDDDFF"
+        header="Offset" />
+    </div>
 
     <text-box
       v-if="report.conclusion"
@@ -246,6 +248,10 @@ h1 {
 
 .report__infoBoxTable td {
   padding: 0.25em;
+}
+
+.report__logsContainer {
+  margin: 1em 0;
 }
 
 .report__logBox {

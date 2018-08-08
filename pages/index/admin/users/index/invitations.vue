@@ -13,7 +13,7 @@
         <td> {{ formatDate(invitation.created) }} </td>
         <td> {{ Boolean(invitation.used) ? 'Yes' : 'No' }} </td>
         <td> {{ Boolean(invitation.used) ? invitation.usedBy : '' }} </td>
-        <td> {{ hostname + 'user/register/' + invitation._id }} </td>
+        <td> {{ hostname + '/user/register/' + invitation._id }} </td>
         <td>
           <a 
             class="delete"
@@ -34,7 +34,7 @@ export default {
       return this.$store.state.admin.invitations;
     },
     hostname() {
-      return process.env.baseURL;
+      return process.env.BASE_URL;
     }
   },
   methods: {

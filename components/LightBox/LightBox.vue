@@ -200,14 +200,14 @@ export default {
       this.updateThumbnailOffset();
     },
     nextImage() {
-      if ((this.current_image + 1) >= this.$props.imageSet.length) this.$emit('listEnd');
+      if ((this.current_image + 1) >= this.thumbs.length) this.$emit('listEnd');
       this.current_image =
-        (this.current_image + 1) % this.$props.imageSet.length;
+        (this.current_image + 1) % this.thumbs.length;
       this.updateThumbnailOffset();
     },
     previousImage() {
       if (this.current_image === 0) {
-        this.current_image = this.$props.imageSet.length - 1;
+        this.current_image = this.thumbs.length - 1;
         this.$emit('listStart');
       } else this.current_image = this.current_image - 1;
       this.updateThumbnailOffset();

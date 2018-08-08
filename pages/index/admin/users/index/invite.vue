@@ -45,10 +45,10 @@ export default {
     },
     inviteURL() {
       let hostname = this.hostname;
-      return this.generatedInvitation ? hostname + "user/register/" + this.generatedInvitation._id : "";
+      return this.generatedInvitation ? hostname + "/user/register/" + this.generatedInvitation._id : "";
     },
     hostname() {
-      return process.env.baseURL;
+      return process.env.BASE_URL;
     }
   },
   methods: {

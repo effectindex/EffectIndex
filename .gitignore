@@ -15,10 +15,11 @@ sw.js
 
 static/img/gallery/thumbnails/*
 static/img/gallery/*
-!static/img/gallery/*/
 static/img/profiles/cropped/*
 static/img/profiles/*
+!static/img/gallery/*/*
 !static/img/profiles/*/*
 .DS_Store
 
 .env
+ecosystem.config.js

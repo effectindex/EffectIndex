@@ -42,7 +42,6 @@ export default {
         type: 'error',
         title: 'Server Restarting',
         text: 'Please wait ~2 minutes as the server restarts.'
-
       });
     }
   },
