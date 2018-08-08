@@ -65,7 +65,7 @@
 
       <div>
         <label> Social Media Image </label>
-        {{ $axios.defaults.baseURL + (social_media_image ? social_media_image : "") }}<input 
+        {{ (social_media_image ? social_media_image : "") }}<input 
           v-model="social_media_image"
           class="effectEditor__input">
       </div>

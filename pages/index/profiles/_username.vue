@@ -60,10 +60,10 @@ export default {
         { name: 'description', hid: 'description', content: `Profile of Effect Index contributor ${this.profile.username}` },
         { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.profile.username}` },
         { name: 'og:description', hid: 'og:description', content: `Profile of Effect Index contributor ${this.profile.username}` },
-        { name: 'og:image', hid: 'og:image', content: `${this.$axios.defaults.baseURL}img/profiles/${this.profile.profileImageFull}` },
+        { name: 'og:image', hid: 'og:image', content: `/img/profiles/${this.profile.profileImageFull}` },
         { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.profile.username}` },
         { name: 'twitter:description', hid: 'twitter:description', content: `Profile of Effect Index contributor ${this.profile.username}` },
-        { name: 'twitter:image', hid: 'twitter:image', content: `${this.$axios.defaults.baseURL}img/profiles/${this.profile.profileImageFull}` },
+        { name: 'twitter:image', hid: 'twitter:image', content: `/img/profiles/${this.profile.profileImageFull}` },
       ]
     };
   }

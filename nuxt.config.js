@@ -1,4 +1,5 @@
 const pkg = require("./package");
+require('dotenv').config();
 
 module.exports = {
   mode: "universal",
@@ -93,6 +94,7 @@ module.exports = {
     "@nuxtjs/auth",
     "@nuxtjs/font-awesome",
     "@nuxtjs/markdownit",
+    "@nuxtjs/dotenv",
     [
       "@nuxtjs/google-analytics",
       {

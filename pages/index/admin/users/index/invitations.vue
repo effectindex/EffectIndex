@@ -34,7 +34,7 @@ export default {
       return this.$store.state.admin.invitations;
     },
     hostname() {
-      return this.$axios.defaults.baseURL;
+      return process.env.baseURL;
     }
   },
   methods: {

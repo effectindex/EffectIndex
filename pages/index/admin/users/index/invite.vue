@@ -48,7 +48,7 @@ export default {
       return this.generatedInvitation ? hostname + "user/register/" + this.generatedInvitation._id : "";
     },
     hostname() {
-      return this.$axios.defaults.baseURL;
+      return process.env.baseURL;
     }
   },
   methods: {
