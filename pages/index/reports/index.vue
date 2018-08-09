@@ -88,7 +88,8 @@ export default {
     substances() {
       let substanceList = new Set;
       this.reports.forEach((report) => {
-        report.substances.forEach((substance) => substanceList.add(substance.name));
+        if (report.substances.length > 1) substanceList.add('Combinations');
+        else report.substances.forEach((substance) => substanceList.add(substance.name));
       });
       return Array.from(substanceList);
     },
@@ -123,8 +124,11 @@ export default {
       return this.profileNames[this.profileNames.indexOf(name)];
     },
     filterReportsBySubstance(name) {
+      if (name === 'Combinations') return this.reports.filter(
+        (report) => report.substances.length > 1
+      );
       return this.reports.filter(
-        (report) => report.substances.some(
+        (report) => (report.substances.length === 1) && report.substances.some(
           (substance) => substance.name === name
         )
       );
