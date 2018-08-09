@@ -29,6 +29,7 @@
     "express-jwt": "^5.3.1",
     "fecha": "^2.3.3",
     "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
     "markdown-it": "^8.4.2",
     "mime-types": "^2.1.19",
     "mongoose": "^5.2.6",

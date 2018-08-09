@@ -81,7 +81,10 @@ export default {
     margin: 0;
     max-width: 400px;
     margin-right: 0.25em;
-
+    text-transform:capitalize;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0px;
   }
 
   .reportTripDate {

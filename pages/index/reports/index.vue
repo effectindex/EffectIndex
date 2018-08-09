@@ -4,49 +4,70 @@
 
     <p>The Trip Reports section of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports which describe the subjective expereinces our contributors undergo while under the influence of various hallucinogenic substances.</p>
     <p>These reports adhere to the standardized terminology of the Subjective Effect Index and include quantitative data from a subjective effect tracking survey. They are analyzed to provide information which document all of the various subjective effects of specific compounds through the use of a standardized formal methodology.</p>
-    <div class="reportItemContainer">
+    <view-selector 
+      :selected="viewMode.name"
+      @selectView="selectView" />
+
+    <div v-if="viewMode.name === 'substance'">
+      <div
+        v-for="(substance, index) in sortedSubstances"
+        :key="index"
+        class="report__substanceList">
+        <h3> {{ substance }} </h3>
+        <div class="report__reportItemContainer">
+          <report-item
+            v-for="report in filterReportsBySubstance(substance)"
+            :key="report._id"
+            :report="report"
+            :profile-name="hasProfile(report.subject.name)" />
+        </div>
+      </div>
+    </div>
+
+    <div v-else-if="viewMode.name === 'title'">
       <report-item
-        v-for="report in reports"
+        v-for="report in reportsByTitle"
         :key="report._id"
         :report="report"
         :profile-name="hasProfile(report.subject.name)" />
     </div>
+
+    <div v-else-if="viewMode.name === 'author'">
+      <div
+        v-for="(author, index) in sortedAuthors"
+        :key="index"
+        class="report__substanceList">
+        <h3> {{ author }} </h3>
+        <div class="report__reportItemContainer">
+          <report-item
+            v-for="report in filterReportsByAuthor(author)"
+            :key="report._id"
+            :report="report"
+            :profile-name="hasProfile(report.subject.name)" />
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
-    <table class="tripReports__listTable">
-      <thead class="tripReports__listTableHead">
-        <tr>
-          <td> Title </td>
-          <td> Author </td>
-          <td> Substance(s) </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="report in reports"
-          :key="report._id">
-          <td>
-            <nuxt-link :to="'/reports/' + report.slug"> {{ report.title }} </nuxt-link>
-          </td>
-          <td> {{ report.subject.name }} </td>
-          <td>
-            <span
-              v-for="(substance, index) in report.substances"
-              :key="index">
-              {{ substance.name + spacer(index, report.substances.length) }}
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
 <script>
 import reportItem from "@/components/reports/reportList__item";
+import viewSelector from "@/components/reports/reportList__viewSelector";
+import { sortBy } from "lodash";
 
 export default {
   components: {
-    reportItem
+    reportItem,
+    viewSelector
+  },
+  data() {
+    return {
+      viewMode: {
+        name: 'substance',
+        direction: true
+      }
+    };
   },
   async fetch({ store }) {
     await store.dispatch("getReports");
@@ -58,11 +79,59 @@ export default {
     },
     profileNames() {
       return this.$store.state.profiles.map(profile => profile.username);
-    }
+    },
+    substances() {
+      let substanceList = new Set;
+      this.reports.forEach((report) => {
+        report.substances.forEach((substance) => substanceList.add(substance.name));
+      });
+      return Array.from(substanceList);
+    },
+    authors() {
+      let authorList = new Set;
+      this.reports.forEach((report) => {
+        authorList.add(report.subject.name);
+      });
+      return Array.from(authorList);
+    },
+    sortedSubstances() {
+      let sorted = sortBy(this.substances);
+      return this.viewMode.direction ? sorted : sorted.reverse();
+    },
+    sortedAuthors() {
+      let sorted = sortBy(this.authors);
+      return this.viewMode.direction ? sorted : sorted.reverse();  
+    },
+    reportsByTitle() {
+      let sorted = sortBy(this.reports, ['title']);
+      return this.viewMode.direction ? sorted : sorted.reverse();
+    },
+    reportsByTripDate() {
+      let sorted = sortBy(this.report, (report) => report.subject.trip_date);
+      console.log(sorted);
+      return this.viewMode.direction ? sorted : sorted.reverse();
+    },
+
   },
   methods: {
     hasProfile(name) {
       return this.profileNames[this.profileNames.indexOf(name)];
+    },
+    filterReportsBySubstance(name) {
+      return this.reports.filter(
+        (report) => report.substances.some(
+          (substance) => substance.name === name
+        )
+      );
+    },
+    filterReportsByAuthor(author) {
+      return this.reports.filter(
+        (report) => report.subject.name === author
+      );
+    },
+    selectView(view) {
+      if (this.viewMode.name === view) this.viewMode.direction = !this.viewMode.direction;
+      else this.viewMode.name = view;
     }
   },
   head() {
@@ -76,5 +145,13 @@ export default {
 <style>
 p:last-of-type {
   padding-bottom: 1em;
+}
+
+.report__substanceList {
+  margin: 3em 0;
+}
+
+.report__substanceList:first-child {
+  margin-top: 0;
 }
 </style>
