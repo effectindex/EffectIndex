@@ -92,7 +92,7 @@ export default {
   }
 
   .substancesContainer {
-    width: 300px;
+    width: 350px;
   }
 
   .substancesList {

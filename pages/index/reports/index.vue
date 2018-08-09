@@ -37,7 +37,12 @@
         v-for="(author, index) in sortedAuthors"
         :key="index"
         class="report__substanceList">
-        <h3> {{ author }} </h3>
+        <h3> 
+          <nuxt-link 
+            v-if="hasProfile(author)"
+            :to="'/profiles/' + author"> {{ author }} </nuxt-link>
+          <span v-else> {{ author }} </span>  
+        </h3>
         <div class="report__reportItemContainer">
           <report-item
             v-for="report in filterReportsByAuthor(author)"
