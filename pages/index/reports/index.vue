@@ -61,7 +61,9 @@ import reportItem from "@/components/reports/reportList__item";
 import viewSelector from "@/components/reports/reportList__viewSelector";
 import { sortBy } from "lodash";
 
+
 export default {
+  reportCache: [],
   components: {
     reportItem,
     viewSelector
@@ -114,7 +116,6 @@ export default {
     },
     reportsByTripDate() {
       let sorted = sortBy(this.report, (report) => report.subject.trip_date);
-      console.log(sorted);
       return this.viewMode.direction ? sorted : sorted.reverse();
     },
 
@@ -124,14 +125,31 @@ export default {
       return this.profileNames[this.profileNames.indexOf(name)];
     },
     filterReportsBySubstance(name) {
-      if (name === 'Combinations') return this.reports.filter(
-        (report) => report.substances.length > 1
+      if (this.reportCache === undefined) this.reportCache = this.reports.slice(0);
+      let indexArray = [];
+      let reports = [];
+      if (name === 'Combinations') reports = this.reportCache.filter(
+        (report, index) => {
+          if (report.substances.length > 1) {
+            indexArray.push(index);
+            return true;
+          };
+        }
       );
-      return this.reports.filter(
-        (report) => (report.substances.length === 1) && report.substances.some(
-          (substance) => substance.name === name
-        )
+      else reports = this.reportCache.filter(
+        (report, index) => {
+          if ((report.substances.length === 1) && report.substances.some(
+          (substance) => substance.name === name)) {
+            indexArray.push(index);
+            return true;
+          }
+        }
       );
+      indexArray.sort((a, b) => (b > a)).forEach((index) => {
+        this.reportCache.splice(index, 1);
+      });
+      if (this.reportCache.length <= 0) this.reportCache = undefined;
+      return reports;
     },
     filterReportsByAuthor(author) {
       return this.reports.filter(
