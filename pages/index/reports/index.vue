@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1> Trip Reports </h1>
 
-    <p>The Trip Reports section of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports which describe the subjective expereinces our contributors undergo while under the influence of various hallucinogenic substances.</p>
-    <p>These reports adhere to the standardized terminology of the Subjective Effect Index and include quantitative data from a subjective effect tracking survey. They are analyzed to provide information which document all of the various subjective effects of specific compounds through the use of a standardized formal methodology.</p>
-    <view-selector 
+    <p>The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports which describe the subjective expereinces our contributors undergo while under the influence of various hallucinogenic substances.</p>
+    <p>These reports adhere to the standardized terminology of the Subjective Effect Index and include quantitative data from a <a href="https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true"> subjective effect tracking survey</a>. They are analyzed to provide information which document all of the various subjective effects of specific compounds through the use of a standardized formal methodology.</p>
+    <view-selector
       :selected="viewMode.name"
       @selectView="selectView" />
 
@@ -37,11 +37,11 @@
         v-for="(author, index) in sortedAuthors"
         :key="index"
         class="report__substanceList">
-        <h3> 
-          <nuxt-link 
+        <h3>
+          <nuxt-link
             v-if="hasProfile(author)"
             :to="'/profiles/' + author"> {{ author }} </nuxt-link>
-          <span v-else> {{ author }} </span>  
+          <span v-else> {{ author }} </span>
         </h3>
         <div class="report__reportItemContainer">
           <report-item
@@ -61,7 +61,6 @@ import reportItem from "@/components/reports/reportList__item";
 import viewSelector from "@/components/reports/reportList__viewSelector";
 import { sortBy } from "lodash";
 
-
 export default {
   reportCache: [],
   components: {
@@ -71,7 +70,7 @@ export default {
   data() {
     return {
       viewMode: {
-        name: 'substance',
+        name: "substance",
         direction: true
       }
     };
@@ -88,16 +87,19 @@ export default {
       return this.$store.state.profiles.map(profile => profile.username);
     },
     substances() {
-      let substanceList = new Set;
-      this.reports.forEach((report) => {
-        if (report.substances.length > 1) substanceList.add('Combinations');
-        else report.substances.forEach((substance) => substanceList.add(substance.name));
+      let substanceList = new Set();
+      this.reports.forEach(report => {
+        if (report.substances.length > 1) substanceList.add("Combinations");
+        else
+          report.substances.forEach(substance =>
+            substanceList.add(substance.name)
+          );
       });
       return Array.from(substanceList);
     },
     authors() {
-      let authorList = new Set;
-      this.reports.forEach((report) => {
+      let authorList = new Set();
+      this.reports.forEach(report => {
         authorList.add(report.subject.name);
       });
       return Array.from(authorList);
@@ -108,56 +110,55 @@ export default {
     },
     sortedAuthors() {
       let sorted = sortBy(this.authors);
-      return this.viewMode.direction ? sorted : sorted.reverse();  
+      return this.viewMode.direction ? sorted : sorted.reverse();
     },
     reportsByTitle() {
-      let sorted = sortBy(this.reports, ['title']);
+      let sorted = sortBy(this.reports, ["title"]);
       return this.viewMode.direction ? sorted : sorted.reverse();
     },
     reportsByTripDate() {
-      let sorted = sortBy(this.report, (report) => report.subject.trip_date);
+      let sorted = sortBy(this.report, report => report.subject.trip_date);
       return this.viewMode.direction ? sorted : sorted.reverse();
-    },
-
+    }
   },
   methods: {
     hasProfile(name) {
       return this.profileNames[this.profileNames.indexOf(name)];
     },
     filterReportsBySubstance(name) {
-      if (this.reportCache === undefined) this.reportCache = this.reports.slice(0);
+      if (this.reportCache === undefined)
+        this.reportCache = this.reports.slice(0);
       let indexArray = [];
       let reports = [];
-      if (name === 'Combinations') reports = this.reportCache.filter(
-        (report, index) => {
+      if (name === "Combinations")
+        reports = this.reportCache.filter((report, index) => {
           if (report.substances.length > 1) {
             indexArray.push(index);
             return true;
-          };
-        }
-      );
-      else reports = this.reportCache.filter(
-        (report, index) => {
-          if ((report.substances.length === 1) && report.substances.some(
-          (substance) => substance.name === name)) {
+          }
+        });
+      else
+        reports = this.reportCache.filter((report, index) => {
+          if (
+            report.substances.length === 1 &&
+            report.substances.some(substance => substance.name === name)
+          ) {
             indexArray.push(index);
             return true;
           }
-        }
-      );
-      indexArray.sort((a, b) => (b > a)).forEach((index) => {
+        });
+      indexArray.sort((a, b) => b > a).forEach(index => {
         this.reportCache.splice(index, 1);
       });
       if (this.reportCache.length <= 0) this.reportCache = undefined;
       return reports;
     },
     filterReportsByAuthor(author) {
-      return this.reports.filter(
-        (report) => report.subject.name === author
-      );
+      return this.reports.filter(report => report.subject.name === author);
     },
     selectView(view) {
-      if (this.viewMode.name === view) this.viewMode.direction = !this.viewMode.direction;
+      if (this.viewMode.name === view)
+        this.viewMode.direction = !this.viewMode.direction;
       else this.viewMode.name = view;
     }
   },
