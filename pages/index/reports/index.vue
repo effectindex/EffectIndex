@@ -176,7 +176,7 @@ p:last-of-type {
 }
 
 .report__substanceList {
-  margin: 3em 0;
+  margin: 2em 0;
 }
 
 .report__substanceList:first-child {

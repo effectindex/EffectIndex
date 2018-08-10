@@ -3,22 +3,25 @@
     class="reportList__item"
     @click="gotoReport(report.slug)">
     <div class="infoContainer">
-      <h4> {{ report.title }} </h4> 
-      <span
-        v-show="report.subject.trip_date"
-        class="reportTripDate">
-        on {{ report.subject.trip_date }} <br>
-      </span>
-      <span 
-        v-if="!profileName" 
-        class="author"> by {{ report.subject.name }} </span>
-      <span
-        v-else
-        class="author">
-        by <a
-          :to="`/profiles/${profileName}`"
-          @click.stop="gotoProfile(report.subject.name)"> {{ report.subject.name }} </a>
-      </span>
+      <div style="line-height: 1.25em">
+        <h4> {{ report.title }} </h4>
+        <span
+          v-show="report.subject.trip_date"
+          class="reportTripDate">
+          on {{ report.subject.trip_date }} 
+        </span>
+      
+        <span 
+          v-if="!profileName" 
+          class="author"> by {{ report.subject.name }} </span>
+        <span
+          v-else
+          class="author">
+          -<a
+            :to="`/profiles/${profileName}`"
+            @click.stop="gotoProfile(report.subject.name)">&nbsp;{{ report.subject.name }} </a>
+        </span>
+      </div>
     </div>
     <ul class="substancesList">
       <li
@@ -85,7 +88,6 @@ export default {
     text-transform:capitalize;
     font-family: 'Titillium Web';
     font-size: 22px;
-    font-weight: 0;
     letter-spacing: 0px;
   }
 
@@ -110,11 +112,16 @@ export default {
     border-left: 1px solid #DDD;
   }
 
+
   .substancesListItem {
     line-height: 1em;
-    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
   }
   
+  .substancesListItem:first-child, .substancesListItem:last-child {
+    margin-bottom: 0;
+  }
+
   .substanceName {
     letter-spacing: 1px;
     display: block;
@@ -124,7 +131,6 @@ export default {
   .substanceDose {
     font-size: 0.8em;
     color: #777;
-    white-space: normal;
     text-transform: lowercase;
   }
 
