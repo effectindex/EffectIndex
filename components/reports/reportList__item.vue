@@ -81,10 +81,11 @@ export default {
 
   .reportList__item h4 {
     margin: 0;
-    color: #666;
+    color: #333;
     text-transform:capitalize;
+    font-family: 'Titillium Web';
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 0;
     letter-spacing: 0px;
   }
 
@@ -122,8 +123,9 @@ export default {
 
   .substanceDose {
     font-size: 0.8em;
-    font-style: italic;
+    color: #777;
     white-space: normal;
+    text-transform: lowercase;
   }
 
   .author {
