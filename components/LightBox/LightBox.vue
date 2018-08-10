@@ -97,7 +97,7 @@
             <img
               v-else-if="image.type === 'gfycat'"
               ref="activeThumbnail"
-              :src="'http://thumbs.gfycat.com/' + image.resource + '-mobile.jpg'"
+              :src="'https://thumbs.gfycat.com/' + image.resource + '-mobile.jpg'"
               :class="current_image === index ? {active: true}: {}" 
               class="lightBox__thumbnailImage"
             >
