@@ -20,17 +20,15 @@
           @click.stop="gotoProfile(report.subject.name)"> {{ report.subject.name }} </a>
       </span>
     </div>
-    <div class="substancesContainer">
-      <ul class="substancesList">
-        <li
-          v-for="(substance, index) in report.substances"
-          :key="index"
-          class="substancesListItem">
-          <span class="substanceName"> {{ substance.name }} </span>
-          <span class="substanceDose"> {{ ` - ${substance.dose} ${substance.roa}` }} </span>
-        </li>
-      </ul>
-    </div>
+    <ul class="substancesList">
+      <li
+        v-for="(substance, index) in report.substances"
+        :key="index"
+        class="substancesListItem">
+        <span class="substanceName"> {{ substance.name }} </span> 
+        <span class="substanceDose"> {{ `${substance.dose} ${substance.roa}` }} </span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -62,25 +60,28 @@ export default {
 <style scoped>
   .reportList__item {
     display: flex;
+    position: relative;
+    flex-direction: row;
+    left: 0;
+    top: 0;
     flex-wrap: wrap;
-    justify-content: space-between;
     border: 1px solid #CCC;
-    padding: 0.75em;
-    margin: 1em 0;
+    padding: 10px;
     cursor: pointer;
     transition: all 0.25s ease;
-    box-shadow: 2px 2px 4px #CCC;
+    box-shadow: 2px 2px 4px #BBB;
     margin: 1em 0;
   }
 
   .reportList__item:hover {
-    transform: scaleX(1.025) scaleY(1.025);
+    left: -5px;
+    top: -5px;
+    box-shadow: 5px 5px 4px #BBB;
   }
 
   .reportList__item h4 {
     margin: 0;
-    max-width: 400px;
-    margin-right: 0.25em;
+    color: #666;
     text-transform:capitalize;
     font-size: 22px;
     font-weight: bold;
@@ -88,34 +89,59 @@ export default {
   }
 
   .reportTripDate {
-    font-size: 16px;
+    font-size: 12pt;
   }
 
-  .substancesContainer {
-    width: 350px;
+  .infoContainer {
+    flex: 1;
+    min-width: 250px;
   }
 
   .substancesList {
     list-style: none;
-    padding: 0;
     margin: 0;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 350px;
+    border-left: 1px solid #DDD;
+  }
+
+  .substancesListItem {
+    line-height: 1em;
+    padding-bottom: 0.5em;
   }
   
   .substanceName {
     letter-spacing: 1px;
-    font-weight: bold;
+    display: block;
     color: #444;
+  }
+
+  .substanceDose {
+    font-size: 0.8em;
+    font-style: italic;
+    white-space: normal;
   }
 
   .author {
     font-size: 16px;
   }
 
-  @media(max-width: 800px) {
+  @media(max-width: 660px) {
     .infoContainer {
       margin-bottom: 1em;
     }
+
+  .substancesList {
+    min-width: 250px;
+    border-left: none;
+    padding-top: 1em;
+    padding-left: 0;
+  }
+
   }
 
 </style>
