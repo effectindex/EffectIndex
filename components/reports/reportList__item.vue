@@ -3,7 +3,7 @@
     class="reportList__item"
     @click="gotoReport(report.slug)">
     <div class="infoContainer">
-      <div style="line-height: 1.25em">
+      <div class="titleContainer">
         <h4> {{ report.title }} </h4>
         <span
           v-show="report.subject.trip_date"
@@ -87,17 +87,18 @@ export default {
     color: #333;
     text-transform:capitalize;
     font-family: 'Titillium Web';
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 0px;
-  }
-
-  .reportTripDate {
-    font-size: 12pt;
   }
 
   .infoContainer {
     flex: 1;
     min-width: 250px;
+  }
+
+  .titleContainer {
+    line-height: 1.5em;
+    font-size: 11pt;
   }
 
   .substancesList {
@@ -118,7 +119,7 @@ export default {
     margin-bottom: 0.5em;
   }
   
-  .substancesListItem:first-child, .substancesListItem:last-child {
+  .substancesListItem:only-child, .substancesListItem:only-child {
     margin-bottom: 0;
   }
 
@@ -132,10 +133,6 @@ export default {
     font-size: 0.8em;
     color: #777;
     text-transform: lowercase;
-  }
-
-  .author {
-    font-size: 16px;
   }
 
   @media(max-width: 660px) {

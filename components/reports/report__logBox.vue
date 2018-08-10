@@ -96,7 +96,6 @@ export default {
 }
 
 .logTable__time {
-  font-weight: bold;
   vertical-align: top;
   white-space: pre;
   padding-top: 0.5em;
