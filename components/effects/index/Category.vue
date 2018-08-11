@@ -34,7 +34,7 @@ export default {
   min-width: 200px;
   margin: 0.5em auto;
   border: 1px solid #DDD;
-  background-color: #F6F6F6;
+  background-color: rgb(253, 253, 253);
 }
 
 .categoryTitle {
@@ -42,7 +42,7 @@ export default {
   margin: 0;
   text-align: left;
   padding: 0.5em;
-  background-color: #F0F0F0;
+  background-color: rgb(240, 240, 240);
   border-bottom: 1px solid #DDD;
   letter-spacing: 1px;
 }
