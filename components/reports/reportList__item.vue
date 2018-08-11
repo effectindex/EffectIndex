@@ -1,7 +1,9 @@
 <template>
   <div 
     class="reportList__item"
-    @click="gotoReport(report.slug)">
+    tabindex="0"
+    @click="gotoReport(report.slug)"
+    @keypress.enter="gotoReport(report.slug)">
     <div class="infoContainer">
       <div class="titleContainer">
         <h4> {{ report.title }} </h4>

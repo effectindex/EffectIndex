@@ -2,12 +2,18 @@
   <div>
     <a 
       :class="{selected: (selected === 'substance')}"
+      tabindex="0"
+      @keypress.enter="by('substance')"
       @click="by('substance')"> substance </a>
     <a
       :class="{selected: (selected === 'title')}"
+      tabindex="0"
+      @keypress.enter="by('title')"
       @click="by('title')"> title </a>
     <a 
       :class="{selected: (selected === 'author')}"
+      tabindex="0"
+      @keypress.enter="by('author')"
       @click="by('author')"> author </a>
   </div>
 </template>

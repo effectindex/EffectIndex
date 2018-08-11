@@ -1,6 +1,5 @@
 <template>
   <div class="pageContentContainer">
-    <effects-sidebar />
     <nuxt-child class="pageContent" />
   </div>
 </template>
