@@ -32,7 +32,7 @@ export default {
 <style scoped>
 
 .action {
-  padding: 0.25em;
+  padding: 0.5em;
   margin: 0.5em 0 1em 0;
 }
 
@@ -45,18 +45,17 @@ export default {
 }
 
 .actionTitle {
-  font-size: 15pt;
+  font-size: 13pt;
+  font-family: 'Titillium Web',-apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, sans-serif;
   color: #444;
   margin: 0;
   margin-bottom: 0.5em;
-  text-transform: none;
-  letter-spacing: 1px;
 }
 
 .effectTitle {
   margin: 0;
   padding: 0;
-  margin-right: 1em;
 }
 
 .actionList:first-child .categoryTitle {

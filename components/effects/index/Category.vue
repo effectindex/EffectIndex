@@ -34,15 +34,17 @@ export default {
   min-width: 200px;
   margin: 0.5em auto;
   border: 1px solid #DDD;
-  background-color: #F2F2F2;
+  background-color: #F6F6F6;
 }
 
 .categoryTitle {
   font-size: 14pt;
   margin: 0;
-  text-align: center;
-  padding: 0.25em;
-  background-color: #E0E0E0;
+  text-align: left;
+  padding: 0.5em;
+  background-color: #F0F0F0;
+  border-bottom: 1px solid #DDD;
+  letter-spacing: 1px;
 }
 
 </style>

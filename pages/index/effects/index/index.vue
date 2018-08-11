@@ -54,6 +54,9 @@
             <action 
               :effects="filterEffectsByTag('gustatory')"
               title="Gustatory Effects" />
+            <action 
+              :effects="filterEffectsByTag('olfactory')"
+              title="Olfactory Effects" />
           </category>
 
           <category 
@@ -144,6 +147,9 @@
             <action 
               :effects="filterEffectsByTag('gustatory')"
               title="Gustatory Effects" />
+            <action 
+              :effects="filterEffectsByTag('olfactory')"
+              title="Olfactory Effects" />
           </category>
 
           <category 

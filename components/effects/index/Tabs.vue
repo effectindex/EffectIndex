@@ -64,7 +64,7 @@ export default {
   padding: 0.3em 0.5em;
   border: 1px solid #DDD;
   margin-bottom: -1px;
-  background-color: #EEE;
+  background-color: #F3F3F3;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   transition: background-color 0.25s ease;
