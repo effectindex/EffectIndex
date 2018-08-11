@@ -155,6 +155,7 @@
         </column>
 
       </tab>
+
       <tab slot="Cognitive">
         <column>
           <category  
@@ -176,6 +177,14 @@
               :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
               title="Transpersonal States" />          
           </category>
+        </column>
+      </tab>
+
+      <tab slot="Physical">
+        <column>
+          <category  
+            :icon="'child'"
+            title="Physical Effects" />       
         </column>
       </tab>
 

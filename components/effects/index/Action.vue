@@ -33,7 +33,7 @@ export default {
 
 .action {
   padding: 0.25em;
-  margin: 0.5em 0;
+  margin: 0.5em 0 1em 0;
 }
 
 .actionList {
@@ -47,7 +47,8 @@ export default {
 .actionTitle {
   font-size: 15pt;
   color: #444;
-  margin: 0.25em 0;
+  margin: 0;
+  margin-bottom: 0.5em;
   text-transform: none;
   letter-spacing: 1px;
 }
