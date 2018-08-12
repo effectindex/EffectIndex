@@ -153,6 +153,8 @@ export default {
 
 .pageContent .blackButton {
   display: block;
+  border: 0;
+  cursor: pointer;
   font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
@@ -160,6 +162,7 @@ export default {
   text-transform: uppercase;
   letter-spacing: 1px;
   width: 125px;
+  margin: 1em 0;
   text-align: center;
   text-decoration: none;
   color: white;
@@ -167,6 +170,20 @@ export default {
   opacity: 1;
   padding: 13px 15px;
   transition: opacity 100ms linear;
+}
+
+.pageContent .whiteButton {
+  display: block;
+  border: 1px solid #DDD;
+  background-color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5em;
+  color: #666;
+  cursor: pointer;
+  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 12pt;
 }
 
 .pageContent .blackButton:hover {

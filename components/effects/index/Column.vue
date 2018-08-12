@@ -13,7 +13,13 @@ export default {
 <style scoped> 
   .column {
     flex: 1;
-    margin: 0 0.25em;
+    margin: 0em 0.25em 0.5em 0.25em;
   }
+
+@media (max-width: 500px) {
+  .column {
+    margin: 0;
+  }
+}
 </style>
 

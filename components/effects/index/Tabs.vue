@@ -46,6 +46,10 @@ export default {
 </script>
 
 <style scoped>
+.tabsContainer {
+  background-color: white;
+}
+
 .tabsList {
   display: flex;
   flex-direction: row;
@@ -95,6 +99,11 @@ export default {
 
   .tabsListItem:not(:last-of-type) {
     margin: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .selected {
+    border: 1px solid #DDD;
   }
 }
 </style>
