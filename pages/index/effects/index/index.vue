@@ -85,9 +85,39 @@
         </column>
 
         <column>
-          <category 
+          <category  
             :icon="'child'"
-            title="Physical Effects" />        
+            title="Physical Effects">
+            <actions
+              :effects="filterEffectsByTag('physical', 'enhancement')"
+              title="Enhancements" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'suppression')"
+              title="Suppressions" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'alteration')"
+              title="Alterations" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'cardiovascular')"
+              title="Cardiovascular" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'bodily')"
+              title="Bodily" />
+          </category>
+
+          <category
+            :icon="'frown-o'"
+            title="Uncomfortable Effects">
+            <actions
+              :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
+              title="Cardiovascular" />
+            <actions
+              :effects="filterEffectsByTag('uncomfortable', 'cerebrovascular')"
+              title="Cerebrovascular" />
+            <actions
+              :effects="filterEffectsByTag('uncomfortable', 'bodily')"
+              title="bodily" />
+          </category>   
         </column>
 
       </tab>
