@@ -176,12 +176,12 @@ export default {
     report: {
       type: Object,
       required: false,
-      default: () => {}
+      default: () => ({})
     },
     visibility: {
       type: Object,
       required: false,
-      default: () => {}
+      default: () => ({})
     }
   },
   data() {

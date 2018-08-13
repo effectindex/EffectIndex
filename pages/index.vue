@@ -30,7 +30,7 @@ export default {
   },
   head() {
     return {
-      titleTemplate: "Effect Index - %s",
+      titleTemplate: "%s - Effect Index",
       title: "Home",
       meta: [
         { name: 'description', hid: 'description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },

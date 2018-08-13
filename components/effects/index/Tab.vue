@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .tab {
   border: 1px solid #DDD;
-  padding-top: 0.25em;
+  padding: 1em 0 0.25em 0;
   z-index: 2;
   background-color: white;
   display: flex;
@@ -25,7 +25,6 @@ export default {
   .tab {
     padding: 0;
     border: 0;
-
   }
 }
 

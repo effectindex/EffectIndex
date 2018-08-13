@@ -72,6 +72,7 @@ export default {
       cursorColor: "#CCCCCC",
       progressColor: "#3d9991",
       height: "50",
+      hideScrollbar: true,
       responsive: true,
       normalize: true
     });

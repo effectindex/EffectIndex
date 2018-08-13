@@ -54,7 +54,7 @@ export default {
   props: {
     subject: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
     profile: {
       type: Object,

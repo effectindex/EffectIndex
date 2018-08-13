@@ -21,12 +21,13 @@
       style="position:relative; padding-bottom:56.25%;"
     >
       <iframe
-        :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&controls=0&wmmode=opaque'"
+        :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&wmmode=opaque'"
         frameborder="0"
         scrolling="no"
         width="100%"
         height="100%"
         style="position:absolute;top:0;left:0;"
+        allow="autoplay"
         allowfullscreen />
     </div>
     <figcaption class="captionedImage__caption">

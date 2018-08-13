@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import AudioPlayer from "@/components/AudioPlayer/AudioPlayer.vue";
+import AudioPlayer from "@/components/replications/audio/AudioPlayer.vue";
 
 export default {
   components: {

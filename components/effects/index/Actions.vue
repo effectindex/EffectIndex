@@ -32,13 +32,16 @@ export default {
 <style scoped>
 
 .action {
-  padding: 0.5em;
-  margin: 0.5em 0 1em 0;
+  padding: 1em 0.5em;
 }
 
+.action:not(:last-child) {
+  border-bottom: 1px solid #DDD;
+}
 .actionList {
-  list-style: none;
+  color: #AAA;
   padding: 0;
+  padding-left: 1em;
   margin: 0;
   font-size: 13pt;
   columns: 250px;
@@ -56,6 +59,8 @@ export default {
 .effectTitle {
   margin: 0;
   padding: 0;
+  line-height: 1.5em;
+  margin-bottom: 0.25em;
 }
 
 .actionList:first-child .categoryTitle {

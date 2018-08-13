@@ -44,7 +44,10 @@ export default {
   props: {
     report: {
       type: Object,
-      default: () => {}
+      default: () => ({
+        subject: {},
+        substances: [],
+      })
     },
     profileName: {
       type: String,

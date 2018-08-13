@@ -1,26 +1,26 @@
 <template>
   <div>
     <description />
-    <tabs :tabs="['All', 'Sensory', 'Cognitive', 'Physical', 'Psychedelic', 'Dissociative', 'Deliriant']">
+    <tabs :tabs="['All', 'Sensory', 'Cognitive', 'Physical']">
 
       <tab slot="All">
         <column>
           <category 
             :icon="'eye'"
             title="Visual Effects">
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'enhancement')"
               title="Enhancements" />
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
               title="Suppresions" />
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'geometry')"
               title="Geometry" />          
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions" />
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States" />
           </category>
@@ -28,28 +28,28 @@
           <category 
             :icon="'volume-up'"
             title="Auditory Effects">
-            <action :effects="filterEffectsByTag('auditory')" />
+            <actions :effects="filterEffectsByTag('auditory')" />
           </category>
 
           <category 
             :icon="'hand-paper-o'"
             title="Tactile Effects">
-            <action :effects="filterEffectsByTag('tactile')" />
+            <actions :effects="filterEffectsByTag('tactile')" />
           </category>
 
           <category 
             :icon="'chain-broken'"
             title="Disconnective Effects">
-            <action :effects="filterEffectsByTag('disconnective')" />
+            <actions :effects="filterEffectsByTag('disconnective')" />
           </category>
 
           <category 
             :icon="'cutlery'"
             title="Smell &amp; Taste Effects">
-            <action 
+            <actions 
               :effects="filterEffectsByTag('gustatory')"
               title="Gustatory Effects" />
-            <action 
+            <actions 
               :effects="filterEffectsByTag('olfactory')"
               title="Olfactory Effects" />
           </category>
@@ -57,7 +57,7 @@
           <category 
             :icon="'cogs'"
             title="Multisensory Effects">
-            <action 
+            <actions 
               :effects="filterEffectsByTag('multisensory')" />
           </category>
         </column>
@@ -66,19 +66,19 @@
           <category  
             :icon="'user'"
             title="Cognitive Effects">
-            <action
+            <actions
               :effects="filterEffectsByTag('cognitive', 'enhancement')"
               title="Enhancements" />
-            <action
+            <actions
               :effects="filterEffectsByTag('cognitive', 'suppression')"
               title="Suppresions" />
-            <action
+            <actions
               :effects="filterEffectsByTag('cognitive', 'novel')"
               title="Novel States" />
-            <action
+            <actions
               :effects="filterEffectsByTag('cognitive', 'psychological state')"
               title="Psychological States" />
-            <action
+            <actions
               :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
               title="Transpersonal States" />          
           </category>
@@ -92,24 +92,29 @@
 
       </tab>
       <tab slot="Sensory">
-
+        <blob> 
+          <p>
+            <b> Sensory effects </b> are subjective effects which directly alter a person's senses. 
+            These can include any combination of sight, sound, touch, taste, and smell. 
+          </p>
+        </blob>
         <column>
           <category 
             :icon="'eye'"
             title="Visual Effects">
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'enhancement')"
               title="Enhancements" />
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
               title="Suppresions" />
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'geometry')"
               title="Geometry" />          
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions" />
-            <action
+            <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States" />
           </category>
@@ -119,19 +124,19 @@
           <category 
             :icon="'volume-up'"
             title="Auditory Effects">
-            <action :effects="filterEffectsByTag('auditory')" />
+            <actions :effects="filterEffectsByTag('auditory')" />
           </category>
 
           <category 
             :icon="'hand-paper-o'"
             title="Tactile Effects">
-            <action :effects="filterEffectsByTag('tactile')" />
+            <actions :effects="filterEffectsByTag('tactile')" />
           </category>
 
           <category 
             :icon="'chain-broken'"
             title="Disconnective Effects">
-            <action :effects="filterEffectsByTag('disconnective')" />
+            <actions :effects="filterEffectsByTag('disconnective')" />
           </category>
         </column>
 
@@ -139,10 +144,10 @@
           <category 
             :icon="'cutlery'"
             title="Smell &amp; Taste Effects">
-            <action 
+            <actions 
               :effects="filterEffectsByTag('gustatory')"
               title="Gustatory Effects" />
-            <action 
+            <actions 
               :effects="filterEffectsByTag('olfactory')"
               title="Olfactory Effects" />
           </category>
@@ -150,7 +155,7 @@
           <category 
             :icon="'cogs'"
             title="Multisensory Effects">
-            <action 
+            <actions 
               :effects="filterEffectsByTag('multisensory')" />
           </category>
         </column>
@@ -158,67 +163,90 @@
       </tab>
 
       <tab slot="Cognitive">
+
+        <blob> 
+          <p>
+            <b> Cognitive effects </b> are subjective effects which directly alter or introduce 
+            new content to an element of a person's cognition.
+          </p>
+        </blob>
+
         <column>
           <category  
-            :icon="'user'"
-            title="Cognitive Effects">
-            <action
-              :effects="filterEffectsByTag('cognitive', 'enhancement')"
-              title="Enhancements" />
-            <action
-              :effects="filterEffectsByTag('cognitive', 'suppression')"
-              title="Suppresions" />
-            <action
-              :effects="filterEffectsByTag('cognitive', 'novel')"
-              title="Novel States" />
-            <action
-              :effects="filterEffectsByTag('cognitive', 'psychological state')"
-              title="Psychological States" />
-            <action
-              :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
-              title="Transpersonal States" />          
+            title="Enhancements">
+            <actions
+              :effects="filterEffectsByTag('cognitive', 'enhancement')" />
+          </category>
+          <category  
+            title="Suppressions">
+            <actions
+              :effects="filterEffectsByTag('cognitive', 'suppression')" />
+          </category>
+        </column>
+        <column>
+          <category  
+            title="Novel States">
+            <actions
+              :effects="filterEffectsByTag('cognitive', 'novel')" />
+          </category>
+          <category  
+            title="Psychological States">
+            <actions
+              :effects="filterEffectsByTag('cognitive', 'psychological state')" />
+          </category>
+        </column>
+        <column>
+          <category  
+            title="Transpersonal States">
+            <actions
+              :effects="filterEffectsByTag('cognitive', 'transpersonal state')" />
           </category>
         </column>
       </tab>
 
       <tab slot="Physical">
+        <blob> 
+          <p>
+            <b> Physical effects </b> are subjective effects which directly affect part of a person's
+            physical body.
+          </p>
+        </blob>
         <column>
           <category  
             :icon="'child'"
-            title="Physical Effects" /> 
+            title="Physical Effects">
+            <actions
+              :effects="filterEffectsByTag('physical', 'enhancement')"
+              title="Enhancements" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'suppression')"
+              title="Suppressions" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'alteration')"
+              title="Alterations" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'cardiovascular')"
+              title="Cardiovascular" />
+            <actions
+              :effects="filterEffectsByTag('physical', 'bodily')"
+              title="Bodily" />
+          </category>
+
+          <category
+            :icon="'frown-o'"
+            title="Uncomfortable Effects">
+            <actions
+              :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
+              title="Cardiovascular" />
+            <actions
+              :effects="filterEffectsByTag('uncomfortable', 'cerebrovascular')"
+              title="Cerebrovascular" />
+            <actions
+              :effects="filterEffectsByTag('uncomfortable', 'bodily')"
+              title="bodily" />
+          </category>
         </column>      
       </tab>
-
-      <tab slot="Psychedelic">
-        <column>
-          <category
-            title="Psychedelic Effects">
-            <action
-              :effects="filterEffectsByTag('psychedelic')" />
-          </category>
-        </column>
-      </tab>
-
-      <tab slot="Dissociative">
-        <column>
-          <category
-            title="Dissociative Effects">
-            <action
-              :effects="filterEffectsByTag('dissociative')" />
-          </category>
-        </column>
-      </tab>
-
-      <tab slot="Deliriant">
-        <column>
-          <category
-            title="Deliriant Effects">
-            <action
-              :effects="filterEffectsByTag('deliriant')" />
-          </category>
-        </column>
-      </tab>
-
     </tabs>
   </div>
 </template>
@@ -228,17 +256,19 @@ import Tabs from "@/components/effects/index/Tabs";
 import Tab from "@/components/effects/index/Tab";
 import Category from "@/components/effects/index/Category";
 import Column from "@/components/effects/index/Column";
-import Action from "@/components/effects/index/Action";
+import Actions from "@/components/effects/index/Actions";
 import Description from "@/components/effects/index/Description";
+import Blob from "@/components/effects/index/Blob";
 
 export default {
   components: {
     Tabs,
     Tab,
     Category,
-    Action,
+    Actions,
     Column,
-    Description
+    Description,
+    Blob
   },
   computed: {
     effects() {

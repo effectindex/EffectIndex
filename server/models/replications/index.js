@@ -42,7 +42,9 @@ router.get('/gallery', async (req, res) => {
   try {
     let replications = await Replication.find().exec();
     let replicated_effects = await Effect.find(
-      { _id: { $in: await Replication.distinct("associated_effects") } })
+      { _id: { $in: await Replication.find({
+        type: { $in: ['gfycat', 'image']}
+      }).distinct("associated_effects") } })
       .select('name gallery_order url');
     res.send({ replications, replicated_effects });
   } catch (error) {
