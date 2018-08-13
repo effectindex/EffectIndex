@@ -6,6 +6,8 @@
 
 <style scoped>
   .blob {
+    position: relative;
+    z-index: 5;
     margin: 0;
     padding: 0.5em;
     padding-bottom: 0;

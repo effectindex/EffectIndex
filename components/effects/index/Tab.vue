@@ -39,6 +39,10 @@ export default {
     padding: 0;
     border: 0;
   }
+
+  .mask {
+    display: none;
+  }
 }
 
 
