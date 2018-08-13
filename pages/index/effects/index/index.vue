@@ -3,7 +3,9 @@
     <description />
     <tabs :tabs="['All', 'Sensory', 'Cognitive', 'Physical']">
 
-      <tab slot="All">
+      <tab 
+        slot="All" 
+        style="padding-top: 1em;">
         <column>
           <category 
             :icon="'eye'"

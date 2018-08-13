@@ -8,6 +8,7 @@
   .blob {
     margin: 0;
     padding: 0.5em;
+    padding-bottom: 0;
   }
 
   .blob p:not(:first-child) {
