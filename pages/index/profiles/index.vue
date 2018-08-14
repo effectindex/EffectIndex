@@ -1,6 +1,10 @@
 <template>
   <div class="pageContent">
-    <h1> People <i class="fa fa-users categoryIcon" /> </h1>
+    <h1> People    
+      <fa
+        :icon="['far', 'users']"
+        class="fa categoryIcon" /> 
+    </h1>
 
     <p> This page lists the profiles of the Effect Index team and various dedicated individuals who have contributed significant amounts of work to this project. </p>
 

@@ -1,6 +1,10 @@
 <template>
   <div class="pageContent">
-    <h1> Tutorials  <i class="fa fa-list-ol categoryIcon" /> </h1>
+    <h1> Tutorials      
+      <fa
+        :icon="['far', 'list-alt']"
+        class="fa categoryIcon" /> 
+    </h1>
 
     <p> This page serves as a dedicated index for information and resources on replicating specific subjective effects. </p>
 

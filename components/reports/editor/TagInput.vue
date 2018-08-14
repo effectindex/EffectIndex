@@ -13,7 +13,9 @@
         {{ tag }}
         <div class="tagItem__removeIcon">
           <a @click="removeTag(index)">
-            <i class="fa fa-times-circle" />
+            <fa
+              :icon="['far', 'times-circle']"
+              class="fa" />
           </a>
         </div>
       </li>

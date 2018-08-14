@@ -117,12 +117,12 @@
 </template>
 
 <script>
-import CitationInput from "@/components/effects/effectEditor__citationInput";
-import SubstanceInput from "@/components/effects/effectEditor__substanceInput";
-import LinkInput from "@/components/effects/effectEditor__linkInput.vue";
-import SeeAlsoInput from "@/components/effects/effectEditor__seeAlsoInput.vue";
-import TagInput from "@/components/effects/effectEditor__tagInput.vue";
-import ContributorInput from "@/components/effects/effectEditor__contributorInput.vue";
+import CitationInput from "@/components/effects/editor/CitationInput";
+import SubstanceInput from "@/components/effects/editor/SubstanceInput";
+import LinkInput from "@/components/effects/editor/LinkInput";
+import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";
+import TagInput from "@/components/effects/editor/TagInput";
+import ContributorInput from "@/components/effects/editor/ContributorInput";
 
 export default {
   components: {

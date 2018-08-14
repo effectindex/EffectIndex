@@ -72,7 +72,10 @@ router.get('/:url', async (req, res) => {
     let effect = await Effect.findOne({ url: req.params.url }).exec();
     if (effect) {
       effect = effect.toJSON();
-      effect.replications = await Replication.find({ associated_effects: effect._id }).exec();
+      effect.replications = await Replication.find({ 
+         type: { $in: ['image', 'gfycat'] }, 
+         associated_effects: effect._id 
+        }).exec();
     }
     res.send({ effect });
   } catch (error) {

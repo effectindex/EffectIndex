@@ -1,6 +1,8 @@
 <template>
   <div class="pageContent">
-    <i class="fa fa-picture-o categoryIcon" />
+    <fa
+      :icon="['far', 'images']"
+      class="fa categoryIcon" />
     <h1> Replications </h1>
     <p> 
       <span class="bold"> Replications </span> are image, video, and audio recreations of the
@@ -47,7 +49,7 @@
 
 <script>
 import EffectSelector from "@/components/EffectSelector.vue";
-import LightBox from "@/components/LightBox/LightBox.vue";
+import LightBox from "@/components/gallery/LightBox.vue";
 
 export default {
   components: {

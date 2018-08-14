@@ -41,17 +41,26 @@
               <a
                 class="itemControl"
                 style="cursor: pointer;"
-                @click="moveItemUp(index)"> <i class="fa fa-arrow-up" /> </a>
+                @click="moveItemUp(index)">
+                <fa 
+                  :icon="['far', 'arrow-up']"
+                  class="fa" />
+              </a>
               <a
                 class="itemControl"
                 style="cursor: pointer;"
-                @click="moveItemDown(index)"> <i class="fa fa-arrow-down" /> </a>
+                @click="moveItemDown(index)">
+                <fa 
+                  :icon="['far', 'arrow-down']"
+                  class="fa" />
+              </a>
               <a
                 class="itemControl"
                 @click="removeItem(index)">
-                <i 
+                <fa 
+                  :icon="['far', 'times']"
                   style="color: red;"
-                  class="fa fa-times" />
+                  class="fa" />
               </a>
             </td>
           </tr> 

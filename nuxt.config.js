@@ -81,7 +81,8 @@ module.exports = {
   plugins: [
     "~/plugins/vue-notification",
     "~/plugins/vue-scrollto",
-    "~/plugins/vue2-touch-events"
+    "~/plugins/vue2-touch-events",
+    "~/plugins/font-awesome"
   ],
 
   /*
@@ -92,7 +93,6 @@ module.exports = {
     "@nuxtjs/pwa",
     "@nuxtjs/axios",
     "@nuxtjs/auth",
-    "@nuxtjs/font-awesome",
     "@nuxtjs/markdownit",
     "@nuxtjs/dotenv",
     [

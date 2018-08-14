@@ -1,6 +1,8 @@
 <template>
   <div class="pageContent admin">
-    <i class="categoryIcon fa fa-trash-o fa-2x" />
+    <fa
+      :icon="['far', 'trash']"
+      class="fa categoryIcon" />
     <h1> Administration </h1>
     <p> The place to do secret things when nobody's looking. </p>
     <div v-if="$auth.loggedIn">

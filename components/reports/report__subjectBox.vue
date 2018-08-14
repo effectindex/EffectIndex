@@ -1,6 +1,10 @@
 <template>
   <section class="report__infoBox">
-    <h2 class="report__infoBoxHeader"> <i class="fa fa-user-o icon" /> Context </h2>
+    <h2 class="report__infoBoxHeader"> 
+      <fa
+        :icon="['fas', 'user']"
+        class="fa icon" /> Context 
+    </h2>
     <div class="report__infoBoxTableContainer">
       <table class="report__infoBoxTable">
         <tbody>

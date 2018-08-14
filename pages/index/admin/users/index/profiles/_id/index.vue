@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ProfileEditor from "@/components/profiles/profileEditor.vue";
+import ProfileEditor from "@/components/profiles/editor/ProfileEditor.vue";
 
 export default {
   components: {

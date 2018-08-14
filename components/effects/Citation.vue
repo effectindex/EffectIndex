@@ -5,9 +5,14 @@
     <div class="citation__contents">
       <a 
         v-if="!no || (Number(no) === 1)"
-        :href="'#ref-' + from"> <i class="fa fa-angle-double-up" /> </a>
+        :href="'#ref-' + from"> 
+        <fa
+          :icon="['far', 'angle-double-up']"
+          style="height: 1em;" /> </a>
       <span v-else> 
-        <i class="fa fa-angle-double-up" /> 
+        <fa
+          :icon="['far', 'angle-double-up']"
+          style="height: 1em;" />
         <a 
           v-for="num in Number(no)"
           :key="num"

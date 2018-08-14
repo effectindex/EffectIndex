@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import EffectEditor from "@/components/effects/EffectEditor";
+import EffectEditor from "@/components/effects/editor/EffectEditor";
 
 export default {
   components: {

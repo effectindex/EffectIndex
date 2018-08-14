@@ -1,11 +1,15 @@
 <template>
   <div class="pageContent">
+    <fa 
+      :icon="['far', 'volume-up']"
+      class="fa categoryIcon" />
     <h1> Auditory Effect Replications </h1>
-
-    <audio-replication
-      v-for="replication in audioReplications"
-      :replication="replication"
-      :key="replication._id" />
+    <div>
+      <audio-replication
+        v-for="replication in audioReplications"
+        :replication="replication"
+        :key="replication._id" />
+    </div>
 
   </div>
 </template>
@@ -25,6 +29,7 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("getReplications");
+    await store.dispatch("getEffects");
   },
   head() {
     return {

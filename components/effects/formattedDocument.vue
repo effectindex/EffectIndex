@@ -1,7 +1,7 @@
 <script>
 import Reference from "@/components/Reference.vue";
 import ExtLink from "@/components/ExtLink.vue";
-import Markdown from "@/components/effects/formattedDocument__markdown.vue";
+import Markdown from "@/components/effects/FormattedDocument__markdown.vue";
 import CaptionedImage from "@/components/CaptionedImage.vue";
 import BulletWithReferences from "@/components/effects/BulletWithReferences.vue";
 

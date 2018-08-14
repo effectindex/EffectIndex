@@ -13,6 +13,18 @@
       :src="`/audio/${replication.resource}`"
       :title="replication.title"
       :artist="replication.artist" />
+
+    <h4> Effects Replicated </h4>
+    <ul class="replicationEffectsList">
+      <li 
+        v-for="effect in associatedEffects"
+        :key="effect._id"
+        class="replicationEffectsListItem">
+        <nuxt-link :to="effect.url">
+          {{ effect.name }}
+        </nuxt-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -30,6 +42,15 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+  computed: {
+    associatedEffects() {
+      let replication = this.replication;
+      if (!Array.isArray(replication.associated_effects)) return undefined;
+
+      return this.$store.state.effects.filter(
+        (effect) => replication.associated_effects.includes(effect._id));
+    }
   }
 };
 </script>
@@ -37,11 +58,28 @@ export default {
 <style scoped>
   .audioReplication {
     margin-bottom: 3em;
+    padding-bottom: 2em;
     color: #333;
+  }
+
+  .audioReplication:not(:last-child) {
+    border-bottom: 1px solid #CCC;
   }
 
   .replicationTitle {
     font-weight: bold;
+    font-size: 1.25em;
+    font-weight: 400;
+  }
+
+  .replicationEffectsList {
+    list-style: none;
+    padding: 0;
+  }
+
+  .replicationEffectsListItem {
+    padding-right: 2em;
+    display: inline-block;
   }
 
   

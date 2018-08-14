@@ -18,7 +18,12 @@
           <a 
             class="delete"
             style="color: red; cursor: pointer;"
-            @click="deleteInvitation(invitation._id)"> <i class="fa fa-times" /> </a> </td>
+            @click="deleteInvitation(invitation._id)">          
+            <fa 
+              :icon="['far', 'times']"
+              class="fa" /> 
+          </a>
+        </td>
       </tr>
 
     </table>

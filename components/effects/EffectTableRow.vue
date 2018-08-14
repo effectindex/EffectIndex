@@ -10,12 +10,22 @@
         class="effectTableRow__tagItem"> {{ tag }} </span>
     </td>
     <td class="effectTableRow__editButton">
-      <nuxt-link :to="'/admin/effects/' + effect.url"> <i class="fa fa-edit" /> </nuxt-link>
+      <nuxt-link :to="'/admin/effects/' + effect.url">
+        <fa
+          :icon="['far', 'edit']"
+          class="fa"
+          style="cursor: pointer;" />
+      </nuxt-link>
     </td>
     <td>
       <a 
         style="color: red; cursor: pointer;"
-        @click="deleteEffect(effect._id)"> <i class="fa fa-times" /> </a>
+        @click="deleteEffect(effect._id)">
+        <fa
+          :icon="['far', 'times']"
+          class="fa"
+          style="color: red; cursor: pointer;" />
+      </a>
     </td>
   </tr>
 </template>

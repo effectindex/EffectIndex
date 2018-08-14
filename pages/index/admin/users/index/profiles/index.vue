@@ -18,12 +18,20 @@
           </td>
           <td>
             <nuxt-link 
-              :to="'/admin/users/profiles/' + profile._id"> <i class="fa fa-edit" /> </nuxt-link>
+              :to="'/admin/users/profiles/' + profile._id"> 
+              <fa 
+                :icon="['far', 'edit']"
+                class="fa" />
+            </nuxt-link>
           </td>
           <td>
             <a
               class="delete" 
-              @click="deleteProfile(profile._id)"> <i class="fa fa-times" /> </a>
+              @click="deleteProfile(profile._id)">
+              <fa 
+                :icon="['far', 'times']"
+                class="fa" />
+            </a>
           </td>
         </tr>
       </tbody>

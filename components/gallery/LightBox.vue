@@ -56,13 +56,17 @@
         <a 
           class="lightBox__control previousImage"
           @mousedown="previousImage" >
-          <i class="fa fa-angle-double-left" />
+          <fa
+            :icon="['far', 'chevron-double-left']"
+            class="fa" />
         </a>
         <a
           class="lightBox__control nextImage"
           @mousedown="nextImage"
         >
-          <i class="fa fa-angle-double-right" />
+          <fa
+            :icon="['far', 'chevron-double-right']"
+            class="fa" />
         </a>
 
       </div>

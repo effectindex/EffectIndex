@@ -1,7 +1,11 @@
 <template>
   <div class="pageContent">
     
-    <h1> Contact <i class="fa fa-envelope-o categoryIcon" /> </h1>
+    <h1> Contact  
+      <fa 
+        :icon="['far', 'envelope']"
+        class="fa categoryIcon" /> 
+    </h1>
 
     <p>Effect Index project member contact information:
       <ul>

@@ -17,12 +17,20 @@
           :key="user._id">
           <td> <nuxt-link :to="'/profiles/' + user.username"> {{ user.username }} </nuxt-link> </td>
           <td> {{ listRoles(user) }} </td>
-          <td> <nuxt-link :to="'/admin/users/' + user._id"> <i class="fa fa-edit" /> </nuxt-link> </td>
           <td> 
-            <a @click="deleteUser(user._id)"> 
-              <i 
-                style="color: red; cursor: pointer;"
-                class="fa fa-times" />
+            <nuxt-link :to="'/admin/users/' + user._id">
+              <fa 
+                :icon="['far', 'edit']"
+                class="fa" />
+            </nuxt-link>
+          </td>
+          <td> 
+            <a 
+              style="cursor: pointer; color: red;"
+              @click="deleteUser(user._id)"> 
+              <fa 
+                :icon="['far', 'times']"
+                class="fa" />
             </a>
           </td>
         </tr>

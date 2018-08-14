@@ -13,10 +13,16 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-brands-svg-icons": "^5.2.0",
+    "@fortawesome/free-regular-svg-icons": "^5.2.0",
+    "@fortawesome/pro-light-svg-icons": "^5.2.0",
+    "@fortawesome/pro-regular-svg-icons": "^5.2.0",
+    "@fortawesome/pro-solid-svg-icons": "^5.2.0",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
     "@nuxtjs/auth": "^4.5.1",
     "@nuxtjs/axios": "^5.3.1",
     "@nuxtjs/dotenv": "^1.1.1",
-    "@nuxtjs/font-awesome": "^1.0.3",
     "@nuxtjs/google-analytics": "^2.0.2",
     "@nuxtjs/markdownit": "^1.2.1",
     "@nuxtjs/pwa": "^2.0.8",
@@ -47,6 +53,7 @@
     "wavesurfer.js": "^2.0.6"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.2.0",
     "babel-eslint": "^8.2.6",
     "cross-env": "^5.2.0",
     "eslint": "^4.15.0",

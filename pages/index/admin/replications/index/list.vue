@@ -13,7 +13,11 @@
           @blur="blur">
         <a 
           style="color: #BBB; padding: 0.5em;"
-          @click="clearFilter"> <i class="fa fa-times" /> </a>
+          @click="clearFilter"> 
+          <fa 
+            :icon="['far', 'times']"
+            class="fa" />
+        </a>
         <div 
           :class="{ active: (focused && filter) }"
           class="filterListContainer">
@@ -35,18 +39,32 @@
           <td> Title 
             <a 
               class="sortArrow"
-              @click="sortBy('title', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+              @click="sortBy('title', 'descending')">
+              <fa 
+                :icon="['far', 'arrow-down']"
+                class="fa" />
+            </a>
             <a 
               class="sortArrow"
-              @click="sortBy('title', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+              @click="sortBy('title', 'ascending')">
+              <fa 
+                :icon="['far', 'arrow-up']"
+                class="fa" /> </a>
           </td>
           <td> Artist 
             <a 
               class="sortArrow"
-              @click="sortBy('artist', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+              @click="sortBy('artist', 'descending')">
+              <fa 
+                :icon="['far', 'arrow-down']"
+                class="fa" />  </a>
             <a 
               class="sortArrow"
-              @click="sortBy('artist', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+              @click="sortBy('artist', 'ascending')">
+              <fa 
+                :icon="['far', 'arrow-up']"
+                class="fa" /> 
+            </a>
           </td>
           <td> Thumb
             <input
@@ -56,10 +74,18 @@
           <td> Type 
             <a 
               class="sortArrow"
-              @click="sortBy('type', 'descending')"> <i class="fa fa-arrow-down" /> </a>
+              @click="sortBy('type', 'descending')">
+              <fa 
+                :icon="['far', 'arrow-down']"
+                class="fa" />
+            </a>
             <a 
               class="sortArrow"
-              @click="sortBy('type', 'ascending')"> <i class="fa fa-arrow-up" /> </a>
+              @click="sortBy('type', 'ascending')">
+              <fa 
+                :icon="['far', 'arrow-up']"
+                class="fa" />
+            </a>
           </td>
         </tr>
       </thead>

@@ -35,15 +35,15 @@
     <text-box
       v-if="report.introduction"
       :text="report.introduction"
+      :icon="['fas', 'sun']"
       header-colour="#EEE"
-      icon="sun-o"
       header="Introduction" />
 
     <text-box
       v-if="report.description"
       :text="report.description"
+      :icon="['fas', 'comment']"
       header-colour="#EEE"
-      icon="comment-o"
       header="Description" />
 
     <div class="report__logsContainer">
@@ -69,7 +69,7 @@
     <text-box
       v-if="report.conclusion"
       :text="report.conclusion"
-      icon="moon-o"
+      :icon="['fas', 'moon']"
       header-colour="#EEE"
       header="Conclusion / Aftermath" />
 
@@ -190,9 +190,11 @@ h1 {
   margin: 1em 0;
   background-color: #fbfbfb;
   border: 1px solid #cccccc;
-  box-shadow: 2px 2px 2px #ccc;
+  box-shadow: 2px 2px 2px #ccc;  
+}
+
+.report__textBoxText {
   white-space: pre-wrap;
-  
 }
 
 .report ul, .report ol {

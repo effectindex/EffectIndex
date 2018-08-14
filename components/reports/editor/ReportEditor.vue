@@ -160,10 +160,10 @@
 </template>
 
 <script>
-import LogInput from './reportEditor__logInput';
-import SectionHeader from './reportEditor__sectionHeader';
-import SubstancesInput from './reportEditor__substancesInput';
-import TagInput from './reportEditor__tagInput';
+import LogInput from './LogInput';
+import SectionHeader from './SectionHeader';
+import SubstancesInput from './SubstancesInput';
+import TagInput from './TagInput';
 
 export default {
   components: {
@@ -176,12 +176,12 @@ export default {
     report: {
       type: Object,
       required: false,
-      default: () => ({})
+      default: undefined
     },
     visibility: {
       type: Object,
       required: false,
-      default: () => ({})
+      default: undefined
     }
   },
   data() {

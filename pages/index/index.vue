@@ -1,7 +1,6 @@
 <template>
   <div class="pageContentContainer">
-    <effects-sidebar />
-    <div class="pageContent effectsContent">
+    <div class="pageContent">
       <p>
         <span class="bold"> Effect Index, </span> which is currently under construction, is a
         resource dedicated to establishing the field of formalised subjective effect documentation. It is the home
@@ -30,23 +29,7 @@
 </template>
 
 <script>
-import EffectsSidebar from "@/components/EffectsSidebar";
-import EffectList from "@/components/EffectList/EffectList";
-
 export default {
-  components: {
-    EffectsSidebar,
-    EffectList
-  }
+  scrollToTop: true
 };
 </script>
-
-<style scoped>
-.effectsContent {
-  flex: 3;
-}
-
-.sidebar ul {
-  padding: 0;
-}
-</style>

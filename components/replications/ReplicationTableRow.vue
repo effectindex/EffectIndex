@@ -15,7 +15,11 @@
     <td>
       <a 
         style="color: red; cursor: pointer; font-weight: bold;"
-        @click="deleteReplication(replication._id)"> <i class="fa fa-times" /> </a>
+        @click="deleteReplication(replication._id)"> 
+        <fa
+          :icon="['far', 'times']"
+          class="fa" />  
+      </a>
     </td>
   </tr>
 </template>

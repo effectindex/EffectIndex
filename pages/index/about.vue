@@ -1,6 +1,10 @@
 <template>
   <div class="pageContent">
-    <h1> About <i class="fa fa-heart-o categoryIcon" /> </h1>
+    <h1> About
+      <fa 
+        :icon="['far', 'heart']"
+        class="fa categoryIcon" />
+    </h1>
 
     <p> Effect Index serves as the platform for the Subjective Effect Index (SEI), 
     a resource containing formalised documentation of the vast number of distinct 

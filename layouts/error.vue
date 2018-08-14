@@ -6,7 +6,6 @@
       <div style="">
         <h1> 404 </h1>
         <p> {{ error.message ? error.message : "" }} </p>
-        <p> You expected satisfaction, you obtained emptiness. </p>
       </div>
     </div>
     <div
@@ -23,6 +22,7 @@
       <img
         src="../static/error.png"
         style="height: 350px;"
+        alt="Indy, the Effect Index mascot, looking concerned."
       >
       <p> <nuxt-link to="/">Return to Effect Index</nuxt-link> </p>
     </div>
@@ -41,7 +41,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 a {
   text-decoration: none;
   color: black;
@@ -55,7 +55,6 @@ p {
 p a {
   color: #3d9991;
   font-style: normal;
-  /* font-weight: 600; */
 }
 
 h1 {

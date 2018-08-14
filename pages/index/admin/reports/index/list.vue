@@ -27,14 +27,20 @@
               {{ tag }}
             </span>
           </td>
-          <td> 
+          <td>
+            <nuxt-link :to="'/admin/reports/' + report._id">
+              <fa
+                :icon="['far', 'edit']"
+                class="fa"
+                style="cursor: pointer; padding-right: 2em;" /> 
+            </nuxt-link> 
             <a @click="deleteReport(report._id)"> 
-              <i 
-                class="fa fa-times"
+              <fa
+                :icon="['far', 'times']"
+                class="fa"
                 style="color: red; cursor: pointer;" />
             </a>
           </td>
-          <td> <nuxt-link :to="'/admin/reports/' + report._id"> <i class="fa fa-edit" /> </nuxt-link> </td>
         </tr>
       </tbody>
     </table>

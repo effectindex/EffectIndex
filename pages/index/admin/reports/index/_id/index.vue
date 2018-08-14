@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ReportEditor from '@/components/reports/ReportEditor';
+import ReportEditor from '@/components/reports/editor/ReportEditor';
 
 export default {
   components: {

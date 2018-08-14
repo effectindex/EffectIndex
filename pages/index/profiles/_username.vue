@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import ProfileImage from "@/components/profiles/profileImage.vue";
-import LightBox from "@/components/LightBox/LightBox.vue";
+import ProfileImage from "@/components/profiles/ProfileImage.vue";
+import LightBox from "@/components/gallery/LightBox.vue";
 
 export default {
   components: {

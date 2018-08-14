@@ -1,18 +1,21 @@
 <template>
   <div>
-    <input 
-      v-model="substanceInputText"
+    <input
+      v-model="contributorInputText"
       class="effectEditor__input"
       @keyup="changeInput">
-    <ul class="substanceList">
+    <ul class="contributorList">
       <li 
-        v-for="(substance, index) in value"
-        :key="substance"
-        class="substanceItem" >
-        {{ substance }}
-        <div class="substanceItem__removeIcon">
-          <a @click="removeSubstance(index)">
-            <i class="fa fa-times-circle" />
+        v-for="(contributor, index) in value"
+        :key="contributor"
+        class="contributorListItem"
+      >
+        {{ contributor }}
+        <div class="contributorListItem__removeIcon">
+          <a @click="removeContributor(index)"> 
+            <fa
+              :icon="['fa', 'times-circle']"
+              class="fa" />
           </a>
         </div>
       </li>
@@ -30,19 +33,16 @@ export default {
   },
   data() {
     return {
-      substanceInputText: ""
+      contributorInputText: ""
     };
   },
   methods: {
     changeInput(e) {
       if (e.keyCode === 13) {
         if (this.value.indexOf(e.target.value) === -1) {
-          this.$emit(
-            "input",
-            [e.target.value.trim()].concat(this.value).sort()
-          );
+          this.$emit("input", [e.target.value.trim()].concat(this.value));
         }
-        this.substanceInputText = "";
+        this.contributorInputText = "";
       } else if (e.target.value.indexOf(",") > -1) {
         let arr = e.target.value
           .split(",")
@@ -51,17 +51,17 @@ export default {
 
         let newValue = [];
 
-        arr.forEach(substance => {
-          if (this.value.indexOf(substance) === -1) {
-            newValue.push(substance);
+        arr.forEach(contributor => {
+          if (this.value.indexOf(contributor) === -1) {
+            newValue.push(contributor);
           }
         });
 
-        this.$emit("input", newValue.concat(this.value).sort());
-        this.substanceInputText = "";
+        this.$emit("input", newValue.concat(this.value));
+        this.contributorInputText = "";
       }
     },
-    removeSubstance(index) {
+    removeContributor(index) {
       let newArr = this.value.slice();
       newArr.splice(index, 1);
       this.$emit("input", newArr);
@@ -71,27 +71,23 @@ export default {
 </script>
 
 <style scoped>
-.substanceItem {
+.contributorListItem {
   display: inline-block;
   width: 200px;
   color: black;
-  background-color: #f5f5f5;
-  padding-left: 10px;
-  border: 1px dotted #ccc;
   margin: 3px;
   padding: 7px;
-  border-radius: 15px;
 }
 
-.substanceItem a {
+.contributorListItem a {
   color: #555;
 }
 
-.substanceItem a:hover {
+.contributorListItem a:hover {
   color: rgb(134, 19, 19);
 }
 
-.substanceList {
+.contributorList {
   list-style: none;
   max-height: 300px;
   overflow-y: auto;
@@ -100,7 +96,7 @@ export default {
   padding: 0;
 }
 
-.substanceItem__removeIcon {
+.contributorListItem__removeIcon {
   float: right;
 }
 </style>

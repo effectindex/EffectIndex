@@ -17,11 +17,20 @@
           :key="post._id" >
           <td> <nuxt-link :to="'/blog/' + post.slug"> {{ post.title }} </nuxt-link> </td>
           <td> {{ formatDate(post.datetime) }} </td>
-          <td> <nuxt-link :to="'/admin/blog/' + post.slug"> <i class="fa fa-edit" /> </nuxt-link> </td>
+          <td> 
+            <nuxt-link :to="'/admin/blog/' + post.slug">
+              <fa
+                :icon="['far', 'edit']"
+                class="fa" />
+            </nuxt-link> 
+          </td>
           <td> 
             <a 
               style="color: red; cursor: pointer;"
-              @click="deletePost(post._id)"> <i class="fa fa-times" /> </a>
+              @click="deletePost(post._id)">
+              <fa
+                :icon="['far', 'times']"
+                class="fa" /> </a>
           </td>
         </tr>
       </tbody>

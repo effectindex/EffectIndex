@@ -4,6 +4,7 @@
     and reference for the range of subjective effects that may occur under the influence of psychoactive substances and
     other psychonautic techniques.</p>
 
+
     <transition name="grow">
       <div 
         v-show="show"

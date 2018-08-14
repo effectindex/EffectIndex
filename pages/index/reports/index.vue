@@ -1,5 +1,8 @@
 <template>
   <div class="pageContent">
+    <fa
+      :icon="['far', 'file-signature']"
+      class="fa categoryIcon" /> 
     <h1> Trip Reports </h1>
 
     <p>The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports which describe the subjective expereinces our contributors undergo while under the influence of various hallucinogenic substances.</p>

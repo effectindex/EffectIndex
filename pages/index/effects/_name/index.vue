@@ -4,9 +4,15 @@
       <div v-if="$auth.loggedIn">
         <nuxt-link
           :to="'/admin/effects/' + effect.url"
-          append> <i class="fa fa-edit" /> </nuxt-link>
+          append> 
+          <fa
+            :icon="['far', 'edit']"
+            class="fa" />  
+        </nuxt-link>
       </div>
-      <i :class="'fa ' + icon + ' fa-2x categoryIcon'" />
+      <fa
+        :icon="['far', icon]"
+        class="fa categoryIcon" />
       <div v-if="hasSection('description_raw')">
         <h1> {{ effect.name }} </h1>
         <formatted-document :document="effect.description_formatted" />
@@ -89,15 +95,15 @@
 </template>
 
 <script>
-import formattedDocument from "@/components/effects/formattedDocument";
+import FormattedDocument from "@/components/effects/FormattedDocument";
 import CitationList from "@/components/effects/CitationList";
-import LightBox from "@/components/LightBox/LightBox";
+import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
 import Tag from "@/components/effects/Tag";
 
 export default {
   components: {
-    formattedDocument,
+    FormattedDocument,
     CitationList,
     LightBox,
     ExtLink,
@@ -108,16 +114,16 @@ export default {
       let tags = this.effect["tags"];
 
       let icons = {
-        cognitive: "fa-user",
-        visual: "fa-eye",
-        auditory: "fa-volume",
-        tactile: "fa-fa-hand-paper-o",
-        disconnective: "fa-chain-broken",
-        multisensory: "fa-cogs",
-        physical: "fa-child",
-        gustatory: "fa-cutlery",
-        olfactory: "fa-cutlery",
-        uncomfortable: "fa-frown-o"
+        cognitive: "user",
+        visual: "eye",
+        auditory: "volume-up",
+        tactile: "hand-paper",
+        disconnective: "chain",
+        multisensory: "cogs",
+        physical: "child",
+        gustatory: "utensils",
+        olfactory: "utensils",
+        uncomfortable: "frown"
       };
 
       if (Array.isArray(tags)) {
@@ -126,7 +132,7 @@ export default {
         }
       }
 
-      return "fa-question";
+      return "user";
     }
   },
   scrollToTop: true,

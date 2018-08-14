@@ -87,6 +87,10 @@ export default {
   }
 }
 
+.fa {
+  height: 1em;
+}
+
 @media (max-width: 400px) {
   .page {
     padding: 8px;
@@ -174,6 +178,8 @@ export default {
 
 .pageContent .whiteButton {
   display: block;
+  position: relative;
+  z-index: 5;
   border: 1px solid #DDD;
   background-color: white;
   text-transform: uppercase;

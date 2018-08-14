@@ -1,7 +1,10 @@
 <template>
   <div class="pageContent">
 
-    <h1> PsySim <i class="fa fa-heart-o categoryIcon" /> </h1>
+    <h1> PsySim     
+      <fa
+        :icon="['far', 'heart']"
+        class="fa categoryIcon" /> </h1>
 
     <img
       class="float"

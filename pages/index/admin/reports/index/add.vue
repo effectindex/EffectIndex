@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import ReportEditor from "@/components/reports/ReportEditor.vue";
+  import ReportEditor from "@/components/reports/editor/ReportEditor.vue";
 
   export default {
     components: {

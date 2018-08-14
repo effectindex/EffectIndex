@@ -33,11 +33,13 @@
   "Effects": {
     "location": "/effects",
     "children": [
-      { "name": "All", "location": "/effects" },
+      { "name": "Index", "location": "/effects" },
       { "name": "Sensory", "location": "/effects/sensory/" },
       { "name": "Cognitive", "location": "/effects/cognitive/" },
       { "name": "Physical", "location": "/effects/physical/" },
-      { "name": "Substances", "location": "/effects/substances/" }
+      { "name": "Psychedelics", "location": "/effects/psychedelics/" },
+      { "name": "Dissociatives", "location": "/effects/dissociatives/" },
+      { "name": "Deliriants", "location": "/effects/deliriants/" }
     ]
   },
   "Replications": {

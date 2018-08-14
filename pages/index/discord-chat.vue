@@ -1,7 +1,11 @@
 <template>
   <div class="pageContent">
 
-    <h1> Discord chat <i class="fa fa-heart-o categoryIcon" /> </h1>
+    <h1> Discord chat 
+      <fa
+        :icon="['far', 'heart']"
+        class="categoryIcon" />
+    </h1>
 
     <iframe
       class="float"

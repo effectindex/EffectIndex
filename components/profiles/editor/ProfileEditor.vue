@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import ProfileImage from "@/components/profiles/profileImage.vue";
-import ImageUploader from "@/components/profiles/profileEditor__imageUpload.vue";
+import ProfileImage from "@/components/profiles/ProfileImage.vue";
+import ImageUploader from "./profileEditor__imageUpload.vue";
 
 export default {
   components: {

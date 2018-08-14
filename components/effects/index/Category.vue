@@ -3,8 +3,13 @@
     class="categoryContainer">
     <h3 class="categoryTitle">
       {{ title }} 
-      <i 
-        :class="'fa icon fa-' + icon" /> 
+      <fa
+        :icon="icon"
+        class="icon" />
+      <img
+        v-show="image" 
+        :src="image"
+        class="image">
     </h3>
     <div class="actionContainer">
       <slot />
@@ -20,6 +25,10 @@ export default {
       default: ""
     },
     icon: {
+      type: [String, Array],
+      default: ""
+    },
+    image: {
       type: String,
       default: ""
     }
@@ -42,8 +51,13 @@ export default {
 }
 
 .icon {
-  font-size: 1.25em;
   margin: 0 5px;
+  height: 1.1em;
+}
+
+.image {
+  height: 1.1em;
+  opacity: 0.75;
 }
 
 .categoryTitle {

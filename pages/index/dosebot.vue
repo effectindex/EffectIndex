@@ -1,7 +1,11 @@
 <template>
   <div class="pageContent">
     
-    <h1> DoseBot <i class="fa fa-heart-o categoryIcon" /> </h1>
+    <h1> DoseBot 
+      <fa
+        :icon="['far', 'heart']"
+        class="categoryIcon" /> 
+    </h1>
 
     <img 
       class="float"

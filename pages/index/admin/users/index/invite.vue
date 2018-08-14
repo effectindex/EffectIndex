@@ -10,8 +10,7 @@
         :disabled-dates="disabledDates"
         :clear-button="true"
         name="expiration"
-        format="dsu MMMM, yyyy" 
-        clear-button-icon="fa fa-times" />
+        format="dsu MMMM, yyyy" />
     </no-ssr>
     <button @click="generateInviteURL"> Generate </button>
     <div 

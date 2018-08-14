@@ -5,10 +5,18 @@
       <div class="audioPlayer__playButton">
         <a
           v-if="state === 'STOPPED' || state === 'PAUSED'"
-          @mousedown="play()"> <i class="fa fa-play" /> </a>
+          @mousedown="play()">
+          <fa
+            :icon="['far', 'play']"
+            class="fa" /> 
+        </a>
         <a
           v-else-if="state === 'PLAYING'"
-          @mousedown="pause()"> <i class="fa fa-pause" /> </a>
+          @mousedown="pause()">
+          <fa
+            :icon="['far', 'pause']"
+            class="fa" /> 
+        </a>
       </div>
       <div class="audioPlayer__audioInfo">
         <div class="audioPlayer__titleBar">

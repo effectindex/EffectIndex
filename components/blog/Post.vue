@@ -5,10 +5,10 @@
       class="blogPost__admin">
       <nuxt-link 
         :to="'/admin/blog/' + post.slug"
-        class="blogPost__edit"> <i class="fa fa-edit" /> </nuxt-link>    
+        class="blogPost__edit"> <fa icon="edit" /> </nuxt-link>    
       <a 
         class="blogPost__delete"
-        @click="$emit('delete-post', post._id)"> <i class="fa fa-times" /> </a>
+        @click="$emit('delete-post', post._id)">  <fa icon="times" /> </a>
     </div>
     <h4 class="blogPost__date"> 
       <nuxt-link 
