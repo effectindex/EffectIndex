@@ -14,13 +14,13 @@
       :title="replication.title"
       :artist="replication.artist" />
 
-    <h4> Effects Replicated </h4>
+    <h4 v-show="associatedEffects"> Effects Replicated </h4>
     <ul class="replicationEffectsList">
       <li 
         v-for="effect in associatedEffects"
         :key="effect._id"
         class="replicationEffectsListItem">
-        <nuxt-link :to="effect.url">
+        <nuxt-link :to="'/effects/' + effect.url">
           {{ effect.name }}
         </nuxt-link>
       </li>
