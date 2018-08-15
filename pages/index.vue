@@ -179,6 +179,7 @@ export default {
 .pageContent .whiteButton {
   display: block;
   position: relative;
+  width: 125px;
   z-index: 5;
   border: 1px solid #DDD;
   background-color: white;

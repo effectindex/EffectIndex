@@ -22,7 +22,7 @@
       </p>
       <nuxt-link
         style="margin: 30px auto 0 auto;"
-        class="pageContent blackButton"
+        class="pageContent whiteButton"
         to="/about"> Learn More </nuxt-link>
     </div>
   </div>

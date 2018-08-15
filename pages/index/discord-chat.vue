@@ -4,7 +4,7 @@
     <h1> Discord chat 
       <fa
         :icon="['far', 'heart']"
-        class="categoryIcon" />
+        class="fa categoryIcon" />
     </h1>
 
     <iframe

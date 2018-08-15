@@ -4,7 +4,7 @@
     <h1> DoseBot 
       <fa
         :icon="['far', 'heart']"
-        class="categoryIcon" /> 
+        class="fa categoryIcon" /> 
     </h1>
 
     <img 

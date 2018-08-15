@@ -14,6 +14,7 @@
         <li> <nuxt-link to="/admin/users/profiles"> Manage Profiles </nuxt-link> </li>
         <li> <nuxt-link to="/admin/reports/list"> Manage Reports </nuxt-link> </li>
         <li> <nuxt-link to="/admin/cheatsheet"> Viscidcode Cheat Sheet </nuxt-link> </li>
+        <li> <ext-link href="https://trello.com/b/TAqyU405/effect-index"> Trello </ext-link> </li>
         <div class="serverOptionsContainer">
           <h3> Danger Zone </h3>
           <li>
@@ -36,7 +37,12 @@
 </template>
 
 <script>
+import ExtLink from "@/components/ExtLink";
+
 export default {
+  components: {
+    ExtLink
+  },
   methods: {
     async restartServer() {
       this.$store.dispatch("restartServer");
