@@ -1,4 +1,5 @@
 const pkg = require("./package");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 require('dotenv').config();
 
 module.exports = {
@@ -142,6 +143,8 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+      config.plugins = config.plugins.filter((plugin) => plugin.constructor.name !== 'UglifyJsPlugin');
+      config.plugins.push(new MinifyPlugin());
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
