@@ -4,7 +4,7 @@
       <p>
         <span class="bold"> Effect Index, </span> which is currently under construction, is a
         resource dedicated to establishing the field of formalised subjective effect documentation. It is the home
-        of the Subjective Effect Index (SEI), which exists to serve as a comprehensive map of all potential experiences
+        of the <nuxt-link to="/effects/"> Subjective Effect Index </nuxt-link> (SEI), which exists to serve as a comprehensive map of all potential experiences
         which can occur under the influence of any class of psychoactive compound, particularly hallucinogens.
       </p>
       <p>

@@ -32,6 +32,13 @@
       </div>
 
       <div>
+        <label> Long Summary </label>
+        <textarea
+          v-model="long_summary"
+          class="effectEditor__textarea effectEditor__longSummary" />
+      </div>
+
+      <div>
         <label> Analysis </label>
         <textarea 
           v-model="analysis"
@@ -153,6 +160,7 @@ export default {
       tags: this.effect ? this.effect.tags : [],
       contributors: this.effect ? this.effect.contributors : [],
       summary: this.effect ? this.effect.summary_raw : "",
+      long_summary: this.effect ? this.effect.long_summary : "",
       analysis: this.effect ? this.effect.analysis_raw : "",
       gallery_order: this.effect ? this.effect.gallery_order : [],
       social_media_image: this.effect ? this.effect.social_media_image : ""
@@ -197,6 +205,7 @@ export default {
         see_also: this.see_also,
         tags: this.tags,
         summary: this.summary,
+        long_summary: this.long_summary,
         analysis: this.analysis,
         contributors: this.contributors,
         gallery_order: this.gallery_order,
@@ -261,6 +270,10 @@ label {
 
 .effectEditor__textarea.effectEditor__analysis {
   min-height: 300px;
+}
+
+.effectEditor__longSummary {
+  min-height: 200px;
 }
 
 .effectEditor__input,

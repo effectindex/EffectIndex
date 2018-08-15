@@ -14,7 +14,7 @@
         <div class="contributorListItem__removeIcon">
           <a @click="removeContributor(index)"> 
             <fa
-              :icon="['fa', 'times-circle']"
+              :icon="['far', 'times-circle']"
               class="fa" />
           </a>
         </div>

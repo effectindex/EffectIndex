@@ -1,6 +1,6 @@
 <template>
   <div 
-    v-show="imageSet.length > 0"
+    v-show="thumbs.length > 0"
     class="lightBox">
     <h1 v-show="title"> {{ title }} </h1>
     <div v-if="currentImage">
@@ -135,6 +135,10 @@ export default {
     base: {
       type: String,
       default: ""
+    },
+    gfycats: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -169,6 +173,7 @@ export default {
   },
   updated() {
     this.updateThumbnailOffset();
+    if (!this.thumbs.length) this.$emit('listEnd');
   },
   methods: {
     updateThumbs() {
@@ -181,10 +186,13 @@ export default {
         let filteredImageSet = this.imageSet.filter(image => {
           return !this.order.find(orderItem => orderItem._id === image._id);
         });
-        this.thumbs = thumbs.concat(filteredImageSet);
+        if (!this.gfycats) this.thumbs = thumbs.concat(filteredImageSet).filter((thumb) => thumb.type !== 'gfycat');
+        else this.thumbs = thumbs.concat(filteredImageSet);
       } else {
-        this.thumbs = this.imageSet;
+        if (!this.gfycats) this.thumbs = this.imageSet.filter((image) => (image.type !== 'gfycat'));
+        else this.thumbs = this.imageSet;
       }
+      
     },
     updateThumbnailOffset() {
       setTimeout(() => {

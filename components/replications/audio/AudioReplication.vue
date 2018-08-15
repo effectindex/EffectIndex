@@ -8,7 +8,7 @@
         <span v-else> {{ replication.artist }} </span>
       </span>
     </div>
-    <p> {{ replication.description }} </p>
+    <div v-html="$md.render(description)"> {{ description }} </div>
     <audio-player 
       :src="`/audio/${replication.resource}`"
       :title="replication.title"
@@ -50,6 +50,9 @@ export default {
 
       return this.$store.state.effects.filter(
         (effect) => replication.associated_effects.includes(effect._id));
+    },
+    description() {
+      return (typeof (this.replication.description === 'String') ? this.replication.description : "" );
     }
   }
 };

@@ -36,10 +36,10 @@
     </div>
     <div>
       <label> Description: </label>
-      <input 
+      <textarea 
         v-model="description"
-        class="input__singleLine" 
-      >
+        class="input__textarea"
+      />
     </div>
     <div>
       <label> Date: </label>
@@ -231,7 +231,7 @@ label {
 
 .input__textarea {
   width: 100%;
-  min-height: 500px;
+  min-height: 250px;
   padding: 1em;
 }
 
