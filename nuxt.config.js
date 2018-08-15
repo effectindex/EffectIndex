@@ -144,7 +144,7 @@ module.exports = {
     */
     extend(config, ctx) {
       config.plugins = config.plugins.filter((plugin) => plugin.constructor.name !== 'UglifyJsPlugin');
-      config.plugins.push(new MinifyPlugin());
+      if (!ctx.isDev) config.plugins.push(new MinifyPlugin());
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({

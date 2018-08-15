@@ -110,7 +110,7 @@
               :effects="filterEffectsByTag('physical', 'bodily')"
               title="Bodily" />
           </category>
-
+        
           <category
             :icon="['far', 'frown']"
             title="Uncomfortable Effects">
@@ -272,7 +272,9 @@
               :effects="filterEffectsByTag('physical', 'bodily')"
               title="Bodily" />
           </category>
+        </column>
 
+        <column>
           <category
             :icon="['far', 'frown']"
             title="Uncomfortable Effects">

@@ -71,6 +71,7 @@ export default {
     }
   },
   beforeDestroy() {
+    this.pause();
     this.wavesurfer.unAll();
   },
   mounted() {
