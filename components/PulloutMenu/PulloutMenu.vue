@@ -3,9 +3,10 @@
     <div class="navbarPullout__menu">
       <ul 
         v-for="(item, name) in navigation"
+        v-show="checkItemAccess(item.scope)"
         :key="name">
         <pullout-item 
-          v-if="checkItemAccess(item.scope)"
+          v-show="checkItemAccess(item.scope)"
           :name="name"
           :location="item.location"
           :children="item.children" />

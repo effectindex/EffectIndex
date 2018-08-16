@@ -1,6 +1,6 @@
 <template>
   <div 
-    v-if="access"
+    v-show="access"
     class="headerNav__menuItem">
     <nuxt-link 
       :to="location"
@@ -10,7 +10,7 @@
       class="headerNav__dropdown">
       <li
         v-for="(item, index) in subMenuItems"
-        v-if="itemAccess(item.scope)"
+        v-show="itemAccess(item.scope)"
         :key="index">
         <a 
           v-if="item.external"

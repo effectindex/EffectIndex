@@ -14,7 +14,7 @@
     <ol v-if="expanded && children">
       <li
         v-for="child in children"
-        v-if="checkItemAccess(child.scope)"
+        v-show="checkItemAccess(child.scope)"
         :key="child.name"
       >
         <nuxt-link
@@ -56,7 +56,7 @@ export default {
       this.expanded = !this.expanded;
     },
     togglePullout() {
-      this.$store.commit("toggle_navbar");
+      this.$store.dispatch("togglePullout");
     },
     checkItemAccess(scope) {
       if (Array.isArray(scope)) {

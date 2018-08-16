@@ -1,6 +1,8 @@
 <template>
   <div class="content">
-    <section :class="'sectionContainer ' + (navbarPullout ? 'sectionContainer--pulledout' : '')">
+    <section 
+      :class="{ sectionContainerPulledout: navbarPullout }"
+      class="sectionContainer">
       <header-nav />
       <div class="page">
         <nuxt-child />
@@ -78,7 +80,7 @@ export default {
 }
 
 @media (max-width: 1000px) {
-  .sectionContainer--pulledout {
+  .sectionContainerPulledout {
     margin-left: -220px;
   }
 

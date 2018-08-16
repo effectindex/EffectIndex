@@ -1,5 +1,5 @@
 export default {
-  toggle_navbar(state) {
+  toggle_pullout(state) {
     state.navbar_pullout = !state.navbar_pullout;
   },
   set_blog_posts(state, posts) {

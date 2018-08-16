@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     toggleHamburger: function() {
-      this.$store.commit("toggle_navbar");
+      this.$store.dispatch("togglePullout");
     }
   }
 };

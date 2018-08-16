@@ -1,4 +1,8 @@
 export default {
+  // Menu
+  togglePullout({ commit }) {
+    commit("toggle_pullout");
+  },
   // Blog Posts
   async deleteBlogPost({ dispatch }, id) {
     let deleted = await this.$axios.$get("/api/blog/" + id + "/delete");
