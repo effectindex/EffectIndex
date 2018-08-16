@@ -91,7 +91,6 @@ export default {
       closeAudioContext: true,
       backend: 'MediaElement',
       responsive: true,
-      normalize: true
     });
 
     this.wavesurfer.load(this.src);
