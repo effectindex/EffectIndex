@@ -51,8 +51,6 @@
 </template>
 
 <script>
-import { throttle } from 'lodash';
-
 let WaveSurfer = undefined;
 if (process.browser) WaveSurfer = require("wavesurfer.js");
 
@@ -119,9 +117,9 @@ export default {
       this.state = "PAUSED";
       this.wavesurfer.pause();
     },
-    audioProcess: throttle(function() {
+    audioProcess() {
       this.position = this.wavesurfer.getCurrentTime();
-    }, 500),
+    },
     finish() {
       this.state = "STOPPED";
       this.wavesurfer.seekTo(0);

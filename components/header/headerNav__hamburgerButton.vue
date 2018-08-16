@@ -35,7 +35,9 @@ export default {
   position: relative;
   display: none;
   align-self: center;
-  margin: -25px 30px 0 0px;
+  height: 50px;
+  width: 50px;
+  padding: 1em;
   cursor: pointer;
 }
 
