@@ -90,6 +90,7 @@ export default {
       hideScrollbar: true,
       partialRender: true,
       closeAudioContext: true,
+      backend: 'MediaElement',
       responsive: true,
       normalize: true
     });
@@ -140,6 +141,7 @@ export default {
 
 .audioPlayer {
   margin-bottom: 2em;
+  user-select: none;
 }
 
 .audioPlayer__content {
