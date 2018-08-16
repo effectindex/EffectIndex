@@ -68,8 +68,7 @@ export default {
       id: null,
       length: 0,
       position: 0,
-      wavesurfer: undefined,
-      backend: 'MediaElement'
+      wavesurfer: undefined
     };
   },
   watch: {
