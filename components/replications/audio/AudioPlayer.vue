@@ -5,9 +5,9 @@
       <div class="audioPlayer__playButton">
         <a
           v-if="state === 'UNREADY'">
-          <fa
-            :icon="['far', 'times']"
-            class="fa" /> 
+          <img
+            class="spinner" 
+            src="/spinner.svg"> 
         </a>
         <a
           v-else-if="state === 'STOPPED' || state === 'PAUSED'"
@@ -133,6 +133,11 @@ export default {
 
 
 <style>
+
+.spinner {
+  color: black;
+}
+
 .audioPlayer {
   margin-bottom: 2em;
 }
