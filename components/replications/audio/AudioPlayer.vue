@@ -4,7 +4,14 @@
     <div class="audioPlayer__content">
       <div class="audioPlayer__playButton">
         <a
-          v-if="state === 'UNREADY'">
+          v-if="state === 'UNREADY'"
+          @mousedown="load()">
+          <fa
+            :icon="['far', 'play']"
+            class="fa" /> 
+        </a>
+        <a
+          v-else-if="state === 'LOADING'">
           <img
             class="spinner" 
             src="/spinner.svg"> 
@@ -93,13 +100,15 @@ export default {
       responsive: true,
     });
 
-    this.wavesurfer.load(this.src);
-
-    this.wavesurfer.on("ready", this.ready);
+    this.wavesurfer.on("ready", this.play);
     this.wavesurfer.on("audioprocess", this.audioProcess);
     this.wavesurfer.on("finish", this.finish);
   },
   methods: {
+    load() {
+      this.state = "LOADING";
+      this.wavesurfer.load(this.src);
+    },
     play() {
       this.state = "PLAYING";
       this.wavesurfer.play();
