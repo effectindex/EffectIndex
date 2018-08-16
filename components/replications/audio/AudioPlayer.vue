@@ -96,7 +96,6 @@ export default {
       height: "50",
       hideScrollbar: true,
       closeAudioContext: true,
-      backend: 'MediaElement',
       responsive: true,
     });
 
@@ -111,15 +110,12 @@ export default {
     },
     play() {
       this.state = "PLAYING";
+      this.length = this.wavesurfer.getDuration();
       this.wavesurfer.play();
     },
     pause() {
       this.state = "PAUSED";
       this.wavesurfer.pause();
-    },
-    ready() {
-      this.state = "STOPPED";
-      this.length = this.wavesurfer.getDuration();
     },
     audioProcess() {
       this.position = this.wavesurfer.getCurrentTime();
