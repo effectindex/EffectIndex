@@ -4,7 +4,13 @@
     <div class="audioPlayer__content">
       <div class="audioPlayer__playButton">
         <a
-          v-if="state === 'STOPPED' || state === 'PAUSED'"
+          v-if="state === 'UNREADY'">
+          <fa
+            :icon="['far', 'times']"
+            class="fa" /> 
+        </a>
+        <a
+          v-else-if="state === 'STOPPED' || state === 'PAUSED'"
           @mousedown="play()">
           <fa
             :icon="['far', 'play']"
@@ -58,7 +64,7 @@ export default {
   },
   data() {
     return {
-      state: "STOPPED",
+      state: "UNREADY",
       id: null,
       length: 0,
       position: 0,
@@ -82,6 +88,8 @@ export default {
       progressColor: "#3d9991",
       height: "50",
       hideScrollbar: true,
+      partialRender: true,
+      closeAudioContext: true,
       responsive: true,
       normalize: true
     });
@@ -102,6 +110,7 @@ export default {
       this.wavesurfer.pause();
     },
     ready() {
+      this.state = "STOPPED";
       this.length = this.wavesurfer.getDuration();
     },
     audioProcess() {
@@ -145,6 +154,12 @@ export default {
   margin: 0 1em;
 }
 
+@media(max-width: 500px) {
+  .audioPlayer__titleBar {
+    display: none;
+  }
+}
+
 .audioPlayer__title {
   color: #3d9991;
   font-size: 14px;
@@ -159,20 +174,19 @@ export default {
 .audioPlayer__playButton {
   height: 50px;
   width: 50px;
-  text-align: center;
-  line-height: 55px;
   border-right: 1px solid #ddd;
   font-size: 20px;
+
 }
 
 .audioPlayer__playButton a {
+  display: flex;
   color: #777;
-  margin: 0;
-  padding: 0;
   width: 50px;
   height: 50px;
-  display: block;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
   transition: background-color 0.15s ease;
 }
 

@@ -7,7 +7,6 @@
       <h1> Psychedelic Effects </h1>
       <captioned-image
         src="/img/gallery/In_the_tree_by_Eddie_calz.jpg"
-        width="300"
         float="right"
         title="In the Tree"
         artist="Eddie Calz"
@@ -19,7 +18,8 @@
     <div class="effectsContainer">
       <h3> Visual Effects </h3>
       <long-summary 
-        v-for="effect in filterEffectsByTag('psychedelic', 'visual')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual')"
+        :index="i"
         :effect="effect"
         :key="effect._id" />
     </div>
@@ -49,6 +49,7 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("getEffects");
+    await store.dispatch("getReplications");
   }
 };
 </script>
