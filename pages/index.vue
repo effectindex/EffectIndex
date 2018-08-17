@@ -118,6 +118,7 @@ export default {
   padding-bottom: 50px;
   font-size: 18px;
   flex: 3;
+  color: #333;
 }
 
 .pageContent .categoryIcon {
@@ -130,7 +131,6 @@ export default {
 .pageContent p {
   font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: rgba(26, 26, 26, 0.7);
   font-weight: 400;
   line-height: 28.8px;
   margin: 0 0 1em 0;
@@ -188,14 +188,15 @@ export default {
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 0.5em;
-  color: #666;
+  opacity: 0.5;
+  color: #000;
   cursor: pointer;
   font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 12pt;
 }
 
-.pageContent .blackButton:hover {
+.pageContent .whiteButton:hover {
   opacity: 0.8;
 }
 
@@ -234,12 +235,59 @@ export default {
   border-top: 1px solid #ccc;
 }
 
+/* Formatted Documents */
+
+.formattedDocument ul,
+.formattedDocument ol {
+  margin: 0;
+  white-space: normal;
+}
+
+.formattedDocument p {
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+}
+
+.formattedDocument ul li,
+.formattedDocument ol li {
+  color: black;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+
+.formattedDocument ul li:last-of-type,
+.formattedDocument ol li:last-of-type {
+  margin-bottom: 0;
+}
+
+.formattedDocument p {
+  color: black;
+}
+
+
+.formattedDocument .bullet {
+  padding-left: 3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.formattedDocument .bullet::before {
+  content: "●";
+  padding-right: 1em;
+}
+
 /* Effect Categories */
 
+.effectCategories .actionDescription {
+  padding: 1em;
+  border: 1px solid #EEE;
+  background-color: #F4F4F4;
+}
+
 .effectCategories .effectsContainer {
-
   margin-bottom: 3em;
-
 }
 
 .effectCategories hr {
@@ -248,6 +296,10 @@ export default {
 
 .effectCategories h3 {
   font-size: 18pt;
+}
+
+.effectCategories .effectsContainer:not(:last-child) {
+  border-bottom: 1px solid #CCC;
 }
 
 

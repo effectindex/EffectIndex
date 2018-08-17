@@ -1,7 +1,9 @@
 <template>
   <div 
     class="effect__longSummary">
-    <h4 class="longSummary__title">
+    <h4 
+      v-show="showTitle"
+      class="longSummary__title">
       <nuxt-link
         :to="`/effects/${effect.url}`">
         {{ effect.name }}
@@ -32,6 +34,10 @@ export default {
     index: {
       type: Number,
       default: 0
+    },
+    showTitle: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -57,8 +63,8 @@ export default {
 <style scoped>
 
   .effect__longSummary {
-    padding-bottom: 1.5em;
-    margin-bottom: 2.5em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
     clear: both;
     overflow: auto;
   }

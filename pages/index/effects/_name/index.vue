@@ -171,52 +171,12 @@ export default {
 </script>
 
 <style>
-.formattedDocument ul,
-.formattedDocument ol {
-  margin: 0;
-  white-space: normal;
-}
-
-.formattedDocument p {
-  margin: 0;
-  padding: 0;
-  white-space: normal;
-}
-
-.formattedDocument ul li,
-.formattedDocument ol li {
-  color: black;
-  margin: 0;
-  margin-bottom: 0.5em;
-  padding: 0;
-}
-
-.formattedDocument ul li:last-of-type,
-.formattedDocument ol li:last-of-type {
-  margin-bottom: 0;
-}
-
-.formattedDocument p {
-  color: black;
-}
-
 .tagList {
   list-style: none;
 }
 
 hr {
   clear: both;
-}
-
-.formattedDocument .bullet {
-  padding-left: 3em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.formattedDocument .bullet::before {
-  content: "●";
-  padding-right: 1em;
 }
 
 .contributor::after {
