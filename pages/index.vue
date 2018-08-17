@@ -10,7 +10,8 @@
       <custom-footer />
     </section>
     <pullout-menu />
-    <notifications />
+    <notifications
+      position="bottom right" />
   </div>
 </template>
 
@@ -62,6 +63,10 @@ export default {
   display: flex;
   position: relative;
   flex-direction: row;
+}
+
+.modal-active {
+  overflow: hidden;
 }
 
 .sectionContainer {
@@ -311,6 +316,7 @@ export default {
 .effectCategories .effectsContainer:not(:last-child) {
   border-bottom: 1px solid #CCC;
 }
+
 
 
 </style>

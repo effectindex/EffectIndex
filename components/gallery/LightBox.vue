@@ -2,6 +2,19 @@
   <div 
     v-show="thumbs.length > 0"
     class="lightBox">
+    <transition
+      name="fade">
+      <div 
+        v-show="modal"
+        class="modal"
+        @click.prevent="toggleModal()">
+        <div class="modalImageContainer">
+          <img 
+            :src="base + currentImage.resource"
+            class="modalImage">
+        </div>
+      </div>
+    </transition>
     <h1 v-show="title"> {{ title }} </h1>
     <div v-if="currentImage">
       <div
@@ -14,7 +27,7 @@
             :key="currentImage.resource"
             :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'"
             class="lightBox__image"
-            @click="openImage(currentImage.resource)"
+            @click.prevent="toggleModal()"
           >
             <image-details
               :title="currentImage.title"
@@ -145,7 +158,15 @@ export default {
     return {
       current_image: 0,
       thumbnailOffset: 0,
+      modal: false,
       thumbs: []
+    };
+  },
+  head() {
+    return {
+      htmlAttrs: {
+        class: this.modal ? "modal-active" : ""
+      }
     };
   },
   computed: {
@@ -226,11 +247,51 @@ export default {
     },
     openImage(url, absolute) {
       absolute ? window.open(url) : window.open("/img/gallery/" + url);
+    },
+    toggleModal() {
+      this.modal = !this.modal;
     }
   }
 };
 </script>
 
+<style scoped>
+  .modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    text-align: center;
+  }
+
+  .modalImageContainer {
+    position: relative;
+    height: 100%;
+    max-height: 100vh;
+    max-width: calc(100vw - 10%);
+  }
+
+  .modalImage {
+    position: relative;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .25s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+</style>
 
 <style>
 .lightBox__canvas {

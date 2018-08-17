@@ -4,11 +4,15 @@
     <h4 
       v-show="showTitle"
       class="longSummary__title">
+      {{ effect.name }}
+    </h4>
+    <div class="longSummary__mainArticle">
+      Main article: 
       <nuxt-link
         :to="`/effects/${effect.url}`">
         {{ effect.name }}
       </nuxt-link>
-    </h4>
+    </div>
     <div>
       <formatted-document
         :document="long_summary" />
@@ -62,6 +66,10 @@ export default {
 
 <style scoped>
 
+  .longSummary__title {
+    margin-bottom: 0.25em;
+  }
+
   .effect__longSummary {
     padding-bottom: 1em;
     margin-bottom: 1em;
@@ -69,5 +77,12 @@ export default {
     overflow: auto;
   }
 
+  .longSummary__mainArticle {
+    font-style: italic;
+    color: #666;
+    padding-left: 1em;
+    font-size: 13pt;
+    margin-bottom: 1em;
+  }
 
 </style>

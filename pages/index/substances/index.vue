@@ -1,6 +1,11 @@
 <template>
   <div class="pageContent"> 
-    <h1> Temporary Substance Page Index </h1>
+    <h1> Substances </h1>
+
+    <div class="substanceContainer">
+      sadf 
+    </div>
+
     <ul>
       <li> <nuxt-link to="/substances/psychedelics/visual"> Visual Effects of Psychedelics </nuxt-link> </li>
       <li> <nuxt-link to="/substances/psychedelics/cognitive"> Cognitive Effects of Psychedelics </nuxt-link>     </li>

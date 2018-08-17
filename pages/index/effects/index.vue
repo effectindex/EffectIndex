@@ -229,7 +229,7 @@
               :effects="filterEffectsByTag('cognitive', 'novel')" />
           </category>
           <category  
-            image="/icons/psychological.svg"
+            image="/icons/psychological2.svg"
             title="Psychological States">
             <actions
               :effects="filterEffectsByTag('cognitive', 'psychological state')" />

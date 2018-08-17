@@ -8,6 +8,7 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       navbar_pullout: false,
+      modal_open: false,
       replications: [],
       effects: [],
       navigation,

@@ -13,11 +13,12 @@
         title="In the Tree"
         artist="Eddie Calz"
         top="true" />
-      <p> This article breaks down the subjective visual effects of the psychedelic experience into simple and easy to understand descriptions with accompanying image replications. This is done without resorting to metaphors, analogies, or personal trip reports. </p>
-      <p> These descriptions are not specific to any particular substance but are applicable to the effects which commonly occur in various forms under the influence of almost any psychedelic compound. This includes, but is not limited to, both classical and research chemical psychedelics, such as: </p>
-      <p> LSD, Psilocybin mushrooms, DMT, Ayahuasca, mescaline, 5-MeO-MiPT, 2C-B, LSA, AL-LAD, ALD-52, 1P-LSD, 2C-B-Fly, 2C-C, 2C-D, 2C-E, 2C-P, 4-AcO-DMT, 4-HO-MET, 4-HO-MiPT, 5-MeO-DMT, DPT, and DOC. </p>
-      <p> The article begins with a description of the simpler effects and works its way up towards more complex experiences as it progresses. Individual effects are also summarized with a link to their full article. </p>
-
+      <div class="categoryDescription">
+        <p> This article breaks down the subjective visual effects of the psychedelic experience into simple and easy to understand descriptions with accompanying image replications. This is done without resorting to metaphors, analogies, or personal trip reports. </p>
+        <p> These descriptions are not specific to any particular substance but are applicable to the effects which commonly occur in various forms under the influence of almost any psychedelic compound. This includes, but is not limited to, both classical and research chemical psychedelics, such as: </p>
+        <p style="font-style: italic;"> LSD, Psilocybin mushrooms, DMT, Ayahuasca, Mescaline, 5-MeO-MiPT, 2C-B, LSA, AL-LAD, ALD-52, 1P-LSD, 2C-B-Fly, 2C-C, 2C-D, 2C-E, 2C-P, 4-AcO-DMT, 4-HO-MET, 4-HO-MiPT, 5-MeO-DMT, DPT, and DOC. </p>
+        <p> The article begins with a description of the simpler effects and works its way up towards more complex experiences as it progresses. Individual effects are also summarized with a link to their full article. </p>
+      </div>
     </div>
     <hr>
     <div>
@@ -49,7 +50,7 @@
       </div>
 
       <div class="effectsContainer">
-        <h3> <nuxt-link to="/effects/geometry"> Geometry </nuxt-link> </h3>
+        <h3 style="margin-bottom: 0.25em;"> Geometry </h3> 
         <long-summary 
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'geometry')"
           :show-title="false"
