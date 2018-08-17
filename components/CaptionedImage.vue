@@ -2,15 +2,12 @@
   <figure 
     :class="'captionedImage ' + float"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }">
-    <a 
-      :href="src"
-      target="_blank">
-      <img 
-        v-show="src"
-        :src="src" 
-        :width="(width ? width + 'px' : 'auto')" 
-        :height="(height ? height + 'px' : 'auto')">
-    </a>
+    <img 
+      v-show="src"
+      :src="src" 
+      :width="(width ? width + 'px' : 'auto')" 
+      :height="(height ? height + 'px' : 'auto')"
+      @click.stop="toggleModal">
     <div 
       v-show="gfycat"
       :style="{
@@ -19,6 +16,7 @@
         marginBottom: '0.5em'
       }"
       style="position:relative; padding-bottom:56.25%;"
+      @click.stop="toggleModal"
     >
       <iframe
         :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&wmmode=opaque'"
@@ -98,6 +96,18 @@ export default {
         default:
           return "floatRight";
       }
+    },
+    modalData() {
+      return {
+        type: this.gfycat ? 'gfycat' : 'image',
+        resource: this.gfycay ? this.gfycat : this.src
+      };
+    },
+  },
+  methods: {
+    toggleModal() {
+      this.$store.commit("set_modal_data", this.modalData);
+      this.$store.commit("toggle_modal");
     }
   }
 };
@@ -119,6 +129,10 @@ export default {
 .alignCenter {
   display: block;
   margin: 0 auto;
+}
+
+.captionedImage img {
+  cursor: pointer;
 }
 
 .artistTitle {

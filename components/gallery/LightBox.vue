@@ -2,19 +2,6 @@
   <div 
     v-show="thumbs.length > 0"
     class="lightBox">
-    <transition
-      name="fade">
-      <div 
-        v-show="modal"
-        class="modal"
-        @click.prevent="toggleModal()">
-        <div class="modalImageContainer">
-          <img 
-            :src="base + currentImage.resource"
-            class="modalImage">
-        </div>
-      </div>
-    </transition>
     <h1 v-show="title"> {{ title }} </h1>
     <div v-if="currentImage">
       <div
@@ -36,7 +23,7 @@
           </div>
 
           <div 
-            v-if="currentImage.resource && (currentImage.type === 'gfycat')"
+            v-if="currentImage.resource && (currentImage.type === 'gfycat') && (!modalActive)"
             :key="currentImage.resource"
             style="position:relative;height: 100%;"
           >
@@ -56,7 +43,7 @@
               v-touch:swipe.left="nextImage"
               v-touch:swipe.right="previousImage"
               class="lightBox__touchControls"
-              @click="openImage('https://gfycat.com/' + currentImage.resource, true)" />
+              @click="toggleModal" />
 
             <image-details
               :title="currentImage.title"
@@ -126,11 +113,13 @@
 </template>
 
 <script>
-import ImageDetails from "./LightBox__imageDetails.vue";
+import ImageDetails from "./LightBox__imageDetails";
+import Modal from "@/components/Modal";
 
 export default {
   components: {
-    ImageDetails
+    ImageDetails,
+    Modal
   },
   props: {
     title: {
@@ -158,15 +147,8 @@ export default {
     return {
       current_image: 0,
       thumbnailOffset: 0,
-      modal: false,
+      modalActive: false,
       thumbs: []
-    };
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        class: this.modal ? "modal-active" : ""
-      }
     };
   },
   computed: {
@@ -249,49 +231,17 @@ export default {
       absolute ? window.open(url) : window.open("/img/gallery/" + url);
     },
     toggleModal() {
-      this.modal = !this.modal;
+      let data = {
+        type: this.currentImage.type,
+        resource: (this.currentImage.type === 'image') ? this.base + this.currentImage.resource : this.currentImage.resource 
+      };
+
+      this.$store.commit("set_modal_data", data);
+      this.$store.commit("toggle_modal");
     }
   }
 };
 </script>
-
-<style scoped>
-  .modal {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95);
-    text-align: center;
-  }
-
-  .modalImageContainer {
-    position: relative;
-    height: 100%;
-    max-height: 100vh;
-    max-width: calc(100vw - 10%);
-  }
-
-  .modalImage {
-    position: relative;
-    opacity: 1;
-    width: 100%;
-    height: 100%;
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .25s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
-
-</style>
 
 <style>
 .lightBox__canvas {

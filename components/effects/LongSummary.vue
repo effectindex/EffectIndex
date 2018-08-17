@@ -7,7 +7,7 @@
       {{ effect.name }}
     </h4>
     <div class="longSummary__mainArticle">
-      Main article: 
+      Full article: 
       <nuxt-link
         :to="`/effects/${effect.url}`">
         {{ effect.name }}
@@ -67,7 +67,9 @@ export default {
 <style scoped>
 
   .longSummary__title {
+    font-size: 16pt;
     margin-bottom: 0.25em;
+    letter-spacing: 1px;
   }
 
   .effect__longSummary {

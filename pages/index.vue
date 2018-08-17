@@ -10,6 +10,12 @@
       <custom-footer />
     </section>
     <pullout-menu />
+    <modal
+      v-if="modalActive"
+      :active="modalActive"
+      :type="modalData.type"
+      :src="(modalData.type === 'image') ? modalData.resource : modalData.resource"
+      @toggleModal="toggleModal" />
     <notifications
       position="bottom right" />
   </div>
@@ -19,16 +25,32 @@
 import HeaderNav from "@/components/header/HeaderNav.vue";
 import CustomFooter from "@/components/footer/Footer.vue";
 import PulloutMenu from "@/components/PulloutMenu/PulloutMenu.vue";
+import Modal from "@/components/Modal";
 
 export default {
   components: {
     HeaderNav,
     CustomFooter,
-    PulloutMenu
+    PulloutMenu,
+    Modal
   },
   computed: {
     navbarPullout() {
       return this.$store.state.navbar_pullout;
+    },
+    modalActive() {
+      return this.$store.state.modal.active;
+    },
+    modalData() {
+      return {
+        type: this.$store.state.modal.type,
+        resource: this.$store.state.modal.resource
+      };
+    }
+  },
+  methods: {
+    toggleModal() {
+      this.$store.commit("toggle_modal");
     }
   },
   head() {

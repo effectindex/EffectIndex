@@ -1,10 +1,9 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <img 
-        src="/icons/psychedelic.svg"
-        style="height: 50px;"
-        class="categoryIcon" >
+      <fa
+        :icon="['far', 'eye']"
+        class="fa categoryIcon" />
       <h1> Visual Effects of Psychedelics </h1>
       <captioned-image
         src="/img/gallery/In_the_tree_by_Eddie_calz.jpg"

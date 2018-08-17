@@ -39,5 +39,12 @@ export default {
   },
   set_reports(state, reports) {
     state.reports = reports;
+  },
+  toggle_modal(state) {
+    state.modal.active = !state.modal.active;
+  },
+  set_modal_data(state, data) {
+    state.modal.type = data.type;
+    state.modal.resource = data.resource;
   }
 };
