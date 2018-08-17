@@ -1,51 +1,48 @@
 <template>
   <div class="audioPlayer">
-
-    <div class="audioPlayer__content">
-      <div class="audioPlayer__playButton">
-        <a
-          v-if="state === 'UNREADY'"
-          @mousedown="load()">
-          <fa
-            :icon="['far', 'play']"
-            class="fa" /> 
-        </a>
-        <a
-          v-else-if="state === 'LOADING'">
-          <img
-            class="spinner" 
-            src="/spinner.svg"> 
-        </a>
-        <a
-          v-else-if="state === 'STOPPED' || state === 'PAUSED'"
-          @mousedown="play()">
-          <fa
-            :icon="['far', 'play']"
-            class="fa" /> 
-        </a>
-        <a
-          v-else-if="state === 'PLAYING'"
-          @mousedown="pause()">
-          <fa
-            :icon="['far', 'pause']"
-            class="fa" /> 
-        </a>
+    <div class="audioPlayer__playButton">
+      <a
+        v-if="state === 'UNREADY'"
+        @mousedown="load()">
+        <fa
+          :icon="['far', 'play']"
+          class="fa" /> 
+      </a>
+      <a
+        v-else-if="state === 'LOADING'">
+        <img
+          class="spinner" 
+          src="/spinner.svg"> 
+      </a>
+      <a
+        v-else-if="state === 'STOPPED' || state === 'PAUSED'"
+        @mousedown="play()">
+        <fa
+          :icon="['far', 'play']"
+          class="fa" /> 
+      </a>
+      <a
+        v-else-if="state === 'PLAYING'"
+        @mousedown="pause()">
+        <fa
+          :icon="['far', 'pause']"
+          class="fa" /> 
+      </a>
+    </div>
+    <div class="audioPlayer__audioInfo">
+      <div class="audioPlayer__titleBar">
+        <div class="audioPlayer__title"> {{ title }} </div>
+        <div class="audioPlayer__artist"> {{ artist }} </div>
       </div>
-      <div class="audioPlayer__audioInfo">
-        <div class="audioPlayer__titleBar">
-          <div class="audioPlayer__title"> {{ title }} </div>
-          <div class="audioPlayer__artist"> {{ artist }} </div>
-        </div>
-      </div>
-      <div
-        ref="waveform"
-        class="audioPlayer__waveform" />
-      <div class="audioPlayer__positionDownload">
-        <div> {{ getTime(position) }} / {{ getTime(length) }} </div>
-        <a
-          :href="src"
-          target="_blank"> Download </a>
-      </div>
+    </div>
+    <div
+      ref="waveform"
+      class="audioPlayer__waveform" />
+    <div class="audioPlayer__positionDownload">
+      <div> {{ getTime(position) }} / {{ getTime(length) }} </div>
+      <a
+        :href="src"
+        target="_blank"> Download </a>
     </div>
   </div>
 </template>
@@ -143,14 +140,13 @@ export default {
 }
 
 .audioPlayer {
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 2.5em;
   user-select: none;
-}
-
-.audioPlayer__content {
   display: flex;
   height: 50px;
   background-color: #f5f5f5;
+  border: 1px solid #DDD;
   flex-direction: row;
   position: relative;
 }

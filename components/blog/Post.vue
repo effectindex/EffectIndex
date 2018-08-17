@@ -1,7 +1,7 @@
 <template>
   <div class="blogPost">
     <div 
-      v-if="$auth.loggedIn"
+      v-show="$auth.loggedIn"
       class="blogPost__admin">
       <nuxt-link 
         :to="'/admin/blog/' + post.slug"

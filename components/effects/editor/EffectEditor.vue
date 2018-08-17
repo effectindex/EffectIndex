@@ -160,7 +160,7 @@ export default {
       tags: this.effect ? this.effect.tags : [],
       contributors: this.effect ? this.effect.contributors : [],
       summary: this.effect ? this.effect.summary_raw : "",
-      long_summary: this.effect ? this.effect.long_summary : "",
+      long_summary: this.effect ? this.effect.long_summary_raw : "",
       analysis: this.effect ? this.effect.analysis_raw : "",
       gallery_order: this.effect ? this.effect.gallery_order : [],
       social_media_image: this.effect ? this.effect.social_media_image : ""

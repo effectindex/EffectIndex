@@ -12,7 +12,7 @@
         :height="(height ? height + 'px' : 'auto')">
     </a>
     <div 
-      v-if="gfycat"
+      v-show="gfycat"
       :style="{
         maxWidth: width ? width + 'px' : 'none',
         height: height ? height + 'px' : 'auto',

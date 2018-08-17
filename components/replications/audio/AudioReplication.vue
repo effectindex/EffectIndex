@@ -73,6 +73,7 @@ export default {
     font-weight: bold;
     font-size: 1.25em;
     font-weight: 400;
+    margin-right: 0.5em;
   }
 
   .replicationEffectsList {

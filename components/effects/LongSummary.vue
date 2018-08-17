@@ -7,26 +7,22 @@
         {{ effect.name }}
       </nuxt-link>
     </h4>
-    <captioned-image
-      v-if="image"
-      :align="odd ? 'left' : 'right'"
-      :title="image.title"
-      :src="(image.type === 'image') ? `/img/gallery/${image.resource}` : undefined"
-      :gfycat="(image.type === 'gfycat') ? image.resource : undefined"
-      :artist="image.artist"
-      height="300"
-      top="yup" />
-    <p v-html="$md.render(long_summary)" />
+    <div>
+      <formatted-document
+        :document="long_summary" />
+    </div>
 
   </div>
 </template>
 
 <script>
 import CaptionedImage from "@/components/CaptionedImage";
+import FormattedDocument from "@/components/effects/FormattedDocument";
 
 export default {
   components: {
-    CaptionedImage
+    CaptionedImage,
+    FormattedDocument
   },
   props: {
     effect: {
@@ -40,7 +36,7 @@ export default {
   },
   computed: {
     long_summary() {
-      return this.effect.long_summary ? this.effect.long_summary : "Long summary placeholder.";
+      return this.effect.long_summary_formatted ? this.effect.long_summary_formatted : undefined;
     },
     replications() {
       return this.$store.state.replications;
@@ -60,10 +56,6 @@ export default {
 
 <style scoped>
 
-p {
-  line-height: 1;
-}
-
   .effect__longSummary {
     padding-bottom: 1.5em;
     margin-bottom: 2.5em;
@@ -71,26 +63,5 @@ p {
     overflow: auto;
   }
 
-  .floatLeft {
-    float: left;
-    margin: 0 1em 0em 0;
-  }
-
-  .floatRight {
-    float: right;
-    margin: 0 0 0em 1em;
-  }
-
-  .longSummary__image {
-    max-height: 300px;
-    max-width: 300px;
-    padding-top: 0.5em;
-  }
-
-  .longSummary__title {
-    font-size: 16pt;
-    text-transform: none;
-    letter-spacing: 0px;
-  }
 
 </style>

@@ -233,4 +233,22 @@ export default {
   border: 0;
   border-top: 1px solid #ccc;
 }
+
+/* Effect Categories */
+
+.effectCategories .effectsContainer {
+
+  margin-bottom: 3em;
+
+}
+
+.effectCategories hr {
+  clear: both;
+}
+
+.effectCategories h3 {
+  font-size: 18pt;
+}
+
+
 </style>
