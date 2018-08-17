@@ -265,7 +265,7 @@ export default {
 /* Formatted Documents */
 
 .formattedDocument {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .formattedDocument ul,
