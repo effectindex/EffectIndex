@@ -79,7 +79,7 @@ export default {
     z-index: 999;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.85);
     text-align: center;
   }
 

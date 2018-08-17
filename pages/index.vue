@@ -264,6 +264,10 @@ export default {
 
 /* Formatted Documents */
 
+.formattedDocument {
+  overflow-x: hidden;
+}
+
 .formattedDocument ul,
 .formattedDocument ol {
   margin: 0;
