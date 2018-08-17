@@ -14,6 +14,7 @@
         <li> <nuxt-link to="/admin/users/profiles"> Manage Profiles </nuxt-link> </li>
         <li> <nuxt-link to="/admin/reports/list"> Manage Reports </nuxt-link> </li>
         <li> <nuxt-link to="/admin/cheatsheet"> Viscidcode Cheat Sheet </nuxt-link> </li>
+        <li> <nuxt-link to="/admin/reports/missing"> Missing Data </nuxt-link> </li>
         <li> <ext-link href="https://trello.com/b/TAqyU405/effect-index"> Trello </ext-link> </li>
         <div class="serverOptionsContainer">
           <h3> Danger Zone </h3>

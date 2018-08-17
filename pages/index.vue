@@ -290,6 +290,16 @@ export default {
   margin-bottom: 3em;
 }
 
+.effectCategories .titleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.effectCategories .actionIcon {
+  margin-left: 1em;
+}
+
 .effectCategories hr {
   clear: both;
 }

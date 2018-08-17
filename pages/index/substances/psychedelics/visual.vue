@@ -1,9 +1,10 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <fa
-        :icon="['far', 'unlink']"
-        class="fa categoryIcon" />
+      <img 
+        src="/icons/psychedelic.svg"
+        style="height: 50px;"
+        class="categoryIcon" >
       <h1> Visual Effects of Psychedelics </h1>
       <captioned-image
         src="/img/gallery/In_the_tree_by_Eddie_calz.jpg"
@@ -21,8 +22,15 @@
     <hr>
     <div>
       <div class="effectsContainer">
-        <h3> Visual Enhancements </h3>
+        <h3 class="titleContainer"> 
+          Visual Enhancements
+          <fa 
+            :icon="['far', 'arrow-up']"
+            class="fa actionIcon" />
+        </h3>
+
         <p class="actionDescription"> <b> Visual enhancements </b> are any subjective effect which improves one's ability to perceive the external environment through their sense of sight. </p>
+
         <long-summary 
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'enhancement')"
           :index="i"
@@ -54,7 +62,7 @@
         <h3> Hallucinatory States </h3>
         <p class="actionDescription"> <b> Hallucinatory states </b> are any subjective effect which changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner which is similar to that of dreams. </p>
         <long-summary 
-          v-for="(effect, i) in filterEffectsByTag('psychedelic', 'hallucinatory state')"
+          v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'hallucinatory state')"
           :index="i"
           :effect="effect"
           :key="effect._id" />
