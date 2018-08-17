@@ -254,6 +254,7 @@ export default {
 
 .lightBox__control {
   display: block;
+  user-select: none;
   height: 100px;
   width: 50px;
   line-height: 100px;
