@@ -2,7 +2,7 @@
   <div class="pageContent">
     <div>
       <fa
-        :icon="['far', 'unlink']"
+        :icon="['far', 'user']"
         class="fa categoryIcon" />
       <h1> Cognitive Effects of Psychedelics </h1>
       <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae nisi et nibh auctor ornare id sed ipsum. Morbi iaculis convallis libero. Vestibulum imperdiet lacus nisl. Aliquam quis nibh eu erat egestas bibendum eget ut lacus. Nullam at ligula gravida, ultrices nisi molestie, tincidunt neque. Donec suscipit elit a metus interdum pellentesque. In quam nisl, volutpat nec porttitor tristique, facilisis vitae tellus. Nunc interdum ullamcorper odio, laoreet mattis nunc vehicula sit amet. Nullam nec ultrices purus, nec accumsan neque. Sed venenatis varius diam, vel ullamcorper purus sagittis vel. Nulla ac libero eget velit egestas condimentum eu sit amet dui. Vivamus ante risus, commodo eu lobortis a, facilisis nec purus. Donec molestie magna velit. Morbi gravida dolor id urna semper, sagittis gravida lectus malesuada. </p>

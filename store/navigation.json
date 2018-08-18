@@ -34,10 +34,7 @@
     "location": "/effects",
     "children": [
       { "name": "Index", "location": "/effects" },
-      { "name": "Substances", "location": "/substances/" },
-      { "name": "Sensory", "location": "/effects/sensory/" },
-      { "name": "Cognitive", "location": "/effects/cognitive/" },
-      { "name": "Physical", "location": "/effects/physical/" }
+      { "name": "Summaries", "location": "/summaries/" }
     ]
   },
   "Replications": {

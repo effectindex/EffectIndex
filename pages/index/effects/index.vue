@@ -21,11 +21,11 @@
               :effects="filterEffectsByTag('visual', 'suppression')"
               title="Suppresions" />
             <actions
-              :effects="filterEffectsByTag('visual', 'geometry')"
-              title="Geometry" />          
-            <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions" />
+            <actions
+              :effects="filterEffectsByTag('visual', 'geometry')"
+              title="Geometry" />          
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States" />
@@ -77,7 +77,7 @@
               title="Enhancements" />
             <actions
               :effects="filterEffectsByTag('cognitive', 'suppression')"
-              title="Suppresions" />
+              title="Suppressions" />
             <actions
               :effects="filterEffectsByTag('cognitive', 'novel')"
               title="Novel States" />
@@ -143,13 +143,13 @@
               title="Enhancements" />
             <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
-              title="Suppresions" />
-            <actions
-              :effects="filterEffectsByTag('visual', 'geometry')"
-              title="Geometry" />          
+              title="Suppressions" />
             <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions" />
+            <actions
+              :effects="filterEffectsByTag('visual', 'geometry')"
+              title="Geometry" />          
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States" />
