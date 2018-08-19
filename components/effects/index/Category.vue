@@ -4,6 +4,7 @@
     <h3 class="categoryTitle">
       {{ title }} 
       <fa
+        v-if="icon"
         :icon="icon"
         class="icon" />
       <img

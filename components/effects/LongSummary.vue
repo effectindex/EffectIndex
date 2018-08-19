@@ -3,6 +3,7 @@
     class="effect__longSummary">
     <h4 
       v-show="showTitle"
+      :id="effect.url"
       class="longSummary__title">
       {{ effect.name }}
     </h4>

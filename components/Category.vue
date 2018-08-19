@@ -2,7 +2,7 @@
   <div class="categoryContainer">
     <h3 class="categoryTitle"> {{ title }} 
       <fa
-        v-show="icon"
+        v-if="icon"
         :icon="icon"
         class="icon" />
       <img
@@ -39,12 +39,14 @@ export default {
   h3 {
     margin: 0;
     margin-bottom: 0em;
+    border-bottom: 1px solid #CCC;
     font-size: 18pt;
   }
 
   .categoryContainer {
     flex: 1;
-    border: 1px solid #EEE;
+    border: 1px solid #DDD;
+    background-color: #FAFAfA;
     margin-bottom: 1em;
     min-width: 300px;
   }

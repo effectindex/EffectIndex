@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <h4> Full Article: <br> <nuxt-link :to="link"> {{ title }} </nuxt-link> </h4>
+    <h4> <nuxt-link :to="link">  {{ title }} </nuxt-link> </h4>
     <hr >
     <div class="contentContainer">
       <slot />
@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
   h4 {
-    margin-bottom: 0;
+    margin: 0;
     text-transform: none;
     font-family: 'Proxima Nova';
     font-size: 16pt;

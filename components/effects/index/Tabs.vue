@@ -5,7 +5,7 @@
       <li 
         v-for="(tab, i) in tabs"
         :key="i"
-        :class="{ 'selected': (selectedTab === tab)}"
+        :class="{ 'selected': (activeTab === tab)}"
         class="tabsListItem"
         @click="selectTab(tab)">
         {{ tab }}
@@ -13,7 +13,7 @@
     </ul>
     <slot 
       ref="tab"
-      :name="selectedTab" />
+      :name="activeTab" />
   </div>
 
 </template>
@@ -24,22 +24,15 @@ export default {
     tabs: {
       type: Array,
       default: () => []
+    },
+    activeTab: {
+      type: [String, undefined],
+      default: "All"
     }
-  },
-  data() {
-    return {
-      selectedTab: "",
-      childData: {
-        blegh: 'asdf'
-      }
-    };
-  },
-  created() {
-    if (this.tabs.length) this.selectedTab = this.tabs[0];
   },
   methods: {
     selectTab(name) {
-      this.selectedTab = name;
+      this.$emit('selectTab', name);
     }
   },
 };
@@ -81,6 +74,7 @@ export default {
 
 .selected {
   background-color: #FFF;
+  text-decoration: underline;
   border-bottom: 0;
 }
 

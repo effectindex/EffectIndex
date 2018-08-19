@@ -5,7 +5,10 @@
       class="fa categoryIcon" />
     <h1> Subjective Effect Index </h1>
     <description />
-    <tabs :tabs="['All', 'Sensory', 'Cognitive', 'Physical']">
+    <tabs 
+      :tabs="['All', 'Sensory', 'Cognitive', 'Physical']"
+      :active-tab="activeTab"
+      @selectTab="selectTab">
 
       <tab 
         slot="All" 
@@ -313,20 +316,29 @@ export default {
     Description,
     Blob
   },
+  data() {
+    return {
+      activeTab: this.$route.query.type
+    };
+  },
   computed: {
     effects() {
       return this.$store.state.effects;
-    }
+    },
   },
+  watchQuery: ['type'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>
         tags.every(tag => effect.tags.indexOf(tag) > -1)
       );
+    },
+    selectTab(name) {
+      this.activeTab = name;
     }
   },
   async fetch ({ store }) {
     await store.dispatch("getEffects");
-  }
+  },
 };
 </script>
