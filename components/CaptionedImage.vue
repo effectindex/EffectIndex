@@ -5,7 +5,6 @@
     <img 
       v-show="src"
       :src="src" 
-      :width="(width ? width + 'px' : 'auto')" 
       :height="(height ? height + 'px' : 'auto')"
       @click.stop="toggleModal">
     <div 
@@ -133,6 +132,7 @@ export default {
 
 .captionedImage img {
   cursor: pointer;
+  width: 100%;
 }
 
 .artistTitle {
