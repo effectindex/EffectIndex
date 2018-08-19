@@ -22,6 +22,7 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  scrollToTop: true,
   computed: {
     effects() {
       return this.$store.state.effects;

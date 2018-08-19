@@ -82,6 +82,7 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  scrollToTop: true,
   data () {
     return {
       linkedEffect: this.$route.query.e

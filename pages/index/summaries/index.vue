@@ -125,6 +125,7 @@ export default {
     Panel,
     Category
   },
+  scrollToTop: true,
   computed: {
     effects() {
       return this.$store.state.effects;
