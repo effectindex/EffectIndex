@@ -21,7 +21,7 @@
       image="/icons/psychedelic.svg">
 
       <panel
-        title="The Visual Effects of Psychedelics"
+        title="Visual Effects of Psychedelics"
         link="/summaries/psychedelics/visual">
         <h4 class="summaryContentsTitle"> Contents </h4>
         <ul class="effectList">
@@ -40,7 +40,7 @@
       </panel>
 
       <panel
-        title="The Cognitive Effects of Psychedelics"
+        title="Cognitive Effects of Psychedelics"
         link="/summaries/psychedelics/cognitive">
         <h4 class="summaryContentsTitle"> Contents </h4>
         <ul class="effectList">
@@ -60,7 +60,7 @@
       </panel>      
 
       <panel
-        title="The Miscellaneous Effects of Psychedelics"
+        title="Miscellaneous Effects of Psychedelics"
         link="/summaries/psychedelics/miscellaneous">
         <h4 class="summaryContentsTitle"> Contents </h4>
         <ul class="effectList">
@@ -77,7 +77,7 @@
       <category
         title="Dissociatives">
         <panel
-          title="The Effects of Dissociatives"
+          title="Effects of Dissociatives"
           link="/summaries/dissociatives/">
           <h4 class="summaryContentsTitle"> Contents </h4>
           <ul class="effectList">
@@ -96,7 +96,7 @@
       <category
         title="Deliriants">
         <panel
-          title="The Effects of Deliriants"
+          title="Effects of Deliriants"
           link="/summaries/deliriants/">
           <h4 class="summaryContentsTitle"> Contents </h4>
           <ul class="effectList">

@@ -101,7 +101,7 @@
       </h3>
 
       <p class="actionDescription"> <b> Transpersonal states </b> are any subjective effect which feels as if it alters
-      a person's cognitive in a manner which relates to or contains information regarding their place in the universe,
+      a person's cognition in a manner which relates to or contains information regarding their place in the universe,
       the inner workings of reality or consciousness, and the context of their existence. The fullest manifestation of 
       these effects fall under what are sometimes called "peak", "transcendent" or "transformative" experiences. </p>
         
