@@ -86,8 +86,7 @@
         link="/summaries/psychedelics/cognitive">
 
         <panel
-          title="Cognitive Effects of Psychedelics"
-          link="/summaries/psychedelics/cognitive">
+          title="Cognitive Effects of Psychedelics">
           <p class="categoriesFullLink"> 
             <nuxt-link to="/summaries/psychedelics/cognitive"> Read the full article </nuxt-link>
             detailing the cognitive effects of psychedelic substances.
@@ -160,10 +159,9 @@
       <category 
         :icon="['far', 'user']"
         title="Psychedelics (Miscellaneous)"
-        link="/summaries/psychedelics/cognitive">
+        link="/summaries/psychedelics/miscellaneous">
         <panel
-          title="Miscellaneous Effects of Psychedelics"
-          link="/summaries/psychedelics/miscellaneous">
+          title="Miscellaneous Effects of Psychedelics">
           <p class="categoriesFullLink"> 
             <nuxt-link to="/summaries/psychedelics/miscellaneous"> Read the full article </nuxt-link>
             detailing the miscellaneous effects of psychedelic substances.
@@ -171,7 +169,12 @@
           <ul class="effectList">
             <li 
               v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous')"
-              :key="effect._id"> {{ effect.name }} </li>          
+              :key="effect._id"> 
+              <nuxt-link 
+                :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                {{ effect.name }}
+              </nuxt-link>
+            </li>          
           </ul>
 
         </panel>

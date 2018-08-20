@@ -1,15 +1,25 @@
 <template>
-  <div class="pageContent">
+  <div class="pageContent effectCategories">
     <div>
       <fa
-        :icon="['far', 'unlink']"
+        :icon="['far', 'user']"
         class="fa categoryIcon" />
       <h1> Miscellaneous Effects of Psychedelics </h1>
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae nisi et nibh auctor ornare id sed ipsum. Morbi iaculis convallis libero. Vestibulum imperdiet lacus nisl. Aliquam quis nibh eu erat egestas bibendum eget ut lacus. Nullam at ligula gravida, ultrices nisi molestie, tincidunt neque. Donec suscipit elit a metus interdum pellentesque. In quam nisl, volutpat nec porttitor tristique, facilisis vitae tellus. Nunc interdum ullamcorper odio, laoreet mattis nunc vehicula sit amet. Nullam nec ultrices purus, nec accumsan neque. Sed venenatis varius diam, vel ullamcorper purus sagittis vel. Nulla ac libero eget velit egestas condimentum eu sit amet dui. Vivamus ante risus, commodo eu lobortis a, facilisis nec purus. Donec molestie magna velit. Morbi gravida dolor id urna semper, sagittis gravida lectus malesuada. </p>
-      <p> Nullam convallis, nibh at auctor suscipit, orci felis laoreet dui, sed pretium metus tortor a nibh. Vestibulum porta gravida ex ullamcorper mollis. Mauris aliquam, mi eu viverra volutpat, nisl nulla hendrerit urna, id cursus sapien orci id mi. Aliquam at sollicitudin nulla. Etiam suscipit nunc quis euismod sollicitudin. Aliquam erat volutpat. Proin sed ullamcorper erat, non ultrices magna. Maecenas sodales tincidunt lacus non sollicitudin. In ut imperdiet tortor, eu scelerisque nisi. Praesent efficitur est vel ante mattis convallis vel nec est. Etiam lacinia eget leo a dictum.   </p>
+      <div class="categoryDescription">
+        <p> This article breaks down the subjective miscellaneous effects of the psychedelic experience into simple and easy to understand descriptions with accompanying image replications. This is done without resorting to metaphor, analogy, or personal trip reports. </p>
+        <p> These descriptions are not specific to any particular substance but are applicable to the effects which commonly occur in various forms under the influence of almost any psychedelic compound. This includes, but is not limited to, both classical and research chemical psychedelics, such as: </p>
+        <p style="font-style: italic;"> LSD, Psilocybin mushrooms, DMT, Ayahuasca, Mescaline, 5-MeO-MiPT, 2C-B, LSA, AL-LAD, ALD-52, 1P-LSD, 2C-B-Fly, 2C-C, 2C-D, 2C-E, 2C-P, 4-AcO-DMT, 4-HO-MET, 4-HO-MiPT, 5-MeO-DMT, DPT, and DOC. </p>
+        <p> The article begins with a description of the simpler effects and works its way up towards more complex experiences as it progresses. Individual effects are also summarized with a link to their full article. </p>
+      </div>
     </div>
     <hr>
-
+    <div class="effectsContainer">
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
   </div>
 </template>
 
@@ -23,11 +33,22 @@ export default {
     LongSummary
   },
   scrollToTop: true,
+  data () {
+    return {
+      linkedEffect: this.$route.query.e
+    };
+  },
   computed: {
     effects() {
       return this.$store.state.effects;
     }
   },
+  mounted() {
+    if (this.linkedEffect) {
+      this.$scrollTo(`#${this.linkedEffect}`);
+    }
+  },
+  watchQuery: ['e'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>
@@ -37,7 +58,6 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("getEffects");
-    await store.dispatch("getReplications");
   }
 };
 </script>
