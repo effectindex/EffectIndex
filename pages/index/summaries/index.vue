@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent substanceArticles"> 
-    <h1> Effect Summaries </h1>
+    <h1> Substance Summaries </h1>
 
     <p> The following articles break down the general subjective effects of hallucinogens 
     into simple and easy to understand descriptions with accompanying image replications. This 
@@ -16,62 +16,83 @@
 
     <hr>
 
-    <category 
-      title="Psychedelics"
-      image="/icons/psychedelic.svg">
+    <div class="categoriesContainer">
+      <category 
+        :icon="['far', 'eye']"
+        title="Psychedelics (Visual)">
 
-      <panel
-        title="Visual Effects of Psychedelics"
-        link="/summaries/psychedelics/visual">
-        <h4 class="summaryContentsTitle"> Contents </h4>
-        <ul class="effectList">
-          <li 
-            v-for="effect in filterManyEffects([['psychedelic', 'visual', 'enhancement'], 
-                                                ['psychedelic', 'visual', 'distortion'],
-                                                ['psychedelic', 'visual', 'geometry'],
-                                                ['psychedelic', 'visual', 'hallucinatory state']])"
-            :key="effect._id"> 
-            <nuxt-link 
-              :to="`/summaries/psychedelics/visual?e=${effect.url}`">
-              {{ effect.name }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </panel>
+        <panel
+          title="Visual Effects of Psychedelics">
+          <p class="categoriesFullLink"> 
+            <nuxt-link to="/summaries/psychedelics/visual"> Read the full article </nuxt-link>
+            detailing the visual effects of psychedelic substances.
+          </p>
+          <h4 class="summaryContentsTitle"> Contents </h4>
+          <ul class="effectList">
+            <li 
+              v-for="effect in filterManyEffects([['psychedelic', 'visual', 'enhancement'], 
+                                                  ['psychedelic', 'visual', 'distortion'],
+                                                  ['psychedelic', 'visual', 'geometry'],
+                                                  ['psychedelic', 'visual', 'hallucinatory state']])"
+              :key="effect._id"> 
+              <nuxt-link 
+                :to="`/summaries/psychedelics/visual?e=${effect.url}`">
+                {{ effect.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+        </panel>
+      </category>
 
-      <panel
-        title="Cognitive Effects of Psychedelics"
-        link="/summaries/psychedelics/cognitive">
-        <h4 class="summaryContentsTitle"> Contents </h4>
-        <ul class="effectList">
-          <li 
-            v-for="effect in filterManyEffects([['psychedelic', 'cognitive', 'enhancement'], 
-                                                ['psychedelic', 'cognitive', 'suppression'],
-                                                ['psychedelic', 'cognitive', 'novel state'],
-                                                ['psychedelic', 'cognitive', 'psychological state'],
-                                                ['psychedelic', 'cognitive', 'transpersonal state']])"
-            :key="effect._id"> 
-            <nuxt-link 
-              :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
-              {{ effect.name }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </panel>      
+      <category 
+        :icon="['far', 'user']"
+        title="Psychedelics (Cognitive)">
 
-      <panel
-        title="Miscellaneous Effects of Psychedelics"
-        link="/summaries/psychedelics/miscellaneous">
-        <h4 class="summaryContentsTitle"> Contents </h4>
-        <ul class="effectList">
-          <li 
-            v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous')"
-            :key="effect._id"> {{ effect.name }} </li>          
+        <panel
+          title="Cognitive Effects of Psychedelics"
+          link="/summaries/psychedelics/cognitive">
+          <p class="categoriesFullLink"> 
+            <nuxt-link to="/summaries/psychedelics/cognitive"> Read the full article </nuxt-link>
+            detailing the cognitive effects of psychedelic substances.
+          </p>
+          <h4 class="summaryContentsTitle"> Contents </h4>
+          <ul class="effectList">
+            <li 
+              v-for="effect in filterManyEffects([['psychedelic', 'cognitive', 'enhancement'], 
+                                                  ['psychedelic', 'cognitive', 'suppression'],
+                                                  ['psychedelic', 'cognitive', 'novel state'],
+                                                  ['psychedelic', 'cognitive', 'psychological state'],
+                                                  ['psychedelic', 'cognitive', 'transpersonal state']])"
+              :key="effect._id"> 
+              <nuxt-link 
+                :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
+                {{ effect.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+        </panel>      
+      </category>
 
-        </ul>
+      <category 
+        :icon="['far', 'user']"
+        title="Psychedelics (Miscellaneous)">
+        <panel
+          title="Miscellaneous Effects of Psychedelics"
+          link="/summaries/psychedelics/miscellaneous">
+          <p class="categoriesFullLink"> 
+            <nuxt-link to="/summaries/psychedelics/miscellaneous"> Read the full article </nuxt-link>
+            detailing the miscellaneous effects of psychedelic substances.
+          </p>
+          <h4 class="summaryContentsTitle"> Contents </h4>
+          <ul class="effectList">
+            <li 
+              v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous')"
+              :key="effect._id"> {{ effect.name }} </li>          
+          </ul>
 
-      </panel>
-    </category>
+        </panel>
+      </category>
+    </div>
 
     <div class="categoriesContainer">
       <category
@@ -168,8 +189,16 @@ export default {
     margin: 1em 0 0.25em 0;
     color: #333;
     font-size: 14pt;
-    text-transform: uppercase;
-    letter-spacing: 1px; 
+    letter-spacing: 0px; 
+    text-transform: none;
+  }
+
+  .categoriesFullLink {
+    font-size: 12pt;
+    color: #666;
+    font-style: italic;
+    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
   @media(max-width: 700px) {
@@ -192,9 +221,8 @@ export default {
   }
 
   .effectList {
-    padding: 0;
-    list-style: none;
     color: #AAA;
+    padding-left: 1em;
   }
 
 

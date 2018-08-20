@@ -40,7 +40,6 @@ export default {
     margin: 0;
     margin-bottom: 0em;
     border-bottom: 1px solid #CCC;
-    font-size: 18pt;
   }
 
   .categoryContainer {
@@ -60,12 +59,12 @@ export default {
   }
 
   .image {
-    height: 50px;
+    height: 30px;
     opacity: 0.75;
   }
 
   .icon {
-    height: 1em;
+    height: 1.1em;
     opacity: 0.75;
   }
 
@@ -73,12 +72,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    font-size: 18pt;
+    align-items:flex-start;
+    font-size: 14pt;
     margin: 0;
-    height: 50px;
     text-align: left;
-    padding: 0 0.5em;
+    padding: 0.5em;
     background-color: rgb(240, 240, 240);
     letter-spacing: 1px;
 }

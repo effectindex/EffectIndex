@@ -1,6 +1,5 @@
 <template>
   <div class="panel">
-    <h4 class="title"> <nuxt-link :to="link"> {{ title }} </nuxt-link> </h4>
     <div class="contentContainer">
       <slot />
     </div>
@@ -10,10 +9,6 @@
 <script>
 export default {
   props: {
-    title: {
-      type: String,
-      default: ""
-    },
     subtitle: {
       type: String,
       default: ""
@@ -35,10 +30,7 @@ export default {
     font-size: 16pt;
     letter-spacing: 0;
     line-height: 1em;
-    min-height: 45px;
   }
-
-
 
   hr {
     margin: 0.5em 0;
