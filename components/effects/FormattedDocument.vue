@@ -45,11 +45,13 @@ export default {
             element.value
           );
         case "int-link":
-          return createElement(
-            "nuxt-link",
-            { props: element.props },
-            element.value
-          );
+          if (('props' in element) && ('to' in element.props)) {
+            return createElement(
+              "nuxt-link",
+              { props: element.props },
+              element.value
+            );
+          } else break;
         case "cap-img":
           return createElement(
             CaptionedImage,
