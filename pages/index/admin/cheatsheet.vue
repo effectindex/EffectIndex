@@ -107,6 +107,29 @@
       </div>
 
       <div class="cheatsheet_section">
+        <h2> Audio Player </h2>
+        ##audio
+        <p> Renders an audioplayer with waveform. </p>
+        <table>
+          <thead>
+            <tr> <td> Property </td> <td> Description </td> </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> src </td> <td> URL of the audio file ("/audio/whatever.mp3") </td>
+              <td> title </td> <td> Audio title </td>
+              <td> artist </td> <td> Audio artist </td>
+            </tr>
+          </tbody>
+        </table>      
+
+
+        <label style="display: block; margin-top: 1em;"> Example </label>
+        <div style="white-space: pre-wrap;">##refbull|refs="2,4.2,5"{This is a bullet list item with a bunch of references at the end of it.}
+        </div>
+      </div>
+
+      <div class="cheatsheet_section">
         <h2> Internal Link </h2>
         ##int-link
         <p> Creates a link to another page on the Index </p>

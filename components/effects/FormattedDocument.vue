@@ -4,6 +4,7 @@ import ExtLink from "@/components/ExtLink.vue";
 import Markdown from "@/components/effects/FormattedDocument__markdown.vue";
 import CaptionedImage from "@/components/CaptionedImage.vue";
 import BulletWithReferences from "@/components/effects/BulletWithReferences.vue";
+import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 
 export default {
   functional: true,
@@ -13,6 +14,10 @@ export default {
         case "md":
           return createElement(Markdown, {
             props: { body: element.value || "" }
+          });
+        case "audio":
+          return createElement(AudioPlayer, {
+            props: element.props
           });
         case "string":
           return createElement(
