@@ -125,11 +125,22 @@ export default {
     LongSummary
   },
   scrollToTop: true,
+  data () {
+    return {
+      linkedEffect: this.$route.query.e
+    };
+  },
   computed: {
     effects() {
       return this.$store.state.effects;
     }
   },
+  mounted() {
+    if (this.linkedEffect) {
+      this.$scrollTo(`#${this.linkedEffect}`);
+    }
+  },
+  watchQuery: ['e'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>
@@ -139,7 +150,6 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("getEffects");
-    await store.dispatch("getReplications");
   }
 };
 </script>

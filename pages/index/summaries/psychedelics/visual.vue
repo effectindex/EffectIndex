@@ -108,7 +108,6 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("getEffects");
-    await store.dispatch("getReplications");
   }
 };
 </script>
