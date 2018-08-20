@@ -9,6 +9,8 @@ import { faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
 import { faUser as fasUser, faFlask as fasFlask, faSun as fasSun, faComment as fasComment,
 faMoon as fasMoon, faCapsules as fasCapules} from '@fortawesome/pro-solid-svg-icons';
 
+import { faDiscord, faFacebook, faReddit, faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
@@ -18,6 +20,8 @@ library.add(faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser
   faSitemap, faImages, faListAlt, faFileSignature);
 
 library.add(fasUser, fasFlask, fasSun, fasComment, fasMoon, fasCapules);
+
+library.add(faDiscord, faFacebook, faReddit, faYoutube, faGithub);
 
 config.autoAddCss = false;
 

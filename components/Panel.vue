@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <h4> <nuxt-link :to="link">  {{ title }} </nuxt-link> </h4>
+    <h4> <nuxt-link :to="link"> {{ title }} </nuxt-link> </h4>
     <hr >
     <div class="contentContainer">
       <slot />
@@ -27,7 +27,8 @@ export default {
   h4 {
     margin: 0;
     text-transform: none;
-    font-family: 'Proxima Nova';
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 16pt;
     letter-spacing: 0;
   }

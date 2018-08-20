@@ -33,12 +33,12 @@
   </footer>
 </template>
 
-<style scoped>
+<style>
 footer {
   background-color: #1f1f1f;
   text-align: center;
   color: #666;
-  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
 }
@@ -49,14 +49,29 @@ footer {
 }
 
 .footer__social img {
+  height: 100%;
+  width: 100%;
+}
+
+.footer__social > a {
+  display: inline-block;
+  opacity: 0.6;
   margin: 0.3em;
+  transition: all ease-in-out 0.25s;
+  height: 32px;
+  width: 32px;
+}
+
+.footer__social > a:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 .footer__secret {
   padding: 1em 0;
 }
 
-p {
+footer > p {
   padding: 2em 0;
 }
 
@@ -66,7 +81,7 @@ p {
   padding: 0;
 }
 
-a {
+footer > a {
   text-decoration: none;
   color: #666;
 }

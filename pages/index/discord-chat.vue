@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent">
 
-    <h1> Discord chat 
+    <h1> Discord Chat 
       <fa
-        :icon="['far', 'heart']"
+        :icon="['fab', 'discord']"
         class="fa categoryIcon" />
     </h1>
 
@@ -22,12 +22,12 @@
     </p>
 
     <h3> Rules </h3>
-    <ul>
-      <li>Do not discuss RC/drug sources</li>
-      <li>Do not encourage dangerous behaviours, such as overly risky drug use or suicide</li>
-      <li>Do not be a deliberately offensive or an edgelord</li>
-      <li>Try to keep specific topics within their relevant channels</li>
-      <li>Be at least 18+ years old</li>
+    <ul class="rulesList">
+      <li> You must be at least 18+ years old. </li>
+      <li> You may not discuss any drug sources. </li>
+      <li> You may not encourage dangerous behaviour, such as reckless drug use or self-harm. </li>
+      <li> Do not be deliberately offensive or an edgelord. </li>
+      <li> Keep specific topics within their relevant channels. </li>
     </ul>
   </div>
 </template>
@@ -48,8 +48,13 @@ export default {
 </script>
 
 <style scoped>
+.rulesList {
+  color: black;
+}
+
 .float {
   float: right;
+  margin-left: 2em;
 }
 
 @media (max-width: 500px) {

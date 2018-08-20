@@ -91,7 +91,8 @@ export default {
     margin: 0;
     color: #333;
     text-transform:capitalize;
-    font-family: 'Titillium Web';
+    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 20px;
     letter-spacing: 0px;
   }

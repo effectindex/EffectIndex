@@ -114,7 +114,11 @@
     <div class="effectEditor__buttons">
       <button 
         style="background-color: #DFD;"
-        @click="submitEffect"> Save </button>
+        @click="submitEffect(false)"> Save </button>
+      <button 
+        v-show="effect"
+        style="background-color: #DFD;"
+        @click="submitEffect(true)"> Update </button>
       <nuxt-link 
         :to="'/effects/' + url"
         tag="button"> Cancel </nuxt-link>
@@ -194,8 +198,8 @@ export default {
     toggleDetails() {
       this.showDetails = !this.showDetails;
     },
-    submitEffect() {
-      this.$emit(this.effect ? "edit-effect" : "new-effect", {
+    submitEffect(update) {
+      this.$emit(this.effect ? (update ? "update-effect" : "edit-effect") : "new-effect", {
         id: this.id,
         name: this.name,
         description: this.description,
