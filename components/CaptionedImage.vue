@@ -18,6 +18,7 @@
       @click.stop="toggleModal"
     >
       <iframe
+        v-if="gfycat"
         :src="'https://gfycat.com/ifr/' + gfycat + '?hd=1&wmmode=opaque'"
         frameborder="0"
         scrolling="no"

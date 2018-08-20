@@ -1,6 +1,6 @@
 <template>
   <div class="categoryContainer">
-    <h3 class="categoryTitle"> {{ title }} 
+    <h3 class="categoryTitle"> <nuxt-link :to="link"> {{ title }} </nuxt-link>
       <fa
         v-if="icon"
         :icon="icon"
@@ -29,6 +29,10 @@ export default {
     },
     icon: {
       type: Array,
+      default: undefined
+    },
+    link: {
+      type: String,
       default: undefined
     }
   }
