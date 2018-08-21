@@ -230,9 +230,12 @@
             <nuxt-link to="/summaries/dissociatives/"> Read the full article </nuxt-link>
             detailing the effects of dissociative substances.
           </p>
+
+          <h4> Disconnective Effects </h4>
           <ul class="effectList">
             <li 
-              v-for="effect in filterManyEffects([['dissociative']])"
+              v-for="effect in getEffectsInSpecificOrder('physical disconnection', 'cognitive disconnection', 'visual disconnection', 
+                                                         'detachment plateaus')"
               :key="effect._id"> 
               <nuxt-link 
                 :to="`/summaries/dissociatives?e=${effect.url}`">
@@ -240,6 +243,44 @@
               </nuxt-link>
             </li>
           </ul>
+
+          <h4> Miscellaneous Sensory Effects </h4>
+          <ul class="effectList">
+            <li 
+              v-for="effect in filterEffectsByTag('dissociative', 'miscellaneous')"
+              :key="effect._id"> 
+              <nuxt-link 
+                :to="`/summaries/dissociatives?e=${effect.url}`">
+                {{ effect.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+
+
+          <h4> Cognitive Effects </h4>
+          <ul class="effectList">
+            <li 
+              v-for="effect in filterEffectsByTag('dissociative', 'cognitive')"
+              :key="effect._id"> 
+              <nuxt-link 
+                :to="`/summaries/dissociatives?e=${effect.url}`">
+                {{ effect.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+
+          <h4> Physical Effects </h4>
+          <ul class="effectList">
+            <li 
+              v-for="effect in filterEffectsByTag('dissociative', 'physical')"
+              :key="effect._id"> 
+              <nuxt-link 
+                :to="`/summaries/dissociatives?e=${effect.url}`">
+                {{ effect.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+
         </panel>
       </category>
 
@@ -297,6 +338,14 @@ export default {
       return this.effects.filter(effect =>
         tags.every(tag => effect.tags.indexOf(tag) > -1)
       );
+    },
+    getEffectsInSpecificOrder(...names) {
+      let effects = [];
+      names.forEach((name) => {
+        let foundEffect = this.effects.find((effect) => effect.name.toLowerCase() === name.toLowerCase());
+        if (foundEffect) effects.push(foundEffect);
+        });
+      return effects;
     }
   },
   async fetch({ store }) {
