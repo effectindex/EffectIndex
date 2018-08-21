@@ -49,9 +49,10 @@ export default {
   .categoryContainer {
     flex: 1;
     border: 1px solid #DDD;
-    background-color: #FAFAfA;
+    background-color: rgb(252, 252, 252);
     margin-bottom: 1em;
     min-width: 300px;
+    box-shadow: 2px 2px 2px #EEE;
   }
 
   .categoryContent {

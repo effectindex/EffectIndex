@@ -365,6 +365,7 @@ export default {
   .columns {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
   }
 
   .categoriesContainer {
