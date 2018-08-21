@@ -47,7 +47,7 @@
           </category>
 
           <category 
-            :icon="['far', 'unlink']"
+            :image="'/icons/disconnective.svg'"
             title="Disconnective Effects">
             <actions :effects="filterEffectsByTag('disconnective')" />
           </category>
@@ -173,7 +173,7 @@
           </category>
 
           <category 
-            :icon="['far', 'unlink']"
+            image="/icons/disconnective.svg"
             title="Disconnective Effects">
             <actions :effects="filterEffectsByTag('disconnective')" />
           </category>

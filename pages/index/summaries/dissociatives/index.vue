@@ -24,9 +24,10 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Disconnective Effects
-        <fa 
-          :icon="['far', 'unlink']"
-          class="fa actionIcon" />
+        <img 
+          style="opacity: 0.8;"
+          class="fa actionIcon"
+          src="/icons/disconnective.svg">
       </h3>
 
       <p class="actionDescription"> 
