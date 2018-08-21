@@ -247,7 +247,8 @@
           <h4> Miscellaneous Sensory Effects </h4>
           <ul class="effectList">
             <li 
-              v-for="effect in filterEffectsByTag('dissociative', 'miscellaneous')"
+              v-for="effect in filterEffectsByTag('dissociative', 'sensory')
+              .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
               :key="effect._id"> 
               <nuxt-link 
                 :to="`/summaries/dissociatives?e=${effect.url}`">

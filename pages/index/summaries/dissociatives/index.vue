@@ -65,7 +65,8 @@
       </p>
 
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('dissociative', 'miscellaneous')"
+        v-for="(effect, i) in filterEffectsByTag('dissociative', 'sensory')
+        .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
         :index="i"
         :effect="effect"
         :key="effect._id" />
