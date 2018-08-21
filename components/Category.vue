@@ -63,8 +63,8 @@ export default {
   }
 
   .image {
-    height: 30px;
-    opacity: 0.75;
+    height: 1em;
+    opacity: 0.7;
   }
 
   .icon {

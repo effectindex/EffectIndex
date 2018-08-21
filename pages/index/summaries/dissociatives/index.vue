@@ -1,9 +1,10 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <fa
-        :icon="['far', 'user']"
-        class="fa categoryIcon" />
+      <img 
+        style="opacity: 0.6;"
+        class="fa categoryIcon"
+        src="/icons/disconnective.svg">
       <h1> Miscellaneous Effects of Dissociatives </h1>
       <div class="categoryDescription">
         <p>This article breaks down the subjective effects of the dissociative experience into simple and easy

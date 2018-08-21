@@ -222,6 +222,7 @@
     <div class="categoriesContainer">
       <category
         title="Dissociatives"
+        image="/icons/disconnective.svg"
         link="/summaries/dissociatives/">
         <panel
           title="Effects of Dissociatives"
