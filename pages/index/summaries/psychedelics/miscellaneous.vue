@@ -13,13 +13,107 @@
       </div>
     </div>
     <hr>
+
     <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Auditory Effects
+        <fa 
+          :icon="['far', 'volume-up']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> <b> Auditory effects </b> are any subjective effect which directly alters a person's sense of hearing. </p>
+
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'auditory')"
         :index="i"
         :effect="effect"
         :key="effect._id" />
     </div>
+
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Tactile Effects
+        <fa 
+          :icon="['far', 'hand-paper']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> <b> Tactile effects </b> can be defined as any subjective effect which directly alters a person's sense of touch. </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'tactile')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Multisensory Effects
+        <fa 
+          :icon="['far', 'cogs']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Multisensory effects </b>are any subjective effect which directly alters two or more senses at a time. <br> <br> 
+        It is worth noting that although certain hallucinatory effects may affect multiple senses at one time they are usually 
+        not categorized as multisensory effects unless they consistently affect multiple senses every time that they occur.
+        For example, while experiences with autonomous entities may sometimes have a tactile component to them, more often
+        than not they are a primarily visual experience and therefore classified as such. </p>
+        
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'multisensory')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Physical Effects
+        <fa 
+          :icon="['far', 'heart-rate']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> <b> Physical effects </b> are any subjective effect which directly effects a facet of a person's physical body.
+        <br> <br>
+        Although many uncomfortable physical effects also technically fit into this definition, they are excluded from this category of
+        effects as they have their own defining qualities which standard physical effects do not. </p>
+        
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'physical')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Uncomfortable Effects
+        <fa 
+          :icon="['far', 'frown']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> An <b> uncomfortable physical effect </b> is any 
+      substance-induced alteration of a person's physical state which is unpleasant, undesirable,
+      painful, or otherwise a source of distress. In most cases they indicate a temporary part 
+      of a substance's interaction with the body. However, in certain contexts, they can also 
+      indicate the need for attention or even medical treatment if they become dangerously severe. </p>
+        
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'uncomfortable')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
   </div>
 </template>
 

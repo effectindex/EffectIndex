@@ -117,7 +117,11 @@
           <tbody>
             <tr>
               <td> src </td> <td> URL of the audio file ("/audio/whatever.mp3") </td>
+            </tr>
+            <tr>
               <td> title </td> <td> Audio title </td>
+            </tr>
+            <tr>
               <td> artist </td> <td> Audio artist </td>
             </tr>
           </tbody>
@@ -125,7 +129,7 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##refbull|refs="2,4.2,5"{This is a bullet list item with a bunch of references at the end of it.}
+        <div style="white-space: pre-wrap;">##audio|src="/audio/whatever.mp3"|title="The sound of me not giving a fuck."|artist="Viscid"
         </div>
       </div>
 
