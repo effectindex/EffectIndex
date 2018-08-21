@@ -40,7 +40,7 @@
           class="fa actionIcon" />
       </h3>
 
-      <p class="actionDescription"> <b> Tactile effects </b> can be defined as any subjective effect which directly alters a person's sense of touch. </p>
+      <p class="actionDescription"> <b> Tactile effects </b> are any subjective effect which directly alters a person's sense of touch. </p>
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'tactile')"
@@ -60,11 +60,11 @@
       </h3>
 
       <p class="actionDescription"> 
-        <b> Multisensory effects </b>are any subjective effect which directly alters two or more senses at a time. <br> <br> 
-        It is worth noting that although certain hallucinatory effects may affect multiple senses at one time they are usually 
-        not categorized as multisensory effects unless they consistently affect multiple senses every time that they occur.
+        <b> Multisensory effects </b> are any subjective effect which directly alters two or more senses simultaneously. <br> <br> 
+        Although some hallucinatory effects may affect multiple senses at one time they are usually 
+        not categorized as 'multisensory effects' unless they do so consistently.
         For example, while experiences with autonomous entities may sometimes have a tactile component to them, more often
-        than not they are a primarily visual experience and therefore classified as such. </p>
+        than not they are primarily a visual experience and are therefore classified as such. </p>
         
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'multisensory')"
@@ -81,7 +81,7 @@
           class="fa actionIcon" />
       </h3>
 
-      <p class="actionDescription"> <b> Physical effects </b> are any subjective effect which directly effects a facet of a person's physical body.
+      <p class="actionDescription"> <b> Physical effects </b> are any subjective effect which directly affects an aspect of a person's physical body.
         <br> <br>
         Although many uncomfortable physical effects also technically fit into this definition, they are excluded from this category of
         effects as they have their own defining qualities which standard physical effects do not. </p>
