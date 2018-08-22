@@ -50,6 +50,13 @@
             <tr>
               <td> caption </td> <td> Caption for the image </td>
             </tr>
+            <tr>
+              <td> imageSrc </td> 
+              <td> Comma-separated list of colon-separated properties that match particular routes. <br >
+                imageSrc="ROUTE:IMAGE:TITLE:ARTIST,ROUTE:IMAGE:TITLE:ARTIST,ROUTE:IMAGE:TITLE:ARTIST" <br> 
+                e.g. ##cap-img|imageSrc="dissociative:/gallery/dissociative.jpg:The Great Dissociative:Some Artist,deliriant:/gallery/deliriant.jpg:The Minor Deliriant:Some Other Artist"
+              </td>
+            </tr>
           </tbody>
         </table>      
 

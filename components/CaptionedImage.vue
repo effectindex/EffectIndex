@@ -101,10 +101,10 @@ export default {
 
         routes.forEach((route) => {
           let info = route.split(':');
-          let path = info[0];
-          let src = info[1] || this.src;
-          let title = info[2] || this.title;
-          let artist = info[3] || this.artist;
+          let path = info[0].trim();
+          let src = info[1].trim() || this.src;
+          let title = info[2].trim() || this.title;
+          let artist = info[3].trim() || this.artist;
 
           if (this.$route.path.includes(path)) imageSrc = { src, title, artist };
 
