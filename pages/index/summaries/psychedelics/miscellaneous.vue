@@ -2,7 +2,7 @@
   <div class="pageContent effectCategories">
     <div>
       <fa
-        :icon="['far', 'user']"
+        :icon="['far', 'cogs']"
         class="fa categoryIcon" />
       <h1> Miscellaneous Effects of Psychedelics </h1>
       <div class="categoryDescription">

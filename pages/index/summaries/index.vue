@@ -1,5 +1,8 @@
 <template>
   <div class="pageContent substanceArticles"> 
+    <fa 
+      :icon="['far', 'flask']"
+      class="fa categoryIcon" />
     <h1> Substance Summaries </h1>
 
     <p> The following articles break down the general subjective effects of hallucinogens 
