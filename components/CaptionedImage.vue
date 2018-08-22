@@ -83,7 +83,7 @@ export default {
       type: String,
       default: ""
     },
-    pathImg: {
+    imageRoutes: {
       type: String,
       default: undefined
     }
@@ -97,16 +97,16 @@ export default {
         caption: this.caption
       };
 
-      if (this.pathImg) {
-        let routes = this.pathImg.split(',');
+      if (this.imageRoutes) {
+        let routes = this.imageRoutes.split(',');
 
         routes.forEach((route) => {
           let info = route.split(':');
-          let path = info[0].trim();
-          let src = info[1].trim() || this.src;
-          let title = info[2].trim() || this.title;
-          let artist = info[3].trim() || this.artist;
-          let caption = info[4].trim() || this.caption;
+          let path = info[0] ? info[0].trim() : undefined;
+          let src = info[1] ? info[1].trim() : this.src;
+          let title = info[2] ? info[2].trim() : this.title;
+          let artist = info[3] ? info[3].trim() : this.artist;
+          let caption = info[4] ? info[4].trim() : this.caption;
 
           if (this.$route.path.includes(path)) imageSrc = { src, title, artist, caption };
 

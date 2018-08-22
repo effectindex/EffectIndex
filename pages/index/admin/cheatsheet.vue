@@ -51,10 +51,10 @@
               <td> caption </td> <td> Caption for the image </td>
             </tr>
             <tr>
-              <td> imageSrc </td> 
+              <td> imageRoutes </td> 
               <td> Comma-separated list of colon-separated properties that match particular routes. <br >
-                imageSrc="ROUTE:IMAGE:TITLE:ARTIST,ROUTE:IMAGE:TITLE:ARTIST,ROUTE:IMAGE:TITLE:ARTIST" <br> 
-                e.g. ##cap-img|imageSrc="dissociative:/gallery/dissociative.jpg:The Great Dissociative:Some Artist,deliriant:/gallery/deliriant.jpg:The Minor Deliriant:Some Other Artist"
+                imageRoutes="PATH:IMAGE:TITLE:ARTIST:CAPTION,PATH:IMAGE:TITLE:ARTIST:CAPTION,PATH:IMAGE:TITLE:ARTIST:CAPTION" <br> 
+                e.g. ##cap-img|imageRoutes="dissociative:/gallery/dissociative.jpg:The Great Dissociative:Some Artist,deliriant:/gallery/deliriant.jpg:The Minor Deliriant:Some Other Artist"
               </td>
             </tr>
           </tbody>
@@ -130,6 +130,13 @@
             </tr>
             <tr>
               <td> artist </td> <td> Audio artist </td>
+            </tr>
+            <tr>
+              <td> audioRoutes </td> 
+              <td> Comma-separated list of colon-separated properties that match particular routes. <br >
+                audioRoutes="PATH:AUDIO:TITLE:ARTIST,PATH:AUDIO:TITLE:ARTIST,PATH:AUDIO:TITLE:ARTIST" <br> 
+                e.g. ##audio|audioRoutes="dissociative:/audio/dissociative.mp3:The Great Dissociative:Some Artist,deliriant:/audio/deliriant.mp3:The Minor Deliriant:Some Other Artist"
+              </td>
             </tr>
           </tbody>
         </table>      

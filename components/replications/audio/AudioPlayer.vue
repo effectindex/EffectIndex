@@ -31,8 +31,8 @@
     </div>
     <div class="audioPlayer__audioInfo">
       <div class="audioPlayer__titleBar">
-        <div class="audioPlayer__title"> {{ title }} </div>
-        <div class="audioPlayer__artist"> {{ artist }} </div>
+        <div class="audioPlayer__title"> {{ audioInfo.title }} </div>
+        <div class="audioPlayer__artist"> {{ audioInfo.artist }} </div>
       </div>
     </div>
     <div
@@ -64,6 +64,10 @@ export default {
     artist: {
       type: String,
       default: ""
+    },
+    audioRoutes: {
+      type: String,
+      default: ""
     }
   },
   data() {
@@ -75,9 +79,33 @@ export default {
       wavesurfer: undefined
     };
   },
+  computed: {
+    audioInfo() {
+      let r = {
+        src: this.src,
+        title: this.title,
+        artist: this.artist
+      };
+
+      if (this.audioRoutes) {
+        let routes = this.audioRoutes.split(',');
+        routes.forEach((route) => {
+          let info = route.split(':');
+          let path = info[0] ? info[0].trim() : undefined;
+          let src = info[1] ? info[1].trim() : this.src;
+          let title = info[2] ? info[2].trim() : this.title;
+          let artist = info[3] ? info[3].trim() : this.artist;
+
+          if (this.$route.path.includes(path)) r = { src, title, artist };
+        });
+      }
+
+      return r;
+    }
+  },
   watch: {
     src: function(val) {
-      this.wavesurfer.load(val);
+      this.load();
     }
   },
   beforeDestroy() {
@@ -103,7 +131,7 @@ export default {
   methods: {
     load() {
       this.state = "LOADING";
-      this.wavesurfer.load(this.src);
+      this.wavesurfer.load(this.audioInfo.src);
     },
     play() {
       this.state = "PLAYING";
