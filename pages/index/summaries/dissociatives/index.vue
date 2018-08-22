@@ -119,6 +119,7 @@ import CaptionedImage from "@/components/CaptionedImage";
 import LongSummary from "@/components/effects/LongSummary";
 
 export default {
+  name: 'Dissociatives',
   components: {
     CaptionedImage,
     LongSummary

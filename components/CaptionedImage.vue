@@ -3,8 +3,8 @@
     :class="'captionedImage ' + float"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }">
     <img 
-      v-show="src"
-      :src="src" 
+      v-show="imageSrc.src"
+      :src="imageSrc.src" 
       :height="(height ? height + 'px' : 'auto')"
       @click.stop="toggleModal">
     <div 
@@ -30,11 +30,11 @@
     </div>
     <figcaption class="captionedImage__caption">
       <span 
-        v-show="title && artist"
+        v-show="(title || imageSrc.title) && (artist || imageSrc.artist)"
         class="artistTitle"
       >
-        <span class="title"> {{ title }} </span> by
-        <span class="artist"> {{ artist }} </span>
+        <span class="title"> {{ title || imageSrc.title }} </span> by
+        <span class="artist"> {{ artist || imageSrc.artist }} </span>
         <span v-show="caption"> - </span>
       </span>
       {{ caption }}
@@ -82,9 +82,38 @@ export default {
     top: {
       type: String,
       default: ""
+    },
+    pathImg: {
+      type: String,
+      default: undefined
     }
   },
   computed: {
+    imageSrc() {
+      let imageSrc = {
+        src: this.src,
+        title: this.title,
+        artist: this.artist 
+      };
+
+      if (this.pathImg) {
+        let routes = this.pathImg.split(',');
+
+        routes.forEach((route) => {
+          let info = route.split(':');
+          let path = info[0];
+          let src = info[1] || this.src;
+          let title = info[2] || this.title;
+          let artist = info[3] || this.artist;
+
+          if (this.$route.path.includes(path)) imageSrc = { src, title, artist };
+
+        });
+      }
+
+      return imageSrc;
+    },
+
     float() {
       switch (this.align.toLowerCase()) {
         case "right":
@@ -109,7 +138,7 @@ export default {
       this.$store.commit("set_modal_data", this.modalData);
       this.$store.commit("toggle_modal");
     }
-  }
+  },
 };
 </script>
 
