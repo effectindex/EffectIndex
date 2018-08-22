@@ -35,9 +35,9 @@
       >
         <span class="title"> {{ title || imageSrc.title }} </span> by
         <span class="artist"> {{ artist || imageSrc.artist }} </span>
-        <span v-show="caption"> - </span>
+        <span v-show="caption || imageSrc.caption"> - </span>
       </span>
-      {{ caption }}
+      {{ caption || imageSrc.caption }}
     </figcaption>
   </figure>
 
@@ -93,7 +93,8 @@ export default {
       let imageSrc = {
         src: this.src,
         title: this.title,
-        artist: this.artist 
+        artist: this.artist,
+        caption: this.caption
       };
 
       if (this.pathImg) {
@@ -105,8 +106,9 @@ export default {
           let src = info[1].trim() || this.src;
           let title = info[2].trim() || this.title;
           let artist = info[3].trim() || this.artist;
+          let caption = info[4].trim() || this.caption;
 
-          if (this.$route.path.includes(path)) imageSrc = { src, title, artist };
+          if (this.$route.path.includes(path)) imageSrc = { src, title, artist, caption };
 
         });
       }
