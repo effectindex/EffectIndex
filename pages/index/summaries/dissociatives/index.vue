@@ -5,7 +5,7 @@
         style="opacity: 0.6;"
         class="fa categoryIcon"
         src="/icons/disconnective.svg">
-      <h1> Miscellaneous Effects of Dissociatives </h1>
+      <h1> Subjective Effects of Dissociatives </h1>
       <div class="categoryDescription">
         <p>This article breaks down the subjective effects of the dissociative experience into simple and easy
         to understand descriptions with accompanying image replications. This is done without resorting to metaphor,

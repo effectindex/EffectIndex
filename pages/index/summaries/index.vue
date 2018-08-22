@@ -215,6 +215,19 @@
               </li>
             </ul>
 
+
+            <h4> Uncomfortable Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous', 'uncomfortable')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
           </panel>
         </category>
       </div>

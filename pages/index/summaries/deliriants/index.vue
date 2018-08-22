@@ -4,7 +4,7 @@
       <fa
         :icon="['far', 'user']"
         class="fa categoryIcon" />
-      <h1> Miscellaneous Effects of Deliriants </h1>
+      <h1> Subjective Effects of Deliriants </h1>
       <div class="categoryDescription">
         <p> Write me </p>
       </div>
