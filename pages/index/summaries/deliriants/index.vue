@@ -22,14 +22,147 @@
     </div>
     <hr>
     <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Visual Effects
+        <fa 
+          :icon="['far', 'eye']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Visual effects </b> are any subjective experience which directly alters a person's sense of sight.
+      </p>
+
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('deliriant')"
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'visual')"
         :index="i"
         :effect="effect"
         :key="effect._id" />
     </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Auditory Effects
+        <fa 
+          :icon="['far', 'volume-up']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Auditory effects </b> are any subjective effect which directly alters a person's sense of hearing. 
+      </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'visual')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Tactile Effects
+        <fa 
+          :icon="['far', 'volume-up']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Tactile effects </b> are any subjective effect which directly alters a person's sense of touch. 
+      </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'tactile')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Multisensory Effects
+        <fa 
+          :icon="['far', 'cogs']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Multisensory effects </b> are any subjective effect which directly alters two or more senses simultaneously. <br> <br> 
+        Although some hallucinatory effects may affect multiple senses at one time they are usually 
+        not categorized as 'multisensory effects' unless they do so consistently.
+        For example, while experiences with autonomous entities may sometimes have a tactile component to them, more often
+        than not they are primarily a visual experience and are therefore classified as such. </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'multisensory')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Cognitive Effects
+        <fa 
+          :icon="['far', 'user']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Cognitive effects </b> are any subjective experience which directly alter or introduce new content to an element of a person's cognition.
+      </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'cognitive')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Physical Effects
+        <fa 
+          :icon="['far', 'heart-rate']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        <b> Physical effects </b> are any subjective experience which directly affects an aspect of a person's physical body. 
+      </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'physical')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
+    <div class="effectsContainer">
+      <h3 class="titleContainer"> 
+        Uncomfortable Physical Effects
+        <fa 
+          :icon="['far', 'frown']"
+          class="fa actionIcon" />
+      </h3>
+
+      <p class="actionDescription"> 
+        An <b> uncomfortable physical effect </b> is any substance-induced alteration of a person's physical state which is unpleasant, 
+        undesirable, painful, or otherwise a source of distress. In most cases they indicate a temporary part of a substance's 
+        interaction with the body. However, in certain contexts, they can also indicate the need for attention or even medical treatment 
+        if they become dangerously severe.
+      </p>
+
+      <long-summary 
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'uncomfortable')"
+        :index="i"
+        :effect="effect"
+        :key="effect._id" />
+    </div>
+
   </div>
 </template>
+
 
 <script>
 import CaptionedImage from "@/components/CaptionedImage";

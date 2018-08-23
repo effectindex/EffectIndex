@@ -314,12 +314,106 @@
               <nuxt-link to="/summaries/deliriants/"> Read the full article </nuxt-link>
               detailing the effects of deliriant substances.
             </p>
+
+            <h4> Visual Effects </h4>
             <ul class="effectList">
               <li 
-                v-for="effect in filterEffectsByTag('deliriant')"
+                v-for="effect in filterEffectsByTag('deliriant', 'visual')"
                 :key="effect._id"> 
                 <nuxt-link 
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Auditory Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'auditory')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Tactile Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'tactile')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Taste &amp; Smell Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'gustatory')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'olfactory')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Multisensory Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'multisensory')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Cognitive Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'cognitive')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Physical Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'physical')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+
+            <h4> Uncomfortable Effects </h4>
+            <ul class="effectList">
+              <li 
+                v-for="effect in filterEffectsByTag('deliriant', 'uncomfortable')"
+                :key="effect._id"> 
+                <nuxt-link 
+                  :to="`/summaries/dissociatives?e=${effect.url}`">
                   {{ effect.name }}
                 </nuxt-link>
               </li>
