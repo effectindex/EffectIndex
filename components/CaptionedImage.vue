@@ -131,7 +131,7 @@ export default {
     modalData() {
       return {
         type: this.gfycat ? 'gfycat' : 'image',
-        resource: this.gfycay ? this.gfycat : this.src
+        resource: this.gfycat ? this.gfycat : this.imageSrc.src
       };
     },
   },
