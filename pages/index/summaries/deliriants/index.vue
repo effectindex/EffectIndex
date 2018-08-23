@@ -5,6 +5,13 @@
         src="/icons/deliriant.svg"
         class="fa categoryIcon">
       <h1> Subjective Effects of Deliriants </h1>
+      <captioned-image
+        src="/img/gallery/deliriants.jpg"
+        align="right"
+        width="300"
+        title="700mg Diphenhydramine"
+        artist="'Stas Constantine'"
+        top="true" />
       <div class="categoryDescription">
         <p> This article breaks down the subjective effects of the deliriant experience into simple and easy 
         to understand descriptions with accompanying image replications. This is done without resorting to

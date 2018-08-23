@@ -213,6 +213,7 @@ export default {
   z-index: 5;
   border: 1px solid #DDD;
   background-color: white;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 0.5em;
