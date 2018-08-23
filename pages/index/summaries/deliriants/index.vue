@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <fa
-        :icon="['far', 'user']"
-        class="fa categoryIcon" />
+      <img
+        src="/icons/deliriant.svg"
+        class="fa categoryIcon">
       <h1> Subjective Effects of Deliriants </h1>
       <div class="categoryDescription">
         <p> This article breaks down the subjective effects of the deliriant experience into simple and easy 

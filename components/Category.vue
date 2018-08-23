@@ -64,12 +64,12 @@ export default {
   }
 
   .image {
-    height: 1em;
+    height: 25px;
     opacity: 0.7;
   }
 
   .icon {
-    height: 1.1em;
+    height: 25px;
     opacity: 0.75;
   }
 

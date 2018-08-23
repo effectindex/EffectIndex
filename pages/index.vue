@@ -28,6 +28,7 @@ import PulloutMenu from "@/components/PulloutMenu/PulloutMenu.vue";
 import Modal from "@/components/Modal";
 
 export default {
+  name: 'EffectIndex',
   components: {
     HeaderNav,
     CustomFooter,
