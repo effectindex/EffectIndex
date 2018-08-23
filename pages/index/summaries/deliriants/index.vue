@@ -53,7 +53,7 @@
       </p>
 
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('deliriant', 'visual')"
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'auditory')"
         :index="i"
         :effect="effect"
         :key="effect._id" />
@@ -63,7 +63,7 @@
       <h3 class="titleContainer"> 
         Tactile Effects
         <fa 
-          :icon="['far', 'volume-up']"
+          :icon="['far', 'paper']"
           class="fa actionIcon" />
       </h3>
 
