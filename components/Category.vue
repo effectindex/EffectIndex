@@ -64,13 +64,11 @@ export default {
   }
 
   .image {
-    height: 25px;
-    opacity: 0.7;
+    height: 1.1em;
   }
 
   .icon {
-    height: 25px;
-    opacity: 0.75;
+    height: 1.1em;
   }
 
   .categoryTitle {
