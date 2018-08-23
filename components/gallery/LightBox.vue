@@ -23,7 +23,7 @@
           </div>
 
           <div 
-            v-if="currentImage.resource && (currentImage.type === 'gfycat') && (!modalActive)"
+            v-else-if="currentImage.resource && (currentImage.type === 'gfycat') && (!modalActive)"
             :key="currentImage.resource"
             style="position:relative;height: 100%;"
           >
@@ -380,10 +380,6 @@ a.lightBox__control:hover {
 @media (max-width: 400px) {
   .lightBox__canvas {
     height: 200px;
-  }
-
-  .lightBox__imageDetails {
-    display: none;
   }
 }
 
