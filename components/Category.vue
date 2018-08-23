@@ -77,7 +77,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items:flex-start;
+    align-items:center;
     font-size: 14pt;
     margin: 0;
     text-align: left;
