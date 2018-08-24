@@ -12,8 +12,17 @@
       }" 
       class="replicationImage"
       @click="toggleModal">
-      <div class="replicationImageDescription">
-        <span class="replicationTitle"> {{ randomReplication.title }} </span>
+      <div 
+        class="replicationImageDescription"
+        @click.stop>
+        A replication of 
+        <span
+          v-for="(effect, index) in replicatedEffects"
+          :key="effect._id" 
+          class="replicationEffect"> 
+          <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }} </nuxt-link>
+          <span v-if="index < (replicatedEffects.length - 1)">, &nbsp;</span>  
+        </span>
         by
         <span class="replicationArtist"> {{ randomReplication.artist }} </span>
       </div>
@@ -24,12 +33,22 @@
 <script>
 export default {
   props: {
-    images: {
+    featured: {
       type: [Array, undefined],
       default: undefined
     }
   },
   computed: {
+    images() {
+      return this.$store.state.replications
+        .filter((replication) => replication.type === 'image');
+    },
+
+    effects() {
+      return this.$store.state.effects;
+    },
+
+
     randomReplication() {
       if (!this.images || !this.images.length) return {};
       else {
@@ -43,6 +62,21 @@ export default {
       return `url("${prefix + this.randomReplication.resource}"`; 
     },
 
+    replicatedEffects() {
+      let replicatedEffectIDs = this.randomReplication.associated_effects;
+      let replicatedEffects = this.effects.filter((effect) => replicatedEffectIDs.includes(effect._id));
+      return replicatedEffects;
+    },
+
+    replicatedEffectList() {
+      let list = '';
+      this.replicatedEffects.forEach((replicatedEffect, index) => {
+        list += replicatedEffect.name;
+        if (index < (this.replicatedEffects.length - 1)) list += ' & ';
+      });
+      return list;
+    },
+
     modalData() {
       return {
         type: 'image',
@@ -54,7 +88,8 @@ export default {
     toggleModal() {
       this.$store.commit("set_modal_data", this.modalData);
       this.$store.commit("toggle_modal");
-    }
+    },
+
   }
 };
 </script>
