@@ -1,21 +1,32 @@
 <template>
   <div class="pageContentContainer">
     <div class="pageContent">
-      <h1> Welcome to Effect Index </h1>
       <description />
+      <no-ssr>
+        <featured-replication
+          :images="imageReplications" />
+      </no-ssr>
     </div>
   </div>
 </template>
 
 <script>
 import Description from '@/components/home/Description';
+import FeaturedReplication from '@/components/home/FeaturedReplication';
 
 export default {
   scrollToTop: true,
   components: {
-    Description
+    Description,
+    FeaturedReplication
   },
-  
+
+  computed: {
+    imageReplications() {
+      return this.$store.state.replications.filter((replication) => replication.type === 'image');
+    }
+  },
+
   async fetch({ store }) {
     await store.dispatch("getEffects");
     await store.dispatch("getReplications");

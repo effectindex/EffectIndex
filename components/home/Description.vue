@@ -27,7 +27,7 @@
         <button 
           style="display: inline-block; margin-right: 2em;"
           class="whiteButton"
-          @click="toggleIntro"> Read Less </button>
+          @click="toggleIntro"> Less </button>
 
         <nuxt-link
           style="display: inline-block;"
@@ -39,7 +39,7 @@
     <button 
       v-show="!hiddenIntro"
       class="whiteButton"
-      @click="toggleIntro"> Read More </button>
+      @click="toggleIntro"> More </button>
   </div>
 </template>
 

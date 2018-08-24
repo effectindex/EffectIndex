@@ -10,7 +10,7 @@
         align="right"
         width="300"
         title="700mg Diphenhydramine"
-        artist="'Stas Constantine'"
+        artist="Stas Constantine"
         top="true" />
       <div class="categoryDescription">
         <p> This article breaks down the subjective effects of the deliriant experience into simple and easy 
