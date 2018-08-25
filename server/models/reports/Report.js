@@ -41,7 +41,11 @@ const reportSchema = new Schema({
   }],
   conclusion: String,
   tags: [String],
-  sectionVisibility: Object
+  sectionVisibility: Object,
+  featured: {
+    type: Boolean,
+    default: false
+  }
 }, 
   {minimize: false}
 );

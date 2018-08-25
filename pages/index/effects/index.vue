@@ -22,7 +22,7 @@
               title="Enhancements" />
             <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
-              title="Suppresions" />
+              title="Suppressions" />
             <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions" />

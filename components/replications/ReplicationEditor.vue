@@ -128,12 +128,24 @@
         :artist="artist" />
     </div>
 
+    <div>
+      <label for="featured">
+        Featured 
+        <input 
+          id="featured"
+          v-model="featured"
+          type="checkbox">
+      </label>
+    </div>
+
     <div class="replication__buttons">
       <button @click="submitReplication()"> Save </button>
       <nuxt-link 
         tag="button"
         to="/admin/replications/list"> Cancel </nuxt-link>
     </div>
+
+
   </div>
 </template>
 
@@ -164,7 +176,8 @@ export default {
       date: this.replication ? this.replication.date : "",
       associated_effects: this.replication
         ? this.replication.associated_effects
-        : []
+        : [],
+      featured: this.replication ? this.replication.featured : false,
     };
   },
   mounted() {
@@ -183,7 +196,8 @@ export default {
         artist_url: this.artist_url,
         description: this.description,
         date: this.date,
-        associated_effects: this.associated_effects
+        associated_effects: this.associated_effects,
+        featured: this.featured
       };
 
       this.$emit(

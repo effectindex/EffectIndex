@@ -147,6 +147,16 @@
       v-show="sectionVisibility.tags"
       v-model="reportData.tags" />
 
+    <div>
+      <label for="featured">
+        Featured 
+        <input 
+          id="featured"
+          v-model="reportData.featured"
+          type="checkbox">
+      </label>
+    </div>
+
     <div class="reportEditor__inputReportButtonContainer">
       <nuxt-link
         class="reportEditor__cancelLink"
@@ -198,7 +208,8 @@ export default {
         peak: this.report ? this.report.peak : [],
         offset: this.report ? this.report.offset : [],
         conclusion: this.report ? this.report.conclusion : undefined,
-        tags: this.report ? this.report.tags : []
+        tags: this.report ? this.report.tags : [],
+        featured: this.report ? this.report.featured : 'asdf',
       },
       sectionVisibility: this.visibility ? this.visibility : 
       (() => { return ['subject', 'substances', 'onset', 'peak', 'offset',

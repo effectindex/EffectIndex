@@ -26,7 +26,11 @@ const replicationSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Effect"
       }
-    ]
+    ],
+    featured: {
+      type: Boolean,
+      default: false
+    }
   }
 );
 

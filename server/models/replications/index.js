@@ -23,9 +23,10 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       resource: r.resource,
       thumbnail: r.thumbnail,
       type: r.type,
-      associated_effects: r.associated_effects
+      associated_effects: r.associated_effects,
+      featured: r.featured
     });
-
+    
     let returnedReplication = await replication.save().catch((err) => {
       throw API_Error('REPLICATION_SAVE_ERROR', err);
     });
@@ -89,7 +90,7 @@ router.post('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['adm
     if (replication) {
 
       let r = await Replication.findById(req.params.id).exec();
-      ['title', 'artist', 'artist_url', 'description', 'date', 'resource', 'thumbnail', 'type', 'associated_effects']
+      ['title', 'artist', 'artist_url', 'description', 'date', 'resource', 'thumbnail', 'type', 'associated_effects', 'featured']
       .forEach((field) => r[field] = replication[field]);
 
       let updatedReplication = await r.save();

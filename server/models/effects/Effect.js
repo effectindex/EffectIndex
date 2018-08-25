@@ -23,7 +23,11 @@ const Effect = mongoose.model("Effect", {
   related_substances: Array,
   see_also: Array,
   external_links: Array,
-  social_media_image: String
+  social_media_image: String,
+  featured: {
+    type: Boolean,
+    default: false
+  }
 });
 
 module.exports = Effect;

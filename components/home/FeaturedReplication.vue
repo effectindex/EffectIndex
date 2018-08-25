@@ -99,9 +99,8 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     margin: 2em 0;
-    border: 1px solid #CCC;
-    background-color: rgb(252, 252, 252);
   }
 
   .replicationsContainer h1 {
@@ -115,7 +114,6 @@ export default {
     position: relative;
     min-width: 250px;
     height: 300px;
-    margin: 1em;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -136,7 +134,6 @@ export default {
 
   .replicationsDescription {
     flex: 1;
-    margin: 1em;
     min-width: 250px;
 
   }

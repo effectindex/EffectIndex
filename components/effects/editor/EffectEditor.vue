@@ -109,6 +109,17 @@
         </div>
       </div>
 
+      <div>
+        <label for="featured">
+          Featured 
+          <input 
+            id="featured"
+            v-model="featured"
+            type="checkbox">
+        </label>
+      </div>
+
+
     </div>
 
     <div class="effectEditor__buttons">
@@ -167,7 +178,8 @@ export default {
       long_summary: this.effect ? this.effect.long_summary_raw : "",
       analysis: this.effect ? this.effect.analysis_raw : "",
       gallery_order: this.effect ? this.effect.gallery_order : [],
-      social_media_image: this.effect ? this.effect.social_media_image : ""
+      social_media_image: this.effect ? this.effect.social_media_image : "",
+      featured: this.effect ? this.effect.featured : false
     };
   },
   computed: {
@@ -213,7 +225,8 @@ export default {
         analysis: this.analysis,
         contributors: this.contributors,
         gallery_order: this.gallery_order,
-        social_media_image: this.social_media_image
+        social_media_image: this.social_media_image,
+        featured: this.featured
       });
     },
     makeGalleryOrder() {
