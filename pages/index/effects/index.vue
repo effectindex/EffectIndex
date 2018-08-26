@@ -106,12 +106,6 @@
             <actions
               :effects="filterEffectsByTag('physical', 'alteration')"
               title="Alterations" />
-            <actions
-              :effects="filterEffectsByTag('physical', 'cardiovascular')"
-              title="Cardiovascular" />
-            <actions
-              :effects="filterEffectsByTag('physical', 'bodily')"
-              title="Bodily" />
           </category>
         
           <category
@@ -268,12 +262,6 @@
             <actions
               :effects="filterEffectsByTag('physical', 'alteration')"
               title="Alterations" />
-            <actions
-              :effects="filterEffectsByTag('physical', 'cardiovascular')"
-              title="Cardiovascular" />
-            <actions
-              :effects="filterEffectsByTag('physical', 'bodily')"
-              title="Bodily" />
           </category>
         </column>
 
@@ -289,7 +277,7 @@
               title="Cerebrovascular" />
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'bodily')"
-              title="bodily" />
+              title="Bodily" />
           </category>
         </column>      
       </tab>

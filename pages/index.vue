@@ -129,19 +129,6 @@ export default {
 
 /* Page Content Styling */
 
-.pageContentContainer {
-  display: flex;
-  flex-direction: row;
-  padding: 0.5em;
-  max-width: 1000px;
-}
-
-@media (max-width: 800px) {
-  .pageContentContainer {
-    flex-direction: column;
-  }
-}
-
 .pageContent {
   padding-bottom: 50px;
   font-size: 18px;

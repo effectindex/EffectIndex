@@ -87,7 +87,7 @@
         effects as they have their own defining qualities which standard physical effects do not. </p>
         
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'physical')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
         :index="i"
         :effect="effect"
         :key="effect._id" />

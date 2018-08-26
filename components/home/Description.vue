@@ -5,6 +5,9 @@
       resource dedicated to establishing the field of formalised subjective effect documentation. It is the home
       of the <nuxt-link to="/effects/"> Subjective Effect Index </nuxt-link> (SEI), which exists to serve as a comprehensive map of all potential experiences
       which can occur under the influence of any class of psychoactive compound, particularly hallucinogens.
+      <a 
+        class="readButton"
+        @click="toggleIntro"> (read {{ hiddenIntro ? 'less' : 'more' }}) </a>
     </p>
 
     <transition name="fade">
@@ -24,22 +27,14 @@
           style which can occur across different substances. Detailed <nuxt-link to="/gallery">replications</nuxt-link> are included whenever possible to supplement
           the text descriptions in the form of images, audio clips, and animations.
         </p>
-        <button 
-          style="display: inline-block; margin-right: 2em;"
-          class="whiteButton"
-          @click="toggleIntro"> Less </button>
 
         <nuxt-link
-          style="display: inline-block;"
+          style="display: block; margin: 0 auto;"
           class="pageContent whiteButton"
           to="/about"> About Us </nuxt-link>
       </div>
     </transition>
 
-    <button 
-      v-show="!hiddenIntro"
-      class="whiteButton"
-      @click="toggleIntro"> More </button>
   </div>
 </template>
 
@@ -65,5 +60,9 @@ methods: {
 }
 .fade-enter {
   opacity: 0;
+}
+.readButton {
+  font-size: 12pt;
+  cursor: pointer;
 }
 </style>

@@ -139,7 +139,7 @@
       </p>
 
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('deliriant', 'physical')"
+        v-for="(effect, i) in filterEffectsByTag('deliriant', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
         :index="i"
         :effect="effect"
         :key="effect._id" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="pageContent">
+  <div class="pageContent tripReports">
     <fa
       :icon="['far', 'file-signature']"
       class="fa categoryIcon" /> 
@@ -174,7 +174,7 @@ export default {
 </script>
 
 <style>
-p:last-of-type {
+.tripReports p:last-of-type {
   padding-bottom: 1em;
 }
 
