@@ -7,7 +7,7 @@
         v-for="(effect, index) in visualEffects"
         :to="`/effects/${effect.url}`"
         :key="effect._id">
-        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ',' : '' }}
+        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
       </nuxt-link>
 
       <h4> Cognitive Effects </h4>
@@ -15,7 +15,7 @@
         v-for="(effect, index) in cognitiveEffects"
         :to="`/effects/${effect.url}`"
         :key="effect._id">
-        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ',' : '' }}
+        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
       </nuxt-link>
 
       <h4> Miscellaneous Effects </h4>
@@ -23,7 +23,7 @@
         v-for="(effect, index) in miscellaneousEffects"
         :to="`/effects/${effect.url}`"
         :key="effect._id">
-        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ',' : '' }}
+        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
       </nuxt-link>
 
     </div>
@@ -60,8 +60,8 @@ export default {
 <style scoped>
 
   .featuredArticleListContainer {
-    margin-top: 1em;
     min-width: 400px;
+    font-size: 12pt;
   }
 
   .featuredArticles h4 {

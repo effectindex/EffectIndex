@@ -1,11 +1,5 @@
 <template>
   <div class="replicationsContainer">
-    <div class="replicationsDescription">
-      <h1> Replications </h1>
-      <p class="replicationsDescriptionText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quam mi, mollis vitae 
-      congue quis, vestibulum a dolor. Integer sit amet enim vitae urna luctus rhoncus. Lorem ipsum
-      dolor sit amet, consectetur adipiscing elit. </p>
-    </div>
     <div 
       :style="{
         backgroundImage: randomImage
@@ -26,6 +20,11 @@
         by
         <span class="replicationArtist"> {{ randomReplication.artist }} </span>
       </div>
+    </div>
+    <div class="replicationsDescription">
+      <p class="replicationsDescriptionText"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quam mi, mollis vitae 
+      congue quis, vestibulum a dolor. Integer sit amet enim vitae urna luctus rhoncus. Lorem ipsum
+      dolor sit amet, consectetur adipiscing elit. </p>
     </div>
   </div>
 </template>
@@ -100,9 +99,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    border: 1px solid #DDD;
     background-color: rgb(252, 252, 252);
-    padding: 0.5em;
   }
 
   .replicationsContainer h1 {
@@ -137,11 +134,11 @@ export default {
   .replicationsDescription {
     flex: 1;
     min-width: 250px;
-    padding-right: 1em;
+    padding-top: 1em;
   }
 
   .replicationsDescriptionText {
-    padding: 0.25em;
+    margin-bottom: 0;
   }
 
   .replicationTitle {

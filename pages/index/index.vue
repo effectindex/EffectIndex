@@ -1,19 +1,30 @@
 <template>
   <div class="pageContent">
     <description />
-    <div class="featuredContainer">
-      <panel
-        title="Featured Articles">
-        <featured-articles />
-      </panel>
-      <panel
-        title="Featured Reports">
-        <featured-reports />
-      </panel>
-    </div>
-    <no-ssr>
-      <featured-replication />
-    </no-ssr>
+    <columns>
+      <column>
+
+        <div class="featuredContainer">
+          <panel
+            title="Featured Articles"
+            style="margin-bottom: 1em;">
+            <featured-articles />
+          </panel>
+          <panel
+            title="Featured Reports">
+            <featured-reports />
+          </panel>
+        </div>
+      </column>
+      <column>
+        <panel
+          title="Replications">
+          <no-ssr>
+            <featured-replication />
+          </no-ssr>
+        </panel>
+      </column>
+    </columns>
   </div>
 </template>
 
@@ -23,6 +34,9 @@ import Panel from '@/components/home/Panel';
 import FeaturedReplication from '@/components/home/FeaturedReplication';
 import FeaturedArticles from '@/components/home/FeaturedArticles';
 import FeaturedReports from '@/components/home/FeaturedReports';
+import Column from '@/components/home/Column';
+import Columns from '@/components/home/Columns';
+
 
 export default {
   name: 'Home',
@@ -32,7 +46,9 @@ export default {
     FeaturedReplication,
     FeaturedArticles,
     FeaturedReports,
-    Panel
+    Panel,
+    Column,
+    Columns
   },
 
   computed: {
@@ -51,8 +67,6 @@ export default {
 
 <style scoped>
   .featuredContainer {
-    margin: 1em 0;
-    margin-top: 2em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -65,28 +79,17 @@ export default {
     background-color: rgb(252, 252, 252);
   }
 
-  .frontpagePanel:first-child {
-    margin-right: 1em;
-  }
-
-    @media(max-width: 765px) {
-      .frontpagePanel:first-child {
-        margin-right: 0;
-        margin-bottom: 1em;
-      }
-    }
-
   .frontpagePanel >>> .frontpagePanelTitle {
     margin-top: 0;
     line-height: 1em;
-    font-size: 20pt;
-    padding: 0.25em 0.25em;
+    font-size: 18pt;
+    padding: 0.25em 12px;
     border-bottom: 1px solid #DDD;
     background-color: #F0F0F0;
   }
 
   .frontpagePanel >>> .frontpagePanelContent {
-    padding: 0.5em;
+    padding: 12px;
     padding-top: 0;
   }
 

@@ -41,7 +41,7 @@ export default {
     align-items: center;
     width: 100%;
     min-width: 300px;
-    padding: 0.5em;
+    padding: 0.5em 0;
     border: 1px solid #EEE;
     margin-bottom: 0.5em;
   }
