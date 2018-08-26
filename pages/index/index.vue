@@ -2,16 +2,12 @@
   <div class="pageContent">
     <description />
     <columns>
-      <column>
 
+      <column>
         <div class="featuredContainer">
           <panel
             title="Featured Articles">
             <featured-articles />
-          </panel>
-          <panel
-            title="Featured Reports">
-            <featured-reports />
           </panel>
           <panel
             title="Substance Summaries">
@@ -19,6 +15,7 @@
           </panel>
         </div>
       </column>
+
       <column>
         <panel
           title="Featured Replications">
@@ -26,7 +23,12 @@
             <featured-replication />
           </no-ssr>
         </panel>
+        <panel
+          title="Featured Reports">
+          <featured-reports />
+        </panel>
       </column>
+      
     </columns>
   </div>
 </template>
