@@ -18,7 +18,7 @@
           v-for="(effect, index) in cognitiveEffects"
           :to="`/effects/${effect.url}`"
           :key="effect._id">
-          {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
+          {{ effect.name }}{{ (index &lt; (cognitiveEffects.length - 1)) ? ' &sdot; ' : '' }}
         </nuxt-link>
       </div>
 
@@ -28,7 +28,7 @@
           v-for="(effect, index) in miscellaneousEffects"
           :to="`/effects/${effect.url}`"
           :key="effect._id">
-          {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
+          {{ effect.name }}{{ (index &lt; (miscellaneousEffects.length - 1)) ? ' &sdot; ' : '' }}
         </nuxt-link>
       </div>
 

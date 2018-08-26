@@ -6,29 +6,33 @@
       <column>
         <div class="featuredContainer">
           <panel
-            title="Featured Articles">
-            <featured-articles />
-          </panel>
-          <panel
+            :icon="['far', 'flask']"
             title="Substance Summaries">
             <substance-summaries />
+          </panel>
+          <panel
+            :icon="['far', 'sitemap']"
+            title="Featured Articles">
+            <featured-articles />
           </panel>
         </div>
       </column>
 
       <column>
         <panel
+          :icon="['far', 'images']"
           title="Featured Replications">
           <no-ssr>
             <featured-replication />
           </no-ssr>
         </panel>
         <panel
+          :icon="['far', 'file-signature']"
           title="Featured Reports">
           <featured-reports />
         </panel>
       </column>
-      
+
     </columns>
   </div>
 </template>
@@ -90,14 +94,22 @@ export default {
     margin-bottom: 1em;
   }
 
+  .frontpagePanel >>> .frontpagePanelTitleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DDD;
+    background-color: #F0F0F0;
+  }
+
   .frontpagePanel >>> .frontpagePanelTitle {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 1em;
     font-size: 18pt;
     padding: 0.25em 12px;
-    border-bottom: 1px solid #DDD;
-    background-color: #F0F0F0;
+
   }
 
 </style>
