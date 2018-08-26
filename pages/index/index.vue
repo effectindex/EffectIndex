@@ -6,19 +6,22 @@
 
         <div class="featuredContainer">
           <panel
-            title="Featured Articles"
-            style="margin-bottom: 1em;">
+            title="Featured Articles">
             <featured-articles />
           </panel>
           <panel
             title="Featured Reports">
             <featured-reports />
           </panel>
+          <panel
+            title="Substance Summaries">
+            <substance-summaries />
+          </panel>
         </div>
       </column>
       <column>
         <panel
-          title="Replications">
+          title="Featured Replications">
           <no-ssr>
             <featured-replication />
           </no-ssr>
@@ -34,6 +37,7 @@ import Panel from '@/components/home/Panel';
 import FeaturedReplication from '@/components/home/FeaturedReplication';
 import FeaturedArticles from '@/components/home/FeaturedArticles';
 import FeaturedReports from '@/components/home/FeaturedReports';
+import SubstanceSummaries from '@/components/home/SubstanceSummaries';
 import Column from '@/components/home/Column';
 import Columns from '@/components/home/Columns';
 
@@ -46,6 +50,7 @@ export default {
     FeaturedReplication,
     FeaturedArticles,
     FeaturedReports,
+    SubstanceSummaries,
     Panel,
     Column,
     Columns
@@ -79,18 +84,18 @@ export default {
     background-color: rgb(252, 252, 252);
   }
 
+  .frontpagePanel:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
   .frontpagePanel >>> .frontpagePanelTitle {
     margin-top: 0;
+    margin-bottom: 0;
     line-height: 1em;
     font-size: 18pt;
     padding: 0.25em 12px;
     border-bottom: 1px solid #DDD;
     background-color: #F0F0F0;
-  }
-
-  .frontpagePanel >>> .frontpagePanelContent {
-    padding: 12px;
-    padding-top: 0;
   }
 
 </style>

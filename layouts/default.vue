@@ -93,6 +93,7 @@ body {
 }
 
 .columns {
+  margin-top: 2em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

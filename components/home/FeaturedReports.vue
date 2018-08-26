@@ -33,6 +33,7 @@ export default {
 
   .featuredReports {
     flex: 1;
+    padding: 12px;
   }
 
   .featuredReport {
@@ -43,11 +44,14 @@ export default {
     min-width: 300px;
     padding: 0.5em 0;
     border: 1px solid #EEE;
+  }
+
+  .featuredReport:not(:last-child) {
     margin-bottom: 0.5em;
   }
 
   .featuredReport >>> .reportInfo {
-    line-height: 1em;
+    line-height: 1.1em;
     flex: 1;
   }
 
@@ -65,7 +69,7 @@ export default {
   }
 
   .featuredReport >>> .reportSubstanceDoseRoa {
-    font-size: 0.9em;
+    font-size: 11pt;
     color: #666;
   }
 

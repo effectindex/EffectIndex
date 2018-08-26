@@ -2,29 +2,35 @@
   <div class="featuredArticles">
     <div class="featuredArticleListContainer">
 
-      <h4> Visual Effects </h4>
-      <nuxt-link 
-        v-for="(effect, index) in visualEffects"
-        :to="`/effects/${effect.url}`"
-        :key="effect._id">
-        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
-      </nuxt-link>
+      <div class="featuredArticleCategory">
+        <h4> Visual Effects </h4>
+        <nuxt-link 
+          v-for="(effect, index) in visualEffects"
+          :to="`/effects/${effect.url}`"
+          :key="effect._id">
+          {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
+        </nuxt-link>
+      </div>
 
-      <h4> Cognitive Effects </h4>
-      <nuxt-link 
-        v-for="(effect, index) in cognitiveEffects"
-        :to="`/effects/${effect.url}`"
-        :key="effect._id">
-        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
-      </nuxt-link>
+      <div class="featuredArticleCategory">
+        <h4> Cognitive Effects </h4>
+        <nuxt-link 
+          v-for="(effect, index) in cognitiveEffects"
+          :to="`/effects/${effect.url}`"
+          :key="effect._id">
+          {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
+        </nuxt-link>
+      </div>
 
-      <h4> Miscellaneous Effects </h4>
-      <nuxt-link 
-        v-for="(effect, index) in miscellaneousEffects"
-        :to="`/effects/${effect.url}`"
-        :key="effect._id">
-        {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
-      </nuxt-link>
+      <div class="featuredArticleCategory">
+        <h4> Miscellaneous Effects </h4>
+        <nuxt-link 
+          v-for="(effect, index) in miscellaneousEffects"
+          :to="`/effects/${effect.url}`"
+          :key="effect._id">
+          {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
+        </nuxt-link>
+      </div>
 
     </div>
   </div>
@@ -64,12 +70,21 @@ export default {
     font-size: 12pt;
   }
 
+  .featuredArticleCategory {
+    border-bottom: 1px solid #DDD;
+    margin: 0;
+    padding: 12px;
+  }
+
   .featuredArticles h4 {
+    font-family: 'Titillium Web';
     text-transform: none;
+    font-size: 13pt;
     letter-spacing: 1px;
     line-height: 1em;
     text-transform: uppercase;
     margin-bottom: 0.25em;
+    margin-top: 0;
   }
 
   .featuredArticles {

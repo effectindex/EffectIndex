@@ -100,6 +100,7 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     background-color: rgb(252, 252, 252);
+    padding: 12px;
   }
 
   .replicationsContainer h1 {
