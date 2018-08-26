@@ -1,6 +1,5 @@
 <template>
   <div class="pageContent">
-    <description />
     <columns>
 
       <column>

@@ -114,7 +114,7 @@ export default {
     position: relative;
     min-width: 250px;
     height: 300px;
-    background-size: contain;
+    background-size: auto 300px;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
