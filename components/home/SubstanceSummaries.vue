@@ -14,18 +14,21 @@
         <nuxt-link :to="'/summaries/deliriants'"> The Subjective Effects of Deliriants </nuxt-link>
       </li>
     </ul>
+    <div class="substanceSummariesStub">
+      For more, see the <nuxt-link to="/summaries/"> substance summary index</nuxt-link>.
+    </div>
   </div>
 </template>
 
 <style scoped>
   .summaryList {
     color: #AAA;
-    padding-left: 1em;
+    padding: 12px;
+    padding-left: calc(12px + 1em);
     margin-bottom: 0;
   }
 
   .substanceSummaries {
-    padding: 12px;
     font-size: 13pt;
   }
 
@@ -35,5 +38,14 @@
 
   .summaryItem:not(:first-child) {
     margin-top: 0.5em;
+  }
+
+  .substanceSummariesStub {
+    padding: 4px 12px;
+    color: #666;
+    line-height: 1.2em;
+    font-size: 12pt;
+    background-color: #F4F4F4;
+    border-top: 1px solid #DDD;
   }
 </style>

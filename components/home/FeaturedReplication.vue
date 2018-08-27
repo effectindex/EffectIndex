@@ -37,6 +37,9 @@
         <span class="replicationArtist"> {{ replication.artist }} </span>
       </div>
     </div>
+    <div class="replicationsStub">
+      For more, see the <nuxt-link to="/replications/"> replications gallery</nuxt-link>.
+    </div>
   </div>
 </template>
 
@@ -145,7 +148,6 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     background-color: rgb(252, 252, 252);
-    padding: 12px;
   }
 
   .replicationsContainer h1 {
@@ -156,6 +158,7 @@ export default {
 
   .replicationImage {
     flex: 1;
+    margin: 12px;
     position: relative;
     min-width: 250px;
     height: 250px;
@@ -220,4 +223,15 @@ export default {
   .replicationArtist {
     font-style: italic;
   }
+
+  .replicationsStub {
+    width: 100%;
+    font-size: 12pt;
+    color: #666;
+    border-top: 1px solid #DDD;
+    background-color: #F4F4F4;
+    line-height: 1.2em;
+    padding: 4px 12px;
+  }
+
 </style>

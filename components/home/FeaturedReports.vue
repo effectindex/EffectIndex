@@ -1,12 +1,17 @@
 <template>
   <div class="featuredReports">
-    <featured-report
-      v-for="report in featuredReports"
-      :key="report.id"
-      :title="report.title"
-      :author="report.subject.name"
-      :url="report.url"
-      :substances="report.substances" />
+    <div class="reportsContainer">
+      <featured-report
+        v-for="report in featuredReports"
+        :key="report.id"
+        :title="report.title"
+        :author="report.subject.name"
+        :url="report.url"
+        :substances="report.substances" />
+    </div>
+    <div class="featuredReportsStub">
+      For more, see the <nuxt-link to="/reports/"> reports section</nuxt-link>.
+    </div>
   </div>
 </template>
 
@@ -35,6 +40,9 @@ export default {
 
   .featuredReports {
     flex: 1;
+  }
+
+  .reportsContainer {
     padding: 12px;
   }
 
@@ -77,6 +85,15 @@ export default {
 
   .featuredReport:hover {
     background-color: rgb(245, 245, 245);
+  }
+
+  .featuredReportsStub {
+    padding: 4px 12px;
+    color: #666;
+    line-height: 1.2em;
+    font-size: 12pt;
+    background-color: #F4F4F4;
+    border-top: 1px solid #DDD;
   }
 
 </style>

@@ -32,6 +32,10 @@
         </nuxt-link>
       </div>
 
+      <div class="featuredArticlesStub">
+        For more, see the <nuxt-link to="/effects/"> Subjective Effect Index</nuxt-link>.
+      </div>
+
     </div>
   </div>
 </template>
@@ -88,5 +92,12 @@ export default {
 
   .featuredArticles {
     flex: 1;
+  }
+
+  .featuredArticlesStub {
+    background-color: #F4F4F4;
+    color: #666;
+    line-height: 1.2em;
+    padding: 4px 12px;
   }
 </style>
