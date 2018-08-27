@@ -3,7 +3,7 @@
     <div class="reportInfo">
       <div class="reportTitle">
         <nuxt-link
-          :to="`/reports/${url}`">
+          :to="`/reports/${slug}`">
           {{ title }}
         </nuxt-link>
       </div> 
@@ -29,7 +29,7 @@ export default {
       type: String,
       default: ''
     },
-    url: {
+    slug: {
       type: String,
       default: ''
     },

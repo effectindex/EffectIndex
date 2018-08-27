@@ -107,8 +107,8 @@ export default {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 1em;
-    font-size: 18pt;
-    padding: 0.25em 12px;
+    font-size: 16pt;
+    padding: 6px 12px;
 
   }
 

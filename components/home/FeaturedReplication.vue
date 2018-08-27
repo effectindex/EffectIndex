@@ -172,8 +172,9 @@ export default {
     position: absolute;
     user-select: none;
     display: flex;
-    opacity: 0.6;
-    color: #ccc;
+    opacity: 0.4;
+    color: #EEE;
+    filter: drop-shadow(0 0 2px black);
     padding: 0.5em;
     justify-content: center;
     top: calc(50% - 50px);

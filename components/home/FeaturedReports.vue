@@ -6,7 +6,7 @@
         :key="report.id"
         :title="report.title"
         :author="report.subject.name"
-        :url="report.url"
+        :slug="report.slug"
         :substances="report.substances" />
     </div>
     <div class="featuredReportsStub">
