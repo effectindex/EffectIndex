@@ -4,10 +4,7 @@
       <span class="bold"> Effect Index, </span> which is currently under construction, is a
       resource dedicated to establishing the field of formalised subjective effect documentation. It is the home
       of the <nuxt-link to="/effects/"> Subjective Effect Index </nuxt-link> (SEI), which exists to serve as a comprehensive map of all potential experiences
-      which can occur under the influence of any class of psychoactive compound, particularly hallucinogens.
-      <a 
-        class="readButton"
-        @click="toggleIntro"> (read {{ hiddenIntro ? 'less' : 'more' }}) </a>
+      which can occur under the influence of any class of psychoactive compound, particularly hallucinogens. 
     </p>
 
     <transition name="fade">
@@ -27,13 +24,21 @@
           style which can occur across different substances. Detailed <nuxt-link to="/gallery">replications</nuxt-link> are included whenever possible to supplement
           the text descriptions in the form of images, audio clips, and animations.
         </p>
-
-        <nuxt-link
-          style="display: block; margin: 0 auto;"
-          class="pageContent whiteButton"
-          to="/about"> About Us </nuxt-link>
       </div>
     </transition>
+
+    <div 
+      style="display: inline-block;"
+      class="whiteButton"
+      @click="toggleIntro"> 
+      read {{ hiddenIntro ? 'less' : 'more' }}
+    </div>
+
+    <nuxt-link
+      v-show="hiddenIntro"
+      style="display: inline-block; margin-left: 1em;"
+      class="pageContent whiteButton"
+      to="/about"> About Us </nuxt-link>
 
   </div>
 </template>

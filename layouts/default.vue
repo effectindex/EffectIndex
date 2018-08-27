@@ -103,8 +103,6 @@ body {
   .column:not(:last-child) {
     margin-right: 0em;
   }
-
-
 }
 
 /* Page Content Styling */

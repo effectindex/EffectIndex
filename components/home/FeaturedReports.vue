@@ -12,6 +12,7 @@
 
 <script>
 import FeaturedReport from '@/components/home/FeaturedReport';
+import { shuffle } from 'lodash';
 
 export default {
   components: {
@@ -23,7 +24,8 @@ export default {
       return this.$store.state.reports;
     },
     featuredReports() {
-      return this.reports.filter((report) => report.featured);
+      const shuffledReports = shuffle(this.reports.filter((report) => report.featured));
+      return shuffledReports.length >= 3 ? shuffledReports.slice(0, 3) : shuffledReports;
     }
   }
 };
@@ -42,7 +44,7 @@ export default {
     align-items: center;
     width: 100%;
     min-width: 300px;
-    padding: 0.5em 0;
+    padding: 0.5em;
     border: 1px solid #EEE;
   }
 
