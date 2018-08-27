@@ -63,11 +63,13 @@ export default {
   .featuredReport >>> .reportInfo {
     line-height: 1.1em;
     flex: 1;
+    padding-right: 6px;
   }
 
   .featuredReport >>> .reportSubstance {
     flex: 1;
     line-height: 1em;
+    padding-left: 6px;
   }
 
   .featuredReport >>> .reportAuthor {

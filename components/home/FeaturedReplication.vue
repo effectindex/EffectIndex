@@ -172,8 +172,8 @@ export default {
     position: absolute;
     user-select: none;
     display: flex;
-    opacity: 0.4;
-    color: black;
+    opacity: 0.6;
+    color: #ccc;
     padding: 0.5em;
     justify-content: center;
     top: calc(50% - 50px);
@@ -182,7 +182,7 @@ export default {
   }
 
   .replicationControls:hover {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
   .replicationControls.previous {
