@@ -78,8 +78,10 @@ export default {
         (replication) => replication.associated_effects.includes(this.selected_effect_id));
     },
     gallery_order() {
-      return this.replicated_effects.find(
-        (effect) => (effect._id === this.selected_effect_id))['gallery_order'];
+      const selectedEffect = this.replicated_effects.find(
+        (effect) => (effect._id === this.selected_effect_id));
+
+      return selectedEffect ? selectedEffect.gallery_order : undefined;
     },
     current_index() {
       return this.replicated_effects.findIndex(

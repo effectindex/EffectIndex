@@ -3,8 +3,9 @@
     <p>
       <span class="bold"> Effect Index, </span> which is currently under construction, is a
       resource dedicated to establishing the field of formalised subjective effect documentation. It is the home
-      of the <nuxt-link to="/effects/"> Subjective Effect Index </nuxt-link> (SEI), which exists to serve as a comprehensive map of all potential experiences
-      which can occur under the influence of any class of psychoactive compound, particularly hallucinogens. 
+      of the <nuxt-link to="/effects/"> Subjective Effect Index </nuxt-link> (SEI), which contains {{ effectCount }} effect
+      descriptions that exist to serve as a comprehensive map of all potential experiences that can occur under the influence of any 
+      class of psychoactive compound, particularly hallucinogens. 
     </p>
 
     <transition name="fade">
@@ -49,6 +50,11 @@ data() {
   return {
     hiddenIntro: false
   };
+},
+computed: {
+  effectCount() {
+    return this.$store.state.effects.length;
+  }
 },
 methods: {
   toggleIntro() {

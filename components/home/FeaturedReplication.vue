@@ -30,7 +30,7 @@
           v-for="(effect, index) in replicatedEffects"
           :key="effect._id" 
           class="replicationEffect"> 
-          <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }} </nuxt-link>
+          <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }}</nuxt-link>
           <span v-if="index < (replicatedEffects.length - 1)">, &nbsp;</span>  
         </span>
         <br>
@@ -84,15 +84,6 @@ export default {
     imageUrl() {
       let prefix = '/img/gallery/';
       return `url("${prefix + this.replication.resource}"`; 
-    },
-
-    replicatedEffectList() {
-      let list = '';
-      this.replicatedEffects.forEach((replicatedEffect, index) => {
-        list += replicatedEffect.name;
-        if (index < (this.replicatedEffects.length - 1)) list += ' & ';
-      });
-      return list;
     },
 
     modalData() {

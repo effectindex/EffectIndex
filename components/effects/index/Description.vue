@@ -4,7 +4,6 @@
     and reference for the range of subjective effects that may occur under the influence of psychoactive substances and
     other psychonautic techniques.</p>
 
-
     <transition name="grow">
       <div 
         v-show="show"
@@ -14,7 +13,7 @@
         striving to use simple and accessible language. This is done in the hope that they will eventually serve as a universal
         terminology set that enables people to better communicate and share experiences that are, by nature, difficult to convey. </p>
 
-        <p>The Index is separated into over 230 effects which are organised into categories based on the senses they affect and
+        <p>The Index is separated into {{ effectCount }} effects which are organised into categories based on the senses they affect and
         their behavior. Many of these are further broken down into leveling systems, subcomponents, 
         and style variations that may occur across different substances. Detailed image, video, and audio 
         <a href="/replications"> replications </a> have been included wherever possible to supplement text-based descriptions.</p>
@@ -37,6 +36,11 @@ export default {
     return {
       show: false
     };
+  },
+  computed: {
+    effectCount() {
+      return this.$store.state.effects.length;
+    }
   },
   methods: {
     toggleText() {
