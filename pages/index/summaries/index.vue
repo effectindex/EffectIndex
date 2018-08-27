@@ -18,7 +18,7 @@
     and their full-length articles are clearly linked. </p>
 
     <hr>
-    <div class="columns">
+    <div class="summaryColumns">
       <div class="categoriesContainer">
         <category 
           :icon="['far', 'eye']"
@@ -472,7 +472,7 @@ export default {
     font-family: 'Titillium Web';
   }
 
-  .columns {
+  .summaryColumns {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
