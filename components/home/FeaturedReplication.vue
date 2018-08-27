@@ -24,7 +24,7 @@
       </div>
       <div 
         class="replicationImageDescription"
-        @click.stop>
+        @click.stop="gotoEffect(effect.name)">
         {{ properIntroduction }}
         <span
           v-for="(effect, index) in replicatedEffects"
@@ -203,6 +203,7 @@ export default {
     line-height: 1.25em;
     width: 100%;
     color: #EEE;
+    cursor:default;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.6);
   }
