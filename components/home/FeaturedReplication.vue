@@ -24,7 +24,7 @@
       </div>
       <div 
         class="replicationImageDescription"
-        @click.stop="gotoEffect(effect.name)">
+        @click.stop>
         {{ properIntroduction }}
         <span
           v-for="(effect, index) in replicatedEffects"
