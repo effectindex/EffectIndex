@@ -84,7 +84,7 @@ export default {
 
   .frontpagePanel {
     flex: 1;
-    min-width: 350px;
+    min-width: 300px;
     border: 1px solid #DDD;
     background-color: rgb(252, 252, 252);
   }

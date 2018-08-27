@@ -66,7 +66,6 @@ export default {
 <style scoped>
 
   .featuredArticleListContainer {
-    min-width: 400px;
     font-size: 12pt;
   }
 

@@ -6,7 +6,7 @@
         v-if="icon"
         :icon="icon"
         class="fa categoryIcon"
-        style="font-size: 1.1em; margin: 0.25em;" />
+        style="font-size: 1.1em; margin: 0.25em; opacity: 0.8;" />
     </div>
     <div class="frontpagePanelContent">
       <slot />

@@ -84,7 +84,7 @@ body {
 /* Generic Components */
 .column {
   flex: 1;
-  min-width: 350px;
+  min-width: 300px;
 }
 
 .column:not(:last-child) {
@@ -99,10 +99,12 @@ body {
   flex-wrap: wrap;
 }
 
-@media (max-width: 500px) {
-  .column {
-    margin: 0;
+@media (max-width: 650px) {
+  .column:not(:last-child) {
+    margin-right: 0em;
   }
+
+
 }
 
 /* Page Content Styling */
