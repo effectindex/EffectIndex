@@ -12,7 +12,7 @@
           </panel>
           <panel
             :icon="['far', 'sitemap']"
-            title="Featured Articles">
+            title="Featured Effects">
             <featured-articles />
           </panel>
         </div>
