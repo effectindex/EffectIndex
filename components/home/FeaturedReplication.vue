@@ -201,16 +201,19 @@ export default {
     cursor:default;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.6);
+    text-shadow: 0px 0px 3px black;
   }
 
   .replicationsDescription {
     flex: 1;
     min-width: 250px;
     padding-top: 1em;
+
   }
 
   .replicationsDescriptionText {
     margin-bottom: 0;
+
   }
 
   .replicationTitle {

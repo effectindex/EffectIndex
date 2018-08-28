@@ -120,10 +120,10 @@ export default {
         tactile: "hand-paper",
         disconnective: "chain",
         multisensory: "cogs",
-        physical: "child",
+        uncomfortable: "frown",
+        physical: "heart-rate",
         gustatory: "utensils",
         olfactory: "utensils",
-        uncomfortable: "frown"
       };
 
       if (Array.isArray(tags)) {
