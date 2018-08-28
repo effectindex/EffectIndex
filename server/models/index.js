@@ -7,7 +7,19 @@ const blog = require("./blog/"),
   invitations = require("./invitations/"),
   profiles = require("./profiles/"),
   reports = require("./reports/"),
-  server = require("./server/");
+  server = require("./server/"),
+  search = require("./search/");
+
+const errorHandler = function(err, req, res, next) {
+  if (err["type"] === "API") {
+    let error = { name: err["name"], message: err["message"] };
+    res.status(400).send({ error });
+  } else {
+    console.log(err);
+    res.status(500).send(err);
+  }
+};
+
 
 router
   .use("/blog", blog)
@@ -18,15 +30,9 @@ router
   .use("/profiles", profiles)
   .use("/reports", reports)
   .use("/server", server)
+  .use("/search", search)
 
-  .use(function(err, req, res, next) {
-    if (err["type"] === "API") {
-      let error = { name: err["name"], message: err["message"] };
-      res.status(400).send({ error });
-    } else {
-      console.log(err);
-      res.status(500).send(err);
-    }
-  });
+  .use(errorHandler);
+
 
 module.exports = router;

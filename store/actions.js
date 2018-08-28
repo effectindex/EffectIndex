@@ -345,5 +345,14 @@ export default {
     } catch (error) {
       throw new Error(error);
     }
+  },
+  // Search
+  async search({ commit }, query) {
+    try {
+      let results = await this.$axios.$post("/api/search", {query});
+      commit('set_search_results', results);
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 };

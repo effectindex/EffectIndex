@@ -24,7 +24,7 @@ export default {
         title: 'Effect Updated.',
         text: 'The effect has succesfully updated.'
       });
-      console.log('pushing');
+      
       this.$router.push("/effects/" + returnedEffect.url);
     },
     async updateEffect(effect) {

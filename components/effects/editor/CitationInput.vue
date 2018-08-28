@@ -39,7 +39,7 @@
     </div>
     <citation-list>
       <citation 
-        v-for="(citation, index) in value"
+        v-for="(citation, index) in citations"
         :key="citation.url"
         :from="citation.from"
         :no="String(citation.no)"
@@ -82,6 +82,11 @@ export default {
       from: undefined,
       no: 1
     };
+  },
+  computed: {
+    citations() {
+      return this.value.filter((citation) => citation);
+    }
   },
   methods: {
     addToList() {

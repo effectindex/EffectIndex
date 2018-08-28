@@ -24,6 +24,7 @@ const createStore = () => {
       blogPosts: [],
       profiles: [],
       reports: [],
+      search_results: [],
       admin: {
         userlist: [],
         invitations: []

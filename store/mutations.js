@@ -46,5 +46,8 @@ export default {
   set_modal_data(state, data) {
     state.modal.type = data.type;
     state.modal.resource = data.resource;
+  },
+  set_search_results(state, results) {
+    state.search_results = results;
   }
 };
