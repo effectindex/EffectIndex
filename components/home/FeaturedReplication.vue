@@ -201,7 +201,7 @@ export default {
     cursor:default;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.6);
-    text-shadow: 0px 0px 3px black;
+    text-shadow: 2px 2px 1px black;
   }
 
   .replicationsDescription {
