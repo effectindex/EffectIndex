@@ -12,6 +12,9 @@
       type="text"
       class="searchInput"
       @input="search">
+    <a 
+      class="clearButton"
+      @click="clear"> (clear) </a>
 
     <div
       v-show="results.length"
@@ -22,33 +25,41 @@
       <div 
         v-show="effectResults.length"
         class="effectResults">
+
         <h1> Effects </h1>
-        <search-result
-          v-for="(result, index) in effectResults"
-          :key="index"
-          :type="result.type"
-          :name="result.name" />
+        <effect-result
+          v-for="result in effectResults"
+          :key="result._id"
+          :effect="result.data" />
+
       </div>
 
       <div 
         v-show="reportResults.length"
-        class="reportResults">
-        <search-result
-          v-for="(result, index) in reportResults"
-          :key="index"
-          :type="result.type" />
+        class="effectResults">
+      
+        <h1> Reports </h1>
+        <report-result
+          v-for="result in reportResults"
+          :key="result._id"
+          :report="result.data" />
+
       </div>
+
     </div>
 
   </div>
 </template>
 
 <script>
-import SearchResult from "@/components/search/SearchResult";
+import EffectResult from "@/components/search/EffectResult";
+import ReportResult from "@/components/search/ReportResult";
+import { debounce } from 'lodash';
 
 export default {
   components: {
-    SearchResult
+    EffectResult,
+    ReportResult
   },
   data() {
     return {
@@ -72,8 +83,12 @@ export default {
     this.$refs.searchInput.focus();
   },
   methods: {
-    search() {
-      // this.$store.dispatch('search', this.query);
+    search: debounce(function search() {
+      this.$store.dispatch('search', this.query);
+    }, 200),
+    clear() {
+      this.query = '';
+      this.$refs.searchInput.focus();
     }
   }
 };
@@ -81,17 +96,22 @@ export default {
 
 <style scoped>
 
-input {
-  font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-Roboto, "Helvetica Neue", Arial, sans-serif;
-  border: 1px solid #CCCCCC;
-  padding: 0.5em 1em;
-  font-size: 16px;
-  width: 100%;
-}
+  input {
+    font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif;
+    border: 1px solid #CCCCCC;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    width: 100%;
+  }
 
-.searchInput {
-  margin-top: 1em;
-}
+  .searchInput {
+    margin-top: 1em;
+  }
+
+  .clearButton {
+    font-size: 12pt;
+    cursor: pointer;
+  }
 
 </style>

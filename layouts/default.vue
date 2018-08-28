@@ -310,5 +310,46 @@ body {
   border-bottom: 1px solid #CCC;
 }
 
+/* Search */
+
+.searchResult {
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 1px solid #CCC;
+  background-color: rgba(252, 252, 252);
+}
+
+.searchResult h3 {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.searchResult .topContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.searchResult .titleAuthor h3 {
+  margin: 0;
+}
+
+.searchResult .author {
+  font-size: 12pt;
+}
+
+.searchResult .substanceDose {
+    text-align: right;
+}
+
+.searchResult .substance {
+  font-size: 18pt;
+}
+
+.searchResult .dose {
+  font-size: 12pt;
+  color: #888;
+}
 
 </style>

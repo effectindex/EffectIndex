@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 
 const reportSchema = new Schema({
   title: {
-    type: String
+    type: String,
+    index: true
   },
   form_link: String,
   subject: {
@@ -21,12 +22,18 @@ const reportSchema = new Schema({
     pdf_url: String,
   },
   substances: [{
-    name: String,
+    name: {
+      type: String
+    },
     dose: String,
-    roa: String
+    roa: String,
   }],
-  introduction: String,
-  description: String,
+  introduction: {
+    type: String
+  },
+  description: {
+    type: String
+  },
   onset: [{
     time: String,
     description: String,
@@ -39,8 +46,12 @@ const reportSchema = new Schema({
     time: String,
     description: String,
   }],
-  conclusion: String,
-  tags: [String],
+  conclusion: {
+    type: String
+  },
+  tags: {
+    type: [String]
+  },
   sectionVisibility: Object,
   featured: {
     type: Boolean,
@@ -54,6 +65,15 @@ reportSchema.plugin(slugs('title', {
   update: true,
   alwaysRecreate: true
 }));
+
+reportSchema.index({
+  title: 'text',
+  'subject.name': 'text',
+  'substances.name': 'text',
+  introduction: 'text',
+  description: 'text',
+  tags: 'text'
+});
 
 const Report = mongoose.model("Report", reportSchema);
 

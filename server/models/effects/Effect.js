@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
-const Effect = mongoose.model("Effect", {
+const effectSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   url: String,
-  tags: Array,
-  description_raw: String,
+  tags: {
+    type: [String]
+  },
+  description_raw: {
+    type: String,
+  },
   description_formatted: String,
   gallery_order: {
     type: Array,
@@ -29,5 +33,13 @@ const Effect = mongoose.model("Effect", {
     default: false
   }
 });
+
+effectSchema.index({
+  name: "text",
+  tags: "text",
+  summary_raw: "text"
+});
+
+const Effect = mongoose.model("Effect", effectSchema);
 
 module.exports = Effect;

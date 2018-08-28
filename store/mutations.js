@@ -48,6 +48,6 @@ export default {
     state.modal.resource = data.resource;
   },
   set_search_results(state, results) {
-    state.search_results = results;
+    state.search_results = Array.isArray(results) ? results : [];
   }
 };
