@@ -160,16 +160,17 @@ export default {
   }
 
   .replicationControls {
-    position: absolute;
     user-select: none;
     display: flex;
-    opacity: 0.4;
+    z-index: 5;
+    opacity: 0.6;
     color: #EEE;
-    filter: drop-shadow(0 0 2px black);
+    position: absolute;
+    top: calc(50% - 75px);
+    filter: drop-shadow(0 0 5px black);
     padding: 0.5em;
     justify-content: center;
-    top: calc(50% - 50px);
-    height: 100px;
+    height: 150px;
     width: 50px;
   }
 
@@ -185,6 +186,9 @@ export default {
     right: 0;
   }
 
+  .replicationControls svg {
+    flex: 1;
+  }
   .replicationImageDescription {
     position: absolute;
     display: inline-block;
