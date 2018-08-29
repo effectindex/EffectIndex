@@ -14,6 +14,7 @@
         class="searchInput"
         @input="changeSearchInput">
       <div 
+        v-show="searchInput.length"
         class="clearButton"
         @click="clear">
         <fa 
@@ -122,7 +123,6 @@ export default {
 
   .searchInput {
     font-size: 16pt;
-    padding: 8px;
     max-width: 92%;
   }
 
@@ -130,14 +130,14 @@ export default {
     position: absolute;
     right: 8px;
     top: calc(50% - 12px);
-    opacity: 0.6;
+    opacity: 0.4;
     cursor: pointer;
     height: 25px;
     width: 25px;
   }
 
   .clearButton:hover {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 
 </style>

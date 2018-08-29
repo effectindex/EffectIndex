@@ -14,6 +14,7 @@
         class="searchInput"
         @input="changeSearchInput">
       <div 
+        v-show="searchInput.length"
         class="clearButton"
         @click="clear">
         <fa 
@@ -55,7 +56,7 @@ export default {
   input {
     font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
     border: none;
   }
@@ -63,22 +64,25 @@ export default {
   .inputContainer {
     position: relative;
     max-width: 600px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #DDD;
     padding: 6px;
   }
 
   .searchInput {
-    font-size: 16pt;
-    padding: 4px;
+    font-size: 14pt;
     max-width: 75%;
     margin-left: 33px;
+  }
+
+  .searchInput::placeholder {
+    color: #777;
   }
 
   .clearButton {
     position: absolute;
     right: 8px;
     top: calc(50% - 12px);
-    opacity: 0.6;
+    opacity: 0.4;
     cursor: pointer;
     height: 25px;
     width: 25px;
@@ -86,20 +90,20 @@ export default {
 
   .spyglass {
     position: absolute;
-    left: 8px;
-    top: calc(50% - 12px);
+    left: 12px;
+    top: calc(50% - 10px);
     opacity: 0.4;
 
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
   }
 
   .clearButton:hover {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 
   .searchBox {
-    margin: 0.5em 1em;
+    margin: 0.25em 1em;
     float: right;
   }
 
