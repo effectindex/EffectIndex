@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { debounce } from 'lodash';
+
 export default {
   computed: {
     searchInput() {
@@ -42,7 +44,11 @@ export default {
   methods: {
     changeSearchInput(e) {
       this.$store.dispatch('changeSearch', e.target.value);
+      this.performSearch();
     },
+    performSearch: debounce(function() {
+      this.$store.dispatch('search', this.searchInput);
+    }, 200, {trailing: true}),
     clear() {
       this.$store.commit('clear_search_input');
       this.$refs.searchInput.focus();
@@ -109,6 +115,7 @@ export default {
   .searchBox {
     margin: 0.25em 1em;
     margin-right: 0;
+    width: 300px;
     float: right;
   }
 
@@ -116,6 +123,7 @@ export default {
     .searchBox {
       float: none;
       margin: 1em auto;
+      width: 100%;
     }
   }
 </style>

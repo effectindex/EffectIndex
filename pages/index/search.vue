@@ -60,6 +60,7 @@
 <script>
 import EffectResult from "@/components/search/EffectResult";
 import ReportResult from "@/components/search/ReportResult";
+import { debounce } from "lodash";
 
 export default {
   components: {
@@ -92,10 +93,19 @@ export default {
   mounted() {
     this.$refs.searchInput.focus();
   },
+  destroyed() {
+    this.$store.commit('clear_search_input');
+  },
   methods: {
     changeSearchInput(e) {
       this.$store.dispatch('changeSearch', e.target.value);
+      this.performSearch();
     },
+
+    performSearch: debounce(function() {
+      this.$store.dispatch('search', this.searchInput);
+    }, 200, {trailing: true}),
+
     clear() {
       this.$store.commit('clear_search_input');
       this.$refs.searchInput.focus();
