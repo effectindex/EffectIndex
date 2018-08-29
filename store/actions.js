@@ -349,7 +349,7 @@ export default {
     }
   },
   // Search
-  search: debounce(async function({ commit }, query) {
+  async search({ commit }, query) {
     if (!query) return;
     try {
       let results = await this.$axios.$post("/api/search", {query});
@@ -357,13 +357,9 @@ export default {
     } catch (error) {
       throw new Error(error);
     }
-  }, 200),
+  },
   changeSearch({ commit, dispatch }, query) {
     commit("change_search_input", query);
-    try {
-      dispatch("search", query);
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch("search", query);
   }
 };
