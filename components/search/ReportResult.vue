@@ -8,9 +8,7 @@
       <div 
         class="substanceDose">
         <div class="substance"> {{ substance.name }} </div>
-        <div>
-          <div class="dose"> {{ substance.dose }} {{ substance.roa }} </div>
-        </div>
+        <div class="dose"> {{ substance.dose }} {{ substance.roa }} </div>
       </div>
     </div>
     <tag

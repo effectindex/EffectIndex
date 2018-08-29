@@ -333,6 +333,7 @@ body {
 
 .searchResult .titleAuthor h3 {
   margin: 0;
+  flex: 1;
 }
 
 .searchResult .author {
@@ -341,10 +342,24 @@ body {
 
 .searchResult .substanceDose {
     text-align: right;
+    flex: 1;
+    max-width: 300px;
+}
+
+@media (max-width: 650px) {
+  .searchResult .topContainer {
+    flex-direction: column;
+  }
+
+  .searchResult .substanceDose {
+    margin: 1em 0;
+    text-align: left;
+  }
 }
 
 .searchResult .substance {
   font-size: 18pt;
+  line-height: 1;
 }
 
 .searchResult .dose {

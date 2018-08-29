@@ -5,7 +5,10 @@ const Report = require('../reports/Report');
 
 router.post("/", async (req, res, next) => {
   const query = req.body.query;
-  if (!query.length) res.sendStatus(204);
+  if (!query.length) {
+    res.sendStatus(204);
+    return;
+  }
 
   const effectResults = await searchEffects(query)
     .catch((err) => next(err));

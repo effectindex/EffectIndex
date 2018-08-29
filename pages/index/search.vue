@@ -6,15 +6,20 @@
         class="fa categoryIcon" />
     </h1>
 
-    <input 
-      ref="searchInput"
-      v-model="query"
-      type="text"
-      class="searchInput"
-      @input="search">
-    <a 
-      class="clearButton"
-      @click="clear"> (clear) </a>
+    <div class="inputContainer">
+      <input 
+        ref="searchInput"
+        :value="searchInput"
+        type="text"
+        class="searchInput"
+        @input="changeSearchInput">
+      <div 
+        class="clearButton"
+        @click="clear">
+        <fa 
+          :icon="['far', 'times-circle']" />
+      </div>
+    </div>
 
     <div
       v-show="results.length"
@@ -26,7 +31,7 @@
         v-show="effectResults.length"
         class="effectResults">
 
-        <h1> Effects </h1>
+        <h1> Effects - {{ effectResults.length + (effectResults.length > 1 ? ' results' : ' result') }} </h1>
         <effect-result
           v-for="result in effectResults"
           :key="result._id"
@@ -38,7 +43,7 @@
         v-show="reportResults.length"
         class="effectResults">
       
-        <h1> Reports </h1>
+        <h1> Reports - {{ reportResults.length + (reportResults.length > 1 ? ' results' : ' result') }} </h1>
         <report-result
           v-for="result in reportResults"
           :key="result._id"
@@ -54,7 +59,6 @@
 <script>
 import EffectResult from "@/components/search/EffectResult";
 import ReportResult from "@/components/search/ReportResult";
-import { debounce } from 'lodash';
 
 export default {
   components: {
@@ -77,17 +81,21 @@ export default {
 
     reportResults() {
       return this.$store.state.search_results.filter((result) => result.type === 'report');
+    },
+
+    searchInput() {
+      return this.$store.state.search_input;
     }
   },
   mounted() {
     this.$refs.searchInput.focus();
   },
   methods: {
-    search: debounce(function search() {
-      this.$store.dispatch('search', this.query);
-    }, 200),
+    changeSearchInput(e) {
+      this.$store.dispatch('changeSearch', e.target.value);
+    },
     clear() {
-      this.query = '';
+      this.$store.commit('clear_search_input');
       this.$refs.searchInput.focus();
     }
   }
@@ -99,19 +107,37 @@ export default {
   input {
     font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, "Helvetica Neue", Arial, sans-serif;
-    border: 1px solid #CCCCCC;
-    padding: 0.5em 1em;
     font-size: 16px;
     width: 100%;
+    border: none;
+  }
+
+  .inputContainer {
+    position: relative;
+    min-width: 250px;
+    max-width: 600px;
+    border: 1px solid #CCCCCC;
+    padding: 6px 12px;
   }
 
   .searchInput {
-    margin-top: 1em;
+    font-size: 16pt;
+    padding: 8px;
+    max-width: 92%;
   }
 
   .clearButton {
-    font-size: 12pt;
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 12px);
+    opacity: 0.6;
     cursor: pointer;
+    height: 25px;
+    width: 25px;
+  }
+
+  .clearButton:hover {
+    opacity: 0.9;
   }
 
 </style>

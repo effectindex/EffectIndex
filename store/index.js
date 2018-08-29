@@ -25,6 +25,7 @@ const createStore = () => {
       profiles: [],
       reports: [],
       search_results: [],
+      search_input: "",
       admin: {
         userlist: [],
         invitations: []

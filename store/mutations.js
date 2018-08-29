@@ -49,5 +49,11 @@ export default {
   },
   set_search_results(state, results) {
     state.search_results = Array.isArray(results) ? results : [];
+  },
+  change_search_input(state, input) {
+    state.search_input = input;
+  },
+  clear_search_input(state) {
+    state.search_input = "";
   }
 };

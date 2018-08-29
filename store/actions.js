@@ -1,3 +1,5 @@
+import { debounce } from 'lodash';
+
 export default {
   // Menu
   togglePullout({ commit }) {
@@ -347,12 +349,16 @@ export default {
     }
   },
   // Search
-  async search({ commit }, query) {
+  search: debounce(async function({ commit }, query) {
     try {
       let results = await this.$axios.$post("/api/search", {query});
-      commit('set_search_results', results);
+      commit("set_search_results", results);
     } catch (error) {
       throw new Error(error);
     }
+  }, 200),
+  changeSearch({ commit, dispatch }, query) {
+    commit("change_search_input", query);
+    dispatch("search", query);
   }
 };

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <search-box />
     <p>
       <span class="bold"> Effect Index, </span> which is currently under construction, is a
       resource dedicated to establishing the field of formalised subjective effect documentation. It is the home
@@ -45,7 +46,12 @@
 </template>
 
 <script>
+import SearchBox from "./SearchBox";
+
 export default {
+components: {
+  SearchBox
+},
 data() {
   return {
     hiddenIntro: false
