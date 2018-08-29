@@ -360,6 +360,10 @@ export default {
   }, 200),
   changeSearch({ commit, dispatch }, query) {
     commit("change_search_input", query);
-    dispatch("search", query);
+    try {
+      dispatch("search", query);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

@@ -41,8 +41,8 @@
           <h3> See Also </h3>
           <ul>
             <li
-              v-for="link in effect.see_also"
-              :key="link.location">
+              v-for="(link, index) in effect.see_also"
+              :key="index">
               <nuxt-link
                 :to="link.location"> {{ link.title }} </nuxt-link>
             </li>
