@@ -1,5 +1,7 @@
 <template>
-  <div class="effectDescription__tag"> {{ value }} </div>
+  <div 
+    class="effectDescription__tag"
+    @click="clickTag(value)"> {{ value }} </div>
 </template>
 
 <script>
@@ -8,6 +10,11 @@ export default {
     value: {
       type: String,
       default: ""
+    }
+  },
+  methods: {
+    clickTag(value) {
+      this.$router.push('/search?q=' + value);
     }
   }
 };

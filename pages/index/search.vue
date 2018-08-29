@@ -66,11 +66,12 @@ export default {
     EffectResult,
     ReportResult
   },
-  data() {
-    return {
-      query: ''
-    };
+  scrollToTop: true,
+  async fetch({ store, route }) {
+    await store.dispatch('search', route.query.q);
+    store.commit('change_search_input', route.query.q);
   },
+  watchQuery: ['q'],
   computed: {
     results() {
       return this.$store.state.search_results;
@@ -124,6 +125,10 @@ export default {
   .searchInput {
     font-size: 16pt;
     max-width: 92%;
+  }
+
+  .searchInput:focus {
+    outline: none;
   }
 
   .clearButton {

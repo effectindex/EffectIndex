@@ -74,6 +74,10 @@ export default {
     margin-left: 33px;
   }
 
+  .searchInput:focus {
+    outline: none;
+  }
+
   .searchInput::placeholder {
     color: #777;
   }
