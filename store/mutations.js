@@ -51,7 +51,7 @@ export default {
     state.search_results = Array.isArray(results) ? results : [];
   },
   change_search_input(state, input) {
-    state.search_input = input;
+    if (input) state.search_input = input;
   },
   clear_search_input(state) {
     state.search_input = "";
