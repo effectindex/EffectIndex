@@ -53,8 +53,8 @@
           <h3> External Links </h3>
           <ul>
             <li
-              v-for="link in effect.external_links"
-              :key="link.url">
+              v-for="(link, index) in effect.external_links"
+              :key="index">
               <ext-link :href="link.url"> {{ link.title }} </ext-link>
             </li>
           </ul>
