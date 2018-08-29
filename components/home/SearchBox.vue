@@ -108,6 +108,7 @@ export default {
 
   .searchBox {
     margin: 0.25em 1em;
+    margin-right: 0;
     float: right;
   }
 

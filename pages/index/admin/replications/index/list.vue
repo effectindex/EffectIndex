@@ -103,7 +103,7 @@
 
 <script>
 import ReplicationTableRow from "@/components/replications/ReplicationTableRow.vue";
-import debounce from 'debounce';
+import { debounce } from 'lodash';
 
 export default {
   components: {

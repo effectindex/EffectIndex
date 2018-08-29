@@ -8,6 +8,7 @@ const { Nuxt, Builder } = require("nuxt");
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
+mongoose.set("useCreateIndex", true);
 
 const api = require("./models/");
 
@@ -43,10 +44,12 @@ async function start() {
 
   await mongoose.connect(
     config.server.mongooseUri,
-    { useNewUrlParser: true },
+    { 
+      useNewUrlParser: true
+     },
     function(err, db) {
       if (!err) {
-        log(logo);
+        if (config.dev) log(logo);
         log(chalk.green("Connected to database: ") + db.name);
         app.listen(port, host);
         log(chalk.green.bold("Effect Index up on " + host + ":" + port)); // eslint-disable-line no-console
