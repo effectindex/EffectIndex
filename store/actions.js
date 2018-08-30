@@ -350,7 +350,6 @@ export default {
   },
   // Search
   async search({ commit }, query) {
-    if (!query) return;
     try {
       let results = await this.$axios.$post("/api/search", {query});
       commit("set_search_results", results);

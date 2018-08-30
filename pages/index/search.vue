@@ -104,7 +104,7 @@ export default {
 
     performSearch: debounce(function() {
       this.$store.dispatch('search', this.searchInput);
-    }, 200, {trailing: true}),
+    }, 400, {trailing: true}),
 
     clear() {
       this.$store.commit('clear_search_input');
