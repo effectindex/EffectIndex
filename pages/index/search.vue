@@ -69,8 +69,10 @@ export default {
   },
   scrollToTop: true,
   async fetch({ store, route }) {
-    await store.dispatch('search', route.query.q);
-    store.commit('change_search_input', route.query.q);
+    if (route.query.q) {
+      await store.dispatch('search', route.query.q);
+      store.commit('change_search_input', route.query.q);
+    }
   },
   watchQuery: ['q'],
   computed: {
