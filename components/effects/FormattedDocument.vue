@@ -13,9 +13,7 @@ export default {
     function handleType(element) {
       switch (element.type) {
         case "subarticle":
-          return createElement(SubarticleAnchor, {
-            props: element.props
-          });
+          return createElement(SubarticleAnchor, { props: element.props }, element.value);
         case "md":
           return createElement(Markdown, {
             props: { body: element.value || "" }

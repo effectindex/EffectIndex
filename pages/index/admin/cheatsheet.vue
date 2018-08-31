@@ -99,7 +99,7 @@
       </div>
 
       <div class="cheatsheet_section">
-        <h2> Subarticle </h2>
+        <h2> Subarticle Header</h2>
         ##subarticle
         <p> Defines a point in the document to scroll to after clicking on a subarticle link </p>
         <table>
@@ -108,14 +108,17 @@
           </thead>
           <tbody>
             <tr>
-              <td> id </td> <td> The 'id' of the subarticle. (Not the title) </td>
+              <td> id </td> <td> The 'id' of the subarticle header. (Not the title) </td>
+            </tr>
+            <tr>
+              <td> size </td> <td> The 'id' of the subarticle. (Not the title) </td>
             </tr>
           </tbody>
+
         </table>      
-
-
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##ref|to="5"|no="2" </div>
+        <div style="white-space: pre-wrap;">##subarticle|id="some-id"|size="h3"{This is some header} </div>
+
       </div>
 
       <div class="cheatsheet_section">
