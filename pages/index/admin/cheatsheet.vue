@@ -42,6 +42,9 @@
               <td> top </td> <td> Remove top margin if image is floated at the top of the document. ('true') </td>
             </tr>
             <tr>
+              <td> border </td> <td> Adds a border and padding around the image ('true') </td>
+            </tr>
+            <tr>
               <td> artist </td> <td> Artist name </td>
             </tr>
             <tr>

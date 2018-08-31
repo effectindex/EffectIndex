@@ -4,7 +4,7 @@
     <h1> Donate
       <fa
         :icon="['far', 'heart']"
-        class="categoryIcon" /> </h1>
+        class="fa categoryIcon" /> </h1>
 
     <p> If you would be interested in contributing to the Effect Index project we have a number of donation options available. The funds will be used for hosting costs and enable us to devote more of our time to Subjective Effect Documentation. Any contribution is greatly appreciated!
     </p>

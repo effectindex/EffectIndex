@@ -43,11 +43,9 @@ export default {
       if (!this.substances.length) return { name: '', dose: '', roa: ''};
       else if (this.substances.length > 1) return { name: 'Combination', dose: '', roa: ''};
       else {
-        return {
-          name: this.substances[0].name,
-          dose: this.substances[0].dose,
-          roa: this.substances[0].roa
-        };
+        const [substance] = this.substances;
+        const { name, dose, roa } = substance;
+        return { name, dose, roa };
       }
     }
   }

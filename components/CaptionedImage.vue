@@ -1,7 +1,8 @@
 <template>
   <figure 
-    :class="'captionedImage ' + float"
-    :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }">
+    :class="float + ' ' + (border ? 'withBorder' : '')"
+    :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }"
+    class="captionedImage">
     <img 
       v-show="imageSrc.src"
       :src="imageSrc.src" 
@@ -83,6 +84,10 @@ export default {
       type: String,
       default: ""
     },
+    border: {
+      type: String,
+      default: ""
+    },
     imageRoutes: {
       type: String,
       default: undefined
@@ -160,6 +165,12 @@ export default {
 .alignCenter {
   display: block;
   margin: 0 auto;
+}
+
+.withBorder {
+  border: 1px solid #EEE;
+  background-color: rgb(252, 252, 252);
+  padding: 6px;
 }
 
 .captionedImage img {

@@ -14,6 +14,7 @@
     <div v-if="viewMode.name === 'substance'">
       <div
         v-for="(substance, index) in sortedSubstances"
+        v-if="substance !== 'Combinations'"
         :key="index"
         class="report__substanceList">
         <h3> {{ substance }} </h3>
@@ -24,6 +25,19 @@
             :report="report"
             :profile-name="hasProfile(report.subject.name)" />
         </div>
+      </div>
+
+      <div 
+        v-if="sortedSubstances.indexOf('Combinations') > 0"
+        class="report__substanceList">
+        <h3> Combinations </h3>
+        <div class="report__reportItemContainer">
+          <report-item
+            v-for="report in filterReportsBySubstance('Combinations')"
+            :key="report._id"
+            :report="report"
+            :profile-name="hasProfile(report.subject.name)" />
+        </div>        
       </div>
     </div>
 

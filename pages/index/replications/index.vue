@@ -20,7 +20,8 @@
       <nuxt-link to="/profiles/Zenx2"> Zenx2 </nuxt-link>, 
       and from various sources throughout the internet. It is worth noting that while the artist 
       is credited for each replication wherever possible, if you would like your artwork removed
-      or its link altered please do not hesitate to contact me at disregardeverythingisay@gmail.com.
+      or its link altered please do not hesitate to contact me at 
+      <a href="mailto:admin@effectindex.com"> admin@effectindex.com </a>
     </p>
     <hr>
 

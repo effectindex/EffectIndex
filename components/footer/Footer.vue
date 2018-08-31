@@ -27,7 +27,7 @@
       </a>
     </div>
     <div class="footer__secret">
-      <p> effectindex@gmail.com </p>
+      <p> admin@effectindex.com </p>
       <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
     </div>
   </footer>

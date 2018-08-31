@@ -69,9 +69,11 @@ export default {
   },
 
   async fetch({ store }) {
-    await store.dispatch("getEffects");
-    await store.dispatch("getReplications");
-    await store.dispatch("getReports");
+    await Promise.all([
+      store.dispatch("getEffects"),
+      store.dispatch("getReplications"),
+      store.dispatch("getReports")
+    ]);
   }
 };
 </script>
