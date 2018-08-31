@@ -9,7 +9,15 @@
         v-if="type === 'image'"
         :style="{ backgroundImage: url }"
         class="modalImageContainer"
-        @click.stop="toggleModal" />
+        @click.stop="toggleModal">
+        <a 
+          class="fileButton"
+          @click.stop="popout"> 
+          <fa 
+            :icon="['far', 'external-link']"
+            class="" />
+        </a>
+      </div>
       <div 
         v-else-if="(type === 'gfycat') && active"
         style="position:relative;height: 100%;"
@@ -63,6 +71,9 @@ export default {
   methods: {
     toggleModal() {
       this.$emit('toggleModal');
+    },
+    popout() {
+      window.open(this.src, '_blank');
     }
   }
 };
@@ -85,6 +96,7 @@ export default {
 
   .modalImageContainer {
     cursor: pointer;
+    position: relative;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -98,6 +110,22 @@ export default {
     opacity: 0;
     height: 100vh;
     width: 100vw;
+  }
+
+  .fileButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    width: 50px;
+    opacity: 0.5;
+    color: white;
+    transition: opacity 0.25s ease;
+    filter: drop-shadow(2px 2px 3px black);
+  }
+
+  .fileButton:hover {
+    opacity: 1;
   }
 
 

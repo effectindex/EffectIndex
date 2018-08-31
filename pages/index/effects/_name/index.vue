@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent">
-    <div v-show="effect.name">
+    <article v-show="effect.name">
       <div v-if="$auth.loggedIn">
         <nuxt-link
           :to="'/admin/effects/' + effect.url"
@@ -87,7 +87,7 @@
           <nuxt-link :to="'/profiles/' + contributor">{{ contributor }}</nuxt-link>
         </span>
       </div>
-    </div>
+    </article>
     <div v-if="!effect.name">
       <h1> Effect Not Found </h1>
     </div>
