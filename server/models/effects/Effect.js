@@ -31,7 +31,8 @@ const effectSchema = new mongoose.Schema({
   featured: {
     type: Boolean,
     default: false
-  }
+  },
+  subarticles: Array
 });
 
 effectSchema.index({

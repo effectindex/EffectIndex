@@ -71,6 +71,11 @@
       </div>
 
       <div>
+        <label> Sub-articles </label>
+        <subarticle-input v-model="subarticles" />
+      </div>
+
+      <div>
         <label> Social Media Image </label>
         {{ (social_media_image ? social_media_image : "") }}<input 
           v-model="social_media_image"
@@ -83,10 +88,8 @@
           <li 
             v-for="(replication, index) in associated_replications"
             :key="replication._id">
-            <nuxt-link 
-              :to="'/admin/replications/' + replication.url"
-              style="font-weight: bold;"
-            > {{ replication.title }} </nuxt-link> -
+            <span 
+            > {{ replication.title }} </span> -
             [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
             Down </a> | <a @click="removeReplication(index)"> Remove</a>]
           </li>
@@ -96,10 +99,8 @@
             <li 
               v-for="(replication, index) in combined_order"
               :key="replication._id">
-              <nuxt-link 
-                :to="'/admin/replications/' + replication.url"
-                style="font-weight: bold;"
-              > {{ replication.title }} </nuxt-link> -
+              <span 
+              > {{ replication.title }} </span> -
               [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
               Down </a> | <a @click="removeReplication(index)"> Remove</a>]
             </li>
@@ -145,6 +146,7 @@ import LinkInput from "@/components/effects/editor/LinkInput";
 import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";
 import TagInput from "@/components/effects/editor/TagInput";
 import ContributorInput from "@/components/effects/editor/ContributorInput";
+import SubarticleInput from "@/components/effects/editor/SubarticleInput";
 
 export default {
   components: {
@@ -153,7 +155,8 @@ export default {
     LinkInput,
     SeeAlsoInput,
     TagInput,
-    ContributorInput
+    ContributorInput,
+    SubarticleInput
   },
   props: {
     effect: {
@@ -179,6 +182,7 @@ export default {
       analysis: this.effect ? this.effect.analysis_raw : "",
       gallery_order: this.effect ? this.effect.gallery_order : [],
       social_media_image: this.effect ? this.effect.social_media_image : "",
+      subarticles: this.effect ? this.effect.subarticles : [],
       featured: this.effect ? this.effect.featured : false
     };
   },
@@ -226,6 +230,7 @@ export default {
         contributors: this.contributors,
         gallery_order: this.gallery_order,
         social_media_image: this.social_media_image,
+        subarticles: this.subarticles,
         featured: this.featured
       });
     },

@@ -9,6 +9,16 @@
         :key="effect._id"
         class="effectTitle">
         <nuxt-link :to="`/effects/${effect.url}`"> {{ effect.name }} </nuxt-link>
+        <ul 
+          v-if="effect.subarticles && effect.subarticles.length"
+          class="subarticleList">
+          <li 
+            v-for="(subarticle, index) in effect.subarticles"
+            :key="index"
+            class="subarticleListItem">
+            <nuxt-link :to="`/effects/${effect.url}?s=${subarticle.id}`"> {{ subarticle.title }} </nuxt-link>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -45,6 +55,11 @@ export default {
   margin: 0;
   font-size: 13pt;
   columns: 250px;
+}
+
+.subarticleList {
+  padding-left: 1em;
+  margin: 0;
 }
 
 .actionTitle {

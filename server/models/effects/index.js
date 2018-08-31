@@ -42,6 +42,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       analysis_formatted: JSON.stringify(parser.parse(e.analysis)),
       social_media_image: e.social_media_image,
       featured: e.featured,
+      subarticles: e.subarticles,
     });
 
     let returnedEffect = await effect.save().catch((err) => {
@@ -106,7 +107,8 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
       citations: req.body.citations,
       gallery_order: req.body.gallery_order,
       social_media_image: req.body.social_media_image,
-      featured: req.body.featured
+      featured: req.body.featured,
+      subarticles: req.body.subarticles
     }, { new: true }).exec();
 
     res.send({ effect: updatedEffect });

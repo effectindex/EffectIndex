@@ -136,6 +136,12 @@ export default {
     }
   },
   scrollToTop: true,
+  mounted() {
+    let s = this.$route.query.s;
+    if (s) {
+      this.$scrollTo('#' + s);
+    }
+  },
   methods: {
     hasSection(name) {
       if (name in this.effect) {

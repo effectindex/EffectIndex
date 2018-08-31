@@ -48,6 +48,9 @@
               <td> artist </td> <td> Artist name </td>
             </tr>
             <tr>
+              <td> url </td> <td> URL for the artist </td>
+            </tr>
+            <tr>
               <td> title </td> <td> Artwork title </td>
             </tr>
             <tr>
@@ -86,6 +89,26 @@
             </tr>
             <tr>
               <td> text </td> <td> The text of the number (if omitted, defaults to the citation number) </td>
+            </tr>
+          </tbody>
+        </table>      
+
+
+        <label style="display: block; margin-top: 1em;"> Example </label>
+        <div style="white-space: pre-wrap;">##ref|to="5"|no="2" </div>
+      </div>
+
+      <div class="cheatsheet_section">
+        <h2> Subarticle </h2>
+        ##subarticle
+        <p> Defines a point in the document to scroll to after clicking on a subarticle link </p>
+        <table>
+          <thead>
+            <tr> <td> Property </td> <td> Description </td> </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> id </td> <td> The 'id' of the subarticle. (Not the title) </td>
             </tr>
           </tbody>
         </table>      

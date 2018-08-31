@@ -1,16 +1,21 @@
 <script>
-import Reference from "@/components/Reference.vue";
-import ExtLink from "@/components/ExtLink.vue";
-import Markdown from "@/components/effects/FormattedDocument__markdown.vue";
-import CaptionedImage from "@/components/CaptionedImage.vue";
-import BulletWithReferences from "@/components/effects/BulletWithReferences.vue";
+import Reference from "@/components/Reference";
+import ExtLink from "@/components/ExtLink";
+import Markdown from "@/components/effects/FormattedDocument__markdown";
+import CaptionedImage from "@/components/CaptionedImage";
+import BulletWithReferences from "@/components/effects/BulletWithReferences";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
+import SubarticleAnchor from "@/components/effects/SubarticleAnchor";
 
 export default {
   functional: true,
   render(createElement, context) {
     function handleType(element) {
       switch (element.type) {
+        case "subarticle":
+          return createElement(SubarticleAnchor, {
+            props: element.props
+          });
         case "md":
           return createElement(Markdown, {
             props: { body: element.value || "" }

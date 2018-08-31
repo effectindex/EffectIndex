@@ -35,7 +35,13 @@
         class="artistTitle"
       >
         <span class="title"> {{ title || imageSrc.title }} </span> by
-        <span class="artist"> {{ artist || imageSrc.artist }} </span>
+        <span 
+          v-if="url">
+          <ext-link :href="url"> {{ artist || imageSrc.artist }} </ext-link>
+        </span>
+        <span 
+          v-else
+          class="artist"> {{ artist || imageSrc.artist }} </span>
         <span v-show="caption || imageSrc.caption"> - </span>
       </span>
       {{ caption || imageSrc.caption }}
@@ -46,7 +52,12 @@
 
 
 <script>
+import ExtLink from "@/components/ExtLink";
+
 export default {
+  components: {
+    ExtLink
+  },
   props: {
     src: {
       type: String,
@@ -65,6 +76,10 @@ export default {
       default: ""
     },
     artist: {
+      type: String,
+      default: ""
+    },
+    url: {
       type: String,
       default: ""
     },
