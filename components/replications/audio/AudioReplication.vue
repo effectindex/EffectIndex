@@ -13,18 +13,20 @@
       :src="`/audio/${replication.resource}`"
       :title="replication.title"
       :artist="replication.artist" />
-
-    <h4 v-show="associatedEffects"> Effects Replicated </h4>
-    <ul class="replicationEffectsList">
-      <li 
-        v-for="effect in associatedEffects"
-        :key="effect._id"
-        class="replicationEffectsListItem">
-        <nuxt-link :to="'/effects/' + effect.url">
-          {{ effect.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+      
+    <div v-show="associatedEffects.length">
+      <h4> Effects Replicated </h4>
+      <ul class="replicationEffectsList">
+        <li 
+          v-for="effect in associatedEffects"
+          :key="effect._id"
+          class="replicationEffectsListItem">
+          <nuxt-link :to="'/effects/' + effect.url">
+            {{ effect.name }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

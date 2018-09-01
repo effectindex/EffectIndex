@@ -111,6 +111,14 @@
         :effect="effect"
         :key="effect._id" />
     </div>
+
+    <h3> See Also </h3>
+    <ul>
+      <li> <nuxt-link to="/summaries/"> Substance Summary Index </nuxt-link> </li>
+      <li> <nuxt-link to="/summaries/psychedelics/visual"> Visual Psychedelic Effects </nuxt-link> </li>
+      <li> <nuxt-link to="/summaries/deliriants/"> Deliriant Subjective Effects </nuxt-link> </li>
+    </ul>
+
   </div>
 </template>
 

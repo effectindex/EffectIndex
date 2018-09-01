@@ -29,6 +29,18 @@
           base="/img/gallery/" />
       </div>
 
+      <div
+        v-if="hasSection('audio_replications')">
+        <hr>
+        <h3 style="margin-bottom: 2em;"> Audio Replications </h3>
+        <audio-player 
+          v-for="(replication, index) in effect.audio_replications"
+          :key="index"
+          :src="`/audio/${replication.resource}`"
+          :title="replication.title"
+          :artist="replication.artist" />
+      </div>
+
       <div v-if="hasSection('analysis_raw')">
         <hr>
         <h3> Analysis </h3>
@@ -100,14 +112,17 @@ import CitationList from "@/components/effects/CitationList";
 import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
 import Tag from "@/components/effects/Tag";
+import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 
 export default {
+  name: 'Effect',
   components: {
     FormattedDocument,
     CitationList,
     LightBox,
     ExtLink,
-    Tag
+    Tag,
+    AudioPlayer
   },
   computed: {
     icon() {

@@ -80,6 +80,10 @@ router.get('/:url', async (req, res) => {
          type: { $in: ['image', 'gfycat'] }, 
          associated_effects: effect._id 
         }).exec();
+      effect.audio_replications = await Replication.find({
+        type: { $in: ['audio'] },
+        associated_effects: effect._id
+      }).exec();
     }
     res.send({ effect });
   } catch (error) {

@@ -167,9 +167,21 @@
         :key="effect._id" />
     </div>
 
+    <h3> See Also </h3>
+    <ul>
+      <li> <nuxt-link to="/summaries/"> Substance Summary Index </nuxt-link> </li>
+      <li> <nuxt-link to="/summaries/psychedelics/visual"> Visual Psychedelic Effects </nuxt-link> </li>
+      <li> <nuxt-link to="/summaries/dissociatives/"> Dissociative Subjective Effects </nuxt-link> </li>
+    </ul>
+
+
   </div>
 </template>
 
+ dissociatives
+- substance summary index
+- visual psychedelic effects
+- deliriant subjective effects
 
 <script>
 import CaptionedImage from "@/components/CaptionedImage";
