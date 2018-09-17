@@ -4,9 +4,9 @@
 
 <style>
 @font-face {
-  font-family: "Proxima Nova";
+  font-family: 'Proxima Nova';
   font-display: swap;
-  src: url("/fonts/proxima-nova-medium.woff2");
+  src: url('/fonts/proxima-nova-medium.woff2');
 }
 
 *,
@@ -17,8 +17,8 @@
 }
 
 html {
-  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -122,8 +122,8 @@ body {
 }
 
 .pageContent p {
-  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   line-height: 28.8px;
   margin: 0 0 1em 0;
@@ -142,10 +142,6 @@ body {
   text-decoration: none;
 }
 
-.pageContent .nuxt-link-exact-active {
-  text-decoration: underline;
-}
-
 .pageContent a:hover {
   color: #27635d;
 }
@@ -154,8 +150,8 @@ body {
   display: block;
   border: 0;
   cursor: pointer;
-  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -176,7 +172,7 @@ body {
   position: relative;
   width: 125px;
   z-index: 5;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   background-color: white;
   text-align: center;
   text-transform: uppercase;
@@ -185,8 +181,8 @@ body {
   opacity: 0.5;
   color: #000;
   cursor: pointer;
-  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 12pt;
 }
 
@@ -203,8 +199,8 @@ body {
 .pageContent h3,
 .pageContent h4 {
   text-transform: uppercase;
-  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 22px;
   letter-spacing: 2px;
   font-weight: 400;
@@ -264,7 +260,6 @@ body {
   color: black;
 }
 
-
 .formattedDocument .bullet {
   padding-left: 3em;
   box-decoration-break: clone;
@@ -272,7 +267,7 @@ body {
 }
 
 .formattedDocument .bullet::before {
-  content: "●";
+  content: '●';
   padding-right: 1em;
 }
 
@@ -280,8 +275,8 @@ body {
 
 .effectCategories .actionDescription {
   padding: 1em;
-  border: 1px solid #EEE;
-  background-color: #F4F4F4;
+  border: 1px solid #eee;
+  background-color: #f4f4f4;
 }
 
 .effectCategories .effectsContainer {
@@ -307,7 +302,7 @@ body {
 }
 
 .effectCategories .effectsContainer:not(:last-child) {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
 }
 
 /* Search */
@@ -315,7 +310,7 @@ body {
 .searchResult {
   margin-bottom: 1em;
   padding: 1em;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   background-color: rgba(252, 252, 252);
 }
 
@@ -341,9 +336,9 @@ body {
 }
 
 .searchResult .substanceDose {
-    text-align: right;
-    flex: 1;
-    max-width: 300px;
+  text-align: right;
+  flex: 1;
+  max-width: 300px;
 }
 
 @media (max-width: 650px) {
@@ -366,5 +361,4 @@ body {
   font-size: 12pt;
   color: #888;
 }
-
 </style>
