@@ -33,7 +33,7 @@ export default {
     },
     link: {
       type: String,
-      default: undefined
+      default: ""
     }
   }
 };

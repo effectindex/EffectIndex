@@ -42,7 +42,7 @@ export default {
   font-size: 13px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .headerNav__mainNavigation {
     display: none;
   }

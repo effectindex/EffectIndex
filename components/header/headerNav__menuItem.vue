@@ -87,6 +87,10 @@ export default {
   text-transform: uppercase;
 }
 
+.headerNav__menuItem > a {
+  white-space: pre;
+}
+
 .headerNav__menuItem:hover > a {
   color: #fff;
   text-shadow: 0px 0px 2px rgb(150, 219, 252);

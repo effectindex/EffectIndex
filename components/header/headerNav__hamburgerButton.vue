@@ -78,7 +78,7 @@ export default {
   transform: rotate(-45deg);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .hamburger {
     display: block;
   }

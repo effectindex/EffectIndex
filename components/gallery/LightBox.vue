@@ -361,7 +361,7 @@ a.lightBox__control:hover {
   opacity: 1;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .lightBox__canvas {
     height: 400px;
   }

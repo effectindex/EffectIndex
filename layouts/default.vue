@@ -61,7 +61,7 @@ body {
   min-height: 100vh;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .sectionContainerPulledout {
     margin-left: -220px;
   }

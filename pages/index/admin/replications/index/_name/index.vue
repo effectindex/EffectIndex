@@ -20,6 +20,12 @@ export default {
         "updateReplication",
         replication
       );
+
+      this.$notify({
+        title: 'Replication Saved',
+        text: 'The replication was successfully saved.'
+      });
+
       this.$router.push("/admin/replications/list");
     }
   },

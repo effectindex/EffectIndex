@@ -507,7 +507,7 @@ export default {
     padding-left: 1em;
   }
 
-  @media(max-width: 1000px) {
+  @media(max-width: 1100px) {
     .columns {
       display: block;
     }
