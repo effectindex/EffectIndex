@@ -38,8 +38,8 @@ footer {
   background-color: #1f1f1f;
   text-align: center;
   color: #666;
-  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
 }
 
@@ -55,7 +55,6 @@ footer {
 
 .footer__social > a {
   display: inline-block;
-  opacity: 0.6;
   margin: 0.3em;
   transition: all ease-in-out 0.25s;
   height: 32px;
