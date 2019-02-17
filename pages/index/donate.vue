@@ -6,6 +6,11 @@
         :icon="['far', 'heart']"
         class="fa categoryIcon" /> </h1>
 
+    <img
+      class="float"
+      height="350px"
+      src="/ei-donate.png" />
+
     <p> If you would be interested in contributing to the Effect Index project we have a number of donation options available. The funds will be used for hosting costs and enable us to devote more of our time to Subjective Effect Documentation. Any contribution is greatly appreciated!
     </p>
 
@@ -32,3 +37,21 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.float {
+  float: right;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .float {
+    float: none;
+    margin: 1em auto;
+  }
+}
+</style>
+

@@ -46,7 +46,6 @@
       { "name": "Gallery", "location": "/replications/" },
       { "name": "Audio", "location": "/replications/audio" },
       { "name": "Tutorials", "location": "/replications/tutorials" },
-      { "name": "Artists", "location": "/replications/artists" },
       { "name": "PsySim", "location": "/psysim" }
     ]
   },
@@ -60,7 +59,6 @@
       { "name": "Blog", "location": "/blog" },
       { "name": "Search", "location": "/search" },
       { "name": "Contact", "location": "/contact" },
-      { "name": "DoseBot", "location": "/dosebot" },
       { "name": "Login", "location": "/user/login" }
     ]
   },

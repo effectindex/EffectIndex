@@ -33,9 +33,11 @@
     </p>
 
     <p>
-      If you find this project interesting, we encourage you to join our large and active community
-      which can be found within both our <ext-link href="http://reddit.com/r/replications"> subreddit </ext-link>
-      and <ext-link href="https://discord.gg/mNFMQpN"> Discord server. </ext-link>
+      If you find this project interesting, we encourage you to join our active community
+      within both our <ext-link href="http://reddit.com/r/replications">subreddit</ext-link>,
+      and if you'd like to contribute,
+      <ext-link href="https://www.reddit.com/message/compose/?to=josikins">send Josikinz a message</ext-link>
+      for an invite to our private Discord.
     </p>
 
   </div>

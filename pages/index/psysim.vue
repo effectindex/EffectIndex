@@ -9,7 +9,7 @@
     <img
       class="float"
       height="296px"
-      src="psysim.png">
+      src="/psysim.png">
 
 
     <p> This open source software, created by Zenx2, was designed using a combination of fractal based mathematics, psychedelic artwork, and extensive experience with hallucinogenic compounds. It attempts to simulate or replicate the various types of complex geometry and hallucinatory imagery which is typically experienced under the influence of high dose psychedelics.

@@ -7,23 +7,22 @@
         class="fa categoryIcon" /> 
     </h1>
 
+    <p>
+        To collectively contact the staff members of this site, please email us at effectindex@gmail.com. However, if you would like to contact a particular individual, please see the various contact information below:
+    </p>
+
     <p>Effect Index project member contact information:
       <ul>
-        <li> <b> Josie </b> - Project Manager </li>
+        <li><b>Josie</b> - Project Manager</li>
         <ul>
-          <li> <b> Email </b>- disregardeverythingisay@gmail.com </li>
-          <li> <b> Discord </b>- josikinz#1823 </li>
-          <li> <b> Telegram </b>- @josikinz </li>
-          <li> <b> reddit </b>- josikins </li>
+          <li><b>Email</b> - disregardeverythingisay@gmail.com</li>
+          <li><b>Discord</b> - josikinz#1066</li>
+          <li><b>Telegram</b> - @josikinz</li>
+          <li><b>reddit</b> - josikins</li>
         </ul>
-        <li> <b> Gabriel </b>- Sysop</li>
+        <li><b>Kaylee</b> - Subjective Effect Documentation</li>
         <ul>
-          <li> <b> Discord </b>- Cocoa#1234 </li>
-          <li> <b> reddit </b>- Cocoa-Bunny </li>
-        </ul>
-        <li> <b> Kaylee </b>- Subjective Effect Documentation</li>
-        <ul>
-          <li> <b> Discord </b>- Kaytwo#7029 </li>
+          <li><b>Discord</b> - Kaytwo#7029</li>
         </ul>
       </ul>
     </p>
