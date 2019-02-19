@@ -59,6 +59,7 @@
       { "name": "Blog", "location": "/blog" },
       { "name": "Search", "location": "/search" },
       { "name": "Contact", "location": "/contact" },
+      { "name": "Github", "location": "https://github.com/effectindex/EffectIndex", "external": "true" },
       { "name": "Login", "location": "/user/login" }
     ]
   },
@@ -67,11 +68,7 @@
     "children": [
       { "name": "People", "location": "/profiles/" },
       { "name": "Discord", "location": "/discord-chat/" },
-      {
-        "name": "Subreddit",
-        "location": "http://reddit.com/r/replications",
-        "external": true
-      }
+      { "name": "Subreddit", "location": "http://reddit.com/r/replications", "external": true }
     ]
   }
 }

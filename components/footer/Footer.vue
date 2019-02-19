@@ -19,7 +19,7 @@
           height="32"
           width="32">
       </a>
-      <a href="https://github.com/Viscid/effectindex">
+      <a href="https://github.com/effectindex/EffectIndex">
         <img
           src="/sm-icon-github.svg"
           height="32"
