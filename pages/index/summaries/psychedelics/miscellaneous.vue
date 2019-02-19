@@ -133,6 +133,11 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  head() {
+    return {
+      title: "Miscellaneous Psychedelic Effects"
+    };
+  },
   scrollToTop: true,
   data () {
     return {

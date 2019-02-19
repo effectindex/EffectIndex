@@ -434,6 +434,11 @@ export default {
     Panel,
     Category
   },
+  head() {
+    return {
+      title: "Summaries"
+    };
+  },
   scrollToTop: true,
   computed: {
     effects() {

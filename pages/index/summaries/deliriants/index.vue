@@ -192,6 +192,11 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  head() {
+    return {
+      title: "Deliriant Effects"
+    };
+  },
   scrollToTop: true,
   data () {
     return {

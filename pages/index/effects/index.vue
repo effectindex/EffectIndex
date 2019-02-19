@@ -304,6 +304,11 @@ export default {
     Description,
     Blob
   },
+  head() {
+    return {
+      title: "Subjective Effect Index"
+    };
+  },
   data() {
     return {
       activeTab: this.$route.query.type

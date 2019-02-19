@@ -132,6 +132,11 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  head() {
+    return {
+      title: "Dissociative Effects"
+    };
+  },
   scrollToTop: true,
   data () {
     return {

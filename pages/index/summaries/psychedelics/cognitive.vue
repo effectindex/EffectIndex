@@ -131,6 +131,11 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  head() {
+    return {
+      title: "Cognitive Psychedelic Effects"
+    };
+  },
   scrollToTop: true,
   data () {
     return {

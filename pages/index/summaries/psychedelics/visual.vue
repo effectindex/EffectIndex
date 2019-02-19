@@ -88,6 +88,11 @@ export default {
     CaptionedImage,
     LongSummary
   },
+  head() {
+    return {
+      title: "Visual Psychedelic Effects"
+    };
+  },
   scrollToTop: true,
   data () {
     return {
