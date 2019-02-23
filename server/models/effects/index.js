@@ -40,6 +40,10 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       contributors: e.contributors,
       analysis_raw: e.analysis,
       analysis_formatted: JSON.stringify(parser.parse(e.analysis)),
+      style_variations_raw: e.style_variations,
+      style_variations_formatted: JSON.stringify(parser.parse(e.style_variations)),
+      personal_commentary_raw: e.personal_commentary,
+      personal_commentary_formatted: JSON.stringify(parser.parse(e.personal_commentary)),
       social_media_image: e.social_media_image,
       featured: e.featured,
       subarticles: e.subarticles,
@@ -76,9 +80,9 @@ router.get('/:url', async (req, res) => {
     let effect = await Effect.findOne({ url: req.params.url }).exec();
     if (effect) {
       effect = effect.toJSON();
-      effect.replications = await Replication.find({ 
-         type: { $in: ['image', 'gfycat'] }, 
-         associated_effects: effect._id 
+      effect.replications = await Replication.find({
+         type: { $in: ['image', 'gfycat'] },
+         associated_effects: effect._id
         }).exec();
       effect.audio_replications = await Replication.find({
         type: { $in: ['audio'] },
@@ -103,6 +107,10 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
       long_summary_formatted: JSON.stringify(parser.parse(req.body.long_summary)),
       analysis_raw: req.body.analysis,
       analysis_formatted: JSON.stringify(parser.parse(req.body.analysis)),
+      style_variations_raw: req.body.style_variations,
+      style_variations_formatted: JSON.stringify(parser.parse(req.body.style_variations)),
+      personal_commentary_raw: req.body.personal_commentary,
+      personal_commentary_formatted: JSON.stringify(parser.parse(req.body.personal_commentary)),
       contributors: req.body.contributors,
       related_substances: req.body.related_substances,
       external_links: req.body.external_links,

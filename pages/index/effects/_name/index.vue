@@ -4,10 +4,10 @@
       <div v-if="$auth.loggedIn">
         <nuxt-link
           :to="'/admin/effects/' + effect.url"
-          append> 
+          append>
           <fa
             :icon="['far', 'edit']"
-            class="fa" />  
+            class="fa" />
         </nuxt-link>
       </div>
       <fa
@@ -33,7 +33,7 @@
         v-if="hasSection('audio_replications')">
         <hr>
         <h3 style="margin-bottom: 2em;"> Audio Replications </h3>
-        <audio-player 
+        <audio-player
           v-for="(replication, index) in effect.audio_replications"
           :key="index"
           :src="`/audio/${replication.resource}`"
@@ -43,8 +43,20 @@
 
       <div v-if="hasSection('analysis_raw')">
         <hr>
-        <h3> Analysis </h3>
+        <h3>Analysis</h3>
         <formatted-document :document="effect.analysis_formatted" />
+      </div>
+
+      <div v-if="hasSection('style_variations_raw')">
+        <hr>
+        <h3>Style Variations</h3>
+        <formatted-document :document="effect.style_variations_formatted" />
+      </div>
+
+      <div v-if="hasSection('personal_commentary_raw')">
+        <hr>
+        <h3>Personal Commentary</h3>
+        <formatted-document :document="effect.personal_commentary_formatted" />
       </div>
 
       <div v-if="hasSection('see_also') || hasSection('external_links')">

@@ -2,14 +2,14 @@
   <div>
     <div>
       <label> Name </label>
-      <input 
+      <input
         v-model="name"
         class="effectEditor__input">
     </div>
 
     <div>
       <label> Description </label>
-      <textarea 
+      <textarea
         v-model="description"
         class="effectEditor__textarea effectEditor__description" />
     </div>
@@ -39,10 +39,24 @@
       </div>
 
       <div>
-        <label> Analysis </label>
-        <textarea 
+        <label>Analysis</label>
+        <textarea
           v-model="analysis"
           class="effectEditor__textarea effectEditor__analysis" />
+      </div>
+
+      <div>
+        <label>Style Variations</label>
+        <textarea
+          v-model="style_variations"
+          class="effectEditor__textarea effectEditor__style_variations" />
+      </div>
+
+      <div>
+        <label>Personal Commentary</label>
+        <textarea
+          v-model="personal_commentary"
+          class="effectEditor__textarea effectEditor__personal_commentary" />
       </div>
 
       <div>
@@ -77,7 +91,7 @@
 
       <div>
         <label> Social Media Image </label>
-        {{ (social_media_image ? social_media_image : "") }}<input 
+        {{ (social_media_image ? social_media_image : "") }}<input
           v-model="social_media_image"
           class="effectEditor__input">
       </div>
@@ -85,10 +99,10 @@
       <div>
         <label> Gallery Order </label>
         <ol v-if="!gallery_order.length">
-          <li 
+          <li
             v-for="(replication, index) in associated_replications"
             :key="replication._id">
-            <span 
+            <span
             > {{ replication.title }} </span> -
             [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
             Down </a> | <a @click="removeReplication(index)"> Remove</a>]
@@ -96,10 +110,10 @@
         </ol>
         <div v-else>
           <ol>
-            <li 
+            <li
               v-for="(replication, index) in combined_order"
               :key="replication._id">
-              <span 
+              <span
               > {{ replication.title }} </span> -
               [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
               Down </a> | <a @click="removeReplication(index)"> Remove</a>]
@@ -112,8 +126,8 @@
 
       <div>
         <label for="featured">
-          Featured 
-          <input 
+          Featured
+          <input
             id="featured"
             v-model="featured"
             type="checkbox">
@@ -124,14 +138,14 @@
     </div>
 
     <div class="effectEditor__buttons">
-      <button 
+      <button
         style="background-color: #DFD;"
         @click="submitEffect(false)"> Save </button>
-      <button 
+      <button
         v-show="effect"
         style="background-color: #DFD;"
         @click="submitEffect(true)"> Update </button>
-      <nuxt-link 
+      <nuxt-link
         :to="'/effects/' + url"
         tag="button"> Cancel </nuxt-link>
     </div>
@@ -180,6 +194,8 @@ export default {
       summary: this.effect ? this.effect.summary_raw : "",
       long_summary: this.effect ? this.effect.long_summary_raw : "",
       analysis: this.effect ? this.effect.analysis_raw : "",
+      style_variations: this.effect ? this.effect.style_variations_raw : "",
+      personal_commentary: this.effect ? this.effect.personal_commentary_raw : "",
       gallery_order: this.effect ? this.effect.gallery_order : [],
       social_media_image: this.effect ? this.effect.social_media_image : "",
       subarticles: this.effect ? this.effect.subarticles : [],
@@ -227,6 +243,8 @@ export default {
         summary: this.summary,
         long_summary: this.long_summary,
         analysis: this.analysis,
+        style_variations: this.style_variations,
+        personal_commentary: this.personal_commentary,
         contributors: this.contributors,
         gallery_order: this.gallery_order,
         social_media_image: this.social_media_image,
@@ -291,6 +309,14 @@ label {
 }
 
 .effectEditor__textarea.effectEditor__analysis {
+  min-height: 300px;
+}
+
+.effectEditor__textarea.effectEditor__style_variations {
+  min-height: 300px;
+}
+
+.effectEditor__textarea.effectEditor__personal_commentary {
   min-height: 300px;
 }
 
