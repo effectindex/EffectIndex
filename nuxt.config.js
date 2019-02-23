@@ -159,12 +159,12 @@ module.exports = {
   },
 
   server: {
-    jwtSecret: "a00znn302mMM#sn33az",
-    salt: "z99zm2m0a0h3b8gf8llx$kd9",
+    jwtSecret: process.env.jwtSecret,
+    salt: process.env.salt,
     users: [
       {
-        username: "josie",
-        password: "simplepass"
+        username: process.env.mongoUser,
+        password: process.env.mongoPassword
       }
     ],
     mongooseUri: "mongodb://localhost:27017/effectindex"
