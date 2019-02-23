@@ -9,7 +9,7 @@
     <img
       class="float"
       height="350px"
-      src="/ei-donate.png" />
+      src="/ei-donate.png">
 
     <p> If you would be interested in contributing to the Effect Index project we have a number of donation options available. The funds will be used for hosting costs and enable us to devote more of our time to Subjective Effect Documentation. Any contribution is greatly appreciated!
     </p>
@@ -54,4 +54,3 @@ export default {
   }
 }
 </style>
-

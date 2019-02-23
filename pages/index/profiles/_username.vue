@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <div v-if="profile.username">
-      <h1> {{ profile.username }} </h1>
+      <h1>{{ profile.username }}</h1>
       <profile-image
         :filename="profile.profileImageFull"
         :username="profile.username" />
@@ -12,14 +12,14 @@
         v-if="replications.length > 0"
         style="clear: both; margin-top: 2em;">
         <hr>
-        <h3> Replications </h3>
+        <h3>Replications</h3>
         <light-box
           :image-set="replications"
           base="/img/gallery/" />
       </div>
     </div>
     <div v-else>
-      <h1> Profile not found </h1>
+      <h1>Profile not found</h1>
     </div>
   </div>
 </template>

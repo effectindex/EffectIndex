@@ -8,7 +8,8 @@ const Profile = mongoose.model("Profile", {
   },
   profileImageFull: String,
   profileImageCropped: String,
-  body: String
+  body: String,
+  sortOrder: Number
 });
 
 module.exports = Profile;

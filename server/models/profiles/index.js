@@ -14,7 +14,7 @@ const Profile = require('./Profile');
 router.get('/', async (req, res, next) => {
   try {
     let profiles = await Profile.find()
-      .sort({ username: 'asc' })
+      .sort({ sortOrder: 'asc' })
       .exec();
 
     res.status(200).send({ profiles });

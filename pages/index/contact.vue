@@ -1,14 +1,14 @@
 <template>
   <div class="pageContent">
-    
-    <h1> Contact  
-      <fa 
+
+    <h1> Contact
+      <fa
         :icon="['far', 'envelope']"
-        class="fa categoryIcon" /> 
+        class="fa categoryIcon" />
     </h1>
 
     <p>
-        To collectively contact the staff members of this site, please email us at effectindex@gmail.com. However, if you would like to contact a particular individual, please see the various contact information below:
+      To collectively contact the staff members of this site, please email us at effectindex@gmail.com. However, if you would like to contact a particular individual, please see the various contact information below:
     </p>
 
     <p>Effect Index project member contact information:

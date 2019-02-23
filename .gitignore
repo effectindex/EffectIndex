@@ -13,13 +13,7 @@ dist
 # Service Worker
 sw.js
 
-static/img/gallery/thumbnails/*
-static/img/gallery/*
-static/img/profiles/cropped/*
-static/img/profiles/*
-static/audio/
-!static/img/gallery/*/*
-!static/img/profiles/*/*
+static/**
 .DS_Store
 
 .env

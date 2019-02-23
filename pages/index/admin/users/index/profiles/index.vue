@@ -8,27 +8,28 @@
         </tr>
       </thead>
       <tbody>
-        <tr 
+        <tr
           v-for="profile in profiles"
           :key="profile._id">
-          <td>  
+          <td>
             <nuxt-link
-              :to="'/profiles/' + profile.username" 
-              class="profileList__username"> {{ profile.username }} </nuxt-link>
+              :to="'/profiles/' + profile.username"
+              class="profileList__username">{{ profile.username }}</nuxt-link>
           </td>
           <td>
-            <nuxt-link 
-              :to="'/admin/users/profiles/' + profile._id"> 
-              <fa 
+            <nuxt-link
+              :to="'/admin/users/profiles/' + profile._id">
+              <fa
                 :icon="['far', 'edit']"
                 class="fa" />
+              (sort: {{ profile.sortOrder }})
             </nuxt-link>
           </td>
           <td>
             <a
-              class="delete" 
+              class="delete"
               @click="deleteProfile(profile._id)">
-              <fa 
+              <fa
                 :icon="['far', 'times']"
                 class="fa" />
             </a>
@@ -82,4 +83,3 @@ export default {
   font-style: italic;
 }
 </style>
-

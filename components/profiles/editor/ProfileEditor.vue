@@ -1,17 +1,24 @@
 <template>
   <div>
 
-    <form 
+    <form
       enctype="multipart/form-data"
       @submit.prevent="submit" >
 
-      <label> Username
-        <input 
+      <label>Username
+        <input
           v-model="profile.username"
-          type="text"> </label>
+          type="text">
+      </label>
 
-      <label> Profile Body
+      <label>Profile Body
         <textarea v-model="profile.body" />
+      </label>
+
+      <label>Sort order (lowest first)
+        <input
+          v-model="profile.sortOrder"
+          type="text">
       </label>
 
       <button type="submit"> {{ profile._id ? 'Update' : 'Save' }} </button>
@@ -25,7 +32,7 @@
       <span class="success"> Profile {{ profile._id ? 'updated' : 'added' }}! </span>
     </p>
 
-    <image-uploader 
+    <image-uploader
       v-show="profile._id"
       :username="profile.username" />
   </div>
@@ -85,7 +92,7 @@ export default {
     async updateProfile() {
       let profile = this.profile;
       let response = await this.$store.dispatch("updateProfile", { profile });
-      
+
       if (response) {
         this.success = true;
         this.grabProfile();
