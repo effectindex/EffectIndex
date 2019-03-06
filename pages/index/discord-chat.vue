@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
 
-    <h1> Discord Chat 
+    <h1>Discord Chat
       <fa
         :icon="['fab', 'discord']"
         class="fa categoryIcon" />
@@ -15,7 +15,7 @@
       allowtransparency="true"
       frameborder="0" />
 
-    <p> The official Effect Index community is hosted on Discord and may be joined <ext-link href="https://discord.gg/ZCVfSn7"> here</ext-link>.
+    <p>The official Effect Index community is hosted on Discord and may be joined <ext-link href="https://discord.gg/VSm5bF7">here</ext-link>.
     </p>
 
     <p> This Discord community is used for the discussion of formalised Subjective Effect Documentation and replications of hallucinogenic experiences and effects.
