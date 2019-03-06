@@ -6,6 +6,7 @@
         class="fa categoryIcon">
       <h1> Subjective Effects of Deliriants </h1>
       <captioned-image
+        :border="true"
         src="/img/gallery/deliriants.jpg"
         align="right"
         width="300"

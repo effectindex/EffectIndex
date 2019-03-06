@@ -6,6 +6,7 @@
         class="fa categoryIcon" />
       <h1> Visual Effects of Psychedelics </h1>
       <captioned-image
+        :border="true"
         src="/img/gallery/In_the_tree_by_Eddie_calz.jpg"
         float="right"
         width="300"
