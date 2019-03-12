@@ -40,7 +40,7 @@ export default {
     changeInput(e) {
       if (e.keyCode === 13) {
         if (this.value.indexOf(e.target.value) === -1) {
-          this.$emit("input", [e.target.value.trim()].concat(this.value));
+          this.$emit("input", this.value.concat([e.target.value.trim()]));
         }
         this.contributorInputText = "";
       } else if (e.target.value.indexOf(",") > -1) {
@@ -57,7 +57,7 @@ export default {
           }
         });
 
-        this.$emit("input", newValue.concat(this.value));
+        this.$emit("input", this.value.concat(newValue));
         this.contributorInputText = "";
       }
     },
