@@ -481,6 +481,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .categoriesContainer {
