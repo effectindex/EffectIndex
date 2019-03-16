@@ -35,6 +35,22 @@
       </ul>
     </div>
     <div>
+      <label>Associated Substances:</label>
+      <ul class="substanceList">
+        <li
+          v-for="substance in $store.state.substances"
+          :key="substance.id">
+          <input
+            :id="substance.name"
+            v-model="associated_substances"
+            :value="substance._id"
+            type="checkbox"
+            class="substanceList__checkbox"
+          > {{ substance.name }}
+        </li>
+      </ul>
+    </div>
+    <div>
       <label> Description: </label>
       <textarea 
         v-model="description"
@@ -177,11 +193,15 @@ export default {
       associated_effects: this.replication
         ? this.replication.associated_effects
         : [],
+      associated_substances: this.replication
+        ? this.replication.associated_substances
+        : [],
       featured: this.replication ? this.replication.featured : false,
     };
   },
   mounted() {
     this.$store.dispatch("getEffects");
+    this.$store.dispatch("getSubstances");
   },
 
   methods: {
@@ -197,6 +217,7 @@ export default {
         description: this.description,
         date: this.date,
         associated_effects: this.associated_effects,
+        associated_substances: this.associated_substances,
         featured: this.featured
       };
 
@@ -211,7 +232,7 @@ export default {
 </script>
 
 <style scoped>
-.effectList {
+.effectList, .substanceList {
   columns: 3;
   font-size: 14px;
   color: black;
@@ -219,7 +240,7 @@ export default {
   padding: 0;
 }
 
-.effectList__checkbox {
+.effectList__checkbox, .substanceList__checkbox {
   margin-right: 1em;
 }
 
@@ -276,7 +297,7 @@ textarea {
   width: 100%;
 }
 
-.effectEditor__showHide {
+.effectEditor__showHide, .substanceEditor_showHide {
   font-size: 14px;
   text-align: right;
   user-select: none;

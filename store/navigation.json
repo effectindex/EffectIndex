@@ -9,6 +9,11 @@
         "scope": ["admin", "editor"]
       },
       {
+        "name": "Substances",
+        "location": "/admin/substances/list",
+        "scope": ["admin", "editor"]
+      },
+      {
         "name": "Replications",
         "location": "/admin/replications/list",
         "scope": ["admin", "editor", "artist"]
@@ -39,6 +44,9 @@
       { "name": "Physical", "location": "/effects?type=Physical" },
       { "name": "Substance Summaries", "location": "/summaries/" }
     ]
+  },
+  "Substances": {
+    "location": "/substances"
   },
   "Replications": {
     "location": "/replications",

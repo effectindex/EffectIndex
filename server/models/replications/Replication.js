@@ -27,6 +27,12 @@ const replicationSchema = new Schema({
         ref: "Effect"
       }
     ],
+    associated_substances: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Substance"
+      }
+    ],
     featured: {
       type: Boolean,
       default: false

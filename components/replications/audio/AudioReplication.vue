@@ -27,6 +27,20 @@
         </li>
       </ul>
     </div>
+
+    <div v-show="associatedSubstances.length">
+      <h4>Substances Replicated</h4>
+      <ul class="replicationSubstancesList">
+        <li
+          v-for="substance in associatedSubstances"
+          :key="substance._id"
+          class="replicationSubstancesListItem">
+          <nuxt-link :to="'/substances/' + substance.url">
+            {{ substance.name }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -53,6 +67,13 @@ export default {
       return this.$store.state.effects.filter(
         (effect) => replication.associated_effects.includes(effect._id));
     },
+    associatedSubstances() {
+      let replication = this.replication;
+      if (!Array.isArray(replication.associated_substances)) return undefined;
+
+      return this.$store.state.substances.filter(
+        (substance) => replication.associated_substances.includes(substance._id));
+    },
     description() {
       return (typeof (this.replication.description === 'String') ? this.replication.description : "" );
     }
@@ -78,12 +99,12 @@ export default {
     margin-right: 0.5em;
   }
 
-  .replicationEffectsList {
+  .replicationEffectsList, .replicationsSubstancesList {
     list-style: none;
     padding: 0;
   }
 
-  .replicationEffectsListItem {
+  .replicationEffectsListItem, .replicationSubstancesListItem {
     padding-right: 2em;
     display: inline-block;
   }

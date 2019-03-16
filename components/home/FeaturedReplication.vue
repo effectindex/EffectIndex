@@ -33,6 +33,7 @@
           <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }}</nuxt-link>
           <span v-if="index < (replicatedEffects.length - 1)">, &nbsp;</span>  
         </span>
+        <!-- maybe add substances here -->
         <br>
         <span class="replicationArtist"> {{ replication.artist }} </span>
       </div>
@@ -73,12 +74,24 @@ export default {
       return this.$store.state.effects;
     },
 
+    substances() {
+      return this.$store.state.substances;
+    },
+
     replicatedEffects() {
       if (!this.replication) return [];
       let replicatedEffectIDs = this.replication.associated_effects;
       if (!replicatedEffectIDs) return [];
       let replicatedEffects = this.effects.filter((effect) => replicatedEffectIDs.includes(effect._id));
       return replicatedEffects;
+    },
+
+    replicatedSubstances() {
+      if (!this.replication) return [];
+      let replicatedSubstanceIDs = this.replication.associated_substances;
+      if (!replicatedSubstanceIDs) return [];
+      let replicatedSubstances = this.substances.filter((substance) => replicatedSubstanceIDs.include(substance._id));
+      return replicatedSubstances;
     },
 
     imageUrl() {
