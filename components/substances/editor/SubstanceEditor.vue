@@ -39,17 +39,17 @@
       </div>
 
       <div>
-        <label>Analysis</label>
+        <label>Duration</label>
         <textarea
-          v-model="analysis"
-          class="substanceEditor__textarea substanceEditor__analysis" />
+          v-model="duration"
+          class="substanceEditor__textarea substanceEditor__duration" />
       </div>
 
       <div>
-        <label>Style Variations</label>
+        <label>Intensity Scale</label>
         <textarea
-          v-model="style_variations"
-          class="substanceEditor__textarea substanceEditor__style_variations" />
+          v-model="intensity_scale"
+          class="substanceEditor__textarea substanceEditor__intensity_scale" />
       </div>
 
       <div>
@@ -193,8 +193,8 @@ export default {
       contributors: this.substance ? this.substance.contributors : [],
       summary: this.substance ? this.substance.summary_raw : "",
       long_summary: this.substance ? this.substance.long_summary_raw : "",
-      analysis: this.substance ? this.substance.analysis_raw : "",
-      style_variations: this.substance ? this.substance.style_variations_raw : "",
+      duration: this.substance ? this.substance.duration_raw : "",
+      intensity_scale: this.substance ? this.substance.intensity_scale_raw : "",
       personal_commentary: this.substance ? this.substance.personal_commentary_raw : "",
       gallery_order: this.substance ? this.substance.gallery_order : [],
       social_media_image: this.substance ? this.substance.social_media_image : "",
@@ -242,8 +242,8 @@ export default {
         tags: this.tags,
         summary: this.summary,
         long_summary: this.long_summary,
-        analysis: this.analysis,
-        style_variations: this.style_variations,
+        duration: this.duration,
+        intensity_scale: this.intensity_scale,
         personal_commentary: this.personal_commentary,
         contributors: this.contributors,
         gallery_order: this.gallery_order,
@@ -308,11 +308,11 @@ label {
   min-height: 500px;
 }
 
-.substanceEditor__textarea.substanceEditor__analysis {
+.substanceEditor__textarea.substanceEditor__duration {
   min-height: 300px;
 }
 
-.substanceEditor__textarea.substanceEditor__style_variations {
+.substanceEditor__textarea.substanceEditor__intensity_scale {
   min-height: 300px;
 }
 

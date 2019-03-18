@@ -41,16 +41,16 @@
           :artist="replication.artist" />
       </div>
 
-      <div v-if="hasSection('analysis_raw')">
+      <div v-if="hasSection('duration_raw')">
         <hr>
-        <h3>Analysis</h3>
-        <formatted-document :document="substance.analysis_formatted" />
+        <h3>Duration</h3>
+        <formatted-document :document="substance.duration_formatted" />
       </div>
 
-      <div v-if="hasSection('style_variations_raw')">
+      <div v-if="hasSection('intensity_scale_raw')">
         <hr>
-        <h3>Style Variations</h3>
-        <formatted-document :document="substance.style_variations_formatted" />
+        <h3>Intensity Scale</h3>
+        <formatted-document :document="substance.intensity_scale_formatted" />
       </div>
 
       <div v-if="hasSection('personal_commentary_raw')">
