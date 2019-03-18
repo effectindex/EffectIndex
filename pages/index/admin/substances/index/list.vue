@@ -14,21 +14,21 @@
           <td> Tags </td>
         </tr>
       </thead>
-      <effect-table-row
+      <substance-table-row
         v-for="substance in filteredSubstances"
         :key="substance._id"
-        :effect="substance"
+        :substance="substance"
         @deleteSubstance="deleteSubstance" />
     </table>
   </div>
 </template>
 
 <script>
-import EffectTableRow from "@/components/effects/EffectTableRow.vue";
+import SubstanceTableRow from "@/components/substances/SubstanceTableRow.vue";
 
 export default {
   components: {
-    EffectTableRow
+    SubstanceTableRow
   },
   data() {
     return {

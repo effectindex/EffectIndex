@@ -1,17 +1,17 @@
 <template>
-  <div 
-    class="effect__longSummary">
-    <h4 
+  <div
+    class="substance__longSummary">
+    <h4
       v-show="showTitle"
-      :id="effect.url"
+      :id="substance.url"
       class="longSummary__title">
-      {{ effect.name }}
+      {{ substance.name }}
     </h4>
     <div class="longSummary__mainArticle">
       Full article: 
       <nuxt-link
-        :to="`/effects/${effect.url}`">
-        {{ effect.name }}
+        :to="`/substances/${substance.url}`">
+        {{ substance.name }}
       </nuxt-link>
     </div>
     <div>
@@ -24,7 +24,7 @@
 
 <script>
 import CaptionedImage from "@/components/CaptionedImage";
-import FormattedDocument from "@/components/effects/FormattedDocument";
+import FormattedDocument from "@/components/substances/FormattedDocument";
 
 export default {
   components: {
@@ -32,7 +32,7 @@ export default {
     FormattedDocument
   },
   props: {
-    effect: {
+    substance: {
       type: Object,
       default: () => ({})
     },
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     long_summary() {
-      return this.effect.long_summary_formatted ? this.effect.long_summary_formatted : undefined;
+      return this.substance.long_summary_formatted ? this.substance.long_summary_formatted : undefined;
     },
     replications() {
       return this.$store.state.replications;
@@ -56,8 +56,8 @@ export default {
       return (this.index % 2) ? true : false;
     },
     image() {
-      let replications = this.replications.filter((replication) => 
-      (replication.associated_effects.includes(this.effect._id) && (replication.type !== 'audio')));
+      let replications = this.replications.filter((replication) =>
+      (replication.associated_substances.includes(this.substance._id) && (replication.type !== 'audio')));
 
       return replications[Math.floor(Math.random() * (replications.length - 1))];
     }
@@ -73,7 +73,7 @@ export default {
     letter-spacing: 1px;
   }
 
-  .effect__longSummary {
+  .substance__longSummary {
     padding-bottom: 1em;
     margin-bottom: 1em;
     clear: both;

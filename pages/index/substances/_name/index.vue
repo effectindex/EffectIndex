@@ -3,7 +3,7 @@
     <article v-show="substance.name">
       <div v-if="$auth.loggedIn">
         <nuxt-link
-          :to="'/admin/substance/' + substance.url"
+          :to="'/admin/substances/' + substance.url"
           append>
           <fa
             :icon="['far', 'edit']"

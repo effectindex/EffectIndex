@@ -4,19 +4,19 @@
       v-show="title"
       class="actionTitle"> {{ title }} </h4>
     <ul class="actionList">
-      <li 
-        v-for="effect in effects"
-        :key="effect._id"
-        class="effectTitle">
-        <nuxt-link :to="`/effects/${effect.url}`"> {{ effect.name }} </nuxt-link>
-        <ul 
-          v-if="effect.subarticles && effect.subarticles.length"
+      <li
+        v-for="substance in substances"
+        :key="substance._id"
+        class="substanceTitle">
+        <nuxt-link :to="`/substances/${substance.url}`"> {{ substance.name }} </nuxt-link>
+        <ul
+          v-if="substance.subarticles && substance.subarticles.length"
           class="subarticleList">
-          <li 
-            v-for="(subarticle, index) in effect.subarticles"
+          <li
+            v-for="(subarticle, index) in substance.subarticles"
             :key="index"
             class="subarticleListItem">
-            <nuxt-link :to="`/effects/${effect.url}?s=${subarticle.id}`"> {{ subarticle.title }} </nuxt-link>
+            <nuxt-link :to="`/substances/${substance.url}?s=${subarticle.id}`"> {{ subarticle.title }} </nuxt-link>
           </li>
         </ul>
       </li>
@@ -31,7 +31,7 @@ export default {
       type: String,
       default: undefined
     },
-    effects: {
+    substances: {
       type: Array,
       default: () => []
     }
@@ -71,7 +71,7 @@ export default {
   margin-bottom: 0.5em;
 }
 
-.effectTitle {
+.substanceTitle {
   margin: 0;
   padding: 0;
   line-height: 1.5em;

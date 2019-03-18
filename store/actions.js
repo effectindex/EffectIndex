@@ -122,7 +122,7 @@ export default {
   },
   async getSubstance({ commit }, name) {
     try {
-      let { substance } = await this.$axios.$get("/api/substance/" + name);
+      let { substance } = await this.$axios.$get("/api/substances/" + name);
       return { substance };
     } catch (error) {
       throw new Error(error);

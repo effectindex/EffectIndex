@@ -2,7 +2,7 @@
   <div>
     <input 
       v-model="tagInputText"
-      class="effectEditor__input"
+      class="substanceEditor__input"
       @keyup="changeInput"
     >
     <ul class="tagList">

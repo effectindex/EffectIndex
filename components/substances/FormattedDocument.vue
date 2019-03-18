@@ -1,11 +1,11 @@
 <script>
 import Reference from "@/components/Reference";
 import ExtLink from "@/components/ExtLink";
-import Markdown from "@/components/effects/FormattedDocument__markdown";
+import Markdown from "@/components/substances/FormattedDocument__markdown";
 import CaptionedImage from "@/components/CaptionedImage";
-import BulletWithReferences from "@/components/effects/BulletWithReferences";
+import BulletWithReferences from "@/components/substances/BulletWithReferences";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
-import SubarticleAnchor from "@/components/effects/SubarticleAnchor";
+import SubarticleAnchor from "@/components/substances/SubarticleAnchor";
 
 export default {
   functional: true,

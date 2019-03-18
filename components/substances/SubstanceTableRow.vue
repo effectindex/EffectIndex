@@ -1,16 +1,16 @@
 <template>
   <tr>
     <td style="min-width: 300px">
-      <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }} </nuxt-link>
+      <nuxt-link :to="'/substances/' + substance.url"> {{ substance.name }} </nuxt-link>
     </td>
     <td>
-      <span 
-        v-for="tag in effect.tags"
+      <span
+        v-for="tag in substance.tags"
         :key="tag"
-        class="effectTableRow__tagItem"> {{ tag }} </span>
+        class="substanceTableRow__tagItem"> {{ tag }} </span>
     </td>
-    <td class="effectTableRow__editButton">
-      <nuxt-link :to="'/admin/effects/' + effect.url">
+    <td class="substanceTableRow__editButton">
+      <nuxt-link :to="'/admin/substances/' + substance.url">
         <fa
           :icon="['far', 'edit']"
           class="fa"
@@ -18,9 +18,9 @@
       </nuxt-link>
     </td>
     <td>
-      <a 
+      <a
         style="color: red; cursor: pointer;"
-        @click="deleteEffect(effect._id)">
+        @click="deleteSubstance(substance._id)">
         <fa
           :icon="['far', 'times']"
           class="fa"
@@ -38,21 +38,21 @@ export default {
     ExtLink
   },
   props: {
-    effect: {
+    substance: {
       type: Object,
       default: () => null
     }
   },
   methods: {
-    deleteEffect(id) {
-      this.$emit("deleteEffect", id);
+    deleteSubstance(id) {
+      this.$emit("deleteSubstance", id);
     }
   }
 };
 </script>
 
 <style>
-.effectTableRow__tagItem {
+.substanceTableRow__tagItem {
   display: inline-block;
   font-size: 14px;
   color: #555;
@@ -63,7 +63,7 @@ export default {
   border-radius: 10px;
 }
 
-.effectTableRow__editButton {
+.substanceTableRow__editButton {
   padding-right: 1em;
 }
 </style>

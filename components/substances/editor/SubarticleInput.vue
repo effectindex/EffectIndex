@@ -7,12 +7,12 @@
         v-model="title"
         name="title"
         placeholder="Title"
-        class="effectEditor__input subarticleInput__title">
+        class="substanceEditor__input subarticleInput__title">
       <input
         v-model="id"
         placeholder="Id"
         name="id"
-        class="effectEditor__input subarticleInput__id">
+        class="substanceEditor__input subarticleInput__id">
       <button type="Submit"> Add </button>
     </form>
     

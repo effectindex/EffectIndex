@@ -1,16 +1,16 @@
 <template>
   <div class="pageContent">
     <hr>
-    <effect-editor @new-effect="submitSubstance" />
+    <substance-editor @new-substance="submitSubstance" />
   </div>
 </template>
 
 <script>
-import EffectEditor from "@/components/effects/editor/EffectEditor";
+import SubstanceEditor from "@/components/substances/editor/SubstanceEditor";
 
 export default {
   components: {
-    EffectEditor
+    SubstanceEditor
   },
   middleware: ["auth"],
   methods: {
@@ -22,7 +22,7 @@ export default {
         text: 'The new substance has been successfully submitted.'
       });
 
-      this.$router.push("/admin/substance/list");
+      this.$router.push("/admin/substances/list");
     }
   }
 };

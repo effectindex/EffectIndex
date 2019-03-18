@@ -1,5 +1,5 @@
 <template>
-  <div class="effectEditor__linkInput">
+  <div class="substanceEditor__linkInput">
     <div class="urlTitleContainer">
       <div class="urlContainer">
         <label> URL </label>
@@ -105,7 +105,7 @@ export default {
   margin-left: 1em;
 }
 
-.effectEditor__linkInput label {
+.substanceEditor__linkInput label {
   margin: 0;
 }
 

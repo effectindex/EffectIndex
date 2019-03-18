@@ -5,20 +5,17 @@
     other psychonautic techniques.</p>
 
     <transition name="grow">
-      <div 
+      <div
         v-show="show"
         class="showMoreContainer">
-        <p>The effects listed here are accompanied by detailed descriptions of the subjective experience of them. They are 
-        written in a consistent, formal writing style that seeks to avoid the use of flowery metaphors or analogy, instead 
+        <p>The substances listed here are accompanied by detailed descriptions of the subjective experience of them. They are
+        written in a consistent, formal writing style that seeks to avoid the use of flowery metaphors or analogy, instead
         striving to use simple and accessible language. This is done in the hope that they will eventually serve as a universal
         terminology set that enables people to better communicate and share experiences that are, by nature, difficult to convey. </p>
 
-        <p>The Index is separated into {{ effectCount }} effects which are organised into categories based on the senses they affect and
-        their behavior. Many of these are further broken down into leveling systems, subcomponents, 
-        and style variations that may occur across different substances. Detailed image, video, and audio 
-        <a href="/replications"> replications </a> have been included wherever possible to supplement text-based descriptions.</p>
+        <p>The Substance Index contains separated into {{ sCount }} substances.</p>
 
-        <p>The content within this Index is based on the collective experiences of our contributors, scientific literature, 
+        <p>The content within this Index is based on the collective experiences of our contributors, scientific literature,
         and individual case reports.</p>
       </div>
     </transition>
@@ -38,8 +35,8 @@ export default {
     };
   },
   computed: {
-    effectCount() {
-      return this.$store.state.effects.length;
+    substanceCount() {
+      return this.$store.state.substances.length;
     }
   },
   methods: {

@@ -2,7 +2,7 @@
   <div>
     <input
       v-model="contributorInputText"
-      class="effectEditor__input"
+      class="substanceEditor__input"
       @keyup="changeInput">
     <ul class="contributorList">
       <li

@@ -2,7 +2,7 @@
   <div>
     <input 
       v-model="substanceInputText"
-      class="effectEditor__input"
+      class="substanceEditor__input"
       @keyup="changeInput">
     <ul class="substanceList">
       <li 

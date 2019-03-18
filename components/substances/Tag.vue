@@ -1,6 +1,6 @@
 <template>
-  <div 
-    class="effectDescription__tag"
+  <div
+    class="substanceDescription__tag"
     @click="clickTag(value)"> {{ value }} </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style>
-.effectDescription__tag {
+.substanceDescription__tag {
   position: relative;
   display: inline-block;
   color: white;
@@ -37,7 +37,7 @@ export default {
   transition: all 0.2s;
 }
 
-.effectDescription__tag:hover {
+.substanceDescription__tag:hover {
   opacity: 1;
   box-shadow: 2px 2px 4px #aaa;
   top: -2px;

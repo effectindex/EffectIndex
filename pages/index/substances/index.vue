@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import Tabs from "@/components/effects/index/Tabs";
-import Tab from "@/components/effects/index/Tab";
-import Category from "@/components/effects/index/Category";
-import Column from "@/components/effects/index/Column";
-import Actions from "@/components/effects/index/Actions";
-import Description from "@/components/effects/index/Description";
-import Blob from "@/components/effects/index/Blob";
+import Tabs from "@/components/substances/index/Tabs";
+import Tab from "@/components/substances/index/Tab";
+import Category from "@/components/substances/index/Category";
+import Column from "@/components/substances/index/Column";
+import Actions from "@/components/substances/index/Actions";
+import Description from "@/components/substances/index/Description";
+import Blob from "@/components/substances/index/Blob";
 
 export default {
   components: {
@@ -39,15 +39,15 @@ export default {
     };
   },
   computed: {
-    effects() {
-      return this.$store.state.effects;
+    substances() {
+      return this.$store.state.substances;
     },
   },
   watchQuery: ['type'],
   methods: {
-    filterEffectsByTag(...tags) {
-      return this.effects.filter(effect =>
-        tags.every(tag => effect.tags.indexOf(tag) > -1)
+    filterSubstancesByTag(...tags) {
+      return this.substances.filter(substance =>
+        tags.every(tag => substance.tags.indexOf(tag) > -1)
       );
     },
     selectTab(name) {
@@ -55,7 +55,7 @@ export default {
     }
   },
   async fetch ({ store }) {
-    await store.dispatch("getEffects");
+    await store.dispatch("getSubstances");
   },
 };
 </script>
