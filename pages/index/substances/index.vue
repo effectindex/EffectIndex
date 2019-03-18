@@ -11,13 +11,14 @@
 
     <p>The descriptions include comprehensive intensity scales which are applied to both
     hallucinogenic substance classes and specific compounds. These intensity scales describe
-    the various experiential changes that can occur at specific ranges as the dosage is increased.</p>
+    the various subjective changes that can occur at specific ranges as the dosage is increased.</p>
 
     <p>Alongside of these, we have also included more general and summarised descriptions of the
     various effects which commonly occur under the influence of the three main classes of
     hallucinogen: psychedelics, dissociatives, and deliriants. However, please keep in mind that
     although the effect descriptions within these summaries are significantly shortened, their
     full-length articles are linked above each effect.</p>
+  </div>
 </template>
 
 <script>
