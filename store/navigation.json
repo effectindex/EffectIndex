@@ -42,11 +42,8 @@
       { "name": "Sensory", "location": "/effects?type=Sensory" },
       { "name": "Cognitive", "location": "/effects?type=Cognitive" },
       { "name": "Physical", "location": "/effects?type=Physical" },
-      { "name": "Substance Summaries", "location": "/summaries/" }
+      { "name": "Substances", "location": "/substances/" }
     ]
-  },
-  "Substances": {
-    "location": "/substances"
   },
   "Replications": {
     "location": "/replications",

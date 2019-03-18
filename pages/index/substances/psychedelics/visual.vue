@@ -70,9 +70,9 @@
       </div>
       <h3> See Also </h3>
       <ul>
-        <li> <nuxt-link to="/summaries/"> Substance Summary Index </nuxt-link> </li>
-        <li> <nuxt-link to="/summaries/psychedelics/cognitive"> Cognitive Psychedelic Effects </nuxt-link> </li>
-        <li> <nuxt-link to="/summaries/psychedelics/miscellaneous"> Miscellaneous Psychedelic Effects </nuxt-link> </li>
+        <li> <nuxt-link to="/substances/"> Substance Summary Index </nuxt-link> </li>
+        <li> <nuxt-link to="/substances/psychedelics/cognitive"> Cognitive Psychedelic Effects </nuxt-link> </li>
+        <li> <nuxt-link to="/substances/psychedelics/miscellaneous"> Miscellaneous Psychedelic Effects </nuxt-link> </li>
       </ul>
     </div>
 

@@ -3,19 +3,19 @@
     <ul class="summaryList">
       <li class="summaryItem">
         <span> The Subjective Effects of Psychedelics: </span> <br>
-        <nuxt-link :to="'/summaries/psychedelics/visual'"> Visual, </nuxt-link>
-        <nuxt-link :to="'/summaries/psychedelics/cognitive'"> Cognitive, </nuxt-link>
-        <nuxt-link :to="'/summaries/psychedelics/miscellaneous'"> Miscellaneous </nuxt-link>
+        <nuxt-link :to="'/substances/psychedelics/visual'"> Visual, </nuxt-link>
+        <nuxt-link :to="'/substances/psychedelics/cognitive'"> Cognitive, </nuxt-link>
+        <nuxt-link :to="'/substances/psychedelics/miscellaneous'"> Miscellaneous </nuxt-link>
       </li>
       <li class="summaryItem">
-        <nuxt-link :to="'/summaries/dissociatives'"> The Subjective Effects of Dissociatives </nuxt-link>
+        <nuxt-link :to="'/substances/dissociatives'"> The Subjective Effects of Dissociatives </nuxt-link>
       </li>
       <li class="summaryItem">
-        <nuxt-link :to="'/summaries/deliriants'"> The Subjective Effects of Deliriants </nuxt-link>
+        <nuxt-link :to="'/substances/deliriants'"> The Subjective Effects of Deliriants </nuxt-link>
       </li>
     </ul>
     <div class="substanceSummariesStub">
-      For more, see the <nuxt-link to="/summaries/"> substance summary index</nuxt-link>.
+      For more, see the <nuxt-link to="/substances/"> substance summary index</nuxt-link>.
     </div>
   </div>
 </template>
