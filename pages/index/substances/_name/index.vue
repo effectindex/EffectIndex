@@ -14,7 +14,7 @@
         :icon="['far', icon]"
         class="fa categoryIcon" />
       <div v-if="hasSection('description_raw')">
-        <h1> {{ substance.name }} </h1>
+        <h1>Subjective effects of {{ substance.name }}</h1>
         <formatted-document :document="substance.description_formatted" />
       </div>
 
@@ -189,13 +189,13 @@ export default {
   },
   head() {
     return {
-      title: this.substance.name,
+      title: `Subjective effects of ${this.substance.name}`,
       meta: [
         { name: 'description', hid: 'description', content: this.substance.summary_raw },
-        { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.substance.name}` },
+        { name: 'og:title', hid: 'og:title', content: `Effect Index - Subjective Effects of ${this.substance.name}` },
         { name: 'og:description', hid: 'og:description', content: this.substance.summary_raw },
         { name: 'og:image', hid: 'og:image', content: this.substance.social_media_image },
-        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.substance.name}` },
+        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - Subjective Effects of ${this.substance.name}` },
         { name: 'twitter:description', hid: 'twitter:description', content: this.substance.summary_raw },
         { name: 'twitter:image', hid: 'twitter:image', content: this.substance.social_media_image },
       ]
