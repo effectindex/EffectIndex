@@ -9,7 +9,7 @@ const API_Error = require('../ApiError');
 const User = require('./User');
 const Invitation = require('../invitations/Invitation');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 router.post('/add', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
