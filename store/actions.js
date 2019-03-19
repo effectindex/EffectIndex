@@ -115,7 +115,7 @@ export default {
   },
   async deleteSubstance({ dispatch }, id) {
     let { substance: deletedSubstance } = await this.$axios.$delete(
-      "/api/substance/" + id
+      "/api/substances/" + id
     );
     dispatch("getSubstances");
     return deletedSubstance;
