@@ -53,6 +53,13 @@
       </div>
 
       <div>
+        <label>Experience Reports</label>
+        <textarea
+          v-model="experience_reports"
+          class="substanceEditor__textarea substanceEditor__experience_reports" />
+      </div>
+
+      <div>
         <label>Personal Commentary</label>
         <textarea
           v-model="personal_commentary"
@@ -195,6 +202,7 @@ export default {
       long_summary: this.substance ? this.substance.long_summary_raw : "",
       duration: this.substance ? this.substance.duration_raw : "",
       intensity_scale: this.substance ? this.substance.intensity_scale_raw : "",
+      experience_reports: this.substance ? this.substance.experience_reports_raw : "",
       personal_commentary: this.substance ? this.substance.personal_commentary_raw : "",
       gallery_order: this.substance ? this.substance.gallery_order : [],
       social_media_image: this.substance ? this.substance.social_media_image : "",
@@ -244,6 +252,7 @@ export default {
         long_summary: this.long_summary,
         duration: this.duration,
         intensity_scale: this.intensity_scale,
+        experience_reports: this.experience_reports,
         personal_commentary: this.personal_commentary,
         contributors: this.contributors,
         gallery_order: this.gallery_order,
@@ -313,6 +322,10 @@ label {
 }
 
 .substanceEditor__textarea.substanceEditor__intensity_scale {
+  min-height: 300px;
+}
+
+.substanceEditor__textarea.substanceEditor__experience_reports {
   min-height: 300px;
 }
 

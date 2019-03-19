@@ -53,6 +53,12 @@
         <formatted-document :document="substance.intensity_scale_formatted" />
       </div>
 
+      <div v-if="hasSection('experience_reports_raw')">
+        <hr>
+        <h3>Experience Reports</h3>
+        <formatted-document :document="substance.experience_reports_formatted" />
+      </div>
+
       <div v-if="hasSection('personal_commentary_raw')">
         <hr>
         <h3>Personal Commentary</h3>

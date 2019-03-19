@@ -24,6 +24,8 @@ const substanceSchema = new mongoose.Schema({
   duration_formatted: String,
   intensity_scale_raw: String,
   intensity_scale_formatted: String,
+  experience_reports_raw: String,
+  experience_reports_formatted: String,
   personal_commentary_raw: String,
   personal_commentary_formatted: String,
   contributors: Array,
