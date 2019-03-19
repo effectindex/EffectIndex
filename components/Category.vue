@@ -51,7 +51,7 @@ export default {
     border: 1px solid #DDD;
     background-color: rgb(252, 252, 252);
     margin-bottom: 1em;
-    min-width: 300px;
+    min-width: 250px;
     box-shadow: 2px 2px 2px #EEE;
   }
 
