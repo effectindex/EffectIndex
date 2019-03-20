@@ -144,28 +144,7 @@ export default {
   },
   computed: {
     icon() {
-      let tags = this.substance["tags"];
-
-      let icons = {
-        cognitive: "user",
-        visual: "eye",
-        auditory: "volume-up",
-        tactile: "hand-paper",
-        disconnective: "chain",
-        multisensory: "cogs",
-        uncomfortable: "frown",
-        physical: "heart-rate",
-        gustatory: "utensils",
-        olfactory: "utensils",
-      };
-
-      if (Array.isArray(tags)) {
-        for (let tag in icons) {
-          if (tags.indexOf(tag) > -1) return icons[tag];
-        }
-      }
-
-      return "user";
+      return "flask";
     }
   },
   scrollToTop: true,
