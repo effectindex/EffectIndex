@@ -15,6 +15,7 @@ const createStore = () => {
       },
       replications: [],
       effects: [],
+      substances: [],
       navigation,
       gallery: {
         selected_effect_id: "",

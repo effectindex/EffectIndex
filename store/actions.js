@@ -56,16 +56,15 @@ export default {
   },
   async updateEffect({ dispatch }, effect) {
     try {
-    let { effect: updatedEffect } = await this.$axios.$post(
-      "/api/effects/" + effect.id,
-      effect
-    );
-    await dispatch("getEffects");
-    return updatedEffect;
-  } catch (error) {
-    throw new Error(error);
-  }
-    
+      let { effect: updatedEffect } = await this.$axios.$post(
+        "/api/effects/" + effect.id,
+        effect
+      );
+      await dispatch("getEffects");
+      return updatedEffect;
+    } catch (error) {
+      throw new Error(error);
+    }
   },
   async deleteEffect({ dispatch }, id) {
     let { effect: deletedEffect } = await this.$axios.$delete(
@@ -78,6 +77,53 @@ export default {
     try {
       let { effect } = await this.$axios.$get("/api/effects/" + name);
       return { effect };
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  // Substances
+  async getSubstances({ commit }) {
+    try {
+      let { substances } = await this.$axios.$get("/api/substances");
+      commit("set_substances", substances);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async submitSubstance({ dispatch }, substance) {
+    try {
+      let { substance: submittedSubstance } = await this.$axios.$post(
+        "/api/substances",
+        { substance }
+      );
+      return submittedSubstance;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async updateSubstance({ dispatch }, substance) {
+    try {
+      let { substance: updatedSubstance } = await this.$axios.$post(
+        "/api/substances/" + substance.id,
+        substance
+      );
+      await dispatch("getSubstances");
+      return updatedSubstance;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+  async deleteSubstance({ dispatch }, id) {
+    let { substance: deletedSubstance } = await this.$axios.$delete(
+      "/api/substances/" + id
+    );
+    dispatch("getSubstances");
+    return deletedSubstance;
+  },
+  async getSubstance({ commit }, name) {
+    try {
+      let { substance } = await this.$axios.$get("/api/substances/" + name);
+      return { substance };
     } catch (error) {
       throw new Error(error);
     }

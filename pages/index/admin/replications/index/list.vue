@@ -131,6 +131,11 @@ export default {
       let foundEffects = effects.filter((effect) => effect.name.toLowerCase().indexOf(this.filter) > -1);
       return foundEffects;
     },
+    filteredSubstances() {
+      let substances = this.$store.state.substances;
+      let foundSubstances = substances.filter((substance) => substance.name.toLowerCase.indexOf(this.filter) > -1);
+      return foundSubstances;
+    },
     filteredReplications() {
       let replications = this.$store.state.replications;
       let filter = this.filter.toLowerCase();
@@ -141,13 +146,16 @@ export default {
       let matchedReplications = replications.filter((replication) =>
         replication.associated_effects.some((associated_effect) =>
           effectIds.indexOf(associated_effect) > -1));
-      
+
+      /* match substances also? */
+
       return this.sortReplications(matchedReplications);
     }
   },
   async fetch({ store }) {
     await store.dispatch("getReplications");
     await store.dispatch("getEffects");
+    await store.dispatch("getSubstances");
   },
   middleware: ["auth"],
   scrollToTop: true,
@@ -188,6 +196,9 @@ export default {
       this.filter = "";
     },
     selectEffectName(name) {
+      this.filter = name.toLowerCase();
+    },
+    selectSubstanceName(name) {
       this.filter = name.toLowerCase();
     },
     focus() {

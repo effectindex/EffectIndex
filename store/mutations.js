@@ -11,6 +11,9 @@ export default {
   set_effects(state, effects) {
     state.effects = effects;
   },
+  set_substances(state, substances) {
+    state.substances = substances;
+  },
   set_gallery(state, data) {
     state.gallery.replications = data.replications;
     state.gallery.replicated_effects = data.replicated_effects;
