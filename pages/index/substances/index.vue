@@ -470,7 +470,7 @@ export default {
   },
   head() {
     return {
-      title: "Summaries"
+      title: "Substance Index"
     };
   },
   scrollToTop: true,
