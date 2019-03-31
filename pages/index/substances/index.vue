@@ -48,8 +48,8 @@
                   :to="`/substances/${substance.url}`">
                   {{ substance.name }}
                 </nuxt-link>
-                <li>More coming soon...</li>
               </li>
+              <li>More coming soon...</li>
             </ul>
           </panel>
         </category>
