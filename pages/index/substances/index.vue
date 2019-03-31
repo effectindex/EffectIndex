@@ -3,7 +3,7 @@
     <fa
       :icon="['far', 'flask']"
       class="fa categoryIcon" />
-    <h1> Substance Summaries </h1>
+    <h1> Substance Index </h1>
 
     <p>The following articles break down the specific subjective effects of hallucinogens
     into simple and easy to understand descriptions with accompanying image replications.
