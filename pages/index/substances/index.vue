@@ -22,6 +22,28 @@
     <hr>
     <div class="summaryColumns">
       <div class="categoriesContainer">
+
+        <category
+          :icon="['fas', 'chart-line']"
+          title="Intensity Scales">
+          <panel
+            title="Intensity Scales">
+            <h4>Substance Classes</h4>
+            $$ intensity scales go here $$
+            <h4>Specific Substances</h4>
+            <ul class="effectList">
+              <li
+                v-for="substance in substances"
+                :key="substance._id">
+                <nuxt-link
+                  :to="`/substances/${substance.url}`">
+                  {{ substance.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+          </panel>
+        </category>
+
         <category
           :icon="['far', 'eye']"
           link="/substances/psychedelics/visual"
@@ -445,6 +467,9 @@ export default {
   computed: {
     effects() {
       return this.$store.state.effects;
+    },
+    substances() {
+      return this.$store.state.substances;
     }
   },
   methods: {
@@ -464,6 +489,7 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("getEffects");
+    await store.dispatch("getSubstances");
   }
 };
 </script>
