@@ -29,7 +29,16 @@
           <panel
             title="Intensity Scales">
             <h4>Substance Classes</h4>
-            $$ intensity scales go here $$
+            <ul class="effectList">
+              <li
+                v-for="effect in filterEffectsByTag('intensity scale')"
+                :key="effect._id">
+                <nuxt-link
+                  :to="`/effects/${effect.url}`">
+                  {{ effect.name }}
+                </nuxt-link>
+              </li>
+            </ul>
             <h4>Specific Substances</h4>
             <ul class="effectList">
               <li
@@ -39,6 +48,7 @@
                   :to="`/substances/${substance.url}`">
                   {{ substance.name }}
                 </nuxt-link>
+                <li>More coming soon...</li>
               </li>
             </ul>
           </panel>
