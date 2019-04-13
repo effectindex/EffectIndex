@@ -18,6 +18,18 @@
         <formatted-document :document="substance.description_formatted" />
       </div>
 
+      <div v-if="hasSection('duration_raw')">
+        <hr>
+        <h3>Duration</h3>
+        <formatted-document :document="substance.duration_formatted" />
+      </div>
+
+      <div v-if="hasSection('intensity_scale_raw')">
+        <hr>
+        <h3>Intensity Scale</h3>
+        <formatted-document :document="substance.intensity_scale_formatted" />
+      </div>
+
       <div
         v-if="hasSection('replications')"
         class="substance__gallery">
@@ -39,18 +51,6 @@
           :src="`/audio/${replication.resource}`"
           :title="replication.title"
           :artist="replication.artist" />
-      </div>
-
-      <div v-if="hasSection('duration_raw')">
-        <hr>
-        <h3>Duration</h3>
-        <formatted-document :document="substance.duration_formatted" />
-      </div>
-
-      <div v-if="hasSection('intensity_scale_raw')">
-        <hr>
-        <h3>Intensity Scale</h3>
-        <formatted-document :document="substance.intensity_scale_formatted" />
       </div>
 
       <div v-if="hasSection('experience_reports_raw')">
