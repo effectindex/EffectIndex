@@ -22,7 +22,7 @@
         v-if="hasSection('replications')"
         class="effect__gallery">
         <hr>
-        <h3> Gallery </h3>
+        <h3>Replication Gallery</h3>
         <light-box
           :image-set="effect.replications"
           :order="effect.gallery_order"

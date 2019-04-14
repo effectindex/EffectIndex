@@ -34,7 +34,7 @@
         v-if="hasSection('replications')"
         class="substance__gallery">
         <hr>
-        <h3> Gallery </h3>
+        <h3>Replication Gallery</h3>
         <light-box
           :image-set="substance.replications"
           :order="substance.gallery_order"
