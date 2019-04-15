@@ -47,7 +47,9 @@
         <formatted-document :document="effect.analysis_formatted" />
       </div>
 
-      <div v-if="hasSection('style_variations_raw')">
+      <div 
+        v-if="hasSection('style_variations_raw')"
+        id="variations">
         <hr>
         <h3>Style Variations</h3>
         <formatted-document :document="effect.style_variations_formatted" />
