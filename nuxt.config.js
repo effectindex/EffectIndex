@@ -81,7 +81,6 @@ module.exports = {
   */
   plugins: [
     "~/plugins/vue-notification",
-    "~/plugins/vue-scrollto",
     "~/plugins/vue2-touch-events",
     "~/plugins/font-awesome"
   ],
@@ -95,6 +94,7 @@ module.exports = {
     "@nuxtjs/axios",
     "@nuxtjs/auth",
     "@nuxtjs/markdownit",
+    ["vue-scrollto/nuxt", { force: true, duration: 500 }],
     "@nuxtjs/dotenv",
     [
       "@nuxtjs/google-analytics",

@@ -48,10 +48,9 @@
       </div>
 
       <div 
-        v-if="hasSection('style_variations_raw')"
-        id="variations">
+        v-if="hasSection('style_variations_raw')">
         <hr>
-        <h3>Style Variations</h3>
+        <h3 id="variations">Style Variations</h3>
         <formatted-document :document="effect.style_variations_formatted" />
       </div>
 
