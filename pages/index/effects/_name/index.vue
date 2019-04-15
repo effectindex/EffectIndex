@@ -167,7 +167,7 @@ export default {
   mounted() {
     let s = this.$route.query.s;
     if (s) {
-      this.$scrollTo('#' + s);
+      setTimeout(() => this.$scrollTo('#' + s), 750);
     }
   },
   methods: {
