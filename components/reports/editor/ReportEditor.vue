@@ -209,7 +209,7 @@ export default {
         offset: this.report ? this.report.offset : [],
         conclusion: this.report ? this.report.conclusion : undefined,
         tags: this.report ? this.report.tags : [],
-        featured: this.report ? this.report.featured : 'asdf',
+        featured: this.report ? this.report.featured : false,
       },
       sectionVisibility: this.visibility ? this.visibility : 
       (() => { return ['subject', 'substances', 'onset', 'peak', 'offset',
