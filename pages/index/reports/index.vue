@@ -13,8 +13,7 @@
 
     <div v-if="viewMode.name === 'substance'">
       <div
-        v-for="(substance, index) in sortedSubstances"
-        v-if="substance !== 'Combinations'"
+        v-for="(substance, index) in sortedSubstances.filter(substance => substance !== 'Combinations')"
         :key="index"
         class="report__substanceList">
         <h3> {{ substance }} </h3>
@@ -143,32 +142,9 @@ export default {
       return this.profileNames[this.profileNames.indexOf(name)];
     },
     filterReportsBySubstance(name) {
-      if (this.reportCache === undefined)
-        this.reportCache = this.reports.slice(0);
-      let indexArray = [];
-      let reports = [];
-      if (name === "Combinations")
-        reports = this.reportCache.filter((report, index) => {
-          if (report.substances.length > 1) {
-            indexArray.push(index);
-            return true;
-          }
-        });
-      else
-        reports = this.reportCache.filter((report, index) => {
-          if (
-            report.substances.length === 1 &&
-            report.substances.some(substance => substance.name === name)
-          ) {
-            indexArray.push(index);
-            return true;
-          }
-        });
-      indexArray.sort((a, b) => b > a).forEach(index => {
-        this.reportCache.splice(index, 1);
-      });
-      if (this.reportCache.length <= 0) this.reportCache = undefined;
-      return reports;
+        return name === 'Combinations' ?
+        this.reports.filter((report) => report.substances.length > 1) : 
+        this.reports.filter((report) => report.substances.find((substance) => substance.name === name));
     },
     filterReportsByAuthor(author) {
       return this.reports.filter(report => report.subject.name === author);
