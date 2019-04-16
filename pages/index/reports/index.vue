@@ -143,8 +143,8 @@ export default {
     },
     filterReportsBySubstance(name) {
         return name === 'Combinations' ?
-        this.reports.filter((report) => report.substances.length > 1) : 
-        this.reports.filter((report) => report.substances.find((substance) => substance.name === name));
+        this.reports.filter((report) => Array.isArray(report.substances) && report.substances.length > 1) : 
+        this.reports.filter((report) => Array.isArray(report.substances) && report.substances.find((substance) => substance.name === name));
     },
     filterReportsByAuthor(author) {
       return this.reports.filter(report => report.subject.name === author);
