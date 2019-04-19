@@ -83,8 +83,7 @@ export default {
   .quotationProfileImageContainer {
     display: flex;
     align-items: center;
-    align-self: right;
-    justify-content: right;
+    justify-content: flex-end;
   }
 
 </style>
