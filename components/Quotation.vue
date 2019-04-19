@@ -7,7 +7,7 @@
     <p class="quotationAuthor">
       <span 
         v-if="!profile"
-        class="quotationAuthorName"> - {{ author }} </span>
+        class="quotationAuthorName"> <span class="quotationDash"> - </span> {{ author }} </span>
       <span 
         v-else> 
         <nuxt-link :to="`/profiles/${profile}`">
@@ -18,10 +18,10 @@
               v-if="profileImage"
               :src="profileImage"
               class="quotationProfileImage">
-            <span> - {{ author }} </span>
+            <span> <span class="quotationDash"> - </span> {{ author }} </span>
           </div>
           <span 
-            v-else> - {{ author }} </span>
+            v-else> <span class="quotationDash"> - </span> {{ author }} </span>
         </nuxt-link>
       </span>
     </p>
@@ -84,6 +84,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  .quotationDash {
+    color: #888;
   }
 
 </style>
