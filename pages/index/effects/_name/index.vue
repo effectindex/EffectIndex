@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <article v-show="effect.name">
-      <div v-if="$auth.loggedIn">
+      <div v-show="$auth.loggedIn">
         <nuxt-link
           :to="'/admin/effects/' + effect.url"
           append>
@@ -13,7 +13,7 @@
       <fa
         :icon="['far', icon]"
         class="fa categoryIcon" />
-      <div v-if="hasSection('description_raw')">
+      <div v-show="hasSection('description_raw')">
         <h1> {{ effect.name }} </h1>
         <formatted-document :document="effect.description_formatted" />
       </div>
