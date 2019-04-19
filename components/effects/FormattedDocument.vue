@@ -6,12 +6,15 @@ import CaptionedImage from "@/components/CaptionedImage";
 import BulletWithReferences from "@/components/effects/BulletWithReferences";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import SubarticleAnchor from "@/components/effects/SubarticleAnchor";
+import Quotation from "@/components/Quotation";
 
 export default {
   functional: true,
   render(createElement, context) {
     function handleType(element) {
       switch (element.type) {
+        case "quotation":
+          return createElement(Quotation, { props: element.props }, element.value);
         case "subarticle":
           return createElement(SubarticleAnchor, { props: element.props }, element.value);
         case "md":

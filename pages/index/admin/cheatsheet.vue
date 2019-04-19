@@ -4,6 +4,30 @@
     <div class="cheatsheet">
 
       <div class="cheatsheet_section">
+        <h2> Quotation </h2>
+        ##quotation
+        <p> Put a pleasant box around a quote. </p>
+        <table>
+          <thead>
+            <tr> <td> Property </td> <td> Description </td> </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> author </td> <td> Author of the Quotation </td>
+            </tr>
+            <tr>
+              <td> profile </td> <td> Profile name of the author (if it exists) </td>
+            </tr>
+          </tbody>
+        </table>
+        <label> Example </label>
+        <div style="white-space: pre-wrap">##quotation|author="Viscid"|profile="viscid"{
+        Here is a quote about something important. 
+        It is super insightful. }
+        </div>
+      </div>
+
+      <div class="cheatsheet_section">
         <h2> Markdown </h2>
         ##md
         <p> Allows you to use markdown in an effect. </p>
