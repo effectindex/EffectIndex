@@ -18,7 +18,7 @@
               v-if="profileImage"
               :src="profileImage"
               class="quotationProfileImage">
-            <span> {{ author }} </span>
+            <span> - {{ author }} </span>
           </div>
           <span 
             v-else> - {{ author }} </span>
