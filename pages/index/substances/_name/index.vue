@@ -1,15 +1,17 @@
 <template>
   <div class="pageContent">
     <article v-show="substance.name">
-      <div v-if="$auth.loggedIn">
-        <nuxt-link
-          :to="'/admin/substances/' + substance.url"
-          append>
-          <fa
-            :icon="['far', 'edit']"
-            class="fa" />
-        </nuxt-link>
-      </div>
+      <no-ssr>
+        <div v-if="$auth.loggedIn">
+          <nuxt-link
+            :to="'/admin/substances/' + substance.url"
+            append>
+            <fa
+              :icon="['far', 'edit']"
+              class="fa" />
+          </nuxt-link>
+        </div>
+      </no-ssr>
       <fa
         :icon="['far', icon]"
         class="fa categoryIcon" />

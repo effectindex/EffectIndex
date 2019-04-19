@@ -5,42 +5,44 @@
       class="fa categoryIcon" />
     <h1> Administration </h1>
     <p> The place to do secret things when nobody's looking. </p>
-    <div v-show="$auth.loggedIn">
-      <nuxt-link to="/user/logout"> Log out </nuxt-link>
-      <div class="tasksContainer">
-        <div 
-          class="taskContainer">
-          <h3> Admin </h3>
-          <ul>
-            <li v-show="role.editor || role.admin"> <nuxt-link to="/admin/effects/list"> Effects </nuxt-link> </li>
-            <li v-show="role.editor || role.admin"> <nuxt-link to="/admin/replications/list"> Replications </nuxt-link> </li>
-            <li v-show="role.admin"> <nuxt-link to="/admin/blog/list"> Blog </nuxt-link> </li>
-            <li v-show="role.admin"> <nuxt-link to="/admin/users/list"> Users </nuxt-link> </li>
-            <li v-show="role.admin"> <nuxt-link to="/admin/users/profiles"> Profiles </nuxt-link> </li>
-            <li v-show="role.admin"> <nuxt-link to="/admin/reports/list"> Reports </nuxt-link> </li>
-          </ul>
+    <no-ssr>
+      <div v-if="$auth.loggedIn">
+        <nuxt-link to="/user/logout"> Log out </nuxt-link>
+        <div class="tasksContainer">
+          <div 
+            class="taskContainer">
+            <h3> Admin </h3>
+            <ul>
+              <li v-show="role.editor || role.admin"> <nuxt-link to="/admin/effects/list"> Effects </nuxt-link> </li>
+              <li v-show="role.editor || role.admin"> <nuxt-link to="/admin/replications/list"> Replications </nuxt-link> </li>
+              <li v-show="role.admin"> <nuxt-link to="/admin/blog/list"> Blog </nuxt-link> </li>
+              <li v-show="role.admin"> <nuxt-link to="/admin/users/list"> Users </nuxt-link> </li>
+              <li v-show="role.admin"> <nuxt-link to="/admin/users/profiles"> Profiles </nuxt-link> </li>
+              <li v-show="role.admin"> <nuxt-link to="/admin/reports/list"> Reports </nuxt-link> </li>
+            </ul>
+
+            <div 
+              v-show="role.admin"
+              class="serverOptionsContainer">
+              <h3> Danger Zone </h3>
+              <a 
+                class="dangerZone"
+                @click="restartServer"> Restart Server </a>
+            </div>
+          </div>
 
           <div 
-            v-show="role.admin"
-            class="serverOptionsContainer">
-            <h3> Danger Zone </h3>
-            <a 
-              class="dangerZone"
-              @click="restartServer"> Restart Server </a>
+            class="taskContainer">
+            <h3> Documentation </h3>
+            <ul>
+              <li> <nuxt-link to="/admin/cheatsheet"> Viscidcode Cheat Sheet </nuxt-link> </li>
+              <li> <nuxt-link to="/admin/missing"> Missing Data </nuxt-link> </li>
+              <li> <ext-link href="https://trello.com/b/TAqyU405/effect-index"> Trello </ext-link> </li>
+            </ul>
           </div>
         </div>
-
-        <div 
-          class="taskContainer">
-          <h3> Documentation </h3>
-          <ul>
-            <li> <nuxt-link to="/admin/cheatsheet"> Viscidcode Cheat Sheet </nuxt-link> </li>
-            <li> <nuxt-link to="/admin/missing"> Missing Data </nuxt-link> </li>
-            <li> <ext-link href="https://trello.com/b/TAqyU405/effect-index"> Trello </ext-link> </li>
-          </ul>
-        </div>
       </div>
-    </div>
+    </no-ssr>
     <nuxt-link 
       v-show="!$auth.loggedIn" 
       to="/user/login"> Log in </nuxt-link>

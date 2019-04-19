@@ -1,15 +1,25 @@
 <template>
   <div class="blogPost">
-    <div 
-      v-show="$auth.loggedIn"
-      class="blogPost__admin">
-      <nuxt-link 
-        :to="'/admin/blog/' + post.slug"
-        class="blogPost__edit"> <fa icon="edit" /> </nuxt-link>    
-      <a 
-        class="blogPost__delete"
-        @click="$emit('delete-post', post._id)">  <fa icon="times" /> </a>
-    </div>
+    <no-ssr>
+      <div 
+        v-if="$auth.loggedIn"
+        class="blogPost__admin">
+        <nuxt-link 
+          :to="'/admin/blog/' + post.slug"
+          class="blogPost__edit"> 
+          <fa
+            :icon="['far', 'edit']"
+            class="fa" /> 
+        </nuxt-link>    
+        <a 
+          class="blogPost__delete"
+          @click="$emit('delete-post', post._id)">  
+          <fa 
+            :icon="['far', 'times']"
+            class="fa" />
+        </a>
+      </div>
+    </no-ssr>
     <h4 class="blogPost__date"> 
       <nuxt-link 
         :to="'/blog/' + post.slug + '/'"
