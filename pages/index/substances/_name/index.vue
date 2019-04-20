@@ -127,11 +127,11 @@
 </template>
 
 <script>
-import FormattedDocument from "@/components/substances/FormattedDocument";
-import CitationList from "@/components/substances/CitationList";
+import FormattedDocument from "@/components/effects/FormattedDocument";
+import CitationList from "@/components/effects/CitationList";
 import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
-import Tag from "@/components/substances/Tag";
+import Tag from "@/components/effects/Tag";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 
 export default {
