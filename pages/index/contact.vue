@@ -20,10 +20,6 @@
           <li><b>Telegram</b> - @josikinz</li>
           <li><b>reddit</b> - josikins</li>
         </ul>
-        <li><b>Kaylee</b> - Subjective Effect Documentation</li>
-        <ul>
-          <li><b>Discord</b> - Kaytwo#7029</li>
-        </ul>
       </ul>
     </p>
   </div>
