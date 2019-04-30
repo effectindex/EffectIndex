@@ -34,7 +34,7 @@
     <img
       height="350px"
       class="left"
-      src="/indy_iphone edited.png">  
+      src="/indy_iphone_edited.png">  
   </div>
 </template>
 
