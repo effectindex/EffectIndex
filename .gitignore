@@ -13,7 +13,9 @@ dist
 # Service Worker
 sw.js
 
-static/**
+static/img/**
+static/audio/**
+
 .DS_Store
 
 .env
