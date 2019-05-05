@@ -15,8 +15,6 @@
       over "XYZ will create the feeling that" </li>
       <li> Do not talk about the conclusions reached during these states as if they are inherently true, 
       instead make it clear that you are simply describing the experience of them. </li>
-      <li> add laughter as a subcomponent of humour enhancement </li>
-      <li> add vomiting as a subcomponent of nausea </li>
     </ul>
     
     <h3> Levels of intensity intro </h3>
@@ -59,6 +57,8 @@
       <li> To describe an illusion the subject cannot recognize as such: <i> Delusion </i> </li>
       <li> To describe the lower bound of an effect range: <i> Subtle </i> </li>
       <li> To describe the upper bound of an effect range: <i> Extreme </i> </li>
+      <li> When to use "the trip": use "the trip" or "the [substance] trip" when referring to a specific trip in narrative, or when a kind of experience given specific parameters is being discussed. Example: "After describing the LSD trip Hofmann had experienced, the lecture hall giggled." </li>
+      <li> Do not use "and/or", it can always be replaced with more specific language that is more readable. </li>
     </ul>
   </div>
 </template>
