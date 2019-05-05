@@ -9,12 +9,18 @@
     <h3> Rules of Thumb </h3>
 
     <ul>
-      <li> use simplistic and easily understandable language over complex and obscure language wherever possible. 
-      This is to ensure that the SEI is as accessible to the general public as possible. </li>
+      <li> Use simplistic and easily understandable language over complex and obscure language wherever possible. This is to ensure that the SEI is as accessible to the general public as possible.  </li>
       <li> Do not make absolute or black/white assertions. For example "XYZ can creating the feeling that"
       over "XYZ will create the feeling that" </li>
       <li> Do not talk about the conclusions reached during these states as if they are inherently true, 
       instead make it clear that you are simply describing the experience of them. </li>
+    </ul>
+    <h3> Write about facts, note speculation: </h3>
+
+    <ul>
+      <li> Find a balance between (a) acknowledging when content is subjective or speculative, and (b) using a direct and confident writing style. </li>
+      <li> Do not make absolute or black/white assertions. For example "XYZ can creating the feeling that" over "XYZ will create the feeling that" </li>
+      <li> Do not talk about the conclusions reached during these states as if they are inherently true, instead make it clear that you are simply describing the experience of them. </li>
     </ul>
     
     <h3> Levels of intensity intro </h3>
@@ -57,8 +63,13 @@
       <li> To describe an illusion the subject cannot recognize as such: <i> Delusion </i> </li>
       <li> To describe the lower bound of an effect range: <i> Subtle </i> </li>
       <li> To describe the upper bound of an effect range: <i> Extreme </i> </li>
-      <li> When to use "the trip": use "the trip" or "the [substance] trip" when referring to a specific trip in narrative, or when a kind of experience given specific parameters is being discussed. Example: "After describing the LSD trip Hofmann had experienced, the lecture hall giggled." </li>
-      <li> Do not use "and/or", it can always be replaced with more specific language that is more readable. </li>
+    </ul>
+
+    <h3> Grammatical/syntax preferences: </h3>
+    <ul>
+      <li> To refer to all possible trips: use "a trip" or "a [substance] trip" is preferred when referring to a trip. This makes the language general and inclusive, so it is clear that a specific trip or kind of trip is not being denoted. Example: "The first stage of a DMT trip is the onset" </li>
+      <li> To refer to specific trips: use "the trip": use "the trip" or "the [substance] trip" when referring to a specific trip in narrative, or when a kind of experience given specific parameters is being discussed. Example: "After describing the LSD trip Hofmann had experienced, the lecture hall giggled." </li>
+      <li> Use of and/or: Do not use "and/or", it can always be replaced with more specific language that is more readable. </li>
     </ul>
   </div>
 </template>
