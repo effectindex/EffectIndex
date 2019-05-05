@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent">
-    <h1> Style Guide (in progress) 
+    <h1> Documentation Style Guide 
       <fa
         :icon="['far', 'book-open']"
         class="fa categoryIcon" />
