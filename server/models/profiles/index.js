@@ -39,7 +39,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post('/upload', secured({ secret: config.server.jwtSecret }), hasRoles(['admin']), upload.any(), async(req, res, next) => {
+router.post('/upload', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), upload.any(), async(req, res, next) => {
   try {
     let profile = { profileImageFull: undefined, profileImageCropped: undefined };
     if (req.files && req.files.length) {
@@ -97,7 +97,7 @@ router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['a
   }
 });
 
-router.get('/:id', secured({ secret: config.server.jwtSecret}), hasRoles(['admin']), async(req, res, next) => {
+router.get('/:id', secured({ secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('GET_PROFILE_ERROR', 'An ID is required.');
