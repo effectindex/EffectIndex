@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use("/api", api);
 
 // Import and Set Nuxt.js options
-let config = require("../nuxt.config.js");
+let config = require("../nuxt.config.js").default;
 config.dev = !(process.env.NODE_ENV === "production");
 
 // Init Nuxt.js

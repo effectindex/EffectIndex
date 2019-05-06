@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const config = require ('../../../nuxt.config.js');
+const config = require ('../../../nuxt.config.js').default;
 
 const secured = require('express-jwt');
 const hasRoles = require('../HasRoles');
