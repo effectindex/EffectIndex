@@ -1,5 +1,3 @@
-import { debounce } from 'lodash';
-
 export default {
   // Menu
   togglePullout({ commit }) {
