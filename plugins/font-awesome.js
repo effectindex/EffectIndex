@@ -4,10 +4,10 @@ import { faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
   faChild, faFrown, faArrowUp, faArrowDown, faLightbulb, faUserCog, faInfinity,
   faEdit, faTimes, faAngleDoubleUp, faTimesCircle, faChevronDoubleLeft, faChevronDoubleRight,
   faPlay, faPause, faImage, faHeart, faTrash, faUsers, faEnvelope, faQuestion, faHeartRate,
-  faSitemap, faImages, faListAlt, faFileSignature, faFlask, faSearch, faExternalLink, faBookOpen } from '@fortawesome/pro-regular-svg-icons';
+  faSitemap, faImages, faListAlt, faFileSignature, faSearch, faExternalLink, faBookOpen,
+  faFlask, faSun, faComment, faMoon, faCapsules } from '@fortawesome/pro-regular-svg-icons';
 
-import { faUser as fasUser, faFlask as fasFlask, faSun as fasSun, faComment as fasComment,
-faMoon as fasMoon, faCapsules as fasCapules, faChartLine as fasChartLine} from '@fortawesome/pro-solid-svg-icons';
+import { faChartLine as fasChartLine} from '@fortawesome/pro-solid-svg-icons';
 
 import { faDiscord, faFacebook, faReddit, faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -17,9 +17,10 @@ library.add(faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser
   faChild, faFrown, faArrowUp, faArrowDown, faLightbulb, faUserCog, faInfinity,
   faEdit, faTimes, faAngleDoubleUp, faTimesCircle, faChevronDoubleLeft, faChevronDoubleRight,
   faPlay, faPause, faImage, faHeart, faTrash, faEnvelope, faUsers, faQuestion, faHeartRate,
-  faSitemap, faImages, faListAlt, faFileSignature, faFlask, faSearch, faExternalLink, faBookOpen);
+  faSitemap, faImages, faListAlt, faFileSignature, faFlask, faSearch, faExternalLink, faBookOpen,
+  faSun, faComment, faMoon, faCapsules);
 
-library.add(fasUser, fasFlask, fasSun, fasComment, fasMoon, fasCapules, fasChartLine);
+library.add(fasChartLine);
 
 library.add(faDiscord, faFacebook, faReddit, faYoutube, faGithub);
 

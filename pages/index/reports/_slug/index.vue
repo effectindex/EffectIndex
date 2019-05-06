@@ -35,14 +35,14 @@
     <text-box
       v-if="report.introduction"
       :text="report.introduction"
-      :icon="['fas', 'sun']"
+      :icon="['far', 'sun']"
       header-colour="#EEE"
       header="Introduction" />
 
     <text-box
       v-if="report.description"
       :text="report.description"
-      :icon="['fas', 'comment']"
+      :icon="['far', 'comment']"
       header-colour="#EEE"
       header="Description" />
 
@@ -69,7 +69,7 @@
     <text-box
       v-if="report.conclusion"
       :text="report.conclusion"
-      :icon="['fas', 'moon']"
+      :icon="['far', 'moon']"
       header-colour="#EEE"
       header="Conclusion / Aftermath" />
 
@@ -99,6 +99,12 @@ export default {
         profile => profile.username === this.report.subject.name
       );
       return profile;
+    },
+    description() {
+      let substances = this.report.substances.map((substance) => substance.name);
+      let substanceList = '';
+      substances.forEach((substance, index) => substanceList += (substance + (index < substances.length - 1 ? ', ' : '')));
+      return `A ${substanceList} report from ${this.report.subject.name} on Effect Index.`;
     }
   },
   async asyncData({ store, params, error }) {
@@ -112,7 +118,14 @@ export default {
   },
   head() {
     return {
-      title: this.report.title
+      title: this.report.title,
+      meta: [
+        { name: 'description', hid: 'description', content: this.description },
+        { name: 'og:title', hid: 'og:title', content: `Effect Index - Trip Report - ${this.report.title} by ${this.report.subject.name}` },
+        { name: 'og:description', hid: 'og:description', content: this.description },
+        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - Trip Report - ${this.report.title} by ${this.report.subject.name}` },
+        { name: 'twitter:description', hid: 'twitter:description', content: this.description },
+      ]
     };
   },
   scrollToTop: true
@@ -171,7 +184,6 @@ h1 {
 }
 
 .report__infoBox {
-  box-shadow: 2px 2px 2px #ccc;
 }
 
 .report__infoBoxHeader {
@@ -189,8 +201,7 @@ h1 {
 .report__textBox {
   margin: 1em 0;
   background-color: #fbfbfb;
-  border: 1px solid #cccccc;
-  box-shadow: 2px 2px 2px #ccc;  
+  border: 1px solid #cccccc;  
 }
 
 .report__textBoxText {
@@ -261,7 +272,6 @@ h1 {
   overflow: hidden;
   margin-bottom: 0.5em;
   background-color: #fbfbfb;
-  box-shadow: 2px 2px 2px #ccc;
 }
 
 @media (max-width: 600px) {

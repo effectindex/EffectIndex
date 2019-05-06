@@ -2,38 +2,38 @@
   <section class="report__infoBox">
     <h2 class="report__infoBoxHeader"> 
       <fa
-        :icon="['fas', 'user']"
+        :icon="['far', 'user']"
         class="fa icon" /> Context 
     </h2>
     <div class="report__infoBoxTableContainer">
       <table class="report__infoBoxTable">
         <tbody>
-          <tr v-show="subject.name">
+          <tr v-if="subject.name">
             <td class="label"> Name: </td> 
             <td> 
               <span v-if="profile"> <nuxt-link :to="'/profiles/' + profile.username">{{ subject.name }}</nuxt-link>  </span>
               <span v-else>{{ subject.name }}</span>
             </td>
           </tr>
-          <tr v-show="subject.trip_date">
+          <tr v-if="subject.trip_date">
             <td class="label"> Trip Date: </td> <td> {{ subject.trip_date }} </td> 
           </tr>
-          <tr v-show="subject.age"> 
+          <tr v-if="subject.age"> 
             <td class="label"> Age: </td> <td> {{ subject.age }} </td>
           </tr>
-          <tr v-show="subject.setting">
+          <tr v-if="subject.setting">
             <td class="label"> Setting: </td> <td>  {{ subject.setting }} </td> 
           </tr>
-          <tr v-show="subject.gender">
+          <tr v-if="subject.gender">
             <td class="label"> Gender: </td> <td> {{ subject.gender }} </td>
           </tr>
-          <tr v-show="subject.height">
+          <tr v-if="subject.height">
             <td class="label"> Height: </td> <td> {{ subject.height }} </td>
           </tr>
-          <tr v-show="subject.weight">
+          <tr v-if="subject.weight">
             <td class="label"> Weight: </td> <td> {{ subject.weight }} </td>
           </tr>
-          <tr v-show="subject.medications">
+          <tr v-if="subject.medications">
             <td class="label"> Medications: </td> <td> {{ subject.medications }} </td>
           </tr>
         </tbody>
@@ -70,20 +70,30 @@ export default {
 
 <style scoped>
 
+.report__infoBoxTableContainer {
+  padding: 0;
+}
+
 .report__infoBox a {
   color: #3d9991;
   text-decoration: none;
 }
 
 .report__infoBoxTable {
-  width: auto;
+  table-layout: auto;
+}
+
+.report__infoBoxTable td {
+  padding: 5px 10px;
+}
+
+.report__infoBoxTable tr:nth-child(even) {
+  background-color: #F3F3F3;
 }
 
 .label {
   font-weight: bold;
-  vertical-align: top;
-  white-space: pre;
-  padding-right: 1em;
+  width: 30%;
 }
 
 .tracker_pdf {

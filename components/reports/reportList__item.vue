@@ -1,28 +1,17 @@
 <template>
-  <div 
+  <nuxt-link 
+    :to="`/reports/${report.slug}`"
     class="reportList__item"
-    tabindex="0"
-    @click="gotoReport(report.slug)"
-    @keypress.enter="gotoReport(report.slug)">
+    tabindex="0">
     <div class="infoContainer">
       <div class="titleContainer">
         <h4> {{ report.title }} </h4>
         <span
           v-show="report.subject.trip_date"
-          class="reportTripDate">
+          class="reportList__item--tripDate">
           on {{ report.subject.trip_date }} 
         </span>
-      
-        <span 
-          v-if="!profileName" 
-          class="author"> by {{ report.subject.name }} </span>
-        <span
-          v-else
-          class="author">
-          -<a
-            :to="`/profiles/${profileName}`"
-            @click.stop="gotoProfile(report.subject.name)">&nbsp;{{ report.subject.name }} </a>
-        </span>
+        <span class="reportList__item--author">-&nbsp;{{ report.subject.name }} </span>
       </div>
     </div>
     <ul class="substancesList">
@@ -34,7 +23,7 @@
         <span class="substanceDose"> {{ `${substance.dose} ${substance.roa}` }} </span>
       </li>
     </ul>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -66,25 +55,33 @@ export default {
 </script>
 
 <style scoped>
+
+  .reportList__item--author {
+    color: #777;
+  }
+
+  .reportList__item--tripDate {
+    color: #777;
+  }
+
   .reportList__item {
     display: flex;
     position: relative;
+    background-color: #FBFBFB;
+    max-width: 800px;
     flex-direction: row;
     left: 0;
     top: 0;
     flex-wrap: wrap;
-    border: 1px solid #CCC;
+    border: 1px solid rgb(221, 221, 221);
     padding: 10px;
     cursor: pointer;
     transition: all 0.25s ease;
-    box-shadow: 2px 2px 4px #BBB;
-    margin: 1em 0;
+    margin: 0.5em 0;
   }
 
   .reportList__item:hover {
-    left: -5px;
-    top: -5px;
-    box-shadow: 5px 5px 4px #BBB;
+    background-color: #F2F2F2;
   }
 
   .reportList__item h4 {
@@ -105,6 +102,10 @@ export default {
   .titleContainer {
     line-height: 1.5em;
     font-size: 11pt;
+  }
+
+  .titleContainer h4 {
+    color: #3d9991;
   }
 
   .substancesList {

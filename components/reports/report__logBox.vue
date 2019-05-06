@@ -65,6 +65,7 @@ export default {
 .report__logBoxHeader {
   display: none;
   padding: 0.5em;
+  margin-bottom: 0;
 }
 
 .outer {
@@ -85,20 +86,25 @@ export default {
   font-size: 25px;
   top: 50%;
   left: 50%;
+  opacity: 0.5;
 }
 
-.content {
-  padding: 1em;
+.logTable__time, .logTable__row {
+  padding: 0.5em;
 }
-
 .logTable__row:not(:last-child) {
   border-bottom: 1px solid rgba(170, 170, 170, 0.35);
+}
+
+.logTable__row:nth-child(odd) {
+  background-color: #F6F6F6;
 }
 
 .logTable__time {
   vertical-align: top;
   white-space: pre;
   padding-top: 0.5em;
+  color: #888;
 }
 
 .logTable {
@@ -115,10 +121,6 @@ export default {
     display: none;
   }
 
-  .content {
-    padding: 0.25em;
-  }
-
   .report__logBoxHeader {
     display: block;
     font-weight: 400;
@@ -126,7 +128,7 @@ export default {
   }
 
   .logTable__description {
-    padding: 0.25em 0.25em 1em 0.25em;
+    padding: 0.5em;
   }
 
   .logTable__time {

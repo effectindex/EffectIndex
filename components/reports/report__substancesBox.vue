@@ -2,7 +2,7 @@
   <section class="report__infoBox">
     <h2 class="report__infoBoxHeader"> 
       <fa
-        :icon="['fas', 'capsules']"
+        :icon="['far', 'capsules']"
         class="fa icon" /> Substances </h2>
     <div class="report__infoBoxTableContainer">
       <table
