@@ -23,8 +23,8 @@
 
     <ul>
       <li> <ext-link href="/effects/geometry">Geometry</ext-link> </li>
-      <li> <ext-link href="/effects/internal-hallucinations">Internal hallucinations</ext-link> </li>
-      <li> <ext-link href="https://psychonautwiki.org/wiki/Psychedelics">Psychedelics</ext-link> </li>
+      <li> <ext-link href="/effects/internal-hallucination">Internal hallucinations</ext-link> </li>
+      <li> <ext-link href="/summaries/psychedelics/visual">Visual effects of psychedelics</ext-link> </li>
     </ul>
 
   </div>

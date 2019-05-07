@@ -27,7 +27,7 @@
       </a>
     </div>
     <div class="footer__secret">
-      <p> effectindex@gmail.com </p>
+      <p> <nuxt-link to="/copyright-disclaimer">© Effect Index team 2019</nuxt-link> </p>
       <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
     </div>
   </footer>
@@ -80,7 +80,7 @@ footer > p {
   padding: 0;
 }
 
-footer > a {
+footer a {
   text-decoration: none;
   color: #666;
 }
