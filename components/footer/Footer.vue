@@ -27,7 +27,7 @@
       </a>
     </div>
     <div class="footer__secret">
-      <p> <nuxt-link to="/copyright-disclaimer">© Effect Index team 2019</nuxt-link> </p>
+      <p> <nuxt-link to="/copyright-disclaimer">&copy; Effect Index team 2019</nuxt-link> </p>
       <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
     </div>
   </footer>

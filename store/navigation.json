@@ -64,7 +64,7 @@
       { "name": "About", "location": "/about" },
       { "name": "Blog", "location": "/blog" },
       { "name": "Search", "location": "/search" },
-      { "name": "Github", "location": "https://github.com/effectindex/EffectIndex", "external": "true" },
+      { "name": "Github", "location": "https://github.com/effectindex/EffectIndex", "external": true },
       { "name": "Login", "location": "/user/login" }
     ]
   },
