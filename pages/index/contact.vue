@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <h1>
-      Contact
+      Contact Us
       <fa
         :icon="['far', 'envelope']"
         class="fa categoryIcon"

@@ -28,7 +28,7 @@
         <p>
           The effects are separated into over 200 distinct components which are organised into categories based on the sense
           affected and their behaviour. Many of these are further broken down into levels, subcomponents, and variations in
-          style which can occur across different substances. Detailed <nuxt-link to="/gallery">
+          style which can occur across different substances. Detailed <nuxt-link to="/replications">
             replications
           </nuxt-link> are included whenever possible to supplement
           the text descriptions in the form of images, audio clips, and animations.

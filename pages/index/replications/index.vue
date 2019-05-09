@@ -22,14 +22,17 @@
       <nuxt-link to="/profiles/StingrayZ">
         StingrayZ
       </nuxt-link>,
-      <nuxt-link to="/profiles/Zenx2">
+      <nuxt-link to="/profiles/Rho">
         Zenx2
+      </nuxt-link>, <nuxt-link to="/profiles/Hypnagogist">
+        Hypnagogist
       </nuxt-link>, 
       and from various sources throughout the internet. It is worth noting that while the artist 
       is credited for each replication wherever possible, if you would like your artwork removed
-      or its link altered please do not hesitate to contact me at 
-      <a href="mailto:admin@effectindex.com"> admin@effectindex.com </a>
+      or its link altered please do not hesitate to contact us at 
+      <a href="mailto:effectindex@gmail.com"> effectindex@gmail.com </a>
     </p>
+
     <hr>
 
     <h3 

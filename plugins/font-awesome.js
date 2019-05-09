@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { library, config } from '@fortawesome/fontawesome-svg-core';
-import { faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
+import { faCopyright, faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
   faChild, faFrown, faArrowUp, faArrowDown, faLightbulb, faUserCog, faInfinity,
   faEdit, faTimes, faAngleDoubleUp, faTimesCircle, faChevronDoubleLeft, faChevronDoubleRight,
   faPlay, faPause, faImage, faHeart, faTrash, faUsers, faEnvelope, faQuestion, faHeartRate,
@@ -13,7 +13,7 @@ import { faDiscord, faFacebook, faReddit, faYoutube, faGithub } from '@fortaweso
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
+library.add( faCopyright, faEye, faVolumeUp, faHandPaper, faUnlink, faUtensils, faCogs, faUser,
   faChild, faFrown, faArrowUp, faArrowDown, faLightbulb, faUserCog, faInfinity,
   faEdit, faTimes, faAngleDoubleUp, faTimesCircle, faChevronDoubleLeft, faChevronDoubleRight,
   faPlay, faPause, faImage, faHeart, faTrash, faEnvelope, faUsers, faQuestion, faHeartRate,
