@@ -1,34 +1,35 @@
 <template>
   <div
-    class="substance__longSummary">
+    class="substance__longSummary"
+  >
     <h4
       v-show="showTitle"
       :id="substance.url"
-      class="longSummary__title">
+      class="longSummary__title"
+    >
       {{ substance.name }}
     </h4>
     <div class="longSummary__mainArticle">
       Full article: 
       <nuxt-link
-        :to="`/substances/${substance.url}`">
+        :to="`/substances/${substance.url}`"
+      >
         {{ substance.name }}
       </nuxt-link>
     </div>
     <div>
       <formatted-document
-        :document="long_summary" />
+        :document="long_summary"
+      />
     </div>
-
   </div>
 </template>
 
 <script>
-import CaptionedImage from "@/components/CaptionedImage";
 import FormattedDocument from "@/components/substances/FormattedDocument";
 
 export default {
   components: {
-    CaptionedImage,
     FormattedDocument
   },
   props: {

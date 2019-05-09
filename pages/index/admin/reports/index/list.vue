@@ -14,16 +14,20 @@
       <tbody>
         <tr 
           v-for="report in reports"
-          :key="report._id">
+          :key="report._id"
+        >
           <td> 
-            <nuxt-link :to="'/reports/' + report.slug"> {{ report.title }} </nuxt-link>
+            <nuxt-link :to="'/reports/' + report.slug">
+              {{ report.title }}
+            </nuxt-link>
           </td>
           <td> {{ report.subject ? report.subject.name : '' }} </td>
           <td>
             <span 
               v-for="tag in report.tags"
               :key="tag"
-              class="reportTag">
+              class="reportTag"
+            >
               {{ tag }}
             </span>
           </td>
@@ -32,13 +36,15 @@
               <fa
                 :icon="['far', 'edit']"
                 class="fa"
-                style="cursor: pointer; padding-right: 2em;" /> 
+                style="cursor: pointer; padding-right: 2em;"
+              /> 
             </nuxt-link> 
             <a @click="deleteReport(report._id)"> 
               <fa
                 :icon="['far', 'times']"
                 class="fa"
-                style="color: red; cursor: pointer;" />
+                style="color: red; cursor: pointer;"
+              />
             </a>
           </td>
         </tr>
@@ -54,6 +60,9 @@ export default {
       return this.$store.state.reports;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getReports");
+  },
   methods: {
     async deleteReport(id) {
       await this.$store.dispatch('deleteReport', id);
@@ -64,9 +73,6 @@ export default {
       });
 
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getReports");
   }
 };
 </script>

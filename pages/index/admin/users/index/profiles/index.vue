@@ -10,28 +10,36 @@
       <tbody>
         <tr
           v-for="profile in profiles"
-          :key="profile._id">
+          :key="profile._id"
+        >
           <td>
             <nuxt-link
               :to="'/profiles/' + profile.username"
-              class="profileList__username">{{ profile.username }}</nuxt-link>
+              class="profileList__username"
+            >
+              {{ profile.username }}
+            </nuxt-link>
           </td>
           <td>
             <nuxt-link
-              :to="'/admin/users/profiles/' + profile._id">
+              :to="'/admin/users/profiles/' + profile._id"
+            >
               <fa
                 :icon="['far', 'edit']"
-                class="fa" />
+                class="fa"
+              />
               (sort: {{ profile.sortOrder }})
             </nuxt-link>
           </td>
           <td>
             <a
               class="delete"
-              @click="deleteProfile(profile._id)">
+              @click="deleteProfile(profile._id)"
+            >
               <fa
                 :icon="['far', 'times']"
-                class="fa" />
+                class="fa"
+              />
             </a>
           </td>
         </tr>
@@ -47,6 +55,9 @@ export default {
       return this.$store.state.profiles;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getProfiles");
+  },
   methods: {
     async deleteProfile(id) {
       await this.$store.dispatch("deleteProfile", id);
@@ -56,9 +67,6 @@ export default {
         text: 'You are a horrible person.'
       });
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getProfiles");
   }
 };
 </script>

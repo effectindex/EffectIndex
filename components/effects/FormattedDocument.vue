@@ -89,7 +89,7 @@ export default {
       }
 
       return createElement("div", { class: "formattedDocument" }, elements);
-    }
+    } else return null;
   }
 };
 </script>

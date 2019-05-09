@@ -1,4 +1,4 @@
-export default {
+export const mutations = {
   toggle_pullout(state) {
     state.navbar_pullout = !state.navbar_pullout;
   },

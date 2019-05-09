@@ -12,7 +12,8 @@
           <label> Password
             <input 
               v-model="user.password"
-              type="password">
+              type="password"
+            >
           </label> 
         </div>
         <button> Login </button>

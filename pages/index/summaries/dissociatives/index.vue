@@ -4,19 +4,26 @@
       <img 
         style="opacity: 0.6;"
         class="fa categoryIcon"
-        src="/icons/disconnective.svg">
+        src="/icons/disconnective.svg"
+      >
       <h1> Subjective Effects of Dissociatives </h1>
       <div class="categoryDescription">
-        <p>This article breaks down the subjective effects of the dissociative experience into simple and easy
-        to understand descriptions with accompanying image replications. This is done without resorting to metaphor,
-        analogy, or personal trip reports. </p>
+        <p>
+          This article breaks down the subjective effects of the dissociative experience into simple and easy
+          to understand descriptions with accompanying image replications. This is done without resorting to metaphor,
+          analogy, or personal trip reports.
+        </p>
 
-        <p> These descriptions are not specific to any particular substance but are applicable to the effects 
-        which commonly occur in various forms under the influence of almost any dissociative compound. This
-        includes, but is not limited to, both classical and research chemical dissociatives, such as: </p>
+        <p>
+          These descriptions are not specific to any particular substance but are applicable to the effects 
+          which commonly occur in various forms under the influence of almost any dissociative compound. This
+          includes, but is not limited to, both classical and research chemical dissociatives, such as:
+        </p>
 
-        <p> <i> Ketamine, MXE, PCP, DXM, DCK, 3-MeO-PCP, O-PCE, 3-HO-PCE, 3-HO-PCP, 3-MeO-PCE, 4-MeO-PCP, PCE, 
-        Diphenidine, Ephenidine, Methoxphenidine </i> </p>
+        <p>
+          <i> Ketamine, MXE, PCP, DXM, DCK, 3-MeO-PCP, O-PCE, 3-HO-PCE, 3-HO-PCP, 3-MeO-PCE, 4-MeO-PCP, PCE, 
+            Diphenidine, Ephenidine, Methoxphenidine </i>
+        </p>
 
         <p> Individual effects are also summarized with a prominent link to their full article. </p>
       </div>
@@ -28,7 +35,8 @@
         <img 
           style="opacity: 0.8;"
           class="fa actionIcon"
-          src="/icons/disconnective.svg">
+          src="/icons/disconnective.svg"
+        >
       </h3>
 
       <p class="actionDescription"> 
@@ -48,9 +56,10 @@
       <long-summary 
         v-for="(effect, i) in getEffectsInSpecificOrder('physical disconnection', 'cognitive disconnection', 'visual disconnection', 
                                                         'detachment plateaus')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -58,7 +67,8 @@
         Miscellaneous Sensory Effects
         <fa 
           :icon="['far', 'cogs']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -68,10 +78,11 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('dissociative', 'sensory')
-        .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
+          .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -79,7 +90,8 @@
         Cognitive Effects
         <fa 
           :icon="['far', 'user']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -88,9 +100,10 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('dissociative', 'cognitive')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -98,7 +111,8 @@
         Physical Effects
         <fa 
           :icon="['far', 'heart-rate']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -107,29 +121,39 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('dissociative', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <h3> See Also </h3>
     <ul>
-      <li> <nuxt-link to="/substances/"> Substance Index </nuxt-link> </li>
-      <li> <nuxt-link to="/summaries/psychedelics/visual"> Visual Psychedelic Effects </nuxt-link> </li>
-      <li> <nuxt-link to="/summaries/deliriants/"> Deliriant Subjective Effects </nuxt-link> </li>
+      <li>
+        <nuxt-link to="/substances/">
+          Substance Index
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/summaries/psychedelics/visual">
+          Visual Psychedelic Effects
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/summaries/deliriants/">
+          Deliriant Subjective Effects
+        </nuxt-link>
+      </li>
     </ul>
-
   </div>
 </template>
 
 <script>
-import CaptionedImage from "@/components/CaptionedImage";
 import LongSummary from "@/components/effects/LongSummary";
 
 export default {
   name: 'Dissociatives',
   components: {
-    CaptionedImage,
     LongSummary
   },
   head() {
@@ -147,6 +171,9 @@ export default {
     effects() {
       return this.$store.state.effects;
     }
+  },
+  async fetch({ store }) {
+    await store.dispatch("getEffects");
   },
   mounted() {
     if (this.linkedEffect) {
@@ -168,9 +195,6 @@ export default {
         });
       return effects;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
   }
 };
 </script>

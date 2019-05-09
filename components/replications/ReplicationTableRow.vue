@@ -1,24 +1,35 @@
 <template>
   <tr>
-    <td> <nuxt-link :to="'/admin/replications/' + replication.url"> {{ replication.title }} </nuxt-link> </td>
+    <td>
+      <nuxt-link :to="'/admin/replications/' + replication.url">
+        {{ replication.title }}
+      </nuxt-link>
+    </td>
     <td style="width: 150px;">
-      <ext-link :href="replication.artist_url"> {{ replication.artist }} </ext-link>
+      <ext-link :href="replication.artist_url">
+        {{ replication.artist }}
+      </ext-link>
     </td>
     <td style="width: 150px;"> 
       <img
         v-show="thumbs"
         :src="'/img/gallery/thumbnails/' + 
-        (replication.thumbnail ? replication.thumbnail : replication.resource)"
-        class="replicationTableRow__thumbnail">
+          (replication.thumbnail ? replication.thumbnail : replication.resource)"
+        class="replicationTableRow__thumbnail"
+      >
     </td>
-    <td style="font-style: italic;"> {{ replication.type }} </td>
+    <td style="font-style: italic;">
+      {{ replication.type }}
+    </td>
     <td>
       <a 
         style="color: red; cursor: pointer; font-weight: bold;"
-        @click="deleteReplication(replication._id)"> 
+        @click="deleteReplication(replication._id)"
+      > 
         <fa
           :icon="['far', 'times']"
-          class="fa" />  
+          class="fa"
+        />  
       </a>
     </td>
   </tr>

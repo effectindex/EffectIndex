@@ -2,21 +2,31 @@
   <div class="action">
     <h4 
       v-show="title"
-      class="actionTitle"> {{ title }} </h4>
+      class="actionTitle"
+    >
+      {{ title }}
+    </h4>
     <ul class="actionList">
       <li 
         v-for="effect in effects"
         :key="effect._id"
-        class="effectTitle">
-        <nuxt-link :to="`/effects/${effect.url}`"> {{ effect.name }} </nuxt-link>
+        class="effectTitle"
+      >
+        <nuxt-link :to="`/effects/${effect.url}`">
+          {{ effect.name }}
+        </nuxt-link>
         <ul 
           v-if="effect.subarticles && effect.subarticles.length"
-          class="subarticleList">
+          class="subarticleList"
+        >
           <li 
             v-for="(subarticle, index) in effect.subarticles"
             :key="index"
-            class="subarticleListItem">
-            <nuxt-link :to="`/effects/${effect.url}?s=${subarticle.id}`"> {{ subarticle.title }} </nuxt-link>
+            class="subarticleListItem"
+          >
+            <nuxt-link :to="`/effects/${effect.url}?s=${subarticle.id}`">
+              {{ subarticle.title }}
+            </nuxt-link>
           </li>
         </ul>
       </li>

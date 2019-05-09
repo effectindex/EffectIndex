@@ -4,7 +4,8 @@
     <div class="relatedSubstances__list">
       <span 
         v-for="(substance, index) in substanceList" 
-        :key="substance">{{ formatSubstance(substance, index) }}</span>
+        :key="substance"
+      >{{ formatSubstance(substance, index) }}</span>
     </div>
   </div>
 </template>

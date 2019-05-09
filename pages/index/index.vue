@@ -2,17 +2,18 @@
   <div class="pageContent">
     <description />
     <columns>
-
       <column>
         <div class="featuredContainer">
           <panel
             :icon="['far', 'flask']"
-            title="Substance Summaries">
+            title="Substance Summaries"
+          >
             <substance-summaries />
           </panel>
           <panel
             :icon="['far', 'sitemap']"
-            title="Featured Effects">
+            title="Featured Effects"
+          >
             <featured-articles />
           </panel>
         </div>
@@ -21,18 +22,19 @@
       <column>
         <panel
           :icon="['far', 'images']"
-          title="Featured Replications">
+          title="Featured Replications"
+        >
           <no-ssr>
             <featured-replication />
           </no-ssr>
         </panel>
         <panel
           :icon="['far', 'file-signature']"
-          title="Featured Reports">
+          title="Featured Reports"
+        >
           <featured-reports />
         </panel>
       </column>
-
     </columns>
   </div>
 </template>

@@ -1,19 +1,25 @@
 <template>
   <div class="pageContent">
-    <h1> Documentation Style Guide 
+    <h1>
+      Documentation Style Guide 
       <fa
         :icon="['far', 'book-open']"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
     </h1>
 
     <h3> Rules of Thumb </h3>
 
     <ul>
       <li> Use simplistic and easily understandable language over complex and obscure language wherever possible. This is to ensure that the SEI is as accessible to the general public as possible.  </li>
-      <li> Do not make absolute or black/white assertions. For example "XYZ can creating the feeling that"
-      over "XYZ will create the feeling that" </li>
-      <li> Do not talk about the conclusions reached during these states as if they are inherently true, 
-      instead make it clear that you are simply describing the experience of them. </li>
+      <li>
+        Do not make absolute or black/white assertions. For example "XYZ can creating the feeling that"
+        over "XYZ will create the feeling that"
+      </li>
+      <li>
+        Do not talk about the conclusions reached during these states as if they are inherently true, 
+        instead make it clear that you are simply describing the experience of them.
+      </li>
     </ul>
     <h3> Write about facts, note speculation: </h3>
 
@@ -48,8 +54,10 @@
 
     <h3> Outro paragraph sentence: </h3>
 
-    <p> "Effect is most commonly induced under the influence of low/moderate/heavy dosages of hallucinogenic compounds, 
-    such as type list. However, it can also occur under the influence of type list, particularly during phase [or as a result of x]" </p>
+    <p>
+      "Effect is most commonly induced under the influence of low/moderate/heavy dosages of hallucinogenic compounds, 
+      such as type list. However, it can also occur under the influence of type list, particularly during phase [or as a result of x]"
+    </p>
 
     <h3> Word preferences: </h3>
     <ul>

@@ -4,7 +4,8 @@
     <report-editor
       :report="reportData"
       :visibility="sectionVisibility"
-      @edit-report="updateReport" />
+      @edit-report="updateReport"
+    />
   </div>
 </template>
 
@@ -14,6 +15,14 @@ import ReportEditor from '@/components/reports/editor/ReportEditor';
 export default {
   components: {
     ReportEditor
+  },
+  async asyncData({ params, store }) {
+    try {
+      let { reportData, sectionVisibility } = await store.dispatch('getReportById', params.id);
+      return { reportData, sectionVisibility };
+    } catch (error) {
+      console.log(error);
+    }
   },
   methods: {
     async updateReport(report) {
@@ -27,14 +36,6 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  },
-  async asyncData({ params, store }) {
-    try {
-      let { reportData, sectionVisibility } = await store.dispatch('getReportById', params.id);
-      return { reportData, sectionVisibility };
-    } catch (error) {
-      console.log(error);
     }
   }
 };

@@ -1,22 +1,27 @@
 <template>
   <li
     :id="'cite-' + from"
-    @click="$emit('click')">
+    @click="$emit('click')"
+  >
     <div class="citation__contents">
       <a 
         v-if="!no || (Number(no) === 1)"
-        :href="'#ref-' + from"> 
+        :href="'#ref-' + from"
+      > 
         <fa
           :icon="['far', 'angle-double-up']"
-          style="height: 1em;" /> </a>
+          style="height: 1em;"
+        /> </a>
       <span v-else> 
         <fa
           :icon="['far', 'angle-double-up']"
-          style="height: 1em;" />
+          style="height: 1em;"
+        />
         <a 
           v-for="num in Number(no)"
           :key="num"
-          :href="'#ref-' + from + '-' + num">[{{ num }}]</a> 
+          :href="'#ref-' + from + '-' + num"
+        >[{{ num }}]</a> 
       </span>
       <slot />
     </div>

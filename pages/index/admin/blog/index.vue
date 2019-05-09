@@ -3,10 +3,16 @@
     <h1> Blog Management </h1>
     <nuxt-link 
       class="blogManagement__link"
-      to="/admin/blog/list"> List Posts </nuxt-link>
+      to="/admin/blog/list"
+    >
+      List Posts
+    </nuxt-link>
     <nuxt-link 
       class="blogManagement__link"
-      to="/admin/blog/new"> New Post </nuxt-link>
+      to="/admin/blog/new"
+    >
+      New Post
+    </nuxt-link>
     <nuxt-child />
   </div>
 </template>

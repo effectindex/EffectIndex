@@ -1,14 +1,14 @@
 <template>
   <div>
-
     <form
       enctype="multipart/form-data"
-      @submit.prevent="submit" >
-
+      @submit.prevent="submit"
+    >
       <label>Username
         <input
           v-model="profile.username"
-          type="text">
+          type="text"
+        >
       </label>
 
       <label>Profile Body
@@ -18,10 +18,13 @@
       <label>Sort order (lowest first)
         <input
           v-model="profile.sortOrder"
-          type="text">
+          type="text"
+        >
       </label>
 
-      <button type="submit"> {{ profile._id ? 'Update' : 'Save' }} </button>
+      <button type="submit">
+        {{ profile._id ? 'Update' : 'Save' }}
+      </button>
     </form>
 
     <p v-show="errorMessage">
@@ -34,17 +37,16 @@
 
     <image-uploader
       v-show="profile._id"
-      :username="profile.username" />
+      :username="profile.username"
+    />
   </div>
 </template>
 
 <script>
-import ProfileImage from "@/components/profiles/ProfileImage.vue";
 import ImageUploader from "./profileEditor__imageUpload.vue";
 
 export default {
   components: {
-    ProfileImage,
     ImageUploader
   },
   props: {

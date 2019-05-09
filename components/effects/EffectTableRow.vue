@@ -1,42 +1,43 @@
 <template>
   <tr>
     <td style="min-width: 300px">
-      <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }} </nuxt-link>
+      <nuxt-link :to="'/effects/' + effect.url">
+        {{ effect.name }}
+      </nuxt-link>
     </td>
     <td>
       <span 
         v-for="tag in effect.tags"
         :key="tag"
-        class="effectTableRow__tagItem"> {{ tag }} </span>
+        class="effectTableRow__tagItem"
+      > {{ tag }} </span>
     </td>
     <td class="effectTableRow__editButton">
       <nuxt-link :to="'/admin/effects/' + effect.url">
         <fa
           :icon="['far', 'edit']"
           class="fa"
-          style="cursor: pointer;" />
+          style="cursor: pointer;"
+        />
       </nuxt-link>
     </td>
     <td>
       <a 
         style="color: red; cursor: pointer;"
-        @click="deleteEffect(effect._id)">
+        @click="deleteEffect(effect._id)"
+      >
         <fa
           :icon="['far', 'times']"
           class="fa"
-          style="color: red; cursor: pointer;" />
+          style="color: red; cursor: pointer;"
+        />
       </a>
     </td>
   </tr>
 </template>
 
 <script>
-import ExtLink from "@/components/ExtLink.vue";
-
 export default {
-  components: {
-    ExtLink
-  },
   props: {
     effect: {
       type: Object,

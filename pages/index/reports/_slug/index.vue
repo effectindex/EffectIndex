@@ -1,14 +1,17 @@
 <template>
   <article class="report">
-
     <div class="report__headerContainer">
       <div class="report__headerTitleContainer">
         <h1
           class="report__title"
-          style="margin-bottom: 0;"> {{ report.title }} </h1>
+          style="margin-bottom: 0;"
+        >
+          {{ report.title }}
+        </h1>
         <div
           v-show="report.subject.name"
-          class="report__titleAuthor">
+          class="report__titleAuthor"
+        >
           <span v-if="profile">
             by <nuxt-link :to="'/profiles/' + profile.username"> {{ report.subject.name }} </nuxt-link>
           </span>
@@ -21,14 +24,16 @@
         <tag
           v-for="(tag, index) in report.tags"
           :key="index"
-          :value="tag" />
+          :value="tag"
+        />
       </div>
     </div>
 
     <div class="report__topSection">
       <subject-box
         :profile="profile"
-        :subject="report.subject" />
+        :subject="report.subject"
+      />
       <substances-box :substances="report.substances" />
     </div>
 
@@ -37,33 +42,38 @@
       :text="report.introduction"
       :icon="['far', 'sun']"
       header-colour="#EEE"
-      header="Introduction" />
+      header="Introduction"
+    />
 
     <text-box
       v-if="report.description"
       :text="report.description"
       :icon="['far', 'comment']"
       header-colour="#EEE"
-      header="Description" />
+      header="Description"
+    />
 
     <div class="report__logsContainer">
       <log-box
         v-if="report.onset.length"
         :log="report.onset"
         header-colour="#DDFFDD"
-        header="Onset" />
+        header="Onset"
+      />
 
       <log-box
         v-if="report.peak.length"
         :log="report.peak"
         header-colour="#FFDDDD"
-        header="Peak" />
+        header="Peak"
+      />
 
       <log-box
         v-if="report.offset.length"
         :log="report.offset"
         header-colour="#DDDDFF"
-        header="Offset" />
+        header="Offset"
+      />
     </div>
 
     <text-box
@@ -71,8 +81,8 @@
       :text="report.conclusion"
       :icon="['far', 'moon']"
       header-colour="#EEE"
-      header="Conclusion / Aftermath" />
-
+      header="Conclusion / Aftermath"
+    />
   </article>
 </template>
 

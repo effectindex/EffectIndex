@@ -1,9 +1,11 @@
 <template>
   <div class="pageContent">
-    <h1> People
+    <h1>
+      People
       <fa
         :icon="['far', 'users']"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
     </h1>
 
     <p> This page lists the profiles of the Effect Index team and various dedicated individuals who have contributed significant amounts of work to this project. </p>
@@ -12,29 +14,30 @@
       <li
         v-for="profile in profiles"
         :key="profile._id"
-        class="profileListItem" >
+        class="profileListItem"
+      >
         <nuxt-link :to="'/profiles/' + profile.username">
           <img
             :src="'/img/profiles/cropped/' + profile.profileImageCropped"
             :alt="profile.username"
-            class="profileImage">
+            class="profileImage"
+          >
         </nuxt-link>
         <span class="profile__username"> {{ profile.username }} </span>
       </li>
     </ul>
-
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ store }) {
-    await store.dispatch("getProfiles");
-  },
   computed: {
     profiles() {
       return this.$store.state.profiles;
     }
+  },
+  async asyncData({ store }) {
+    await store.dispatch("getProfiles");
   },
   scrollToTop: true,
   head() {

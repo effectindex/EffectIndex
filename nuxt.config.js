@@ -1,6 +1,6 @@
 const pkg = require("./package");
-const MinifyPlugin = require("babel-minify-webpack-plugin");
-require('dotenv').config();
+// import {default as MinifyPlugin} from "babel-minify-webpack-plugin";
+require("dotenv").config();
 
 module.exports = {
   mode: "universal",
@@ -80,9 +80,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    "~/plugins/vue-notification",
-    "~/plugins/vue2-touch-events",
-    "~/plugins/font-awesome"
+    { src: "~/plugins/vue-notification", mode: 'client' },
+    { src: "~/plugins/vue2-touch-events", mode: 'client' },
+    { src: "~/plugins/font-awesome"},
   ],
 
   /*
@@ -139,12 +139,13 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    analyse: true,
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
       config.plugins = config.plugins.filter((plugin) => plugin.constructor.name !== 'UglifyJsPlugin');
-      if (!ctx.isDev) config.plugins.push(new MinifyPlugin());
+      // if (!ctx.isDev) config.plugins.push(new MinifyPlugin());
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
@@ -154,8 +155,7 @@ module.exports = {
           exclude: /(node_modules)/
         });
       }
-    },
-    vendor: ["vue-notification"]
+    }
   },
 
   server: {

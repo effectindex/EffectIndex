@@ -1,12 +1,15 @@
 <template>
   <div class="frontpagePanel">
     <div class="frontpagePanelTitleContainer">
-      <h1 class="frontpagePanelTitle"> {{ title }} </h1>
+      <h1 class="frontpagePanelTitle">
+        {{ title }}
+      </h1>
       <fa 
         v-if="icon"
         :icon="icon"
         class="fa categoryIcon"
-        style="font-size: 1.1em; margin: 0.25em; opacity: 0.8;" />
+        style="font-size: 1.1em; margin: 0.25em; opacity: 0.8;"
+      />
     </div>
     <div class="frontpagePanelContent">
       <slot />

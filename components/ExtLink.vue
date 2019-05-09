@@ -2,7 +2,8 @@
   <a 
     :href="href" 
     target="_blank" 
-    rel="noreferrer">
+    rel="noreferrer"
+  >
     <slot />
   </a>
 </template>

@@ -3,10 +3,16 @@
     <h1> Effect Management </h1>
     <nuxt-link
       class="effectManagement__link"
-      to="/admin/effects/list"> Effect List </nuxt-link>
+      to="/admin/effects/list"
+    >
+      Effect List
+    </nuxt-link>
     <nuxt-link 
       class="effectManagement__link"
-      to="/admin/effects/add"> Add New Effect </nuxt-link>
+      to="/admin/effects/add"
+    >
+      Add New Effect
+    </nuxt-link>
     <nuxt-child />
   </div>
 </template>

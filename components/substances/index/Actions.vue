@@ -2,21 +2,31 @@
   <div class="action">
     <h4 
       v-show="title"
-      class="actionTitle"> {{ title }} </h4>
+      class="actionTitle"
+    >
+      {{ title }}
+    </h4>
     <ul class="actionList">
       <li
         v-for="substance in substances"
         :key="substance._id"
-        class="substanceTitle">
-        <nuxt-link :to="`/substances/${substance.url}`"> {{ substance.name }} </nuxt-link>
+        class="substanceTitle"
+      >
+        <nuxt-link :to="`/substances/${substance.url}`">
+          {{ substance.name }}
+        </nuxt-link>
         <ul
           v-if="substance.subarticles && substance.subarticles.length"
-          class="subarticleList">
+          class="subarticleList"
+        >
           <li
             v-for="(subarticle, index) in substance.subarticles"
             :key="index"
-            class="subarticleListItem">
-            <nuxt-link :to="`/substances/${substance.url}?s=${subarticle.id}`"> {{ subarticle.title }} </nuxt-link>
+            class="subarticleListItem"
+          >
+            <nuxt-link :to="`/substances/${substance.url}?s=${subarticle.id}`">
+              {{ subarticle.title }}
+            </nuxt-link>
           </li>
         </ul>
       </li>

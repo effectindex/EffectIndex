@@ -2,18 +2,23 @@
   <div class="subarticleInput">
     <form 
       class="inputContainer"
-      @submit.prevent="addSubarticle">
+      @submit.prevent="addSubarticle"
+    >
       <input
         v-model="title"
         name="title"
         placeholder="Title"
-        class="effectEditor__input subarticleInput__title">
+        class="effectEditor__input subarticleInput__title"
+      >
       <input
         v-model="id"
         placeholder="Id"
         name="id"
-        class="effectEditor__input subarticleInput__id">
-      <button type="Submit"> Add </button>
+        class="effectEditor__input subarticleInput__id"
+      >
+      <button type="Submit">
+        Add
+      </button>
     </form>
     
 
@@ -22,23 +27,26 @@
         <li 
           v-for="(subarticle, index) in value"
           :key="index"
-          class="subarticleInput__listItem">
+          class="subarticleInput__listItem"
+        >
           {{ subarticle.title }} : {{ subarticle.id }}
           <span class="subarticleInput__icons">
             <a @click="moveArticleUp(index)"> <fa
               :icon="['far', 'arrow-up']"
-              class="fa subarticleInput__icon" /> </a>
+              class="fa subarticleInput__icon"
+            /> </a>
             <a @click="moveArticleDown(index)"> <fa
               :icon="['far', 'arrow-down']"
-              class="fa subarticleInput__icon" /> </a>
+              class="fa subarticleInput__icon"
+            /> </a>
             <a @click="deleteArticle(index)"> <fa
               :icon="['far', 'times-circle']"
-              class="fa subarticleInput__icon" /> </a>
+              class="fa subarticleInput__icon"
+            /> </a>
           </span>
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 

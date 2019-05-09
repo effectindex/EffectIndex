@@ -1,24 +1,34 @@
 <template>
   <div 
     v-show="access"
-    class="headerNav__menuItem">
+    class="headerNav__menuItem"
+  >
     <nuxt-link 
       :to="location"
-      class="headerNav__menuItemLink" > {{ name }} </nuxt-link>
+      class="headerNav__menuItemLink"
+    >
+      {{ name }}
+    </nuxt-link>
     <ul 
       v-if="subMenuItems"
-      class="headerNav__dropdown">
+      class="headerNav__dropdown"
+    >
       <li
         v-for="(item, index) in subMenuItems"
         v-show="itemAccess(item.scope)"
-        :key="index">
+        :key="index"
+      >
         <a 
           v-if="item.external"
           :href="item.location"
-          target="_blank"> {{ item.name }} </a>
+          target="_blank"
+        > {{ item.name }} </a>
         <nuxt-link
           v-else
-          :to="item.location"> {{ item.name }} </nuxt-link>
+          :to="item.location"
+        >
+          {{ item.name }}
+        </nuxt-link>
       </li>
     </ul>
   </div>
@@ -122,13 +132,14 @@ export default {
 .headerNav__dropdown {
   position: absolute;
   overflow: hidden;
-  left: -20px;
+  left: 2px;
   z-index: 3;
+  top: 70px;
   list-style: none;
   padding: 1em 0 1em 0;
   max-height: 0;
   background-color: #2e2e2e;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-in-out;
 }
 
 .headerNav__dropdown > li > a:hover {

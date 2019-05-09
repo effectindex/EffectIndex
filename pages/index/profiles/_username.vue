@@ -4,18 +4,21 @@
       <h1>{{ profile.username }}</h1>
       <profile-image
         :filename="profile.profileImageFull"
-        :username="profile.username" />
-      <div
-        v-if="profile.body"
-        v-html="$md.render(profile.body)" />
+        :username="profile.username"
+      />
+      <!-- eslint-disable-next-line -->
+      <div v-if="profile.body" v-html="$md.render(profile.body)"
+      />
       <div
         v-if="replications.length > 0"
-        style="clear: both; margin-top: 2em;">
+        style="clear: both; margin-top: 2em;"
+      >
         <hr>
         <h3>Replications</h3>
         <light-box
           :image-set="replications"
-          base="/img/gallery/" />
+          base="/img/gallery/"
+        />
       </div>
     </div>
     <div v-else>

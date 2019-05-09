@@ -2,7 +2,8 @@
   <div class="pageContent">
     <replication-editor
       :replication="replication"
-      @edit-replication="submitReplication" />
+      @edit-replication="submitReplication"
+    />
   </div>
 </template>
 
@@ -14,6 +15,10 @@ export default {
     ReplicationEditor
   },
   middleware: ["auth"],
+  async asyncData({ store, params }) {
+    let { replication } = await store.dispatch("getReplication", params.name);
+    return { replication };
+  },
   methods: {
     async submitReplication(replication) {
       let returnedReplication = await this.$store.dispatch(
@@ -28,10 +33,6 @@ export default {
 
       this.$router.push("/admin/replications/list");
     }
-  },
-  async asyncData({ store, params }) {
-    let { replication } = await store.dispatch("getReplication", params.name);
-    return { replication };
   }
 };
 </script>

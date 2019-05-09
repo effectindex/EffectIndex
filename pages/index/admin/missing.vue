@@ -6,23 +6,28 @@
     <table>
       <thead>
         <tr>
-          <td class="name"> Name </td> <td> long summary </td> <td> social media img </td>
+          <td class="name">
+            Name
+          </td> <td> long summary </td> <td> social media img </td>
         </tr>
       </thead>
 
       <tbody>
         <tr
           v-for="effect in effects"
-          :key="effect._id" >
-          <td> <nuxt-link :to="`/admin/effects/${effect.url}`"> {{ effect.name }} </nuxt-link> </td>
+          :key="effect._id"
+        >
+          <td>
+            <nuxt-link :to="`/admin/effects/${effect.url}`">
+              {{ effect.name }}
+            </nuxt-link>
+          </td>
           <td> {{ hasField(effect, 'long_summary_raw') ? 'YES' : 'MISSING' }} </td>
           <td> {{ hasField(effect, 'social_media_image') ? 'YES' : 'MISSING' }} </td>
         </tr>
       </tbody>
-
     </table>
   </div>
-
 </template>
 
 <script>
@@ -31,6 +36,9 @@ export default {
     effects() {
       return this.$store.state.effects;
     }
+  },
+  async fetch({ store }) {
+    await store.dispatch("getEffects");
   },
   methods: {
     hasField(entity, name) {
@@ -42,9 +50,6 @@ export default {
       } 
       return false;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
   }
 };
 </script>

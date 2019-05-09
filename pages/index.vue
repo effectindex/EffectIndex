@@ -2,7 +2,8 @@
   <div class="content">
     <section 
       :class="{ sectionContainerPulledout: navbarPullout }"
-      class="sectionContainer">
+      class="sectionContainer"
+    >
       <header-nav />
       <div class="page">
         <nuxt-child />
@@ -15,9 +16,11 @@
       :active="modalActive"
       :type="modalData.type"
       :src="(modalData.type === 'image') ? modalData.resource : modalData.resource"
-      @toggleModal="toggleModal" />
+      @toggleModal="toggleModal" 
+    />
     <notifications
-      position="bottom right" />
+      position="bottom right" 
+    />
   </div>
 </template>
 

@@ -4,26 +4,30 @@
       <label> Title: </label>
       <input 
         v-model="title"
-        class="input__singleLine">
+        class="input__singleLine"
+      >
     </div>
     <div>
       <label> Artist: </label>
       <input 
         v-model="artist"
-        class="input__singleLine">
+        class="input__singleLine"
+      >
     </div>
     <div>
       <label> Artist Webpage: </label>
       <input 
         v-model="artist_url"
-        class="input__singleLine">
+        class="input__singleLine"
+      >
     </div>
     <div>
       <label> Associated Effects: </label>
       <ul class="effectList">
         <li 
           v-for="effect in $store.state.effects"
-          :key="effect.id">
+          :key="effect.id"
+        >
           <input
             :id="effect.name"
             v-model="associated_effects"
@@ -39,7 +43,8 @@
       <ul class="substanceList">
         <li
           v-for="substance in $store.state.substances"
-          :key="substance.id">
+          :key="substance.id"
+        >
           <input
             :id="substance.name"
             v-model="associated_substances"
@@ -106,7 +111,8 @@
 
     <div 
       v-if="(type === 'image')" 
-      class="replicationEditor__imagePreview">
+      class="replicationEditor__imagePreview"
+    >
       <img
         v-show="resource"
         :src="'/img/gallery/' + resource"
@@ -131,17 +137,19 @@
       <img 
         v-show="thumbnail || (type === 'gfycat')" 
         :src="thumbnail ?
-        ('/img/gallery/thumbnails/' + thumbnail) : 'https://thumbs.gfycat.com/' + resource + '-mobile.jpg'" 
+          ('/img/gallery/thumbnails/' + thumbnail) : 'https://thumbs.gfycat.com/' + resource + '-mobile.jpg'" 
         style="max-width: 300px;"
       >
     </div>
 
     <div 
-      v-else-if="(type === 'audio')">
+      v-else-if="(type === 'audio')"
+    >
       <audio-player
         :src="'/audio/' + resource"
         :title="title"
-        :artist="artist" />
+        :artist="artist"
+      />
     </div>
 
     <div>
@@ -150,18 +158,22 @@
         <input 
           id="featured"
           v-model="featured"
-          type="checkbox">
+          type="checkbox"
+        >
       </label>
     </div>
 
     <div class="replication__buttons">
-      <button @click="submitReplication()"> Save </button>
+      <button @click="submitReplication()">
+        Save
+      </button>
       <nuxt-link 
         tag="button"
-        to="/admin/replications/list"> Cancel </nuxt-link>
+        to="/admin/replications/list"
+      >
+        Cancel
+      </nuxt-link>
     </div>
-
-
   </div>
 </template>
 

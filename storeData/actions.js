@@ -1,6 +1,4 @@
-import { debounce } from 'lodash';
-
-export default {
+export const actions = {
   // Menu
   togglePullout({ commit }) {
     commit("toggle_pullout");

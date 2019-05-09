@@ -2,12 +2,14 @@
   <figure 
     :class="float + ' ' + (border ? 'withBorder' : '')"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }"
-    class="captionedImage">
+    class="captionedImage"
+  >
     <img 
       v-show="imageSrc.src"
       :src="imageSrc.src" 
       :height="(height ? height + 'px' : 'auto')"
-      @click.stop="toggleModal">
+      @click.stop="toggleModal"
+    >
     <div 
       v-show="gfycat"
       :style="{
@@ -27,7 +29,8 @@
         height="100%"
         style="position:absolute;top:0;left:0;"
         allow="autoplay"
-        allowfullscreen />
+        allowfullscreen
+      />
     </div>
     <figcaption class="captionedImage__caption">
       <span 
@@ -36,18 +39,19 @@
       >
         <span class="title"> {{ title || imageSrc.title }} </span> by
         <span 
-          v-if="url">
+          v-if="url"
+        >
           <ext-link :href="url"> {{ artist || imageSrc.artist }} </ext-link>
         </span>
         <span 
           v-else
-          class="artist"> {{ artist || imageSrc.artist }} </span>
+          class="artist"
+        > {{ artist || imageSrc.artist }} </span>
         <span v-show="caption || imageSrc.caption"> - </span>
       </span>
       {{ caption || imageSrc.caption }}
     </figcaption>
   </figure>
-
 </template>
 
 

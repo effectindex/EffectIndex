@@ -1,6 +1,7 @@
 <template>
   <div 
-    class="audioReplication">
+    class="audioReplication"
+  >
     <div class="replicationInfo">
       <span class="replicationTitle"> {{ replication.title }} </span> by
       <span class="replicationArtist"> 
@@ -8,11 +9,15 @@
         <span v-else> {{ replication.artist }} </span>
       </span>
     </div>
-    <div v-html="$md.render(description)"> {{ description }} </div>
+    <!-- eslint-disable-next-line -->
+    <div v-html="$md.render(description)">
+      {{ description }}
+    </div>
     <audio-player 
       :src="`/audio/${replication.resource}`"
       :title="replication.title"
-      :artist="replication.artist" />
+      :artist="replication.artist"
+    />
       
     <div v-show="associatedEffects.length">
       <h4> Effects Replicated </h4>
@@ -20,7 +25,8 @@
         <li 
           v-for="effect in associatedEffects"
           :key="effect._id"
-          class="replicationEffectsListItem">
+          class="replicationEffectsListItem"
+        >
           <nuxt-link :to="'/effects/' + effect.url">
             {{ effect.name }}
           </nuxt-link>
@@ -34,7 +40,8 @@
         <li
           v-for="substance in associatedSubstances"
           :key="substance._id"
-          class="replicationSubstancesListItem">
+          class="replicationSubstancesListItem"
+        >
           <nuxt-link :to="'/substances/' + substance.url">
             {{ substance.name }}
           </nuxt-link>

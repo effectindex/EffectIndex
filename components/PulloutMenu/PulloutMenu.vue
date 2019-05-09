@@ -4,12 +4,14 @@
       <ul 
         v-for="(item, name) in navigation"
         v-show="checkItemAccess(item.scope)"
-        :key="name">
+        :key="name"
+      >
         <pullout-item 
           v-show="checkItemAccess(item.scope)"
           :name="name"
           :location="item.location"
-          :children="item.children" />
+          :children="item.children"
+        />
       </ul>
       <donate-button style="margin-top: 1.5em; margin-left: 40px;" />
     </div>

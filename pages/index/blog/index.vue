@@ -4,7 +4,8 @@
       v-for="post in blogPosts"
       :key="post._id"
       :post="post"
-      @delete-post="deletePost" /> 
+      @delete-post="deletePost"
+    /> 
   </div>
 </template>
 
@@ -21,6 +22,9 @@ export default {
       return this.$store.state.blogPosts;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getBlogPosts");
+  },
   methods: {
     async deletePost(id) {
       this.$store.dispatch("deleteBlogPost", id);
@@ -28,9 +32,6 @@ export default {
   },
   head () {
     return { title: "Blog" };
-  },
-  async fetch({ store }) {
-    await store.dispatch("getBlogPosts");
   }
 };
 </script>

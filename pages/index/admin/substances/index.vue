@@ -3,10 +3,16 @@
     <h1> Substance Management </h1>
     <nuxt-link
       class="substanceManagement__link"
-      to="/admin/substances/list"> Substance List </nuxt-link>
+      to="/admin/substances/list"
+    >
+      Substance List
+    </nuxt-link>
     <nuxt-link
       class="substanceManagement__link"
-      to="/admin/substances/add"> Add New Substance </nuxt-link>
+      to="/admin/substances/add"
+    >
+      Add New Substance
+    </nuxt-link>
     <nuxt-child />
   </div>
 </template>

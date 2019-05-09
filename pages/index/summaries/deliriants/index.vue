@@ -3,7 +3,8 @@
     <div>
       <img
         src="/icons/deliriant.svg"
-        class="fa categoryIcon">
+        class="fa categoryIcon"
+      >
       <h1> Subjective Effects of Deliriants </h1>
       <captioned-image
         :border="true"
@@ -12,18 +13,25 @@
         width="300"
         title="700mg Diphenhydramine"
         artist="Stas Constantine"
-        top="true" />
+        top="true"
+      />
       <div class="categoryDescription">
-        <p> This article breaks down the subjective effects of the deliriant experience into simple and easy 
-        to understand descriptions with accompanying image replications. This is done without resorting to
-        metaphor, analogy, or personal trip reports. </p>
+        <p>
+          This article breaks down the subjective effects of the deliriant experience into simple and easy 
+          to understand descriptions with accompanying image replications. This is done without resorting to
+          metaphor, analogy, or personal trip reports.
+        </p>
 
-        <p> These descriptions are not specific to any particular substance but are applicable to the effects which commonly
-        occur in various forms under the influence of almost any deliriant compound. This includes, but is not limited to, 
-        both synthetic and plant based deliriants, such as: </p>
+        <p>
+          These descriptions are not specific to any particular substance but are applicable to the effects which commonly
+          occur in various forms under the influence of almost any deliriant compound. This includes, but is not limited to, 
+          both synthetic and plant based deliriants, such as:
+        </p>
 
-        <p> <i> diphenhydramine (DPH), datura, atropine, hyoscyamine, scopolamine, dimenhydrinate, doxylamine,
-        benzydamine, elemicin, brugmansia, atropa belladonna, hyoscyamus niger, mandragora officinarum </i> </p>
+        <p>
+          <i> diphenhydramine (DPH), datura, atropine, hyoscyamine, scopolamine, dimenhydrinate, doxylamine,
+            benzydamine, elemicin, brugmansia, atropa belladonna, hyoscyamus niger, mandragora officinarum </i>
+        </p>
 
         <p> Individual effects are also summarized with a prominent link to their full article. </p>
       </div>
@@ -34,7 +42,8 @@
         Visual Effects
         <fa 
           :icon="['far', 'eye']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -43,9 +52,10 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'visual')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -53,7 +63,8 @@
         Auditory Effects
         <fa 
           :icon="['far', 'volume-up']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -62,9 +73,10 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'auditory')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -72,7 +84,8 @@
         Tactile Effects
         <fa 
           :icon="['far', 'paper']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -81,9 +94,10 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'tactile')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -91,7 +105,8 @@
         Multisensory Effects
         <fa 
           :icon="['far', 'cogs']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -99,13 +114,15 @@
         Although some hallucinatory effects may affect multiple senses at one time they are usually 
         not categorized as 'multisensory effects' unless they do so consistently.
         For example, while experiences with autonomous entities may sometimes have a tactile component to them, more often
-        than not they are primarily a visual experience and are therefore classified as such. </p>
+        than not they are primarily a visual experience and are therefore classified as such.
+      </p>
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'multisensory')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -113,7 +130,8 @@
         Cognitive Effects
         <fa 
           :icon="['far', 'user']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -122,9 +140,10 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'cognitive')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -132,7 +151,8 @@
         Physical Effects
         <fa 
           :icon="['far', 'heart-rate']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -141,9 +161,10 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <div class="effectsContainer">
@@ -151,7 +172,8 @@
         Uncomfortable Physical Effects
         <fa 
           :icon="['far', 'frown']"
-          class="fa actionIcon" />
+          class="fa actionIcon"
+        />
       </h3>
 
       <p class="actionDescription"> 
@@ -163,19 +185,30 @@
 
       <long-summary 
         v-for="(effect, i) in filterEffectsByTag('deliriant', 'uncomfortable')"
+        :key="effect._id"
         :index="i"
         :effect="effect"
-        :key="effect._id" />
+      />
     </div>
 
     <h3> See Also </h3>
     <ul>
-      <li> <nuxt-link to="/substances/"> Substance Index </nuxt-link> </li>
-      <li> <nuxt-link to="/summaries/psychedelics/visual"> Visual Psychedelic Effects </nuxt-link> </li>
-      <li> <nuxt-link to="/summaries/dissociatives/"> Dissociative Subjective Effects </nuxt-link> </li>
+      <li>
+        <nuxt-link to="/substances/">
+          Substance Index
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/summaries/psychedelics/visual">
+          Visual Psychedelic Effects
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/summaries/dissociatives/">
+          Dissociative Subjective Effects
+        </nuxt-link>
+      </li>
     </ul>
-
-
   </div>
 </template>
 
@@ -209,6 +242,9 @@ export default {
       return this.$store.state.effects;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getEffects");
+  },
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);
@@ -221,9 +257,6 @@ export default {
         tags.every(tag => effect.tags.indexOf(tag) > -1)
       );
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
   }
 };
 </script>

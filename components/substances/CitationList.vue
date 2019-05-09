@@ -4,7 +4,8 @@
       v-for="(citation, index) in filteredCitations"
       :key="index"
       :from="String(citation.from)"
-      :no="String(citation.no)">
+      :no="String(citation.no)"
+    >
       <span class="citationText"> {{ citation.text }} </span>
       <span class="citationSeparator"> | </span>
       <ext-link :href="citation.url">

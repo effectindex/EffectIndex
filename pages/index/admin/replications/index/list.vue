@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <hr>
-    <label for="effectFilter" > 
+    <label for="effectFilter"> 
       <span style="font-weight: bold;"> Filter by Effect: </span>
       <div class="inputContainer">
         <input
@@ -10,25 +10,32 @@
           class="filterInput"
           @input="debouncedInput"
           @focus="focus"
-          @blur="blur">
+          @blur="blur"
+        >
         <a 
           style="color: #BBB; padding: 0.5em;"
-          @click="clearFilter"> 
+          @click="clearFilter"
+        > 
           <fa 
             :icon="['far', 'times']"
-            class="fa" />
+            class="fa"
+          />
         </a>
         <div 
           :class="{ active: (focused && filter) }"
-          class="filterListContainer">
+          class="filterListContainer"
+        >
           <ul
-            class="filterList"> 
+            class="filterList"
+          > 
             <li 
               v-for="effect in filteredEffects.slice(0, 5)"
-              :key="effect._id"> <a @click="selectEffectName(effect.name)"> {{ effect.name }} </a> </li>
+              :key="effect._id"
+            > <a @click="selectEffectName(effect.name)"> {{ effect.name }} </a> </li>
             <li 
               v-show="filteredEffects.length > 5"
-              style="font-weight: bold;"> ... </li>
+              style="font-weight: bold;"
+            > ... </li>
           </ul>
         </div>
       </div>
@@ -36,55 +43,73 @@
     <table class="replicationTable">
       <thead>
         <tr class="replicationTableHeaderRow">
-          <td> Title 
+          <td>
+            Title 
             <a 
               class="sortArrow"
-              @click="sortBy('title', 'descending')">
+              @click="sortBy('title', 'descending')"
+            >
               <fa 
                 :icon="['far', 'arrow-down']"
-                class="fa" />
+                class="fa"
+              />
             </a>
             <a 
               class="sortArrow"
-              @click="sortBy('title', 'ascending')">
+              @click="sortBy('title', 'ascending')"
+            >
               <fa 
                 :icon="['far', 'arrow-up']"
-                class="fa" /> </a>
+                class="fa"
+              /> </a>
           </td>
-          <td> Artist 
+          <td>
+            Artist 
             <a 
               class="sortArrow"
-              @click="sortBy('artist', 'descending')">
+              @click="sortBy('artist', 'descending')"
+            >
               <fa 
                 :icon="['far', 'arrow-down']"
-                class="fa" />  </a>
+                class="fa"
+              />  </a>
             <a 
               class="sortArrow"
-              @click="sortBy('artist', 'ascending')">
+              @click="sortBy('artist', 'ascending')"
+            >
               <fa 
                 :icon="['far', 'arrow-up']"
-                class="fa" /> 
+                class="fa"
+              /> 
             </a>
           </td>
-          <td> Thumb
+          <td>
+            Thumb
             <input
               v-model="options.thumbs"
               style="display: inline; margin-left: 0.5em;"
-              type="checkbox" > </td>
-          <td> Type 
+              type="checkbox"
+            >
+          </td>
+          <td>
+            Type 
             <a 
               class="sortArrow"
-              @click="sortBy('type', 'descending')">
+              @click="sortBy('type', 'descending')"
+            >
               <fa 
                 :icon="['far', 'arrow-down']"
-                class="fa" />
+                class="fa"
+              />
             </a>
             <a 
               class="sortArrow"
-              @click="sortBy('type', 'ascending')">
+              @click="sortBy('type', 'ascending')"
+            >
               <fa 
                 :icon="['far', 'arrow-up']"
-                class="fa" />
+                class="fa"
+              />
             </a>
           </td>
         </tr>
@@ -95,7 +120,8 @@
           :key="replication._id"
           :replication="replication"
           :thumbs="options.thumbs"
-          @deleteReplication="deleteReplication" />
+          @deleteReplication="deleteReplication"
+        />
       </tbody>
     </table>
   </div>

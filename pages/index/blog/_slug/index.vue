@@ -1,14 +1,15 @@
 <template>
-
   <div class="pageContent blog">
     <blog-post 
       v-if="post"
       :post="post"
-      @delete-post="deletePost" /> 
+      @delete-post="deletePost"
+    /> 
 
-    <nuxt-link to="/blog"> ... back </nuxt-link>
+    <nuxt-link to="/blog">
+      ... back
+    </nuxt-link>
   </div>
-
 </template>
 
 <script>
@@ -18,17 +19,17 @@ export default {
   components: {
     BlogPost
   },
+  async asyncData({ store, params, error }) {
+    let { post } = await store.dispatch("getSingleBlogPost", params.slug);
+    if (!post) error({statusCode: 404, message: 'Blog post not found.'});
+    return { post };
+  },
   methods: {
     async deletePost(id) {
       this.$store
         .dispatch("deleteBlogPost", id)
         .then(this.$router.push("/blog/"));
     }
-  },
-  async asyncData({ store, params, error }) {
-    let { post } = await store.dispatch("getSingleBlogPost", params.slug);
-    if (!post) error({statusCode: 404, message: 'Blog post not found.'});
-    return { post };
   },
   head() {
     return {

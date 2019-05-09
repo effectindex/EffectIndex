@@ -1,10 +1,10 @@
 <template>
   <div class="searchBox">
-
     <div class="inputContainer">
       <div class="spyglass">
         <fa 
-          :icon="['far', 'search']" />
+          :icon="['far', 'search']"
+        />
       </div>
       <input 
         ref="searchInput"
@@ -12,17 +12,19 @@
         type="text"
         placeholder="Search"
         class="searchInput"
-        @input="changeSearchInput">
+        @input="changeSearchInput"
+      >
       <div 
         v-show="searchInput.length"
         class="clearButton"
-        @click="clear">
+        @click="clear"
+      >
         <fa 
-          :icon="['far', 'times-circle']" />
+          :icon="['far', 'times-circle']"
+        />
       </div>
     </div>
   </div>
-
 </template>
 
 <script>

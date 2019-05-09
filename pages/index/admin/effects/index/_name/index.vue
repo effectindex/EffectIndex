@@ -3,7 +3,8 @@
     <effect-editor
       :effect="effect"
       @edit-effect="submitEffect"
-      @update-effect="updateEffect" />
+      @update-effect="updateEffect"
+    />
   </div>
 </template>
 
@@ -15,6 +16,10 @@ export default {
     EffectEditor
   },
   middleware: ["auth"],
+  async asyncData({ store, params }) {
+    let { effect } = await store.dispatch("getEffect", params.name);
+    return { effect };
+  },
   methods: {
     async submitEffect(effect) {
       
@@ -36,9 +41,5 @@ export default {
       });
     }
   },
-  async asyncData({ store, params }) {
-    let { effect } = await store.dispatch("getEffect", params.name);
-    return { effect };
-  }
 };
 </script>

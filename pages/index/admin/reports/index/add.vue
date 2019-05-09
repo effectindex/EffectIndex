@@ -2,7 +2,8 @@
   <div class="pageContent">
     <hr>
     <report-editor
-      @new-report="submitReport" />
+      @new-report="submitReport"
+    />
   </div>
 </template>
 

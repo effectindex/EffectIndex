@@ -15,7 +15,8 @@
           <a @click="removeTag(index)">
             <fa
               :icon="['far', 'times-circle']"
-              class="fa" />
+              class="fa"
+            />
           </a>
         </div>
       </li>

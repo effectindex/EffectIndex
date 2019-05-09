@@ -3,25 +3,29 @@
     <label> Name 
       <input
         v-model="substance.name"
-        class="reportEditor__inputTitle">
+        class="reportEditor__inputTitle"
+      >
     </label>
 
     <label> Dose
       <input
         v-model="substance.dose"
-        class="reportEditor__inputTitle">
+        class="reportEditor__inputTitle"
+      >
     </label>
 
     <label> Route of Administration 
       <input
         v-model="substance.roa"
-        class="reportEditor__inputTitle">
+        class="reportEditor__inputTitle"
+      >
     </label>
 
     <div class="reportEditor__tableContainer">
       <table
         v-show="value.length"
-        class="reportEditor__substancesTable">
+        class="reportEditor__substancesTable"
+      >
         <thead>
           <tr>
             <td> Substance </td>
@@ -33,7 +37,8 @@
         <tbody>
           <tr 
             v-for="(substanceItem, index) in value"
-            :key="index">
+            :key="index"
+          >
             <td> {{ substanceItem.name }} </td>
             <td> {{ substanceItem.dose }} </td>
             <td> {{ substanceItem.roa }} </td>
@@ -41,26 +46,32 @@
               <a
                 class="itemControl"
                 style="cursor: pointer;"
-                @click="moveItemUp(index)">
+                @click="moveItemUp(index)"
+              >
                 <fa 
                   :icon="['far', 'arrow-up']"
-                  class="fa" />
+                  class="fa"
+                />
               </a>
               <a
                 class="itemControl"
                 style="cursor: pointer;"
-                @click="moveItemDown(index)">
+                @click="moveItemDown(index)"
+              >
                 <fa 
                   :icon="['far', 'arrow-down']"
-                  class="fa" />
+                  class="fa"
+                />
               </a>
               <a
                 class="itemControl"
-                @click="removeItem(index)">
+                @click="removeItem(index)"
+              >
                 <fa 
                   :icon="['far', 'times']"
                   style="color: red;"
-                  class="fa" />
+                  class="fa"
+                />
               </a>
             </td>
           </tr> 
@@ -69,12 +80,16 @@
 
       <button 
         class="addButton"
-        @click="addItem"> Add </button>
+        @click="addItem"
+      >
+        Add
+      </button>
       <button 
         class="clearButton"
         @click="clear"
-      > Clear </button>
-
+      >
+        Clear
+      </button>
     </div>
   </div>
 </template>

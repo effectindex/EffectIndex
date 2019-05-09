@@ -3,46 +3,60 @@
     <div class="audioPlayer__playButton">
       <a
         v-if="state === 'UNREADY'"
-        @mousedown="load()">
+        @mousedown="load()"
+      >
         <fa
           :icon="['far', 'play']"
-          class="fa" /> 
+          class="fa"
+        /> 
       </a>
       <a
-        v-else-if="state === 'LOADING'">
+        v-else-if="state === 'LOADING'"
+      >
         <img
           class="spinner" 
-          src="/spinner.svg"> 
+          src="/spinner.svg"
+        > 
       </a>
       <a
         v-else-if="state === 'STOPPED' || state === 'PAUSED'"
-        @mousedown="play()">
+        @mousedown="play()"
+      >
         <fa
           :icon="['far', 'play']"
-          class="fa" /> 
+          class="fa"
+        /> 
       </a>
       <a
         v-else-if="state === 'PLAYING'"
-        @mousedown="pause()">
+        @mousedown="pause()"
+      >
         <fa
           :icon="['far', 'pause']"
-          class="fa" /> 
+          class="fa"
+        /> 
       </a>
     </div>
     <div class="audioPlayer__audioInfo">
       <div class="audioPlayer__titleBar">
-        <div class="audioPlayer__title"> {{ audioInfo.title }} </div>
-        <div class="audioPlayer__artist"> {{ audioInfo.artist }} </div>
+        <div class="audioPlayer__title">
+          {{ audioInfo.title }}
+        </div>
+        <div class="audioPlayer__artist">
+          {{ audioInfo.artist }}
+        </div>
       </div>
     </div>
     <div
       ref="waveform"
-      class="audioPlayer__waveform" />
+      class="audioPlayer__waveform"
+    />
     <div class="audioPlayer__positionDownload">
       <div> {{ getTime(position) }} / {{ getTime(length) }} </div>
       <a
         :href="src"
-        target="_blank"> Download </a>
+        target="_blank"
+      > Download </a>
     </div>
   </div>
 </template>

@@ -3,10 +3,16 @@
     <h1> Report Management </h1>
     <nuxt-link 
       class="reportManagement__link"
-      to="/admin/reports/list"> List Reports </nuxt-link>
+      to="/admin/reports/list"
+    >
+      List Reports
+    </nuxt-link>
     <nuxt-link 
       class="reportManagement__link"
-      to="/admin/reports/add"> New Report </nuxt-link>
+      to="/admin/reports/add"
+    >
+      New Report
+    </nuxt-link>
     <nuxt-child />
   </div>
 </template>

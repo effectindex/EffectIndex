@@ -1,7 +1,10 @@
 <template>
   <div class="lightBox__imageDetails">
-    <h3 class="lightBox__title"> {{ title }} </h3>
-    <h4 class="lightBox__artist"> by
+    <h3 class="lightBox__title">
+      {{ title }}
+    </h3>
+    <h4 class="lightBox__artist">
+      by
       <a @click="openWindow">
         {{ artist }}
       </a>
