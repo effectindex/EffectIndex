@@ -3,35 +3,47 @@
     <no-ssr>
       <div 
         v-if="$auth.loggedIn"
-        class="blogPost__admin">
+        class="blogPost__admin"
+      >
         <nuxt-link 
           :to="'/admin/blog/' + post.slug"
-          class="blogPost__edit"> 
+          class="blogPost__edit"
+        > 
           <fa
             :icon="['far', 'edit']"
-            class="fa" /> 
+            class="fa"
+          /> 
         </nuxt-link>    
         <a 
           class="blogPost__delete"
-          @click="$emit('delete-post', post._id)">  
+          @click="$emit('delete-post', post._id)"
+        >  
           <fa 
             :icon="['far', 'times']"
-            class="fa" />
+            class="fa"
+          />
         </a>
       </div>
     </no-ssr>
     <h4 class="blogPost__date"> 
       <nuxt-link 
         :to="'/blog/' + post.slug + '/'"
-        style="text-decoration: none;"> {{ formatDate(post.datetime) }} </nuxt-link> </h4>
+        style="text-decoration: none;"
+      >
+        {{ formatDate(post.datetime) }}
+      </nuxt-link>
+    </h4>
+    
     <h1 class="blogPost__title">
       <nuxt-link 
         :to="'/blog/' + post.slug + '/'"
-        style="text-decoration: none;"> {{ post.title }} </nuxt-link>
+        style="text-decoration: none;"
+      >
+        {{ post.title }}
+      </nuxt-link>
     </h1>
-    <div 
-      class="blogPost__body"
-      v-html="$md.render(post.body)" /> 
+    <!-- eslint-disable-next-line -->
+    <div class="blogPost__body" v-html="$md.render(post.body)" /> 
   </div>
 </template>
 

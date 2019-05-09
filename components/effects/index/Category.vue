@@ -1,16 +1,19 @@
 <template>
   <div
-    class="categoryContainer">
+    class="categoryContainer"
+  >
     <h3 class="categoryTitle">
       {{ title }} 
       <fa
         v-if="icon"
         :icon="icon"
-        class="icon" />
+        class="icon"
+      />
       <img
         v-show="image" 
         :src="image"
-        class="image">
+        class="image"
+      >
     </h3>
     <div class="actionContainer">
       <slot />

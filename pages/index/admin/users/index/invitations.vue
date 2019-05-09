@@ -9,7 +9,8 @@
       </thead>
       <tr 
         v-for="invitation in invitations"
-        :key="invitation._id">
+        :key="invitation._id"
+      >
         <td> {{ formatDate(invitation.created) }} </td>
         <td> {{ Boolean(invitation.used) ? 'Yes' : 'No' }} </td>
         <td> {{ Boolean(invitation.used) ? invitation.usedBy : '' }} </td>
@@ -18,14 +19,15 @@
           <a 
             class="delete"
             style="color: red; cursor: pointer;"
-            @click="deleteInvitation(invitation._id)">          
+            @click="deleteInvitation(invitation._id)"
+          >          
             <fa 
               :icon="['far', 'times']"
-              class="fa" /> 
+              class="fa"
+            /> 
           </a>
         </td>
       </tr>
-
     </table>
   </div>
 </template>
@@ -42,6 +44,9 @@ export default {
       return process.env.BASE_URL;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getInvitations");
+  },
   methods: {
     async deleteInvitation(id) {
       await this.$store.dispatch("deleteInvitation", id);
@@ -49,9 +54,6 @@ export default {
     formatDate(date) {
       return fecha.format(new Date(date), "MMMM D, YYYY");
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getInvitations");
   }
 };
 </script>

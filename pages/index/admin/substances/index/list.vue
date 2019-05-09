@@ -2,11 +2,12 @@
   <div class="pageContent">
     <hr>
     <h4> Substances </h4>
-    <label for="substanceFilter" > Filter by Tag:
+    <label for="substanceFilter"> Filter by Tag:
       <input
         v-model="filter"
         type="text"
-        class="filterInput"> <a @click="clearFilter"> (clear) </a> </label>
+        class="filterInput"
+      > <a @click="clearFilter"> (clear) </a> </label>
     <table class="substanceTable">
       <thead>
         <tr>
@@ -18,7 +19,8 @@
         v-for="substance in filteredSubstances"
         :key="substance._id"
         :substance="substance"
-        @deleteSubstance="deleteSubstance" />
+        @deleteSubstance="deleteSubstance"
+      />
     </table>
   </div>
 </template>

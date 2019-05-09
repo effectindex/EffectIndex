@@ -3,18 +3,21 @@
     <input 
       v-model="substanceInputText"
       class="substanceEditor__input"
-      @keyup="changeInput">
+      @keyup="changeInput"
+    >
     <ul class="substanceList">
       <li 
         v-for="(substance, index) in value"
         :key="substance"
-        class="substanceItem" >
+        class="substanceItem"
+      >
         {{ substance }}
         <div class="substanceItem__removeIcon">
           <a @click="removeSubstance(index)">
             <fa
               :icon="['far', 'times-circle']"
-              class="fa" />
+              class="fa"
+            />
           </a>
         </div>
       </li>

@@ -4,14 +4,16 @@
       <label> Name </label>
       <input
         v-model="name"
-        class="effectEditor__input">
+        class="effectEditor__input"
+      >
     </div>
 
     <div>
       <label> Description </label>
       <textarea
         v-model="description"
-        class="effectEditor__textarea effectEditor__description" />
+        class="effectEditor__textarea effectEditor__description"
+      />
     </div>
 
     <div class="effectEditor__showHide">
@@ -28,35 +30,40 @@
         <label> Short Summary </label>
         <textarea
           v-model="summary"
-          class="effectEditor__textarea effectEditor__summary" />
+          class="effectEditor__textarea effectEditor__summary"
+        />
       </div>
 
       <div>
         <label> Long Summary </label>
         <textarea
           v-model="long_summary"
-          class="effectEditor__textarea effectEditor__longSummary" />
+          class="effectEditor__textarea effectEditor__longSummary"
+        />
       </div>
 
       <div>
         <label>Analysis</label>
         <textarea
           v-model="analysis"
-          class="effectEditor__textarea effectEditor__analysis" />
+          class="effectEditor__textarea effectEditor__analysis"
+        />
       </div>
 
       <div>
         <label>Style Variations</label>
         <textarea
           v-model="style_variations"
-          class="effectEditor__textarea effectEditor__style_variations" />
+          class="effectEditor__textarea effectEditor__style_variations"
+        />
       </div>
 
       <div>
         <label>Personal Commentary</label>
         <textarea
           v-model="personal_commentary"
-          class="effectEditor__textarea effectEditor__personal_commentary" />
+          class="effectEditor__textarea effectEditor__personal_commentary"
+        />
       </div>
 
       <div>
@@ -93,7 +100,8 @@
         <label> Social Media Image </label>
         {{ (social_media_image ? social_media_image : "") }}<input
           v-model="social_media_image"
-          class="effectEditor__input">
+          class="effectEditor__input"
+        >
       </div>
 
       <div>
@@ -101,25 +109,25 @@
         <ol v-if="!gallery_order.length">
           <li
             v-for="(replication, index) in associated_replications"
-            :key="replication._id">
-            <span
-            > {{ replication.title }} </span> -
+            :key="replication._id"
+          >
+            <span> {{ replication.title }} </span> -
             [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
-            Down </a> | <a @click="removeReplication(index)"> Remove</a>]
+              Down </a> | <a @click="removeReplication(index)"> Remove</a>]
           </li>
         </ol>
         <div v-else>
           <ol>
             <li
               v-for="(replication, index) in combined_order"
-              :key="replication._id">
-              <span
-              > {{ replication.title }} </span> -
+              :key="replication._id"
+            >
+              <span> {{ replication.title }} </span> -
               [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
-              Down </a> | <a @click="removeReplication(index)"> Remove</a>]
+                Down </a> | <a @click="removeReplication(index)"> Remove</a>]
             </li>
           </ol>
-          <br >
+          <br>
           <a @click="resetGalleryOrder"> Reset Order </a>
         </div>
       </div>
@@ -130,26 +138,33 @@
           <input
             id="featured"
             v-model="featured"
-            type="checkbox">
+            type="checkbox"
+          >
         </label>
       </div>
-
-
     </div>
 
     <div class="effectEditor__buttons">
       <button
         style="background-color: #DFD;"
-        @click="submitEffect(false)"> Save </button>
+        @click="submitEffect(false)"
+      >
+        Save
+      </button>
       <button
         v-show="effect"
         style="background-color: #DFD;"
-        @click="submitEffect(true)"> Update </button>
+        @click="submitEffect(true)"
+      >
+        Update
+      </button>
       <nuxt-link
         :to="'/effects/' + url"
-        tag="button"> Cancel </nuxt-link>
+        tag="button"
+      >
+        Cancel
+      </nuxt-link>
     </div>
-
   </div>
 </template>
 

@@ -7,15 +7,16 @@
         :key="i"
         :class="{ 'selected': (activeTab === tab)}"
         class="tabsListItem"
-        @click="selectTab(tab)">
+        @click="selectTab(tab)"
+      >
         {{ tab }}
       </li>
     </ul>
     <slot 
       ref="tab"
-      :name="activeTab" />
+      :name="activeTab"
+    />
   </div>
-
 </template>
 
 <script>

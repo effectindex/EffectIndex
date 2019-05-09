@@ -14,23 +14,31 @@
       <tbody>
         <tr 
           v-for="user in users"
-          :key="user._id">
-          <td> <nuxt-link :to="'/profiles/' + user.username"> {{ user.username }} </nuxt-link> </td>
+          :key="user._id"
+        >
+          <td>
+            <nuxt-link :to="'/profiles/' + user.username">
+              {{ user.username }}
+            </nuxt-link>
+          </td>
           <td> {{ listRoles(user) }} </td>
           <td> 
             <nuxt-link :to="'/admin/users/' + user._id">
               <fa 
                 :icon="['far', 'edit']"
-                class="fa" />
+                class="fa"
+              />
             </nuxt-link>
           </td>
           <td> 
             <a 
               style="cursor: pointer; color: red;"
-              @click="deleteUser(user._id)"> 
+              @click="deleteUser(user._id)"
+            > 
               <fa 
                 :icon="['far', 'times']"
-                class="fa" />
+                class="fa"
+              />
             </a>
           </td>
         </tr>
@@ -45,6 +53,9 @@ export default {
     users() {
       return this.$store.state.admin.userlist;
     }
+  },
+  async fetch({ store }) {
+    await store.dispatch("getAllUsers");
   },
   methods: {
     listRoles(user) {
@@ -65,9 +76,6 @@ export default {
       });
 
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getAllUsers");
   }
 };
 </script>

@@ -14,23 +14,31 @@
       <tbody>
         <tr 
           v-for="post in blogPosts"
-          :key="post._id" >
-          <td> <nuxt-link :to="'/blog/' + post.slug"> {{ post.title }} </nuxt-link> </td>
+          :key="post._id"
+        >
+          <td>
+            <nuxt-link :to="'/blog/' + post.slug">
+              {{ post.title }}
+            </nuxt-link>
+          </td>
           <td> {{ formatDate(post.datetime) }} </td>
           <td> 
             <nuxt-link :to="'/admin/blog/' + post.slug">
               <fa
                 :icon="['far', 'edit']"
-                class="fa" />
+                class="fa"
+              />
             </nuxt-link> 
           </td>
           <td> 
             <a 
               style="color: red; cursor: pointer;"
-              @click="deletePost(post._id)">
+              @click="deletePost(post._id)"
+            >
               <fa
                 :icon="['far', 'times']"
-                class="fa" /> </a>
+                class="fa"
+              /> </a>
           </td>
         </tr>
       </tbody>
@@ -39,22 +47,20 @@
 </template>
 
 <script>
-  import EffectTableRow from '@/components/effects/EffectTableRow.vue';
   import fecha from 'fecha';
 
   export default {
-      components: { EffectTableRow },
       scrollToTop: true,
       computed: {
         blogPosts() {
           return this.$store.state.blogPosts;
         }
       },
+      async fetch ( { store } ) { await store.dispatch('getBlogPosts'); },
       methods: { 
         async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); },
         formatDate: (date) => fecha.format(new Date(date), 'MMMM D, YYYY hh:mm:ss')
       },
-      async fetch ( { store } ) { await store.dispatch('getBlogPosts'); }
   };
 </script>
 

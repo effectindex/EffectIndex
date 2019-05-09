@@ -3,7 +3,8 @@
     <div>
       <fa
         :icon="['far', 'eye']"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
       <h1> Visual Effects of Psychedelics </h1>
       <captioned-image
         :border="true"
@@ -12,11 +13,14 @@
         width="300"
         title="In the Tree"
         artist="Eddie Calz"
-        top="true" />
+        top="true"
+      />
       <div class="categoryDescription">
         <p> This article breaks down the subjective visual effects of the psychedelic experience into simple and easy to understand descriptions with accompanying image replications. This is done without resorting to metaphors, analogies, or personal trip reports. </p>
         <p> These descriptions are not specific to any particular substance but are applicable to the effects which commonly occur in various forms under the influence of almost any psychedelic compound. This includes, but is not limited to, both classical and research chemical psychedelics, such as: </p>
-        <p style="font-style: italic;"> LSD, Psilocybin mushrooms, DMT, Ayahuasca, Mescaline, 5-MeO-MiPT, 2C-B, LSA, AL-LAD, ALD-52, 1P-LSD, 2C-B-Fly, 2C-C, 2C-D, 2C-E, 2C-P, 4-AcO-DMT, 4-HO-MET, 4-HO-MiPT, 5-MeO-DMT, DPT, and DOC. </p>
+        <p style="font-style: italic;">
+          LSD, Psilocybin mushrooms, DMT, Ayahuasca, Mescaline, 5-MeO-MiPT, 2C-B, LSA, AL-LAD, ALD-52, 1P-LSD, 2C-B-Fly, 2C-C, 2C-D, 2C-E, 2C-P, 4-AcO-DMT, 4-HO-MET, 4-HO-MiPT, 5-MeO-DMT, DPT, and DOC.
+        </p>
         <p> The article begins with a description of the simpler effects and works its way up towards more complex experiences as it progresses. Individual effects are also summarized with a link to their full article. </p>
       </div>
     </div>
@@ -27,56 +31,79 @@
           Visual Enhancements
           <fa 
             :icon="['far', 'arrow-up']"
-            class="fa actionIcon" />
+            class="fa actionIcon"
+          />
         </h3>
 
-        <p class="actionDescription"> <b> Visual enhancements </b> are any subjective effect which improves one's ability to perceive the external environment through their sense of sight. </p>
+        <p class="actionDescription">
+          <b> Visual enhancements </b> are any subjective effect which improves one's ability to perceive the external environment through their sense of sight.
+        </p>
 
         <long-summary 
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'enhancement')"
+          :key="effect._id"
           :index="i"
           :effect="effect"
-          :key="effect._id" />
+        />
       </div>
 
       <div class="effectsContainer">
         <h3> Visual Distortions </h3>
-        <p class="actionDescription"> <b> Visual distortions </b> are any subjective effect which alters and changes the perception or appearance of pre-existing visual data without adding any entirely new content. </p>
+        <p class="actionDescription">
+          <b> Visual distortions </b> are any subjective effect which alters and changes the perception or appearance of pre-existing visual data without adding any entirely new content.
+        </p>
         <long-summary 
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'distortion')"
+          :key="effect._id"
           :index="i"
           :effect="effect"
-          :key="effect._id" />
+        />
       </div>
 
       <div class="effectsContainer">
-        <h3 style="margin-bottom: 0.25em;"> Geometry </h3> 
+        <h3 style="margin-bottom: 0.25em;">
+          Geometry
+        </h3> 
         <long-summary 
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'geometry')"
+          :key="effect._id"
           :show-title="false"
           :index="i"
           :effect="effect"
-          :key="effect._id" />
+        />
       </div>      
 
       <div class="effectsContainer">
         <h3> Hallucinatory States </h3>
-        <p class="actionDescription"> <b> Hallucinatory states </b> are any subjective effect which changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner which is similar to that of dreams. </p>
+        <p class="actionDescription">
+          <b> Hallucinatory states </b> are any subjective effect which changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner which is similar to that of dreams.
+        </p>
         <long-summary 
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'hallucinatory state')"
+          :key="effect._id"
           :index="i"
           :effect="effect"
-          :key="effect._id" />
+        />
       </div>
       <h3> See Also </h3>
       <ul>
-        <li> <nuxt-link to="/substances/"> Substance Index </nuxt-link> </li>
-        <li> <nuxt-link to="/summaries/psychedelics/cognitive"> Cognitive Psychedelic Effects </nuxt-link> </li>
-        <li> <nuxt-link to="/summaries/psychedelics/miscellaneous"> Miscellaneous Psychedelic Effects </nuxt-link> </li>
+        <li>
+          <nuxt-link to="/substances/">
+            Substance Index
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/summaries/psychedelics/cognitive">
+            Cognitive Psychedelic Effects
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/summaries/psychedelics/miscellaneous">
+            Miscellaneous Psychedelic Effects
+          </nuxt-link>
+        </li>
       </ul>
     </div>
-
-
   </div>
 </template>
 
@@ -105,6 +132,9 @@ export default {
       return this.$store.state.effects;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getEffects");
+  },
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);
@@ -117,9 +147,6 @@ export default {
         tags.every(tag => effect.tags.indexOf(tag) > -1)
       );
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
   }
 };
 </script>

@@ -2,7 +2,8 @@
   <div class="pageContent">
     <fa
       :icon="['far', 'images']"
-      class="fa categoryIcon" />
+      class="fa categoryIcon"
+    />
     <h1> Replications </h1>
     <p> 
       <span class="bold"> Replications </span> are image, video, and audio recreations of the
@@ -15,9 +16,15 @@
     <p>
       This page will serve as a dedicated index of as many replication examples as possible in 
       the form of images, animations, and videos. These are primarily sourced from our subreddit, 
-      through <nuxt-link to="/artists"> dedicated artists </nuxt-link> such as 
-      <nuxt-link to="/profiles/StingrayZ"> StingrayZ </nuxt-link>,
-      <nuxt-link to="/profiles/Zenx2"> Zenx2 </nuxt-link>, 
+      through <nuxt-link to="/artists">
+        dedicated artists
+      </nuxt-link> such as 
+      <nuxt-link to="/profiles/StingrayZ">
+        StingrayZ
+      </nuxt-link>,
+      <nuxt-link to="/profiles/Zenx2">
+        Zenx2
+      </nuxt-link>, 
       and from various sources throughout the internet. It is worth noting that while the artist 
       is credited for each replication wherever possible, if you would like your artwork removed
       or its link altered please do not hesitate to contact me at 
@@ -27,8 +34,11 @@
 
     <h3 
       ref="lightbox"
-      style="text-align: center;">
-      <nuxt-link :to="'/effects/' + selected_effect.url"> {{ selected_effect.name }} </nuxt-link>
+      style="text-align: center;"
+    >
+      <nuxt-link :to="'/effects/' + selected_effect.url">
+        {{ selected_effect.name }}
+      </nuxt-link>
     </h3>
 
     <light-box
@@ -36,15 +46,16 @@
       :order="gallery_order"
       base="/img/gallery/"
       @listEnd="switchEffect"
-      @listStart="switchEffect(true)" />
+      @listStart="switchEffect(true)"
+    />
 
     <hr>
     <h3> Effect Galleries </h3>
     <effect-selector 
       :effects="replicated_effects"
       :selected="selected_effect_id"
-      @effectSelected="scroll" />
-
+      @effectSelected="scroll"
+    />
   </div>
 </template>
 
@@ -90,6 +101,9 @@ export default {
       );
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getGallery");
+  },
   methods: {
     scroll() {
       this.$scrollTo(this.$refs.lightbox, 800);
@@ -110,9 +124,6 @@ export default {
     return {
       title: "Replications"
     };
-  },
-  async fetch({ store }) {
-    await store.dispatch("getGallery");
   }
 };
 </script>

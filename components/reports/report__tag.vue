@@ -1,7 +1,10 @@
 <template>
   <div 
     class="tag"
-    @click="clickTag(value)"> {{ value }} </div>
+    @click="clickTag(value)"
+  >
+    {{ value }}
+  </div>
 </template>
 
 <script>

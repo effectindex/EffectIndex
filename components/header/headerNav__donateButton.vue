@@ -1,7 +1,10 @@
 <template>
   <nuxt-link
     class="headerNav__donateButton"
-    to="/donate/"> Donate </nuxt-link>
+    to="/donate/"
+  >
+    Donate
+  </nuxt-link>
 </template>
 
 <style scoped>

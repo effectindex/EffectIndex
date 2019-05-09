@@ -1,9 +1,11 @@
 <template>
   <div class="pageContent">
-    <h1> Search 
+    <h1>
+      Search 
       <fa 
         :icon="['far', 'search']"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
     </h1>
 
     <div class="inputContainer">
@@ -12,48 +14,49 @@
         :value="searchInput"
         type="text"
         class="searchInput"
-        @input="changeSearchInput">
+        @input="changeSearchInput"
+      >
       <div 
         v-show="searchInput.length"
         class="clearButton"
-        @click="clear">
+        @click="clear"
+      >
         <fa 
-          :icon="['far', 'times-circle']" />
+          :icon="['far', 'times-circle']"
+        />
       </div>
     </div>
 
     <div
       v-show="results.length"
-      class="searchResults">
-
+      class="searchResults"
+    >
       <hr>
 
       <div 
         v-show="effectResults.length"
-        class="effectResults">
-
+        class="effectResults"
+      >
         <h1> Effects - {{ effectResults.length + (effectResults.length > 1 ? ' results' : ' result') }} </h1>
         <effect-result
           v-for="result in effectResults"
           :key="result._id"
-          :effect="result.data" />
-
+          :effect="result.data"
+        />
       </div>
 
       <div 
         v-show="reportResults.length"
-        class="effectResults">
-      
+        class="effectResults"
+      >
         <h1> Reports - {{ reportResults.length + (reportResults.length > 1 ? ' results' : ' result') }} </h1>
         <report-result
           v-for="result in reportResults"
           :key="result._id"
-          :report="result.data" />
-
+          :report="result.data"
+        />
       </div>
-
     </div>
-
   </div>
 </template>
 
@@ -68,13 +71,6 @@ export default {
     ReportResult
   },
   scrollToTop: true,
-  async fetch({ store, route }) {
-    if (route.query.q) {
-      await store.dispatch('search', route.query.q);
-      store.commit('change_search_input', route.query.q);
-    }
-  },
-  watchQuery: ['q'],
   computed: {
     results() {
       return this.$store.state.search_results;
@@ -92,6 +88,13 @@ export default {
       return this.$store.state.search_input;
     }
   },
+  async fetch({ store, route }) {
+    if (route.query.q) {
+      await store.dispatch('search', route.query.q);
+      store.commit('change_search_input', route.query.q);
+    }
+  },
+  watchQuery: ['q'],
   mounted() {
     this.$refs.searchInput.focus();
   },

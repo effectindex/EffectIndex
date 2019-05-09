@@ -3,7 +3,8 @@
     <input
       v-model="contributorInputText"
       class="substanceEditor__input"
-      @keyup="changeInput">
+      @keyup="changeInput"
+    >
     <ul class="contributorList">
       <li
         v-for="(contributor, index) in value"
@@ -15,7 +16,8 @@
           <a @click="removeContributor(index)">
             <fa
               :icon="['far', 'times-circle']"
-              class="fa" />
+              class="fa"
+            />
           </a>
         </div>
       </li>

@@ -12,21 +12,25 @@
           <label> Password </label> 
           <input 
             v-model="user.password"
-            type="password">
+            type="password"
+          >
         </div>
         <div>
           <label> Invite Code </label> 
           <input 
             :value="user.inviteCode"
-            :disabled="user.inviteCode ? true : false">
+            :disabled="user.inviteCode ? true : false"
+          >
         </div>
         <button> Register </button>
-        <button @click="clear"> Clear </button>
+        <button @click="clear">
+          Clear
+        </button>
         <p v-show="errorMessage">
           <span class="errorMessage"> Uh oh. {{ errorMessage }} </span>
         </p>
         <p v-show="success">
-          <span class="success" > Success! </span>
+          <span class="success"> Success! </span>
         </p>
       </form>
     </div>

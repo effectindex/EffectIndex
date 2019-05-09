@@ -2,11 +2,12 @@
   <div class="pageContent">
     <hr>
     <h4> Effects </h4>
-    <label for="effectFilter" > Filter by Tag: 
+    <label for="effectFilter"> Filter by Tag: 
       <input
         v-model="filter" 
         type="text"
-        class="filterInput"> <a @click="clearFilter"> (clear) </a> </label>
+        class="filterInput"
+      > <a @click="clearFilter"> (clear) </a> </label>
     <table class="effectTable">
       <thead>
         <tr>
@@ -18,7 +19,8 @@
         v-for="effect in filteredEffects"
         :key="effect._id"
         :effect="effect"
-        @deleteEffect="deleteEffect" />
+        @deleteEffect="deleteEffect"
+      />
     </table>
   </div>
 </template>

@@ -2,7 +2,8 @@
   <div class="pageContent">
     <hr>
     <post-editor
-      @new-post="submitPost" />
+      @new-post="submitPost"
+    />
   </div>
 </template>
 

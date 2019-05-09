@@ -1,56 +1,75 @@
 <template>
   <div 
-    class="section log">
+    class="section log"
+  >
     <div class="inputContainer">
       <label> Time
         <input 
           v-model="time"
-          class="itemTimeInput">
+          class="itemTimeInput"
+        >
       </label>
       <label class="descriptionLabel"> Description
         <textarea
           v-model="description"
-          class="itemDescriptionInput" />
+          class="itemDescriptionInput"
+        />
       </label>
     </div>
     <button 
       class="addButton"
-      @click="addItem"> Add </button>
+      @click="addItem"
+    >
+      Add
+    </button>
     <button 
       class="clearButton"
       @click="clear"
-    > Clear </button>
+    >
+      Clear
+    </button>
     <table class="logTable">
       <tbody>
         <tr 
           v-for="(item, index) in value"
-          :key="index">
-          <td class="itemTime"> {{ item.time }} </td>
-          <td class="itemDescription"> {{ item.description }} </td>
+          :key="index"
+        >
+          <td class="itemTime">
+            {{ item.time }}
+          </td>
+          <td class="itemDescription">
+            {{ item.description }}
+          </td>
           <td class="itemControlContainer"> 
             <a
               class="itemControl"
               style="cursor: pointer;"
-              @click="moveItemUp(index)"> 
+              @click="moveItemUp(index)"
+            > 
               <fa 
                 :icon="['far', 'arrow-up']"
-                class="fa" />
+                class="fa"
+              />
             </a>
             <a
               class="itemControl"
               style="cursor: pointer;"
-              @click="moveItemDown(index)">
+              @click="moveItemDown(index)"
+            >
               <fa 
                 :icon="['far', 'arrow-down']"
-                class="fa" />
+                class="fa"
+              />
             </a>
             <a
               class="itemControl"
-              @click="removeItem(index)">
+              @click="removeItem(index)"
+            >
               <fa 
                 :icon="['far', 'times']"
                 style="color: red;"
-                class="fa" />
+                class="fa"
+              />
             </a>
           </td>
         </tr>

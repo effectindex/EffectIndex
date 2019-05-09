@@ -1,27 +1,33 @@
 <template>
   <transition
-    name="fade">
+    name="fade"
+  >
     <div 
       v-show="active"
       class="modal"
-      @click="toggleModal">
+      @click="toggleModal"
+    >
       <div 
         v-if="type === 'image'"
         :style="{ backgroundImage: url }"
         class="modalImageContainer"
-        @click.stop="toggleModal">
+        @click.stop="toggleModal"
+      >
         <a 
           class="fileButton"
-          @click.stop="popout"> 
+          @click.stop="popout"
+        > 
           <fa 
             :icon="['far', 'external-link']"
-            class="" />
+            class=""
+          />
         </a>
       </div>
       <div 
         v-else-if="(type === 'gfycat') && active"
         style="position:relative;height: 100%;"
-        class="modalImageContainer">
+        class="modalImageContainer"
+      >
         <iframe
           :src="'https://gfycat.com/ifr/' + src + '?autoplay=1&controls=0'"
           frameborder="0"
@@ -34,7 +40,8 @@
         />
         <div 
           class="cover"
-          @click.stop="toggleModal" />
+          @click.stop="toggleModal"
+        />
       </div>
     </div>
   </transition>

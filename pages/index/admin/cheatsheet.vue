@@ -2,7 +2,6 @@
   <div class="pageContent">
     <h1> Viscidcode Cheat Sheet </h1>
     <div class="cheatsheet">
-
       <div class="cheatsheet_section">
         <h2> Quotation </h2>
         ##quotation
@@ -21,9 +20,10 @@
           </tbody>
         </table>
         <label> Example </label>
-        <div style="white-space: pre-wrap">##quotation|author="Viscid"|profile="viscid"{
-        Here is a quote about something important. 
-        It is super insightful. }
+        <div style="white-space: pre-wrap">
+          ##quotation|author="Viscid"|profile="viscid"{
+          Here is a quote about something important. 
+          It is super insightful. }
         </div>
       </div>
 
@@ -32,9 +32,10 @@
         ##md
         <p> Allows you to use markdown in an effect. </p>
         <label> Example </label>
-        <div style="white-space: pre-wrap;">##md{ - List item one
-        - list item two
-        - list item three}
+        <div style="white-space: pre-wrap;">
+          ##md{ - List item one
+          - list item two
+          - list item three}
         </div>
       </div>
 
@@ -82,7 +83,8 @@
             </tr>
             <tr>
               <td> imageRoutes </td> 
-              <td> Comma-separated list of colon-separated properties that match particular routes. <br >
+              <td>
+                Comma-separated list of colon-separated properties that match particular routes. <br>
                 imageRoutes="PATH:IMAGE:TITLE:ARTIST:CAPTION,PATH:IMAGE:TITLE:ARTIST:CAPTION,PATH:IMAGE:TITLE:ARTIST:CAPTION" <br> 
                 e.g. ##cap-img|imageRoutes="dissociative:/gallery/dissociative.jpg:The Great Dissociative:Some Artist,deliriant:/gallery/deliriant.jpg:The Minor Deliriant:Some Other Artist"
               </td>
@@ -92,7 +94,8 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##cap-img|src="http://images.google.com/flower.jpg"|align="center"|width="300"|artist="George"|title="Flower"|caption="An example of a flower."
+        <div style="white-space: pre-wrap;">
+          ##cap-img|src="http://images.google.com/flower.jpg"|align="center"|width="300"|artist="George"|title="Flower"|caption="An example of a flower."
         </div>
       </div>
 
@@ -119,7 +122,9 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##ref|to="5"|no="2" </div>
+        <div style="white-space: pre-wrap;">
+          ##ref|to="5"|no="2"
+        </div>
       </div>
 
       <div class="cheatsheet_section">
@@ -138,11 +143,11 @@
               <td> size </td> <td> The 'id' of the subarticle. (Not the title) </td>
             </tr>
           </tbody>
-
         </table>      
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##subarticle|id="some-id"|size="h3"{This is some header} </div>
-
+        <div style="white-space: pre-wrap;">
+          ##subarticle|id="some-id"|size="h3"{This is some header}
+        </div>
       </div>
 
       <div class="cheatsheet_section">
@@ -162,7 +167,8 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##refbull|refs="2,4.2,5"{This is a bullet list item with a bunch of references at the end of it.}
+        <div style="white-space: pre-wrap;">
+          ##refbull|refs="2,4.2,5"{This is a bullet list item with a bunch of references at the end of it.}
         </div>
       </div>
 
@@ -186,7 +192,8 @@
             </tr>
             <tr>
               <td> audioRoutes </td> 
-              <td> Comma-separated list of colon-separated properties that match particular routes. <br >
+              <td>
+                Comma-separated list of colon-separated properties that match particular routes. <br>
                 audioRoutes="PATH:AUDIO:TITLE:ARTIST,PATH:AUDIO:TITLE:ARTIST,PATH:AUDIO:TITLE:ARTIST" <br> 
                 e.g. ##audio|audioRoutes="dissociative:/audio/dissociative.mp3:The Great Dissociative:Some Artist,deliriant:/audio/deliriant.mp3:The Minor Deliriant:Some Other Artist"
               </td>
@@ -196,7 +203,8 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##audio|src="/audio/whatever.mp3"|title="The sound of me not giving a fuck."|artist="Viscid"
+        <div style="white-space: pre-wrap;">
+          ##audio|src="/audio/whatever.mp3"|title="The sound of me not giving a fuck."|artist="Viscid"
         </div>
       </div>
 
@@ -217,10 +225,10 @@
 
 
         <label style="display: block; margin-top: 1em;"> Example </label>
-        <div style="white-space: pre-wrap;">##int-link|to="/replications/"{our replication gallery}
+        <div style="white-space: pre-wrap;">
+          ##int-link|to="/replications/"{our replication gallery}
         </div>
       </div>
-
     </div>
 
     <div class="cheatsheet_section">
@@ -240,7 +248,8 @@
 
 
       <label style="display: block; margin-top: 1em;"> Example </label>
-      <div style="white-space: pre-wrap;">##ext-link|href="http://www.puppies.com"{I wish I had a puppy.}
+      <div style="white-space: pre-wrap;">
+        ##ext-link|href="http://www.puppies.com"{I wish I had a puppy.}
       </div>
     </div>
 
@@ -249,7 +258,8 @@
       ##b
       <p> It's fucking bold. </p>
       <label style="display: block; margin-top: 1em;"> Example </label>
-      <div style="white-space: pre-wrap;">##b{I REALLY WISH I HAD A PUPPY.}
+      <div style="white-space: pre-wrap;">
+        ##b{I REALLY WISH I HAD A PUPPY.}
       </div>
     </div>
 
@@ -260,10 +270,10 @@
       ##i
       <p> I'm <span style="font-style: italic;"> sooooooo </span> done with writing this cheatsheet. </p>
       <label style="display: block; margin-top: 1em;"> Example </label>
-      <div style="white-space: pre-wrap;">##i{soooooo done}
+      <div style="white-space: pre-wrap;">
+        ##i{soooooo done}
       </div>
     </div>
-  
   </div>
 </template>
 

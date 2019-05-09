@@ -1,42 +1,43 @@
 <template>
   <tr>
     <td style="min-width: 300px">
-      <nuxt-link :to="'/substances/' + substance.url"> {{ substance.name }} </nuxt-link>
+      <nuxt-link :to="'/substances/' + substance.url">
+        {{ substance.name }}
+      </nuxt-link>
     </td>
     <td>
       <span
         v-for="tag in substance.tags"
         :key="tag"
-        class="substanceTableRow__tagItem"> {{ tag }} </span>
+        class="substanceTableRow__tagItem"
+      > {{ tag }} </span>
     </td>
     <td class="substanceTableRow__editButton">
       <nuxt-link :to="'/admin/substances/' + substance.url">
         <fa
           :icon="['far', 'edit']"
           class="fa"
-          style="cursor: pointer;" />
+          style="cursor: pointer;"
+        />
       </nuxt-link>
     </td>
     <td>
       <a
         style="color: red; cursor: pointer;"
-        @click="deleteSubstance(substance._id)">
+        @click="deleteSubstance(substance._id)"
+      >
         <fa
           :icon="['far', 'times']"
           class="fa"
-          style="color: red; cursor: pointer;" />
+          style="color: red; cursor: pointer;"
+        />
       </a>
     </td>
   </tr>
 </template>
 
 <script>
-import ExtLink from "@/components/ExtLink.vue";
-
 export default {
-  components: {
-    ExtLink
-  },
   props: {
     substance: {
       type: Object,

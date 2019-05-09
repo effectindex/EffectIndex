@@ -1,27 +1,33 @@
 <template>
   <div class="quotation">
     <p 
-      class="quotationContent" > 
+      class="quotationContent"
+    > 
       <slot />
     </p>
     <p class="quotationAuthor">
       <span 
         v-if="!profile"
-        class="quotationAuthorName"> <span class="quotationDash"> - </span> {{ author }} </span>
+        class="quotationAuthorName"
+      > <span class="quotationDash"> - </span> {{ author }} </span>
       <span 
-        v-else> 
+        v-else
+      > 
         <nuxt-link :to="`/profiles/${profile}`">
           <div 
             v-if="profileImage"
-            class="quotationProfileImageContainer">
+            class="quotationProfileImageContainer"
+          >
             <img 
               v-if="profileImage"
               :src="profileImage"
-              class="quotationProfileImage">
+              class="quotationProfileImage"
+            >
             <span> <span class="quotationDash"> - </span> {{ author }} </span>
           </div>
           <span 
-            v-else> <span class="quotationDash"> - </span> {{ author }} </span>
+            v-else
+          > <span class="quotationDash"> - </span> {{ author }} </span>
         </nuxt-link>
       </span>
     </p>

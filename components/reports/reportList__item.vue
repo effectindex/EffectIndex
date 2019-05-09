@@ -2,13 +2,15 @@
   <nuxt-link 
     :to="`/reports/${report.slug}`"
     class="reportList__item"
-    tabindex="0">
+    tabindex="0"
+  >
     <div class="infoContainer">
       <div class="titleContainer">
         <h4> {{ report.title }} </h4>
         <span
           v-show="report.subject.trip_date"
-          class="reportList__item--tripDate">
+          class="reportList__item--tripDate"
+        >
           on {{ report.subject.trip_date }} 
         </span>
         <span class="reportList__item--author">-&nbsp;{{ report.subject.name }} </span>
@@ -18,7 +20,8 @@
       <li
         v-for="(substance, index) in report.substances"
         :key="index"
-        class="substancesListItem">
+        class="substancesListItem"
+      >
         <span class="substanceName"> {{ substance.name }} </span> 
         <span class="substanceDose"> {{ `${substance.dose} ${substance.roa}` }} </span>
       </li>

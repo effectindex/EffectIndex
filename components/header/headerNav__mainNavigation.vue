@@ -2,11 +2,12 @@
   <div class="headerNav__mainNavigation">
     <menu-item
       v-for="(navItem, name) in navigation"
+      :key="navItem.name"
       :location="navItem.location"
       :name="name"
       :sub-menu-items="navItem.children"
       :scope="navItem.scope"
-      :key="navItem.name" />
+    />
     <donate-button style="margin-left: 20px" />
   </div>
 </template>

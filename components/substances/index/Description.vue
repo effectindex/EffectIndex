@@ -1,28 +1,38 @@
 <template>
   <div class="descriptionContainer">
-    <p>The <strong>Subjective Effect Index</strong> is a set of articles designed to serve as a comprehensive catalogue
-    and reference for the range of subjective effects that may occur under the influence of psychoactive substances and
-    other psychonautic techniques.</p>
+    <p>
+      The <strong>Subjective Effect Index</strong> is a set of articles designed to serve as a comprehensive catalogue
+      and reference for the range of subjective effects that may occur under the influence of psychoactive substances and
+      other psychonautic techniques.
+    </p>
 
     <transition name="grow">
       <div
         v-show="show"
-        class="showMoreContainer">
-        <p>The substances listed here are accompanied by detailed descriptions of the subjective experience of them. They are
-        written in a consistent, formal writing style that seeks to avoid the use of flowery metaphors or analogy, instead
-        striving to use simple and accessible language. This is done in the hope that they will eventually serve as a universal
-        terminology set that enables people to better communicate and share experiences that are, by nature, difficult to convey. </p>
+        class="showMoreContainer"
+      >
+        <p>
+          The substances listed here are accompanied by detailed descriptions of the subjective experience of them. They are
+          written in a consistent, formal writing style that seeks to avoid the use of flowery metaphors or analogy, instead
+          striving to use simple and accessible language. This is done in the hope that they will eventually serve as a universal
+          terminology set that enables people to better communicate and share experiences that are, by nature, difficult to convey.
+        </p>
 
         <p>The Substance Index contains separated into {{ sCount }} substances.</p>
 
-        <p>The content within this Index is based on the collective experiences of our contributors, scientific literature,
-        and individual case reports.</p>
+        <p>
+          The content within this Index is based on the collective experiences of our contributors, scientific literature,
+          and individual case reports.
+        </p>
       </div>
     </transition>
     <div class="buttonContainer">
       <button 
         class="whiteButton"
-        @click="toggleText"> {{ show ? 'Read Less' : 'Read More' }} </button>
+        @click="toggleText"
+      >
+        {{ show ? 'Read Less' : 'Read More' }}
+      </button>
     </div>
   </div>
 </template>

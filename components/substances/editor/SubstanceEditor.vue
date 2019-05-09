@@ -4,14 +4,16 @@
       <label> Name </label>
       <input
         v-model="name"
-        class="substanceEditor__input">
+        class="substanceEditor__input"
+      >
     </div>
 
     <div>
       <label> Description </label>
       <textarea
         v-model="description"
-        class="substanceEditor__textarea substanceEditor__description" />
+        class="substanceEditor__textarea substanceEditor__description"
+      />
     </div>
 
     <div class="substanceEditor__showHide">
@@ -28,42 +30,48 @@
         <label> Short Summary </label>
         <textarea
           v-model="summary"
-          class="substanceEditor__textarea substanceEditor__summary" />
+          class="substanceEditor__textarea substanceEditor__summary"
+        />
       </div>
 
       <div>
         <label> Long Summary </label>
         <textarea
           v-model="long_summary"
-          class="substanceEditor__textarea substanceEditor__longSummary" />
+          class="substanceEditor__textarea substanceEditor__longSummary"
+        />
       </div>
 
       <div>
         <label>Duration</label>
         <textarea
           v-model="duration"
-          class="substanceEditor__textarea substanceEditor__duration" />
+          class="substanceEditor__textarea substanceEditor__duration"
+        />
       </div>
 
       <div>
         <label>Intensity Scale</label>
         <textarea
           v-model="intensity_scale"
-          class="substanceEditor__textarea substanceEditor__intensity_scale" />
+          class="substanceEditor__textarea substanceEditor__intensity_scale"
+        />
       </div>
 
       <div>
         <label>Experience Reports</label>
         <textarea
           v-model="experience_reports"
-          class="substanceEditor__textarea substanceEditor__experience_reports" />
+          class="substanceEditor__textarea substanceEditor__experience_reports"
+        />
       </div>
 
       <div>
         <label>Personal Commentary</label>
         <textarea
           v-model="personal_commentary"
-          class="substanceEditor__textarea substanceEditor__personal_commentary" />
+          class="substanceEditor__textarea substanceEditor__personal_commentary"
+        />
       </div>
 
       <div>
@@ -100,7 +108,8 @@
         <label> Social Media Image </label>
         {{ (social_media_image ? social_media_image : "") }}<input
           v-model="social_media_image"
-          class="substanceEditor__input">
+          class="substanceEditor__input"
+        >
       </div>
 
       <div>
@@ -108,25 +117,25 @@
         <ol v-if="!gallery_order.length">
           <li
             v-for="(replication, index) in associated_replications"
-            :key="replication._id">
-            <span
-            > {{ replication.title }} </span> -
+            :key="replication._id"
+          >
+            <span> {{ replication.title }} </span> -
             [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
-            Down </a> | <a @click="removeReplication(index)"> Remove</a>]
+              Down </a> | <a @click="removeReplication(index)"> Remove</a>]
           </li>
         </ol>
         <div v-else>
           <ol>
             <li
               v-for="(replication, index) in combined_order"
-              :key="replication._id">
-              <span
-              > {{ replication.title }} </span> -
+              :key="replication._id"
+            >
+              <span> {{ replication.title }} </span> -
               [<a @click="moveReplicationUp(index)">Up</a> | <a @click="moveReplicationDown(index)">
-              Down </a> | <a @click="removeReplication(index)"> Remove</a>]
+                Down </a> | <a @click="removeReplication(index)"> Remove</a>]
             </li>
           </ol>
-          <br >
+          <br>
           <a @click="resetGalleryOrder"> Reset Order </a>
         </div>
       </div>
@@ -137,26 +146,33 @@
           <input
             id="featured"
             v-model="featured"
-            type="checkbox">
+            type="checkbox"
+          >
         </label>
       </div>
-
-
     </div>
 
     <div class="substanceEditor__buttons">
       <button
         style="background-color: #DFD;"
-        @click="submitSubstance(false)"> Save </button>
+        @click="submitSubstance(false)"
+      >
+        Save
+      </button>
       <button
         v-show="substance"
         style="background-color: #DFD;"
-        @click="submitSubstance(true)"> Update </button>
+        @click="submitSubstance(true)"
+      >
+        Update
+      </button>
       <nuxt-link
         :to="'/substances/' + url"
-        tag="button"> Cancel </nuxt-link>
+        tag="button"
+      >
+        Cancel
+      </nuxt-link>
     </div>
-
   </div>
 </template>
 

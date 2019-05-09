@@ -18,7 +18,8 @@
       <h4> Cropped </h4>
       <input 
         type="file"
-        @change="processCroppedImage">
+        @change="processCroppedImage"
+      >
       <img 
         v-show="cropped.content"
         :src="cropped.content"
@@ -26,10 +27,15 @@
         width="250"
       >
       <br>
-      <button type="submit"> Upload </button>
+      <button type="submit">
+        Upload
+      </button>
       <div 
         v-show="uploadStatus"
-        class="imageUpload__uploadStatus"> {{ uploadStatus }} </div>
+        class="imageUpload__uploadStatus"
+      >
+        {{ uploadStatus }}
+      </div>
     </form>
   </div>
 </template>

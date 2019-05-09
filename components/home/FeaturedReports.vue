@@ -7,10 +7,13 @@
         :title="report.title"
         :author="report.subject.name"
         :slug="report.slug"
-        :substances="report.substances" />
+        :substances="report.substances"
+      />
     </div>
     <div class="featuredReportsStub">
-      For more, see the <nuxt-link to="/reports/"> reports section</nuxt-link>.
+      For more, see the <nuxt-link to="/reports/">
+        reports section
+      </nuxt-link>.
     </div>
   </div>
 </template>

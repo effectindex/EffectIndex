@@ -4,21 +4,29 @@
       <label> Title 
         <input
           v-model="title"
-          class="postEditor__inputTitle">
+          class="postEditor__inputTitle"
+        >
       </label>
     </div>
     <div>
       <textarea
         v-model="body" 
-        class="postEditor__inputBody" />
+        class="postEditor__inputBody"
+      />
     </div>
     <div class="postEditor__inputPostButtonContainer">
       <nuxt-link
         class="postEditor__cancelLink"
-        to="/admin/blog/list"> Cancel </nuxt-link>
+        to="/admin/blog/list"
+      >
+        Cancel
+      </nuxt-link>
       <button 
         class="postEditor__inputPostButton"
-        @click="submitPost()"> {{ post ? 'Update' : 'Post' }} </button>
+        @click="submitPost()"
+      >
+        {{ post ? 'Update' : 'Post' }}
+      </button>
     </div>
   </div>
 </template>

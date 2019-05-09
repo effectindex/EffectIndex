@@ -3,47 +3,66 @@
     <h2 class="report__infoBoxHeader"> 
       <fa
         :icon="['far', 'user']"
-        class="fa icon" /> Context 
+        class="fa icon"
+      /> Context 
     </h2>
     <div class="report__infoBoxTableContainer">
       <table class="report__infoBoxTable">
         <tbody>
           <tr v-if="subject.name">
-            <td class="label"> Name: </td> 
+            <td class="label">
+              Name:
+            </td> 
             <td> 
               <span v-if="profile"> <nuxt-link :to="'/profiles/' + profile.username">{{ subject.name }}</nuxt-link>  </span>
               <span v-else>{{ subject.name }}</span>
             </td>
           </tr>
           <tr v-if="subject.trip_date">
-            <td class="label"> Trip Date: </td> <td> {{ subject.trip_date }} </td> 
+            <td class="label">
+              Trip Date:
+            </td> <td> {{ subject.trip_date }} </td> 
           </tr>
           <tr v-if="subject.age"> 
-            <td class="label"> Age: </td> <td> {{ subject.age }} </td>
+            <td class="label">
+              Age:
+            </td> <td> {{ subject.age }} </td>
           </tr>
           <tr v-if="subject.setting">
-            <td class="label"> Setting: </td> <td>  {{ subject.setting }} </td> 
+            <td class="label">
+              Setting:
+            </td> <td>  {{ subject.setting }} </td> 
           </tr>
           <tr v-if="subject.gender">
-            <td class="label"> Gender: </td> <td> {{ subject.gender }} </td>
+            <td class="label">
+              Gender:
+            </td> <td> {{ subject.gender }} </td>
           </tr>
           <tr v-if="subject.height">
-            <td class="label"> Height: </td> <td> {{ subject.height }} </td>
+            <td class="label">
+              Height:
+            </td> <td> {{ subject.height }} </td>
           </tr>
           <tr v-if="subject.weight">
-            <td class="label"> Weight: </td> <td> {{ subject.weight }} </td>
+            <td class="label">
+              Weight:
+            </td> <td> {{ subject.weight }} </td>
           </tr>
           <tr v-if="subject.medications">
-            <td class="label"> Medications: </td> <td> {{ subject.medications }} </td>
+            <td class="label">
+              Medications:
+            </td> <td> {{ subject.medications }} </td>
           </tr>
         </tbody>
       </table>
       <div 
         v-show="subject.pdf_url"
-        class="tracker_pdf">
-        <ext-link :href="subject.pdf_url"> Subjective Effect Tracker PDF </ext-link>
+        class="tracker_pdf"
+      >
+        <ext-link :href="subject.pdf_url">
+          Subjective Effect Tracker PDF
+        </ext-link>
       </div>
-
     </div>
   </section>
 </template>

@@ -1,13 +1,15 @@
 <template>
   <ul class="bulletList">
     <li
-      class="bulletListItem">
+      class="bulletListItem"
+    >
       <slot />
       <reference
         v-for="(reference, index) in references"
+        :key="index"
         :to="getTo(reference)"
         :no="getNo(reference)"
-        :key="index" />
+      />
     </li>
   </ul>
 </template>

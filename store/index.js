@@ -1,32 +1,10 @@
-import Vuex from "vuex";
-import navigation from "./navigation.json";
+import { actions } from '../storeData/actions';
+import { mutations } from '../storeData/mutations';
+import { state } from '../storeData/state';
 
-export const state = () => ({
-  navbar_pullout: false,
-  modal: {
-    active: false,
-    type: "",
-    resource: ""
-  },
-  replications: [],
-  effects: [],
-  substances: [],
-  navigation,
-  gallery: {
-    selected_effect_id: "",
-    replications: [],
-    replicated_effects: []
-  },
-  blogPosts: [],
-  profiles: [],
-  reports: [],
-  search_results: [],
-  search_input: "",
-  admin: {
-    userlist: [],
-    invitations: []
-  }
-});
+export default {
+  mutations,
+  actions,
+  state
+};
 
-export {default as mutations} from "./mutations";
-export {default as actions} from "./actions";

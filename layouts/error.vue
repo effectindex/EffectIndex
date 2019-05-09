@@ -2,7 +2,8 @@
   <div class="container">
     <div
       v-if="error.statusCode === 404"
-      class="errorMessageContainer">
+      class="errorMessageContainer"
+    >
       <div style="">
         <h1> 404 </h1>
         <p> {{ error.message ? error.message : "" }} </p>
@@ -10,7 +11,8 @@
     </div>
     <div
       v-else-if="error.statusCode === 401"
-      class="errorMessageContainer">
+      class="errorMessageContainer"
+    >
       <h1> 401 </h1>
       <p> You're not allowed everywhere. </p>
     </div>
@@ -24,7 +26,11 @@
         style="height: 350px;"
         alt="Indy, the Effect Index mascot, looking concerned."
       >
-      <p> <nuxt-link to="/">Return to Effect Index</nuxt-link> </p>
+      <p>
+        <nuxt-link to="/">
+          Return to Effect Index
+        </nuxt-link>
+      </p>
     </div>
   </div>
 </template>

@@ -3,19 +3,34 @@
     <h1> User Management </h1>
     <nuxt-link 
       class="userManagement__link"
-      to="/admin/users/list"> List Users </nuxt-link>
+      to="/admin/users/list"
+    >
+      List Users
+    </nuxt-link>
     <nuxt-link 
       class="userManagement__link"
-      to="/admin/users/invite"> Invite Users </nuxt-link>
+      to="/admin/users/invite"
+    >
+      Invite Users
+    </nuxt-link>
     <nuxt-link 
       class="userManagement__link"
-      to="/admin/users/invitations"> Invitations </nuxt-link>
+      to="/admin/users/invitations"
+    >
+      Invitations
+    </nuxt-link>
     <nuxt-link 
       class="userManagement__link"
-      to="/admin/users/profiles/"> List Profiles </nuxt-link>
+      to="/admin/users/profiles/"
+    >
+      List Profiles
+    </nuxt-link>
     <nuxt-link 
       class="userManagement__link" 
-      to="/admin/users/profiles/add"> Add Profile </nuxt-link>
+      to="/admin/users/profiles/add"
+    >
+      Add Profile
+    </nuxt-link>
     <nuxt-child />
   </div>
 </template>

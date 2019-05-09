@@ -3,10 +3,16 @@
     <h1> Replication Management </h1>
     <nuxt-link
       class="replicationManagement__link"
-      to="/admin/replications/list"> Replication List </nuxt-link>
+      to="/admin/replications/list"
+    >
+      Replication List
+    </nuxt-link>
     <nuxt-link 
       class="replicationManagement__link"
-      to="/admin/replications/add"> Add New Replication </nuxt-link>
+      to="/admin/replications/add"
+    >
+      Add New Replication
+    </nuxt-link>
     <nuxt-child />
   </div>
 </template>

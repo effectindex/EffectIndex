@@ -1,14 +1,17 @@
 <template>
   <div class="searchResult">
     <h3> 
-      <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }} </nuxt-link>
+      <nuxt-link :to="'/effects/' + effect.url">
+        {{ effect.name }}
+      </nuxt-link>
     </h3>
-    <div 
-      v-html="$md.render(effect.summary_raw)" />
+    <!-- eslint-disable-next-line -->
+    <div v-html="$md.render(effect.summary_raw)" />
     <tag
       v-for="(tag, index) in effect.tags"
       :key="index"
-      :value="tag" />
+      :value="tag"
+    />
   </div>
 </template>
 

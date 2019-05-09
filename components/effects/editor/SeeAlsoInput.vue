@@ -4,44 +4,56 @@
       <div class="locationContainer">
         <label> Location </label>
         <input
-          v-model="locationInput">
+          v-model="locationInput"
+        >
       </div>
 
       <div class="titleContainer">
         <label> Title </label>
         <input
-          v-model="titleInput">
+          v-model="titleInput"
+        >
       </div>
     </div>
 
     <div class="descriptionContainer">
       <label> Description </label>
-      <input v-model="descriptionInput" >
+      <input v-model="descriptionInput">
     </div>
 
     <button 
       class="addButton"
-      @click="addLink"> Add </button>
+      @click="addLink"
+    >
+      Add
+    </button>
     <button 
-      class="clearButton"> Clear </button>
+      class="clearButton"
+    >
+      Clear
+    </button>
 
     <ul class="linkList">
       <li 
         v-for="(link, index) in value"
         :key="link.location"
-        class="linkListItem">
-        <nuxt-link :to="link.location"> {{ link.title }} </nuxt-link>
+        class="linkListItem"
+      >
+        <nuxt-link :to="link.location">
+          {{ link.title }}
+        </nuxt-link>
         <span 
           v-show="link.description"
-          class="descriptionSeparator"> - </span>
+          class="descriptionSeparator"
+        > - </span>
         <span class="description"> {{ link.description }} </span>
         <a 
           class="removeLink"
-          @click="removeLink(index)"> (remove) </a>
+          @click="removeLink(index)"
+        > (remove) </a>
       </li>
     </ul>
   </div>
-
 </template>
 
 <script>

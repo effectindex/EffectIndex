@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
 mongoose.set("useCreateIndex", true);
+mongoose.set("useFindAndModify", false);
 
 const api = require("./models/");
 
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 app.use("/api", api);
 
 // Import and Set Nuxt.js options
-let config = require("../nuxt.config.js").default;
+let config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
 
 // Init Nuxt.js

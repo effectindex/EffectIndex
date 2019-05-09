@@ -3,7 +3,8 @@
     <div class="reportInfo">
       <div class="reportTitle">
         <nuxt-link
-          :to="`/reports/${slug}`">
+          :to="`/reports/${slug}`"
+        >
           {{ title }}
         </nuxt-link>
       </div> 
@@ -12,8 +13,12 @@
       </div>
     </div>
     <div class="reportSubstance">
-      <div class="reportSubstanceName"> {{ substance.name }} </div> 
-      <div class="reportSubstanceDoseRoa"> {{ substance.dose }} {{ substance.roa }} </div>
+      <div class="reportSubstanceName">
+        {{ substance.name }}
+      </div> 
+      <div class="reportSubstanceDoseRoa">
+        {{ substance.dose }} {{ substance.roa }}
+      </div>
     </div>
   </div>
 </template>

@@ -20,24 +20,33 @@
     <button 
       class="addButton"
       @click="addLink"
-    > Add </button>
-    <button class="clearButton"> Clear </button>
+    >
+      Add
+    </button>
+    <button class="clearButton">
+      Clear
+    </button>
 
     <ul class="linkList">
       <li
         v-for="(link, index) in value" 
         :key="link.url"
-        class="linkListItem"> 
-        <ext-link :href="link.url"> {{ link.title }} </ext-link>
+        class="linkListItem"
+      > 
+        <ext-link :href="link.url">
+          {{ link.title }}
+        </ext-link>
         <span
           v-show="link.description"
-          class="descriptionSeparator"> - </span>
+          class="descriptionSeparator"
+        > - </span>
         <span class="description">
           {{ link.description }}
         </span>
         <a 
           class="removeLink"
-          @click="removeLink(index)"> (remove) </a>
+          @click="removeLink(index)"
+        > (remove) </a>
       </li>
     </ul>
   </div>

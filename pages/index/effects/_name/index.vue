@@ -5,16 +5,19 @@
         <div v-if="$auth.loggedIn">
           <nuxt-link
             :to="'/admin/effects/' + effect.url"
-            append>
+            append
+          >
             <fa
               :icon="['far', 'edit']"
-              class="fa" />
+              class="fa"
+            />
           </nuxt-link>
         </div>
       </no-ssr>
       <fa
         :icon="['far', icon]"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
       <div v-show="hasSection('description_raw')">
         <h1> {{ effect.name }} </h1>
         <formatted-document :document="effect.description_formatted" />
@@ -22,25 +25,31 @@
 
       <div
         v-if="hasSection('replications')"
-        class="effect__gallery">
+        class="effect__gallery"
+      >
         <hr>
         <h3>Replication Gallery</h3>
         <light-box
           :image-set="effect.replications"
           :order="effect.gallery_order"
-          base="/img/gallery/" />
+          base="/img/gallery/"
+        />
       </div>
 
       <div
-        v-if="hasSection('audio_replications')">
+        v-if="hasSection('audio_replications')"
+      >
         <hr>
-        <h3 style="margin-bottom: 2em;"> Audio Replications </h3>
+        <h3 style="margin-bottom: 2em;">
+          Audio Replications
+        </h3>
         <audio-player
           v-for="(replication, index) in effect.audio_replications"
           :key="index"
           :src="`/audio/${replication.resource}`"
           :title="replication.title"
-          :artist="replication.artist" />
+          :artist="replication.artist"
+        />
       </div>
 
       <div v-if="hasSection('analysis_raw')">
@@ -50,9 +59,12 @@
       </div>
 
       <div 
-        v-if="hasSection('style_variations_raw')">
+        v-if="hasSection('style_variations_raw')"
+      >
         <hr>
-        <h3 id="variations">Style Variations</h3>
+        <h3 id="variations">
+          Style Variations
+        </h3>
         <formatted-document :document="effect.style_variations_formatted" />
       </div>
 
@@ -69,9 +81,13 @@
           <ul>
             <li
               v-for="(link, index) in effect.see_also"
-              :key="index">
+              :key="index"
+            >
               <nuxt-link
-                :to="link.location"> {{ link.title }} </nuxt-link>
+                :to="link.location"
+              >
+                {{ link.title }}
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -81,8 +97,11 @@
           <ul>
             <li
               v-for="(link, index) in effect.external_links"
-              :key="index">
-              <ext-link :href="link.url"> {{ link.title }} </ext-link>
+              :key="index"
+            >
+              <ext-link :href="link.url">
+                {{ link.title }}
+              </ext-link>
             </li>
           </ul>
         </div>
@@ -100,7 +119,8 @@
         <tag
           v-for="tag in effect.tags"
           :key="tag"
-          :value="tag" />
+          :value="tag"
+        />
       </div>
 
       <div v-if="hasSection('contributors')">
@@ -110,7 +130,8 @@
         <span
           v-for="contributor in effect.contributors"
           :key="contributor"
-          class="contributor">
+          class="contributor"
+        >
           <nuxt-link :to="'/profiles/' + contributor">{{ contributor }}</nuxt-link>
         </span>
       </div>
@@ -166,6 +187,11 @@ export default {
     }
   },
   scrollToTop: true,
+  async asyncData({ store, params, error }) {
+    let { effect } = await store.dispatch("getEffect", params.name);
+    if (!effect) error({ statusCode: 404, message: "Effect not found." });
+    return { effect };
+  },
   mounted() {
     let s = this.$route.query.s;
     if (s) {
@@ -197,11 +223,6 @@ export default {
         { name: 'twitter:image', hid: 'twitter:image', content: this.effect.social_media_image },
       ]
     };
-  },
-  async asyncData({ store, params, error }) {
-    let { effect } = await store.dispatch("getEffect", params.name);
-    if (!effect) error({ statusCode: 404, message: "Effect not found." });
-    return { effect };
   }
 };
 </script>

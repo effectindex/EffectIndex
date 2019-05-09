@@ -2,14 +2,17 @@
   <div class="report__textBox">
     <h2 
       :style="{ backgroundColor: headerColour }"
-      class="report__textBoxHeader"> 
+      class="report__textBoxHeader"
+    > 
       <fa 
         :icon="icon" 
-        class="fa icon" />
-      {{ header }} </h2>
-    <div
-      class="report__textBoxText"
-      v-html="$md.render(text)" />
+        class="fa icon"
+      />
+      {{ header }}
+    </h2>
+    <!-- eslint-disable-next-line -->
+    <div class="report__textBoxText" v-html="$md.render(text)"
+    />
   </div>
 </template>
 

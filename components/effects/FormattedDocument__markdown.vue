@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line -->
   <span v-html="$md.render(body)" />
 </template>
 

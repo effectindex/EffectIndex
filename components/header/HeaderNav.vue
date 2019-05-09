@@ -3,7 +3,8 @@
     <nuxt-link to="/"> 
       <img 
         class="navbar__logo"
-        src="/logo2.svg">
+        src="/logo2.svg"
+      >
     </nuxt-link>
     <main-navigation />
     <hamburger :active="navbarPullout" />

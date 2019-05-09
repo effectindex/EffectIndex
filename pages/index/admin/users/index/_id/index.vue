@@ -10,18 +10,22 @@
       <label> Roles </label>
       <input 
         v-model="user.scope.admin"
-        type="checkbox" > Admin <br>
+        type="checkbox"
+      > Admin <br>
       <input 
         v-model="user.scope.editor"
-        type="checkbox" > Editor <br>
+        type="checkbox"
+      > Editor <br>
 
-      <button type="submit"> Submit </button>
+      <button type="submit">
+        Submit
+      </button>
     </form>
     <p v-show="errorMessage">
       <span class="errorMessage"> Ungood. {{ errorMessage }} </span>
     </p>
     <p v-show="success">
-      <span class="success" > User Updated! </span>
+      <span class="success"> User Updated! </span>
     </p>
   </div>
 </template>
@@ -42,6 +46,10 @@ export default {
       }
     };
   },
+  async asyncData({ store, params }) {
+    let { user } = await store.dispatch("getUser", params.id);
+    return { user };
+  },
   methods: {
     async submit() {
       this.success = false;
@@ -52,10 +60,6 @@ export default {
         text: 'The user has been successfully updated.'
       });
     }
-  },
-  async asyncData({ store, params }) {
-    let { user } = await store.dispatch("getUser", params.id);
-    return { user };
   }
 };
 </script>

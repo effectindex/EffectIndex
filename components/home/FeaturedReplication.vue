@@ -1,7 +1,8 @@
 <template>
   <div 
     v-show="featuredReplications.length"
-    class="replicationsContainer">
+    class="replicationsContainer"
+  >
     <div 
       v-touch:swipe.left="nextImage"
       v-touch:swipe.right="previousImage"
@@ -9,29 +10,36 @@
         backgroundImage: imageUrl
       }" 
       class="replicationImage"
-      @click="toggleModal">
+      @click="toggleModal"
+    >
       <div 
         class="replicationControls previous"
-        @click.stop="previousImage">
+        @click.stop="previousImage"
+      >
         <fa
-          :icon="['far', 'chevron-double-left']" />
+          :icon="['far', 'chevron-double-left']"
+        />
       </div>
       <div 
         class="replicationControls next"
-        @click.stop="nextImage">
+        @click.stop="nextImage"
+      >
         <fa
-          :icon="['far', 'chevron-double-right']" />
+          :icon="['far', 'chevron-double-right']"
+        />
       </div>
       <div 
         class="replicationImageDescription"
-        @click.stop>
+        @click.stop
+      >
         {{ properIntroduction }}
         <span
-          v-for="(effect, index) in replicatedEffects"
+          v-for="(effect, i) in replicatedEffects"
           :key="effect._id" 
-          class="replicationEffect"> 
+          class="replicationEffect"
+        > 
           <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }}</nuxt-link>
-          <span v-if="index < (replicatedEffects.length - 1)">, &nbsp;</span>  
+          <span v-if="i < (replicatedEffects.length - 1)">, &nbsp;</span>  
         </span>
         <!-- maybe add substances here -->
         <br>
@@ -39,7 +47,9 @@
       </div>
     </div>
     <div class="replicationsStub">
-      For more, see the <nuxt-link to="/replications/"> replications gallery</nuxt-link>.
+      For more, see the <nuxt-link to="/replications/">
+        replications gallery
+      </nuxt-link>.
     </div>
   </div>
 </template>

@@ -2,39 +2,57 @@
   <div>
     <div class="citationInput">
       <div class="row">
-        <div class="item label"> URL </div>
-        <div class="item label"> Description </div>
-        <div class="item count label"> # </div>
-        <div class="item count label"> Count </div>
+        <div class="item label">
+          URL
+        </div>
+        <div class="item label">
+          Description
+        </div>
+        <div class="item count label">
+          #
+        </div>
+        <div class="item count label">
+          Count
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="item">
         <input
           v-model="url"
-          class="citationInput__urlInput">
+          class="citationInput__urlInput"
+        >
       </div>
       <div class="item">
         <textarea
           v-model="text"
-          class="citationInput__descriptionInput" /> </div>
+          class="citationInput__descriptionInput"
+        />
+      </div>
       <div class="item count">
         <input 
           v-model="from"
-          class="citationInput__countInput">
+          class="citationInput__countInput"
+        >
       </div>
       <div class="item count">
         <input 
           v-model="no"
-          class="citationInput__countInput">
+          class="citationInput__countInput"
+        >
       </div>
     </div>
     <div class="row"> 
       <div class="item buttons">
         <button 
           class="add"
-          @click="addToList()"> Add </button>
-        <button @click="clear()"> Clear </button>
+          @click="addToList()"
+        >
+          Add
+        </button>
+        <button @click="clear()">
+          Clear
+        </button>
       </div>
     </div>
     <citation-list>
@@ -44,7 +62,8 @@
         :from="citation.from"
         :no="String(citation.no)"
         class="cite"
-        @click="selectCitation(index)">
+        @click="selectCitation(index)"
+      >
         {{ citation.text }}
         ({{ citation.from }}) | <ext-link :href="citation.url">
           {{ citation.url }}
@@ -52,7 +71,9 @@
         <div> 
           <a
             class="remove"
-            @click="removeFromList(index)"> Remove </a> </div>
+            @click="removeFromList(index)"
+          > Remove </a>
+        </div>
       </citation>
     </citation-list>
   </div>

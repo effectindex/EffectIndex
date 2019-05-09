@@ -1,17 +1,21 @@
 <template>
   <div 
     v-show="thumbs.length > 0"
-    class="lightBox">
-    <h1 v-show="title"> {{ title }} </h1>
+    class="lightBox"
+  >
+    <h1 v-show="title">
+      {{ title }}
+    </h1>
     <div v-if="currentImage">
       <div
-        class="lightBox__canvas">
+        class="lightBox__canvas"
+      >
         <transition name="fade">
           <div 
-            v-touch:swipe.left="nextImage"
-            v-touch:swipe.right="previousImage"
             v-if="currentImage.resource && (currentImage.type === 'image')"
             :key="currentImage.resource"
+            v-touch:swipe.left="nextImage"
+            v-touch:swipe.right="previousImage"
             :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'"
             class="lightBox__image"
             @click.prevent="toggleModal()"
@@ -19,7 +23,8 @@
             <image-details
               :title="currentImage.title"
               :artist="currentImage.artist"
-              :artist-webpage="currentImage.artist_url" />
+              :artist-webpage="currentImage.artist_url"
+            />
           </div>
 
           <div 
@@ -27,7 +32,6 @@
             :key="currentImage.resource"
             style="position:relative;height: 100%;"
           >
-
             <iframe
               :src="'https://gfycat.com/ifr/' + currentImage.resource + '?autoplay=1'"
               frameborder="0"
@@ -43,22 +47,25 @@
               v-touch:swipe.left="nextImage"
               v-touch:swipe.right="previousImage"
               class="lightBox__touchControls"
-              @click="toggleModal" />
+              @click="toggleModal"
+            />
 
             <image-details
               :title="currentImage.title"
               :artist="currentImage.artist"
-              :artist-webpage="currentImage.artist_url" />
+              :artist-webpage="currentImage.artist_url"
+            />
           </div>
-
         </transition>
 
         <a 
           class="lightBox__control previousImage"
-          @mousedown="previousImage" >
+          @mousedown="previousImage"
+        >
           <fa
             :icon="['far', 'chevron-double-left']"
-            class="fa" />
+            class="fa"
+          />
         </a>
         <a
           class="lightBox__control nextImage"
@@ -66,9 +73,9 @@
         >
           <fa
             :icon="['far', 'chevron-double-right']"
-            class="fa" />
+            class="fa"
+          />
         </a>
-
       </div>
 
       <div
@@ -79,11 +86,13 @@
           v-if="thumbs"
           ref="thumbnailContainer"
           :style="'left: ' + thumbnailOffset + 'px;'"
-          class="lightBox__thumbnailContainer" >
+          class="lightBox__thumbnailContainer"
+        >
           <span
             v-for="(image, index) in thumbs"
             :key="index"
-            @mousedown="selectImage(index)">
+            @mousedown="selectImage(index)"
+          >
             <img 
               v-if="(image.type === 'image')"
               ref="activeThumbnail"
@@ -114,12 +123,10 @@
 
 <script>
 import ImageDetails from "./LightBox__imageDetails";
-import Modal from "@/components/Modal";
 
 export default {
   components: {
     ImageDetails,
-    Modal
   },
   props: {
     title: {

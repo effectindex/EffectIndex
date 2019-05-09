@@ -2,7 +2,8 @@
   <div class="profileImage">
     <img
       :src="'/img/profiles/' + filename"
-      :alt="(username ? 'Profile image of ' + username : 'User profile image. ')">
+      :alt="(username ? 'Profile image of ' + username : 'User profile image. ')"
+    >
   </div>
 </template>
 

@@ -1,65 +1,76 @@
 <template>
   <div class="reportEditor">
-
     <label> Title 
       <input
         v-model="reportData.title"
-        class="reportEditor__inputTitle">
+        class="reportEditor__inputTitle"
+      >
     </label>
 
     <section-header
       :visibility="sectionVisibility.subject" 
       title="Subject Information"
       name="subject"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
 
     <div 
       v-show="sectionVisibility['subject']"
-      class="section">
+      class="section"
+    >
       <label> Name 
         <input
           v-model="reportData.subject.name"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Trip Date 
         <input
           v-model="reportData.subject.trip_date"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Age 
         <input
           v-model="reportData.subject.age"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Setting 
         <input
           v-model="reportData.subject.setting"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Gender 
         <input
           v-model="reportData.subject.gender"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Height 
         <input
           v-model="reportData.subject.height"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Weight 
         <input
           v-model="reportData.subject.weight"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Medications 
         <input
           v-model="reportData.subject.medications"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
       <label> Tracker PDF 
         <input
           v-model="reportData.subject.pdf_url"
-          class="reportEditor__inputTitle">
+          class="reportEditor__inputTitle"
+        >
       </label>
     </div>
 
@@ -67,85 +78,101 @@
       :visibility="sectionVisibility.substances" 
       title="Substance Information"
       name="substances"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
     
     <substances-input
       v-show="sectionVisibility.substances"
-      v-model="reportData.substances" />
+      v-model="reportData.substances"
+    />
 
     <section-header
       :visibility="sectionVisibility.introduction" 
       title="Introduction"
       name="introduction"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
       
     <textarea
       v-show="sectionVisibility.introduction"
       v-model="reportData.introduction" 
-      class="reportEditor__textarea" />
+      class="reportEditor__textarea"
+    />
 
     <section-header
       :visibility="sectionVisibility.description" 
       title="Description"
       name="description"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
       
     <textarea
       v-show="sectionVisibility.description"
       v-model="reportData.description" 
-      class="reportEditor__textarea" />
+      class="reportEditor__textarea"
+    />
 
     <section-header
       :visibility="sectionVisibility.onset" 
       title="Onset"
       name="onset"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
 
     <log-input 
       v-show="sectionVisibility['onset']"
-      v-model="reportData.onset" />
+      v-model="reportData.onset"
+    />
 
     <section-header
       :visibility="sectionVisibility.peak" 
       title="Peak"
       name="peak"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
 
     <log-input 
       v-show="sectionVisibility['peak']"
-      v-model="reportData.peak" />
+      v-model="reportData.peak"
+    />
 
     <section-header
       :visibility="sectionVisibility.offset" 
       title="Offset"
       name="offset"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
 
     <log-input 
       v-show="sectionVisibility['offset']"
-      v-model="reportData.offset" />
+      v-model="reportData.offset"
+    />
 
 
     <section-header
       :visibility="sectionVisibility.conclusion" 
       title="Conclusion"
       name="conclusion"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
       
     <textarea
       v-show="sectionVisibility.conclusion"
       v-model="reportData.conclusion" 
-      class="reportEditor__textarea" />
+      class="reportEditor__textarea"
+    />
 
     <section-header
       :visibility="sectionVisibility.tags"
       title="Tags"
       name="tags"
-      @toggle="toggleVisibility" />
+      @toggle="toggleVisibility"
+    />
 
     <tag-input
       v-show="sectionVisibility.tags"
-      v-model="reportData.tags" />
+      v-model="reportData.tags"
+    />
 
     <div>
       <label for="featured">
@@ -153,19 +180,25 @@
         <input 
           id="featured"
           v-model="reportData.featured"
-          type="checkbox">
+          type="checkbox"
+        >
       </label>
     </div>
 
     <div class="reportEditor__inputReportButtonContainer">
       <nuxt-link
         class="reportEditor__cancelLink"
-        to="/admin/reports/list"> Cancel </nuxt-link>
+        to="/admin/reports/list"
+      >
+        Cancel
+      </nuxt-link>
       <button 
         class="reportEditor__inputReportButton"
-        @click="submitReport()"> {{ report ? 'Update' : 'Submit' }} </button>
+        @click="submitReport()"
+      >
+        {{ report ? 'Update' : 'Submit' }}
+      </button>
     </div>
-
   </div>
 </template>
 

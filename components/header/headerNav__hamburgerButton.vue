@@ -1,7 +1,8 @@
 <template>
   <div 
     class="hamburger"
-    @mousedown="toggleHamburger()">
+    @mousedown="toggleHamburger()"
+  >
     <div :class="'closed ' + (active ? 'inactive' : 'active')">
       <span class="patty" />
       <span class="patty" />

@@ -1,17 +1,19 @@
 <template>
   <div class="pageContent">
-
-    <h1> Contact
+    <h1>
+      Contact
       <fa
         :icon="['far', 'envelope']"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
     </h1>
 
     <p>
       To collectively contact the staff members of this site, please email us at effectindex@gmail.com. However, if you would like to contact a particular individual, please see the various contact information below:
     </p>
 
-    <p>Effect Index project member contact information:
+    <p>
+      Effect Index project member contact information:
       <ul>
         <li><b>Josie</b> - Project Manager</li>
         <ul>
@@ -26,12 +28,7 @@
 </template>
 
 <script>
-import ExtLink from "@/components/ExtLink";
-
 export default {
-  components: {
-    ExtLink
-  },
   head() {
     return {
       title: "Contact"

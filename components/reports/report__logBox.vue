@@ -2,12 +2,18 @@
   <section class="report__logBox">
     <h2
       :style="{ backgroundColor: headerColour }"
-      class="report__logBoxHeader"> {{ header }} </h2>
+      class="report__logBoxHeader"
+    >
+      {{ header }}
+    </h2>
     <div class="report__logBoxContainer">
       <div
         :style="{ backgroundColor: headerColour }"
-        class="outer" >
-        <div class="inner rotate"> {{ header }} </div>
+        class="outer"
+      >
+        <div class="inner rotate">
+          {{ header }}
+        </div>
       </div>
       <div class="content">
         <table class="logTable">
@@ -15,11 +21,13 @@
             <tr
               v-for="(item, index) in log"
               :key="index"
-              class="logTable__row">
-              <td class="logTable__time"> {{ item.time }}: </td>
-              <td
-                class="logTable__description"
-                v-html="trimmedMarkdown(item.description)" />
+              class="logTable__row"
+            >
+              <td class="logTable__time">
+                {{ item.time }}:
+              </td>
+              <!-- eslint-disable-next-line -->
+              <td class="logTable__description" v-html="trimmedMarkdown(item.description)" />
             </tr>
           </tbody>
         </table>

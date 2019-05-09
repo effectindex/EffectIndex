@@ -2,39 +2,49 @@
   <div class="pageContent substanceArticles">
     <fa
       :icon="['far', 'flask']"
-      class="fa categoryIcon" />
+      class="fa categoryIcon"
+    />
     <h1> Substance Index </h1>
 
-    <p>The following articles break down the specific subjective effects of hallucinogens
-    into simple and easy to understand descriptions with accompanying image replications.
-    This is done without relying on metaphor, analogy or personal trip reports.</p>
+    <p>
+      The following articles break down the specific subjective effects of hallucinogens
+      into simple and easy to understand descriptions with accompanying image replications.
+      This is done without relying on metaphor, analogy or personal trip reports.
+    </p>
 
-    <p>The descriptions include comprehensive intensity scales which are applied to both
-    hallucinogenic substance classes and specific compounds. These intensity scales describe
-    the various subjective changes that can occur at specific ranges as the dosage is increased.</p>
+    <p>
+      The descriptions include comprehensive intensity scales which are applied to both
+      hallucinogenic substance classes and specific compounds. These intensity scales describe
+      the various subjective changes that can occur at specific ranges as the dosage is increased.
+    </p>
 
-    <p>Alongside of these, we have also included more general and summarised descriptions of the
-    various effects which commonly occur under the influence of the three main classes of
-    hallucinogen: psychedelics, dissociatives, and deliriants. However, please keep in mind that
-    although the effect descriptions within these summaries are significantly shortened, their
-    full-length articles are linked above each effect.</p>
+    <p>
+      Alongside of these, we have also included more general and summarised descriptions of the
+      various effects which commonly occur under the influence of the three main classes of
+      hallucinogen: psychedelics, dissociatives, and deliriants. However, please keep in mind that
+      although the effect descriptions within these summaries are significantly shortened, their
+      full-length articles are linked above each effect.
+    </p>
 
     <hr>
     <div class="summaryColumns">
       <div class="categoriesContainer">
-
         <category
           :icon="['fas', 'chart-line']"
-          title="Intensity Scales">
+          title="Intensity Scales"
+        >
           <panel
-            title="Intensity Scales">
+            title="Intensity Scales"
+          >
             <h4>Substance Classes</h4>
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('intensity scale')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/effects/${effect.url}`">
+                  :to="`/effects/${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -43,9 +53,11 @@
             <ul class="effectList">
               <li
                 v-for="substance in substances"
-                :key="substance._id">
+                :key="substance._id"
+              >
                 <nuxt-link
-                  :to="`/substances/${substance.url}`">
+                  :to="`/substances/${substance.url}`"
+                >
                   {{ substance.name }}
                 </nuxt-link>
               </li>
@@ -57,12 +69,15 @@
         <category
           :icon="['far', 'eye']"
           link="/summaries/psychedelics/visual"
-          title="Psychedelics (Visual)">
-
+          title="Psychedelics (Visual)"
+        >
           <panel
-            title="Visual Effects of Psychedelics">
+            title="Visual Effects of Psychedelics"
+          >
             <p class="categoriesFullLink">
-              <nuxt-link to="/summaries/psychedelics/visual"> Read the full article </nuxt-link>
+              <nuxt-link to="/summaries/psychedelics/visual">
+                Read the full article
+              </nuxt-link>
               detailing the visual effects of psychedelic substances.
             </p>
 
@@ -70,9 +85,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'visual', 'enhancement')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/visual?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/visual?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -82,9 +99,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'visual', 'distortion')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/visual?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/visual?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -94,9 +113,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'visual', 'geometry')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/visual?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/visual?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -106,26 +127,30 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'visual', 'hallucinatory state')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/visual?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/visual?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
             </ul>
-
           </panel>
         </category>
 
         <category
           :icon="['far', 'user']"
           title="Psychedelics (Cognitive)"
-          link="/summaries/psychedelics/cognitive">
-
+          link="/summaries/psychedelics/cognitive"
+        >
           <panel
-            title="Cognitive Effects of Psychedelics">
+            title="Cognitive Effects of Psychedelics"
+          >
             <p class="categoriesFullLink">
-              <nuxt-link to="/summaries/psychedelics/cognitive"> Read the full article </nuxt-link>
+              <nuxt-link to="/summaries/psychedelics/cognitive">
+                Read the full article
+              </nuxt-link>
               detailing the cognitive effects of psychedelic substances.
             </p>
 
@@ -133,9 +158,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'cognitive', 'enhancement')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -145,9 +172,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'cognitive', 'suppression')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -157,9 +186,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'cognitive', 'novel')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -169,9 +200,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'cognitive', 'psychological state')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -181,26 +214,30 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'cognitive', 'transpersonal state')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/cognitive?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
             </ul>
-
-
           </panel>
         </category>
 
         <category
           :icon="['far', 'cogs']"
           title="Psychedelics (Miscellaneous)"
-          link="/summaries/psychedelics/miscellaneous">
+          link="/summaries/psychedelics/miscellaneous"
+        >
           <panel
-            title="Miscellaneous Effects of Psychedelics">
+            title="Miscellaneous Effects of Psychedelics"
+          >
             <p class="categoriesFullLink">
-              <nuxt-link to="/summaries/psychedelics/miscellaneous"> Read the full article </nuxt-link>
+              <nuxt-link to="/summaries/psychedelics/miscellaneous">
+                Read the full article
+              </nuxt-link>
               detailing the miscellaneous effects of psychedelic substances.
             </p>
 
@@ -208,9 +245,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous', 'auditory')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -220,9 +259,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous', 'tactile')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -232,9 +273,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous', 'multisensory')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -244,9 +287,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous', 'physical')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -257,14 +302,15 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('psychedelic', 'miscellaneous', 'uncomfortable')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`">
+                  :to="`/summaries/psychedelics/miscellaneous?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
             </ul>
-
           </panel>
         </category>
       </div>
@@ -273,12 +319,16 @@
         <category
           title="Dissociatives"
           image="/icons/disconnective.svg"
-          link="/summaries/dissociatives/">
+          link="/summaries/dissociatives/"
+        >
           <panel
             title="Effects of Dissociatives"
-            link="/summaries/dissociatives/">
+            link="/summaries/dissociatives/"
+          >
             <p class="categoriesFullLink">
-              <nuxt-link to="/summaries/dissociatives/"> Read the full article </nuxt-link>
+              <nuxt-link to="/summaries/dissociatives/">
+                Read the full article
+              </nuxt-link>
               detailing the effects of dissociative substances.
             </p>
 
@@ -287,9 +337,11 @@
               <li
                 v-for="effect in getEffectsInSpecificOrder('physical disconnection', 'cognitive disconnection', 'visual disconnection',
                                                            'detachment plateaus')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  :to="`/summaries/dissociatives?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -299,10 +351,12 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('dissociative', 'sensory')
-                .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
-                :key="effect._id">
+                  .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  :to="`/summaries/dissociatives?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -313,9 +367,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('dissociative', 'cognitive')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  :to="`/summaries/dissociatives?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -325,14 +381,15 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('dissociative', 'physical')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/dissociatives?e=${effect.url}`">
+                  :to="`/summaries/dissociatives?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
             </ul>
-
           </panel>
         </category>
       </div>
@@ -340,12 +397,16 @@
         <category
           title="Deliriants"
           image="/icons/deliriant.svg"
-          link="/summaries/deliriants/">
+          link="/summaries/deliriants/"
+        >
           <panel
             title="Effects of Deliriants"
-            link="/summaries/deliriants/">
+            link="/summaries/deliriants/"
+          >
             <p class="categoriesFullLink">
-              <nuxt-link to="/summaries/deliriants/"> Read the full article </nuxt-link>
+              <nuxt-link to="/summaries/deliriants/">
+                Read the full article
+              </nuxt-link>
               detailing the effects of deliriant substances.
             </p>
 
@@ -353,9 +414,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'visual')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -365,9 +428,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'auditory')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -377,9 +442,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'tactile')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -389,17 +456,21 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'gustatory')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'olfactory')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -409,9 +480,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'multisensory')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -421,9 +494,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'cognitive')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -433,9 +508,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'physical')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -445,9 +522,11 @@
             <ul class="effectList">
               <li
                 v-for="effect in filterEffectsByTag('deliriant', 'uncomfortable')"
-                :key="effect._id">
+                :key="effect._id"
+              >
                 <nuxt-link
-                  :to="`/summaries/deliriants?e=${effect.url}`">
+                  :to="`/summaries/deliriants?e=${effect.url}`"
+                >
                   {{ effect.name }}
                 </nuxt-link>
               </li>
@@ -482,6 +561,10 @@ export default {
       return this.$store.state.substances;
     }
   },
+  async fetch({ store }) {
+    await store.dispatch("getEffects");
+    await store.dispatch("getSubstances");
+  },
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>
@@ -496,10 +579,6 @@ export default {
         });
       return effects;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
-    await store.dispatch("getSubstances");
   }
 };
 </script>

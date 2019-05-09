@@ -5,30 +5,36 @@
         <img
           src="/sm-icon-facebook.svg"
           height="32"
-          width="32">
+          width="32"
+        >
       </a>
       <a href="http://reddit.com/r/replications">
         <img
           src="/sm-icon-reddit.svg"
           height="32"
-          width="32">
+          width="32"
+        >
       </a>
       <a href="https://www.youtube.com/channel/UCV5-ybqHFU6xQWhnFZBJlOA">
         <img
           src="/sm-icon-youtube.svg"
           height="32"
-          width="32">
+          width="32"
+        >
       </a>
       <a href="https://github.com/effectindex/EffectIndex">
         <img
           src="/sm-icon-github.svg"
           height="32"
-          width="32">
+          width="32"
+        >
       </a>
     </div>
     <div class="footer__secret">
       <p> effectindex@gmail.com </p>
-      <p class="footer__memorium"> In loving memory of Phillip Edmunds. </p>
+      <p class="footer__memorium">
+        In loving memory of Phillip Edmunds.
+      </p>
     </div>
   </footer>
 </template>

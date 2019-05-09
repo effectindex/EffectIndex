@@ -1,13 +1,13 @@
 <template>
   <div class="featuredArticles">
     <div class="featuredArticleListContainer">
-
       <div class="featuredArticleCategory">
         <h4> Visual Effects </h4>
         <nuxt-link 
           v-for="(effect, index) in visualEffects"
+          :key="effect._id"
           :to="`/effects/${effect.url}`"
-          :key="effect._id">
+        >
           {{ effect.name }}{{ (index &lt; (visualEffects.length - 1)) ? ' &sdot; ' : '' }}
         </nuxt-link>
       </div>
@@ -16,8 +16,9 @@
         <h4> Cognitive Effects </h4>
         <nuxt-link 
           v-for="(effect, index) in cognitiveEffects"
+          :key="effect._id"
           :to="`/effects/${effect.url}`"
-          :key="effect._id">
+        >
           {{ effect.name }}{{ (index &lt; (cognitiveEffects.length - 1)) ? ' &sdot; ' : '' }}
         </nuxt-link>
       </div>
@@ -26,16 +27,18 @@
         <h4> Miscellaneous Effects </h4>
         <nuxt-link 
           v-for="(effect, index) in miscellaneousEffects"
+          :key="effect._id"
           :to="`/effects/${effect.url}`"
-          :key="effect._id">
+        >
           {{ effect.name }}{{ (index &lt; (miscellaneousEffects.length - 1)) ? ' &sdot; ' : '' }}
         </nuxt-link>
       </div>
 
       <div class="featuredArticlesStub">
-        For more, see the <nuxt-link to="/effects/"> Subjective Effect Index</nuxt-link>.
+        For more, see the <nuxt-link to="/effects/">
+          Subjective Effect Index
+        </nuxt-link>.
       </div>
-
     </div>
   </div>
 </template>

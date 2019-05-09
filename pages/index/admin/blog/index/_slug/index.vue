@@ -3,7 +3,8 @@
     <hr>
     <post-editor 
       :post="post"
-      @edit-post="submitPost" />
+      @edit-post="submitPost"
+    />
   </div>
 </template>
 

@@ -2,15 +2,16 @@
   <div class="pageContent">
     <fa 
       :icon="['far', 'volume-up']"
-      class="fa categoryIcon" />
+      class="fa categoryIcon"
+    />
     <h1> Auditory Effect Replications </h1>
     <div>
       <audio-replication
         v-for="replication in audioReplications"
+        :key="replication._id"
         :replication="replication"
-        :key="replication._id" />
+      />
     </div>
-
   </div>
 </template>
 

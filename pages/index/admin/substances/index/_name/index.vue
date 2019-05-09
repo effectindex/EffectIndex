@@ -3,7 +3,8 @@
     <substance-editor
       :substance="substance"
       @edit-substance="submitSubstance"
-      @update-substance="updateSubstance" />
+      @update-substance="updateSubstance"
+    />
   </div>
 </template>
 
@@ -15,6 +16,10 @@ export default {
     SubstanceEditor
   },
   middleware: ["auth"],
+  async asyncData({ store, params }) {
+    let { substance } = await store.dispatch("getSubstance", params.name);
+    return { substance };
+  },
   methods: {
     async submitSubstance(substance) {
 
@@ -35,10 +40,6 @@ export default {
         text: 'The substance has succesfully updated.'
       });
     }
-  },
-  async asyncData({ store, params }) {
-    let { substance } = await store.dispatch("getSubstance", params.name);
-    return { substance };
   }
 };
 </script>

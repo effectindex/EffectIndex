@@ -1,10 +1,11 @@
 <template>
   <div class="pageContent">
-
-    <h1>Discord Chat
+    <h1>
+      Discord Chat
       <fa
         :icon="['fab', 'discord']"
-        class="fa categoryIcon" />
+        class="fa categoryIcon"
+      />
     </h1>
 
     <iframe
@@ -13,15 +14,21 @@
       width="350"
       height="500"
       allowtransparency="true"
-      frameborder="0" />
+      frameborder="0"
+    />
 
-    <p>The official Effect Index community is hosted on Discord and may be joined <ext-link href="https://discord.gg/VSm5bF7">here</ext-link>.
+    <p>
+      The official Effect Index community is hosted on Discord and may be joined <ext-link href="https://discord.gg/VSm5bF7">
+        here
+      </ext-link>.
     </p>
 
-    <p> This a semi-private community which is not primarily for general conversation but instead aims to be a place of discussion and co-operation for progressing the field of formalised subjective effect documentation. For this reason, we tend to only invite people who are genuinely wanting to contribute to the project. This can include anyone from proofreaders, trip reporters, web developers, replicators, artists, and more.
+    <p>
+      This a semi-private community which is not primarily for general conversation but instead aims to be a place of discussion and co-operation for progressing the field of formalised subjective effect documentation. For this reason, we tend to only invite people who are genuinely wanting to contribute to the project. This can include anyone from proofreaders, trip reporters, web developers, replicators, artists, and more.
     </p>
 
-    <p> If you have an interest in contributing to and taking part in our communities various projects, please pm @josikinz#1066 and tell her why you are interested in this project. Thanks! 
+    <p>
+      If you have an interest in contributing to and taking part in our communities various projects, please pm @josikinz#1066 and tell her why you are interested in this project. Thanks! 
     </p>
 
     <h3> Rules </h3>
@@ -34,7 +41,8 @@
     <img
       height="350px"
       class="left"
-      src="/indy_iphone_edited.png">  
+      src="/indy_iphone_edited.png"
+    >  
   </div>
 </template>
 

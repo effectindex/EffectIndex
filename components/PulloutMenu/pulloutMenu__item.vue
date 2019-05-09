@@ -2,7 +2,8 @@
   <li class="pulloutMenu__itemContainer">
     <a 
       v-if="!children"
-      :href="location"> {{ name }} </a>
+      :href="location"
+    > {{ name }} </a>
     <a 
       v-else
       @click="toggleExpanded()"
@@ -20,11 +21,15 @@
         <nuxt-link
           v-if="!child.external"
           :to="child.location"
-          @click.native="togglePullout()"> {{ child.name }} </nuxt-link>
+          @click.native="togglePullout()"
+        >
+          {{ child.name }}
+        </nuxt-link>
         <a 
           v-else
           :href="child.location"
-          target="_blank"> {{ child.name }} </a>
+          target="_blank"
+        > {{ child.name }} </a>
       </li>
     </ol>
   </li>
