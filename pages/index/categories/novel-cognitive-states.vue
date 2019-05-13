@@ -13,7 +13,8 @@
     </p>
 
     <p>
-     Although many transpersonal and psychological effects also technically fit into this definition, they are excluded from this category of effects as they have their own defining qualities which standard novel states do not. </p>
+     Although many <nuxt-link to="/categories/transpersonal-effects">transpersonal</nuxt-link> and <nuxt-link to="/categories/psychological-effects">psychological effects</nuxt-link> also technically fit into this definition, they are excluded from this category of effects as they have their own defining qualities which standard novel states do not. 
+    </p>
     
     <p>
       This page lists the various novel cognitive states which can occur under the influence of certain psychoactive compounds.

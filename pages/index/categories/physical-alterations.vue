@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-     <b>Physical alterations</b> are defined as any subjective effect which changes a facet of a person's physical body in a manner which does not involve a clearly definable enhancement or suppression.
+     <b>Physical alterations</b> are defined as any subjective effect which changes a facet of a person's physical body in a manner which does not involve a clearly definable <nuxt-link to="/categories/physical-enhancement">enhancement</nuxt-link> or <nuxt-link to="/categories/physical-suppressions">suppression</nuxt-link>.
     </p>
 
     <p>

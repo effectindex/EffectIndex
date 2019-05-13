@@ -3,7 +3,7 @@
     <h1>
       Visual Suppressions
       <fa
-        :icon="['far', 'eye']"
+        :icon="['far', 'arrow-down']"
         class="fa categoryIcon"
       /> 
     </h1>

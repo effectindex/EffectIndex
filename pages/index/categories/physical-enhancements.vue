@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-     <b>Physical enhancements</b> are defined as any subjective effect which increases or improves a facet of a person's physical body.
+     <b>Physical enhancements</b> are defined as any subjective effect which increases or intensifies a facet of a person's physical body.
     </p>
 
     <p>

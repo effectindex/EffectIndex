@@ -3,7 +3,7 @@
     <h1>
       Visual Enhancements
       <fa
-        :icon="['far', 'eye']"
+        :icon="['far', 'arrow-up']"
         class="fa categoryIcon"
       /> 
     </h1>

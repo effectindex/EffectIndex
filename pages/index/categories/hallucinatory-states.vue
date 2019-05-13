@@ -3,7 +3,7 @@
     <h1>
       Hallucinatory States
       <fa
-        :icon="['far', 'eye']"
+        :icon="['far', 'dragon']"
         class="fa categoryIcon"
       /> 
     </h1>

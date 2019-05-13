@@ -3,7 +3,7 @@
     <h1>
       Visual Distortions
       <fa
-        :icon="['far', 'eye']"
+        :icon="['far', 'exchange']"
         class="fa categoryIcon"
       /> 
     </h1>
