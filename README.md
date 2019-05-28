@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. Install MongoDB and Node
+1. Install Node and MongoDB, get the MongoDB server running.
 2. Clone the Repo
 3. npm install
 4. Create a .env file in the base directory with the following content:
