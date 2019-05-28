@@ -1,7 +1,7 @@
 {
   "name": "effectindex",
-  "version": "1.0.0",
-  "description": "A nuxt.js implementation of the Subjective Effect Index",
+  "version": "1.0.1",
+  "description": "A nuxt.js-based content management system designed for effectindex.com",
   "author": "Viscid",
   "private": true,
   "scripts": {

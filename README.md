@@ -1,22 +1,20 @@
 # effectindex
 
-> A nuxt.js implmentation of the Subjective Effect Index
+> A nuxt.js-based content management system designed for effectindex.com
 
-## Build Setup
+## Installation
 
-``` bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
+1. Install MongoDB and Node
+2. Clone the Repo
+3. npm install
+4. Create a .env file in the base directory with the following content:
+```bash
+# URL of the server 
+BASE_URL=http://localhost:3000/
+# Base URL for Axios ('/' unless running in some directory)
+BROWSER_BASE_URL=/
+# A secret for the JSON Web Tokens
+jwtSecret=change_this_to_something_other_than_this
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+5. (optional) Download a [dump of the database](http://effectindex.com/effectindex.tar) and use the MongoDB mongorestore utility to restore the effectindex.com database.
+6. use 'npm run dev' to run the development server, 'npm run build' to build the production site, and 'npm run start' to start the production site.
