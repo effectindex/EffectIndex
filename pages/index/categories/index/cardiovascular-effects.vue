@@ -9,38 +9,36 @@
     </h1>
 
     <p>
-     <b>Cardiovascular effects</b> are defined as any uncomfortable physical effect which relates to the heart and blood vessels.
+      <b>Cardiovascular effects</b> are defined as any uncomfortable physical effect which relates to the heart and blood vessels.
     </p>
 
     <p>
       This page lists the various cardiovascular effects which can occur under the influence of certain psychoactive compounds.
     </p>
+
+    <EffectList
+      :effects="effects"
+      :tags="['cardiovascular']"
+    />
   </div>
 </template>
 
 <script>
+import EffectList from '@/components/effects/index/EffectList';
+
 export default {
+  components: {
+    EffectList
+  },  
   head() {
     return {
       title: "Cardiovascular Effectss"
     };
+  },
+  computed: {
+    effects() {
+      return this.$store.state.effects;
+    }
   }
 };
 </script>
-
-<style scoped>
-.float {
-  float: right;
-}
-
-.text-centered {
-  text-align: center;
-}
-
-@media (max-width: 500px) {
-  .float {
-    float: none;
-    margin: 1em auto;
-  }
-}
-</style>

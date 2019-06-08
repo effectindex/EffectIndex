@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-     The term <b>duration</b> refers to the length of time over which the subjective effects of a psychoactive compound manifest themselves. This can be further broken down into five distinct phases which are described and documented below: 
+      The term <b>duration</b> refers to the length of time over which the subjective effects of a psychoactive compound manifest themselves. This can be further broken down into five distinct phases which are described and documented below: 
     </p>
 
     <ul>
@@ -22,16 +22,26 @@
     </ul>
 
 
-  <hr>
-  <h3>See Also</h3>
-      <ul>
-      <li> <nuxt-link to="/methodology/approximate-frequency-of-occurence-scale">Approximate frequency of occurence scale</nuxt-link> </li>
-      <li> <nuxt-link to="/effects/">Subjective effect index</nuxt-link> </li>
-      <li> <nuxt-link to="/substances/">Substance index</nuxt-link> </li>
+    <hr>
+    <h3>See Also</h3>
+    <ul>
+      <li>
+        <nuxt-link to="/methodology/approximate-frequency-of-occurence-scale">
+          Approximate frequency of occurence scale
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/effects/">
+          Subjective effect index
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/substances/">
+          Substance index
+        </nuxt-link>
+      </li>
     </ul>
-
   </div>
-
 </template>
 
 <script>
@@ -43,20 +53,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.float {
-  float: right;
-}
-
-.text-centered {
-  text-align: center;
-}
-
-@media (max-width: 500px) {
-  .float {
-    float: none;
-    margin: 1em auto;
-  }
-}
-</style>

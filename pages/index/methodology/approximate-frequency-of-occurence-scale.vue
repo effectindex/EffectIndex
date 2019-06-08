@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-     This rating scale serves as a very approximate indication of the frequency of occurence that a subjective effect is likely to manifest at within the range of a specific dosage. It is primarily used within our substance documentation articles that can be found listed here.
+      This rating scale serves as a very approximate indication of the frequency of occurence that a subjective effect is likely to manifest at within the range of a specific dosage. It is primarily used within our substance documentation articles that can be found listed here.
     </p>
 
     <ul>
@@ -22,16 +22,26 @@
     </ul>
 
 
-  <hr>
-  <h3>See Also</h3>
-      <ul>
-      <li> <nuxt-link to="/methodology/duration-terminology">Duration terminology</nuxt-link> </li>
-      <li> <nuxt-link to="/effects/">Subjective effect index</nuxt-link> </li>
-      <li> <nuxt-link to="/substances/">Substance index</nuxt-link> </li>
+    <hr>
+    <h3>See Also</h3>
+    <ul>
+      <li>
+        <nuxt-link to="/methodology/duration-terminology">
+          Duration terminology
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/effects/">
+          Subjective effect index
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/substances/">
+          Substance index
+        </nuxt-link>
+      </li>
     </ul>
-
   </div>
-
 </template>
 
 <script>
@@ -43,20 +53,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.float {
-  float: right;
-}
-
-.text-centered {
-  text-align: center;
-}
-
-@media (max-width: 500px) {
-  .float {
-    float: none;
-    margin: 1em auto;
-  }
-}
-</style>
