@@ -17,6 +17,8 @@ const app = express();
 const host = process.env.HOST || "127.0.0.1";
 const port = process.env.PORT || 3000;
 
+const firstRun = require("./models/firstRun");
+
 app.set("port", port);
 
 // Import API Routes
@@ -53,6 +55,7 @@ async function start() {
         if (config.dev) log(logo);
         log(chalk.green("Connected to database: ") + db.name);
         app.listen(port, host);
+        firstRun();
         log(chalk.green.bold("Effect Index up on " + host + ":" + port)); // eslint-disable-line no-console
       } else {
         log(chalk.red.bold("Error connecting to database."));
