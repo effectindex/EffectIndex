@@ -43,6 +43,7 @@
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States"
+              page="/categories/hallucinatory-states"
             />
           </category>
 
