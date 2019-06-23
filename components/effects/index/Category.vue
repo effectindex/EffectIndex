@@ -3,7 +3,15 @@
     class="categoryContainer"
   >
     <h3 class="categoryTitle">
-      {{ title }} 
+      <nuxt-link 
+        v-if="page"
+        :to="page"
+      >
+        {{ title }} 
+      </nuxt-link>
+      <template v-else>
+        {{ title }}
+      </template>
       <fa
         v-if="icon"
         :icon="icon"
@@ -24,6 +32,10 @@
 <script>
 export default {
   props: {
+    page: {
+      type: String,
+      default: null
+    },
     title: {
       type: String,
       default: ""

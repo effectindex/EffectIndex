@@ -15,6 +15,9 @@ const errorHandler = function(err, req, res, next) {
   if (err["type"] === "API") {
     let error = { name: err["name"], message: err["message"] };
     res.status(400).send({ error });
+  } else if (err.name == 'UnauthorizedError') {
+    let error = { name: "Invalid JWT", message: "The JWT is invalid." };
+    res.status(401).send({ error });
   } else {
     console.log(err);
     res.status(500).send(err);

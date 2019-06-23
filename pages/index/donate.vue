@@ -15,7 +15,10 @@
     >
 
     <p>
-      If you would be interested in contributing to the Effect Index project we have a number of donation options available. The funds will be used for hosting costs and enable us to devote more of our time to Subjective Effect Documentation. Any contribution is greatly appreciated!
+      If you would be interested in contributing to the Effect Index project we have a number of donation options available. The funds will be used for hosting costs and enable us to devote more of our time to Subjective Effect Documentation.
+    </p>
+    <p>
+      Any contribution is greatly appreciated!
     </p>
 
     <h3> Options </h3>
@@ -23,6 +26,11 @@
       <li>
         <b>Patreon</b> - <ext-link href="http://patreon.com/effectindex">
           Effect Index Patreon
+        </ext-link>
+      </li>
+      <li>
+        <b>TeeSpring</b> - <ext-link href="https://teespring.com/stores/effectindex">
+          Merchandise Store
         </ext-link>
       </li>
       <li> <b>Paypal</b> - effectindex@gmail.com </li>

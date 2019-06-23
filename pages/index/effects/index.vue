@@ -19,18 +19,22 @@
           <category 
             :icon="['far', 'eye']"
             title="Visual Effects"
+            page="/categories/visual-effects"
           >
             <actions
               :effects="filterEffectsByTag('visual', 'enhancement')"
               title="Enhancements"
+              page="/categories/visual-enhancements"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
               title="Suppressions"
+              page="/categories/visual-suppressions"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions"
+              page="/categories/visual-distortions"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'geometry')"
@@ -45,6 +49,7 @@
           <category 
             :icon="['far', 'volume-up']"
             title="Auditory Effects"
+            page="/categories/auditory-effects"
           >
             <actions :effects="filterEffectsByTag('auditory')" />
           </category>
@@ -52,6 +57,7 @@
           <category 
             :icon="['far', 'hand-paper']"
             title="Tactile Effects"
+            page="/categories/tactile-effects"
           >
             <actions :effects="filterEffectsByTag('tactile')" />
           </category>
@@ -59,6 +65,7 @@
           <category 
             :image="'/icons/disconnective.svg'"
             title="Disconnective Effects"
+            page="/categories/disconnective-effects"
           >
             <actions :effects="filterEffectsByTag('disconnective')" />
           </category>
@@ -66,6 +73,7 @@
           <category 
             :icon="['far', 'utensils']"
             title="Smell &amp; Taste Effects"
+            page="/categories/smell-and-taste-effects"
           >
             <actions 
               :effects="filterEffectsByTag('gustatory')"
@@ -80,6 +88,7 @@
           <category 
             :icon="['far', 'cogs']"
             title="Multisensory Effects"
+            page="/categories/multisensory-effects"
           >
             <actions 
               :effects="filterEffectsByTag('multisensory')"
@@ -94,22 +103,27 @@
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'enhancement')"
+              page="/categories/cognitive-enhancements"
               title="Enhancements"
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'suppression')"
+              page="/categories/cognitive-suppressions"
               title="Suppressions"
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'novel')"
+              page="/categories/novel-cognitive-states"
               title="Novel States"
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'psychological state')"
+              page="/categories/psychological-effects"
               title="Psychological States"
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
+              page="/categories/transpersonal-effects"
               title="Transpersonal States"
             />          
           </category>
@@ -122,10 +136,12 @@
           >
             <actions
               :effects="filterEffectsByTag('physical', 'enhancement')"
+              page="/categories/physical-enhancements"
               title="Enhancements"
             />
             <actions
               :effects="filterEffectsByTag('physical', 'suppression')"
+              page="/categories/cognitive-suppressions"
               title="Suppressions"
             />
             <actions
@@ -137,17 +153,21 @@
           <category
             :icon="['far', 'frown']"
             title="Uncomfortable Effects"
+            page="/categories/uncomfortable-physical-effects"
           >
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
+              page="/categories/cardiovascular-effects"
               title="Cardiovascular"
             />
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'cerebrovascular')"
+              page="/categories/cerebrovascular-effects"
               title="Cerebrovascular"
             />
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'bodily')"
+              page="/categories/uncomfortable-bodily-effects"
               title="bodily"
             />
           </category>   
@@ -164,18 +184,22 @@
           <category 
             :icon="['far', 'eye']"
             title="Visual Effects"
+            page="/categories/visual-effects"
           >
             <actions
               :effects="filterEffectsByTag('visual', 'enhancement')"
               title="Enhancements"
+              page="/categories/visual-enhancements"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
               title="Suppressions"
+              page="/categories/visual-suppressions"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'distortion')"
               title="Distortions"
+              page="/categories/visual-distortions"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'geometry')"
@@ -184,6 +208,7 @@
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States"
+              page="/categories/hallucinatory-states"
             />
           </category>
         </column>
@@ -192,6 +217,7 @@
           <category 
             :icon="['far', 'volume-up']"
             title="Auditory Effects"
+            page="/categories/auditory-effects"
           >
             <actions :effects="filterEffectsByTag('auditory')" />
           </category>
@@ -199,6 +225,7 @@
           <category 
             :icon="['far', 'hand-paper']"
             title="Tactile Effects"
+            page="/categories/tactile-effects"
           >
             <actions :effects="filterEffectsByTag('tactile')" />
           </category>
@@ -206,6 +233,7 @@
           <category 
             image="/icons/disconnective.svg"
             title="Disconnective Effects"
+            page="/categories/disconnective-effects"
           >
             <actions :effects="filterEffectsByTag('disconnective')" />
           </category>
@@ -215,6 +243,7 @@
           <category 
             :icon="['far', 'utensils']"
             title="Smell &amp; Taste Effects"
+            page="/categories/smell-and-taste-effects"
           >
             <actions 
               :effects="filterEffectsByTag('gustatory')"
@@ -229,6 +258,7 @@
           <category 
             :icon="['far', 'cogs']"
             title="Multisensory Effects"
+            page="/categories/multisensory-effects"
           >
             <actions 
               :effects="filterEffectsByTag('multisensory')"
@@ -249,6 +279,7 @@
           <category 
             :icon="['far', 'arrow-up']"
             title="Enhancements"
+            page="/categories/cognitive-enhancements"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'enhancement')"
@@ -257,6 +288,7 @@
           <category  
             :icon="['far', 'arrow-down']"
             title="Suppressions"
+            page="/categories/cognitive-suppressions"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'suppression')"
@@ -267,6 +299,7 @@
           <category
             :icon="['far', 'lightbulb']" 
             title="Novel States"
+            page="/categories/novel-cognitive-states"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'novel')"
@@ -275,6 +308,7 @@
           <category  
             image="/icons/psychological.svg"
             title="Psychological States"
+            page="/categories/psychological-effects"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'psychological state')"
@@ -285,6 +319,7 @@
           <category
             :icon="['far', 'infinity']"
             title="Transpersonal States"
+            page="/categories/transpersonal-effects"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
@@ -308,14 +343,17 @@
             <actions
               :effects="filterEffectsByTag('physical', 'enhancement')"
               title="Enhancements"
+              page="/categories/physical-enhancements"
             />
             <actions
               :effects="filterEffectsByTag('physical', 'suppression')"
               title="Suppressions"
+              page="/categories/physical-suppressions"
             />
             <actions
               :effects="filterEffectsByTag('physical', 'alteration')"
               title="Alterations"
+              page="/categories/physical-alterations"
             />
           </category>
         </column>
@@ -324,18 +362,22 @@
           <category
             :icon="['far', 'frown']"
             title="Uncomfortable Effects"
+            page="/categories/uncomfortable-physical-effects"
           >
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
               title="Cardiovascular"
+              page="/categories/cardiovascular-effects"
             />
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'cerebrovascular')"
               title="Cerebrovascular"
+              page="/categories/cerebrovascular-effects"
             />
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'bodily')"
               title="Bodily"
+              page="/categories/uncomfortable-bodily-effects"
             />
           </category>
         </column>      

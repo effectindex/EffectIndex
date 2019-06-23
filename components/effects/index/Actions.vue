@@ -4,7 +4,15 @@
       v-show="title"
       class="actionTitle"
     >
-      {{ title }}
+      <nuxt-link 
+        v-if="page"
+        :to="page"
+      >
+        {{ title }} 
+      </nuxt-link>
+      <template v-else>
+        {{ title }}
+      </template>
     </h4>
     <ul class="actionList">
       <li 
@@ -38,6 +46,10 @@
 export default {
   props: {
     title: {
+      type: String,
+      default: undefined
+    },
+    page: {
       type: String,
       default: undefined
     },
