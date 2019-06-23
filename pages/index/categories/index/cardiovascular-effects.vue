@@ -24,12 +24,13 @@
 </template>
 
 <script>
-import EffectList from '@/components/effects/index/EffectList';
+import EffectList from '@/components/categories/EffectList';
 
 export default {
   components: {
     EffectList
-  },  
+  },
+  scrollToTop: true,
   head() {
     return {
       title: "Cardiovascular Effectss"
