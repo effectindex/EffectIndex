@@ -16,19 +16,58 @@
       This page lists the various visual effects which can occur under the influence of certain psychoactive compounds.
     </p>
 
-    <EffectList
-      :effects="effects"
-      :tags="['visual']"
-    />
+    <Panels>
+      <Panel
+        title="Enhancements"
+        :icon="['far', 'arrow-up']"
+      >
+        <PanelEffectList
+          :tags="['visual', 'enhancement']"
+          :effects="effects"
+        />
+      </Panel>
+
+      <Panel
+        title="Suppressions"
+        :icon="['far', 'arrow-down']"
+      >
+        <PanelEffectList
+          :tags="['visual', 'suppression']"
+          :effects="effects"
+        />
+      </Panel>
+
+      <Panel
+        title="Hallucinatory States"
+      >
+        <PanelEffectList
+          :tags="['visual', 'hallucinatory state']"
+          :effects="effects"
+        />
+      </Panel>
+
+      <Panel
+        title="Distortions"
+      >
+        <PanelEffectList
+          :tags="['visual', 'distortion']"
+          :effects="effects"
+        />
+      </Panel>
+    </Panels>
   </div>
 </template>
 
 <script>
-import EffectList from '@/components/categories/EffectList';
+import Panel from '@/components/categories/Panel';
+import Panels from '@/components/categories/Panels';
+import PanelEffectList from '@/components/categories/PanelEffectList';
 
 export default {
   components: {
-    EffectList
+    Panel,
+    Panels,
+    PanelEffectList
   },
   scrollToTop: true,
   head() {
