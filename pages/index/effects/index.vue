@@ -101,6 +101,7 @@
           <category  
             :icon="['far', 'user']"
             title="Cognitive Effects"
+            page="/categories/cognitive-effects"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'enhancement')"
@@ -134,6 +135,7 @@
           <category  
             :icon="['far', 'heart-rate']"
             title="Physical Effects"
+            page="/categories/physical-effects"
           >
             <actions
               :effects="filterEffectsByTag('physical', 'enhancement')"

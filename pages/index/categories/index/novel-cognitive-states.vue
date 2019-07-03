@@ -24,6 +24,8 @@
       This page lists the various novel cognitive states which can occur under the influence of certain psychoactive compounds.
     </p>
 
+    <hr>
+
     <EffectList
       :effects="effects"
       :tags="['novel']"

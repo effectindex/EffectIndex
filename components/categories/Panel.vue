@@ -51,12 +51,7 @@ export default {
 }
 
 .categoryContainer {
-  flex: 1;
-  margin-top: 1em;
-  min-width: 250px;
-  max-width: 290px;
-  flex-wrap: wrap;
-  margin-right: 1em;
+  margin-bottom: 1em;
   border: 1px solid #DDD;
   background-color: rgb(253, 253, 253);
 }
@@ -88,19 +83,5 @@ export default {
   border-bottom: 1px solid #DDD;
   letter-spacing: 1px;
 }
-
-@media(max-width: 500px) {
-  .categoryContainer {
-    border: 1px solid #DDD;
-    min-width: auto;
-    max-width: auto;
-  }
-
-  .categoryContainer:last-child {
-    border: 1px solid #DDD;
-  }
-
-}
-
 
 </style>

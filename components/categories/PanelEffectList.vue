@@ -1,5 +1,5 @@
 <template>
-  <ul class="categories__effectList">
+  <ul class="categories__panelEffectList">
     <h4 
       v-if="title"
       class="effectTitle"
@@ -59,12 +59,12 @@ export default {
     margin-bottom: 0.5em;
   }
 
-  .categories__effectList {
+  .categories__panelEffectList {
     padding-left: 0;
     color: #AAA;
   }
 
-  .categories__effectList li {
+  .categories__panelEffectList li {
     margin-left: 1em;
     font-size: 13pt;
     line-height: 1.75em;
