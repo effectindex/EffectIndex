@@ -1,19 +1,19 @@
 <template>
   <div class="pageContent">
     <h1>
-      Visual Effects
+      Cognitive Effects
       <fa
-        :icon="['far', 'eye']"
+        :icon="['far', 'cogs']"
         class="fa categoryIcon"
       /> 
     </h1>
 
     <p>
-      <b>Visual effects</b> are defined as any subjective effect which directly alters a person's sense of sight.
+      <b>Cognitive effects</b> are subjective effects which directly alter or introduce new content to an element of a person's cognition.
     </p>
 
     <p>
-      This page lists the various visual effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various cognitive effects which can occur under the influence of certain psychoactive compounds.
     </p>
     <hr>
     <Columns>
@@ -23,7 +23,7 @@
           :icon="['far', 'arrow-up']"
         >
           <PanelEffectList
-            :tags="['visual', 'enhancement']"
+            :tags="['cognitive', 'enhancement']"
             :effects="effects"
           />
         </Panel>
@@ -32,27 +32,38 @@
           :icon="['far', 'arrow-down']"
         >
           <PanelEffectList
-            :tags="['visual', 'suppression']"
+            :tags="['cognitive', 'suppression']"
             :effects="effects"
           />
         </Panel>
       </Column>
       <Column>
         <Panel
-          title="Hallucinatory States"
+          title="Novel States"
+          :icon="['far', 'lightbulb']"
         >
           <PanelEffectList
-            :tags="['visual', 'hallucinatory state']"
+            :tags="['cognitive', 'novel']"
+            :effects="effects"
+          />
+        </Panel>
+        <Panel
+          title="Psychological States"
+          image="/icons/psychological.svg"
+        >
+          <PanelEffectList
+            :tags="['cognitive', 'psychological state']"
             :effects="effects"
           />
         </Panel>
       </Column>
       <Column>
         <Panel
-          title="Distortions"
+          title="Transpersonal States"
+          :icon="['far', 'infinity']"
         >
           <PanelEffectList
-            :tags="['visual', 'distortion']"
+            :tags="['cognitive', 'transpersonal state']"
             :effects="effects"
           />
         </Panel>
@@ -77,7 +88,7 @@ export default {
   scrollToTop: true,
   head() {
     return {
-      title: "Visual Effects"
+      title: "Cognitive Effects"
     };
   },
   computed: {

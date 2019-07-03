@@ -28,6 +28,8 @@
       This page lists the various multisensory effects which can occur under the influence of certain psychoactive compounds.
     </p>
 
+    <hr>
+
     <EffectList
       :effects="effects"
       :tags="['multisensory']"

@@ -16,6 +16,8 @@
       This page lists the various visual enhancements which can occur under the influence of certain psychoactive compounds.
     </p>
 
+    <hr>
+
     <EffectList
       :effects="effects"
       :tags="['visual', 'enhancement']"

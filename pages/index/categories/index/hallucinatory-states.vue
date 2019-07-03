@@ -16,9 +16,11 @@
       This page lists the various hallucinatory states which can occur under the influence of certain psychoactive compounds.
     </p>
 
+    <hr>
+
     <EffectList
       :effects="effects"
-      :tags="['hallucinatory']"
+      :tags="['hallucinatory state']"
     />
   </div>
 </template>
@@ -28,7 +30,7 @@ import EffectList from '@/components/categories/EffectList';
 
 export default {
   components: {
-    EffectList
+    EffectList,
   },
   scrollToTop: true,
   head() {

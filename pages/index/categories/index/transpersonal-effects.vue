@@ -30,9 +30,11 @@
       This page lists the various psychological effects which can occur under the influence of certain psychoactive compounds.
     </p>
 
+    <hr>
+
     <EffectList
       :effects="effects"
-      :tags="['transpersonal']"
+      :tags="['transpersonal state']"
     />
   </div>
 </template>

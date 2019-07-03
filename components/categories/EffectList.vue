@@ -42,11 +42,15 @@ export default {
   .categories__effectList {
     list-style: none;
     padding-left: 0;
-    margin-top: 2em;
   }
 
   .categories__effectList li {
-    margin-bottom: 2em;
+    padding: 0.25em 0em;
+    border-bottom: 1px solid #EEE;
+  }
+
+  .categories__effectList li:last-child {
+    border-bottom: none;
   }
 
 </style>

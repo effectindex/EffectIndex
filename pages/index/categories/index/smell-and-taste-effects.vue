@@ -8,6 +8,7 @@
       /> 
     </h1>
 
+
     <p>
       <b>Smell and taste effects</b> are defined as any subjective effect which directly alters either a person's sense of smell or their sense of taste.
     </p>
@@ -16,6 +17,8 @@
       This page lists the various smell and taste effects which can occur under the influence of certain psychoactive compounds.
     </p>
 
+    <hr>
+    
     <EffectList
       :effects="effects"
       :tags="['gustatory']"

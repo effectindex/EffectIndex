@@ -15,7 +15,7 @@
     <p>
       This page lists the various auditory effects which can occur under the influence of certain psychoactive compounds.
     </p>
-
+    <hr>
     <EffectList
       :effects="effects"
       :tags="['auditory']"
@@ -28,7 +28,7 @@ import EffectList from '@/components/categories/EffectList';
 
 export default {
   components: {
-    EffectList
+    EffectList,
   },
   scrollToTop: true,
   head() {

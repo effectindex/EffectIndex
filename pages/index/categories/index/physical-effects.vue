@@ -1,19 +1,19 @@
 <template>
   <div class="pageContent">
     <h1>
-      Visual Effects
+      Physical Effects
       <fa
-        :icon="['far', 'eye']"
+        :icon="['far', 'user']"
         class="fa categoryIcon"
       /> 
     </h1>
 
     <p>
-      <b>Visual effects</b> are defined as any subjective effect which directly alters a person's sense of sight.
+      <b>Physical effects</b> are subjective effects which directly alter or introduce new content to an element of a person's cognition.
     </p>
 
     <p>
-      This page lists the various visual effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various physical effects which can occur under the influence of certain psychoactive compounds.
     </p>
     <hr>
     <Columns>
@@ -23,7 +23,7 @@
           :icon="['far', 'arrow-up']"
         >
           <PanelEffectList
-            :tags="['visual', 'enhancement']"
+            :tags="['physical', 'enhancement']"
             :effects="effects"
           />
         </Panel>
@@ -32,27 +32,45 @@
           :icon="['far', 'arrow-down']"
         >
           <PanelEffectList
-            :tags="['visual', 'suppression']"
+            :tags="['physical', 'suppression']"
+            :effects="effects"
+          />
+        </Panel>
+        <Panel
+          title="Alterations"
+          :icon="['far', 'arrow-down']"
+        >
+          <PanelEffectList
+            :tags="['physical', 'alteration']"
             :effects="effects"
           />
         </Panel>
       </Column>
       <Column>
         <Panel
-          title="Hallucinatory States"
+          title="Cardiovascular"
+          :icon="['far', 'lightbulb']"
         >
           <PanelEffectList
-            :tags="['visual', 'hallucinatory state']"
+            :tags="['cardiovascular']"
             :effects="effects"
           />
         </Panel>
-      </Column>
-      <Column>
         <Panel
-          title="Distortions"
+          title="Cerebrovascular"
+          image="/icons/psychological.svg"
         >
           <PanelEffectList
-            :tags="['visual', 'distortion']"
+            :tags="['cerebrovascular']"
+            :effects="effects"
+          />
+        </Panel>
+        <Panel
+          title="Bodily"
+          :icon="['far', 'infinity']"
+        >
+          <PanelEffectList
+            :tags="['bodily']"
             :effects="effects"
           />
         </Panel>
@@ -77,7 +95,7 @@ export default {
   scrollToTop: true,
   head() {
     return {
-      title: "Visual Effects"
+      title: "Physical Effects"
     };
   },
   computed: {
