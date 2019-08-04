@@ -86,7 +86,7 @@ export default {
 
         this.$notify({
           title: 'Profile Added',
-          text: 'The profile has been succesfully added.'
+          text: 'The profile has been successfully added.'
         });
 
       }
@@ -101,7 +101,7 @@ export default {
 
         this.$notify({
           title: 'Profile Updated',
-          text: 'The profile has been succesfully updated.'
+          text: 'The profile has been successfully updated.'
         });
 
       }

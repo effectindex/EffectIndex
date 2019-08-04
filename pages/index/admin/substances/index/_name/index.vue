@@ -27,7 +27,7 @@ export default {
 
       this.$notify({
         title: 'Substance Updated.',
-        text: 'The substance has succesfully updated.'
+        text: 'The substance has successfully updated.'
       });
 
       this.$router.push("/substances/" + returnedSubstance.url);
@@ -37,7 +37,7 @@ export default {
 
       this.$notify({
         title: 'Substance Updated.',
-        text: 'The substance has succesfully updated.'
+        text: 'The substance has successfully updated.'
       });
     }
   }
