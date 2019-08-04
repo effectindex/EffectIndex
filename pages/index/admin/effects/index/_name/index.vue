@@ -27,7 +27,7 @@ export default {
 
       this.$notify({
         title: 'Effect Updated.',
-        text: 'The effect has succesfully updated.'
+        text: 'The effect has successfully updated.'
       });
       
       this.$router.push("/effects/" + returnedEffect.url);
@@ -37,7 +37,7 @@ export default {
 
       this.$notify({
         title: 'Effect Updated.',
-        text: 'The effect has succesfully updated.'
+        text: 'The effect has successfully updated.'
       });
     }
   },
