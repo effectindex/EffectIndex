@@ -394,7 +394,7 @@ a.lightBox__control:hover {
   position: relative;
   height: 80px;
   transition: left 0.5s ease-out;
-  width: 4000px;
+  width: 8000px;
 }
 
 .fade-enter-active,
