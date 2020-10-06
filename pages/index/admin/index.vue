@@ -6,7 +6,7 @@
     />
     <h1> Administration </h1>
     <p> The place to do secret things when nobody's looking. </p>
-    <no-ssr>
+    <client-only>
       <div v-if="$auth.loggedIn">
         <nuxt-link to="/user/logout">
           Log out
@@ -85,7 +85,7 @@
           </div>
         </div>
       </div>
-    </no-ssr>
+    </client-only>
     <nuxt-link 
       v-show="!$auth.loggedIn" 
       to="/user/login"
@@ -114,11 +114,14 @@ export default {
   methods: {
     async restartServer() {
       this.$store.dispatch("restartServer");
-      this.$notify({
-        type: 'error',
-        title: 'Server Restarting',
-        text: 'Please wait ~2 minutes as the server restarts.'
-      });
+        this.$toasted.show(
+          'Please wait while the server restarts.',
+          {
+            duration: 2000,
+            type: 'error'
+          }
+        );
+
     }
   },
   head() {

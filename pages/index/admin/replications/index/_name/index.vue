@@ -26,10 +26,14 @@ export default {
         replication
       );
 
-      this.$notify({
-        title: 'Replication Saved',
-        text: 'The replication was successfully saved.'
-      });
+        this.$toasted.show(
+          'The replication has been successfully saved.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
       this.$router.push("/admin/replications/list");
     }

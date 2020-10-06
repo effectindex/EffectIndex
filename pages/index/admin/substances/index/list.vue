@@ -55,10 +55,14 @@ export default {
     deleteSubstance(id) {
       this.$store.dispatch("deleteSubstance", id);
 
-      this.$notify({
-        title: 'Substance Deleted.',
-        text: 'The substance has been deleted.'
-      });
+        this.$toasted.show(
+          'The substance has been successfully deleted.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
     },
     clearFilter() {

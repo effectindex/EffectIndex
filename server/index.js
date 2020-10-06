@@ -48,12 +48,13 @@ async function start() {
   await mongoose.connect(
     config.server.mongooseUri,
     { 
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
      },
     function(err, db) {
       if (!err) {
         if (config.dev) log(logo);
-        log(chalk.green("Connected to database: ") + db.name);
+        log(chalk.green("Connected to database: ") + db.connections[0].name);
         app.listen(port, host);
         firstRun();
         log(chalk.green.bold("Effect Index up on " + host + ":" + port)); // eslint-disable-line no-console

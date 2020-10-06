@@ -55,10 +55,14 @@ export default {
       this.success = false;
       let response = await this.$store.dispatch("updateUser", { user: this.user });
       if (response) this.success = true;
-      this.$notify({
-        title: 'User Updated.',
-        text: 'The user has been successfully updated.'
-      });
+        this.$toasted.show(
+          'The user has been successfully updated.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
     }
   }
 };

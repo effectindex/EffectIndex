@@ -62,10 +62,14 @@ export default {
     async deleteProfile(id) {
       await this.$store.dispatch("deleteProfile", id);
 
-      this.$notify({
-        title: 'Profile Deleted.',
-        text: 'You are a horrible person.'
-      });
+        this.$toasted.show(
+          'The profile was successfully deleted. You\'re a horrible person.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
     }
   }
 };

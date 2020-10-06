@@ -43,11 +43,13 @@ export default {
           data: { user: this.user }
         });
 
-
-        this.$notify({
-          title: 'Login Success.',
-          text: 'You have been successfully logged in.'
-        });
+        this.$toasted.show(
+          'You are now logged in.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+          );
 
       } catch (error) {
         if ("error" in error.response.data)

@@ -24,9 +24,9 @@
           :icon="['far', 'images']"
           title="Featured Replications"
         >
-          <no-ssr>
+          <client-only>
             <featured-replication />
-          </no-ssr>
+          </client-only>
         </panel>
         <panel
           :icon="['far', 'file-signature']"

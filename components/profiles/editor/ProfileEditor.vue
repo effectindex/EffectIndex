@@ -83,11 +83,13 @@ export default {
         this.success = true;
         this.profile = response.profile;
 
-
-        this.$notify({
-          title: 'Profile Added',
-          text: 'The profile has been successfully added.'
-        });
+        this.$toasted.show(
+          'The profile has been successfully added.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
 
       }
     },
@@ -99,10 +101,14 @@ export default {
         this.success = true;
         this.grabProfile();
 
-        this.$notify({
-          title: 'Profile Updated',
-          text: 'The profile has been successfully updated.'
-        });
+        this.$toasted.show(
+          'The profile has been successfully added.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
       }
     },

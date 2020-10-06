@@ -17,10 +17,14 @@ export default {
     async submitSubstance(substance) {
       let returnedSubstance = await this.$store.dispatch("submitSubstance", substance);
 
-      this.$notify({
-        title: 'Substance Submitted.',
-        text: 'The new substance has been successfully submitted.'
-      });
+        this.$toasted.show(
+          'The substance has been successfully submitted.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
       this.$router.push("/admin/substances/list");
     }

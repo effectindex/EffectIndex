@@ -29,10 +29,15 @@ export default {
       try {
         let response = await this.$store.dispatch('updateReport', report);
 
-        this.$notify({
-          title: 'Report Updated.',
-          text: 'The report has been successfully updated.'
-        });
+        this.$toasted.show(
+          'The report has been successfully updated.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
+
       } catch (error) {
         console.log(error);
       }

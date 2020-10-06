@@ -1,6 +1,6 @@
 <template>
   <div class="blogPost">
-    <no-ssr>
+    <client-only>
       <div 
         v-if="$auth.loggedIn"
         class="blogPost__admin"
@@ -24,7 +24,7 @@
           />
         </a>
       </div>
-    </no-ssr>
+    </client-only>
     <h4 class="blogPost__date"> 
       <nuxt-link 
         :to="'/blog/' + post.slug + '/'"

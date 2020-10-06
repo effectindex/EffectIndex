@@ -17,10 +17,14 @@ export default {
     async submitEffect(effect) {
       let returnedEffect = await this.$store.dispatch("submitEffect", effect);
 
-      this.$notify({
-        title: 'Effect Submitted.',
-        text: 'The new effect has been successfully submitted.'
-      });
+        this.$toasted.show(
+          'The new effect has been successfully submitted.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
       this.$router.push("/admin/effects/list");
     }

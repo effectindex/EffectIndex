@@ -4,7 +4,7 @@
     <h3> Invite Users </h3>
     
     <label for="inviteUsers__label"> Expiration (optional) </label>
-    <no-ssr>
+    <client-only>
       <datepicker 
         v-model="expiration"
         :disabled-dates="disabledDates"
@@ -12,7 +12,7 @@
         name="expiration"
         format="dsu MMMM, yyyy"
       />
-    </no-ssr>
+    </client-only>
     <button @click="generateInviteURL">
       Generate
     </button>
@@ -64,10 +64,14 @@ export default {
       let { invitation } = await this.$store.dispatch("generateInvitation", this.expiration);
       this.generatedInvitation = invitation;
 
-      this.$notify({
-        title: 'Invitation Generated',
-        text: 'Copy and send the generated invitation to the person you\'d like to invite.'
-      });
+        this.$toasted.show(
+          'Invitation generated. Copy and paste the invitation to the person you\'d like to invite.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
     },
     clearExpiration() {

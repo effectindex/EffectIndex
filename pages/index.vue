@@ -18,9 +18,6 @@
       :src="(modalData.type === 'image') ? modalData.resource : modalData.resource"
       @toggleModal="toggleModal" 
     />
-    <notifications
-      position="bottom right" 
-    />
   </div>
 </template>
 

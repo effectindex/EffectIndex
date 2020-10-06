@@ -25,20 +25,28 @@ export default {
       
       let returnedEffect = await this.$store.dispatch("updateEffect", effect);
 
-      this.$notify({
-        title: 'Effect Updated.',
-        text: 'The effect has successfully updated.'
-      });
+        this.$toasted.show(
+          'The effect has been successfully updated.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
       
       this.$router.push("/effects/" + returnedEffect.url);
     },
     async updateEffect(effect) {
       let returnedEffect = await this.$store.dispatch("updateEffect", effect);
 
-      this.$notify({
-        title: 'Effect Updated.',
-        text: 'The effect has successfully updated.'
-      });
+        this.$toasted.show(
+          'The effect has been successfully updated.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
     }
   },
 };

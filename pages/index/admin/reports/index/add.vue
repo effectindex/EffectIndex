@@ -19,10 +19,14 @@
         try {
           let result = this.$store.dispatch("submitReport", report);
 
-          this.$notify({
-            title: 'Report Submitted.',
-            text: 'The report has been successfully submitted.'
-          });
+          this.$toasted.show(
+            'The report has been successfully added.',
+            {
+              duration: 2000,
+              type: 'success'
+            }
+          );
+
 
           this.$router.push("/admin/reports/list");
         } catch (error) {

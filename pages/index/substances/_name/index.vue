@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <article v-show="substance.name">
-      <no-ssr>
+      <client-only>
         <div v-if="$auth.loggedIn">
           <nuxt-link
             :to="'/admin/substances/' + substance.url"
@@ -13,7 +13,7 @@
             />
           </nuxt-link>
         </div>
-      </no-ssr>
+      </client-only>
       <fa
         :icon="['far', icon]"
         class="fa categoryIcon"

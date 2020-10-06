@@ -3,8 +3,6 @@ const pkg = require("./package");
 require("dotenv").config();
 
 module.exports = {
-  mode: "universal",
-
   /*
   ** Headers of the page
   */
@@ -34,7 +32,7 @@ module.exports = {
   ** Global CSS
   */
   css: [],
-
+  telemetry: false,
   auth: {
     redirect: {
       login: "/user/login",
@@ -80,7 +78,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: "~/plugins/vue-notification", mode: 'client' },
+    { src: "~/plugins/vue-toasted", mode: 'client' },
     { src: "~/plugins/vue2-touch-events", mode: 'client' },
     { src: "~/plugins/font-awesome"},
   ],
@@ -112,18 +110,6 @@ module.exports = {
     typographer: true,
     html: true,
     quotes: "“”‘’"
-  },
-
-  router: {
-    scrollBehavior(to, from, savedPosition) {
-      if (savedPosition) return savedPosition;
-      let position = {};
-      if (to.matched.length < 2) position = { x: 0, y: 0 };
-      else if (to.matched.some(r => r.components.default.options.scrollToTop))
-        position = { x: 0, y: 0 };
-      if (to.hash) position = { selector: to.hash };
-      return position;
-    }
   },
 
   /*

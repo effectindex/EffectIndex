@@ -70,10 +70,14 @@ export default {
     async deleteUser(id) {
       await this.$store.dispatch("deleteUser", id);
 
-      this.$notify({
-        title: 'User Deleted',
-        text: 'The user was deleted.'
-      });
+        this.$toasted.show(
+          'The user has been successfully deleted.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
     }
   }

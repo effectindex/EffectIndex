@@ -55,10 +55,14 @@ export default {
     deleteEffect(id) {
       this.$store.dispatch("deleteEffect", id);
 
-      this.$notify({
-        title: 'Effect Deleted.',
-        text: 'The effect has been deleted.'
-      });
+        this.$toasted.show(
+          'The effect has been deleted.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
     },
     clearFilter() {

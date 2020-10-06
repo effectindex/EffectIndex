@@ -25,20 +25,28 @@ export default {
 
       let returnedSubstance = await this.$store.dispatch("updateSubstance", substance);
 
-      this.$notify({
-        title: 'Substance Updated.',
-        text: 'The substance has successfully updated.'
-      });
+        this.$toasted.show(
+          'The substance has been successfully updated.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
 
       this.$router.push("/substances/" + returnedSubstance.url);
     },
     async updateSubstance(substance) {
       let returnedSubstance = await this.$store.dispatch("updateSubstance", substance);
 
-      this.$notify({
-        title: 'Substance Updated.',
-        text: 'The substance has successfully updated.'
-      });
+        this.$toasted.show(
+          'The substance has been successfully updated.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+
     }
   }
 };
