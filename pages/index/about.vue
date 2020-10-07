@@ -9,47 +9,43 @@
     </h1>
 
     <p>
-      Effect Index serves as the platform for the Subjective Effect Index (SEI), 
+      Effect Index serves as the platform for the <a href="/effects"> Subjective Effect Index (SEI), </a> 
       a resource containing formalised documentation of the vast number of distinct 
-      subjective states which may occur under the influence of hallucinogens. We strive 
+      subjective states that may occur under the influence of hallucinogens. We strive 
       to comprehensively document and describe the wide variety of potential hallucinogenic
       experiences. The SEI is presented in an easily readable format that contains not only
-      descriptions, but also informed analysis and image, video, and audio replications
+      descriptions, but also image, video, and audio <a href="/replications"> replications </a>
       of these effects.
     </p>
 
     <p>
-      We believe that in pioneering formalised subjective effect documentation we may demystify
-      the psychedelic experience, which has the potential to allow hallucinogen usage to become
+      We believe that in pioneering formalised subjective effect documentation, we may demystify
+      the psychedelic experience. This has the potential to allow hallucinogen usage to become
       more culturally acceptable, better understood, and create a platform on top of which these
       substances may be more easily studied.
     </p>
 
     <p>
-      Effect Index was initially founded as a side project on 30 June, 2017 by Josie Kins, the
+      Effect Index was initially founded as a side project on 30 June, 2017 by <a href="/profiles/josie"> Josie Kins, </a> the
       founder of <ext-link href="http://www.psychonautwiki.org">
         PsychonautWiki
       </ext-link> and
       <ext-link href="http://disregardeverythingisay.com/">
-        DisregardEverythingISay
-      </ext-link>.
+        DisregardEverythingISay.
+      </ext-link>
       It serves as a platform for content
       that has been in constant development for the previous six years on these sites. However,
-      the aforementioned content is now hosted on its own dedicated platform in the hope of further
-      spreading the documentation and creating a universal terminology set which gives people the
+      the aforementioned content is now hosted on its own dedicated platform with the hope of further
+      spreading the documentation and creating a universal terminology set that gives people the
       vernacular to fully describe experiences that were previously considered ineffable.
     </p>
 
     <p>
-      If you find this project interesting, we encourage you to join our active community
+      If you find this project interesting, we encourage you to join our active communities
       within both our <ext-link href="http://reddit.com/r/replications">
-        subreddit
-      </ext-link>,
-      and if you'd like to contribute,
-      <ext-link href="https://www.reddit.com/message/compose/?to=josikins">
-        send Josikinz a message
+        subreddit,
       </ext-link>
-      for an invite to our private Discord.
+      and our <a href="/discord-chat"> Discord. </a>
     </p>
   </div>
 </template>
