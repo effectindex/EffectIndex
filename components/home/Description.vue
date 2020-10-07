@@ -26,7 +26,7 @@
           allows people to describe and discuss that which was previously considered ineffable.
         </p>
         <p>
-          The effects are separated into over 200 distinct components which are organised into categories based on the sense
+          These effects are organised into categories based on the sense
           affected and their behaviour. Many of these are further broken down into levels, subcomponents, and variations in
           style which can occur across different substances. Detailed <nuxt-link to="/replications">
             replications
