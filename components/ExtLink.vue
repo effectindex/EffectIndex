@@ -3,9 +3,7 @@
     :href="href" 
     target="_blank" 
     rel="noreferrer"
-  >
-    <slot />
-  </a>
+  ><slot /></a>
 </template>
 
 <script>
