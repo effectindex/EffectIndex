@@ -43,7 +43,7 @@
     <p>
       If you find this project interesting, we encourage you to join our active communities
       within both our <ext-link href="http://reddit.com/r/replications">
-        subreddit,
+        subreddit
       </ext-link>
       and our <a href="/discord-chat"> Discord. </a>
     </p>
