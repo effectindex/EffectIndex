@@ -27,7 +27,7 @@
 
         <p>
           The content within this Index is based on the collective experiences of our contributors, scientific literature, 
-          and individual case reports. It is was created by our site founder <a href="/profiles/Josie"> Josie Kins. </a>
+          and individual case reports. It is was originally created by our site founder <a href="/profiles/Josie"> Josie Kins. </a>
         </p>
       </div>
     </transition>
