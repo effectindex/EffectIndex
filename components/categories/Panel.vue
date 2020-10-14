@@ -52,10 +52,6 @@ export default {
   padding: 0.5em;
 }
 
-.icon {
-  opacity: 0.75;
-}
-
 .categoryContainer {
   margin-bottom: 1em;
   border: 1px solid #DDD;
@@ -78,6 +74,10 @@ export default {
   background-color: rgb(240, 240, 240);
   border-bottom: 1px solid #DDD;
   letter-spacing: 1px;
+}
+
+.panelIcon {
+  opacity: 0.6;
 }
 
 </style>
