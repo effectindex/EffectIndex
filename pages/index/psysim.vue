@@ -11,12 +11,8 @@
     <p>
       This open source software, created by
       <nuxt-link to="/profiles/Rho">
-        Zenx2
-      </nuxt-link>, attempts to simulate or
-      replicate the various types of complex geometry and hallucinatory imagery
-      that are typically experienced under the influence of high dose
-      psychedelics. It was designed using a combination of fractal mathematics,
-      psychedelic artwork, and experience with hallucinogenic compounds.
+        Zenx2,
+      </nuxt-link> was designed using a combination of fractal based mathematics, psychedelic artwork, and extensive experience with hallucinogenic compounds. It attempts to simulate or replicate the various types of complex geometry and hallucinatory imagery that is typically experienced under the influence of high dose psychedelics.
     </p>
 
     <p>

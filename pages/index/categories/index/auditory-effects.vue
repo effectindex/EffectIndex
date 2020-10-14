@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Auditory effects</b> are defined as any subjective effect which directly alters a person's sense of hearing.
+      <b>Auditory effects</b> are defined as any subjective effect that directly alters a person's sense of hearing.
     </p>
 
     <p>
-      This page lists the various auditory effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various auditory effects that can occur under the influence of certain psychoactive compounds.
     </p>
     <hr>
     <EffectList

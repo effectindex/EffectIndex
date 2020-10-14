@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Physical effects</b> are subjective effects which directly alter or introduce new content to an element of a person's cognition.
+      <b>Physical effects</b> are subjective effects that directly alter a person's perception of their physical body or its physiological functions.
     </p>
 
     <p>
-      This page lists the various physical effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various physical effects that can occur under the influence of certain psychoactive compounds.
     </p>
     <hr>
     <Columns>

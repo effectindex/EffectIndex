@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-      <b>Novel cognitive states</b> are defined as any cognitive effect which does not merely amplify or suppress familiar states of mind, but rather induces an experience that is qualitatively different from that of ordinary consciousness.
+      <b>Novel cognitive states</b> are defined as any cognitive effect that does not merely amplify or suppress familiar states of mind; rather, it induces an experience that is qualitatively different from that of ordinary consciousness.
     </p>
 
     <p>
@@ -17,11 +17,11 @@
         transpersonal
       </nuxt-link> and <nuxt-link to="/categories/psychological-effects">
         psychological effects
-      </nuxt-link> also technically fit into this definition, they are excluded from this category of effects as they have their own defining qualities which standard novel states do not. 
+      </nuxt-link> also technically fit into this definition, they are excluded from this category as they have their own defining qualities that standard novel states do not.
     </p>
     
     <p>
-      This page lists the various novel cognitive states which can occur under the influence of certain psychoactive compounds.
+      This page lists the various novel cognitive states that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

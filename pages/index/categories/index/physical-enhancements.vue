@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Physical enhancements</b> are defined as any subjective effect which increases or intensifies a facet of a person's physical body.
+      <b>Physical enhancements</b> are defined as any subjective effect that increases or intensifies a facet of a person's physical body.
     </p>
 
     <p>
-      This page lists the various physical enhancements which can occur under the influence of certain psychoactive compounds.
+      This page lists the various physical enhancements that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

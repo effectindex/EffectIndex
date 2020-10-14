@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Visual effects</b> are defined as any subjective effect which directly alters a person's sense of sight.
+      <b>Visual effects</b>  are defined as any subjective effect that directly alters a person's sense of sight.
     </p>
 
     <p>
-      This page lists the various visual effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various visual effects that can occur under the influence of certain psychoactive compounds.
     </p>
     <hr>
     <Columns>

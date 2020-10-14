@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Tactile effects</b> are defined as any subjective effect which directly alters a person's sense of touch.
+      <b>Tactile effects</b> are defined as any subjective effect that directly alters a person's sense of touch.
     </p>
 
     <p>
-      This page lists the various tactile effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various tactile effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

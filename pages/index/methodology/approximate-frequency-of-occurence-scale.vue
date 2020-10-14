@@ -9,16 +9,17 @@
     </h1>
 
     <p>
-      This rating scale serves as a very approximate indication of the frequency of occurence that a subjective effect is likely to manifest at within the range of a specific dosage. It is primarily used within our substance documentation articles that can be found listed here.
-    </p>
+      This rating scale serves as a tool for providing approximations of the likelihood that a given subjective effect will occur.</p>
+    <p>It is primarily used within our substance documentation articles that can be found listed <nuxt-link to="/substances/">
+          here.
+        </nuxt-link></p>
 
     <ul>
-      <li> <b>Rare</b> - At this dosage, the effect typically only occurs spontaneously for a small percentage of people and may never arise for many people no matter how many times they use the substance. </li>
-      <li> <b>Onset</b> - At this dosage, the effect typically occurs for people eventually over the course of multiple trips but will usually be absent from the experience more often than not. </li>
-      <li> <b>Come up</b> - At this dosage, the effect typically occurs for people during most of their experiences with the substance but is often a little inconsistent in its occurence.</li>
-      <li> <b>Peak</b> - At this dosage, the effect typically occurs for most people during all of their trips to the extent that it is unusual if it does not happen. </li>
-      <li> <b>Offset</b> - The offset can be defined as the amount of time between feeling the full effects and coming down into sobriety. This is colloquially known as “coming down.” </li>
-      <li> <b>After effects</b> - At this dosage, the effect typically occurs for all people during all trips although there is always the possibility that it may not happen for certain individuals. </li>
+      <li> <b>Rare</b> - At this frequency, the effect typically only occurs spontaneously for a small percentage of people. It may also never arise for many people, no matter how many times they use the substance. </li>
+      <li> <b>Uncommon</b> - At this frequency, the effect will typically occur at some point over the course of multiple experiences, but will usually be absent more often than not. </li>
+      <li> <b>Commmon</b> - At this frequency, the effect typically occurs for people during most of their experiences, but is often slightly inconsistent in its occurrence.</li>
+      <li> <b>Frequent</b> - At this frequency, the effect typically occurs for most people during all of their experiences, to the extent that it is unusual if it does not happen.</li>
+      <li> <b>Near-universal</b> - At this frequency, the effect typically occurs for the vast majority of people during their experiences. However, there is still always the possibility that it may not happen for certain individuals. </li>
     </ul>
 
 

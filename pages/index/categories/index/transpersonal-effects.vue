@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-      <b>Transpersonal effects</b> are defined as any subjective effect which feels as if it alters a person's cognition in a manner which relates to or contains information regarding their place in the universe, the inner workings of reality or consciousness, and the context of their existence. The fullest manifestation of these effects fall under what are sometimes called "peak", "transcendent" or "transformative" experiences.
+      <b>Transpersonal effects</b> are defined as any subjective effect that feels as if it alters a person's cognition in a manner that relates to their place in the universe, the inner workings of reality or consciousness, and/or the context of their existence. The highest manifestations of these effects fall under what are commonly known as "peak", "transcendent" or "transformative" experiences.
     </p>
 
     <p>
@@ -22,12 +22,12 @@
 
     <p>
       It should be noted that these mind-states are the least reproducible of all effects within the <nuxt-link to="/effects/">
-        subjective effect index
-      </nuxt-link>. They are unique in that that simply taking more of a given substance does not necessarily increase the chances of having these states occur. Instead, they seem to rely more on contextual factors such as the person's set and setting.
+        subjective effect index.
+      </nuxt-link> Simply taking more of a given substance does not necessarily increase the chances of having these states occur. Instead, they seem to rely more on contextual factors, such as the person's set and setting.
     </p>
     
     <p>
-      This page lists the various psychological effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various transpersonal effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

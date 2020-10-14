@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Cardiovascular effects</b> are defined as any uncomfortable physical effect which relates to the heart and blood vessels.
+      <b>Cardiovascular effects</b> are defined as any uncomfortable physical effect that relates to the heart and blood vessels.
     </p>
 
     <p>
-      This page lists the various cardiovascular effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various cardiovascular effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

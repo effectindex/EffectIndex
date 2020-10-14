@@ -9,23 +9,23 @@
     </h1>
 
     <p>
-      <b>Multisensory effects</b> are defined as any subjective effect which directly alters either a person's sense of smell or their sense of taste.
+      <b>Multisensory effects</b> are defined as any subjective effect that directly alters two or more senses at a time.
     </p>
 
     <p>
       It is worth noting that although <nuxt-link to="/categories/hallucinatory-states">
         hallucinatory states
-      </nuxt-link> may sometimes affect multiple senses at one time, they are typically not categorized as multisensory effects unless they consistently affect multiple senses every time that they occur. For example, while experiences with <nuxt-link to="/effects/autonomous-entity">
+      </nuxt-link> may affect multiple senses, they are typically not categorized as multisensory effects unless they consistently affect multiple senses every time that they occur. For example, while experiences with <nuxt-link to="/effects/autonomous-entity">
         autonomous entities
       </nuxt-link> may sometimes have a <nuxt-link to="/categories/tactile-effects">
         tactile component
-      </nuxt-link> to them, more often than not they are a primarily <nuxt-link to="/categories/visual-effects">
+      </nuxt-link> to them, more often than not they are primarily a <nuxt-link to="/categories/visual-effects">
         visual experience
-      </nuxt-link> and therefore classified as such. 
+      </nuxt-link> and are therefore classified as such. 
     </p>
 
     <p>
-      This page lists the various multisensory effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various multisensory effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

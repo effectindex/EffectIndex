@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Cognitive suppressions</b> are defined as any subjective effect which decreases or lowers the intensity of a facet of a person's cognition.
+      <b>Cognitive suppressions</b> are defined as any subjective effect that decreases the intensity of a facet of a person's cognition.
     </p>
 
     <p>
-      This page lists the various cognitive suppressions which can occur under the influence of certain psychoactive compounds.
+      This page lists the various cognitive suppressions that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>
