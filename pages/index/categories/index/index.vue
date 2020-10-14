@@ -1,13 +1,17 @@
 <template>
   <div class="pageContent">
     <h1> 
-      Categories 
+      Effect Categories
       <Icon
         filename="sitemap.svg"
         class="categoryIcon"
       />
     </h1>
 
+    <div>
+      <h2> Auditory Effects </h2>
+      <p> Effects which diminish or modify a person's sense of hearing. </p>
+    </div>
 
     <ul>
       <li> Sensory </li>
