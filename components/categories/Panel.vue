@@ -3,7 +3,9 @@
     class="categoryContainer"
   >
     <h3 class="categoryTitle">
-      {{ title }}
+      <nuxt-link :to="page">
+        {{ title }}
+      </nuxt-link>
       <Icon
         v-if="icon"
         :filename="icon"
