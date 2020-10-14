@@ -9,10 +9,14 @@
     </h1>
 
     <p>
-      This rating scale serves as a tool for providing approximations of the likelihood that a given subjective effect will occur.</p>
-    <p>It is primarily used within our substance documentation articles that can be found listed <nuxt-link to="/substances/">
-          here.
-        </nuxt-link></p>
+      This rating scale serves as a tool for providing approximations of the likelihood that a given subjective effect will occur.
+    </p>
+    <p>
+      It is primarily used within our substance documentation articles that can be found listed 
+      <nuxt-link to="/substances/">
+        here.
+      </nuxt-link>
+    </p>
 
     <ul>
       <li> <b>Rare</b> - At this frequency, the effect typically only occurs spontaneously for a small percentage of people. It may also never arise for many people, no matter how many times they use the substance. </li>

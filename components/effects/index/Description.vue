@@ -10,7 +10,11 @@
         class="showMoreContainer"
       >
         <p>
-          The effects listed here are accompanied by detailed descriptions on the subjective experiences of them. They are written in a consistent and formal <nuxt-link to="/documentation-style-guide">writing style</nuxt-link> that avoids the use of flowery metaphors or analogy; instead, they strive to use simple and accessible language. This is done with the hope that they will eventually serve as a universal terminology set that enables people to better communicate and share experiences that are, by nature, difficult to convey.
+          The effects listed here are accompanied by detailed descriptions on the subjective experiences of them. They are written in a consistent and formal 
+          <nuxt-link to="/documentation-style-guide">
+            writing style 
+          </nuxt-link> 
+          that avoids the use of flowery metaphors or analogy; instead, they strive to use simple and accessible language. This is done with the hope that they will eventually serve as a universal terminology set that enables people to better communicate and share experiences that are, by nature, difficult to convey.
         </p>
 
         <p>
