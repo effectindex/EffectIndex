@@ -3,7 +3,7 @@
     <h1>
       Physical Effects
       <Icon
-        filename="user.svg"
+        filename="heart-rate.svg"
         class="categoryIcon"
       /> 
     </h1>
@@ -36,41 +36,14 @@
             :effects="effects"
           />
         </Panel>
-        <Panel
-          title="Alterations"
-          icon="arrow-down.svg"
-        >
-          <PanelEffectList
-            :tags="['physical', 'alteration']"
-            :effects="effects"
-          />
-        </Panel>
       </Column>
       <Column>
         <Panel
-          title="Cardiovascular"
-          icon="lightbulb.svg"
+          title="Alterations"
+          icon="cogs.svg"
         >
           <PanelEffectList
-            :tags="['cardiovascular']"
-            :effects="effects"
-          />
-        </Panel>
-        <Panel
-          title="Cerebrovascular"
-          icon="psychological.svg"
-        >
-          <PanelEffectList
-            :tags="['cerebrovascular']"
-            :effects="effects"
-          />
-        </Panel>
-        <Panel
-          title="Bodily"
-          icon="infinity.svg"
-        >
-          <PanelEffectList
-            :tags="['bodily']"
+            :tags="['physical', 'alteration']"
             :effects="effects"
           />
         </Panel>

@@ -3,7 +3,8 @@
     <h1>
       Visual Distortions
       <Icon
-        :filename="'exchange.svg'"
+        filename="distortions.svg"
+        class="categoryIcon"
       /> 
     </h1>
 

@@ -3,7 +3,7 @@
     <h1>
       Cardiovascular Effects
       <Icon
-        filename="frown.svg"
+        filename="heart.svg"
         class="categoryIcon"
       /> 
     </h1>

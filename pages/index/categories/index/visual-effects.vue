@@ -20,6 +20,7 @@
       <Column>
         <Panel
           title="Enhancements"
+          page="/categories/visual-enhancements"
           icon="arrow-up.svg"
         >
           <PanelEffectList
@@ -29,6 +30,7 @@
         </Panel>
         <Panel
           title="Suppressions"
+          page="/categories/visual-suppressions"
           icon="arrow-down.svg"
         >
           <PanelEffectList
@@ -40,9 +42,21 @@
       <Column>
         <Panel
           title="Hallucinatory States"
+          page="/categories/hallucinatory-states"
+          icon="dragon.svg"
         >
           <PanelEffectList
             :tags="['visual', 'hallucinatory state']"
+            :effects="effects"
+          />
+        </Panel>
+        <Panel
+          title="Geometry"
+          page="/effects/geometry"
+          icon="geometry.svg"
+        >
+          <PanelEffectList
+            :tags="['visual', 'geometry']"
             :effects="effects"
           />
         </Panel>
@@ -50,6 +64,8 @@
       <Column>
         <Panel
           title="Distortions"
+          page="/categories/visual-distortions"
+          icon="distortions.svg"
         >
           <PanelEffectList
             :tags="['visual', 'distortion']"

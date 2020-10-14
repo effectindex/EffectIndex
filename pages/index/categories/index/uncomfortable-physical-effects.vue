@@ -27,29 +27,62 @@
     <p>
       This page lists the various uncomfortable physical effects that can occur under the influence of certain psychoactive compounds.
     </p>
-
     <hr>
-
-    <EffectList
-      :effects="effects"
-      :tags="['uncomfortable', 'physical']"
-    />
+    <Columns>
+      <Column>
+        <Panel
+          title="Cardiovascular"
+          icon="heart.svg"
+        >
+          <PanelEffectList
+            :tags="['cardiovascular']"
+            :effects="effects"
+          />
+        </Panel>
+        <Panel
+          title="Cerebrovascular"
+          icon="brain.svg"
+        >
+          <PanelEffectList
+            :tags="['cerebrovascular']"
+            :effects="effects"
+          />
+        </Panel>
+      </Column>
+      <Column>
+        <Panel
+          title="Bodily"
+          icon="dragon.svg"
+        >
+          <PanelEffectList
+            :tags="['bodily']"
+            :effects="effects"
+          />
+        </Panel>
+      </Column>
+    </Columns>
   </div>
 </template>
 
 <script>
-import EffectList from '@/components/categories/EffectList';
+import Panel from '@/components/categories/Panel';
+import Column from '@/components/categories/Column';
+import Columns from '@/components/categories/Columns';
+import PanelEffectList from '@/components/categories/PanelEffectList';
 import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList,
+    Panel,
+    Column,
+    Columns,
+    PanelEffectList,
     Icon
   },
   scrollToTop: true,
   head() {
     return {
-      title: "Uncomfortable Physical Effectss"
+      title: "Uncomfortable Physical Effects"
     };
   },
   computed: {

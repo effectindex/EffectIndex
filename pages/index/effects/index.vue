@@ -144,11 +144,12 @@
             />
             <actions
               :effects="filterEffectsByTag('physical', 'suppression')"
-              page="/categories/cognitive-suppressions"
+              page="/categories/physical-suppressions"
               title="Suppressions"
             />
             <actions
               :effects="filterEffectsByTag('physical', 'alteration')"
+              page="/categories/physical-alterations"
               title="Alterations"
             />
           </category>
@@ -339,6 +340,7 @@
           <category  
             icon="heart-rate.svg"
             title="Physical Effects"
+            page="/categories/physical-effects"
           >
             <actions
               :effects="filterEffectsByTag('physical', 'enhancement')"

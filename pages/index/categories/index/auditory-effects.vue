@@ -3,7 +3,7 @@
     <h1>
       Auditory Effects
       <Icon
-        filename="volume-up"
+        filename="volume-up.svg"
         class="categoryIcon"
       /> 
     </h1>

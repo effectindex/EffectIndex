@@ -3,7 +3,7 @@
     <h1>
       Uncomfortable Bodily Effects
       <Icon
-        filename="user.svg"
+        filename="child.svg"
         class="categoryIcon"
       /> 
     </h1>
