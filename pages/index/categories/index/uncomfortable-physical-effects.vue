@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-      <b>Uncomfortable physical effects</b> are defined as any substance-induced alteration of a person's physical state which is unpleasant, undesirable, painful, or otherwise a source of distress. In most cases they indicate a temporary part of a substance's interaction with the body. However, in certain contexts, they can also indicate the need for attention or even medical treatment if they become dangerously severe.
+      <b>Uncomfortable physical effects</b> are defined as any substance-induced alteration of a person's physical state that is unpleasant, undesirable, painful, or otherwise a source of distress. In most cases, they indicate a temporary part of a substance's interaction with the body. However, in certain contexts, they can also indicate the need for medical attention or treatment if they become dangerously severe.
     </p>
 
     <p>
@@ -21,11 +21,11 @@
         disconnectivity
       </nuxt-link>, and <nuxt-link to="/effects/delusion">
         delusions
-      </nuxt-link>, may lead to a distorted perception of what is actually happening to their body. While this risk can be partially mitigated by taking harm reduction measures, such as having a knowledgeable and trustworthy trip sitter to watch over and provide sober third-party input, it should be remembered the potentially serious health consequences that may result from these effects can never be mitigated completely. It is therefore extremely important that the user understands the risks, does their research, and is aware of any pre-existing medical conditions which could potentially be exacerbated by these effects.
+      </nuxt-link>, may lead to a distorted perception of what is actually happening to their body. While this risk can be partially mitigated by taking harm reduction measures, such as having a knowledgeable and trustworthy trip sitter to watch over and provide sober third-party input, it is worth noting that the potentially serious health consequences that may result from these effects can never be completely mitigated. Therefore, it is extremely important that the user understands the risks, does their research, and is aware of any pre-existing medical conditions that could potentially be exacerbated by these effects.
     </p>
 
     <p>
-      This page lists the various uncomfortable physical effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various uncomfortable physical effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

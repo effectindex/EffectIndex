@@ -179,8 +179,7 @@
       <tab slot="Sensory">
         <blob> 
           <p>
-            <b> Sensory effects </b> are subjective effects which directly alter a person's senses. 
-            These can include any combination of sight, sound, touch, taste, and smell. 
+            <b> Sensory effects </b> are subjective effects that directly alter a person's senses. These can include any combination of sight, sound, touch, taste, and smell. 
           </p>
         </blob>
         <column>
@@ -273,8 +272,7 @@
       <tab slot="Cognitive">
         <blob> 
           <p>
-            <b> Cognitive effects </b> are subjective effects which directly alter or introduce 
-            new content to an element of a person's cognition.
+            <b> Cognitive effects </b> are subjective effects that directly alter or introduce new content to an element of a person's cognition.
           </p>
         </blob>
 
@@ -334,8 +332,7 @@
       <tab slot="Physical">
         <blob> 
           <p>
-            <b> Physical effects </b> are subjective effects which directly affect part of a person's
-            physical body.
+            <b> Physical effects </b> are subjective effects that directly affect part of a person's physical body.
           </p>
         </blob>
         <column>

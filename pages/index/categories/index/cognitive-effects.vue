@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Cognitive effects</b> are subjective effects which directly alter or introduce new content to an element of a person's cognition.
+      <b>Cognitive effects</b> are subjective effects that directly alter or introduce new content to an element of a person's cognition.
     </p>
 
     <p>
-      This page lists the various cognitive effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various cognitive enhancements that can occur under the influence of certain psychoactive compounds.
     </p>
     <hr>
     <Columns>

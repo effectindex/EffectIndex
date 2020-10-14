@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Hallucinatory states</b> are defined as any subjective effect which changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner which is similar to that of dreams.
+      <b>Hallucinatory states</b> are defined as any subjective effect that changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner similar to dreams.
     </p>
 
     <p>
-      This page lists the various hallucinatory states which can occur under the influence of certain psychoactive compounds.
+      This page lists the various hallucinatory states that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

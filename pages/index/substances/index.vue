@@ -7,23 +7,15 @@
     <h1> Substance Index </h1>
 
     <p>
-      The following articles break down the specific subjective effects of hallucinogens
-      into simple and easy to understand descriptions with accompanying image replications.
-      This is done without relying on metaphor, analogy or personal trip reports.
+      The following articles break down the specific subjective effects of hallucinogens into simple and easy to understand descriptions with accompanying image replications. This is done without relying on metaphor, analogy or personal trip reports.
     </p>
 
     <p>
-      The descriptions include comprehensive intensity scales which are applied to both
-      hallucinogenic substance classes and specific compounds. These intensity scales describe
-      the various subjective changes that can occur at specific ranges as the dosage is increased.
+      The descriptions include comprehensive intensity scales which are applied to both hallucinogenic substance classes and specific compounds. These intensity scales describe the various subjective changes that can occur at specific ranges as the dosage is increased.
     </p>
 
     <p>
-      Alongside of these, we have also included more general and summarised descriptions of the
-      various effects which commonly occur under the influence of the three main classes of
-      hallucinogen: psychedelics, dissociatives, and deliriants. However, please keep in mind that
-      although the effect descriptions within these summaries are significantly shortened, their
-      full-length articles are linked above each effect.
+      Alongside of these, we have also included more general and summarised descriptions of the various effects that commonly occur under the influence of the three main classes of hallucinogen: psychedelics, dissociatives, and deliriants. Please keep in mind that the effect descriptions within these summaries are significantly shortened; however, their full-length articles are linked above each effect.
     </p>
 
     <hr>

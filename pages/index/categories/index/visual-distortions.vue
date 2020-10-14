@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Visual distortions</b> are defined as any subjective effect which alters and changes the perception or appearance of pre-existing visual data without adding any entirely new content.
+      <b>Visual distortions</b> are defined as any subjective effect that alters the perception or appearance of pre-existing visual data without adding any entirely new content.
     </p>
 
     <p>
-      This page lists the various visual distortions which can occur under the influence of certain psychoactive compounds.
+      This page lists the various visual distortions that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Visual suppressions</b> are defined as any subjective effect which decreases a person's ability to perceive the external environment through their sense of sight.
+      <b>Visual suppressions</b> are defined as any subjective effect that decreases a person's ability to perceive the external environment through their sense of sight.
     </p>
 
     <p>
-      This page lists the various visual suppressions which can occur under the influence of certain psychoactive compounds.
+      This page lists the various visual suppressions that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

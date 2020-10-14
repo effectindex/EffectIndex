@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-      <b>Psychological effects</b> are defined as any cognitive effect that is either established within the psychological literature or arises as a result of the complex interplay between other more simplistic components such as <nuxt-link to="/categories/cognitive-enhancements">
+      <b>Psychological effects</b> are defined as any cognitive effect that is either established within the psychological literature or arises as a result of the complex interplay between more simplistic components such as <nuxt-link to="/categories/cognitive-enhancements">
         cognitive enhancements
       </nuxt-link> and <nuxt-link to="/categories/cognitive-suppressions">
         suppressions
@@ -17,7 +17,7 @@
     </p>
 
     <p>
-      This page lists the various psychological effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various psychological effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

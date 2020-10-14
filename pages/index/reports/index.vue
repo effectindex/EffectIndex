@@ -6,8 +6,7 @@
     /> 
     <h1> Trip Reports </h1>
 
-    <p>The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports which describe the subjective expereinces our contributors undergo while under the influence of various hallucinogenic substances.</p>
-    <p>These reports adhere to the standardized terminology of the Subjective Effect Index and include quantitative data from a <a href="https://docs.google.com/forms/u/0/d/1VdkmHgkng78fPrpqIFd7qDti5B7ml_oD8ZFiHbid8w0/edit?usp=forms_home&ths=true"> subjective effect tracking survey</a>. They are analyzed to provide information which document all of the various subjective effects of specific compounds through the use of a standardized formal methodology.</p>
+    <p>The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports that describe the subjective experiences our community members undergo while under the influence of various <nuxt-link to="/substances">hallucinogenic substances</nuxt-link>. These reports are then used as anecdotal accounts that further support the existence of the various documented states within our <nuxt-link to="/effects">Subjective Effect Index</nuxt-link>. </p>
     <view-selector
       :selected="viewMode.name"
       @selectView="selectView"

@@ -24,11 +24,11 @@
     </p>
 
     <p>
-      This a semi-private community which is not primarily for general conversation but instead aims to be a place of discussion and co-operation for progressing the field of formalised subjective effect documentation. For this reason, we tend to only invite people who are genuinely wanting to contribute to the project. This can include anyone from proofreaders, trip reporters, web developers, replicators, artists, and more.
+      This a semi-private community and is not primarily for general conversation; instead, it aims to be a place of discussion and co-operation for progressing the field of formalised subjective effect documentation. For this reason, we tend to only invite people who genuinely want to contribute to the project. This can include anyone from proofreaders, trip reporters, web developers, programmers, replicators, artists, and more.
     </p>
 
     <p>
-      If you have an interest in contributing to and taking part in our communities various projects, please pm @josikinz#1066 and tell her why you are interested in this project. Thanks! 
+      If you have an interest in contributing to and taking part in our community's various projects, please contact us within the public waiting room channel and tell us why you are interested in this project. Thanks!
     </p>
 
     <h3> Rules </h3>

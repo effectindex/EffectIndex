@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Cerebrovascular effects</b> are defined as any uncomfortable physical effect which relates to the brain and its blood vessels.
+      <b>Cerebrovascular effects</b> are defined as any uncomfortable physical effect that relates to the brain and its blood vessels.
     </p>
 
     <p>
-      This page lists the various cerebrovascular effects which can occur under the influence of certain psychoactive compounds.
+      This page lists the various cerebrovascular effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

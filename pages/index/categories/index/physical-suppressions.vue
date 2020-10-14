@@ -9,11 +9,11 @@
     </h1>
 
     <p>
-      <b>Physical suppressions</b> are defined as any subjective effect which decreases or reduces a facet of a person's physical body.
+      <b>Physical suppressions</b> are defined as any subjective effect that decreases or reduces a facet of a person's physical body.
     </p>
 
     <p>
-      This page lists the various physical suppressions which can occur under the influence of certain psychoactive compounds.
+      This page lists the various physical suppressions that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>

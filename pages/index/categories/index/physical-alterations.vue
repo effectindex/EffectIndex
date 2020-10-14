@@ -9,7 +9,7 @@
     </h1>
 
     <p>
-      <b>Physical alterations</b> are defined as any subjective effect which changes a facet of a person's physical body in a manner which does not involve a clearly definable <nuxt-link to="/categories/physical-enhancement">
+      <b>Physical alterations</b> are defined as any subjective effect that changes a facet of a person's physical body in a manner which does not involve a clearly definable <nuxt-link to="/categories/physical-enhancement">
         enhancement
       </nuxt-link> or <nuxt-link to="/categories/physical-suppressions">
         suppression
@@ -17,7 +17,7 @@
     </p>
 
     <p>
-      This page lists the various physical alterations which can occur under the influence of certain psychoactive compounds.
+      This page lists the various physical alterations that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>
