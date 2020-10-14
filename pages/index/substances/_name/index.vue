@@ -7,16 +7,16 @@
             :to="'/admin/substances/' + substance.url"
             append
           >
-            <fa
-              :icon="['far', 'edit']"
-              class="fa"
+            <Icon
+              filename="edit.svg"
+              style="height: 1em; width: 1em;"
             />
           </nuxt-link>
         </div>
       </client-only>
-      <fa
-        :icon="['far', icon]"
-        class="fa categoryIcon"
+      <Icon
+        filename="flask.svg"
+        class="categoryIcon"
       />
       <div v-if="hasSection('description_raw')">
         <h1>Subjective effects of {{ substance.name }}</h1>
@@ -151,6 +151,7 @@ import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
 import Tag from "@/components/effects/Tag";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
+import Icon from '@/components/Icon';
 
 export default {
   name: 'Substance',
@@ -160,12 +161,8 @@ export default {
     LightBox,
     ExtLink,
     Tag,
-    AudioPlayer
-  },
-  computed: {
-    icon() {
-      return "flask";
-    }
+    AudioPlayer,
+    Icon
   },
   scrollToTop: true,
   async asyncData({ store, params, error }) {

@@ -14,22 +14,20 @@
     </td>
     <td class="substanceTableRow__editButton">
       <nuxt-link :to="'/admin/substances/' + substance.url">
-        <fa
-          :icon="['far', 'edit']"
-          class="fa"
-          style="cursor: pointer;"
+        <Icon
+          filename="edit.svg"
+          style="cursor: pointer; height: 1em; width: 1em;"
         />
       </nuxt-link>
     </td>
     <td>
       <a
-        style="color: red; cursor: pointer;"
         @click="deleteSubstance(substance._id)"
       >
-        <fa
-          :icon="['far', 'times']"
-          class="fa"
-          style="color: red; cursor: pointer;"
+        <Icon
+          filename="times.svg"
+          style="cursor: pointer; height: 1em; width: 1em;"
+          color="red"
         />
       </a>
     </td>
@@ -37,7 +35,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     substance: {
       type: Object,
@@ -52,7 +55,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.icon {
+  height: 1em;
+  width: 1em;
+}
+
 .substanceTableRow__tagItem {
   display: inline-block;
   font-size: 14px;
@@ -65,6 +73,7 @@ export default {
 }
 
 .substanceTableRow__editButton {
-  padding-right: 1em;
+  padding-left: 1em;
+  padding-right: 0.5em;
 }
 </style>

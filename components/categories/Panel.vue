@@ -4,16 +4,11 @@
   >
     <h3 class="categoryTitle">
       {{ title }}
-      <fa
+      <Icon
         v-if="icon"
-        :icon="icon"
-        class="icon"
+        :filename="icon"
+        class="panelIcon"
       />
-      <img
-        v-show="image" 
-        :src="image"
-        class="image"
-      >
     </h3>
     <div class="actionContainer">
       <slot />
@@ -22,7 +17,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     page: {
       type: String,
@@ -33,7 +33,7 @@ export default {
       default: ""
     },
     icon: {
-      type: [String, Array],
+      type: String,
       default: ""
     },
     image: {
@@ -50,6 +50,10 @@ export default {
   padding: 0.5em;
 }
 
+.icon {
+  opacity: 0.75;
+}
+
 .categoryContainer {
   margin-bottom: 1em;
   border: 1px solid #DDD;
@@ -58,16 +62,6 @@ export default {
 
 .categoryContainer:last-child {
   margin-right: 0;
-}
-
-.icon {
-  margin: 0 5px;
-  height: 1.1em;
-}
-
-.image {
-  height: 1.1em;
-  opacity: 0.75;
 }
 
 .categoryTitle {

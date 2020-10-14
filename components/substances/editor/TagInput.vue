@@ -14,9 +14,9 @@
         {{ tag }}
         <div class="tagItem__removeIcon">
           <a @click="removeSubstance(index)">
-            <fa
-              :icon="['far', 'times-circle']"
-              class="fa"
+            <Icon
+              filename="times-circle.svg"
+              style="color: red; height: 1em; width: 1em;"
             />
           </a>
         </div>
@@ -26,7 +26,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  component: {
+    Icon
+  },
   props: {
     value: {
       type: Array,

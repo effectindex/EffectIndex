@@ -34,7 +34,7 @@
         Disconnective Effects
         <img 
           style="opacity: 0.8;"
-          class="fa actionIcon"
+          class="actionIcon"
           src="/icons/disconnective.svg"
         >
       </h3>
@@ -65,9 +65,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Miscellaneous Sensory Effects
-        <fa 
-          :icon="['far', 'cogs']"
-          class="fa actionIcon"
+        <Icon
+          filename="cogs.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -88,9 +88,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Cognitive Effects
-        <fa 
-          :icon="['far', 'user']"
-          class="fa actionIcon"
+        <Icon
+          filename="user.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -109,9 +109,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Physical Effects
-        <fa 
-          :icon="['far', 'heart-rate']"
-          class="fa actionIcon"
+        <Icon
+          filename="heart-rate.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -150,11 +150,13 @@
 
 <script>
 import LongSummary from "@/components/effects/LongSummary";
+import Icon from '@/components/Icon';
 
 export default {
   name: 'Dissociatives',
   components: {
-    LongSummary
+    LongSummary,
+    Icon
   },
   head() {
     return {

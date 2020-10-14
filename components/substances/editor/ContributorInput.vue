@@ -14,9 +14,9 @@
         {{ contributor }}
         <div class="contributorListItem__removeIcon">
           <a @click="removeContributor(index)">
-            <fa
-              :icon="['far', 'times-circle']"
-              class="fa"
+            <Icon
+              filename="times-circle.svg"
+              color="red"
             />
           </a>
         </div>
@@ -26,7 +26,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     value: {
       type: Array,
@@ -74,11 +79,16 @@ export default {
 
 <style scoped>
 .contributorListItem {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 200px;
   color: black;
+  background-color: #EEE;
   margin: 3px;
   padding: 7px;
+  border-radius: 10px;
+  border: 1px dotted #DDD;
 }
 
 .contributorListItem a {
@@ -89,7 +99,13 @@ export default {
   color: rgb(134, 19, 19);
 }
 
+.icon {
+  height: 1em;
+  width: 1em;
+}
+
 .contributorList {
+  display: flex;
   list-style: none;
   max-height: 300px;
   overflow-y: auto;

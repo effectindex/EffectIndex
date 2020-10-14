@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Cerebrovascular Effects
-      <fa
-        :icon="['far', 'brain']"
-        class="fa categoryIcon"
+      <Icon
+        filename="brain.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -27,10 +27,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

@@ -17,9 +17,11 @@
           class="fileButton"
           @click.stop="popout"
         > 
-          <fa 
-            :icon="['far', 'external-link']"
-            class=""
+          <Icon
+            :filename="'external-link.svg'"
+            height="50px"
+            width="50px"
+            color="white"
           />
         </a>
       </div>
@@ -48,7 +50,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     type: {
       type: String,

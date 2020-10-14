@@ -2,9 +2,8 @@
   <div class="pageContent">
     <h1>
       Visual Distortions
-      <fa
-        :icon="['far', 'exchange']"
-        class="fa categoryIcon"
+      <Icon
+        :filename="'exchange.svg'"
       /> 
     </h1>
 
@@ -27,10 +26,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

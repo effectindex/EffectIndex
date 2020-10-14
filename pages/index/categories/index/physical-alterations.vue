@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Physical Alterations
-      <fa
-        :icon="['far', 'cogs']"
-        class="fa categoryIcon"
+      <Icon
+        filename="cogs.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -31,10 +31,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

@@ -31,17 +31,17 @@
         >
           {{ subarticle.title }} : {{ subarticle.id }}
           <span class="subarticleInput__icons">
-            <a @click="moveArticleUp(index)"> <fa
-              :icon="['far', 'arrow-up']"
-              class="fa subarticleInput__icon"
+            <a @click="moveArticleUp(index)"> <Icon
+              filename="arrow-up.svg"
+              class="subarticleInput__icon"
             /> </a>
-            <a @click="moveArticleDown(index)"> <fa
-              :icon="['far', 'arrow-down']"
-              class="fa subarticleInput__icon"
+            <a @click="moveArticleDown(index)"> <Icon
+              filename="arrow-down.svg"
+              class="subarticleInput__icon"
             /> </a>
-            <a @click="deleteArticle(index)"> <fa
-              :icon="['far', 'times-circle']"
-              class="fa subarticleInput__icon"
+            <a @click="deleteArticle(index)"> <Icon
+              filename="times-circle.svg"
+              class="subarticleInput__icon"
             /> </a>
           </span>
         </li>
@@ -51,7 +51,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     value: {
       type: Array,
@@ -134,11 +139,17 @@ export default {
     list-style: none;
   }
 
+  .subarticleInput__icon {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+  }
+
   .subarticleInput__icons {
     padding-left: 2em;
   }
 
-  .subarticleInput__icons .subarticleInput__icon {
+  .subarticleInput__icons {
     padding: 0 0.5em;
   }
 </style>

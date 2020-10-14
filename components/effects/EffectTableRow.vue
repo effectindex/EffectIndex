@@ -14,22 +14,22 @@
     </td>
     <td class="effectTableRow__editButton">
       <nuxt-link :to="'/admin/effects/' + effect.url">
-        <fa
-          :icon="['far', 'edit']"
-          class="fa"
+        <Icon
+          class="effectTableRow__icon"
+          filename="edit.svg"
           style="cursor: pointer;"
         />
       </nuxt-link>
     </td>
     <td>
       <a 
-        style="color: red; cursor: pointer;"
+        style="cursor: pointer;"
         @click="deleteEffect(effect._id)"
       >
-        <fa
-          :icon="['far', 'times']"
-          class="fa"
-          style="color: red; cursor: pointer;"
+        <Icon
+          class="effectTableRow__icon"
+          filename="times.svg"
+          color="red"
         />
       </a>
     </td>
@@ -37,7 +37,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     effect: {
       type: Object,
@@ -66,5 +71,15 @@ export default {
 
 .effectTableRow__editButton {
   padding-right: 1em;
+}
+
+.effectTableRow__icon {
+  height: 1em;
+  width: 1em;
+  opacity: 0.75;
+}
+
+.effectTableRow__icon:hover {
+  opacity: 1;
 }
 </style>

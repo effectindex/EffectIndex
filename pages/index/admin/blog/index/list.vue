@@ -22,22 +22,23 @@
             </nuxt-link>
           </td>
           <td> {{ formatDate(post.datetime) }} </td>
-          <td> 
+          <td style="width: 30px;"> 
             <nuxt-link :to="'/admin/blog/' + post.slug">
-              <fa
-                :icon="['far', 'edit']"
-                class="fa"
+              <Icon
+                filename="edit.svg"
+                style="height: 1em; width: 1em;"
               />
             </nuxt-link> 
           </td>
-          <td> 
+          <td style="width: 30px;"> 
             <a 
-              style="color: red; cursor: pointer;"
+              style="cursor: pointer;"
               @click="deletePost(post._id)"
             >
-              <fa
-                :icon="['far', 'times']"
-                class="fa"
+              <Icon
+                filename="times.svg"
+                style="height: 1em; width: 1em;"
+                color="red"
               /> </a>
           </td>
         </tr>
@@ -47,21 +48,25 @@
 </template>
 
 <script>
-  import fecha from 'fecha';
+import fecha from 'fecha';
+import Icon from '@/components/Icon';
 
-  export default {
-      scrollToTop: true,
-      computed: {
-        blogPosts() {
-          return this.$store.state.blogPosts;
-        }
-      },
-      async fetch ( { store } ) { await store.dispatch('getBlogPosts'); },
-      methods: { 
-        async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); },
-        formatDate: (date) => fecha.format(new Date(date), 'MMMM D, YYYY hh:mm:ss')
-      },
-  };
+export default {
+    components: {
+      Icon
+    },
+    scrollToTop: true,
+    computed: {
+      blogPosts() {
+        return this.$store.state.blogPosts;
+      }
+    },
+    async fetch ( { store } ) { await store.dispatch('getBlogPosts'); },
+    methods: { 
+      async deletePost( id ) { this.$store.dispatch('deleteBlogPost', id); },
+      formatDate: (date) => fecha.format(new Date(date), 'MMMM D, YYYY hh:mm:ss')
+    },
+};
 </script>
 
 <style scoped>
@@ -83,7 +88,6 @@
   }
 
   td {
-      min-width: 200px;
       padding: 0.5em;
   }
 </style>

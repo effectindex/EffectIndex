@@ -62,18 +62,20 @@
           class="lightBox__control previousImage"
           @mousedown="previousImage"
         >
-          <fa
-            :icon="['far', 'chevron-double-left']"
-            class="fa"
+          <Icon
+            filename="chevron-double-left.svg"
+            class="lightBox__icon"
+            color="white"
           />
         </a>
         <a
           class="lightBox__control nextImage"
           @mousedown="nextImage"
         >
-          <fa
-            :icon="['far', 'chevron-double-right']"
-            class="fa"
+          <Icon
+            filename="chevron-double-right.svg"
+            class="lightBox__icon"
+            color="white"
           />
         </a>
       </div>
@@ -123,10 +125,12 @@
 
 <script>
 import ImageDetails from "./LightBox__imageDetails";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     ImageDetails,
+    Icon
   },
   props: {
     title: {
@@ -251,6 +255,13 @@ export default {
 </script>
 
 <style>
+.lightBox__icon {
+  width: 40px;
+  height: 45px;
+  border: 1px solid red;
+  opacity: 0.6;
+}
+
 .lightBox__canvas {
   height: 530px;
   overflow: hidden;
@@ -260,16 +271,16 @@ export default {
 }
 
 .lightBox__control {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
   height: 100px;
   width: 50px;
-  line-height: 100px;
-  font-size: 30px;
   position: absolute;
   top: calc(50% - 50px);
   background-color: rgba(0, 0, 0, 0.4);
-  opacity: 0.75;
+  opacity: 0.65;
   color: white;
   border-radius: 5px;
 }

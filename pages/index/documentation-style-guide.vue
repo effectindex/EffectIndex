@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Documentation Style Guide 
-      <fa
-        :icon="['far', 'book-open']"
-        class="fa categoryIcon"
+      <Icon
+        filename="book-open.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -81,3 +81,12 @@
     </ul>
   </div>
 </template>
+
+<script>
+import Icon from '@/components/Icon';
+export default {
+  components: {
+    Icon
+  }
+};
+</script>

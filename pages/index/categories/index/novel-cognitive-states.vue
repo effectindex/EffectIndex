@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Novel Cognitive States
-      <fa
-        :icon="['far', 'lightbulb']"
-        class="fa categoryIcon"
+      <Icon
+        filename="lightbulb.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -35,10 +35,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

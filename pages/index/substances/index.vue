@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent substanceArticles">
-    <fa
-      :icon="['far', 'flask']"
-      class="fa categoryIcon"
+    <Icon
+      filename="flask.svg"
+      class="categoryIcon"
     />
     <h1> Substance Index </h1>
 
@@ -30,7 +30,7 @@
     <div class="summaryColumns">
       <div class="categoriesContainer">
         <category
-          :icon="['fas', 'chart-line']"
+          icon="chart-line.svg"
           title="Intensity Scales"
         >
           <panel
@@ -67,7 +67,7 @@
         </category>
 
         <category
-          :icon="['far', 'eye']"
+          icon="eye.svg"
           link="/summaries/psychedelics/visual"
           title="Psychedelics (Visual)"
         >
@@ -140,7 +140,7 @@
         </category>
 
         <category
-          :icon="['far', 'user']"
+          icon="user.svg"
           title="Psychedelics (Cognitive)"
           link="/summaries/psychedelics/cognitive"
         >
@@ -227,7 +227,7 @@
         </category>
 
         <category
-          :icon="['far', 'cogs']"
+          icon="cogs.svg"
           title="Psychedelics (Miscellaneous)"
           link="/summaries/psychedelics/miscellaneous"
         >
@@ -318,7 +318,7 @@
       <div class="categoriesContainer">
         <category
           title="Dissociatives"
-          image="/icons/disconnective.svg"
+          icon="disconnective.svg"
           link="/summaries/dissociatives/"
         >
           <panel
@@ -396,7 +396,7 @@
       <div class="categoriesContainer">
         <category
           title="Deliriants"
-          image="/icons/deliriant.svg"
+          icon="deliriant.svg"
           link="/summaries/deliriants/"
         >
           <panel
@@ -541,11 +541,13 @@
 <script>
 import Panel from '@/components/Panel';
 import Category from '@/components/Category';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     Panel,
-    Category
+    Category,
+    Icon
   },
   head() {
     return {
@@ -585,7 +587,6 @@ export default {
 
 
 <style scoped>
-
   h4 {
     letter-spacing: 2px;
     color: #444;

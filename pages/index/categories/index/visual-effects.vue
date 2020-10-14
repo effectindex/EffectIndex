@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Visual Effects
-      <fa
-        :icon="['far', 'eye']"
-        class="fa categoryIcon"
+      <Icon
+        filename="eye.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -20,7 +20,7 @@
       <Column>
         <Panel
           title="Enhancements"
-          :icon="['far', 'arrow-up']"
+          icon="arrow-up.svg"
         >
           <PanelEffectList
             :tags="['visual', 'enhancement']"
@@ -29,7 +29,7 @@
         </Panel>
         <Panel
           title="Suppressions"
-          :icon="['far', 'arrow-down']"
+          icon="arrow-down.svg"
         >
           <PanelEffectList
             :tags="['visual', 'suppression']"
@@ -66,13 +66,15 @@ import Panel from '@/components/categories/Panel';
 import Column from '@/components/categories/Column';
 import Columns from '@/components/categories/Columns';
 import PanelEffectList from '@/components/categories/PanelEffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     Panel,
     Column,
     Columns,
-    PanelEffectList
+    PanelEffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

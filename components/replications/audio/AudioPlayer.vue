@@ -5,9 +5,9 @@
         v-if="state === 'UNREADY'"
         @mousedown="load()"
       >
-        <fa
-          :icon="['far', 'play']"
-          class="fa"
+        <Icon
+          filename="play.svg"
+          class="audioPlayer__icon"
         /> 
       </a>
       <a
@@ -22,18 +22,18 @@
         v-else-if="state === 'STOPPED' || state === 'PAUSED'"
         @mousedown="play()"
       >
-        <fa
-          :icon="['far', 'play']"
-          class="fa"
+        <Icon
+          filename="play.svg"
+          class="audioPlayer__icon"
         /> 
       </a>
       <a
         v-else-if="state === 'PLAYING'"
         @mousedown="pause()"
       >
-        <fa
-          :icon="['far', 'pause']"
-          class="fa"
+        <Icon
+          filename="pause.svg"
+          class="audioPlayer__icon"
         /> 
       </a>
     </div>
@@ -62,10 +62,14 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
 let WaveSurfer = undefined;
 if (process.browser) WaveSurfer = require("wavesurfer.js");
 
 export default {
+  components: {
+    Icon
+  },
   props: {
     src: {
       type: String,
@@ -176,6 +180,12 @@ export default {
 
 
 <style>
+
+.audioPlayer__icon {
+  height: 1em;
+  width: 1em;
+  opacity: 0.6;
+}
 
 .spinner {
   color: black;

@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Cardiovascular Effects
-      <fa
-        :icon="['far', 'frown']"
-        class="fa categoryIcon"
+      <Icon
+        filename="frown.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -27,6 +27,7 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {

@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1> 
       Categories 
-      <fa
-        :icon="['far', 'sitemap']"
-        class="fa categoryIcon"
+      <Icon
+        filename="sitemap.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -16,3 +16,13 @@
     </ul>
   </div>
 </template>
+
+<script>
+import Icon from '@/components/Icon';
+
+export default {
+  components: {
+    Icon
+  }  
+};
+</script>

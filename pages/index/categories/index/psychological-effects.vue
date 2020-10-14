@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Psychological Effects
-      <fa
-        :icon="['far', 'psychological.svg']"
-        class="fa categoryIcon"
+      <Icon
+        filename="psychological.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -31,10 +31,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

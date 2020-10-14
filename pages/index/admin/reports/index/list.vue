@@ -31,19 +31,18 @@
               {{ tag }}
             </span>
           </td>
-          <td>
+          <td style="display: flex;">
             <nuxt-link :to="'/admin/reports/' + report._id">
-              <fa
-                :icon="['far', 'edit']"
-                class="fa"
-                style="cursor: pointer; padding-right: 2em;"
+              <Icon
+                filename="edit.svg"
+                style="cursor: pointer; height: 1em; width: 1em; padding-right: 2em;"
               /> 
             </nuxt-link> 
             <a @click="deleteReport(report._id)"> 
-              <fa
-                :icon="['far', 'times']"
-                class="fa"
-                style="color: red; cursor: pointer;"
+              <Icon
+                filename="times.svg"
+                style="height: 1em; width: 1em; cursor: pointer;"
+                color="red"
               />
             </a>
           </td>
@@ -54,7 +53,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   computed: {
     reports () {
       return this.$store.state.reports;

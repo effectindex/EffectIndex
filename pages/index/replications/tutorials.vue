@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Tutorials      
-      <fa
-        :icon="['far', 'list-alt']"
-        class="fa categoryIcon"
+      <Icon
+        filename="list-alt.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -64,10 +64,12 @@
 
 <script>
 import ExtLink from "@/components/ExtLink";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    ExtLink
+    ExtLink,
+    Icon
   },
   head() {
     return {

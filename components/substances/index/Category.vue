@@ -3,17 +3,12 @@
     class="categoryContainer"
   >
     <h3 class="categoryTitle">
-      {{ title }} 
-      <fa
-        v-if="icon"
-        :icon="icon"
+      {{ title }}  sadfsdfsd
+      <Icon
+        v-show="icon"
+        :filename="icon"
         class="icon"
       />
-      <img
-        v-show="image" 
-        :src="image"
-        class="image"
-      >
     </h3>
     <div class="actionContainer">
       <slot />
@@ -22,7 +17,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     title: {
       type: String,
@@ -41,7 +41,12 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
+.icon {
+  height: 1em;
+  width: 1em;
+}
+
 .categoryContainer {
   flex: 1;
   min-width: 250px;
@@ -57,11 +62,6 @@ export default {
 .icon {
   margin: 0 5px;
   height: 1.1em;
-}
-
-.image {
-  height: 1.1em;
-  opacity: 0.75;
 }
 
 .categoryTitle {

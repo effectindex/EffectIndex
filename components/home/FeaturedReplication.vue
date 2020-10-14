@@ -16,16 +16,18 @@
         class="replicationControls previous"
         @click.stop="previousImage"
       >
-        <fa
-          :icon="['far', 'chevron-double-left']"
+        <Icon
+          filename="chevron-double-left.svg"
+          color="white"
         />
       </div>
       <div 
         class="replicationControls next"
         @click.stop="nextImage"
       >
-        <fa
-          :icon="['far', 'chevron-double-right']"
+        <Icon
+          filename="chevron-double-right.svg"
+          color="white"
         />
       </div>
       <div 
@@ -37,27 +39,32 @@
           v-for="(effect, i) in replicatedEffects"
           :key="effect._id" 
           class="replicationEffect"
-        > 
-          <nuxt-link :to="'/effects/' + effect.url"> {{ effect.name }}</nuxt-link>
-          <span v-if="i < (replicatedEffects.length - 1)">, &nbsp;</span>  
+        ><span v-if="i > 0 && (i === replicatedEffects.length - 1)"> and </span>
+          <span v-else-if="i > 0">,</span>
+          <nuxt-link :to="'/effects/' + effect.url">
+            {{ effect.name }}</nuxt-link>
         </span>
         <!-- maybe add substances here -->
         <br>
-        <span class="replicationArtist"> {{ replication.artist }} </span>
+        <span class="replicationArtist"> by {{ replication.artist }} </span>
       </div>
     </div>
     <div class="replicationsStub">
       For more, see the <nuxt-link to="/replications/">
-        replications gallery
-      </nuxt-link>.
+        replications gallery.
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
 import { shuffle } from 'lodash';
+import Icon from '@/components/Icon';
 
 export default {
+  components: {
+    Icon
+  },
   data() {
     return {
       index: undefined
@@ -156,6 +163,11 @@ export default {
 </script>
 
 <style scoped>
+  .icon {
+    height: 50px;
+    width: 50px;
+  }
+
   .replicationsContainer {
     display: flex;
     flex-direction: row;
@@ -176,6 +188,7 @@ export default {
     position: relative;
     min-width: 250px;
     height: 250px;
+    background-color: rgb(50, 50, 50);
     background-size: auto 250px;
     background-position: center;
     background-repeat: no-repeat;
@@ -186,13 +199,14 @@ export default {
     user-select: none;
     display: flex;
     z-index: 5;
-    opacity: 0.6;
     color: #EEE;
+    opacity: 0.6;
     position: absolute;
     top: calc(50% - 75px);
     filter: drop-shadow(0 0 5px black);
     padding: 0.5em;
     justify-content: center;
+    align-items: center;
     height: 150px;
     width: 50px;
   }
@@ -215,23 +229,28 @@ export default {
   .replicationImageDescription {
     position: absolute;
     display: inline-block;
-    font-size: 13pt;
+    font-size: 12.5pt;
     bottom: 0;
-    padding: 0.5em;
+    padding: 2em 0.5em 0.5em 0.5em;
     line-height: 1.25em;
+    letter-spacing: 0px;
     width: 100%;
     color: #EEE;
     cursor:default;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.6);
+    background: rgb(24,24,24);
+    background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0) 100%); 
     text-shadow: 2px 2px 1px black;
+  }
+
+  .replicationImageDescription a:hover {
+    color: #55cca2;
   }
 
   .replicationsDescription {
     flex: 1;
     min-width: 250px;
     padding-top: 1em;
-
   }
 
   .replicationsDescriptionText {
@@ -245,6 +264,7 @@ export default {
 
   .replicationArtist {
     font-style: italic;
+    font-size: 0.8em;
   }
 
   .replicationsStub {

@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Visual Suppressions
-      <fa
-        :icon="['far', 'arrow-down']"
-        class="fa categoryIcon"
+      <Icon
+        filename="arrow-down.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -27,10 +27,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

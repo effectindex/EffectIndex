@@ -8,14 +8,16 @@
         v-if="!no || (Number(no) === 1)"
         :href="'#ref-' + from"
       > 
-        <fa
-          :icon="['far', 'angle-double-up']"
-          style="height: 1em;"
+        <Icon
+          filename="angle-double-up.svg"
+          style="height: 1em; width: 0.8em; float: left;"
+          color="#3d9991"
         /> </a>
       <span v-else> 
-        <fa
-          :icon="['far', 'angle-double-up']"
-          style="height: 1em;"
+        <Icon
+          filename="angle-double-up.svg"
+          style="height: 1em; width: 0.8em; float: left;"
+          color="#3d9991"
         />
         <a 
           v-for="num in Number(no)"
@@ -29,7 +31,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     from: {
       type: String,

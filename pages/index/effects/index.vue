@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent">
-    <fa
-      :icon="['far', 'sitemap']"
-      class="fa categoryIcon"
+    <Icon
+      filename="sitemap.svg"
+      class="categoryIcon"
     />
     <h1> Subjective Effect Index </h1>
     <description />
@@ -17,7 +17,7 @@
       >
         <column>
           <category 
-            :icon="['far', 'eye']"
+            icon="eye.svg"
             title="Visual Effects"
             page="/categories/visual-effects"
           >
@@ -48,7 +48,7 @@
           </category>
 
           <category 
-            :icon="['far', 'volume-up']"
+            icon="volume-up.svg"
             title="Auditory Effects"
             page="/categories/auditory-effects"
           >
@@ -56,7 +56,7 @@
           </category>
 
           <category 
-            :icon="['far', 'hand-paper']"
+            icon="hand-paper.svg"
             title="Tactile Effects"
             page="/categories/tactile-effects"
           >
@@ -64,7 +64,7 @@
           </category>
 
           <category 
-            :image="'/icons/disconnective.svg'"
+            icon="disconnective.svg"
             title="Disconnective Effects"
             page="/categories/disconnective-effects"
           >
@@ -72,7 +72,7 @@
           </category>
 
           <category 
-            :icon="['far', 'utensils']"
+            icon="utensils.svg"
             title="Smell &amp; Taste Effects"
             page="/categories/smell-and-taste-effects"
           >
@@ -87,7 +87,7 @@
           </category>
 
           <category 
-            :icon="['far', 'cogs']"
+            icon="cogs.svg"
             title="Multisensory Effects"
             page="/categories/multisensory-effects"
           >
@@ -99,7 +99,7 @@
 
         <column>
           <category  
-            :icon="['far', 'user']"
+            icon="user.svg"
             title="Cognitive Effects"
             page="/categories/cognitive-effects"
           >
@@ -133,7 +133,7 @@
 
         <column>
           <category  
-            :icon="['far', 'heart-rate']"
+            icon="heart-rate.svg"
             title="Physical Effects"
             page="/categories/physical-effects"
           >
@@ -154,7 +154,7 @@
           </category>
         
           <category
-            :icon="['far', 'frown']"
+            icon="frown.svg"
             title="Uncomfortable Effects"
             page="/categories/uncomfortable-physical-effects"
           >
@@ -185,7 +185,7 @@
         </blob>
         <column>
           <category 
-            :icon="['far', 'eye']"
+            icon="eye.svg"
             title="Visual Effects"
             page="/categories/visual-effects"
           >
@@ -218,7 +218,7 @@
 
         <column>
           <category 
-            :icon="['far', 'volume-up']"
+            icon="volume-up.svg"
             title="Auditory Effects"
             page="/categories/auditory-effects"
           >
@@ -226,7 +226,7 @@
           </category>
 
           <category 
-            :icon="['far', 'hand-paper']"
+            icon="hand-paper.svg"
             title="Tactile Effects"
             page="/categories/tactile-effects"
           >
@@ -234,7 +234,7 @@
           </category>
 
           <category 
-            image="/icons/disconnective.svg"
+            icon="disconnective.svg"
             title="Disconnective Effects"
             page="/categories/disconnective-effects"
           >
@@ -244,7 +244,7 @@
 
         <column>
           <category 
-            :icon="['far', 'utensils']"
+            icon="utensils.svg"
             title="Smell &amp; Taste Effects"
             page="/categories/smell-and-taste-effects"
           >
@@ -259,7 +259,7 @@
           </category>
 
           <category 
-            :icon="['far', 'cogs']"
+            icon="cogs.svg"
             title="Multisensory Effects"
             page="/categories/multisensory-effects"
           >
@@ -280,7 +280,7 @@
 
         <column>
           <category 
-            :icon="['far', 'arrow-up']"
+            icon="arrow-up.svg"
             title="Enhancements"
             page="/categories/cognitive-enhancements"
           >
@@ -289,7 +289,7 @@
             />
           </category>
           <category  
-            :icon="['far', 'arrow-down']"
+            icon="arrow-down.svg"
             title="Suppressions"
             page="/categories/cognitive-suppressions"
           >
@@ -300,7 +300,7 @@
         </column>
         <column>
           <category
-            :icon="['far', 'lightbulb']" 
+            icon="lightbulb.svg"
             title="Novel States"
             page="/categories/novel-cognitive-states"
           >
@@ -309,7 +309,7 @@
             />
           </category>
           <category  
-            image="/icons/psychological.svg"
+            icon="psychological.svg"
             title="Psychological States"
             page="/categories/psychological-effects"
           >
@@ -320,7 +320,7 @@
         </column>
         <column>
           <category
-            :icon="['far', 'infinity']"
+            icon="infinity.svg"
             title="Transpersonal States"
             page="/categories/transpersonal-effects"
           >
@@ -340,7 +340,7 @@
         </blob>
         <column>
           <category  
-            :icon="['far', 'heart-rate']"
+            icon="heart-rate.svg"
             title="Physical Effects"
           >
             <actions
@@ -363,7 +363,7 @@
 
         <column>
           <category
-            :icon="['far', 'frown']"
+            icon="frown.svg"
             title="Uncomfortable Effects"
             page="/categories/uncomfortable-physical-effects"
           >
@@ -397,6 +397,7 @@ import Column from "@/components/effects/index/Column";
 import Actions from "@/components/effects/index/Actions";
 import Description from "@/components/effects/index/Description";
 import Blob from "@/components/effects/index/Blob";
+import Icon from "@/components/Icon";
 
 export default {
   components: {
@@ -406,7 +407,8 @@ export default {
     Actions,
     Column,
     Description,
-    Blob
+    Blob,
+    Icon
   },
   head() {
     return {

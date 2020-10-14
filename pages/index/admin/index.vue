@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent admin">
-    <fa
-      :icon="['far', 'trash']"
-      class="fa categoryIcon"
+    <Icon
+      filename="trash.svg"
+      class="categoryIcon"
     />
     <h1> Administration </h1>
     <p> The place to do secret things when nobody's looking. </p>
@@ -98,10 +98,12 @@
 
 <script>
 import ExtLink from "@/components/ExtLink";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    ExtLink
+    ExtLink,
+    Icon
   },
   computed: {
     role() {

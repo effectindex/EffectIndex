@@ -1,9 +1,10 @@
 <template>
   <section class="report__infoBox">
     <h2 class="report__infoBoxHeader"> 
-      <fa
-        :icon="['far', 'capsules']"
-        class="fa icon"
+      <Icon
+        filename="capsules.svg"
+        class="categoryIcon"
+        style="height: 1em; width: 1.4em; padding-right: 10px;"
       /> Substances
     </h2>
     <div class="report__infoBoxTableContainer">
@@ -39,7 +40,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     substances: {
       type: Array,

@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Auditory Effects
-      <fa
-        :icon="['far', 'volume-up']"
-        class="fa categoryIcon"
+      <Icon
+        filename="volume-up"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -25,10 +25,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

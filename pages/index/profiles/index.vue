@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       People
-      <fa
-        :icon="['far', 'users']"
-        class="fa categoryIcon"
+      <Icon
+        filename="users.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -30,7 +30,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   computed: {
     profiles() {
       return this.$store.state.profiles;
@@ -49,12 +54,7 @@ export default {
 </script>
 
 <style scoped>
-.pageContent .categoryIcon {
-  float: right;
-  font-size: 35px;
-  opacity: 0.6;
-  margin: 5px 0px 0px 15px;
-}
+
 .profileList {
   padding: 0;
   display: flex;

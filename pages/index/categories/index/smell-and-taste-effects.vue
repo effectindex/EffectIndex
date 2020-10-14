@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Smell and Taste effects
-      <fa
-        :icon="['far', 'utensils']"
-        class="fa categoryIcon"
+      <Icon
+        filename="utensils.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -28,10 +28,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

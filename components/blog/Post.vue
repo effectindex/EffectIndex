@@ -9,18 +9,18 @@
           :to="'/admin/blog/' + post.slug"
           class="blogPost__edit"
         > 
-          <fa
-            :icon="['far', 'edit']"
-            class="fa"
+          <Icon
+            :filename="'edit.svg'"
+            color="green"
           /> 
         </nuxt-link>    
         <a 
           class="blogPost__delete"
           @click="$emit('delete-post', post._id)"
         >  
-          <fa 
-            :icon="['far', 'times']"
-            class="fa"
+          <Icon
+            :filename="'times.svg'"
+            color="red"
           />
         </a>
       </div>
@@ -49,7 +49,12 @@
 
 <script>
 import fecha from "fecha";
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     post: {
       type: Object,
@@ -90,11 +95,4 @@ export default {
   padding-right: 0.5em;
 }
 
-.blogPost__editButton {
-  color: rgb(35, 8, 155);
-}
-
-.blogPost__delete {
-  color: red;
-}
 </style>

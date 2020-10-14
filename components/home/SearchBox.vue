@@ -2,8 +2,8 @@
   <div class="searchBox">
     <div class="inputContainer">
       <div class="spyglass">
-        <fa 
-          :icon="['far', 'search']"
+        <Icon
+          filename="search.svg"
         />
       </div>
       <input 
@@ -19,8 +19,8 @@
         class="clearButton"
         @click="clear"
       >
-        <fa 
-          :icon="['far', 'times-circle']"
+        <Icon
+          filename="times-circle.svg"
         />
       </div>
     </div>
@@ -29,8 +29,12 @@
 
 <script>
 import { debounce } from 'lodash';
+import Icon from '@/components/Icon';
 
 export default {
+  components: {
+    Icon
+  },
   computed: {
     searchInput() {
       return this.$store.state.search_input;
@@ -60,6 +64,12 @@ export default {
 </script>
 
 <style scoped>
+
+  .icon {
+    height: 1.1em;
+    width: 1.1em;
+    opacity: 0.3;
+  }
 
   input {
     font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -121,7 +131,7 @@ export default {
     float: right;
   }
 
-  @media(max-width: 400px) {
+  @media(max-width: 550px) {
     .searchBox {
       float: none;
       margin: 1em auto;

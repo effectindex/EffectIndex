@@ -268,9 +268,7 @@ export default {
 <style>
 .reportEditor__inputTitle {
   width: 100%;
-  height: 50px;
   font-size: 25px;
-  padding: 10px;
 }
 
 .reportEditor__textarea {
@@ -284,6 +282,7 @@ export default {
 
 .reportEditor__textarea,
 .reportEditor__inputTitle {
+  margin-top: 0.25em;
   border: 1px solid #aaaaaa;
 }
 

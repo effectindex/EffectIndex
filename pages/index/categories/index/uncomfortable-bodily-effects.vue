@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Uncomfortable Bodily Effects
-      <fa
-        :icon="['far', 'brain']"
-        class="fa categoryIcon"
+      <Icon
+        filename="user.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -31,10 +31,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

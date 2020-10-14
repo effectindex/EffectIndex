@@ -29,6 +29,11 @@ export default {
 </script>
 
 <style>
+.reference {
+  font-size: 0.8em;
+  letter-spacing: -1px;
+}
+
 .reference:target {
   font-weight: bold;
 }

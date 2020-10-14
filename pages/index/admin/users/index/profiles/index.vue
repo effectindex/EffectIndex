@@ -24,9 +24,9 @@
             <nuxt-link
               :to="'/admin/users/profiles/' + profile._id"
             >
-              <fa
-                :icon="['far', 'edit']"
-                class="fa"
+              <Icon
+                filename="edit.svg"
+                style="height: 1em; width: 1em; display: inline-block;"
               />
               (sort: {{ profile.sortOrder }})
             </nuxt-link>
@@ -36,9 +36,10 @@
               class="delete"
               @click="deleteProfile(profile._id)"
             >
-              <fa
-                :icon="['far', 'times']"
-                class="fa"
+              <Icon
+                filename="times.svg"
+                style="height: 1em; width: 1em;"
+                color="red"
               />
             </a>
           </td>
@@ -49,7 +50,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   computed: {
     profiles() {
       return this.$store.state.profiles;

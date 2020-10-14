@@ -1,25 +1,27 @@
 <template>
   <div class="pageContent">
     <article v-show="effect.name">
-      <client-only>
-        <div v-if="$auth.loggedIn">
-          <nuxt-link
-            :to="'/admin/effects/' + effect.url"
-            append
-          >
-            <fa
-              :icon="['far', 'edit']"
-              class="fa"
-            />
-          </nuxt-link>
-        </div>
-      </client-only>
-      <fa
-        :icon="['far', icon]"
-        class="fa categoryIcon"
+      <Icon
+        :filename="icon"
+        class="categoryIcon"
       />
       <div v-show="hasSection('description_raw')">
-        <h1> {{ effect.name }} </h1>
+        <h1> 
+          {{ effect.name }}       
+          <client-only>
+            <nuxt-link
+              v-if="$auth.loggedIn"
+              :to="'/admin/effects/' + effect.url"
+              append
+            >
+              <Icon
+                filename="edit.svg"
+                style="display: inline-block; margin-left: 10px; height: 20px; width: 20px;"
+                color="#27635d"
+              />
+            </nuxt-link>
+          </client-only>
+        </h1>
         <formatted-document :document="effect.description_formatted" />
       </div>
 
@@ -149,6 +151,7 @@ import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
 import Tag from "@/components/effects/Tag";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
+import Icon from '@/components/Icon';
 
 export default {
   name: 'Effect',
@@ -158,7 +161,8 @@ export default {
     LightBox,
     ExtLink,
     Tag,
-    AudioPlayer
+    AudioPlayer,
+    Icon
   },
   computed: {
     icon() {
@@ -179,11 +183,11 @@ export default {
 
       if (Array.isArray(tags)) {
         for (let tag in icons) {
-          if (tags.indexOf(tag) > -1) return icons[tag];
+          if (tags.indexOf(tag) > -1) return icons[tag] + '.svg';
         }
       }
 
-      return "user";
+      return "user.svg";
     }
   },
   scrollToTop: true,

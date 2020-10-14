@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Search 
-      <fa 
-        :icon="['far', 'search']"
-        class="fa categoryIcon"
+      <Icon
+        filename="search.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -21,8 +21,9 @@
         class="clearButton"
         @click="clear"
       >
-        <fa 
-          :icon="['far', 'times-circle']"
+        <Icon
+          filename="times-circle.svg"
+          style="height: 1.25em; width: 1.25em;"
         />
       </div>
     </div>
@@ -63,12 +64,14 @@
 <script>
 import EffectResult from "@/components/search/EffectResult";
 import ReportResult from "@/components/search/ReportResult";
+import Icon from '@/components/Icon';
 import { debounce } from "lodash";
 
 export default {
   components: {
     EffectResult,
-    ReportResult
+    ReportResult,
+    Icon
   },
   scrollToTop: true,
   computed: {

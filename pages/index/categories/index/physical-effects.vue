@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Physical Effects
-      <fa
-        :icon="['far', 'user']"
-        class="fa categoryIcon"
+      <Icon
+        filename="user.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -20,7 +20,7 @@
       <Column>
         <Panel
           title="Enhancements"
-          :icon="['far', 'arrow-up']"
+          icon="arrow-up.svg"
         >
           <PanelEffectList
             :tags="['physical', 'enhancement']"
@@ -29,7 +29,7 @@
         </Panel>
         <Panel
           title="Suppressions"
-          :icon="['far', 'arrow-down']"
+          icon="arrow-down.svg"
         >
           <PanelEffectList
             :tags="['physical', 'suppression']"
@@ -38,7 +38,7 @@
         </Panel>
         <Panel
           title="Alterations"
-          :icon="['far', 'arrow-down']"
+          icon="arrow-down.svg"
         >
           <PanelEffectList
             :tags="['physical', 'alteration']"
@@ -49,7 +49,7 @@
       <Column>
         <Panel
           title="Cardiovascular"
-          :icon="['far', 'lightbulb']"
+          icon="lightbulb.svg"
         >
           <PanelEffectList
             :tags="['cardiovascular']"
@@ -58,7 +58,7 @@
         </Panel>
         <Panel
           title="Cerebrovascular"
-          image="/icons/psychological.svg"
+          icon="psychological.svg"
         >
           <PanelEffectList
             :tags="['cerebrovascular']"
@@ -67,7 +67,7 @@
         </Panel>
         <Panel
           title="Bodily"
-          :icon="['far', 'infinity']"
+          icon="infinity.svg"
         >
           <PanelEffectList
             :tags="['bodily']"
@@ -84,13 +84,15 @@ import Panel from '@/components/categories/Panel';
 import Column from '@/components/categories/Column';
 import Columns from '@/components/categories/Columns';
 import PanelEffectList from '@/components/categories/PanelEffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     Panel,
     Column,
     Columns,
-    PanelEffectList
+    PanelEffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

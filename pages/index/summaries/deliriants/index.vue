@@ -40,9 +40,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Visual Effects
-        <fa 
-          :icon="['far', 'eye']"
-          class="fa actionIcon"
+        <Icon 
+          filename="eye.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -61,9 +61,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Auditory Effects
-        <fa 
-          :icon="['far', 'volume-up']"
-          class="fa actionIcon"
+        <Icon 
+          filename="volume-up.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -82,9 +82,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Tactile Effects
-        <fa 
-          :icon="['far', 'paper']"
-          class="fa actionIcon"
+        <Icon 
+          filename="paper.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -103,9 +103,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Multisensory Effects
-        <fa 
-          :icon="['far', 'cogs']"
-          class="fa actionIcon"
+        <Icon 
+          filename="cogs.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -128,9 +128,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Cognitive Effects
-        <fa 
-          :icon="['far', 'user']"
-          class="fa actionIcon"
+        <Icon 
+          filename="user.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -149,9 +149,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Physical Effects
-        <fa 
-          :icon="['far', 'heart-rate']"
-          class="fa actionIcon"
+        <Icon 
+          filename="heart-rate.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -170,9 +170,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Uncomfortable Physical Effects
-        <fa 
-          :icon="['far', 'frown']"
-          class="fa actionIcon"
+        <Icon 
+          filename="frown.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -212,19 +212,16 @@
   </div>
 </template>
 
- dissociatives
-- substance summary index
-- visual psychedelic effects
-- deliriant subjective effects
-
 <script>
 import CaptionedImage from "@/components/CaptionedImage";
 import LongSummary from "@/components/effects/LongSummary";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     CaptionedImage,
-    LongSummary
+    LongSummary,
+    Icon
   },
   head() {
     return {

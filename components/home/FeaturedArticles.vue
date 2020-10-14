@@ -36,8 +36,8 @@
 
       <div class="featuredArticlesStub">
         For more, see the <nuxt-link to="/effects/">
-          Subjective Effect Index
-        </nuxt-link>.
+          Subjective Effect Index.
+        </nuxt-link>
       </div>
     </div>
   </div>

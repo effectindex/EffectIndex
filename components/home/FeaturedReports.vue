@@ -12,8 +12,8 @@
     </div>
     <div class="featuredReportsStub">
       For more, see the <nuxt-link to="/reports/">
-        reports section
-      </nuxt-link>.
+        reports section.
+      </nuxt-link>
     </div>
   </div>
 </template>

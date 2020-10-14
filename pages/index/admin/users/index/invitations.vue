@@ -21,9 +21,10 @@
             style="color: red; cursor: pointer;"
             @click="deleteInvitation(invitation._id)"
           >          
-            <fa 
-              :icon="['far', 'times']"
-              class="fa"
+            <Icon
+              filename="times.svg"
+              color="red"
+              style="cursor: pointer; height: 1em; width: 1em;"
             /> 
           </a>
         </td>
@@ -34,8 +35,12 @@
 
 <script>
 import fecha from "fecha";
+import Icon from '@/components/Icon';
 
 export default {
+  components: {
+    Icon
+  },
   computed: {
     invitations() {
       return this.$store.state.admin.invitations;

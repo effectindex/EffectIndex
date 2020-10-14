@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Visual Enhancements
-      <fa
-        :icon="['far', 'arrow-up']"
-        class="fa categoryIcon"
+      <Icon
+        filename="arrow-up.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -27,10 +27,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

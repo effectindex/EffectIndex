@@ -1,9 +1,9 @@
 <template>
   <section class="report__infoBox">
     <h2 class="report__infoBoxHeader"> 
-      <fa
-        :icon="['far', 'user']"
-        class="fa icon"
+      <Icon
+        filename="user.svg"
+        style="height: 1em; width: 1.2em; padding-right: 10px;"
       /> Context 
     </h2>
     <div class="report__infoBoxTableContainer">
@@ -69,10 +69,12 @@
 
 <script>
 import ExtLink from '@/components/ExtLink';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    ExtLink
+    ExtLink,
+    Icon
   },
   props: {
     subject: {
@@ -112,7 +114,7 @@ export default {
 
 .label {
   font-weight: bold;
-  width: 30%;
+  max-width: 50px;
 }
 
 .tracker_pdf {

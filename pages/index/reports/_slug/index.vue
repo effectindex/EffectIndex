@@ -40,7 +40,7 @@
     <text-box
       v-if="report.introduction"
       :text="report.introduction"
-      :icon="['far', 'sun']"
+      icon="sun.svg"
       header-colour="#EEE"
       header="Introduction"
     />
@@ -48,7 +48,7 @@
     <text-box
       v-if="report.description"
       :text="report.description"
-      :icon="['far', 'comment']"
+      icon="comment.svg"
       header-colour="#EEE"
       header="Description"
     />
@@ -79,7 +79,7 @@
     <text-box
       v-if="report.conclusion"
       :text="report.conclusion"
-      :icon="['far', 'moon']"
+      icon="moon.svg"
       header-colour="#EEE"
       header="Conclusion / Aftermath"
     />
@@ -186,20 +186,6 @@ h1 {
   font-size: 30px;
 }
 
-.report__topSection {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  padding-bottom: 0.25em;
-}
-
-.report__infoBox {
-}
-
-.report__infoBoxHeader {
-  font-weight: 400;
-}
-
 .report__infoBox:first-child {
   margin-left: 0;
 }
@@ -231,9 +217,17 @@ h1 {
   background-color: #eee;
   border-bottom: 1px solid #cccccc;
   padding: 0.25em 0.5em;
+  font-size: 21px;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.report__topSection {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-bottom: 0.25em;
 }
 
 .report__infoBox {
@@ -241,13 +235,16 @@ h1 {
   background-color: #fbfbfb;
   overflow: hidden;
   border: 1px solid #cccccc;
+  min-width: 300px;
   flex: 1;
 }
 
 .report__infoBoxHeader {
   padding: 0.25em 0.5em;
+  font-weight: 400;
   display: flex;
   background-color: #eee;
+  font-size: 21px;
   border-bottom: 1px solid #cccccc;
   align-items: center;
 }

@@ -4,9 +4,9 @@
       :style="{ backgroundColor: headerColour }"
       class="report__textBoxHeader"
     > 
-      <fa 
-        :icon="icon" 
-        class="fa icon"
+      <Icon
+        :filename="icon" 
+        style="height: 1em; width: 1.2em;"
       />
       {{ header }}
     </h2>
@@ -17,7 +17,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     header: {
       type: String,
@@ -32,8 +37,8 @@ export default {
       default: "#FFFFFF"
     },
     icon: {
-      type: Array,
-      default: () => (["fas", "user"])
+      type: String,
+      default: "user.svg"
     }
   }
 };

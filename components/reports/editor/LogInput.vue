@@ -46,9 +46,8 @@
               style="cursor: pointer;"
               @click="moveItemUp(index)"
             > 
-              <fa 
-                :icon="['far', 'arrow-up']"
-                class="fa"
+              <Icon 
+                filename="arrow-up.svg"
               />
             </a>
             <a
@@ -56,19 +55,17 @@
               style="cursor: pointer;"
               @click="moveItemDown(index)"
             >
-              <fa 
-                :icon="['far', 'arrow-down']"
-                class="fa"
+              <Icon 
+                filename="arrow-down.svg"
               />
             </a>
             <a
               class="itemControl"
               @click="removeItem(index)"
             >
-              <fa 
-                :icon="['far', 'times']"
-                style="color: red;"
-                class="fa"
+              <Icon 
+                filename="times.svg"
+                color="red"
               />
             </a>
           </td>
@@ -79,8 +76,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
 
 export default {
+  components: {
+    Icon
+  },
   props: {
     value: {
       type: Array,
@@ -146,6 +147,11 @@ export default {
 </script>
 
 <style scoped>
+
+.icon {
+  height: 1em;
+  width: 1em;
+}
 
 .itemTime {
   width: 50px;

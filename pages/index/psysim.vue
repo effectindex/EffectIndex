@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       PsySim
-      <fa 
-        :icon="['far', 'eye']" 
-        class="fa categoryIcon" 
+      <Icon
+        filename="eye.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -100,10 +100,12 @@
 
 <script>
 import ExtLink from "@/components/ExtLink";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     ExtLink,
+    Icon
   },
   head() {
     return {

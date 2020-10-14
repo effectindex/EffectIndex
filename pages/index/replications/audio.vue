@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent">
-    <fa 
-      :icon="['far', 'volume-up']"
-      class="fa categoryIcon"
+    <Icon
+      filename="volume-up.svg"
+      class="categoryIcon"
     />
     <h1> Auditory Effect Replications </h1>
     <div>
@@ -17,10 +17,12 @@
 
 <script>
 import AudioReplication from "@/components/replications/audio/AudioReplication";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    AudioReplication
+    AudioReplication,
+    Icon
   },
   computed: {
     audioReplications() {

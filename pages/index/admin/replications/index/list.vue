@@ -13,12 +13,12 @@
           @blur="blur"
         >
         <a 
-          style="color: #BBB; padding: 0.5em;"
+          style="padding: 0.5em; cursor: pointer;"
           @click="clearFilter"
         > 
-          <fa 
-            :icon="['far', 'times']"
-            class="fa"
+          <Icon
+            filename="times.svg"
+            color="red"
           />
         </a>
         <div 
@@ -49,19 +49,18 @@
               class="sortArrow"
               @click="sortBy('title', 'descending')"
             >
-              <fa 
-                :icon="['far', 'arrow-down']"
-                class="fa"
+              <Icon
+                filename="arrow-down.svg"
               />
             </a>
             <a 
               class="sortArrow"
               @click="sortBy('title', 'ascending')"
             >
-              <fa 
-                :icon="['far', 'arrow-up']"
-                class="fa"
-              /> </a>
+              <Icon
+                filename="arrow-up.svg"
+              />
+            </a>
           </td>
           <td>
             Artist 
@@ -69,18 +68,17 @@
               class="sortArrow"
               @click="sortBy('artist', 'descending')"
             >
-              <fa 
-                :icon="['far', 'arrow-down']"
-                class="fa"
-              />  </a>
+              <Icon
+                filename="arrow-down.svg"
+              />
+            </a>
             <a 
               class="sortArrow"
               @click="sortBy('artist', 'ascending')"
             >
-              <fa 
-                :icon="['far', 'arrow-up']"
-                class="fa"
-              /> 
+              <Icon
+                filename="arrow-up.svg"
+              />
             </a>
           </td>
           <td>
@@ -97,18 +95,16 @@
               class="sortArrow"
               @click="sortBy('type', 'descending')"
             >
-              <fa 
-                :icon="['far', 'arrow-down']"
-                class="fa"
+              <Icon
+                filename="arrow-down.svg"
               />
             </a>
             <a 
               class="sortArrow"
               @click="sortBy('type', 'ascending')"
             >
-              <fa 
-                :icon="['far', 'arrow-up']"
-                class="fa"
+              <Icon
+                filename="arrow-up.svg"
               />
             </a>
           </td>
@@ -130,10 +126,12 @@
 <script>
 import ReplicationTableRow from "@/components/replications/ReplicationTableRow.vue";
 import { debounce } from 'lodash';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    ReplicationTableRow
+    ReplicationTableRow,
+    Icon
   },
   data() {
     return {
@@ -152,57 +150,49 @@ export default {
     replications() {
       return this.$store.state.replications;
     },
-    filteredEffects() {
-      let effects = this.$store.state.effects;
-      let foundEffects = effects.filter((effect) => effect.name.toLowerCase().indexOf(this.filter) > -1);
-      return foundEffects;
+    effects() {
+      return this.$store.state.effects;
     },
-    filteredSubstances() {
-      let substances = this.$store.state.substances;
-      let foundSubstances = substances.filter((substance) => substance.name.toLowerCase.indexOf(this.filter) > -1);
-      return foundSubstances;
+    filteredEffects() {
+      return this.effects.filter((effect) => effect.name.toLowerCase().indexOf(this.filter.toLowerCase()) > -1);;
     },
     filteredReplications() {
-      let replications = this.$store.state.replications;
       let filter = this.filter.toLowerCase();
-      if (!this.filter) return this.sortReplications(replications);
+      if (!this.filter) return this.replications;
     
-      let effectIds = this.filteredEffects.map((effect) => effect._id);
+      let effectIds = this.filteredEffects.map(effect => effect._id);
 
-      let matchedReplications = replications.filter((replication) =>
-        replication.associated_effects.some((associated_effect) =>
+      let filteredReplications = this.replications.filter(replication =>
+        replication.associated_effects.some(associated_effect =>
           effectIds.indexOf(associated_effect) > -1));
 
-      /* match substances also? */
+      return filteredReplications;
+    },
+    sortedReplications() {
+    let sortBy = this.options.sortBy;
+    let replications = this.replications.slice();
 
-      return this.sortReplications(matchedReplications);
-    }
+    let compareFunction = (column, direction) => {
+      return function(a, b) {
+        a = a[column].toUpperCase();
+        b = b[column].toUpperCase();
+        
+        return (sortBy.direction === 'ascending' ? (a <= b) : (a >= b));
+      };
+    };
+
+    if (sortBy.column && sortBy.direction) {
+      return replications.sort(compareFunction(sortBy.column));
+    } else return replications;
+  },
   },
   async fetch({ store }) {
     await store.dispatch("getReplications");
     await store.dispatch("getEffects");
-    await store.dispatch("getSubstances");
   },
   middleware: ["auth"],
   scrollToTop: true,
   methods: {
-    sortReplications(replicationList) {
-      let sortBy = this.options.sortBy;
-
-      let compareFunction = (column, direction) => {
-        return function(a, b) {
-          a = a[column].toUpperCase();
-          b = b[column].toUpperCase();
-          
-          return (sortBy.direction === 'ascending' ? (a <= b) : (a >= b));
-        };
-      };
-
-      if (sortBy.column && sortBy.direction) {
-        replicationList.sort(compareFunction(sortBy.column));
-        return replicationList;
-      } else return replicationList;
-    },
     sortBy(column, direction) {
       if (column && direction) {
         this.options.sortBy.column = column;
@@ -258,6 +248,13 @@ export default {
 .inputContainer {
   display: inline-block;
   position: relative;
+}
+
+.icon {
+  height: 0.8em;
+  width: 0.8em;
+  opacity: 0.6;
+  display: inline-block;
 }
 
 .sortArrow {

@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent">
-    <fa
-      :icon="['far', 'images']"
-      class="fa categoryIcon"
+    <Icon
+      filename="images.svg"
+      class="categoryIcon"
     />
     <h1> Replications </h1>
     <p> 
@@ -65,11 +65,13 @@
 <script>
 import EffectSelector from "@/components/EffectSelector.vue";
 import LightBox from "@/components/gallery/LightBox.vue";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     EffectSelector,
-    LightBox
+    LightBox,
+    Icon
   },
   computed: {
     replicated_effects() {

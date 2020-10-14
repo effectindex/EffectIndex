@@ -99,6 +99,12 @@ body {
   flex-wrap: wrap;
 }
 
+.panelIcon {
+  opacity: 0.65;
+  height: 1.2em;
+  width: 1.35em;
+}
+
 @media (max-width: 650px) {
   .column:not(:last-child) {
     margin-right: 0em;
@@ -115,10 +121,11 @@ body {
 }
 
 .pageContent .categoryIcon {
-  float: right;
-  font-size: 35px;
-  opacity: 0.6;
-  margin: 5px 0px 0px 15px;
+    float: right;
+    height: 35px;
+    width: 35px;
+    opacity: 0.5;
+    margin-top: 10px;
 }
 
 .pageContent p {
@@ -291,6 +298,9 @@ body {
 
 .effectCategories .actionIcon {
   margin-left: 1em;
+  height: 1.25em;
+  width: 1.25em;
+  opacity: 0.75;
 }
 
 .effectCategories hr {

@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <fa
-        :icon="['far', 'cogs']"
-        class="fa categoryIcon"
+      <Icon
+        filename="cogs.svg"
+        class="categoryIcon"
       />
       <h1> Miscellaneous Effects of Psychedelics </h1>
       <div class="categoryDescription">
@@ -20,9 +20,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Auditory Effects
-        <fa 
-          :icon="['far', 'volume-up']"
-          class="fa actionIcon"
+        <Icon 
+          filename="volume-up.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -42,9 +42,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Tactile Effects
-        <fa 
-          :icon="['far', 'hand-paper']"
-          class="fa actionIcon"
+        <Icon 
+          filename="hand-paper.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -65,9 +65,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Multisensory Effects
-        <fa 
-          :icon="['far', 'cogs']"
-          class="fa actionIcon"
+        <Icon 
+          filename="cogs.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -90,9 +90,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Physical Effects
-        <fa 
-          :icon="['far', 'heart-rate']"
-          class="fa actionIcon"
+        <Icon 
+          filename="heart-rate.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -114,9 +114,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Uncomfortable Effects
-        <fa 
-          :icon="['far', 'frown']"
-          class="fa actionIcon"
+        <Icon 
+          filename="frown.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -159,10 +159,12 @@
 
 <script>
 import LongSummary from "@/components/effects/LongSummary";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    LongSummary
+    LongSummary,
+    Icon
   },
   head() {
     return {

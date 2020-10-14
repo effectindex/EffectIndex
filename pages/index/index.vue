@@ -5,13 +5,13 @@
       <column>
         <div class="featuredContainer">
           <panel
-            :icon="['far', 'flask']"
+            icon="flask.svg"
             title="Substance Summaries"
           >
             <substance-summaries />
           </panel>
           <panel
-            :icon="['far', 'sitemap']"
+            icon="sitemap.svg"
             title="Featured Effects"
           >
             <featured-articles />
@@ -21,7 +21,7 @@
 
       <column>
         <panel
-          :icon="['far', 'images']"
+          icon="images.svg"
           title="Featured Replications"
         >
           <client-only>
@@ -29,7 +29,7 @@
           </client-only>
         </panel>
         <panel
-          :icon="['far', 'file-signature']"
+          icon="file-signature.svg"
           title="Featured Reports"
         >
           <featured-reports />
@@ -105,6 +105,11 @@ export default {
     align-items: center;
     border-bottom: 1px solid #DDD;
     background-color: #F0F0F0;
+    padding: 5px 12px;
+  }
+
+  .frontpagePanel >>> .frontpagePanelTitleContainer h1 {
+    padding: 0;
   }
 
   .frontpagePanel >>> .frontpagePanelTitle {
@@ -113,7 +118,6 @@ export default {
     line-height: 1em;
     font-size: 16pt;
     padding: 6px 12px;
-
   }
 
 </style>

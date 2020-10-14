@@ -50,7 +50,7 @@
       font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
       border: 1px solid #CCCCCC;
-      padding: 0.5em 1em;
+      padding: 0.5em;
       font-size: 16px;
       width: 100%;
   }
@@ -92,7 +92,7 @@
       font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
       border: 1px solid #CCCCCC;
-      padding: 0.5em 1em;
+      padding: 0.5em;
       font-size: 16px;
       width: 100%;     
   }

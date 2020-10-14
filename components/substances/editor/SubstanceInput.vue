@@ -14,9 +14,10 @@
         {{ substance }}
         <div class="substanceItem__removeIcon">
           <a @click="removeSubstance(index)">
-            <fa
-              :icon="['far', 'times-circle']"
-              class="fa"
+            <Icon
+              filename="times-circle.svg"
+              style="height: 1em; width: 1em;"
+              color="red"
             />
           </a>
         </div>
@@ -26,7 +27,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     value: {
       type: Array,

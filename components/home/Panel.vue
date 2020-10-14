@@ -4,11 +4,10 @@
       <h1 class="frontpagePanelTitle">
         {{ title }}
       </h1>
-      <fa 
-        v-if="icon"
-        :icon="icon"
-        class="fa categoryIcon"
-        style="font-size: 1.1em; margin: 0.25em; opacity: 0.8;"
+      <Icon
+        v-show="icon"
+        :filename="icon"
+        class="panelIcon"
       />
     </div>
     <div class="frontpagePanelContent">
@@ -18,14 +17,19 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     title: {
       type: String,
       default: ''
     },
     icon: {
-      type: Array,
+      type: String,
       default: undefined
     }
   }

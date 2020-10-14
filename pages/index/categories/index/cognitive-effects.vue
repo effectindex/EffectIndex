@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Cognitive Effects
-      <fa
-        :icon="['far', 'cogs']"
-        class="fa categoryIcon"
+      <Icon
+        filename="cogs.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -20,7 +20,7 @@
       <Column>
         <Panel
           title="Enhancements"
-          :icon="['far', 'arrow-up']"
+          :icon="'arrow-up.svg'"
         >
           <PanelEffectList
             :tags="['cognitive', 'enhancement']"
@@ -29,7 +29,7 @@
         </Panel>
         <Panel
           title="Suppressions"
-          :icon="['far', 'arrow-down']"
+          :icon="'arrow-down.svg'"
         >
           <PanelEffectList
             :tags="['cognitive', 'suppression']"
@@ -40,7 +40,7 @@
       <Column>
         <Panel
           title="Novel States"
-          :icon="['far', 'lightbulb']"
+          :icon="'lightbulb.svg'"
         >
           <PanelEffectList
             :tags="['cognitive', 'novel']"
@@ -49,7 +49,7 @@
         </Panel>
         <Panel
           title="Psychological States"
-          image="/icons/psychological.svg"
+          :icon="'psychological.svg'"
         >
           <PanelEffectList
             :tags="['cognitive', 'psychological state']"
@@ -60,7 +60,7 @@
       <Column>
         <Panel
           title="Transpersonal States"
-          :icon="['far', 'infinity']"
+          :icon="'infinity.svg'"
         >
           <PanelEffectList
             :tags="['cognitive', 'transpersonal state']"
@@ -77,13 +77,15 @@ import Panel from '@/components/categories/Panel';
 import Column from '@/components/categories/Column';
 import Columns from '@/components/categories/Columns';
 import PanelEffectList from '@/components/categories/PanelEffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     Panel,
     Column,
     Columns,
-    PanelEffectList
+    PanelEffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

@@ -23,7 +23,10 @@
               :key="index"
               class="logTable__row"
             >
-              <td class="logTable__time">
+              <td 
+                v-if="item.time" 
+                class="logTable__time"
+              >
                 {{ item.time }}:
               </td>
               <!-- eslint-disable-next-line -->
@@ -110,9 +113,10 @@ export default {
 
 .logTable__time {
   vertical-align: top;
-  white-space: pre;
-  padding-top: 0.5em;
-  color: #888;
+  text-align: right;
+  white-space: nowrap;
+  padding-left: 20px;
+  opacity: 0.5;
 }
 
 .logTable {

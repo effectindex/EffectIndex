@@ -2,10 +2,10 @@
   <div class="pageContent">
     <h1>
       Copyright Disclaimer
-      <fa
-        :icon="['far', 'copyright']"
-        class="fa categoryIcon"
-      /> 
+      <Icon
+        filename="copyright.svg"
+        class="categoryIcon"
+      />
     </h1>
 
     <p>
@@ -25,11 +25,13 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
 import ExtLink from "@/components/ExtLink";
 
 export default {
   components: {
-    ExtLink
+    ExtLink,
+    Icon
   },
   head() {
     return {

@@ -8,7 +8,6 @@
           <td> Username </td>
           <td> Roles </td>
           <td />
-          <td />
         </tr>
       </thead>
       <tbody>
@@ -22,22 +21,20 @@
             </nuxt-link>
           </td>
           <td> {{ listRoles(user) }} </td>
-          <td> 
+          <td style="display: flex; justify-content: space-evenly;"> 
             <nuxt-link :to="'/admin/users/' + user._id">
-              <fa 
-                :icon="['far', 'edit']"
-                class="fa"
+              <Icon
+                filename="edit.svg"
+                style="cursor: pointer; height: 1em; width: 1em;"
               />
             </nuxt-link>
-          </td>
-          <td> 
             <a 
-              style="cursor: pointer; color: red;"
               @click="deleteUser(user._id)"
             > 
-              <fa 
-                :icon="['far', 'times']"
-                class="fa"
+              <Icon
+                filename="times.svg"
+                style="cursor: pointer; height: 1em; width: 1em;"
+                color="red"
               />
             </a>
           </td>
@@ -48,7 +45,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   computed: {
     users() {
       return this.$store.state.admin.userlist;

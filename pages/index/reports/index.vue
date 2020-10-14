@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent tripReports">
-    <fa
-      :icon="['far', 'file-signature']"
-      class="fa categoryIcon"
+    <Icon
+      filename="file-signature.svg"
+      class="categoryIcon"
     /> 
     <h1> Trip Reports </h1>
 
@@ -86,13 +86,15 @@
 <script>
 import reportItem from "@/components/reports/reportList__item";
 import viewSelector from "@/components/reports/reportList__viewSelector";
+import Icon from '@/components/Icon';
 import { sortBy } from "lodash";
 
 export default {
   reportCache: [],
   components: {
     reportItem,
-    viewSelector
+    viewSelector,
+    Icon
   },
   data() {
     return {

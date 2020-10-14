@@ -8,13 +8,13 @@
         v-if="!no || (Number(no) === 1)"
         :href="'#ref-' + from"
       > 
-        <fa
-          :icon="['far', 'angle-double-up']"
+        <Icon
+          filename="angle-double-up.svg"
           style="height: 1em;"
         /> </a>
       <span v-else> 
-        <fa
-          :icon="['far', 'angle-double-up']"
+        <Icon
+          filename="angle-double-up.svg"
           style="height: 1em;"
         />
         <a 
@@ -29,7 +29,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     from: {
       type: String,

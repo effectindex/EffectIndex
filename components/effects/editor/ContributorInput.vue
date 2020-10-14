@@ -14,9 +14,8 @@
         {{ contributor }}
         <div class="contributorListItem__removeIcon">
           <a @click="removeContributor(index)"> 
-            <fa
-              :icon="['far', 'times-circle']"
-              class="fa"
+            <Icon
+              filename="times-circle.svg"
             />
           </a>
         </div>
@@ -26,7 +25,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     value: {
       type: Array,
@@ -100,5 +104,15 @@ export default {
 
 .contributorListItem__removeIcon {
   float: right;
+}
+
+.icon {
+  height: 1em;
+  width: 1em;
+  opacity: 0.5;
+}
+
+.icon:hover {
+  opacity: 1;
 }
 </style>

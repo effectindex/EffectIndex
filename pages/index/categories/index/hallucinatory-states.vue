@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Hallucinatory States
-      <fa
-        :icon="['far', 'dragon']"
-        class="fa categoryIcon"
+      <Icon
+        filename="dragon.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -27,10 +27,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

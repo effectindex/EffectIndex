@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Contact Us
-      <fa
-        :icon="['far', 'envelope']"
-        class="fa categoryIcon"
+      <Icon
+        filename="envelope.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -28,7 +28,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   head() {
     return {
       title: "Contact"

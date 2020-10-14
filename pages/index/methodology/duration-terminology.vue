@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Duration Terminology
-      <fa
-        :icon="['far', 'clock']"
-        class="fa categoryIcon"
+      <Icon
+        filename="clock.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -45,7 +45,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   head() {
     return {
       title: "Duration terminology"

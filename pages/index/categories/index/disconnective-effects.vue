@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Disconnective Effects
-      <fa
-        :icon="['far', '/icons/disconnective.svg']"
-        class="fa categoryIcon"
+      <Icon
+        filename="disconnective.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -33,10 +33,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

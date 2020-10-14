@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <fa
-        :icon="['far', 'eye']"
-        class="fa categoryIcon"
+      <Icon
+        filename="eye.svg"
+        class="categoryIcon"
       />
       <h1> Visual Effects of Psychedelics </h1>
       <captioned-image
@@ -29,9 +29,9 @@
       <div class="effectsContainer">
         <h3 class="titleContainer"> 
           Visual Enhancements
-          <fa 
-            :icon="['far', 'arrow-up']"
-            class="fa actionIcon"
+          <Icon
+            filename="arrow-up.svg"
+            class="actionIcon"
           />
         </h3>
 
@@ -110,11 +110,13 @@
 <script>
 import CaptionedImage from "@/components/CaptionedImage";
 import LongSummary from "@/components/effects/LongSummary";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     CaptionedImage,
-    LongSummary
+    LongSummary,
+    Icon
   },
   head() {
     return {

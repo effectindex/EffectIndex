@@ -12,7 +12,7 @@
     </td>
     <td style="width: 150px;"> 
       <img
-        v-show="thumbs"
+        v-if="thumbs"
         :src="'/img/gallery/thumbnails/' + 
           (replication.thumbnail ? replication.thumbnail : replication.resource)"
         class="replicationTableRow__thumbnail"
@@ -26,9 +26,9 @@
         style="color: red; cursor: pointer; font-weight: bold;"
         @click="deleteReplication(replication._id)"
       > 
-        <fa
-          :icon="['far', 'times']"
-          class="fa"
+        <Icon
+          filename="times.svg"
+          color="red"
         />  
       </a>
     </td>
@@ -37,9 +37,12 @@
 
 <script>
 import ExtLink from "@/components/ExtLink.vue";
+import Icon from '@/components/Icon';
+
 export default {
   components: {
-    ExtLink
+    ExtLink,
+    Icon
   },
   props: {
     replication: {
@@ -59,7 +62,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .replicationTableRow__delete a {
   color: red;
 }
@@ -67,4 +70,15 @@ export default {
 .replicationTableRow__thumbnail {
   height: 50px;
 }
+
+.icon {
+  height: 18px;
+  width: 18px;
+  opacity: 0.6;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
 </style>

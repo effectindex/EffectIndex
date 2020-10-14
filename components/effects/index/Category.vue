@@ -12,16 +12,11 @@
       <template v-else>
         {{ title }}
       </template>
-      <fa
+      <Icon
         v-if="icon"
-        :icon="icon"
-        class="icon"
+        :filename="icon"
+        class="panelIcon"
       />
-      <img
-        v-show="image" 
-        :src="image"
-        class="image"
-      >
     </h3>
     <div class="actionContainer">
       <slot />
@@ -30,7 +25,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon,
+  },
   props: {
     page: {
       type: String,
@@ -41,10 +41,6 @@ export default {
       default: ""
     },
     icon: {
-      type: [String, Array],
-      default: ""
-    },
-    image: {
       type: String,
       default: ""
     }
@@ -66,16 +62,6 @@ export default {
   margin-bottom: 0;
 }
 
-.icon {
-  margin: 0 5px;
-  height: 1.1em;
-}
-
-.image {
-  height: 1.1em;
-  opacity: 0.75;
-}
-
 .categoryTitle {
   display: flex;
   flex-direction: row;
@@ -84,7 +70,7 @@ export default {
   font-size: 14pt;
   margin: 0;
   text-align: left;
-  padding: 0.5em;
+  padding: 6px;
   background-color: rgb(240, 240, 240);
   border-bottom: 1px solid #DDD;
   letter-spacing: 1px;

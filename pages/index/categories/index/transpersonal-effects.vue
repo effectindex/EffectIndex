@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       Transpersonal Effects
-      <fa
-        :icon="['far', 'infinity']"
-        class="fa categoryIcon"
+      <Icon
+        filename="infinity.svg"
+        class="categoryIcon"
       /> 
     </h1>
 
@@ -41,10 +41,12 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

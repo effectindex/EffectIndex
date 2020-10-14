@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <fa
-        :icon="['far', 'user']"
-        class="fa categoryIcon"
+      <Icon
+        filename="user.svg"
+        class="categoryIcon"
       />
       <h1> Cognitive Effects of Psychedelics </h1>
       <div class="categoryDescription">
@@ -20,9 +20,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Cognitive Enhancements
-        <fa 
-          :icon="['far', 'arrow-up']"
-          class="fa actionIcon"
+        <Icon 
+          filename="arrow-up.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -41,9 +41,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Cognitive Suppressions
-        <fa 
-          :icon="['far', 'arrow-down']"
-          class="fa actionIcon"
+        <Icon 
+          filename="arrow-down.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -62,9 +62,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Novel States
-        <fa 
-          :icon="['far', 'arrow-up']"
-          class="fa actionIcon"
+        <Icon 
+          filename="arrow-up.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -89,9 +89,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Psychological States
-        <fa 
-          :icon="['far', 'arrow-up']"
-          class="fa actionIcon"
+        <Icon 
+          filename="arrow-up.svg"
+          class="actionIcon"
         />
       </h3>
 
@@ -112,9 +112,9 @@
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
         Transpersonal States
-        <fa 
+        <Icon 
           :icon="['far', 'arrow-up']"
-          class="fa actionIcon"
+          class="actionIcon"
         />
       </h3>
 
@@ -156,10 +156,12 @@
 
 <script>
 import LongSummary from "@/components/effects/LongSummary";
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    LongSummary
+    LongSummary,
+    Icon
   },
   head() {
     return {

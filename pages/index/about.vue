@@ -2,9 +2,9 @@
   <div class="pageContent">
     <h1>
       About
-      <fa 
-        :icon="['far', 'heart']"
-        class="fa categoryIcon"
+      <Icon
+        filename="heart.svg"
+        class="categoryIcon"
       />
     </h1>
 
@@ -55,11 +55,13 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
 import ExtLink from "@/components/ExtLink";
 
 export default {
   components: {
-    ExtLink
+    ExtLink,
+    Icon
   },
   head() {
     return {

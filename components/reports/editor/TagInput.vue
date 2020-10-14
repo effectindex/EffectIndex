@@ -10,14 +10,15 @@
         :key="tag"
         class="tagItem" 
       >
-        {{ tag }}
-        <div class="tagItem__removeIcon">
-          <a @click="removeTag(index)">
-            <fa
-              :icon="['far', 'times-circle']"
-              class="fa"
-            />
-          </a>
+        <div class="tagItemContent">
+          {{ tag }}
+          <div class="tagItem__removeIcon">
+            <a @click="removeTag(index)">
+              <Icon
+                filename="times-circle.svg"
+              />
+            </a>
+          </div>
         </div>
       </li>
     </ul>
@@ -25,7 +26,12 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     value: {
       type: Array,
@@ -75,6 +81,17 @@ export default {
 </script>
 
 <style scoped>
+.icon {
+  height: 1em;
+  width: 1em;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
 .tagItem {
   display: inline-block;
   width: 200px;
@@ -93,6 +110,12 @@ export default {
 
 .tagItem a:hover {
   color: rgb(134, 19, 19);
+}
+
+.tagItemContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tagList {

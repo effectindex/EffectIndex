@@ -4,16 +4,11 @@
       <nuxt-link :to="link">
         {{ title }}
       </nuxt-link>
-      <fa
-        v-if="icon"
-        :icon="icon"
-        class="icon"
+      <Icon
+        v-show="icon"
+        :filename="icon"
+        class="category"
       />
-      <img
-        v-show="image"
-        :src="image" 
-        class="image"
-      > 
     </h3>
     <div class="categoryContent">
       <slot />
@@ -22,18 +17,19 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon';
+
 export default {
+  components: {
+    Icon
+  },
   props: {
     title: {
       type: String,
       default: ""
     },
-    image: {
-      type: String,
-      default: undefined
-    },
     icon: {
-      type: Array,
+      type: String,
       default: undefined
     },
     link: {
@@ -45,6 +41,12 @@ export default {
 </script>
 
 <style scoped>
+  .icon {
+    height: 1.2em;
+    width: 1.3em;
+    opacity: 0.7;
+  }
+
   h3 {
     margin: 0;
     margin-bottom: 0em;
@@ -66,15 +68,6 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0.5em;
-  }
-
-  .image {
-    height: 1.1em;
-    opacity: 0.75;
-  }
-
-  .icon {
-    height: 1.1em;
   }
 
   .categoryTitle {
