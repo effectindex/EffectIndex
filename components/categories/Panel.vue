@@ -28,7 +28,7 @@ export default {
   props: {
     page: {
       type: String,
-      default: null
+      default: ""
     },
     title: {
       type: String,

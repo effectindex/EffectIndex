@@ -32,7 +32,7 @@ export default {
       type: String,
       default: undefined
     },
-    link: {
+    page: {
       type: String,
       default: ""
     }
