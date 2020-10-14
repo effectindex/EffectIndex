@@ -55,11 +55,12 @@
   }
 
   .substanceSummariesStub {
-    padding: 4px 12px;
-    color: #666;
-    line-height: 1.2em;
+    width: 100%;
     font-size: 12pt;
-    height: 32.6px;
+    color: #666;
     border-top: 1px solid #DDD;
+    background-color: #F4F4F4;
+    line-height: 1.2em;
+    padding: 4px 12px;
   }
 </style>
