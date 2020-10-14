@@ -3,7 +3,7 @@
     <h1>
       Cognitive Suppressions
       <Icon
-        filename="down-arrow.svg"
+        filename="arrow-down.svg"
         class="categoryIcon"
       /> 
     </h1>
