@@ -20,6 +20,7 @@
       <Column>
         <Panel
           title="Enhancements"
+          page="/categories/cognitive-enhancements"
           :icon="'arrow-up.svg'"
         >
           <PanelEffectList
@@ -29,6 +30,7 @@
         </Panel>
         <Panel
           title="Suppressions"
+          page="/categories/cognitive-suppressions"
           :icon="'arrow-down.svg'"
         >
           <PanelEffectList
@@ -40,6 +42,7 @@
       <Column>
         <Panel
           title="Novel States"
+          page="/categories/novel-cognitive-states"
           :icon="'lightbulb.svg'"
         >
           <PanelEffectList
@@ -49,6 +52,7 @@
         </Panel>
         <Panel
           title="Psychological States"
+          page="/categories/psychological-states"
           :icon="'psychological.svg'"
         >
           <PanelEffectList
@@ -60,6 +64,7 @@
       <Column>
         <Panel
           title="Transpersonal States"
+          page="/categories/transpersonal-states"
           :icon="'infinity.svg'"
         >
           <PanelEffectList

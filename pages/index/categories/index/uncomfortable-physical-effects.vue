@@ -32,6 +32,7 @@
       <Column>
         <Panel
           title="Cardiovascular"
+          page="/categories/cardiovascular-effects"
           icon="heart.svg"
         >
           <PanelEffectList
@@ -41,6 +42,7 @@
         </Panel>
         <Panel
           title="Cerebrovascular"
+          page="/categories/cerebrovascular-effects"
           icon="brain.svg"
         >
           <PanelEffectList
@@ -52,7 +54,8 @@
       <Column>
         <Panel
           title="Bodily"
-          icon="dragon.svg"
+          page="/categories/uncomfortable-bodily-effects"
+          icon="child.svg"
         >
           <PanelEffectList
             :tags="['bodily']"

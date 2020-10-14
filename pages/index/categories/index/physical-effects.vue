@@ -20,6 +20,7 @@
       <Column>
         <Panel
           title="Enhancements"
+          page="/categories/physical-enhancements"
           icon="arrow-up.svg"
         >
           <PanelEffectList
@@ -29,6 +30,7 @@
         </Panel>
         <Panel
           title="Suppressions"
+          page="/categories/physical-suppressions"
           icon="arrow-down.svg"
         >
           <PanelEffectList
@@ -40,6 +42,7 @@
       <Column>
         <Panel
           title="Alterations"
+          page="/categories/physical-alterations"
           icon="cogs.svg"
         >
           <PanelEffectList

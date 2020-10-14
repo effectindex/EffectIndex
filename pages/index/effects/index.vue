@@ -120,7 +120,7 @@
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'psychological state')"
-              page="/categories/psychological-effects"
+              page="/categories/psychological-states"
               title="Psychological States"
             />
             <actions
@@ -310,7 +310,7 @@
           <category  
             icon="psychological.svg"
             title="Psychological States"
-            page="/categories/psychological-effects"
+            page="/categories/psychological-states"
           >
             <actions
               :effects="filterEffectsByTag('cognitive', 'psychological state')"

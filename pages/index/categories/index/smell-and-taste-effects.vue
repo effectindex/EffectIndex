@@ -21,7 +21,7 @@
     
     <EffectList
       :effects="effects"
-      :tags="['gustatory']"
+      :tags="['smell and taste']"
     />
   </div>
 </template>
