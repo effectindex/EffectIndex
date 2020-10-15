@@ -12,6 +12,28 @@
         Subjective Effect Index. 
       </nuxt-link>
     </p>
+
+    <IndexCategory
+      name="Visual Enhancements"
+      description="Visual enhancements are defined as any subjective effect that improves one's ability to perceive the external environment through their sense of sight. "
+      page="visual-enhancements"
+      icon="arrow-up.svg"
+    />
+
+    <IndexCategory
+      name="Visual Suppressions"
+      description="Visual suppressions are defined as any subjective effect that decreases a person's ability to perceive the external environment through their sense of sight. "
+      page="visual-suppressions"
+      icon="arrow-down.svg"
+    />
+
+    <IndexCategory
+      name="Visual Distortions"
+      description="Visual distortions are defined as any subjective effect that alters the perception or appearance of pre-existing visual data without adding any entirely new content. "
+      page="visual-distortions"
+      icon="distortions.svg"
+    />
+
     <IndexCategory
       name="Auditory Effects"
       description="Effects which diminish or modify a person's sense of hearing."
