@@ -43,13 +43,13 @@ export default {
 
 <style scoped>
 .icon {
-  height: 1em;
-  width: 1em;
+  height: 25px;
+  width: 25px;
   opacity: 0.6;
 }
 
 .indexCategory {
-  padding: 15px 5px;
+  padding: 30px 15px;
 }
 
 .indexCategory h4 {

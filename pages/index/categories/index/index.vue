@@ -7,7 +7,11 @@
         class="categoryIcon"
       />
     </h1>
-
+    <p>
+      This page serves as an index of the various categories of effect found within our <nuxt-link to="/effects"> 
+        Subjective Effect Index. 
+      </nuxt-link>
+    </p>
     <IndexCategory
       name="Auditory Effects"
       description="Effects which diminish or modify a person's sense of hearing."
