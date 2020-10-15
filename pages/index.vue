@@ -1,80 +1,123 @@
 <template>
-  <div class="content">
-    <section 
-      :class="{ sectionContainerPulledout: navbarPullout }"
-      class="sectionContainer"
-    >
-      <header-nav />
-      <div class="page">
-        <nuxt-child />
-      </div>
-      <custom-footer />
-    </section>
-    <pullout-menu />
-    <modal
-      v-if="modalActive"
-      :active="modalActive"
-      :type="modalData.type"
-      :src="(modalData.type === 'image') ? modalData.resource : modalData.resource"
-      @toggleModal="toggleModal" 
-    />
+  <div class="pageContent">
+    <description />
+    <columns>
+      <column>
+        <div class="featuredContainer">
+          <panel
+            icon="flask.svg"
+            title="Substance Summaries"
+          >
+            <substance-summaries />
+          </panel>
+          <panel
+            icon="sitemap.svg"
+            title="Featured Effects"
+          >
+            <featured-articles />
+          </panel>
+        </div>
+      </column>
+
+      <column>
+        <panel
+          icon="images.svg"
+          title="Featured Replications"
+        >
+          <client-only>
+            <featured-replication />
+          </client-only>
+        </panel>
+        <panel
+          icon="file-signature.svg"
+          title="Featured Reports"
+        >
+          <featured-reports />
+        </panel>
+      </column>
+    </columns>
   </div>
 </template>
 
 <script>
-import HeaderNav from "@/components/header/HeaderNav.vue";
-import CustomFooter from "@/components/footer/Footer.vue";
-import PulloutMenu from "@/components/PulloutMenu/PulloutMenu.vue";
-import Modal from "@/components/Modal";
+import Description from '@/components/home/Description';
+import Panel from '@/components/home/Panel';
+import FeaturedReplication from '@/components/home/FeaturedReplication';
+import FeaturedArticles from '@/components/home/FeaturedArticles';
+import FeaturedReports from '@/components/home/FeaturedReports';
+import SubstanceSummaries from '@/components/home/SubstanceSummaries';
+import Column from '@/components/home/Column';
+import Columns from '@/components/home/Columns';
+
 
 export default {
-  name: 'EffectIndex',
+  name: 'Home',
+  scrollToTop: true,
   components: {
-    HeaderNav,
-    CustomFooter,
-    PulloutMenu,
-    Modal
+    Description,
+    FeaturedReplication,
+    FeaturedArticles,
+    FeaturedReports,
+    SubstanceSummaries,
+    Panel,
+    Column,
+    Columns
   },
+
   computed: {
-    navbarPullout() {
-      return this.$store.state.navbar_pullout;
-    },
-    modalActive() {
-      return this.$store.state.modal.active;
-    },
-    modalData() {
-      return {
-        type: this.$store.state.modal.type,
-        resource: this.$store.state.modal.resource
-      };
+    imageReplications() {
+      return this.$store.state.replications.filter((replication) => replication.type === 'image');
     }
   },
-  methods: {
-    toggleModal() {
-      this.$store.commit("toggle_modal");
-    }
-  },
-  head() {
-    return {
-      titleTemplate: "%s - Effect Index",
-      title: "Home",
-      meta: [
-        { name: 'description', hid: 'description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
-        { name: 'apple-mobile-web-app-title', hid: 'apple-mobile-web-app-title', content: "Effect Index" },
-        // Open Graph
-        { name: 'og:title', hid: 'og:title', content: "Effect Index" },
-        { name: 'og:description', hid: 'og:description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
-        { name: 'og:type', hid: 'og:type', content: 'website' },
-        { name: 'og:url', hid: 'og:url', content: 'https://effectindex.com' },
-        { name: 'og:image', hid: 'og:image', content: 'https://effectindex.com/logo-letter.png' },
-        // Twitter Card
-        { name: 'twitter:card', hid: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', hid: 'twitter:title', content: "Effect Index" },
-        { name: 'twitter:description', hid: 'twitter:description', content: "A resource dedicated to establishing the field of formalised subjective effect documentation." },
-        { name: 'twitter:image', hid: 'twitter:image', content: 'https://effectindex.com/logo-letter.png' },
-        { name: 'twitter:image:alt', hid: 'twitter:image:alt', content: 'Effect Index Logo' }
-      ]
-    };
+
+  async fetch({ store }) {
+    await Promise.all([
+      store.dispatch("getEffects"),
+      store.dispatch("getReplications"),
+      store.dispatch("getReports")
+    ]);
   }
 };
 </script>
+
+<style scoped>
+  .featuredContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .frontpagePanel {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #DDD;
+    background-color: rgb(252, 252, 252);
+  }
+
+  .frontpagePanel:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
+  .frontpagePanel >>> .frontpagePanelTitleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DDD;
+    background-color: #F0F0F0;
+    padding: 5px 12px;
+  }
+
+  .frontpagePanel >>> .frontpagePanelTitleContainer h1 {
+    padding: 0;
+  }
+
+  .frontpagePanel >>> .frontpagePanelTitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1em;
+    font-size: 16pt;
+    padding: 6px 12px;
+  }
+
+</style>
