@@ -12,7 +12,7 @@
     </h1>
 
     <p>
-      <b>Transpersonal effects</b> are defined as any subjective effect that feels as if it alters a person's cognition in a manner that relates to their place in the universe, the inner workings of reality or consciousness, and/or the context of their existence. The highest manifestations of these effects fall under what are commonly known as "peak", "transcendent" or "transformative" experiences.
+      <b>Transpersonal states</b> are defined as any subjective effect that feels as if it alters a person's cognition in a manner that relates to their place in the universe, the inner workings of reality or consciousness, and/or the context of their existence. The highest manifestations of these effects fall under what are commonly known as "peak", "transcendent" or "transformative" experiences.
     </p>
 
     <p>
@@ -54,7 +54,7 @@ export default {
   scrollToTop: true,
   head() {
     return {
-      title: "Transpersonal Effects"
+      title: "Transpersonal States"
     };
   },
   computed: {

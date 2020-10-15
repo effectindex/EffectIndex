@@ -12,6 +12,13 @@
         Subjective Effect Index. 
       </nuxt-link>
     </p>
+    <hr>
+    <IndexCategory
+      name="Visual Effects"
+      description="Visual effects are defined as any subjective effect that directly alters a person's sense of sight. "
+      page="visual-effects"
+      icon="eye.svg"
+    />
 
     <IndexCategory
       name="Visual Enhancements"
@@ -35,6 +42,13 @@
     />
 
     <IndexCategory
+      name="Hallucinatory Effects"
+      description="Hallucinatory states are defined as any subjective effect that changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner similar to dreams. "
+      page="hallucinatory-states"
+      icon="dragon.svg"
+    />
+
+    <IndexCategory
       name="Auditory Effects"
       description="Effects which diminish or modify a person's sense of hearing."
       page="auditory-effects"
@@ -42,17 +56,31 @@
     />
 
     <IndexCategory
-      name="Cardiovascular Effects"
-      description="Cardiovascular effects are defined as any uncomfortable physical effect that relates to the heart and blood vessels. "
-      page="cardiovascular-effects"
-      icon="heart.svg"
+      name="Smell &amp; Taste Effects"
+      description="Smell and taste effects are defined as any subjective effect that directly alters either a person's sense of smell or taste."
+      page="smell-and-taste-effects"
+      icon="utensils.svg"
     />
 
     <IndexCategory
-      name="Cerebrovascular Effects"
-      description="Cerebrovascular effects are defined as any uncomfortable physical effect that relates to the brain and its blood vessels. "
-      page="cerebrovascular-effects"
-      icon="brain.svg"
+      name="Tactile Effects"
+      description="Tactile effects are defined as any subjective effect that directly alters a person's sense of touch. "
+      page="tactile-effects"
+      icon="hand-paper.svg"
+    />
+
+    <IndexCategory
+      name="Disconnective Effects"
+      description="Disconnective effects are defined as any subjective effect that feels as if it disconnects one from the external environment, their senses, and/or their consciousness. "
+      page="disconnective-effects"
+      icon="disconnective.svg"
+    />
+
+    <IndexCategory
+      name="Multisensory Effects"
+      description="Multisensory effects are defined as any subjective effect that directly alters two or more senses at a time. "
+      page="multisensory-effects"
+      icon="cogs.svg"
     />
 
     <IndexCategory
@@ -77,27 +105,6 @@
     />
 
     <IndexCategory
-      name="Disconnective Effects"
-      description="Disconnective effects are defined as any subjective effect that feels as if it disconnects one from the external environment, their senses, and/or their consciousness. "
-      page="disconnective-effects"
-      icon="disconnective.svg"
-    />
-
-    <IndexCategory
-      name="Hallucinatory Effects"
-      description="Hallucinatory states are defined as any subjective effect that changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner similar to dreams. "
-      page="hallucinatory-states"
-      icon="dragon.svg"
-    />
-
-    <IndexCategory
-      name="Multisensory Effects"
-      description="Multisensory effects are defined as any subjective effect that directly alters two or more senses at a time. "
-      page="multisensory-effects"
-      icon="cogs.svg"
-    />
-
-    <IndexCategory
       name="Novel Cognitive States"
       description="Novel cognitive states are defined as any cognitive effect that does not merely amplify or suppress familiar states of mind; rather, it induces an experience that is qualitatively different from that of ordinary consciousness. "
       page="novel-cognitive-states"
@@ -105,10 +112,17 @@
     />
 
     <IndexCategory
-      name="Physical Alterations"
-      description="Physical alterations are defined as any subjective effect that changes a facet of a person's physical body in a manner which does not involve a clearly definable enhancement or suppression."
-      page="physical-alterations"
-      icon="cogs.svg"
+      name="Psychological States"
+      description="Psychological states are defined as any cognitive effect that is either established within the psychological literature or arises as a result of the complex interplay between more simplistic components such as cognitive enhancements and suppressions."
+      page="psychological-states"
+      icon="psychological.svg"
+    />
+
+    <IndexCategory
+      name="Transpersonal States"
+      description="Transpersonal states are defined as any subjective effect that feels as if it alters a person's cognition in a manner that relates to their place in the universe, the inner workings of reality or consciousness, and/or the context of their existence. The highest manifestations of these effects fall under what are commonly known as 'peak', 'transcendent' or 'transformative' experiences. "
+      page="transpersonal-states"
+      icon="infinity.svg"
     />
 
     <IndexCategory
@@ -133,38 +147,10 @@
     />
 
     <IndexCategory
-      name="Psychological States"
-      description="Psychological states are defined as any cognitive effect that is either established within the psychological literature or arises as a result of the complex interplay between more simplistic components such as cognitive enhancements and suppressions."
-      page="psychological-states"
-      icon="psychological.svg"
-    />
-
-    <IndexCategory
-      name="Smell &amp; Taste Effects"
-      description="Smell and taste effects are defined as any subjective effect that directly alters either a person's sense of smell or taste."
-      page="smell-and-taste-effects"
-      icon="utensils.svg"
-    />
-
-    <IndexCategory
-      name="Tactile Effects"
-      description="Tactile effects are defined as any subjective effect that directly alters a person's sense of touch. "
-      page="tactile-effects"
-      icon="hand-paper.svg"
-    />
-
-    <IndexCategory
-      name="Transpersonal Effects"
-      description="Transpersonal effects are defined as any subjective effect that feels as if it alters a person's cognition in a manner that relates to their place in the universe, the inner workings of reality or consciousness, and/or the context of their existence. The highest manifestations of these effects fall under what are commonly known as 'peak', 'transcendent' or 'transformative' experiences. "
-      page="transpersonal-effects"
-      icon="infinity.svg"
-    />
-
-    <IndexCategory
-      name="Uncomfortable Bodily Effects"
-      description="Uncomfortable bodily effects are defined as any uncomfortable physical effect that relates to the overall body and cannot be categorized as cardiovascular or cerebrovascular."
-      page="uncomfortable-bodily-effects"
-      icon="child.svg"
+      name="Physical Alterations"
+      description="Physical alterations are defined as any subjective effect that changes a facet of a person's physical body in a manner which does not involve a clearly definable enhancement or suppression."
+      page="physical-alterations"
+      icon="cogs.svg"
     />
 
     <IndexCategory
@@ -175,31 +161,24 @@
     />
 
     <IndexCategory
-      name="Visual Distortions"
-      description="Visual distortions are defined as any subjective effect that alters the perception or appearance of pre-existing visual data without adding any entirely new content. "
-      page="visual-distortions"
-      icon="distortions.svg"
+      name="Cardiovascular Effects"
+      description="Cardiovascular effects are defined as any uncomfortable physical effect that relates to the heart and blood vessels. "
+      page="cardiovascular-effects"
+      icon="heart.svg"
     />
 
     <IndexCategory
-      name="Visual Effects"
-      description="Visual effects are defined as any subjective effect that directly alters a person's sense of sight. "
-      page="visual-effects"
-      icon="eye.svg"
+      name="Cerebrovascular Effects"
+      description="Cerebrovascular effects are defined as any uncomfortable physical effect that relates to the brain and its blood vessels. "
+      page="cerebrovascular-effects"
+      icon="brain.svg"
     />
 
     <IndexCategory
-      name="Visual Enhancements"
-      description="Visual enhancements are defined as any subjective effect that improves one's ability to perceive the external environment through their sense of sight. "
-      page="visual-enhancements"
-      icon="arrow-up.svg"
-    />
-
-    <IndexCategory
-      name="Visual Suppressions"
-      description="Visual suppressions are defined as any subjective effect that decreases a person's ability to perceive the external environment through their sense of sight. "
-      page="visual-suppressions"
-      icon="arrow-down.svg"
+      name="Uncomfortable Bodily Effects"
+      description="Uncomfortable bodily effects are defined as any uncomfortable physical effect that relates to the overall body and cannot be categorized as cardiovascular or cerebrovascular."
+      page="uncomfortable-bodily-effects"
+      icon="child.svg"
     />
   </div>
 </template>
