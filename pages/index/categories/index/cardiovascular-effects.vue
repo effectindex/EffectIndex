@@ -1,6 +1,9 @@
 <template>
   <div class="pageContent">
     <h1>
+      <nuxt-link to="/categories/">
+        Effect Categories
+      </nuxt-link> -
       Cardiovascular Effects
       <Icon
         filename="heart.svg"
@@ -31,7 +34,8 @@ import Icon from '@/components/Icon';
 
 export default {
   components: {
-    EffectList
+    EffectList,
+    Icon
   },
   scrollToTop: true,
   head() {

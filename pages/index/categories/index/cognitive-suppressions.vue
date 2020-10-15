@@ -1,6 +1,9 @@
 <template>
   <div class="pageContent">
     <h1>
+      <nuxt-link to="/categories/">
+        Effect Categories
+      </nuxt-link> -      
       Cognitive Suppressions
       <Icon
         filename="arrow-down.svg"

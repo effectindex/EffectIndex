@@ -1,6 +1,9 @@
 <template>
   <div class="pageContent">
     <h1>
+      <nuxt-link to="/categories/">
+        Effect Categories
+      </nuxt-link> -
       Cerebrovascular Effects
       <Icon
         filename="brain.svg"

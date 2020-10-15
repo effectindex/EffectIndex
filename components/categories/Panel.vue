@@ -3,9 +3,13 @@
     class="categoryContainer"
   >
     <h3 class="categoryTitle">
-      <nuxt-link :to="page">
+      <nuxt-link 
+        v-if="page"
+        :to="page"
+      >
         {{ title }}
       </nuxt-link>
+      <span v-else> {{ title }} </span>
       <Icon
         v-if="icon"
         :filename="icon"
