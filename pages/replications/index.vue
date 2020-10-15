@@ -9,7 +9,7 @@
       <span class="bold"> Replications </span> are image, video, and audio recreations of the sensory experiences produced by various subjective effects that a user may encounter under the influence of hallucinogens. Replications may be created intentionally or unintentionally, as long as they accurately convey the effect being shown. They serve the purpose of documenting certain experiences in a level of detail that descriptive language is incapable of describing.
     </p>
     <p>
-      This page will serve as a dedicated index of as many replication examples as possible in the form of images, animations, and videos. These are primarily sourced from our <a href="https://reddit.com/r/replications">subreddit</a>, through dedicated artists, and from various sources throughout the internet. The artist is credited for each replication whenever possible. However, if you would like your artwork removed or its link altered, please do not hesitate to contact us at <a href="mailto:effectindex@gmail.com"> effectindex@gmail.com </a>
+      This page will serve as a dedicated index of as many replication examples as possible in the form of images, animations, and videos. These are primarily sourced from our <a href="https://reddit.com/r/replications">subreddit,</a> through dedicated artists, and from various sources throughout the internet. The artist is credited for each replication whenever possible. However, if you would like your artwork removed or its link altered, please do not hesitate to contact us at <a href="mailto:effectindex@gmail.com"> effectindex@gmail.com </a>
     </p>
 
     <hr>

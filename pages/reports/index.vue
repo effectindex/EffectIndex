@@ -8,10 +8,10 @@
 
     <p>
       The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports that describe the subjective experiences our community members undergo while under the influence of various <nuxt-link to="/substances">
-        hallucinogenic substances
-      </nuxt-link>. These reports are then used as anecdotal accounts that further support the existence of the various documented states within our <nuxt-link to="/effects">
-        Subjective Effect Index
-      </nuxt-link>. 
+        hallucinogenic substances.
+      </nuxt-link> These reports are then used as anecdotal accounts that further support the existence of the various documented states within our <nuxt-link to="/effects">
+        Subjective Effect Index.
+      </nuxt-link>
     </p>
     <view-selector
       :selected="viewMode.name"

@@ -56,8 +56,8 @@
     <p>
       For a collection of high res royalty free nature stock footage that can be used within replication videos, please
       <ext-link href="http://mitchmartinez.com/free-4k-red-epic-stock-footage/">
-        click here
-      </ext-link>.
+        click here.
+      </ext-link>
     </p>
   </div>
 </template>

@@ -183,6 +183,7 @@ h1 {
 
 .report .icon {
   padding-right: 0.4em;
+  opacity: 0.6;
   font-size: 30px;
 }
 

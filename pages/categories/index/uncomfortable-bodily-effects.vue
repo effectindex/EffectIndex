@@ -15,8 +15,8 @@
       <b>Uncomfortable bodily effects</b> are defined as any uncomfortable physical effect that relates to the overall body and cannot be categorized as <nuxt-link to="/categories/cardiovascular">
         cardiovascular
       </nuxt-link> or <nuxt-link to="/categories/cerebrovascular">
-        cerebrovascular
-      </nuxt-link>.
+        cerebrovascular.
+      </nuxt-link>
     </p>
 
     <p>

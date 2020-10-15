@@ -16,24 +16,20 @@
         </div>
       </div>
       <div class="content">
-        <table class="logTable">
-          <tbody>
-            <tr
-              v-for="(item, index) in log"
-              :key="index"
-              class="logTable__row"
-            >
-              <td 
-                v-if="item.time" 
-                class="logTable__time"
-              >
-                {{ item.time }}:
-              </td>
-              <!-- eslint-disable-next-line -->
-              <td class="logTable__description" v-html="trimmedMarkdown(item.description)" />
-            </tr>
-          </tbody>
-        </table>
+        <div
+          v-for="(item, index) in log"
+          :key="index"
+          class="logItem"
+        >
+          <div
+            v-if="item.time" 
+            class="logTime"
+          >
+            {{ item.time }}:
+          </div>
+          <!-- eslint-disable-next-line -->
+          <div class="logDescription" v-html="trimmedMarkdown(item.description)" />
+        </div>
       </div>
     </div>
   </section>
@@ -79,6 +75,36 @@ export default {
   margin-bottom: 0;
 }
 
+.content {
+  flex: 1;
+  flex-direction: column;
+}
+
+.logItem {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.logItem:not(:last-child) {
+  border-bottom: 1px solid rgba(170, 170, 170, 0.35);
+}
+
+.logItem:nth-child(even) {
+  background-color: #f6f6f6;
+}
+
+.logTime {
+  color: #999;
+  white-space: nowrap;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.logDescription {
+  padding: 0;
+}
+
 .outer {
   position: relative;
   display: inline-block;
@@ -100,16 +126,7 @@ export default {
   opacity: 0.5;
 }
 
-.logTable__time, .logTable__row {
-  padding: 0.5em;
-}
-.logTable__row:not(:last-child) {
-  border-bottom: 1px solid rgba(170, 170, 170, 0.35);
-}
 
-.logTable__row:nth-child(odd) {
-  background-color: #F6F6F6;
-}
 
 .logTable__time {
   vertical-align: top;
@@ -119,14 +136,7 @@ export default {
   opacity: 0.5;
 }
 
-.logTable {
-  border-collapse: collapse;
-}
 
-.logTable__description {
-  padding: 0.5em 1em 0.5em 0.5em;
-  white-space: pre-wrap;
-}
 
 @media (max-width: 600px) {
   .outer {
@@ -139,13 +149,8 @@ export default {
     padding: 0.25em 0.5em;
   }
 
-  .logTable__description {
-    padding: 0.5em;
-  }
-
-  .logTable__time {
+  .logTime {
     font-size: 14px;
-    white-space: normal;
   }
 }
 </style>
