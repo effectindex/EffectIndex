@@ -125,7 +125,7 @@
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
-              page="/categories/transpersonal-effects"
+              page="/categories/transpersonal-states"
               title="Transpersonal States"
             />          
           </category>
