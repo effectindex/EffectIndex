@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent">
-    <description />
+    <Description />
     <Columns>
       <Column>
         <SubstanceSummaries />
@@ -22,7 +22,6 @@ import FeaturedReports from '@/components/home/FeaturedReports';
 import SubstanceSummaries from '@/components/home/SubstanceSummaries';
 import Column from '@/components/home/Column';
 import Columns from '@/components/home/Columns';
-
 
 
 export default {

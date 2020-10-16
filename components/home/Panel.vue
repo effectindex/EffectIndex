@@ -48,7 +48,6 @@ export default {
   .frontpagePanel {
     display: flex;
     flex-direction: column;
-    flex: 1;
     border: 1px solid #DDD;
     background-color: rgb(252, 252, 252);
   }
@@ -88,7 +87,6 @@ export default {
   }
 
   .frontpagePanel .content {
-    flex: 1;
     display: flex;
     align-items: center;
   }

@@ -81,12 +81,15 @@ export default {
 <style scoped>
   .featuredEffectsListContainer {
     font-size: 12pt;
+    display: flex;
+    flex-direction: column;
   }
 
   .featuredEffectsCategory {
     border-bottom: 1px solid #DDD;
     margin: 0;
     padding: 12px;
+    flex: 1;
   }
 
   .featuredEffectsCategory:last-child {
