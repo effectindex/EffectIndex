@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="description">
     <search-box />
     <p>
       <span class="bold"> Effect Index, </span> which is currently under construction, is a
@@ -81,6 +81,10 @@ methods: {
 </script>
 
 <style scoped>
+.description {
+  margin-bottom: 30px;
+}
+
 .fade-enter-active {
   opacity: 1;
   transition: opacity 1s;

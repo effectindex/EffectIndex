@@ -103,6 +103,7 @@ export default {
 
 .logDescription {
   padding: 0;
+  white-space: pre-line;
 }
 
 .outer {

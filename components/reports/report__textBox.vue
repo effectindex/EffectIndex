@@ -43,3 +43,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .report__textBoxText {
+    white-space: pre-line;
+  }
+</style>

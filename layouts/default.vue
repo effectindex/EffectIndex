@@ -160,17 +160,17 @@ body {
 
 /* Generic Components */
 .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1;
-  min-width: 300px;
 }
 
 .column:not(:last-child) {
   margin-right: 1em;
-  margin-bottom: 1em;
 }
 
 .columns {
-  margin-top: 2em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -183,8 +183,13 @@ body {
 }
 
 @media (max-width: 650px) {
+  .columns {
+    flex-direction: column;
+  }
+
   .column:not(:last-child) {
     margin-right: 0em;
+    margin-bottom: 1em;
   }
 }
 

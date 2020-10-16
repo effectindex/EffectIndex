@@ -1,30 +1,37 @@
 <template>
-  <div class="featuredReports">
-    <div class="reportsContainer">
-      <featured-report
-        v-for="report in featuredReports"
-        :key="report.id"
-        :title="report.title"
-        :author="report.subject.name"
-        :slug="report.slug"
-        :substances="report.substances"
-      />
-    </div>
-    <div class="featuredReportsStub">
+  <Panel
+    icon="file-signature.svg"
+    title="Featured Reports"
+  >
+    <template v-slot:content>
+      <div class="featuredReports">
+        <featured-report
+          v-for="report in featuredReports"
+          :key="report.id"
+          :title="report.title"
+          :author="report.subject.name"
+          :slug="report.slug"
+          :substances="report.substances"
+        />
+      </div>
+    </template>
+    <template v-slot:stub>
       For more, see the <nuxt-link to="/reports/">
         reports section.
       </nuxt-link>
-    </div>
-  </div>
+    </template>
+  </Panel>
 </template>
 
 <script>
+import Panel from '@/components/home/Panel';
 import FeaturedReport from '@/components/home/FeaturedReport';
 import { shuffle } from 'lodash';
 
 export default {
   components: {
-    FeaturedReport
+    FeaturedReport,
+    Panel
   },
 
   computed: {
@@ -40,27 +47,32 @@ export default {
 </script>
 
 <style scoped>
-
-  .featuredReports {
-    flex: 1;
-  }
-
   .reportsContainer {
     padding: 12px;
+  }
+
+  .featuredReports {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
   }
 
   .featuredReport {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
-    min-width: 300px;
     padding: 0.5em;
+    margin: 0.5em;
     border: 1px solid #EEE;
   }
 
   .featuredReport:not(:last-child) {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5em; 
+  }
+
+  .featuredReport:last-child {
+    border-bottom: none;
   }
 
   .featuredReport >>> .reportInfo {
@@ -91,14 +103,4 @@ export default {
   .featuredReport:hover {
     background-color: rgb(245, 245, 245);
   }
-
-  .featuredReportsStub {
-    padding: 4px 12px;
-    color: #666;
-    line-height: 1.2em;
-    font-size: 12pt;
-    background-color: #F4F4F4;
-    border-top: 1px solid #DDD;
-  }
-
 </style>

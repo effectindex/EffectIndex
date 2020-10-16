@@ -19,8 +19,8 @@
 
     <p>
       The official Effect Index community is hosted on Discord and may be joined <ext-link href="https://discord.gg/VSm5bF7">
-        here
-      </ext-link>.
+        here.
+      </ext-link>
     </p>
 
     <p>

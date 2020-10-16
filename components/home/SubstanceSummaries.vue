@@ -1,6 +1,9 @@
 <template>
-  <div class="substanceSummariesContainer">
-    <div class="substanceSummaries">
+  <panel
+    icon="flask.svg"
+    title="Substance Summaries"
+  >
+    <template v-slot:content>
       <ul class="summaryList">
         <li class="summaryItem">
           <span> The Subjective Effects of Psychedelics: </span> <br>
@@ -25,14 +28,24 @@
           </nuxt-link>
         </li>
       </ul>
-    </div>
-    <div class="substanceSummariesStub">
+    </template>
+    <template v-slot:stub>
       For more, see the <nuxt-link to="/substances/">
         Substance Index.
       </nuxt-link>
-    </div>
-  </div>
+    </template>
+  </panel>
 </template>
+
+<script>
+import Panel from '@/components/home/Panel';
+
+export default {
+  components: {
+    Panel
+  }
+};
+</script>
 
 <style scoped>
   .summaryList {
@@ -52,15 +65,5 @@
 
   .summaryItem:not(:first-child) {
     margin-top: 0.5em;
-  }
-
-  .substanceSummariesStub {
-    width: 100%;
-    font-size: 12pt;
-    color: #666;
-    border-top: 1px solid #DDD;
-    background-color: #F4F4F4;
-    line-height: 1.2em;
-    padding: 4px 12px;
   }
 </style>

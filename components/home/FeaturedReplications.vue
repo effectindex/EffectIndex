@@ -1,69 +1,73 @@
 <template>
-  <div 
-    v-show="featuredReplications.length"
-    class="replicationsContainer"
+  <Panel
+    icon="images.svg"
+    title="Featured Replications"
   >
-    <div 
-      v-touch:swipe.left="nextImage"
-      v-touch:swipe.right="previousImage"
-      :style="{
-        backgroundImage: imageUrl
-      }" 
-      class="replicationImage"
-      @click="toggleModal"
-    >
+    <template v-slot:content>
       <div 
-        class="replicationControls previous"
-        @click.stop="previousImage"
+        v-touch:swipe.left="nextImage"
+        v-touch:swipe.right="previousImage"
+        :style="{
+          backgroundImage: imageUrl
+        }" 
+        class="replicationImage"
+        @click="toggleModal"
       >
-        <Icon
-          filename="chevron-double-left.svg"
-          color="white"
-        />
+        <div 
+          class="replicationControls previous"
+          @click.stop="previousImage"
+        >
+          <Icon
+            filename="chevron-double-left.svg"
+            color="white"
+          />
+        </div>
+        <div 
+          class="replicationControls next"
+          @click.stop="nextImage"
+        >
+          <Icon
+            filename="chevron-double-right.svg"
+            color="white"
+          />
+        </div>
+        <div 
+          class="replicationImageDescription"
+          @click.stop
+        >
+          {{ properIntroduction }}
+          <span
+            v-for="(effect, i) in replicatedEffects"
+            :key="effect._id" 
+            class="replicationEffect"
+          ><span v-if="i > 0 && (i === replicatedEffects.length - 1)"> and </span>
+            <span v-else-if="i > 0">,</span>
+            <nuxt-link :to="'/effects/' + effect.url">
+              {{ effect.name }}</nuxt-link>
+          </span>
+          <!-- maybe add substances here -->
+          <br>
+          <span class="replicationArtist"> by {{ replication.artist }} </span>
+        </div>
       </div>
-      <div 
-        class="replicationControls next"
-        @click.stop="nextImage"
-      >
-        <Icon
-          filename="chevron-double-right.svg"
-          color="white"
-        />
-      </div>
-      <div 
-        class="replicationImageDescription"
-        @click.stop
-      >
-        {{ properIntroduction }}
-        <span
-          v-for="(effect, i) in replicatedEffects"
-          :key="effect._id" 
-          class="replicationEffect"
-        ><span v-if="i > 0 && (i === replicatedEffects.length - 1)"> and </span>
-          <span v-else-if="i > 0">,</span>
-          <nuxt-link :to="'/effects/' + effect.url">
-            {{ effect.name }}</nuxt-link>
-        </span>
-        <!-- maybe add substances here -->
-        <br>
-        <span class="replicationArtist"> by {{ replication.artist }} </span>
-      </div>
-    </div>
-    <div class="replicationsStub">
+    </template>
+    <template v-slot:stub>
       For more, see the <nuxt-link to="/replications/">
         replications gallery.
       </nuxt-link>
-    </div>
-  </div>
+    </template>
+  </Panel>
 </template>
 
 <script>
 import { shuffle } from 'lodash';
 import Icon from '@/components/Icon';
+import Panel from '@/components/home/Panel';
 
 export default {
   components: {
-    Icon
+    Icon,
+    Panel
   },
   data() {
     return {
@@ -273,7 +277,6 @@ export default {
     color: #666;
     border-top: 1px solid #DDD;
     background-color: #F4F4F4;
-    line-height: 1.2em;
     padding: 4px 12px;
   }
 
