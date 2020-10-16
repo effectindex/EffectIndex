@@ -7,7 +7,9 @@
         <FeaturedEffects />
       </Column>
       <Column>
-        <FeaturedReplications />
+        <client-only>
+          <FeaturedReplications />
+        </client-only>
         <FeaturedReports />
       </Column>
     </Columns>

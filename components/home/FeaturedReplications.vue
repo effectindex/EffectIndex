@@ -45,9 +45,9 @@
             <nuxt-link :to="'/effects/' + effect.url">
               {{ effect.name }}</nuxt-link>
           </span>
-          <!-- maybe add substances here -->
-          <br>
-          <span class="replicationArtist"> by {{ replication.artist }} </span>
+          <div class="replicationArtist">
+            by {{ replication.artist }}
+          </div>
         </div>
       </div>
     </template>
