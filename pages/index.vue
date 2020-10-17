@@ -10,7 +10,9 @@
         <client-only>
           <FeaturedReplications />
         </client-only>
-        <FeaturedReports />
+        <FeaturedReports
+          :number-of-reports="4"
+        />
       </Column>
     </Columns>
   </div>
@@ -54,3 +56,23 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.column:not(:last-child) {
+  margin-right: 1em;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+</style>

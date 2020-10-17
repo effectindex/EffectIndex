@@ -2,6 +2,7 @@
   <Panel
     icon="file-signature.svg"
     title="Featured Reports"
+    description="Gotta insert some sort of description here."
   >
     <template v-slot:content>
       <div class="featuredReports">
@@ -34,13 +35,21 @@ export default {
     Panel
   },
 
+  props: {
+    numberOfReports: {
+      type: Number,
+      default: 3
+    }
+  },
+
   computed: {
     reports() {
       return this.$store.state.reports;
     },
     featuredReports() {
       const shuffledReports = shuffle(this.reports.filter((report) => report.featured));
-      return shuffledReports.length >= 3 ? shuffledReports.slice(0, 3) : shuffledReports;
+      const maxReports = this.numberOfReports;
+      return shuffledReports.length >= maxReports ? shuffledReports.slice(0, maxReports) : shuffledReports;
     }
   }
 };
@@ -62,17 +71,12 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0.5em;
-    margin: 0.5em;
-    border: 1px solid #EEE;
+    padding: 0.75em 0.5em;
+    margin: 0;
   }
 
   .featuredReport:not(:last-child) {
-    margin-bottom: 0.5em; 
-  }
-
-  .featuredReport:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #DDD;
   }
 
   .featuredReport >>> .reportInfo {
@@ -89,10 +93,12 @@ export default {
 
   .featuredReport >>> .reportAuthor {
     font-size: 0.9em;
+    font-style: italic;
   }
 
   .featuredReport >>> .reportSubstanceName {
     font-size: 1em;
+    color: #666;
   }
 
   .featuredReport >>> .reportSubstanceDoseRoa {

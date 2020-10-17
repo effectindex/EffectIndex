@@ -1,12 +1,15 @@
 <template>
-  <panel
+  <Panel
     icon="flask.svg"
     title="Substance Summaries"
+    description="Detailed breakdowns of the subjective effects that occur on particular classes of substances."
   >
-    <template v-slot:content>
+    <template
+      v-slot:content 
+    >
       <ul class="summaryList">
         <li class="summaryItem">
-          <span> The Subjective Effects of Psychedelics: </span> <br>
+          <span style="color: #333;"> Psychedelics: </span>
           <nuxt-link :to="'/summaries/psychedelics/visual'">
             Visual,
           </nuxt-link>
@@ -19,12 +22,12 @@
         </li>
         <li class="summaryItem">
           <nuxt-link :to="'/summaries/dissociatives'">
-            The Subjective Effects of Dissociatives
+            Dissociatives
           </nuxt-link>
         </li>
         <li class="summaryItem">
           <nuxt-link :to="'/summaries/deliriants'">
-            The Subjective Effects of Deliriants
+            Deliriants
           </nuxt-link>
         </li>
       </ul>
@@ -34,7 +37,7 @@
         Substance Index.
       </nuxt-link>
     </template>
-  </panel>
+  </Panel>
 </template>
 
 <script>
@@ -48,11 +51,17 @@ export default {
 </script>
 
 <style scoped>
+
+  .summaryContent {
+    background-image: linear-gradient(to top, #F8F8F8 95%, #DDD 100%);
+  }
+
   .summaryList {
-    color: #AAA;
+    color: #DDD;
     padding: 12px;
     padding-left: calc(12px + 1em);
     margin-bottom: 0;
+    width: 100%; 
   }
 
   .substanceSummaries {

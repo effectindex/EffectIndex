@@ -60,7 +60,7 @@
 
         <category
           icon="eye.svg"
-          link="/summaries/psychedelics/visual"
+          page="/summaries/psychedelics/visual"
           title="Psychedelics (Visual)"
         >
           <panel
@@ -134,7 +134,7 @@
         <category
           icon="user.svg"
           title="Psychedelics (Cognitive)"
-          link="/summaries/psychedelics/cognitive"
+          page="/summaries/psychedelics/cognitive"
         >
           <panel
             title="Cognitive Effects of Psychedelics"
@@ -221,7 +221,7 @@
         <category
           icon="cogs.svg"
           title="Psychedelics (Miscellaneous)"
-          link="/summaries/psychedelics/miscellaneous"
+          page="/summaries/psychedelics/miscellaneous"
         >
           <panel
             title="Miscellaneous Effects of Psychedelics"
@@ -311,7 +311,7 @@
         <category
           title="Dissociatives"
           icon="disconnective.svg"
-          link="/summaries/dissociatives/"
+          page="/summaries/dissociatives/"
         >
           <panel
             title="Effects of Dissociatives"
@@ -389,7 +389,7 @@
         <category
           title="Deliriants"
           icon="deliriant.svg"
-          link="/summaries/deliriants/"
+          page="/summaries/deliriants/"
         >
           <panel
             title="Effects of Deliriants"

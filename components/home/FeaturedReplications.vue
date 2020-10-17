@@ -2,6 +2,7 @@
   <Panel
     icon="images.svg"
     title="Featured Replications"
+    description="Gotta insert some sort of description here."
   >
     <template v-slot:content>
       <div 
@@ -270,14 +271,4 @@ export default {
     font-style: italic;
     font-size: 0.8em;
   }
-
-  .replicationsStub {
-    width: 100%;
-    font-size: 12pt;
-    color: #666;
-    border-top: 1px solid #DDD;
-    background-color: #F4F4F4;
-    padding: 4px 12px;
-  }
-
 </style>

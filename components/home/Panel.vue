@@ -1,13 +1,18 @@
 <template>
   <div class="frontpagePanel">
-    <div class="frontpagePanelTitleContainer">
-      <h1 class="frontpagePanelTitle">
-        {{ title }}
-      </h1>
+    <div class="frontpagePanelHeader">
+      <div class="frontpagePanelTitleContainer">
+        <h1 class="frontpagePanelTitle">
+          {{ title }}
+        </h1>
+        <div class="frontpagePanelDescription">
+          {{ description }}
+        </div>
+      </div>
       <Icon
         v-show="icon"
         :filename="icon"
-        class="panelIcon"
+        class="frontpagePanelIcon"
       />
     </div>
     <div class="content">
@@ -36,6 +41,10 @@ export default {
       type: String,
       default: ''
     },
+    description: {
+      type: String,
+      default: ''
+    },
     icon: {
       type: String,
       default: undefined
@@ -56,14 +65,26 @@ export default {
     margin-bottom: 1em;
   }
 
-  .frontpagePanelTitleContainer {
+  .frontpagePanelHeader {
+    border-bottom: 1px solid #DDD;
+    background-color: #F0F0F0;
+    padding: 5px 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #DDD;
-    background-color: #F0F0F0;
-    padding: 5px 12px;
+    background-image: linear-gradient(to bottom, #F8F8F8 70%, #EEE);
+  }
+
+  .frontpagePanelDescription {
+    font-size: 16px;
+    color: #777;
+    font-style: italic;
+  }
+
+  .frontpagePanelTitleContainer {
+    flex: 1;
+    padding-right: 20px;
   }
 
   .frontpagePanelTitleContainer h1 {
@@ -71,11 +92,15 @@ export default {
   }
 
   .frontpagePanelTitle {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 1em;
+    margin: 0;
+    margin-top: -3px;
     font-size: 16pt;
-    padding: 6px 12px;
+  }
+
+  .frontpagePanelIcon {
+    height: 30px;
+    width: 30px;
+    opacity: 0.6;
   }
 
   .frontpagePanel .stub {
@@ -84,6 +109,8 @@ export default {
     border-top: 1px solid #DDD;
     background-color: #F4F4F4;
     padding: 4px 12px;
+    background-image: linear-gradient(to bottom, #F8F8F8 70%, #EEE);
+
   }
 
   .frontpagePanel .content {

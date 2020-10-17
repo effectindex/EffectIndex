@@ -159,23 +159,6 @@ body {
 }
 
 /* Generic Components */
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-}
-
-.column:not(:last-child) {
-  margin-right: 1em;
-}
-
-.columns {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .panelIcon {
   opacity: 0.65;
   height: 1.2em;

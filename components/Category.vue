@@ -1,7 +1,7 @@
 <template>
   <div class="categoryContainer">
     <h3 class="categoryTitle">
-      <nuxt-link :to="link">
+      <nuxt-link :to="page">
         {{ title }}
       </nuxt-link>
       <Icon
