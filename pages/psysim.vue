@@ -25,7 +25,7 @@
     <h3>
       <p class="text-centered">
         <ext-link
-          href="https://effectindex.com/static/img/gallery/PsySim%20070119.zip"
+          href="https://effectindex.com/downloads/PsySim%20070119.zip"
         >
           <b>CLICK HERE TO DOWNLOAD</b>
         </ext-link>
