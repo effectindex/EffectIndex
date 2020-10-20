@@ -11,7 +11,7 @@
           <FeaturedReplications />
         </client-only>
         <FeaturedReports
-          :number-of-reports="4"
+          :number-of-reports="3"
         />
       </Column>
     </Columns>

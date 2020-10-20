@@ -2,7 +2,7 @@
   <Panel
     icon="images.svg"
     title="Featured Replications"
-    description="Artistic representations of specific subjective effects."
+    description="Artistic representations of specific subjective effects"
   >
     <template v-slot:content>
       <div 

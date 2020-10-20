@@ -110,6 +110,7 @@ export default {
   position: relative;
   display: inline-block;
   border-right: 1px solid #cccccc;
+  font-weight: bold;
   padding: 60px 25px;
 }
 

@@ -87,7 +87,7 @@
       name="Cognitive Effects"
       description="Cognitive effects are subjective effects that directly alter or introduce new content to an element of a person's cognition. "
       page="cognitive-effects"
-      icon="cogs.svg"
+      icon="user.svg"
     />
 
     <IndexCategory

@@ -2,7 +2,7 @@
   <Panel
     icon="flask.svg"
     title="Substance Summaries"
-    description="Detailed breakdowns of the subjective effects that occur on particular classes of substances."
+    description="Subjective effects broken down by class"
   >
     <template
       v-slot:content 

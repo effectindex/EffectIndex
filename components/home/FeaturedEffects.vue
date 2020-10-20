@@ -2,7 +2,7 @@
   <Panel
     icon="sitemap.svg" 
     title="Featured Effects"
-    description="Subjective effects that best represent the SEI."
+    description="Subjective effects that best represent the SEI"
     class="featuredEffects"
   >
     <template v-slot:content>

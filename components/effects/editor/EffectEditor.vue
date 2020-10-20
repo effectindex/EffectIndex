@@ -72,6 +72,11 @@
       </div>
 
       <div>
+        <label> Related Reports </label>
+        <report-input v-model="related_reports" />
+      </div>
+
+      <div>
         <label> External Links </label>
         <link-input v-model="external_links" />
       </div>
@@ -176,7 +181,7 @@ import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";
 import TagInput from "@/components/effects/editor/TagInput";
 import ContributorInput from "@/components/effects/editor/ContributorInput";
 import SubarticleInput from "@/components/effects/editor/SubarticleInput";
-
+import ReportInput from "@/components/effects/editor/ReportInput";
 export default {
   components: {
     CitationInput,
@@ -185,7 +190,8 @@ export default {
     SeeAlsoInput,
     TagInput,
     ContributorInput,
-    SubarticleInput
+    SubarticleInput,
+    ReportInput,
   },
   props: {
     effect: {
@@ -194,27 +200,30 @@ export default {
     }
   },
   data() {
+    const { _id, name, description_raw, citations, url, related_substances, related_reports, external_links, 
+    see_also, tags, contributors, summary_raw, long_summary_raw, analysis_raw, style_variations_raw,
+    personal_commentary_raw, gallery_order, social_media_image, subarticles, featured } = this.effect;
     return {
       showDetails: false,
-      id: this.effect ? this.effect._id : undefined,
-      name: this.effect ? this.effect.name : "",
-      description: this.effect ? this.effect.description_raw : "",
-      citations: this.effect ? this.effect.citations : [],
-      url: this.effect ? this.effect.url : "",
-      related_substances: this.effect ? this.effect.related_substances : [],
-      external_links: this.effect ? this.effect.external_links : [],
-      see_also: this.effect ? this.effect.see_also : [],
-      tags: this.effect ? this.effect.tags : [],
-      contributors: this.effect ? this.effect.contributors : [],
-      summary: this.effect ? this.effect.summary_raw : "",
-      long_summary: this.effect ? this.effect.long_summary_raw : "",
-      analysis: this.effect ? this.effect.analysis_raw : "",
-      style_variations: this.effect ? this.effect.style_variations_raw : "",
-      personal_commentary: this.effect ? this.effect.personal_commentary_raw : "",
-      gallery_order: this.effect ? this.effect.gallery_order : [],
-      social_media_image: this.effect ? this.effect.social_media_image : "",
-      subarticles: this.effect ? this.effect.subarticles : [],
-      featured: this.effect ? this.effect.featured : false
+      id: _id,
+      name: name ? name : "",
+      description: description_raw ? description_raw : "",
+      citations: citations ? citations : [],
+      url: url ? url : "",
+      related_substances: related_substances ? related_substances : [],
+      external_links: external_links ? external_links : [],
+      see_also: see_also ? see_also : [],
+      tags: tags ? tags : [],
+      contributors: contributors ? contributors : [],
+      summary: summary_raw ? summary_raw : "",
+      long_summary: long_summary_raw ? long_summary_raw : "",
+      analysis: analysis_raw ? analysis_raw : "",
+      style_variations: style_variations_raw ? style_variations_raw : "",
+      personal_commentary: personal_commentary_raw ? personal_commentary_raw : "",
+      gallery_order: gallery_order ? gallery_order : [],
+      social_media_image: social_media_image ? social_media_image : "",
+      subarticles: subarticles ? subarticles : [],
+      featured: featured ? featured : false
     };
   },
   computed: {

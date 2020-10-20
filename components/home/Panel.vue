@@ -73,11 +73,10 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-image: linear-gradient(to bottom, #F8F8F8 70%, #EEE);
   }
 
   .frontpagePanelDescription {
-    font-size: 16px;
+    font-size: 14px;
     color: #777;
     font-style: italic;
   }
@@ -109,8 +108,6 @@ export default {
     border-top: 1px solid #DDD;
     background-color: #F4F4F4;
     padding: 4px 12px;
-    background-image: linear-gradient(to bottom, #F8F8F8 70%, #EEE);
-
   }
 
   .frontpagePanel .content {

@@ -2,7 +2,7 @@
   <Panel
     icon="file-signature.svg"
     title="Featured Reports"
-    description="Trip reports we highly recommend reading."
+    description="Recommended firsthand accounts of subjective effects"
   >
     <template v-slot:content>
       <div class="featuredReports">
