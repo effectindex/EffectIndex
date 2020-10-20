@@ -2,7 +2,7 @@
   <Panel
     icon="file-signature.svg"
     title="Featured Reports"
-    description="Gotta insert some sort of description here."
+    description="Trip reports we highly recommend reading."
   >
     <template v-slot:content>
       <div class="featuredReports">

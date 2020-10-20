@@ -2,7 +2,7 @@
   <Panel
     icon="sitemap.svg" 
     title="Featured Effects"
-    description="Detailed descriptions of some of the subjective states caused by substances."
+    description="Subjective effects that best represent the SEI."
     class="featuredEffects"
   >
     <template v-slot:content>
