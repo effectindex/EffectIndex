@@ -2,7 +2,7 @@
   <Panel
     icon="flask.svg"
     title="Substance Summaries"
-    description="Subjective effects broken down by class"
+    description="Hallucinogenic substance classes, broken down and described"
   >
     <template
       v-slot:content 

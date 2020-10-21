@@ -2,7 +2,7 @@
   <Panel
     icon="file-signature.svg"
     title="Featured Reports"
-    description="Recommended firsthand accounts of subjective effects"
+    description="Recommended firsthand accounts of hallucinogenic experiences"
   >
     <template v-slot:content>
       <div class="featuredReports">

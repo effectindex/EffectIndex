@@ -6,7 +6,7 @@
       </nuxt-link> -
       Cognitive Effects
       <Icon
-        filename="cogs.svg"
+        filename="user.svg"
         class="categoryIcon"
       /> 
     </h1>

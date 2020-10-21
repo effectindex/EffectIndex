@@ -1,8 +1,8 @@
 <template>
   <Panel
-    icon="sitemap.svg" 
+    icon="eye.svg" 
     title="Featured Effects"
-    description="Subjective effects that best represent the SEI"
+    description="A selection of subjective effects that best represent the SEI"
     class="featuredEffects"
   >
     <template v-slot:content>
