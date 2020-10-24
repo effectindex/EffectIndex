@@ -177,6 +177,7 @@
           </category>   
         </column>
       </tab>
+      
       <tab slot="Sensory">
         <blob> 
           <p>

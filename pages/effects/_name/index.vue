@@ -76,6 +76,14 @@
         <formatted-document :document="effect.personal_commentary_formatted" />
       </div>
 
+      <div v-if="hasSection('related_reports')">
+        <hr>
+        <h3> Related Reports </h3>
+        <related-reports 
+          :reports="effect.related_reports" 
+        />
+      </div>
+
       <div v-if="hasSection('see_also') || hasSection('external_links')">
         <hr>
         <div v-if="hasSection('see_also')">
@@ -152,6 +160,7 @@ import ExtLink from "@/components/ExtLink";
 import Tag from "@/components/effects/Tag";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import Icon from '@/components/Icon';
+import RelatedReports from '@/components/effects/RelatedReports';
 
 export default {
   name: 'Effect',
@@ -162,7 +171,8 @@ export default {
     ExtLink,
     Tag,
     AudioPlayer,
-    Icon
+    Icon,
+    RelatedReports
   },
   computed: {
     icon() {

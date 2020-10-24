@@ -29,7 +29,7 @@ const effectSchema = new mongoose.Schema({
   contributors: Array,
   citations: Array,
   related_substances: Array,
-  related_reports: Array,
+  related_reports: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Report' }],
   see_also: Array,
   external_links: Array,
   social_media_image: String,

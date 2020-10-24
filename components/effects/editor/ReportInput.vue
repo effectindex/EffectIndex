@@ -1,21 +1,46 @@
 <template>
-  <div>
-    <input 
-      v-model="reportInputText"
-      class="effectEditor__input"
-      @keyup="changeInput"
-    >
-    <ul class="substanceList">
-      <li 
-        v-for="(substance, index) in value"
-        :key="substance"
-        class="substanceItem"
+  <div class="reportInput">
+    <div class="searchContainer">
+      <input 
+        v-model="term"
+        class="effectEditor__input"
+        @keyup="changeInput"
       >
-        <div class="substanceItem__content">
-          {{ substance }}
-          <a @click="removeSubstance(index)">
-            <Icon
-              filename="times-circle.svg"
+      <ul 
+        v-show="results.length > 0"
+        class="reportList"
+      >
+        <li 
+          v-for="result in results.slice(0, 5)"
+          :key="result._id"
+        >
+          <a @click="addSelection(result._id)">
+            <span class="title"> {{ result.title }} </span> -
+            <span class="name"> {{ result.subject.name }} </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ul
+      v-show="selectedReports.length > 0"
+      class="selectedReportList"
+    >
+      <li 
+        v-for="report in selectedReports"
+        :key="report._id"
+        class="selectedReportItem"
+      >
+        <div class="reportInfo">
+          <span class="title"> {{ report.title }} </span>
+          <span class="separator"> by </span>
+          <span class="name"> {{ report.subject.name }} </span>
+        </div>
+        <div class="reportControls">
+          <a 
+            @click="removeSelection(report._id)"
+          >
+            <Icon 
+              filename="times-circle.svg" 
               color="red"
             />
           </a>
@@ -40,89 +65,96 @@ export default {
   },
   data() {
     return {
-      substanceInputText: ""
+      term: "",
+      results: [],
+      reports: [],
+      selected: this.value ? this.value : []
     };
   },
+  computed: {
+    selectedReports () {
+      return this.reports.filter( report => this.selected.includes(report._id) );
+    }
+  },
+  async fetch() {
+    try {
+      const { reports } = await this.$axios.$get('/api/reports');
+      this.reports = reports;
+    } catch (error) {
+      console.log(error);
+    }
+  },
   methods: {
-    changeInput(e) {
-      if (e.keyCode === 13) {
-        if (this.value.indexOf(e.target.value) === -1) {
-          this.$emit(
-            "input",
-            [e.target.value.trim()].concat(this.value).sort()
-          );
-        }
-        this.substanceInputText = "";
-      } else if (e.target.value.indexOf(",") > -1) {
-        let arr = e.target.value
-          .split(",")
-          .map(val => val.trim())
-          .filter(val => val.length > 0);
-
-        let newValue = [];
-
-        arr.forEach(substance => {
-          if (this.value.indexOf(substance) === -1) {
-            newValue.push(substance);
-          }
-        });
-
-        this.$emit("input", newValue.concat(this.value).sort());
-        this.substanceInputText = "";
+    async changeInput(e) {
+      const { term } = this;
+      try {
+        const { results } = await this.$axios.$post('/api/reports/search', { term });
+        this.results = (Array.isArray(results)) ? results : [];
+      } catch (error) {
+        console.log(error);
       }
     },
-    removeSubstance(index) {
-      let newArr = this.value.slice();
-      newArr.splice(index, 1);
-      this.$emit("input", newArr);
+
+    addSelection (id) {
+      if (!this.selected.includes(id)) {
+        this.selected = [...this.selected, id];
+        this.term = "";
+        this.results = [];
+        this.$emit('input', this.selected);
+      }
+    },
+
+    removeSelection (id) {
+      this.selected = this.selected.filter( selectedId => selectedId !== id);
+      this.$emit('input', this.selected);
     }
-  }
+  },
 };
 </script>
 
 <style scoped>
-.substanceItem {
-  display: inline-block;
-  width: 200px;
-  color: black;
-  background-color: #f5f5f5;
-  padding-left: 10px;
-  border: 1px dotted #ccc;
-  margin: 3px;
-  padding: 7px;
-  border-radius: 15px;
-}
+  .searchContainer {
+    position: relative;
+  }
 
-.icon {
-  height: 1em;
-  width: 1em;
-  opacity: 0.5;
-}
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
-.icon:hover {
-  opacity: 1;
-}
+  .reportList {
+    z-index: 100;
+    position: absolute;
+    min-width: 350px;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 1em;
+    opacity: 0.9;
+  }
 
-.substanceItem a {
-  color: #555;
-}
+  .icon {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+  }
 
-.substanceItem a:hover {
-  color: rgb(134, 19, 19);
-}
+  .selectedReportItem {
+    display: flex;
+    align-items: center;
+    margin-top: 0.25em;
+  }
 
-.substanceList {
-  list-style: none;
-  max-height: 300px;
-  overflow-y: auto;
-  font-size: 14px;
-  margin-top: 1em;
-  padding: 0;
-}
 
-.substanceItem__content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .reportInfo {
+    margin-right: 1em;
+  }
+
+  .selectedReportItem .title {
+    font-weight: bold;
+  }
+
+  .selectedReportItem .name {
+    font-style: italic;
+  }
 </style>

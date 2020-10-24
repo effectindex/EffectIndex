@@ -81,7 +81,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:url', async (req, res) => {
   try {
-    let effect = await Effect.findOne({ url: req.params.url }).exec();
+    let effect = await Effect.findOne({ url: req.params.url })
+    .populate('related_reports')
+    .exec();
     if (effect) {
       effect = effect.toJSON();
       effect.replications = await Replication.find({
@@ -103,6 +105,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
   contributors, related_substances, related_reports, external_links, see_also, tags, citations, gallery_order, social_media_image,
   featured, subarticles } = req.body;
+
   try {
     let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
       name,

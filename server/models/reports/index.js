@@ -105,5 +105,25 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.post('/search', async (req, res, next) => {
+  try {
+    const { term } = req.body;
+    if (!term) {
+      res.sendStatus(200);
+    } else {
+      const results = await Report
+      .find({ 
+        $or: [
+          { title: { $regex: term } },
+          { 'subject.name': { $regex: term } }
+        ]
+      })
+      .select('title subject');
+      res.json({ results });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
