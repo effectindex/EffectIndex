@@ -174,6 +174,18 @@
       v-model="reportData.tags"
     />
 
+    <section-header
+      :visibility="sectionVisibility['relatedEffects']"
+      title="Related Effects"
+      name="relatedEffects"
+      @toggle="toggleVisibility"
+    />
+
+    <effect-input
+      v-show="sectionVisibility['relatedEffects']"
+      v-model="reportData.related_effects"
+    />
+
     <div>
       <label for="featured">
         Featured 
@@ -207,13 +219,15 @@ import LogInput from './LogInput';
 import SectionHeader from './SectionHeader';
 import SubstancesInput from './SubstancesInput';
 import TagInput from './TagInput';
+import EffectInput from './EffectInput';
 
 export default {
   components: {
     SectionHeader,
     LogInput,
     SubstancesInput,
-    TagInput
+    TagInput,
+    EffectInput
   },
   props: {
     report: {
@@ -224,10 +238,12 @@ export default {
     visibility: {
       type: Object,
       required: false,
-      default: undefined
+      default: () => {}
     }
   },
   data() {
+    const sections = ['subject', 'substances', 'onset', 'peak', 'offset',
+        'introduction', 'description', 'conclusion', 'tags', 'relatedEffects'];
     return {
       reportData: {
         _id: this.report ? this.report._id : undefined,
@@ -235,6 +251,7 @@ export default {
         form_link: this.report ? this.report.form_link : undefined,
         subject: this.report ? this.report.subject : {},
         substances: this.report ? this.report.substances : [],
+        related_effects: this.report ? this.report.related_effects : [],
         introduction: this.report ? this.report.introduction : undefined,
         description: this.report ? this.report.description : undefined,
         onset: this.report ? this.report.onset : [],
@@ -244,10 +261,11 @@ export default {
         tags: this.report ? this.report.tags : [],
         featured: this.report ? this.report.featured : false,
       },
-      sectionVisibility: this.visibility ? this.visibility : 
-      (() => { return ['subject', 'substances', 'onset', 'peak', 'offset',
-        'introduction', 'description', 'conclusion', 'tags']
-        .reduce((o, p) => { o[p] = false; return o; }, {}); })(),
+      sectionVisibility: Object.fromEntries(
+        sections.map(
+          section => this.visibility[section] ? [section, this.visibility[section]] : [section, false]
+          )
+        )
     };
   },
   methods: {

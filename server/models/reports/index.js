@@ -78,6 +78,7 @@ router.get('/slug/:slug', async(req, res, next) => {
   try {
     let report = await Report
       .findOne({ slug })
+      .populate('related_effects', 'name url')
       .lean()
       .exec();
 

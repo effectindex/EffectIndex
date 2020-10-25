@@ -72,11 +72,6 @@
       </div>
 
       <div>
-        <label> Related Reports </label>
-        <report-input v-model="related_reports" />
-      </div>
-
-      <div>
         <label> External Links </label>
         <link-input v-model="external_links" />
       </div>
@@ -181,7 +176,7 @@ import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";
 import TagInput from "@/components/effects/editor/TagInput";
 import ContributorInput from "@/components/effects/editor/ContributorInput";
 import SubarticleInput from "@/components/effects/editor/SubarticleInput";
-import ReportInput from "@/components/effects/editor/ReportInput";
+
 export default {
   components: {
     CitationInput,
@@ -191,7 +186,6 @@ export default {
     TagInput,
     ContributorInput,
     SubarticleInput,
-    ReportInput,
   },
   props: {
     effect: {
@@ -200,7 +194,7 @@ export default {
     }
   },
   data() {
-    const { _id, name, description_raw, citations, url, related_substances, related_reports, external_links, 
+    const { _id, name, description_raw, citations, url, related_substances, external_links, 
     see_also, tags, contributors, summary_raw, long_summary_raw, analysis_raw, style_variations_raw,
     personal_commentary_raw, gallery_order, social_media_image, subarticles, featured } = this.effect;
     return {
@@ -211,7 +205,6 @@ export default {
       citations: citations ? citations : [],
       url: url ? url : "",
       related_substances: related_substances ? related_substances : [],
-      related_reports: related_reports ? related_reports.map(report => report._id) : [],
       external_links: external_links ? external_links : [],
       see_also: see_also ? see_also : [],
       tags: tags ? tags : [],
@@ -262,7 +255,6 @@ export default {
         description: this.description,
         citations: this.citations,
         related_substances: this.related_substances,
-        related_reports: this.related_reports,
         external_links: this.external_links,
         see_also: this.see_also,
         tags: this.tags,

@@ -83,6 +83,13 @@
       header-colour="#EEE"
       header="Conclusion / Aftermath"
     />
+
+    <h2> Related Effects </h2>
+
+    <related-effects
+      v-if="report.related_effects && (report.related_effects.length > 0)"
+      :effects="report.related_effects" 
+    />
   </article>
 </template>
 
@@ -92,6 +99,7 @@ import SubjectBox from "@/components/reports/report__subjectBox";
 import SubstancesBox from "@/components/reports/report__substancesBox";
 import LogBox from "@/components/reports/report__logBox";
 import Tag from "@/components/reports/report__tag";
+import RelatedEffects from "@/components/reports/report__relatedEffects";
 
 export default {
   components: {
@@ -99,7 +107,8 @@ export default {
     SubjectBox,
     SubstancesBox,
     LogBox,
-    Tag
+    Tag,
+    RelatedEffects
   },
   computed: {
     profile() {
