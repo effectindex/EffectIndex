@@ -2,12 +2,26 @@
   <article class="report">
     <div class="report__headerContainer">
       <div class="report__headerTitleContainer">
-        <h1
-          class="report__title"
-          style="margin-bottom: 0;"
-        >
-          {{ report.title }}
-        </h1>
+        <div style="display: flex; flex-direction: row; align-items: center;">
+          <h1
+            class="report__title"
+            style="margin-bottom: 0;"
+          >
+            {{ report.title }}
+          </h1>
+          <div
+            v-if="$auth.loggedIn"
+          >
+            <nuxt-link 
+              :to="`/admin/reports/${report._id}`"
+            >
+              <Icon
+                style="height: 20px; width: 20px; opacity: 0.6; margin-left: 15px;"
+                filename="edit.svg"
+              />
+            </nuxt-link>
+          </div>
+        </div>
         <div
           v-show="report.subject.name"
           class="report__titleAuthor"
@@ -84,10 +98,8 @@
       header="Conclusion / Aftermath"
     />
 
-    <h2> Related Effects </h2>
-
     <related-effects
-      v-if="report.related_effects && (report.related_effects.length > 0)"
+      v-if="hasRelatedEffects"
       :effects="report.related_effects" 
     />
   </article>
@@ -100,6 +112,7 @@ import SubstancesBox from "@/components/reports/report__substancesBox";
 import LogBox from "@/components/reports/report__logBox";
 import Tag from "@/components/reports/report__tag";
 import RelatedEffects from "@/components/reports/report__relatedEffects";
+import Icon from "@/components/Icon";
 
 export default {
   components: {
@@ -108,7 +121,8 @@ export default {
     SubstancesBox,
     LogBox,
     Tag,
-    RelatedEffects
+    RelatedEffects,
+    Icon
   },
   computed: {
     profile() {
@@ -124,6 +138,9 @@ export default {
       let substanceList = '';
       substances.forEach((substance, index) => substanceList += (substance + (index < substances.length - 1 ? ', ' : '')));
       return `A ${substanceList} report from ${this.report.subject.name} on Effect Index.`;
+    },
+    hasRelatedEffects() {
+      return this.report.related_effects && (this.report.related_effects.length > 0);
     }
   },
   async asyncData({ store, params, error }) {

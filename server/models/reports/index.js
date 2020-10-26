@@ -78,14 +78,13 @@ router.get('/slug/:slug', async(req, res, next) => {
   try {
     let report = await Report
       .findOne({ slug })
-      .populate('related_effects', 'name url')
+      .populate('related_effects', 'name url tags')
       .lean()
       .exec();
 
     if (!report) throw API_Error('GET_REPORT_ERROR', 'The specified report could not be found.');
 
     delete report.sectionVisibility;
-    delete report._id;
 
     res.send({ report });
 

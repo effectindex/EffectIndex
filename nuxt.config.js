@@ -36,8 +36,7 @@ module.exports = {
   auth: {
     redirect: {
       login: "/user/login",
-      home: "/",
-      logout: "/"
+      home: "/"
     },
     strategies: {
       local: {
