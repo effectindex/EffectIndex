@@ -81,21 +81,21 @@ router.get('/', async (req, res) => {
 
 router.get('/:url', async (req, res) => {
   try {
-    let effect = await Effect.findOne({ url: req.params.url })
-    .exec();
+    let effect = await Effect.findOne({ url: req.params.url });
     if (effect) {
       effect = effect.toJSON();
       effect.replications = await Replication.find({
          type: { $in: ['image', 'gfycat'] },
          associated_effects: effect._id
-        }).exec();
+        });
       effect.audio_replications = await Replication.find({
         type: { $in: ['audio'] },
         associated_effects: effect._id
-      }).exec();
+      });
       effect.related_reports = await Report.find({
         related_effects: effect._id
-      });
+      })
+      .select('title subject substances slug');
     }
     res.send({ effect });
   } catch (error) {

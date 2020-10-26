@@ -10,12 +10,12 @@
       > 
         <Icon
           filename="angle-double-up.svg"
-          style="height: 1em;"
+          style="height: 1em; width: 1em; display: inline-block;"
         /> </a>
       <span v-else> 
         <Icon
           filename="angle-double-up.svg"
-          style="height: 1em;"
+          style="height: 1em; width: 1em; display: inline-block;"
         />
         <a 
           v-for="num in Number(no)"
