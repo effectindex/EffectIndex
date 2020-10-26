@@ -14,18 +14,21 @@
         This trip report seems to include the following subjective effects:
       </p>
       <related-effects-category
+        v-if="sensoryEffects.length > 0"
         :effects="sensoryEffects"
         name="Sensory"
         icon="eye.svg"
       />
 
       <related-effects-category
+        v-if="cognitiveEffects.length > 0"
         :effects="cognitiveEffects"
         name="Cognitive"
         icon="user.svg"
       />
 
       <related-effects-category
+        v-if="physicalEffects.length > 0"
         :effects="physicalEffects"
         name="Physical"
         icon="heart-rate.svg"
