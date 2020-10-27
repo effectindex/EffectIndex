@@ -44,7 +44,7 @@ export default {
     };
   },
   async asyncData({ store, params, error }) {
-    let username = params.username.toLowerCase();
+    let username = params.username;
 
     let { profile } = await store.dispatch("getProfileByName", username);
     if (!profile) return;
