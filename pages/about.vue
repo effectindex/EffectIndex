@@ -26,7 +26,7 @@
     </p>
 
     <p>
-      Effect Index was initially founded as a side project on 30 June, 2017 by <a href="/profiles/josie"> Josie Kins, </a> the
+      Effect Index was initially founded as a side project on 30 June, 2017 by <a href="/profiles/Josie"> Josie Kins, </a> the
       founder of <ext-link href="http://www.psychonautwiki.org">
         PsychonautWiki
       </ext-link> and

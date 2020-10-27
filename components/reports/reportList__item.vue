@@ -61,6 +61,7 @@ export default {
 
   .reportList__item--author {
     color: #777;
+    font-style: italic;
   }
 
   .reportList__item--tripDate {
@@ -70,21 +71,20 @@ export default {
   .reportList__item {
     display: flex;
     position: relative;
-    background-color: #FBFBFB;
-    max-width: 800px;
     flex-direction: row;
     left: 0;
     top: 0;
     flex-wrap: wrap;
-    border: 1px solid rgb(221, 221, 221);
-    padding: 10px;
     cursor: pointer;
     transition: all 0.25s ease;
-    margin: 0.5em 0;
+    margin-bottom: 10px;
+    border: 1px solid #D8D8D8;
+    padding: 5px;
+    background-color: #fbfbfb;
   }
 
-  .reportList__item:hover {
-    background-color: #F2F2F2;
+  .reportList__item:hover h4 {
+    color: #55cca2;
   }
 
   .reportList__item h4 {
@@ -93,7 +93,7 @@ export default {
     text-transform:capitalize;
     font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0px;
   }
 
@@ -112,14 +112,15 @@ export default {
   }
 
   .substancesList {
+    flex: 1;
     list-style: none;
     margin: 0;
     color: #333;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    width: 350px;
+    padding: 0.15em 0;
+    padding-left: 2em;
     border-left: 1px solid #DDD;
   }
 
@@ -146,16 +147,25 @@ export default {
   }
 
   @media(max-width: 660px) {
-    .infoContainer {
-      margin-bottom: 1em;
+
+    .reportList__item {
+      flex-direction: column;
     }
 
-  .substancesList {
-    min-width: 250px;
-    border-left: none;
-    padding-top: 1em;
-    padding-left: 0;
-  }
+    .infoContainer {
+      padding-bottom: 0.25em;
+    }
+
+    .substancesList {
+      padding-left: 0;
+      border-left: 0;
+      padding-top: 0.5em;
+      border-top: 1px solid #D4D4D4;
+    }
+
+    .substanceName {
+      font-size: 16px;
+    } 
 
   }
 

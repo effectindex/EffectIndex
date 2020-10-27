@@ -18,7 +18,7 @@
     <p>
       Although many <nuxt-link to="/categories/transpersonal-effects">
         transpersonal
-      </nuxt-link> and <nuxt-link to="/categories/psychological-effects">
+      </nuxt-link> and <nuxt-link to="/categories/psychological-states">
         psychological effects
       </nuxt-link> also technically fit into this definition, they are excluded from this category as they have their own defining qualities that standard novel states do not.
     </p>
