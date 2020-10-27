@@ -95,7 +95,7 @@ router.get('/:url', async (req, res) => {
       effect.related_reports = await Report.find({
         related_effects: effect._id
       })
-      .select('title subject substances slug');
+      .select('title subject substances slug featured');
     }
     res.send({ effect });
   } catch (error) {

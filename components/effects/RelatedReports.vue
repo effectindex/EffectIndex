@@ -1,7 +1,7 @@
 <template>
   <div>
     <related-report-item
-      v-for="report in reports"
+      v-for="report in sortedReports"
       :key="report._id"
       :report="report"
     />
@@ -19,6 +19,14 @@ export default {
     reports: {
       type: Array,
       default: () => []
+    }
+  },
+  computed: {
+    sortedReports() {
+      const featured = this.reports.filter( report => report.featured );
+      const unfeatured = this.reports.filter( report => !report.featured );
+
+      return [...featured, ...unfeatured];
     }
   }
 };

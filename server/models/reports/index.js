@@ -97,6 +97,7 @@ router.get('/', async (req, res, next) => {
   try {
     let reports = await Report
       .find()
+      .select('title subject substances featured tags related_effects slug')
       .exec();
     if (!reports) throw API_Error('GET_REPORTS_ERROR', 'The server failed to retrieve the reports.');
     res.status(200).send({ reports });

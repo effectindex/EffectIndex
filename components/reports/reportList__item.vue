@@ -1,7 +1,7 @@
 <template>
   <nuxt-link 
     :to="`/reports/${report.slug}`"
-    class="reportList__item"
+    :class="`reportList__item ${report.featured ? 'featured' : ''}`"
     tabindex="0"
   >
     <div class="infoContainer">
@@ -15,6 +15,12 @@
         </span>
         <span class="reportList__item--author">-&nbsp;{{ report.subject.name }} </span>
       </div>
+      <div class="featuredStarMobile">
+        <Icon
+          filename="star.svg"
+          style="height: 30px; width: 30px; opacity: 0.65;"
+        />
+      </div>
     </div>
     <ul class="substancesList">
       <li
@@ -26,19 +32,31 @@
         <span class="substanceDose"> {{ `${substance.dose} ${substance.roa}` }} </span>
       </li>
     </ul>
+    <div
+      class="featuredStar"
+    >
+      <Icon
+        filename="star.svg"
+        style="height: 30px; width: 30px; opacity: 0.65;"
+      />
+    </div>     
   </nuxt-link>
 </template>
 
 <script>
+import Icon from "@/components/Icon";
 
 export default {
-  
+  components: {
+    Icon
+  },
   props: {
     report: {
       type: Object,
       default: () => ({
         subject: {},
         substances: [],
+        featured: false
       })
     },
     profileName: {
@@ -98,13 +116,37 @@ export default {
   }
 
   .infoContainer {
-    flex: 1;
+    display: flex;
+    flex: 3;
     min-width: 250px;
+    align-items: center;
   }
 
   .titleContainer {
+    flex: 4;
     line-height: 1.5em;
     font-size: 11pt;
+  }
+
+  .featuredStar {
+    margin: 0 10px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .featuredStar > .icon {
+    display: none;
+  }
+
+  .featured .featuredStar > .icon {
+    display: flex;
+  }
+
+  .featuredStarMobile {
+    display: none;
+    margin: 0 10px;
   }
 
   .titleContainer h4 {
@@ -165,7 +207,15 @@ export default {
 
     .substanceName {
       font-size: 16px;
-    } 
+    }
+
+    .featuredStar {
+      display: none;
+    }
+
+    .featured .featuredStarMobile {
+      display: flex;
+    }
 
   }
 
