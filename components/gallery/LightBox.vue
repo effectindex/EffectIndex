@@ -3,121 +3,117 @@
     v-show="thumbs.length > 0"
     class="lightBox"
   >
-    <h1 v-show="title">
-      {{ title }}
-    </h1>
-    <div v-if="currentImage">
-      <div
-        class="lightBox__canvas"
-      >
-        <transition name="fade">
-          <div 
-            v-if="currentImage.resource && (currentImage.type === 'image')"
-            :key="currentImage.resource"
+    <div
+      v-if="currentImage"
+      class="lightBox__canvas"
+    >
+      <transition name="fade">
+        <div 
+          v-if="currentImage.resource && (currentImage.type === 'image')"
+          :key="currentImage.resource"
+          v-touch:swipe.left="nextImage"
+          v-touch:swipe.right="previousImage"
+          :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'"
+          class="lightBox__image"
+          @click.prevent="toggleModal()"
+        >
+          <image-details
+            :title="currentImage.title"
+            :artist="currentImage.artist"
+            :artist-webpage="currentImage.artist_url"
+          />
+        </div>
+
+        <div 
+          v-else-if="currentImage.resource && (currentImage.type === 'gfycat') && (!modalActive)"
+          :key="currentImage.resource"
+          style="position:relative;height: 100%;"
+        >
+          <iframe
+            :src="'https://gfycat.com/ifr/' + currentImage.resource + '?autoplay=1'"
+            frameborder="0"
+            scrolling="no"
+            width="100%"
+            height="100%"
+            style="position:absolute;top:0;left:0"
+            allow="autoplay"
+            allowfullscreen
+          />
+            
+          <div
             v-touch:swipe.left="nextImage"
             v-touch:swipe.right="previousImage"
-            :style="'background-image: url(\'' + encodeURI(base + currentImage.resource) + '\');'"
-            class="lightBox__image"
-            @click.prevent="toggleModal()"
-          >
-            <image-details
-              :title="currentImage.title"
-              :artist="currentImage.artist"
-              :artist-webpage="currentImage.artist_url"
-            />
-          </div>
-
-          <div 
-            v-else-if="currentImage.resource && (currentImage.type === 'gfycat') && (!modalActive)"
-            :key="currentImage.resource"
-            style="position:relative;height: 100%;"
-          >
-            <iframe
-              :src="'https://gfycat.com/ifr/' + currentImage.resource + '?autoplay=1'"
-              frameborder="0"
-              scrolling="no"
-              width="100%"
-              height="100%"
-              style="position:absolute;top:0;left:0"
-              allow="autoplay"
-              allowfullscreen
-            />
-            
-            <div
-              v-touch:swipe.left="nextImage"
-              v-touch:swipe.right="previousImage"
-              class="lightBox__touchControls"
-              @click="toggleModal"
-            />
-
-            <image-details
-              :title="currentImage.title"
-              :artist="currentImage.artist"
-              :artist-webpage="currentImage.artist_url"
-            />
-          </div>
-        </transition>
-
-        <a 
-          class="lightBox__control previousImage"
-          @mousedown="previousImage"
-        >
-          <Icon
-            filename="chevron-double-left.svg"
-            class="lightBox__icon"
-            color="white"
+            class="lightBox__touchControls"
+            @click="toggleModal"
           />
-        </a>
-        <a
-          class="lightBox__control nextImage"
-          @mousedown="nextImage"
-        >
-          <Icon
-            filename="chevron-double-right.svg"
-            class="lightBox__icon"
-            color="white"
-          />
-        </a>
-      </div>
 
-      <div
-        ref="thumbnailReel"
-        class="lightBox__thumbnailReel"
-      >
-        <div
-          v-if="thumbs"
-          ref="thumbnailContainer"
-          :style="'left: ' + thumbnailOffset + 'px;'"
-          class="lightBox__thumbnailContainer"
-        >
-          <span
-            v-for="(image, index) in thumbs"
-            :key="index"
-            @mousedown="selectImage(index)"
-          >
-            <img 
-              v-if="(image.type === 'image')"
-              ref="activeThumbnail"
-              :src="base + '/thumbnails/' + image.resource"
-              :class="current_image === index ? {active: true}: {}"
-              class="lightBox__thumbnailImage"
-            >
-            <img
-              v-else-if="(image.thumbnail)"
-              ref="activeThumbnail"
-              :src="base + '/thumbnails/' + image.thumbnail"
-              :class="current_image === index ? {active: true}: {}"
-              class="lightBox__thumbnailImage"
-            >
-            <img
-              v-else-if="image.type === 'gfycat'"
-              ref="activeThumbnail"
-              :src="'https://thumbs.gfycat.com/' + image.resource + '-mobile.jpg'"
-              :class="current_image === index ? {active: true}: {}" 
-              class="lightBox__thumbnailImage"
-            >
-          </span>
+          <image-details
+            :title="currentImage.title"
+            :artist="currentImage.artist"
+            :artist-webpage="currentImage.artist_url"
+          />
         </div>
+      </transition>
+
+      <a 
+        class="lightBox__control previousImage"
+        @mousedown="previousImage"
+      >
+        <Icon
+          filename="chevron-double-left.svg"
+          class="lightBox__icon"
+          color="white"
+        />
+      </a>
+      <a
+        class="lightBox__control nextImage"
+        @mousedown="nextImage"
+      >
+        <Icon
+          filename="chevron-double-right.svg"
+          class="lightBox__icon"
+          color="white"
+        />
+      </a>
+    </div>
+
+    <div
+      ref="thumbnailReel"
+      class="lightBox__thumbnailReel"
+    >
+      <div
+        v-if="thumbs"
+        ref="thumbnailContainer"
+        :style="'left: ' + thumbnailOffset + 'px;'"
+        class="lightBox__thumbnailContainer"
+      >
+        <span
+          v-for="(image, index) in thumbs"
+          :key="index"
+          @mousedown="selectImage(index)"
+        >
+          <img 
+            v-if="(image.type === 'image')"
+            ref="activeThumbnail"
+            :src="base + '/thumbnails/' + image.resource"
+            :class="current_image === index ? {active: true}: {}"
+            class="lightBox__thumbnailImage"
+          >
+          <img
+            v-else-if="(image.thumbnail)"
+            ref="activeThumbnail"
+            :src="base + '/thumbnails/' + image.thumbnail"
+            :class="current_image === index ? {active: true}: {}"
+            class="lightBox__thumbnailImage"
+          >
+          <img
+            v-else-if="image.type === 'gfycat'"
+            ref="activeThumbnail"
+            :src="'https://thumbs.gfycat.com/' + image.resource + '-mobile.jpg'"
+            :class="current_image === index ? {active: true}: {}" 
+            class="lightBox__thumbnailImage"
+          >
+        </span>
       </div>
     </div>
   </div>
@@ -133,10 +129,6 @@ export default {
     Icon
   },
   props: {
-    title: {
-      type: String,
-      default: ""
-    },
     imageSet: {
       default: () => [],
       type: Array

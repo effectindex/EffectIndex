@@ -79,6 +79,26 @@ router.get('/', async (req, res) => {
 
 });
 
+router.get('/admin/:slug', async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const effect = await Effect.findOne({ url: slug });
+    if (effect) {
+      effect.replications = await Replication.find({
+        type: { $in: ['image', 'gfycat'] },
+        associated_effects: effect._id
+       });
+       effect.audio_replications = await Replication.find({
+        type: { $in: ['audio'] },
+        associated_effects: effect._id
+      });
+    }
+    res.json({ effect });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
 router.get('/:url', async (req, res) => {
   try {
     let effect = await Effect.findOne({ url: req.params.url });

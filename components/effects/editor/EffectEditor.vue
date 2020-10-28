@@ -190,13 +190,13 @@ export default {
   props: {
     effect: {
       type: Object,
-      default: () => null
+      default: undefined
     }
   },
-  data() {
+  data () {
     const { _id, name, description_raw, citations, url, related_substances, external_links, 
     see_also, tags, contributors, summary_raw, long_summary_raw, analysis_raw, style_variations_raw,
-    personal_commentary_raw, gallery_order, social_media_image, subarticles, featured } = this.effect;
+    personal_commentary_raw, gallery_order, social_media_image, subarticles, featured } = this.effect ? this.effect : {};
     return {
       showDetails: false,
       id: _id,
