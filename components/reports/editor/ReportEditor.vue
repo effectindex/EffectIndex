@@ -244,6 +244,14 @@ export default {
   data() {
     const sections = ['subject', 'substances', 'onset', 'peak', 'offset',
         'introduction', 'description', 'conclusion', 'tags', 'relatedEffects'];
+
+    const sectionVisibility = Object.fromEntries(
+        sections.map( this.visibility ? 
+          section => this.visibility[section] ? [section, this.visibility[section]] : [section, false] :
+          section => [section, false]
+        )
+    );
+
     return {
       reportData: {
         _id: this.report ? this.report._id : undefined,
@@ -261,11 +269,7 @@ export default {
         tags: this.report ? this.report.tags : [],
         featured: this.report ? this.report.featured : false,
       },
-      sectionVisibility: Object.fromEntries(
-        sections.map(
-          section => this.visibility[section] ? [section, this.visibility[section]] : [section, false]
-          )
-        )
+      sectionVisibility
     };
   },
   methods: {
