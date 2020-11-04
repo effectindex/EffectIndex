@@ -337,7 +337,7 @@
           </p>
         </blob>
         <column>
-          <category  
+          <category 
             icon="heart-rate.svg"
             title="Physical Effects"
             page="/categories/physical-effects"
