@@ -24,7 +24,7 @@
         disconnectivity,
       </nuxt-link> and <nuxt-link to="/effects/delusion">
         delusions,
-      </nuxt-link> may lead to a distorted perception of what is actually happening to their body. While this risk can be partially mitigated by taking harm reduction measures, such as having a knowledgeable and trustworthy trip sitter to watch over and provide sober third-party input, it is worth noting that the potentially serious health consequences that may result from these effects can never be completely mitigated. Therefore, it is extremely important that the user understands the risks, does their research, and is aware of any pre-existing medical conditions that could potentially be exacerbated by these effects.
+      </nuxt-link> may lead to a distorted perception of what is actually happening to their body. While this risk can be partially mitigated by taking harm reduction measures, such as having a knowledgeable and trustworthy trip sitter to watch over and provide sober third-party input, it is worth noting that the potentially serious health consequences that may result from these effects can never be completely mitigated. Therefore, it is extremely important that the user understands the risks, does their own research, and is aware of any pre-existing medical conditions that could potentially be exacerbated by these effects.
     </p>
 
     <p>

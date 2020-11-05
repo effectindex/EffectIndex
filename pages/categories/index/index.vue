@@ -155,7 +155,7 @@
 
     <IndexCategory
       name="Uncomfortable Physical Effects"
-      description="Effects which diminish or modify a person's sense of hearing."
+      description="Uncomfortable physical effects are defined as any substance-induced alteration of a person's physical state that is unpleasant, undesirable, painful, or otherwise a source of distress."
       page="uncomfortable-physical-effects"
       icon="frown.svg"
     />

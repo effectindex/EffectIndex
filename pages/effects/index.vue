@@ -152,13 +152,6 @@
               page="/categories/physical-alterations"
               title="Alterations"
             />
-          </category>
-        
-          <category
-            icon="frown.svg"
-            title="Uncomfortable Effects"
-            page="/categories/uncomfortable-physical-effects"
-          >
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
               page="/categories/cardiovascular-effects"
@@ -174,7 +167,7 @@
               page="/categories/uncomfortable-bodily-effects"
               title="bodily"
             />
-          </category>   
+          </category> 
         </column>
       </tab>
       
@@ -339,49 +332,58 @@
         </blob>
         <column>
           <category 
-            icon="heart-rate.svg"
-            title="Physical Effects"
-            page="/categories/physical-effects"
+            icon="arrow-up.svg"
+            title="Enhancements"
+            page="/categories/physical-enhancements"
           >
-            <actions
-              :effects="filterEffectsByTag('physical', 'enhancement')"
-              title="Enhancements"
-              page="/categories/physical-enhancements"
-            />
-            <actions
-              :effects="filterEffectsByTag('physical', 'suppression')"
-              title="Suppressions"
-              page="/categories/physical-suppressions"
-            />
-            <actions
+            <actions :effects="filterEffectsByTag('physical', 'enhancement')" />
+          </category>
+
+          <category 
+            icon="arrow-down.svg"
+            title="Suppressions"
+            page="/categories/physical-suppressions"
+          >
+            <actions :effects="filterEffectsByTag('physical', 'suppression')" />
+          </category>
+
+          <category 
+            icon="cogs.svg"
+            title="Alterations"
+            page="/categories/physical-alterations"
+          >
+            <actions 
               :effects="filterEffectsByTag('physical', 'alteration')"
-              title="Alterations"
-              page="/categories/physical-alterations"
             />
           </category>
         </column>
 
         <column>
-          <category
-            icon="frown.svg"
-            title="Uncomfortable Effects"
-            page="/categories/uncomfortable-physical-effects"
+          <category 
+            icon="child.svg"
+            title="Uncomfortable bodily effects"
+            page="/categories/uncomfortable-bodily-effects"
           >
-            <actions
-              :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
-              title="Cardiovascular"
-              page="/categories/cardiovascular-effects"
+            <actions 
+              :effects="filterEffectsByTag('physical', 'bodily')"
             />
-            <actions
-              :effects="filterEffectsByTag('uncomfortable', 'cerebrovascular')"
-              title="Cerebrovascular"
-              page="/categories/cerebrovascular-effects"
-            />
-            <actions
-              :effects="filterEffectsByTag('uncomfortable', 'bodily')"
-              title="Bodily"
-              page="/categories/uncomfortable-bodily-effects"
-            />
+          </category>
+        </column>
+        <column>
+          <category 
+            icon="brain.svg"
+            title="Cerebrovascular"
+            page="/categories/cerebrovascular-effects"
+          >
+            <actions :effects="filterEffectsByTag('physical', 'cerebrovascular')" />
+          </category>
+
+          <category 
+            icon="heart.svg"
+            title="Cardiovascular"
+            page="/categories/cardiovascular-effects"
+          >
+            <actions :effects="filterEffectsByTag('physical', 'cardiovascular')" />
           </category>
         </column>      
       </tab>

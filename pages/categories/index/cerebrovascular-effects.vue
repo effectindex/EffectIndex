@@ -12,7 +12,7 @@
     </h1>
 
     <p>
-      <b>Cerebrovascular effects</b> are defined as any uncomfortable physical effect that relates to the brain and its blood vessels.
+      <b>Cerebrovascular effects</b> are defined as any <a href="/categories/uncomfortable-physical-effects"> uncomfortable physical effect </a> that relates to the brain and its blood vessels.
     </p>
 
     <p>

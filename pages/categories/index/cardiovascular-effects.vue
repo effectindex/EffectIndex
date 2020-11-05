@@ -12,7 +12,7 @@
     </h1>
 
     <p>
-      <b>Cardiovascular effects</b> are defined as any uncomfortable physical effect that relates to the heart and blood vessels.
+      <b>Cardiovascular effects</b> are defined as any <a href="/categories/uncomfortable-physical-effects"> uncomfortable physical effect </a> that relates to the heart and blood vessels.
     </p>
 
     <p>
