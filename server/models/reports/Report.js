@@ -52,6 +52,10 @@ const reportSchema = new Schema({
   tags: {
     type: [String]
   },
+  related_effects: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Effect'
+  }],
   sectionVisibility: Object,
   featured: {
     type: Boolean,

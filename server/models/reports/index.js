@@ -78,13 +78,13 @@ router.get('/slug/:slug', async(req, res, next) => {
   try {
     let report = await Report
       .findOne({ slug })
+      .populate('related_effects', 'name url tags')
       .lean()
       .exec();
 
     if (!report) throw API_Error('GET_REPORT_ERROR', 'The specified report could not be found.');
 
     delete report.sectionVisibility;
-    delete report._id;
 
     res.send({ report });
 
@@ -97,6 +97,7 @@ router.get('/', async (req, res, next) => {
   try {
     let reports = await Report
       .find()
+      .select('title subject substances featured tags related_effects slug')
       .exec();
     if (!reports) throw API_Error('GET_REPORTS_ERROR', 'The server failed to retrieve the reports.');
     res.status(200).send({ reports });
@@ -105,5 +106,25 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.post('/search', async (req, res, next) => {
+  try {
+    const { term } = req.body;
+    if (!term) {
+      res.sendStatus(200);
+    } else {
+      const results = await Report
+      .find({ 
+        $or: [
+          { title: { $regex: term } },
+          { 'subject.name': { $regex: term } }
+        ]
+      })
+      .select('title subject');
+      res.json({ results });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

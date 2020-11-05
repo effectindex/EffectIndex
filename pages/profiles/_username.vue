@@ -47,7 +47,7 @@ export default {
     let username = params.username;
 
     let { profile } = await store.dispatch("getProfileByName", username);
-    if (!profile) error({ statusCode: 404 });
+    if (!profile) return;
 
     let { replications } = await store.dispatch(
       "getReplicationsByArtist",

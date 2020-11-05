@@ -1,6 +1,7 @@
 const pkg = require("./package");
 // import {default as MinifyPlugin} from "babel-minify-webpack-plugin";
 require("dotenv").config();
+const axios = require('axios');
 
 module.exports = {
   /*
@@ -36,8 +37,7 @@ module.exports = {
   auth: {
     redirect: {
       login: "/user/login",
-      home: "/",
-      logout: "/"
+      home: "/"
     },
     strategies: {
       local: {
@@ -91,6 +91,7 @@ module.exports = {
     "@nuxtjs/axios",
     "@nuxtjs/auth",
     "@nuxtjs/markdownit",
+    "@nuxtjs/sitemap",
     ["vue-scrollto/nuxt", { force: true, duration: 500 }],
     "@nuxtjs/dotenv",
     [
@@ -146,5 +147,30 @@ module.exports = {
   server: {
     jwtSecret: process.env.jwtSecret,
     mongooseUri: "mongodb://localhost:27017/effectindex"
+  },
+
+  sitemap: {
+    hostname: "https://www.effectindex.com",
+    exclude: [
+      '/admin/**'
+    ],
+    routes: async function() {
+      let results = await axios.get('http://localhost:3000/api/effects');
+      const { effects } = results.data;
+
+      results = await axios.get('http://localhost:3000/api/reports');
+      const { reports } = results.data;
+
+      results = await axios.get('http://localhost:3000/api/blog');
+      const { posts } = results.data;
+
+      const routes = [
+        ...effects.map(effect => `/effects/${effect.url}`),
+        ...reports.map(report => `/reports/${report.slug}`),
+        ...posts.map(post => `/blog/${post.slug}`)
+      ];
+
+      return routes;
+    }
   }
 };

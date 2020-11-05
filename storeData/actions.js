@@ -73,7 +73,7 @@ export const actions = {
   },
   async getEffect({ commit }, name) {
     try {
-      let { effect } = await this.$axios.$get("/api/effects/" + name);
+      let { effect } = await this.$axios.$get(`/api/effects/${name}`);
       return { effect };
     } catch (error) {
       throw new Error(error);

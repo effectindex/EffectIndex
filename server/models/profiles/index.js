@@ -110,10 +110,11 @@ router.get('/:id', secured({ secret: config.server.jwtSecret}), hasRoles(['admin
 });
 
 router.get('/user/:username', async(req, res, next) => {
-  let username = req.params.username;
+  const { username } = req.params;
+  const usernameRegex = new RegExp(`^${username}$`, 'i');
   try {
-    let profile = await Profile.findOne({ username }).exec();
-    res.status(200).send({ profile });
+    let profile = await Profile.findOne({ username: usernameRegex });
+    res.json({ profile });
   } catch (error) {
     next(error);
   }

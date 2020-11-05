@@ -8,6 +8,7 @@ const hasRoles = require('../HasRoles');
 
 const Effect = require('./Effect');
 const Replication = require('../replications/Replication');
+const Report = require('../reports/Report');
 
 const DocumentParser = require('../../../lib/DocumentParser');
 const parser = new DocumentParser();
@@ -23,7 +24,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
     if (!('effect' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
 
     const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
-      contributors, related_substances, related_reports, external_links, see_also, tags, citations, gallery_order, social_media_image,
+      contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
       featured, subarticles } = req.body.effect;
 
     const effect = new Effect({
@@ -33,7 +34,6 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       description_raw: description,
       description_formatted: JSON.stringify(parser.parse(description)),
       related_substances,
-      related_reports,
       gallery_order,
       see_also,
       external_links,
@@ -79,19 +79,43 @@ router.get('/', async (req, res) => {
 
 });
 
+router.get('/admin/:slug', async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const effect = await Effect.findOne({ url: slug });
+    if (effect) {
+      effect.replications = await Replication.find({
+        type: { $in: ['image', 'gfycat'] },
+        associated_effects: effect._id
+       });
+       effect.audio_replications = await Replication.find({
+        type: { $in: ['audio'] },
+        associated_effects: effect._id
+      });
+    }
+    res.json({ effect });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
 router.get('/:url', async (req, res) => {
   try {
-    let effect = await Effect.findOne({ url: req.params.url }).exec();
+    let effect = await Effect.findOne({ url: req.params.url });
     if (effect) {
       effect = effect.toJSON();
       effect.replications = await Replication.find({
          type: { $in: ['image', 'gfycat'] },
          associated_effects: effect._id
-        }).exec();
+        });
       effect.audio_replications = await Replication.find({
         type: { $in: ['audio'] },
         associated_effects: effect._id
-      }).exec();
+      });
+      effect.related_reports = await Report.find({
+        related_effects: effect._id
+      })
+      .select('title subject substances slug featured');
     }
     res.send({ effect });
   } catch (error) {
@@ -101,8 +125,9 @@ router.get('/:url', async (req, res) => {
 
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
   const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
-  contributors, related_substances, related_reports, external_links, see_also, tags, citations, gallery_order, social_media_image,
+  contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
   featured, subarticles } = req.body;
+
   try {
     let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
       name,
@@ -120,7 +145,6 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
       personal_commentary_formatted: JSON.stringify(parser.parse(personal_commentary)),
       contributors,
       related_substances,
-      related_reports,
       external_links,
       see_also,
       tags,

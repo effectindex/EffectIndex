@@ -15,6 +15,21 @@
       >
         {{ effect.name }}
       </nuxt-link>
+      <ul
+        v-if="effect.subarticles.length"
+        class="effectSubarticleList"
+      >
+        <li 
+          v-for="(subarticle, index) in effect.subarticles"
+          :key="index"
+        >
+          <nuxt-link
+            :to="`/effects/${effect.url}/?s=${subarticle.id}`"
+          > 
+            {{ subarticle.title }}
+          </nuxt-link>
+        </li>
+      </ul>
     </li>
   </ul>
 </template>
@@ -57,6 +72,10 @@ export default {
       Roboto, Helvetica Neue, Arial, sans-serif;
     margin: 0;
     margin-bottom: 0.5em;
+  }
+
+  .effectSubarticleList {
+    padding-left: 0;
   }
 
   .categories__panelEffectList {

@@ -12,9 +12,9 @@
     </h1>
 
     <p>
-      <b>Uncomfortable bodily effects</b> are defined as any uncomfortable physical effect that relates to the overall body and cannot be categorized as <nuxt-link to="/categories/cardiovascular">
+      <b>Uncomfortable bodily effects</b> are defined as any uncomfortable physical effect that relates to the overall body and cannot be categorized as <nuxt-link to="/categories/cardiovascular-effects">
         cardiovascular
-      </nuxt-link> or <nuxt-link to="/categories/cerebrovascular">
+      </nuxt-link> or <nuxt-link to="/categories/cerebrovascular-effects">
         cerebrovascular.
       </nuxt-link>
     </p>
