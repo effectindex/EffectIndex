@@ -1,7 +1,7 @@
 <template>
   <div class="descriptionContainer">
     <p>
-      The <strong>Subjective Effect Index</strong> is a set of articles designed to serve as a comprehensive catalogue and reference for the range of subjective effects that may occur under the influence of psychoactive substances and other psychonautic techniques.
+      The <span style="font-weight: bold;"> Subjective Effect Index </span> is a set of articles designed to serve as a comprehensive catalogue and reference for the range of subjective effects that may occur under the influence of psychoactive substances and other psychonautic techniques.
     </p>
 
     <transition name="grow">
@@ -18,11 +18,15 @@
         </p>
 
         <p>
-          The Index is separated into {{ effectCount }} effects, which are organised into categories based on the senses they affect and their behavior. Many of these are further broken down into leveling systems, subcomponents, and style variations that may occur across different substances. Detailed image, video, and audio <a href="/replications"> replications </a> have been included wherever possible to supplement text-based descriptions.
+          The Index is separated into {{ effectCount }} effects, which are organised into categories based on the senses they affect and their behavior. Many of these are further broken down into leveling systems, subcomponents, and style variations that may occur across different substances. Detailed image, video, and audio <nuxt-link to="/replications">
+            replications
+          </nuxt-link> have been included wherever possible to supplement text-based descriptions.
         </p>
 
         <p>
-          The content within this Index is based on the collective experiences of our contributors, scientific literature, and individual case reports. The Index itself, as well as a majority of the content, was originally created by our site founder <a href="/profiles/Josie"> Josie Kins. </a>
+          The content within this Index is based on the collective experiences of our contributors, scientific literature, and individual case reports. The Index itself, as well as a majority of the content, was originally created by our site founder <nuxt-link to="/profiles/Josie">
+            Josie Kins.
+          </nuxt-link>
         </p>
       </div>
     </transition>

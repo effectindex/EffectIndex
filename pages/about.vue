@@ -9,12 +9,16 @@
     </h1>
 
     <p>
-      Effect Index serves as the platform for the <a href="/effects"> Subjective Effect Index (SEI), </a> 
+      Effect Index serves as the platform for the <nuxt-link to="/effects">
+        Subjective Effect Index (SEI),
+      </nuxt-link> 
       a resource containing formalised documentation of the vast number of distinct 
       subjective states that may occur under the influence of hallucinogens. We strive 
       to comprehensively document and describe the wide variety of potential hallucinogenic
       experiences. The SEI is presented in an easily readable format that contains not only
-      descriptions, but also image, video, and audio <a href="/replications"> replications </a>
+      descriptions, but also image, video, and audio <nuxt-link to="/replications">
+        replications
+      </nuxt-link>
       of these effects.
     </p>
 
@@ -26,7 +30,9 @@
     </p>
 
     <p>
-      Effect Index was initially founded as a side project on 30 June, 2017 by <a href="/profiles/Josie"> Josie Kins, </a> the
+      Effect Index was initially founded as a side project on 30 June, 2017 by <nuxt-link to="/profiles/Josie">
+        Josie Kins,
+      </nuxt-link> the
       founder of <ext-link href="http://www.psychonautwiki.org">
         PsychonautWiki
       </ext-link> and
@@ -45,7 +51,9 @@
       within both our <ext-link href="http://reddit.com/r/replications">
         subreddit
       </ext-link>
-      and our <a href="/discord-chat"> Discord. </a>
+      and our <nuxt-link to="/discord-chat">
+        Discord.
+      </nuxt-link>
     </p>
   </div>
 </template>

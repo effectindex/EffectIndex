@@ -12,7 +12,9 @@
     </h1>
 
     <p>
-      <b>Neurological effects</b> are defined as any <a href="/categories/uncomfortable-physical-effects"> uncomfortable physical effect </a> that relates to the brain and its blood vessels.
+      <b>Neurological effects</b> are defined as any <nuxt-link to="/categories/uncomfortable-physical-effects">
+        uncomfortable physical effect
+      </nuxt-link> that relates to the brain and its blood vessels.
     </p>
 
     <p>

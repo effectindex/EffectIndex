@@ -12,7 +12,9 @@
     </h1>
 
     <p>
-      <b>Cardiovascular effects</b> are defined as any <a href="/categories/uncomfortable-physical-effects"> uncomfortable physical effect </a> that relates to the heart and blood vessels.
+      <b>Cardiovascular effects</b> are defined as any <nuxt-link to="/categories/uncomfortable-physical-effects">
+        uncomfortable physical effect
+      </nuxt-link> that relates to the heart and blood vessels.
     </p>
 
     <p>
