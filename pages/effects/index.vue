@@ -145,6 +145,11 @@
               title="Alterations"
             />
             <actions
+              :effects="filterEffectsByTag('uncomfortable', 'bodily')"
+              page="/categories/uncomfortable-bodily-effects"
+              title="Uncomfortable bodily effects"
+            />
+            <actions
               :effects="filterEffectsByTag('uncomfortable', 'cardiovascular')"
               page="/categories/cardiovascular-effects"
               title="Cardiovascular"
@@ -153,11 +158,6 @@
               :effects="filterEffectsByTag('uncomfortable', 'neurological')"
               page="/categories/neurological-effects"
               title="Neurological"
-            />
-            <actions
-              :effects="filterEffectsByTag('uncomfortable', 'bodily')"
-              page="/categories/uncomfortable-bodily-effects"
-              title="Uncomfortable bodily effects"
             />
           </category> 
         </column>
