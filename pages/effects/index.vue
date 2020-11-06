@@ -150,9 +150,9 @@
               title="Cardiovascular"
             />
             <actions
-              :effects="filterEffectsByTag('uncomfortable', 'cerebrovascular')"
-              page="/categories/cerebrovascular-effects"
-              title="Cerebrovascular"
+              :effects="filterEffectsByTag('uncomfortable', 'neurological')"
+              page="/categories/neurological-effects"
+              title="Neurological"
             />
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'bodily')"
