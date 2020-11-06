@@ -64,14 +64,6 @@
           </category>
 
           <category 
-            icon="disconnective.svg"
-            title="Disconnective Effects"
-            page="/categories/disconnective-effects"
-          >
-            <actions :effects="filterEffectsByTag('disconnective')" />
-          </category>
-
-          <category 
             icon="utensils.svg"
             title="Smell &amp; Taste Effects"
             page="/categories/smell-and-taste-effects"
@@ -165,7 +157,7 @@
             <actions
               :effects="filterEffectsByTag('uncomfortable', 'bodily')"
               page="/categories/uncomfortable-bodily-effects"
-              title="bodily"
+              title="Uncomfortable bodily effects"
             />
           </category> 
         </column>
@@ -228,16 +220,6 @@
           </category>
 
           <category 
-            icon="disconnective.svg"
-            title="Disconnective Effects"
-            page="/categories/disconnective-effects"
-          >
-            <actions :effects="filterEffectsByTag('disconnective')" />
-          </category>
-        </column>
-
-        <column>
-          <category 
             icon="utensils.svg"
             title="Smell &amp; Taste Effects"
             page="/categories/smell-and-taste-effects"
@@ -251,7 +233,9 @@
               title="Olfactory Effects"
             />
           </category>
+        </column>
 
+        <column>
           <category 
             icon="cogs.svg"
             title="Multisensory Effects"
@@ -372,10 +356,10 @@
         <column>
           <category 
             icon="brain.svg"
-            title="Cerebrovascular"
-            page="/categories/cerebrovascular-effects"
+            title="Neurological"
+            page="/categories/neurological-effects"
           >
-            <actions :effects="filterEffectsByTag('physical', 'cerebrovascular')" />
+            <actions :effects="filterEffectsByTag('physical', 'neurological')" />
           </category>
 
           <category 

@@ -4,7 +4,7 @@
       <nuxt-link to="/categories/">
         Effect Categories
       </nuxt-link> -
-      Cerebrovascular Effects
+      Neurological Effects
       <Icon
         filename="brain.svg"
         class="categoryIcon"
@@ -12,18 +12,18 @@
     </h1>
 
     <p>
-      <b>Cerebrovascular effects</b> are defined as any <a href="/categories/uncomfortable-physical-effects"> uncomfortable physical effect </a> that relates to the brain and its blood vessels.
+      <b>Neurological effects</b> are defined as any <a href="/categories/uncomfortable-physical-effects"> uncomfortable physical effect </a> that relates to the brain and its blood vessels.
     </p>
 
     <p>
-      This page lists the various cerebrovascular effects that can occur under the influence of certain psychoactive compounds.
+      This page lists the various neurological effects that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>
 
     <EffectList
       :effects="effects"
-      :tags="['cerebrovascular']"
+      :tags="['neurological']"
     />
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
   scrollToTop: true,
   head() {
     return {
-      title: "Cerebrovascular Effectss"
+      title: "Neurological Effects"
     };
   },
   computed: {

@@ -12,7 +12,7 @@
     </h1>
 
     <p>
-      <b>Hallucinatory states</b> are defined as any subjective effect that changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner similar to dreams.
+      <b>Hallucinatory states</b> are defined as any subjective effect that changes the perception or appearance of pre-existing sensory data by adding entirely new content in a manner similar to that of dreams.
     </p>
 
     <p>

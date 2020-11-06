@@ -43,14 +43,14 @@
 
     <IndexCategory
       name="Hallucinatory Effects"
-      description="Hallucinatory states are defined as any subjective effect that changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner similar to dreams. "
+      description="Hallucinatory states are defined as any subjective effect that changes the perception or appearance of pre-existing sensory data by adding entirely new content in a manner similar to that of dreams. "
       page="hallucinatory-states"
       icon="dragon.svg"
     />
 
     <IndexCategory
       name="Auditory Effects"
-      description="Effects which diminish or modify a person's sense of hearing."
+      description="Effects that directly alter a person's sense of hearing."
       page="auditory-effects"
       icon="volume-up.svg"
     />
@@ -70,17 +70,17 @@
     />
 
     <IndexCategory
-      name="Disconnective Effects"
-      description="Disconnective effects are defined as any subjective effect that feels as if it disconnects one from the external environment, their senses, and/or their consciousness. "
-      page="disconnective-effects"
-      icon="disconnective.svg"
-    />
-
-    <IndexCategory
       name="Multisensory Effects"
       description="Multisensory effects are defined as any subjective effect that directly alters two or more senses at a time. "
       page="multisensory-effects"
       icon="cogs.svg"
+    />
+
+    <IndexCategory
+      name="Disconnective Effects"
+      description="Disconnective effects are defined as any subjective effect that feels as if it disconnects one from the external environment, their senses, and/or their consciousness. "
+      page="disconnective-effects"
+      icon="disconnective.svg"
     />
 
     <IndexCategory
@@ -148,7 +148,7 @@
 
     <IndexCategory
       name="Physical Alterations"
-      description="Physical alterations are defined as any subjective effect that changes a facet of a person's physical body in a manner which does not involve a clearly definable enhancement or suppression."
+      description="Physical alterations are defined as any subjective effect that changes a facet of a person's physical body in a manner which is not uncomfortable and does not involve a clearly definable enhancement or suppression."
       page="physical-alterations"
       icon="cogs.svg"
     />
@@ -168,9 +168,9 @@
     />
 
     <IndexCategory
-      name="Cerebrovascular Effects"
-      description="Cerebrovascular effects are defined as any uncomfortable physical effect that relates to the brain and its blood vessels. "
-      page="cerebrovascular-effects"
+      name="Neurological Effects"
+      description="Neurological effects are defined as any uncomfortable physical effect that relates to the brain and its blood vessels. "
+      page="neurological-effects"
       icon="brain.svg"
     />
 

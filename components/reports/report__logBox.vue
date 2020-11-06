@@ -86,19 +86,28 @@ export default {
   padding: 10px;
 }
 
+.logTime {
+  color: #999;
+  white-space: nowrap;
+  text-align: right;
+  margin-right: 10px;
+}
+
+@media(max-width:600px){
+  .logItem {
+    flex-direction:column;
+  }
+  .logTime {
+    text-align: left;
+  }
+}
+
 .logItem:not(:last-child) {
   border-bottom: 1px solid rgba(170, 170, 170, 0.35);
 }
 
 .logItem:nth-child(even) {
   background-color: #f6f6f6;
-}
-
-.logTime {
-  color: #999;
-  white-space: nowrap;
-  text-align: right;
-  margin-right: 10px;
 }
 
 .logDescription {

@@ -44,12 +44,12 @@
           />
         </Panel>
         <Panel
-          title="Cerebrovascular"
-          page="/categories/cerebrovascular-effects"
+          title="Neurological"
+          page="/categories/neurological-effects"
           icon="brain.svg"
         >
           <PanelEffectList
-            :tags="['cerebrovascular']"
+            :tags="['neurological']"
             :effects="effects"
           />
         </Panel>
