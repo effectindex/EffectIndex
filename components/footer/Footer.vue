@@ -6,6 +6,7 @@
           src="/sm-icon-facebook.svg"
           height="32"
           width="32"
+          alt="Facebook"
         >
       </a>
       <a href="http://reddit.com/r/replications">
@@ -13,6 +14,7 @@
           src="/sm-icon-reddit.svg"
           height="32"
           width="32"
+          alt="Reddit"
         >
       </a>
       <a href="https://www.youtube.com/channel/UCV5-ybqHFU6xQWhnFZBJlOA">
@@ -20,6 +22,7 @@
           src="/sm-icon-youtube.svg"
           height="32"
           width="32"
+          alt="YouTube"
         >
       </a>
       <a href="https://github.com/effectindex/EffectIndex">
@@ -27,6 +30,7 @@
           src="/sm-icon-github.svg"
           height="32"
           width="32"
+          alt="GitHub"
         >
       </a>
     </div>

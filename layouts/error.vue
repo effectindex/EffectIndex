@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="errorPageContainer">
     <div
       v-if="error.statusCode === 404"
       class="errorMessageContainer"
@@ -69,7 +69,7 @@ h1 {
   font-size: 80px;
 }
 
-.container {
+.errorPageContainer {
   background-color: white;
   height: 100vh;
   text-align: center;

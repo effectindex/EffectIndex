@@ -76,11 +76,13 @@ export default {
 
   .effectSubarticleList {
     padding-left: 0;
+    margin-bottom: 0;
   }
 
   .categories__panelEffectList {
     padding-left: 0;
     color: #AAA;
+    margin-bottom: 0;
   }
 
   .categories__panelEffectList li {

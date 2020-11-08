@@ -1,10 +1,18 @@
 <template>
-  <div>
+  <div class="relatedReports">
+    <p>This effect seems to be mentioned within the following trip reports:</p>
     <related-report-item
-      v-for="report in sortedReports"
+      v-for="report in limitedReports"
       :key="report._id"
       :report="report"
     />
+    <button 
+      v-if="(sortedReports.length > maxReports) && !expanded"
+      class="expandButton whiteButton"
+      @click="toggleExpanded"
+    >
+      Show {{ sortedReports.length - maxReports }} more related reports
+    </button>
   </div>
 </template>
 
@@ -19,14 +27,32 @@ export default {
     reports: {
       type: Array,
       default: () => []
+    },
+    maxReports: {
+      type: Number,
+      default: 5
     }
   },
+  data () {
+    return {
+      expanded: false
+    };
+  },
   computed: {
+
     sortedReports() {
       const featured = this.reports.filter( report => report.featured );
       const unfeatured = this.reports.filter( report => !report.featured );
-
       return [...featured, ...unfeatured];
+    },
+
+    limitedReports() {
+      return this.expanded ? this.sortedReports : this.sortedReports.slice(0, this.maxReports);
+    }
+  },
+  methods: {
+    toggleExpanded() {
+      this.expanded = !this.expanded;
     }
   }
 };

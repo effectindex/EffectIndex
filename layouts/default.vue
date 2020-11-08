@@ -1,15 +1,15 @@
 <template>
-  <div class="content">
-    <section 
-      :class="{ sectionContainerPulledout: navbarPullout }"
-      class="sectionContainer"
+  <div class="layoutContainer">
+    <div 
+      :class="{ mainContainerPulledout: navbarPullout }"
+      class="mainContainer"
     >
       <header-nav />
-      <div class="page">
+      <main class="page">
         <nuxt />
-      </div>
+      </main>
       <custom-footer />
-    </section>
+    </div>
     <pullout-menu />
     <modal
       v-if="modalActive"
@@ -113,7 +113,7 @@ body {
 
 /* Container Styling */
 
-.content {
+.layoutContainer {
   display: flex;
   position: relative;
   flex-direction: row;
@@ -123,7 +123,7 @@ body {
   overflow: hidden;
 }
 
-.sectionContainer {
+.mainContainer {
   transition: margin-left 0.25s ease-out;
   z-index: 3;
   min-height: 100vh;
@@ -131,7 +131,7 @@ body {
   background-color: white;
 }
 
-.page {
+main {
   margin: 0 auto;
   padding: 96px 32px;
   max-width: 1000px;
@@ -139,11 +139,11 @@ body {
 }
 
 @media (max-width: 1100px) {
-  .sectionContainerPulledout {
+  .mainContainerPulledout {
     margin-left: -220px;
   }
 
-  .page {
+  main {
     padding: 32px 16px;
   }
 }
@@ -153,7 +153,7 @@ body {
 }
 
 @media (max-width: 400px) {
-  .page {
+  main {
     padding: 8px;
   }
 }
@@ -242,10 +242,10 @@ body {
 .pageContent .whiteButton {
   display: block;
   position: relative;
-  width: 125px;
+  width: auto;
   z-index: 5;
   border: 1px solid #ddd;
-  background-color: white;
+  background-color: #fbfbfb;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;

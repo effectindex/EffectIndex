@@ -4,6 +4,7 @@
       <img 
         class="navbar__logo"
         src="/logo2.svg"
+        alt="An eye, the EffectIndex logo."
       >
     </nuxt-link>
     <main-navigation />
