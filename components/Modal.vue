@@ -18,9 +18,7 @@
           @click.stop="popout"
         > 
           <Icon
-            :filename="'external-link.svg'"
-            height="50px"
-            width="50px"
+            filename="external-link.svg"
             color="white"
           />
         </a>
@@ -130,12 +128,15 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    height: 50px;
-    width: 50px;
     opacity: 0.5;
     color: white;
     transition: opacity 0.25s ease;
     filter: drop-shadow(2px 2px 3px black);
+  }
+
+  .icon {
+    height: 50px;
+    width: 50px;
   }
 
   .fileButton:hover {
