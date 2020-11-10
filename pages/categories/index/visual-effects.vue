@@ -22,12 +22,12 @@
     <Columns>
       <Column>
         <Panel
-          title="Enhancements"
-          page="/categories/visual-enhancements"
+          title="Amplifications"
+          page="/categories/visual-amplifications"
           icon="arrow-up.svg"
         >
           <PanelEffectList
-            :tags="['visual', 'enhancement']"
+            :tags="['visual', 'amplification']"
             :effects="effects"
           />
         </Panel>
@@ -54,12 +54,12 @@
           />
         </Panel>
         <Panel
-          title="Geometry"
-          page="/effects/geometry"
+          title="Geometric Patterns"
+          page="/categories/geometric-patterns"
           icon="geometry.svg"
         >
           <PanelEffectList
-            :tags="['visual', 'geometry']"
+            :tags="['visual', 'geometric']"
             :effects="effects"
           />
         </Panel>

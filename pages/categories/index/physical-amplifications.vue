@@ -3,8 +3,8 @@
     <h1>
       <nuxt-link to="/categories/">
         Effect Categories
-      </nuxt-link> -
-      Cognitive Enhancements
+      </nuxt-link> -      
+      Physical Amplifications
       <Icon
         filename="arrow-up.svg"
         class="categoryIcon"
@@ -12,18 +12,18 @@
     </h1>
 
     <p>
-      <b>Cognitive enhancements</b> are defined as any subjective effect that increases or raises the intensity of a facet of a person's cognition.
+      <b>Physical amplifications</b> are defined as any subjective effect that increases, enhances, accelerates, or intensifies a facet of a person's physical body.
     </p>
 
     <p>
-      This page lists the various cognitive enhancements that can occur under the influence of certain psychoactive compounds.
+      This page lists the various physical enhancements that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>
 
     <EffectList
       :effects="effects"
-      :tags="['cognitive', 'enhancement']"
+      :tags="['physical', 'amplification']"
     />
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
   scrollToTop: true,
   head() {
     return {
-      title: "Cognitive Enhancements"
+      title: "Physical Amplifications"
     };
   },
   computed: {

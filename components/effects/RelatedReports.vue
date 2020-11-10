@@ -11,7 +11,7 @@
       class="expandButton whiteButton"
       @click="toggleExpanded"
     >
-      Show {{ sortedReports.length - maxReports }} more related reports
+      Show {{ sortedReports.length - maxReports }} more related reports...
     </button>
   </div>
 </template>

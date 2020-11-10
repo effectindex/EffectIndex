@@ -22,9 +22,9 @@
             page="/categories/visual-effects"
           >
             <actions
-              :effects="filterEffectsByTag('visual', 'enhancement')"
-              title="Enhancements"
-              page="/categories/visual-enhancements"
+              :effects="filterEffectsByTag('visual', 'amplification')"
+              title="Amplifications"
+              page="/categories/visual-amplifications"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
@@ -37,8 +37,9 @@
               page="/categories/visual-distortions"
             />
             <actions
-              :effects="filterEffectsByTag('visual', 'geometry')"
-              title="Geometry"
+              :effects="filterEffectsByTag('visual', 'geometric')"
+              title="Geometric Patterns"
+              page="/categories/geometric-patterns"
             />          
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
@@ -96,9 +97,9 @@
             page="/categories/cognitive-effects"
           >
             <actions
-              :effects="filterEffectsByTag('cognitive', 'enhancement')"
-              page="/categories/cognitive-enhancements"
-              title="Enhancements"
+              :effects="filterEffectsByTag('cognitive', 'amplification')"
+              page="/categories/cognitive-amplifications"
+              title="Amplifications"
             />
             <actions
               :effects="filterEffectsByTag('cognitive', 'suppression')"
@@ -130,9 +131,9 @@
             page="/categories/physical-effects"
           >
             <actions
-              :effects="filterEffectsByTag('physical', 'enhancement')"
-              page="/categories/physical-enhancements"
-              title="Enhancements"
+              :effects="filterEffectsByTag('physical', 'amplification')"
+              page="/categories/physical-amplifications"
+              title="Amplifications"
             />
             <actions
               :effects="filterEffectsByTag('physical', 'suppression')"
@@ -176,9 +177,9 @@
             page="/categories/visual-effects"
           >
             <actions
-              :effects="filterEffectsByTag('visual', 'enhancement')"
-              title="Enhancements"
-              page="/categories/visual-enhancements"
+              :effects="filterEffectsByTag('visual', 'amplification')"
+              title="Amplifications"
+              page="/categories/visual-amplifications"
             />
             <actions
               :effects="filterEffectsByTag('visual', 'suppression')"
@@ -191,8 +192,9 @@
               page="/categories/visual-distortions"
             />
             <actions
-              :effects="filterEffectsByTag('visual', 'geometry')"
-              title="Geometry"
+              :effects="filterEffectsByTag('visual', 'geometric')"
+              title="Geometric Patterns"
+              page="/categories/geometric-patterns"
             />          
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
@@ -258,11 +260,11 @@
         <column>
           <category 
             icon="arrow-up.svg"
-            title="Enhancements"
-            page="/categories/cognitive-enhancements"
+            title="Amplifications"
+            page="/categories/cognitive-amplifications"
           >
             <actions
-              :effects="filterEffectsByTag('cognitive', 'enhancement')"
+              :effects="filterEffectsByTag('cognitive', 'amplification')"
             />
           </category>
           <category  
@@ -317,10 +319,10 @@
         <column>
           <category 
             icon="arrow-up.svg"
-            title="Enhancements"
-            page="/categories/physical-enhancements"
+            title="Amplifications"
+            page="/categories/physical-amplifications"
           >
-            <actions :effects="filterEffectsByTag('physical', 'enhancement')" />
+            <actions :effects="filterEffectsByTag('physical', 'amplification')" />
           </category>
 
           <category 

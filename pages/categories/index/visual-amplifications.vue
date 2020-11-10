@@ -4,7 +4,7 @@
       <nuxt-link to="/categories/">
         Effect Categories
       </nuxt-link> -      
-      Visual Enhancements
+      Visual Amplifications
       <Icon
         filename="arrow-up.svg"
         class="categoryIcon"
@@ -12,18 +12,18 @@
     </h1>
 
     <p>
-      <b>Visual enhancements</b> are defined as any subjective effect that improves one's ability to perceive the external environment through their sense of sight.
+      <b>Visual amplifications</b> are defined as any subjective effect that increases, enhances, or intensifies a facet of a person's sense of sight.
     </p>
 
     <p>
-      This page lists the various visual enhancements that can occur under the influence of certain psychoactive compounds.
+      This page lists the various visual amplifications that can occur under the influence of certain psychoactive compounds.
     </p>
 
     <hr>
 
     <EffectList
       :effects="effects"
-      :tags="['visual', 'enhancement']"
+      :tags="['visual', 'amplification']"
     />
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
   scrollToTop: true,
   head() {
     return {
-      title: "Visual Enhancements"
+      title: "Visual Amplifications"
     };
   },
   computed: {
