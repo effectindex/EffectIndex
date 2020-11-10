@@ -54,12 +54,12 @@
           />
         </Panel>
         <Panel
-          title="Geometry"
-          page="/effects/geometry"
+          title="Geometric Patterns"
+          page="/categories/geometric-patterns"
           icon="geometry.svg"
         >
           <PanelEffectList
-            :tags="['visual', 'geometry']"
+            :tags="['visual', 'geometric']"
             :effects="effects"
           />
         </Panel>
