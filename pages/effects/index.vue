@@ -37,8 +37,9 @@
               page="/categories/visual-distortions"
             />
             <actions
-              :effects="filterEffectsByTag('visual', 'geometry')"
-              title="Geometry"
+              :effects="filterEffectsByTag('visual', 'geometric')"
+              title="Geometric Patterns"
+              page="/categories/geometric-patterns"
             />          
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
@@ -191,8 +192,9 @@
               page="/categories/visual-distortions"
             />
             <actions
-              :effects="filterEffectsByTag('visual', 'geometry')"
-              title="Geometry"
+              :effects="filterEffectsByTag('visual', 'geometric')"
+              title="Geometric Patterns"
+              page="/categories/geometric-patterns"
             />          
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"

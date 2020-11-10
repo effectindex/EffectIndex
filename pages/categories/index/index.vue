@@ -42,6 +42,13 @@
     />
 
     <IndexCategory
+      name="Geometric Patterns"
+      description="Geometric patterns are defined as any subjective effect that introduces complex arrays of shapes, colours, symbols, patterns, geometry, form constants, and fractals to one's field of vision. "
+      page="geometric-patterns"
+      icon="geometry.svg"
+    />
+
+    <IndexCategory
       name="Hallucinatory Effects"
       description="Hallucinatory states are defined as any subjective effect that changes the perception or appearance of pre-existing sensory data by adding entirely new content in a manner similar to that of dreams. "
       page="hallucinatory-states"
