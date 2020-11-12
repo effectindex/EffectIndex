@@ -7,6 +7,7 @@ const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
 const Report = require('./Report');
+const Effect = require('../effects/Effect');
 
 router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
   if (!'report' in req.body) throw API_Error('SUBMIT_REPORT_ERROR', 'The request was invalid.');
@@ -53,6 +54,19 @@ router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['a
     if (!response) throw API_Error('DELETE_REPORT_ERROR', 'The report failed to delete.');
 
     res.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/all', async (req, res, next) => {
+  try {
+    let reports = await Report
+      .find()
+      .populate('related_effects', 'name')
+      .exec();
+    if (!reports) throw API_Error('GET_REPORTS_ERROR', 'The server failed to retrieve the reports.');
+    res.status(200).send({ reports });
   } catch (error) {
     next(error);
   }
