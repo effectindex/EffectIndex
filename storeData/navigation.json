@@ -16,6 +16,11 @@
       { "name": "Blog", "location": "/admin/blog/list", "scope": ["admin"] },
       { "name": "Users", "location": "/admin/users/list", "scope": ["admin"] },
       {
+        "name": "Articles",
+        "location": "/admin/articles/list",
+        "scope": ["admin", "editor"]
+      },
+      {
         "name": "Reports",
         "location": "/admin/reports/list",
         "scope": ["admin", "editor"]
