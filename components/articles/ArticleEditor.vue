@@ -9,8 +9,10 @@
         placeholder="Title"
         class="articleEditor__titleInput"
       >
+      <h2> Body Type </h2>
       <TypeSelector 
         v-model="type" 
+        class="articleEditor__typeSelector"
       />
     </form>
   </div>
@@ -33,6 +35,25 @@ export default {
 </script>
 
 <style scoped>
+
+h2 {
+  display: block;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0.25em 0;
+  margin-top: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.articleEditor__typeSelector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 600px;
+}
 
 input[type="text"] {
   width: 100%;

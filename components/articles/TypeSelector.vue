@@ -1,33 +1,37 @@
 <template>
-  <div class="typeSelector">
-    <h2> Body Type </h2>
+  <div>
+    <div class="buttonContainer">
+      <input 
+        v-model="type"
+        type="radio"
+        name="articleType"
+        value="viscidcode"
+        @change="handleChange"
+      >
+      <label for="viscidcode"> Viscidcode </label>
+    </div>
 
-    <input 
-      v-model="type"
-      type="radio"
-      name="articleType"
-      value="viscidcode"
-      @change="handleChange"
-    >
-    <label for="viscidcode"> Viscidcode </label>
+    <div class="buttonContainer">
+      <input 
+        v-model="type"
+        type="radio"
+        name="articleType"
+        value="markdown"
+        @change="handleChange"
+      >
+      <label for="markdown"> Markdown Only </label>
+    </div>
 
-    <input 
-      v-model="type"
-      type="radio"
-      name="articleType"
-      value="markdown"
-      @change="handleChange"
-    >
-    <label for="markdown"> Markdown Only </label>
-
-    <input 
-      v-model="type"
-      type="radio"
-      name="articleType"
-      value="html"
-      @change="handleChange"
-    >
-    <label for="html"> Raw HTML </label>
+    <div class="buttonContainer">
+      <input 
+        v-model="type"
+        type="radio"
+        name="articleType"
+        value="html"
+        @change="handleChange"
+      >
+      <label for="html"> Raw HTML </label>
+    </div>
   </div>
 </template>
 
@@ -39,6 +43,15 @@ export default {
       default: undefined
     },
   },
+  
+  data () {
+    return {
+      type: {
+        type: String,
+        default: undefined
+      }
+    };
+  },
 
   methods: {
     handleChange(e) {
@@ -47,3 +60,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+label {
+  margin-left: 5px;
+}
+</style>
