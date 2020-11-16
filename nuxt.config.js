@@ -146,7 +146,7 @@ module.exports = {
 
   server: {
     jwtSecret: process.env.jwtSecret,
-    mongooseUri: "mongodb://localhost:27017/effectindex"
+    mongooseUri: `mongodb://localhost:27017/${process.env.DATABASE_NAME ? process.env.DATABASE_NAME : 'effectindex'}`
   },
 
   sitemap: {
