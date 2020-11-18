@@ -14,6 +14,9 @@
         v-model="type" 
         class="articleEditor__typeSelector"
       />
+
+      <h2> Body </h2>
+      <textarea />
     </form>
   </div>
 </template>
