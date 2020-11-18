@@ -22,13 +22,20 @@
       </div>
     </div>
     <p class="body">
-      <slot />
+      <Markdown
+        :body="body" 
+      />
     </p>
   </div>
 </template>
 
 <script>
+import Markdown from "@/components/effects/FormattedDocument__markdown";
+
 export default {
+  components: {
+    Markdown
+  },
   props: {
     label: {
       type: String,
@@ -49,10 +56,11 @@ export default {
     subHeader: {
       type: String,
       default: undefined
-    },
-    body: {
-      type: String,
-      default: undefined
+    }
+  },
+  computed: {
+    body () {
+      return this.$slots.default ? this.$slots.default[0].text : undefined;
     }
   }
 };
