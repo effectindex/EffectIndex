@@ -9,7 +9,7 @@
         class="label"
         :style="`background-color: ${labelBackground}`"
       >
-        {{ label }}
+        <span style="white-space: pre;">{{ label }}</span>
       </h4>
       <div 
         v-show="header || subHeader"
@@ -25,7 +25,7 @@
           v-show="subHeader" 
           class="subHeader"
         >
-          - {{ subHeader }}
+          <span class="separator">-</span> {{ subHeader }}
         </h4>
       </div>
     </div>
@@ -88,15 +88,19 @@ h3, h4 {
 
 .headersContainer {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 .label {
+  white-space: pre-line;
   color: white;
   padding: 5px 15px 5px 10px;
   border-radius: 0 30px 30px 0;
   margin: 0;
   font-size: 18px;
+  display: flex;
+  align-items: center;
 }
 
 .headers {
@@ -116,6 +120,21 @@ h3, h4 {
 .body {
   background-color: #FAFAFA;
   padding: 10px;
+}
+
+@media (max-width: 600px) {
+  h3 {
+    font-size: 20px;
+  }
+
+  .headers {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .separator {
+    display: none;
+  }
 }
 
 </style>
