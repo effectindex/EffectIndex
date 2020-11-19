@@ -12,7 +12,7 @@
     </h1>
 
     <p>
-      <b>Visual suppressions</b> are defined as any subjective effect that decreases a person's ability to perceive the external environment through their sense of sight.
+      <b>Visual suppressions</b> are defined as any subjective effect that decreases or reduces a facet of person's sense of sight.
     </p>
 
     <p>
