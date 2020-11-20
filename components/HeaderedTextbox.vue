@@ -29,21 +29,15 @@
         </h4>
       </div>
     </div>
-    <p class="body">
-      <Markdown
-        :body="body" 
-      />
-    </p>
+    <div 
+      class="body"
+      v-html="$md.render(body)"
+    />
   </div>
 </template>
 
 <script>
-import Markdown from "@/components/effects/FormattedDocument__markdown";
-
 export default {
-  components: {
-    Markdown
-  },
   props: {
     label: {
       type: String,
@@ -95,7 +89,7 @@ h3, h4 {
 .label {
   white-space: pre-line;
   color: white;
-  padding: 5px 15px 5px 10px;
+  padding: 5px 15px 5px 20px;
   border-radius: 0 30px 30px 0;
   margin: 0;
   font-size: 18px;
@@ -106,20 +100,27 @@ h3, h4 {
 .headers {
   display: flex;
   align-items: center;
+  padding: 5px 0;
   margin-left: 10px;
 }
 
 .mainHeader {
   margin-right: 5px;
+  font-size: 20px;
 }
 
 .subHeader {
   color: #AAA;
+  font-size: 18px;;
 }
 
 .body {
   background-color: #FAFAFA;
-  padding: 10px;
+  padding: 20px;
+}
+
+.body >>> p:not(:last-child), .body >>> ul:not(:last-child) {
+  margin-bottom: 1em;
 }
 
 @media (max-width: 600px) {
@@ -134,6 +135,14 @@ h3, h4 {
 
   .separator {
     display: none;
+  }
+  
+  .body {
+    padding: 10px;
+  }
+
+  .label {
+    padding: 5px 15px 5px 10px;
   }
 }
 

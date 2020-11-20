@@ -3,6 +3,33 @@
     <h1> Viscidcode Cheat Sheet </h1>
     <div class="cheatsheet">
       <div class="cheatsheet_section">
+        <h2> Separated Textbox </h2>
+        ##separated-textbox
+        <p> A textbox a text label on the left, and a paragraph on the right. </p>
+        <table>
+          <thead>
+            <tr> <td> Property </td> <td> Description </td> </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> a </td> <td> The first item to compare. </td>
+            </tr>
+            <tr>
+              <td> b </td> <td> The second item to compare. </td>
+            </tr>
+            <tr>
+              <td> label </td> <td> Custom left label. </td>
+            </tr>                                     
+          </tbody>
+        </table>
+        <label> Example </label>
+        <div style="white-space: pre-wrap">
+          ##separated-textbox|a="Intricate"|b="Simple"{Drifting can alter the external environment in a way that spreads out in many different complex directions and results in the original piece of sensory input becoming completely unrecognisable in appearance. Alternatively, it can be simplistic in nature consisting of simple warping, wiggling and bending even at high dosages of psychoactive substances.}
+        </div>
+      </div>
+
+
+      <div class="cheatsheet_section">
         <h2> Headered Textbox </h2>
         ##headered-textbox
         <p> A textbox with a rounded left label, header and subheader. </p>

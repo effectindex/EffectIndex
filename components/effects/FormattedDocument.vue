@@ -8,6 +8,7 @@ import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import SubarticleAnchor from "@/components/effects/SubarticleAnchor";
 import Quotation from "@/components/Quotation";
 import HeaderedTextbox from "@/components/HeaderedTextbox";
+import SeparatedTextbox from "@/components/SeparatedTextbox";
 
 export default {
   functional: true,
@@ -16,6 +17,8 @@ export default {
       switch (element.type) {
         case "headered-textbox":
           return createElement(HeaderedTextbox, { props: element.props }, element.value);
+        case "separated-textbox":
+          return createElement(SeparatedTextbox, { props: element.props }, element.value);
         case "quotation":
           return createElement(Quotation, { props: element.props }, element.value);
         case "subarticle":
