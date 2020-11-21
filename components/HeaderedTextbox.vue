@@ -29,15 +29,20 @@
         </h4>
       </div>
     </div>
-    <div 
+    <Markdown
       class="body"
-      v-html="$md.render(body)"
+      :body="body" 
     />
   </div>
 </template>
 
 <script>
+import Markdown from './Markdown';
+
 export default {
+  components: {
+    Markdown
+  },
   props: {
     label: {
       type: String,
@@ -117,10 +122,6 @@ h3, h4 {
 .body {
   background-color: #FAFAFA;
   padding: 20px;
-}
-
-.body >>> p:not(:last-child), .body >>> ul:not(:last-child) {
-  margin-bottom: 1em;
 }
 
 @media (max-width: 600px) {

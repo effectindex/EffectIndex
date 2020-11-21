@@ -6,15 +6,20 @@
     <h4 v-else>
       {{ label }}
     </h4>
-    <div 
+    <Markdown 
       class="body"
-      v-html="$md.render(body)"
+      :body="body"
     />
   </div>
 </template>
 
 <script>
+import Markdown from './Markdown';
+
 export default {
+  components: {
+    Markdown
+  },
   props: {
     a: {
       type: String,
@@ -61,10 +66,6 @@ export default {
     border-left: 1px solid #EEE;
   }
 
-  .body >>> p:not(:last-child), .body >>> ul:not(:last-child) {
-    margin-bottom: 1em;
-  }
-
   .separatedTextbox .comparator {
     font-weight: bold;
     display: inline-block;
@@ -83,7 +84,7 @@ export default {
       border-bottom: 1px solid #EEE;
     }
 
-    .separatedTextbox p {
+    .separatedTextbox .body {
       border: none;
       padding-left: 0;
       padding-top: 10px;
