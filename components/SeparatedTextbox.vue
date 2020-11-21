@@ -80,6 +80,7 @@ export default {
     .separatedTextbox h4 {
       display: inline-block;
       text-align: left;
+      width: auto;
       padding-bottom: 10px;
       border-bottom: 1px solid #EEE;
     }
