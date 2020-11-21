@@ -6,9 +6,10 @@
     <h4 v-else>
       {{ label }}
     </h4>
-    <p> 
-      <slot />
-    </p>
+    <div 
+      class="body"
+      v-html="$md.render(body)"
+    />
   </div>
 </template>
 
@@ -26,6 +27,11 @@ export default {
     label: {
       type: String,
       default: undefined
+    }
+  },
+  computed: {
+    body () {
+      return this.$slots.default ? this.$slots.default[0].text : undefined;
     }
   }
 };
@@ -48,11 +54,15 @@ export default {
     padding-top: 3px;
   }
 
-  .separatedTextbox p {
+  .separatedTextbox .body {
     margin: 0;
     flex: 1;
     padding-left: 20px;
     border-left: 1px solid #EEE;
+  }
+
+  .body >>> p:not(:last-child), .body >>> ul:not(:last-child) {
+    margin-bottom: 1em;
   }
 
   .separatedTextbox .comparator {
