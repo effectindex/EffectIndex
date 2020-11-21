@@ -1,7 +1,7 @@
 <template>
   <div class="separatedTextbox">
     <h4 v-if="a && b"> 
-      <span class="comparator">{{ a }}</span>&nbsp;vs&nbsp;<span class="comparator">{{ b }}</span>
+      <span class="comparator">{{ a }}</span> vs <span class="comparator">{{ b }}</span>
     </h4>
     <h4 v-else>
       {{ label }}
@@ -40,7 +40,7 @@ export default {
 
   .separatedTextbox h4 {
     margin: 0;
-    min-width: 200px;
+    width: 200px;
     text-transform: unset;
     letter-spacing: unset;
     text-align: right;
@@ -50,12 +50,15 @@ export default {
 
   .separatedTextbox p {
     margin: 0;
+    flex: 1;
     padding-left: 20px;
     border-left: 1px solid #EEE;
   }
 
   .separatedTextbox .comparator {
     font-weight: bold;
+    display: inline-block;
+    
   }
 
   @media(max-width: 600px) {
