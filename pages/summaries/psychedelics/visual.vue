@@ -28,7 +28,7 @@
     <div>
       <div class="effectsContainer">
         <h3 class="titleContainer"> 
-          Visual Enhancements
+          Visual Amplifications
           <Icon
             filename="arrow-up.svg"
             class="actionIcon"
@@ -36,7 +36,7 @@
         </h3>
 
         <p class="actionDescription">
-          <b> Visual enhancements </b> are any subjective effect which improves one's ability to perceive the external environment through their sense of sight.
+          <b> Visual amplifications </b> are defined as any subjective effect that increases, enhances, or intensifies a facet of a person's sense of sight.
         </p>
 
         <long-summary 

@@ -24,7 +24,13 @@
     </p>
 
     <p>
-      It should be noted that these mind-states are the least reproducible of all effects within the <nuxt-link to="/effects/">
+      The majority of effects listed within this category are largely relevant to the qualitative questions included within the <ext-link href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3539773/#S2title">
+        Mystical Experiences Questionare,
+      </ext-link> a well established series of 30 standardized questions that has been developed as a scientific criteria for measuring the presence and intensity of hallucinogen induced mystical experiences. 
+    </p>
+
+    <p>
+      It should also be noted that these mind-states are the least reproducible of all effects within the <nuxt-link to="/effects/">
         subjective effect index.
       </nuxt-link> Simply taking more of a given substance does not necessarily increase the chances of having these states occur. Instead, they seem to rely more on contextual factors, such as the person's set and setting.
     </p>
@@ -50,6 +56,7 @@ import Icon from '@/components/Icon';
 export default {
   components: {
     EffectList,
+    ExtLink,
     Icon
   },
   scrollToTop: true,
