@@ -48,7 +48,13 @@
       </div>
 
       <div class="effectsContainer">
-        <h3> Visual Distortions </h3>
+        <h3 class="titleContainer">
+          Visual Distortions 
+          <Icon
+            filename="distortions.svg"
+            class="actionIcon"
+          />
+        </h3>
         <p class="actionDescription">
           <b> Visual distortions </b> are any subjective effect which alters and changes the perception or appearance of pre-existing visual data without adding any entirely new content.
         </p>
@@ -61,7 +67,13 @@
       </div>
 
       <div class="effectsContainer">
-        <h3> Geometric patterns </h3>
+        <h3 class="titleContainer">
+          Geometric Patterns
+          <Icon
+            filename="geometry.svg"
+            class="actionIcon"
+          />
+        </h3>
         <p class="actionDescription">
           <b> Geometric patterns </b> are defined as any subjective effect that introduces complex arrays of shapes, colours, symbols, patterns, geometry, form constants, and fractals to one's field of vision.
         </p>
@@ -74,7 +86,13 @@
       </div>     
 
       <div class="effectsContainer">
-        <h3> Hallucinatory States </h3>
+        <h3 class="titleContainer">
+          Hallucinatory States
+          <Icon
+            filename="dragon.svg"
+            class="actionIcon"
+          />
+        </h3>
         <p class="actionDescription">
           <b> Hallucinatory states </b> are any subjective effect which changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner which is similar to that of dreams.
         </p>
