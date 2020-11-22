@@ -44,6 +44,7 @@
 
 <script>
 import EffectList from '@/components/categories/EffectList';
+import ExtLink from "@/components/ExtLink";
 import Icon from '@/components/Icon';
 
 export default {
