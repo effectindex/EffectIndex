@@ -16,8 +16,8 @@
         uncomfortable physical effect
       </nuxt-link> that relates to the overall body and cannot specifically be categorized as <nuxt-link to="/categories/cardiovascular-effects">
         cardiovascular
-      </nuxt-link> or <nuxt-link to="/categories/cerebrovascular-effects">
-        cerebrovascular.
+      </nuxt-link> or <nuxt-link to="/categories/neurological-effects">
+        neurological.
       </nuxt-link>
     </p>
 

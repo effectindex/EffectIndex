@@ -14,8 +14,8 @@
     <p>
       <b>Physical alterations</b> are defined as any subjective effect that changes a facet of a person's physical body in a manner which is not <nuxt-link to="/categories/uncomfortable-physical-effects">
         uncomfortable
-      </nuxt-link> and does not involve a clearly definable <nuxt-link to="/categories/physical-enhancements">
-        enhancement
+      </nuxt-link> and does not involve a clearly definable <nuxt-link to="/categories/physical-amplifications">
+        amplification
       </nuxt-link> or <nuxt-link to="/categories/physical-suppressions">
         suppression.
       </nuxt-link>
