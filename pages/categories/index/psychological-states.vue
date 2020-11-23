@@ -12,8 +12,8 @@
     </h1>
 
     <p>
-      <b>Psychological states</b> are defined as any cognitive effect that is either established within the psychological literature or arises as a result of the complex interplay between more simplistic components such as <nuxt-link to="/categories/cognitive-enhancements">
-        cognitive enhancements
+      <b>Psychological states</b> are defined as any cognitive effect that is either established within the psychological literature or arises as a result of the complex interplay between more simplistic components such as <nuxt-link to="/categories/cognitive-amplifications">
+        cognitive amplifications
       </nuxt-link> and <nuxt-link to="/categories/cognitive-suppressions">
         suppressions.
       </nuxt-link>
