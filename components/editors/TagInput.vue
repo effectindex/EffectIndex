@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="tagInput">
     <input 
       v-model="tagInputText"
-      class="effectEditor__input"
       @keyup="changeInput"
     >
     <ul class="tagList">
@@ -11,15 +10,13 @@
         :key="tag"
         class="tagItem" 
       >
-        <div class="tagItem__content">
-          {{ tag }}
-          <a @click="removeTag(index)">
-            <Icon
-              filename="times-circle.svg"
-              color="red"
-            />
-          </a>
-        </div>
+        <span class="tagText"> {{ tag }} </span>
+        <a @click="removeTag(index)">
+          <Icon
+            filename="times-circle.svg"
+            color="red"
+          />
+        </a>
       </li>
     </ul>
   </div>
@@ -83,18 +80,20 @@ export default {
 <style scoped>
 .tagItem {
   display: inline-block;
-  width: 200px;
-  color: black;
-  background-color: #f5f5f5;
+  color: #EEE;
+  background-color: #333;
   padding-left: 10px;
-  border: 1px dotted #ccc;
-  margin: 3px;
-  padding: 7px;
-  border-radius: 15px;
+  margin: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .tagItem a {
   color: #555;
+  cursor: pointer;
+  margin-top: 3px;
 }
 
 .tagItem a:hover {
@@ -102,12 +101,24 @@ export default {
 }
 
 .tagList {
+  display: flex;
+  flex-direction: row;
   list-style: none;
   max-height: 300px;
   overflow-y: auto;
   font-size: 14px;
   margin-top: 1em;
   padding: 0;
+}
+
+.tagInput input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+}
+
+.tagText {
+  padding-right: 15px;
 }
 
 .icon {
@@ -120,9 +131,4 @@ export default {
   opacity: 1;
 }
 
-.tagItem__content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 </style>

@@ -17,7 +17,6 @@
     methods: {
       async submitPost(article) {
         const results = await this.$axios.post('/api/articles', { article });
-        console.log(results);
       }
     },
     middleware: ['auth']

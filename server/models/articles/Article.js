@@ -8,9 +8,9 @@ const article = new Schema({
       type: String,
       required: true
     },
-    type: {
+    publication_status: {
       type: String,
-      enum: ['viscidcode', 'html', 'markdown'],
+      enum: ['published', 'unpublished', 'draft'],
       required: true
     },
     user: {
@@ -25,26 +25,17 @@ const article = new Schema({
       type: Date
     },
     short_description: String,
+    social_media_image: String,
+    tags: [String],
     body: {
-      viscidcode: {
-        raw: {
-          type: String
-        },
-        parsed: {
-          type: Object
-        }
+      raw: {
+        type: String,
+        required: true
       },
-      html: {
-        type: String
-      },
-      markdown: {
-        type: String
+      parsed: {
+        type: Array,
+        required: true
       }
-    },
-    date: String,
-    resource: {
-      type: String,
-      required: true
     },
     featured: {
       type: Boolean,

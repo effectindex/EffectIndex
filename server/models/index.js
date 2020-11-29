@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const blog = require("./blog/"),
+  articles = require('./articles/'),
   effects = require("./effects/"),
   substances = require("./substances/"),
   replications = require("./replications/"),
@@ -26,6 +27,7 @@ const errorHandler = function(err, req, res, next) {
 
 
 router
+  .use("/articles", articles)
   .use("/blog", blog)
   .use("/effects", effects)
   .use("/substances", substances)
