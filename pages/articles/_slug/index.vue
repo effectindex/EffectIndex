@@ -1,25 +1,34 @@
 <template>
   <div class="pageContent article">
-    <h1> {{ title }} </h1>
+    <admin-toolbar 
+      v-if="$auth.hasScope('editor')"
+      :item-id="article._id"
+      item-url="/admin/articles"
+    />
+    <h1> {{ article.title }} </h1>
     <rendered-vcode
-      :body="body.parsed"
+      :body="article.body.parsed"
     />
   </div>
 </template>
 
 <script>
 import RenderedVcode from '@/components/vcode/rendered';
+import AdminToolbar from '@/components/AdminToolbar';
 
 export default {
   components: {
-    RenderedVcode
+    RenderedVcode,
+    AdminToolbar
   },
   data() {
     return {
-      title: undefined,
-      body: {
-        raw: undefined,
-        parsed: undefined
+      article: {
+        title: undefined,
+        body: {
+          parsed: undefined
+        },
+        _id: undefined
       }
     };
   },
@@ -28,7 +37,7 @@ export default {
       const { slug } = this.$route.params;
       const result = await this.$axios.get(`/api/articles/${slug}`);
       const { article } = result.data;
-      Object.assign(this, article);
+      this.article = article;
     } catch (error) {
       console.log(error);
     }

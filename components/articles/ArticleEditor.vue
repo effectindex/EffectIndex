@@ -1,7 +1,7 @@
 <template>
   <div class="articleEditor">
     <input 
-      v-model="content.title"
+      v-model="article.title"
       type="text"
       placeholder="Title"
       class="articleEditor__titleInput"
@@ -9,7 +9,7 @@
 
     <h2> Body </h2>
     <vcode-editor 
-      v-model="content.code"
+      v-model="article.body.raw"
     />
     <div class="articleEditor__showMore">
       <span v-if="!more"> <a @click="toggleMore"> Show more </a> </span>
@@ -21,34 +21,28 @@
     >
       <h2> Publication Status </h2>
       <publication-status
-        :publication-status="content.publicationStatus"
-        @input="content.publicationStatus = $event"
+        :publication-status="article.publication_status"
+        @input="article.publication_status = $event"
       />
       <h2> Short Description </h2>
       <textarea 
-        v-model="content.shortDescription"
+        v-model="article.short_description"
         class="articleEditor__shortDescriptionTextarea"
       />
       <h2> Social Media Image </h2>
       <input 
-        v-model="content.socialMediaImage"
+        v-model="article.social_media_image"
         type="text"
         class="articleEditor__socialMediaImageInput"
       >
       <h2> Tags </h2>
       <tag-input
-        v-model="content.tags"
+        v-model="article.tags"
       />
     </div>
-    <button @click="submitArticle(false)">
-      Save
+    <button @click="submitArticle">
+      {{ isNew ? 'Save' : 'Update' }}
     </button> 
-    <button
-      v-show="article"
-      @click="submitArticle(true)"
-    >
-      Update
-    </button>
   </div>
 </template>
 
@@ -67,29 +61,40 @@ export default {
   props: {
     article: {
       type: Object,
-      default: undefined
+      default: () => ({
+        title: undefined,
+        body: {
+          raw: '\n\n\n\n'
+        },
+        publication_status: 'draft',
+        short_description: undefined,
+        social_media_image: undefined,
+        tags: undefined
+      })
     }
   },
   data () {
-    const { title, body, publication_status, short_description, social_media_image, tags } = this.article ? this.article : {};
     return {
-      content: {
-        title,
-        code: body ? body.raw : '\n\n\n\n',
-        publicationStatus: publication_status ? publication_status : 'draft',
-        shortDescription: short_description,
-        socialMediaImage: social_media_image,
-        tags: tags,
-      },
       more: false
     };
   },
+  computed: {
+    isNew() {
+      return !this.article._id;
+    }
+  },
   methods: {
-    submitArticle (update) {
+    async submitArticle () {
       try {
-        if (!update) {
-          this.$axios.post('/api/articles', { article: this.content });
-        } 
+        if (this.isNew) {
+          const response = await this.$axios.post('/api/articles', { article: this.article });
+          const { article } = response.data;
+          this.$router.push(`/articles/${article.slug}`);
+        } else {
+          const { _id } = this.article;
+          this.$axios.post(`/api/articles/${_id}`, { article: this.article });
+          this.$router.push(`/articles/${this.article.slug}`);
+        }
       } catch (error) {
         console.log(error);
       }

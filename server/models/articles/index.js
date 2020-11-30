@@ -14,21 +14,30 @@ const parse = require('../../../lib/vcode2/parse').default;
 router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { article } = req.body;
+    delete article._id;
     const result = await new Article({
-      title: article.title,
-      publication_status: article.publicationStatus,
+      ...article,
       user: req.user.id,
-      short_description: article.shortDescription,
-      social_media_image: article.socialMediaImage,
       body: {
-        raw: article.code,
-        parsed: parse(article.code)
+        raw: article.body.raw,
+        parsed: parse(article.body.raw)
       }
     }).save();
     if (!result) throw new API_Error('Error saving article.');
-    res.json(result);
+    res.json({ article: result });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
+  }
+});
+
+router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
+  try {
+    const { article } = req.body;
+    article.body.parsed = parse(article.body.raw);
+    const result = await Article.findByIdAndUpdate(req.params.id, { ...article }, { new: true });
+    if (!result) throw new API_Error('Error saving article.');
+    res.json({ article: result });
+  } catch (error) {
     res.status(500).send({ error });
   }
 });
@@ -36,7 +45,6 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
 router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log(id);
     await Article.deleteOne({ _id: id });
     res.sendStatus(200);
   } catch (error) {

@@ -1,5 +1,6 @@
 <template>
   <article-editor
+    class="pageContent"
     :article="article"
   />
 </template>
@@ -21,6 +22,7 @@ export default {
       const { id } = this.$route.params;
       const result = await this.$axios.get(`/api/articles/admin/${id}`);
       const { article } = result.data;
+      console.log(article);
       this.article = article;
     } catch (error) {
       console.log(error);
