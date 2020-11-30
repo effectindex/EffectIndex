@@ -99,7 +99,7 @@
       </p>
 
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('dissociative', 'cognitive')"
+        v-for="(effect, i) in filterEffectsByTag('dissociative', 'cognitive').filter(effect => !effect.tags.includes('disconnective'))"
         :key="effect._id"
         :index="i"
         :effect="effect"

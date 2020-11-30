@@ -21,9 +21,9 @@
     />
 
     <IndexCategory
-      name="Visual Enhancements"
-      description="Visual enhancements are defined as any subjective effect that improves one's ability to perceive the external environment through their sense of sight. "
-      page="visual-enhancements"
+      name="Visual Amplifications"
+      description="Visual amplifications are defined as any subjective effect that increases, enhances, accelerates, or intensifies a facet of a person's sense of sight."
+      page="visual-amplifications"
       icon="arrow-up.svg"
     />
 
@@ -98,9 +98,9 @@
     />
 
     <IndexCategory
-      name="Cognitive Enhancements"
-      description="Cognitive enhancements are defined as any subjective effect that increases or raises the intensity of a facet of a person's cognition. "
-      page="cognitive-enhancements"
+      name="Cognitive Amplifications"
+      description="Cognitive amplifications are defined as any subjective effect that increases, enhances, accelerates, or intensifies a facet of a person's cognition. "
+      page="cognitive-amplifications"
       icon="arrow-up.svg"
     />
 
@@ -140,9 +140,9 @@
     />
 
     <IndexCategory
-      name="Physical Enhancements"
-      description="Physical enhancements are defined as any subjective effect that increases or intensifies a facet of a person's physical body. "
-      page="physical-enhancements"
+      name="Physical Amplifications"
+      description="Physical amplifications are defined as any subjective effect that increases, enhances, accelerates, or intensifies a facet of a person's physical body."
+      page="physical-amplifications"
       icon="arrow-up.svg"
     />
 

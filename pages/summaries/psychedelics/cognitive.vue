@@ -19,7 +19,7 @@
 
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
-        Cognitive Enhancements
+        Cognitive Amplifications
         <Icon 
           filename="arrow-up.svg"
           class="actionIcon"
@@ -27,7 +27,7 @@
       </h3>
 
       <p class="actionDescription">
-        <b> Cognitive enhancements </b> are any subjective effect which increases or raises the intensity of an aspect of a person's cognition.
+        <b> Cognitive amplifications </b> are defined as any subjective effect that increases, enhances, or intensifies a facet of a person's sense of cognition.
       </p>
 
       <long-summary 
@@ -63,7 +63,7 @@
       <h3 class="titleContainer"> 
         Novel States
         <Icon 
-          filename="arrow-up.svg"
+          filename="lightbulb.svg"
           class="actionIcon"
         />
       </h3>
@@ -90,7 +90,7 @@
       <h3 class="titleContainer"> 
         Psychological States
         <Icon 
-          filename="arrow-up.svg"
+          filename="psychological.svg"
           class="actionIcon"
         />
       </h3>
@@ -113,7 +113,7 @@
       <h3 class="titleContainer"> 
         Transpersonal States
         <Icon 
-          :icon="['far', 'arrow-up']"
+          filename="infinity.svg"
           class="actionIcon"
         />
       </h3>

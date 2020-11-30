@@ -18,6 +18,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    semi: [1, 'always']
+    "semi": "warn",
+    "vue/no-v-html": "off"
   }
 }

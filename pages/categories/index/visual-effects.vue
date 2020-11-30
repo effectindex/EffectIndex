@@ -22,12 +22,12 @@
     <Columns>
       <Column>
         <Panel
-          title="Enhancements"
-          page="/categories/visual-enhancements"
+          title="Amplifications"
+          page="/categories/visual-amplifications"
           icon="arrow-up.svg"
         >
           <PanelEffectList
-            :tags="['visual', 'enhancement']"
+            :tags="['visual', 'amplification']"
             :effects="effects"
           />
         </Panel>
