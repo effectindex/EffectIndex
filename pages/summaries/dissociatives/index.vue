@@ -13,6 +13,12 @@
           to understand descriptions with accompanying image replications. This is done without resorting to metaphor,
           analogy, or personal trip reports.
         </p>
+        
+        <p>
+          This article breaks down the subjective effects of the dissociative experience into simple and easy
+          to understand descriptions with accompanying image replications. This is done without resorting to metaphor,
+          analogy, or personal trip reports.
+        </p>
 
         <p>
           These descriptions are not specific to any particular substance but are applicable to the effects 
