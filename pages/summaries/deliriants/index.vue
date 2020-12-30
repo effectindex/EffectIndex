@@ -17,13 +17,11 @@
       />
       <div class="categoryDescription">
         <p>
-          Deliriants are a class of hallucinogen that are unique in that they offer solid hallucinations which display themselves seamlessly into waking consciousness, similar to that of fully formed dreams. These hallucinations are also characterised by delusions and psychosis as they are most often immediately accepted as reality by the person experiencing them. In contrast, classical psychedelics and dissociatives have progressive levels of multiple all-encompassing sensory effects before reaching the level of concrete hallucination. They also rarely induce psychosis, with most people maintaining an understanding that they are simply under the effects of a substance throughout any hallucinations which they undergo.
+          <b> Deliriants </b> are a class of hallucinogen that are unique in that they offer solid hallucinations which display themselves seamlessly into waking consciousness, similar to fully formed dreams. These hallucinations are also characterised by delusions and psychosis as they are most often immediately accepted as reality by the person experiencing them. In contrast, classical psychedelics and dissociatives have progressive levels of multiple all-encompassing sensory effects before reaching the level of concrete hallucination. They also rarely induce psychosis, with most people maintaining an understanding that they are simply under the influence of a substance throughout any hallucinations which they undergo.
         </p>
 
         <p>
-          This article breaks down the subjective effects of the deliriant experience into simple and easy 
-          to understand descriptions with accompanying image replications. This is done without resorting to
-          metaphor, analogy, or personal trip reports.
+          Outside of these delirious external hallucinations, deliriant trips are primarily characterised by incredibly uncomfortable and often dangerous physical side effects alongside deep feelings of fear, anxiety, and confusion. It is because of this that deliriant substances hold no therapeutic or recreational potential and are instead merely curiosities that should not be experimented with by any but the most experienced of psychonauts.
         </p>
 
         <p>
