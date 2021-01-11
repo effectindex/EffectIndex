@@ -21,6 +21,9 @@ const article = new Schema({
       type: Date,
       default: Date.now
     },
+    author: {
+      
+    },
     updated: {
       type: Date
     },

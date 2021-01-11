@@ -26,6 +26,11 @@
         "scope": ["admin", "editor"]
       },
       {
+        "name": "People",
+        "location": "/admin/people",
+        "scope": ["admin", "editor"]
+      },
+      {
         "name": "Logout",
         "location": "/user/logout",
         "scope": ["admin", "editor", "artist", "user"]
@@ -61,6 +66,7 @@
     "location": "/blog",
     "children": [
       { "name": "About", "location": "/about" },
+      { "name": "Articles", "location": "/articles" },
       { "name": "Blog", "location": "/blog" },
       { "name": "Search", "location": "/search" },
       { "name": "Github", "location": "https://github.com/effectindex/EffectIndex", "external": true },

@@ -42,28 +42,19 @@ async function start() {
     await builder.build();
   }
 
-  // Listen the server
   log(chalk.yellow("Attempting mongoose connection..."));
 
-  await mongoose.connect(
-    config.server.mongooseUri,
-    { 
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-     },
-    function(err, db) {
-      if (!err) {
-        if (config.dev) log(logo);
-        log(chalk.green("Connected to database: ") + db.connections[0].name);
-        app.listen(port, host);
-        firstRun();
-        log(chalk.green.bold("Effect Index up on " + host + ":" + port)); // eslint-disable-line no-console
-      } else {
-        log(chalk.red.bold("Error connecting to database."));
-        process.exit(1);
-      }
-    }
-  );
+  try {
+    const connection = await mongoose.connect(config.server.mongooseUri, { useNewUrlParser: true, useUnifiedTopology: true });
+    if (config.dev) log(logo);
+    log(chalk.green("Connected to database: ") + connection.connections[0].name);
+    await firstRun();
+    app.listen(port, host);
+    log(chalk.green.bold("Effect Index up on " + host + ":" + port));
+  } catch (error) {
+    log(chalk.red.bold("Error connecting to database."));
+    process.exit(1);
+  }
 }
 
 start();

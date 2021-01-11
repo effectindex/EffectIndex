@@ -5,7 +5,7 @@
   "author": "Viscid",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon -r esm server/index.js --watch server --trace-deprecation",
+    "dev": "cross-env NODE_ENV=development nodemon -r esm server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node -r esm server/index.js",
     "generate": "nuxt generate",
@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@artsy/express-reloadable": "^1.4.8",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/dotenv": "^1.4.1",
