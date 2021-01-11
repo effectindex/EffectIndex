@@ -24,7 +24,7 @@
     <h3> Options </h3>
     <ul>
       <li>
-        <b>Patreon</b> - <ext-link href="http://patreon.com/effectindex">
+        <b>Patreon</b> - <ext-link href="https://www.patreon.com/SubjectiveEffectIndex">
           Effect Index Patreon
         </ext-link>
       </li>
@@ -34,7 +34,6 @@
         </ext-link>
       </li>
       <li> <b>Paypal</b> - effectindex@gmail.com </li>
-      <li> <b>Bitcoin</b> - 1DvGTSLskP7eYB4t1Mi7KvV56rPEmSg9WT </li>
     </ul>
   </div>
 </template>

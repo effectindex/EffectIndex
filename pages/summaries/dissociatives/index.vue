@@ -9,6 +9,10 @@
       <h1> Subjective Effects of Dissociatives </h1>
       <div class="categoryDescription">
         <p>
+          <b> Dissociatives </b> are a class of hallucinogen which distort perceptions of sight and sound to produce feelings of disconnection, detachment, and dissociation from the environment and self. These effects occur due to the way in which these compounds function as NMDA receptor antagonists. This means they bind to receptors in the brain but do not activate them, thus blocking other neurotransmitters from doing so. The result is a dose-dependent decrease in the passing of electrical signals across the brain and an overall disconnection of neurons, which leads to states of disconnection between conscious parts of the brain and its sensory organs.
+        </p>
+
+        <p>
           This article breaks down the subjective effects of the dissociative experience into simple and easy
           to understand descriptions with accompanying image replications. This is done without resorting to metaphor,
           analogy, or personal trip reports.
