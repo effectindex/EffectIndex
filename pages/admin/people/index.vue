@@ -3,12 +3,13 @@
     <h1> People Management </h1>
     <add-person
       @submit="newPerson"
-      @update="updatePerson"
     />
     <person 
       v-for="person in people"
       :key="person._id"
       :person="person" 
+      @delete="deletePerson"
+      @update="updatePerson"
     />
   </div>
 </template>
@@ -37,18 +38,26 @@ export default {
     }
   },
   methods: {
-    newPerson(person) {
+    async newPerson(person) {
       try {
-        let result = this.$axios.post('/api/persons', { person });
-        console.log(result);
+        let result = await this.$axios.post('/api/persons', { person });
+        this.$fetch();
       } catch (error) {
         console.log(error);
       }
     },
-    updatePerson(person) {
+    async updatePerson(person) {
       try {
-        let result = this.$axios.post(`/api/persons/${person._id}`, { person });
-        console.log(result);
+        let result = await this.$axios.put(`/api/persons/${person._id}`, { person });
+        this.$fetch();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async deletePerson(person) {
+      try {
+        let result = await this.$axios.delete(`/api/persons/${person._id}`);
+        this.$fetch();
       } catch (error) {
         console.log(error);
       }

@@ -24,6 +24,7 @@
     <person-details
       v-show="expanded"
       :person="person"
+      @update="updatePerson"
     />
   </div>
 </template>
@@ -50,7 +51,11 @@ export default {
   },
   methods: {
     deletePerson() {
-      this.$emit('deletePerson', this.person);
+      this.$emit('delete', this.person);
+    },
+    updatePerson() {
+      this.$emit('update', this.person);
+      this.expanded = false;
     },
     editPerson() {
       this.expanded = !this.expanded;

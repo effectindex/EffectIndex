@@ -32,6 +32,7 @@ export default {
     },
     handleSubmit(person) {
       this.$emit('submit', person);
+      this.expanded = false;
     },
     handleUpdate(person) {
       this.$emit('update', person);
@@ -51,6 +52,7 @@ export default {
     cursor: pointer;
     user-select: none;
     width: 125px;
+    margin-bottom: 1em;
   }
 
   .people__addPersonButton:hover {

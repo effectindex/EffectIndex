@@ -106,7 +106,11 @@ export default {
   },
   methods: {
     handleSubmit(e) {
-        this.$emit(this._id ? 'update' : 'submit', this.person);
+        if (this.person._id) {
+          this.$emit('update', this.person);
+        } else {
+          this.$emit('submit', this.person);
+        }
     }
   }
 };
