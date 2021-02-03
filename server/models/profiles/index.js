@@ -6,6 +6,8 @@ const secured = require('express-jwt');
 const multer = require('multer');
 const mime = require('mime');
 
+const MAX_FILE_SIZE = 10485760; // 10 MB
+
 const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
@@ -37,7 +39,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } });
 
 router.post('/upload', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), upload.any(), async(req, res, next) => {
   try {
