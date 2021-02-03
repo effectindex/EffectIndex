@@ -21,9 +21,10 @@ const article = new Schema({
       type: Date,
       default: Date.now
     },
-    author: {
-      
-    },
+    authors: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Person'
+    }],
     updated: {
       type: Date
     },

@@ -2,6 +2,7 @@
   <article-editor
     class="pageContent"
     :article="article"
+    :people="people"
   />
 </template>
 
@@ -14,16 +15,18 @@ export default {
   },
   data () {
     return {
-      article: undefined
+      article: undefined,
+      people: []
     }; 
   },
   async fetch() {
     try {
       const { id } = this.$route.params;
-      const result = await this.$axios.get(`/api/articles/admin/${id}`);
-      const { article } = result.data;
-      console.log(article);
+      const { article } = await this.$axios.$get(`/api/articles/admin/${id}`);
+      const { people } = await this.$axios.$get(`/api/persons`);
+
       this.article = article;
+      this.people = people;
     } catch (error) {
       console.log(error);
     }

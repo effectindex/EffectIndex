@@ -14,6 +14,7 @@ const parse = require('../../../lib/vcode2/parse').default;
 router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { article } = req.body;
+    article.authors = article.authors.map(author => author._id);
     delete article._id;
     const result = await new Article({
       ...article,
@@ -33,6 +34,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { article } = req.body;
+    article.authors = article.authors.map(author => author._id);
     article.body.parsed = parse(article.body.raw);
     const result = await Article.findByIdAndUpdate(req.params.id, { ...article }, { new: true });
     if (!result) throw new API_Error('Error saving article.');
@@ -55,7 +57,7 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['adm
 
 router.get('/', async (req, res, next) => {
   try {
-    const articles = await Article.find();
+    const articles = await Article.find().populate('authors');
     res.json({ articles });
   } catch (error) {
     res.status(500).send({ error });
@@ -65,7 +67,7 @@ router.get('/', async (req, res, next) => {
 router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { _id } = req.params;
-    const article = await Article.findOne({ _id });
+    const article = await Article.findOne({ _id }).populate('authors');
     res.json({ article });
   } catch (error) {
     res.status(500).send({ error });
@@ -75,7 +77,7 @@ router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasRoles([
 router.get('/:slug', async (req, res, next) => {
   try {
     const slug = req.params.slug;
-    const article = await Article.findOne({ slug });
+    const article = await Article.findOne({ slug }).populate('authors');;
     res.json({ article });
   } catch (error) {
     res.status(500).send({ error });

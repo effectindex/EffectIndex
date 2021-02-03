@@ -19,6 +19,12 @@
       v-show="more" 
       class="articleEditor__more"
     >
+      <h2> Authors </h2>
+      <author-input
+        v-model="article.authors"
+        :people="people"
+      />
+
       <h2> Publication Status </h2>
       <publication-status
         :publication-status="article.publication_status"
@@ -51,18 +57,21 @@ import TypeSelector from './TypeSelector';
 import VcodeEditor from '@/components/vcode/editor';
 import PublicationStatus from './PublicationStatus.vue';
 import TagInput from '@/components/editors/TagInput';
+import AuthorInput from '@/components/editors/PeopleInput';
 
 export default {
   components: {
     VcodeEditor,
     PublicationStatus,
-    TagInput
+    TagInput,
+    AuthorInput
   },
   props: {
     article: {
       type: Object,
       default: () => ({
         title: undefined,
+        authors: [],
         body: {
           raw: '\n\n\n\n'
         },
@@ -71,9 +80,13 @@ export default {
         social_media_image: undefined,
         tags: undefined
       })
+    },
+    people: {
+      type: Array,
+      default: () => ([])
     }
   },
-  data () {
+  data() {
     return {
       more: false
     };
