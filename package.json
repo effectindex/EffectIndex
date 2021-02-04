@@ -33,6 +33,7 @@
     "lodash": "^4.17.20",
     "markdown-it": "^8.4.2",
     "mime-types": "^2.1.28",
+    "mkdirp": "^1.0.4",
     "mongoose": "^5.11.15",
     "mongoose-url-slugs": "^1.0.2",
     "multer": "^1.4.2",

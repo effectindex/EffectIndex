@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const config = require ('../../../nuxt.config.js');
 const secured = require('express-jwt');
+const path = require('path');
+const mkdirp = require('mkdirp');
 
 const multer = require('multer');
 const mime = require('mime');
@@ -33,9 +35,19 @@ const storage = multer.diskStorage({
     let filename = (username ? username : 'unknown') + '.' + fileExtension;
     cb(null, filename.toLowerCase());
   },
-  destination: function (req, file, cb) {
-    if (file.fieldname === 'fullImageData') cb(null, 'static/img/profiles/');
-    if (file.fieldname === 'croppedImageData') cb(null, 'static/img/profiles/cropped/');
+  destination: async function (req, file, cb) {
+    const fullImagesDirectory = 'static/img/profiles/';
+    const croppedImagesDirectory = 'static/img/profiles/cropped';
+
+    if (file.fieldname === 'fullImageData') {
+      const directory = await mkdirp(fullImagesDirectory);
+      cb(null, fullImagesDirectory);
+    }
+
+    if (file.fieldname === 'croppedImageData') {
+      const directory = await mkdirp(croppedImagesDirectory);
+      cb(null, croppedImagesDirectory);
+    }
   }
 });
 
