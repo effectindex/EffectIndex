@@ -6,7 +6,7 @@ import Reference from "@/components/Reference";
 export default {
   functional: true,
   render(createElement, context) {
-    return createElement("div", { class: "formattedDocument" }, renderNodes(context.props.body));
+    return createElement("div", { class: "vcodeDocument" }, renderNodes(context.props.body));
 
     function renderNode(name, properties, children) {
       switch (name) {
@@ -46,6 +46,10 @@ export default {
           return createElement(
             "br"
           );
+        case "hr":
+          return createElement(
+            "hr"
+          );
         case "category":
           return createElement(
             Category,
@@ -83,7 +87,9 @@ export default {
     function renderNodes(nodes = []) {
       const elements = [];
       
-      nodes.forEach( node => elements.push(typeof node === 'string' ? node : renderNode(node.name, node.properties, node.children)));
+      if (nodes) {
+        nodes.forEach( node => elements.push(typeof node === 'string' ? node : renderNode(node.name, node.properties, node.children)));
+      }
 
       return elements;
     }
@@ -92,3 +98,8 @@ export default {
 
 </script>
 
+<style scoped>
+  p {
+    margin: 1em 0;
+  }
+</style>

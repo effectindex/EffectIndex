@@ -61,6 +61,10 @@ export default {
             { props: element.props },
             element.value
           );
+        case "horizontal-line":
+          return createElement(
+            "hr"
+          );
         case "int-link":
           if (('props' in element) && ('to' in element.props)) {
             return createElement(

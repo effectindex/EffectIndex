@@ -30,8 +30,13 @@ export default {
 
 <style>
 .reference {
-  font-size: 0.8em;
-  letter-spacing: -1px;
+  font-size: 80%;
+  font-weight: normal;
+  font-style: normal;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .reference:target {

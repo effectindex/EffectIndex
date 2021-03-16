@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Citation from "@/components/effects/Citation.vue";
+import Citation from "@/components/Citation.vue";
 import ExtLink from "@/components/ExtLink.vue";
 
 export default {

@@ -13,6 +13,7 @@ const Person = mongoose.model("Person", {
   full_name: String,
   alias: String,
   email: String,
+  gravatar_hash: String,
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'

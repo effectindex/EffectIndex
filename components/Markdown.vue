@@ -1,7 +1,7 @@
 <template>
   <div 
     class="markdown"
-    v-html="$md.render(body)"
+    v-html="$md.render(body ? body : '')"
   />
 </template>
 

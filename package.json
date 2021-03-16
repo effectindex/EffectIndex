@@ -5,9 +5,9 @@
   "author": "Viscid",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon -r esm server/index.js --watch server",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node -r esm server/index.js",
+    "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
@@ -32,6 +32,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "markdown-it": "^8.4.2",
+    "md5": "^2.3.0",
     "mime-types": "^2.1.28",
     "mkdirp": "^1.0.4",
     "mongoose": "^5.11.15",

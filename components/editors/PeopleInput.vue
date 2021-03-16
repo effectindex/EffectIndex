@@ -24,7 +24,7 @@
     >
       {{ person.full_name }}
       <button @click="removePerson(index)">
-        Remove
+        (Remove)
       </button>
     </div>
   </div>
@@ -60,3 +60,31 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .peopleInput .controlsContainer {
+    display: flex;
+    align-items: center;
+  }
+
+ .peopleInput .controlsContainer button {
+   padding: 0.25em;
+   width: 50px;
+   margin: 0 10px;
+ }
+
+ .peopleInput .person {
+   font-weight: bold;
+ }
+
+ .peopleInput .person button {
+   width: 100px;
+   padding: 0.25em;
+   margin: 0;
+   color: red;
+   border: none;
+   background-color: transparent;
+ }
+
+
+</style>

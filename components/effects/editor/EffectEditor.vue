@@ -169,7 +169,7 @@
 </template>
 
 <script>
-import CitationInput from "@/components/effects/editor/CitationInput";
+import CitationInput from "@/components/editors/CitationInput";
 import SubstanceInput from "@/components/effects/editor/SubstanceInput";
 import LinkInput from "@/components/effects/editor/LinkInput";
 import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";

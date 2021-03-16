@@ -8,10 +8,17 @@ const article = new Schema({
       type: String,
       required: true
     },
+    subtitle: {
+      type: String,
+      required: false
+    },
     publication_status: {
       type: String,
       enum: ['published', 'unpublished', 'draft'],
       required: true
+    },
+    publication_date: {
+      type: Date
     },
     user: {
       type: mongoose.Schema.ObjectId,
@@ -25,6 +32,9 @@ const article = new Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Person'
     }],
+    citations: {
+      type: Array
+    },
     updated: {
       type: Date
     },

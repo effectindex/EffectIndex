@@ -29,6 +29,15 @@ module.exports = {
   */
   loading: { color: "#FFFFFF" },
 
+  router: {
+    middleware: 'redirect'
+  },
+
+  serverMiddleware: [{
+    path: '/api',
+    handler: '~/server/index.js'
+  }],
+
   /*
   ** Global CSS
   */

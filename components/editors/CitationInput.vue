@@ -81,8 +81,8 @@
 
 <script>
 import ExtLink from "@/components/ExtLink";
-import Citation from "@/components/effects/Citation";
-import CitationList from "@/components/effects/CitationList.vue";
+import Citation from "@/components/Citation";
+import CitationList from "@/components/CitationList.vue";
 
 export default {
   components: {

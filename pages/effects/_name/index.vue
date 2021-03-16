@@ -154,7 +154,7 @@
 
 <script>
 import FormattedDocument from "@/components/effects/FormattedDocument";
-import CitationList from "@/components/effects/CitationList";
+import CitationList from "@/components/CitationList";
 import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
 import Tag from "@/components/effects/Tag";
