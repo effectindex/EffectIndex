@@ -11,6 +11,10 @@ const Article = require('./Article');
 
 const parse = require('../../../lib/vcode2/parse').default;
 
+function kebab(text) {
+  return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
+}
+
 router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { article } = req.body;
@@ -18,6 +22,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
     delete article._id;
     const result = await new Article({
       ...article,
+      slug: kebab(article.title),
       user: req.user.id,
       body: {
         raw: article.body.raw,
@@ -36,7 +41,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
     const { article } = req.body;
     article.authors = article.authors.map(author => author._id);
     article.body.parsed = parse(article.body.raw);
-    const result = await Article.findByIdAndUpdate(req.params.id, { ...article }, { new: true });
+    const result = await Article.findByIdAndUpdate(req.params.id, { ...article, slug: kebab(article.title) }, { new: true });
     if (!result) throw new API_Error('Error saving article.');
     res.json({ article: result });
   } catch (error) {
@@ -70,7 +75,7 @@ router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasRoles([
     const article = await Article.findOne({ _id }).populate('authors');
     res.json({ article });
   } catch (error) {
-    res.status(500).send({ error });
+    res.sendStatus(404);
   }
 });
 

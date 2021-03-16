@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const slugs = require("mongoose-url-slugs");
 
 const Schema = mongoose.Schema;
 
@@ -54,15 +53,12 @@ const article = new Schema({
     featured: {
       type: Boolean,
       default: false
+    },
+    slug: {
+      type: String
     }
   }
 );
-
-article.plugin(slugs('title', {
-  update: true,
-  alwaysRecreate: true,
-  field: 'slug'
-}));
 
 const Article = mongoose.model("Article", article);
 

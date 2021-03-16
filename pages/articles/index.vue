@@ -1,6 +1,13 @@
 <template>
   <div class="pageContent">
+    <Icon
+      filename="file-invoice.svg"
+      class="categoryIcon"
+    />
     <h1> Articles </h1>
+    <p class="intro">
+      This index contains a range of articles on a variety of different topics, each of which are relevant to the field of Subjective Effect Documentation or psychonautics as a whole.
+    </p>
     <ul class="article-list">
       <article-list-item
         v-for="article in articles"
@@ -13,10 +20,12 @@
 
 <script>
 import ArticleListItem from '@/components/articles/ArticleListItem';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    ArticleListItem
+    ArticleListItem,
+    Icon
   },
   data() {
     return {
@@ -30,21 +39,6 @@ export default {
     } catch (error) {
       console.log(error);
     }
-  },
-  head() {
-    const { article } = this;
-    return {
-      title: article.name,
-      meta: [
-        { name: 'description', hid: 'description', content: article.short_description },
-        { name: 'og:title', hid: 'og:title', content: `Effect Index - ${article.title}` },
-        { name: 'og:description', hid: 'og:description', content: article.short_description },
-        { name: 'og:image', hid: 'og:image', content: article.social_media_image },
-        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${article.title}` },
-        { name: 'twitter:description', hid: 'twitter:description', content: article.short_description },
-        { name: 'twitter:image', hid: 'twitter:image', content: article.social_media_image },
-      ]
-    };
   }
 };
 </script>
@@ -53,5 +47,9 @@ export default {
   .article-list {
     list-style: none;
     padding-left: 0;
+  }
+
+  .intro {
+  
   }
 </style>

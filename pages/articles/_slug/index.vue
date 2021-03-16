@@ -1,5 +1,5 @@
 <template>
-  <div class="pageContent article">
+  <article class="pageContent article">
     <admin-toolbar 
       v-if="$auth.hasScope('editor')"
       :item-id="article._id"
@@ -14,29 +14,36 @@
 
     <byline :article="article" />
 
+    <hr style="margin: 2em 0;">
+
     <div class="body">
       <rendered-vcode
         :body="article.body.parsed"
       />
     </div>
 
-    <div class="authors">
-      <author-info
-        v-for="author in article.authors"
-        :key="author._id"
-        :author="author"
-      />
-    </div>
-
     <div
-      v-if="hasCitations"
+      v-if="hasSection('citations')"
       class="citations"
     >
       <hr>
       <h3> References </h3>
       <citation-list :citations="article.citations" />
     </div>
-  </div>
+
+    <div
+      v-if="hasSection('tags')"
+      class="tags"
+    >
+      <hr>
+      <h3> Tags </h3>
+      <tag
+        v-for="tag in article.tags"
+        :key="tag"
+        :value="tag"
+      />
+    </div>
+  </article>
 </template>
 
 <script>
@@ -44,7 +51,7 @@ import RenderedVcode from '@/components/vcode/rendered';
 import AdminToolbar from '@/components/AdminToolbar';
 import Byline from '@/components/articles/Byline';
 import CitationList from '@/components/CitationList';
-import AuthorInfo from '@/components/articles/AuthorInfo.vue';
+import Tag from '@/components/articles/Tag';
 
 export default {
   components: {
@@ -52,7 +59,7 @@ export default {
     AdminToolbar,
     Byline,
     CitationList,
-    AuthorInfo
+    Tag
   },
   data() {
     return {
@@ -65,16 +72,6 @@ export default {
       }
     };
   },
-  computed: {
-    hasCitations() {
-      const { article } = this;
-      if (article) {
-        return Array.isArray(article.citations) && article.citations.length;
-      } else {
-        return undefined;
-      }
-    }
-  },
   async fetch() {
     try {
       const { slug } = this.$route.params;
@@ -84,27 +81,93 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  methods: {
+    hasSection(name) {
+      const { article } = this;
+      if (name in article) {
+        const section = article[name];
+        if (Array.isArray(section) && (section.length > 0)) return true;
+        if ((typeof section === "string") && (section.length > 0)) return true;
+      }
+      return false;
+    }
+  },
+  head() {
+    function names(authors) {
+      if (Array.isArray(authors) && authors.length) {
+        let title = '- ';
+        authors.forEach((author, index) => {
+          title += author.full_name;
+          if (index < authors.length - 1) title += ', ';
+        });
+        return title;
+      } else return '';
+    }
+
+    const { article } = this;
+
+    return {
+      title: `${article.title} ${names(article.authors)}`,
+      meta: [
+        { name: 'description', hid: 'description', content: article.short_description },
+        { name: 'og:title', hid: 'og:title', content: `${article.title} ${names(article.authors)} - EffectIndex` },
+        { name: 'og:description', hid: 'og:description', content: article.short_description },
+        { name: 'og:image', hid: 'og:image', content: article.social_media_image },
+        { name: 'twitter:title', hid: 'twitter:title', content: `${article.title} ${names(article.authors)} - EffectIndex` },
+        { name: 'twitter:description', hid: 'twitter:description', content: article.short_description },
+        { name: 'twitter:image', hid: 'twitter:image', content: article.social_media_image },
+      ]
+    };
   }
 };
 </script>
 
 <style>
+.article > .title {
+  font-size: 30px;
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI";
+}
+
+.article > .subtitle {
+  color: #999;
+  font-weight: normal;
+  letter-spacing: unset;
+  font-size: 25px;
+}
+
 .article .body p {
-  font-size: 20px;
   line-height: 1.5em;
 }
 
-.article .body {
-  margin-bottom: 2em;
+.article ul li {
+  color: black;
+  margin: 1em 0;
 }
 
-.article .title {
+.article h1.title {
   font-size: 35px;
+  margin-bottom: 0;
 }
 
-.article .subtitle {
-  color: #999;
-  font-weight: normal;
+.article h2 {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
+
+.article h3 {
+  font-size: 28px;
+  text-transform: none;
+}
+
+.article h4 {
+  font-size: 24.5px;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: unset;
+}
+
+
 
 </style>

@@ -1,12 +1,5 @@
 <template>
   <div class="byline">
-    <div class="authors">
-      <author-info
-        v-for="author in article.authors"
-        :key="author._id"
-        :author="author"
-      />
-    </div>
     <div class="articleInfo">
       <div class="publicationDate">
         {{ publicationDate }}
@@ -17,6 +10,13 @@
       <div class="articleLength">
         {{ readTime }} min read
       </div>
+    </div>
+    <div class="authors">
+      <author-info
+        v-for="author in article.authors"
+        :key="author._id"
+        :author="author"
+      />
     </div>
   </div>
 </template>
@@ -59,22 +59,17 @@ export default {
 </script>
 
 <style scoped>
-.byline {
-  margin: 1em 0;
-}
 
 .authors {
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
 }
-
-
 
 .articleInfo {
   display: flex;
   flex-direction: row;
   color: #999;
+  margin-bottom: 1em;
 }
 
 .articleInfo .publicationDate {

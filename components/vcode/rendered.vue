@@ -2,14 +2,22 @@
 import Category from "@/components/Category";
 import CaptionedImage from "@/components/CaptionedImage";
 import Reference from "@/components/Reference";
+import HeaderedTextbox from "@/components/vcode/components/HeaderedTextbox";
 
 export default {
   functional: true,
   render(createElement, context) {
-    return createElement("div", { class: "vcodeDocument" }, renderNodes(context.props.body));
-
-    function renderNode(name, properties, children) {
+    const { body } = context.props;
+    const type = context.props.type || 'div';
+    
+    const renderNodes = (nodes) => 
+       Array.isArray(nodes) ? nodes.map( node => typeof node === 'string' ? node : renderNode(node)) : undefined;
+    
+    function renderNode(node) {
+      const { name, properties, children } = node;
       switch (name) {
+        case "headered-textbox":
+          return createElement(HeaderedTextbox, { props: { ...properties } }, renderNodes(children));
         case "i":
           return createElement(
             "span",
@@ -22,6 +30,12 @@ export default {
             { style: { fontWeight: "bold" } },
             renderNodes(children)
           );
+        case "u":
+          return createElement(
+            "span",
+            { style: { textDecoration: "underline" }},
+            renderNodes(children)
+          );
         case "p":
           return createElement(
             "p",
@@ -29,17 +43,17 @@ export default {
           );
         case "h1":
           return createElement(
-            "h1",
+            "h2",
             renderNodes(children)
           );
         case "h2":
           return createElement(
-            "h2",
+            "h3",
             renderNodes(children)
           );
         case "h3":
           return createElement(
-            "h3",
+            "h4",
             renderNodes(children)
           );
         case "br":
@@ -68,15 +82,37 @@ export default {
             { props: { ...properties } },
           );
         case "int-link":
-          return createElement(
-            "nuxt-link",
-            { props: { ...properties } },
+          if (properties && 'to' in properties) {
+            return createElement(
+              "nuxt-link",
+              { props: { ...properties } },
+              renderNodes(children)
+            );
+          } else return createElement(
+            "span",
+            { attrs: { style: 'color: red;' } },
             renderNodes(children)
           );
         case "ext-link":
-          return creteElement(
-            "a",
-            { props: { ...properties } },
+          if (properties && 'to' in properties) {
+            const { to } = properties;
+            return createElement("a", { attrs: { href: to } },  renderNodes(children));
+          } else {
+            return createElement('span', { attrs: { style: 'color: red;' } }, renderNodes(children));
+          }
+        case "ul":
+          return createElement(
+            "ul",
+            renderNodes(children)
+          );
+        case "li":
+          return createElement(
+            "li",
+            renderNodes(children)
+          );
+        case "ol":
+          return createElement(
+            "ol",
             renderNodes(children)
           );
         default:
@@ -84,15 +120,7 @@ export default {
       }
     }
 
-    function renderNodes(nodes = []) {
-      const elements = [];
-      
-      if (nodes) {
-        nodes.forEach( node => elements.push(typeof node === 'string' ? node : renderNode(node.name, node.properties, node.children)));
-      }
-
-      return elements;
-    }
+    return createElement(type, { class: "vcodeDocument" }, renderNodes(body));
   }
 };
 

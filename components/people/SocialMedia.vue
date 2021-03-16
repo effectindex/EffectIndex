@@ -66,6 +66,8 @@ export default {
           return 'instagram.svg';
         case 'tiktok':
           return 'tiktok.svg';
+        case 'youtube':
+          return 'youtube.svg';
         case 'reddit':
           return 'reddit.svg';
         case 'discord':
@@ -95,6 +97,7 @@ export default {
   .icon {
     flex: 1;
     max-width: 30px;
+    min-height: 20px;
   }
 
   .socialMedia {

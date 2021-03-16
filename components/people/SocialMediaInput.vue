@@ -6,7 +6,7 @@
           v-model="socialMediaType"
         >
           <option
-            v-for="(name, index) in ['personal', 'facebook', 'instagram', 'tiktok', 'reddit', 'discord', 'twitter']"
+            v-for="(name, index) in ['personal', 'facebook', 'instagram', 'tiktok', 'reddit', 'discord', 'twitter', 'youtube']"
             :key="index"
             :value="name"
           >

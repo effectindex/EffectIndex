@@ -50,6 +50,17 @@
     </div>
 
     <div class="people__inputField">
+      <h3> Profile Url </h3>
+      <h4 style="text-transform: none; letter-spacing: unset;">
+        (/people/<b>?</b> e.g.: mark-gillis)
+        <input
+          v-model="person.profile_url"
+          type="text"
+        >
+      </h4>
+    </div>
+
+    <div class="people__inputField">
       Private? 
       <input
         v-model="person.private"
@@ -100,7 +111,8 @@ export default {
         email: undefined,
         social_media: [],
         bio: '\n\n\n',
-        tags: undefined
+        tags: undefined,
+        profile_url: undefined
       })
     }
   },

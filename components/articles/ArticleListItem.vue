@@ -1,46 +1,67 @@
 <template>
   <li class="article-list-item">
-    <div class="left-side">
-      <div class="titles">
-        <h3>
-          <nuxt-link :to="`/articles/${article.slug}`">
-            {{ article.title }}
-          </nuxt-link>
-        </h3>
-        <h4> {{ article.subtitle }} </h4>
+    <div class="column-container">
+      <div class="left-side">
+        <div class="titles">
+          <h3>
+            <nuxt-link :to="`/articles/${article.slug}`">
+              {{ article.title }}
+            </nuxt-link>
+          </h3>
+          <h4> {{ article.subtitle }} </h4>
+          <div class="info">
+            <div
+              v-if="publicationDate"
+              class="publication-date"
+            >
+              {{ publicationDate }} ·
+            </div>
+            <div class="read-time">
+              {{ readTime }} Minute Read
+            </div> 
+          </div>
+        </div>
+        <p v-show="article.short_description">
+          {{ article.short_description }}
+        </p>
       </div>
+      <div
+        v-show="article.social_media_image"
+        class="right-side"
+      >
+        <img :src="article.social_media_image">
+      </div>
+    </div>
+    <div class="bottom">
       <div class="authors">
         <author-info
           v-for="author in article.authors"
           :key="author._id"
           :author="author"
+          :social-media="false"
         />
       </div>
-      <div class="info">
-        <div
-          v-if="publicationDate"
-          class="publication-date"
-        >
-          {{ publicationDate }} ·
-        </div>
-        <div class="read-time">
-          {{ readTime }} Minute Read
-        </div> 
+      <div class="tags">
+        <tag
+          v-for="(tag, index) in article.tags"
+          :key="index"
+          :value="tag"
+        />
       </div>
-    </div>
-    <div class="right-side">
-      <img :src="article.social_media_image">
     </div>
   </li>
 </template>
 
 <script>
 import AuthorInfo from './AuthorInfo';
+import Tag from '@/components/articles/Tag';
+
 import fecha from "fecha";
 
 export default {
   components: {
-    AuthorInfo
+    AuthorInfo,
+    Tag
   },
   props: {
     article: {
@@ -73,37 +94,62 @@ export default {
 
 <style scoped>
   .article-list-item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
     padding: 0.5em;
     margin: 1em 0;
     background-color: #fbfbfb;
-    border: 1px solid #D8D8D8;
+    border: 1px solid #E8E8E8;
+    border-bottom: 1px solid #D8D8D8;
   }
 
-  .left-side {
-    flex: 5
-  }
-
-  .right-side {
-    flex: 2;
-    padding-left: 1em;
+  .column-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
   }
 
   img {
     max-width: 100%;
   }
 
+  .bottom {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  .article-list-item p {
+    padding: 1em 0;
+    font-style: italic;
+  }
+
+  .left-side {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .right-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+
   .titles {
-    line-height: 1.5em;
-    margin-bottom: 1em;
+    line-height: 1.5em;  
   }
 
   .titles h3, .titles h4 {
     margin: 0;
+    text-transform: none;
+    letter-spacing: unset;
   }
+
 
   .titles h4 {
     text-transform: none;
@@ -112,16 +158,45 @@ export default {
   }
 
   .info {
-    color: #999;
+    color: #777;
+    margin: 0.5em 0;
   }
 
   .authors {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1em;
+    flex-wrap: wrap;
   }
 
   .publication-date, .read-time {
     display: inline-block;
   }
+
+  @media(max-width: 1000px) {
+    .column-container {
+      flex-direction: column;
+      padding: 1em 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .right-side {
+      flex-direction: row;
+      justify-content: center;
+      align-self: center;
+      max-width: 500px;
+      padding: 0;
+    }
+
+  .bottom {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  }
+
 </style>

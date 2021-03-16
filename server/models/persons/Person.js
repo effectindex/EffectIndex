@@ -4,8 +4,12 @@ const Schema = mongoose.Schema;
 const parse = require("../../../lib/vcode2/parse").default;
 
 const socialMedia = new Schema({
-  url: String,
-  enum: ['personal', 'facebook', 'instagram', 'tiktok', 'reddit', 'discord', 'twitter']
+  value: String,
+  type: {
+    type: String,
+    enum: ['personal', 'facebook', 'instagram', 'tiktok', 'reddit', 'discord', 'twitter', 'youtube'],
+    default: 'personal'
+  }
 });
 
 const Person = mongoose.model("Person", {
