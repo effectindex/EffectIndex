@@ -62,6 +62,15 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['adm
 
 router.get('/', async (req, res, next) => {
   try {
+    const articles = await Article.find({ publication_status: 'published' }).populate('authors');
+    res.json({ articles });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
+router.get('/admin', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']),  async (req, res, next) => {
+  try {
     const articles = await Article.find().populate('authors');
     res.json({ articles });
   } catch (error) {
@@ -82,10 +91,10 @@ router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasRoles([
 router.get('/:slug', async (req, res, next) => {
   try {
     const slug = req.params.slug;
-    const article = await Article.findOne({ slug }).populate('authors');;
+    const article = await Article.findOne({ publication_status: 'published', slug }).populate('authors');;
     res.json({ article });
   } catch (error) {
-    res.status(500).send({ error });
+    res.sendStatus(404);
   }
 });
 

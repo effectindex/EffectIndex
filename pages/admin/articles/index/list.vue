@@ -65,7 +65,7 @@ export default {
   },
   async fetch() {
     try {
-      const results = await this.$axios.get('/api/articles');
+      const results = await this.$axios.get('/api/articles/admin');
       const { articles } = results.data;
       this.articles = articles;
     } catch (error) {
