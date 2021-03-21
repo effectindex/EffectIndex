@@ -8,7 +8,7 @@
               {{ article.title }}
             </nuxt-link>
             <icon
-              v-show="article.featured"
+              v-if="article.featured"
               filename="star.svg"
             />
           </h3>
