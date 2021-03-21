@@ -12,6 +12,9 @@
     <option value="draft">
       Draft
     </option>
+    <option value="unlisted">
+      Unlisted
+    </option>
   </select>
 </template>
 

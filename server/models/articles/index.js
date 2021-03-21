@@ -91,7 +91,7 @@ router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasRoles([
 router.get('/:slug', async (req, res, next) => {
   try {
     const slug = req.params.slug;
-    const article = await Article.findOne({ publication_status: 'published', slug }).populate('authors');;
+    const article = await Article.findOne({ slug }).or({ publication_status: ['published', 'unlisted'], }).populate('authors');;
     res.json({ article });
   } catch (error) {
     res.sendStatus(404);

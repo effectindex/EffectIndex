@@ -1,5 +1,8 @@
 <template>
-  <article class="pageContent article">
+  <article
+    v-if="article"
+    class="pageContent article"
+  >
     <admin-toolbar 
       v-if="$auth.hasScope('editor')"
       :item-id="article._id"
@@ -63,21 +66,16 @@ export default {
   },
   data() {
     return {
-      article: {
-        title: undefined,
-        body: {
-          parsed: undefined
-        },
-        _id: undefined
-      }
+      article: undefined
     };
   },
   async fetch() {
     try {
       const { slug } = this.$route.params;
-      const result = await this.$axios.get(`/api/articles/${slug}`);
-      const { article } = result.data;
-      this.article = article;
+      const { article } = await this.$axios.$get(`/api/articles/${slug}`);
+      if (article) {
+        this.article = article;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -106,19 +104,20 @@ export default {
     }
 
     const { article } = this;
-
-    return {
-      title: `${article.title} ${names(article.authors)}`,
-      meta: [
-        { name: 'description', hid: 'description', content: article.short_description },
-        { name: 'og:title', hid: 'og:title', content: `${article.title} ${names(article.authors)} - EffectIndex` },
-        { name: 'og:description', hid: 'og:description', content: article.short_description },
-        { name: 'og:image', hid: 'og:image', content: article.social_media_image },
-        { name: 'twitter:title', hid: 'twitter:title', content: `${article.title} ${names(article.authors)} - EffectIndex` },
-        { name: 'twitter:description', hid: 'twitter:description', content: article.short_description },
-        { name: 'twitter:image', hid: 'twitter:image', content: article.social_media_image },
-      ]
-    };
+    if (article) {
+      return {
+        title: `${article.title} ${names(article.authors)}`,
+        meta: [
+          { name: 'description', hid: 'description', content: article.short_description },
+          { name: 'og:title', hid: 'og:title', content: `${article.title} ${names(article.authors)} - EffectIndex` },
+          { name: 'og:description', hid: 'og:description', content: article.short_description },
+          { name: 'og:image', hid: 'og:image', content: article.social_media_image },
+          { name: 'twitter:title', hid: 'twitter:title', content: `${article.title} ${names(article.authors)} - EffectIndex` },
+          { name: 'twitter:description', hid: 'twitter:description', content: article.short_description },
+          { name: 'twitter:image', hid: 'twitter:image', content: article.social_media_image },
+        ]
+      };
+    }
   }
 };
 </script>

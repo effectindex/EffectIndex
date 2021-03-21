@@ -13,7 +13,7 @@ const article = new Schema({
     },
     publication_status: {
       type: String,
-      enum: ['published', 'unpublished', 'draft'],
+      enum: ['published', 'unpublished', 'draft', 'unlisted'],
       required: true
     },
     publication_date: {
