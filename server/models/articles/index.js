@@ -62,7 +62,7 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['adm
 
 router.get('/', async (req, res, next) => {
   try {
-    const articles = await Article.find({ publication_status: 'published' }).populate('authors').sort('-publication_date');
+    const articles = await Article.find({ publication_status: 'published' }).select('-created -citations -updated -body').populate('authors').sort('-publication_date');
     res.json({ articles });
   } catch (error) {
     res.status(500).send({ error });

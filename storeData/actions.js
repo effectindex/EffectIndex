@@ -283,6 +283,15 @@ export const actions = {
       throw new Error(error);
     }
   },
+  // Articles {
+  async getArticles({ commit }) {
+    try {
+      const { articles } = await this.$axios.$get('/api/articles/');
+      commit ("set_articles", articles);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
   // Profiles
   async getProfiles({ commit }) {
     try {

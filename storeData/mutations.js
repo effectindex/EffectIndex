@@ -43,6 +43,9 @@ export const mutations = {
   set_reports(state, reports) {
     state.reports = reports;
   },
+  set_articles(state, articles) {
+    state.articles = articles;
+  },
   toggle_modal(state) {
     state.modal.active = !state.modal.active;
   },

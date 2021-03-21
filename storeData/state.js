@@ -17,6 +17,7 @@ export const state = () => ({
     replicated_effects: []
   },
   blogPosts: [],
+  articles: [],
   profiles: [],
   reports: [],
   search_results: [],

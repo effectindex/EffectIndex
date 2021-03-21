@@ -5,13 +5,14 @@
       <Column>
         <SubstanceSummaries />
         <FeaturedEffects />
+        <FeaturedArticles />
       </Column>
       <Column>
         <client-only>
           <FeaturedReplications />
         </client-only>
         <FeaturedReports
-          :number-of-reports="3"
+          :number-of-reports="8"
         />
       </Column>
     </Columns>
@@ -23,6 +24,7 @@ import Description from '@/components/home/Description';
 import FeaturedReplications from '@/components/home/FeaturedReplications';
 import FeaturedEffects from '@/components/home/FeaturedEffects';
 import FeaturedReports from '@/components/home/FeaturedReports';
+import FeaturedArticles from '@/components/home/FeaturedArticles';
 import SubstanceSummaries from '@/components/home/SubstanceSummaries';
 import Column from '@/components/home/Column';
 import Columns from '@/components/home/Columns';
@@ -38,7 +40,8 @@ export default {
     SubstanceSummaries,
     FeaturedEffects,
     FeaturedReports,
-    FeaturedReplications
+    FeaturedReplications,
+    FeaturedArticles
   },
 
   computed: {
@@ -51,7 +54,8 @@ export default {
     await Promise.all([
       store.dispatch("getEffects"),
       store.dispatch("getReplications"),
-      store.dispatch("getReports")
+      store.dispatch("getReports"),
+      store.dispatch("getArticles")
     ]);
   }
 };
