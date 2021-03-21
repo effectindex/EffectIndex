@@ -49,7 +49,7 @@ export default {
     readTime() {
       if (this.article && this.article.body && this.article.body.raw) {
         const { raw } = this.article.body;
-        return Math.round(raw.length / 800);
+        return Math.round(raw.length / 1200);
       } else {
         return 'Unknown';
       }
