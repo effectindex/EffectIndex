@@ -64,6 +64,15 @@
       <tag-input
         v-model="article.tags"
       />
+
+      <div>
+        <label for="featured"> Featured? </label>
+        <input
+          v-model="article.featured"
+          type="checkbox"
+          name="featured"
+        >
+      </div>
     </div>
     <button @click="submitArticle">
       {{ isNew ? 'Save' : 'Update' }}
@@ -103,7 +112,8 @@ export default {
         publication_date: undefined,
         short_description: undefined,
         social_media_image: undefined,
-        tags: undefined
+        tags: undefined,
+        featured: undefined
       })
     },
     people: {

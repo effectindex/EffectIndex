@@ -7,6 +7,10 @@
             <nuxt-link :to="`/articles/${article.slug}`">
               {{ article.title }}
             </nuxt-link>
+            <icon
+              v-show="article.featured"
+              filename="star.svg"
+            />
           </h3>
           <h4> {{ article.subtitle }} </h4>
           <div class="info">
@@ -55,13 +59,15 @@
 <script>
 import AuthorInfo from './AuthorInfo';
 import Tag from '@/components/articles/Tag';
+import Icon from '@/components/Icon';
 
 import fecha from "fecha";
 
 export default {
   components: {
     AuthorInfo,
-    Tag
+    Tag,
+    Icon
   },
   props: {
     article: {
@@ -112,6 +118,14 @@ export default {
     max-width: 100%;
   }
 
+  .icon {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-left: 1em;
+    opacity: 0.7;
+  }
+
   .bottom {
     margin-top: 20px;
     display: flex;
@@ -141,7 +155,12 @@ export default {
 
 
   .titles {
-    line-height: 1.5em;  
+    line-height: 1.5em;
+  }
+
+  .titles h3 {
+    display: flex;
+    align-items: center;
   }
 
   .titles h3, .titles h4 {
