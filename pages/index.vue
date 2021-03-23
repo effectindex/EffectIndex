@@ -66,7 +66,6 @@ export default {
 .column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   flex: 1;
 }
 

@@ -15,18 +15,33 @@ function kebab(text) {
   return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
 }
 
+function getBodyLength(parsed) {
+  let length = 0;
+  parsed.forEach(item => {
+    if (typeof item === 'string') length += item.length;
+    else if (item.children && item.children.length) {
+      length += getBodyLength(item.children);
+    }
+  });
+  return length;
+}
+
 router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res, next) => {
   try {
     const { article } = req.body;
     article.authors = article.authors.map(author => author._id);
     delete article._id;
+    const parsed = parse(article.body.raw);
+    const length = getBodyLength(parsed);
+
     const result = await new Article({
       ...article,
       slug: kebab(article.title),
       user: req.user.id,
       body: {
         raw: article.body.raw,
-        parsed: parse(article.body.raw)
+        parsed,
+        length
       }
     }).save();
     if (!result) throw new API_Error('Error saving article.');
@@ -41,6 +56,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
     const { article } = req.body;
     article.authors = article.authors.map(author => author._id);
     article.body.parsed = parse(article.body.raw);
+    article.body.length = getBodyLength(article.body.parsed);
     const result = await Article.findByIdAndUpdate(req.params.id, { ...article, slug: kebab(article.title) }, { new: true });
     if (!result) throw new API_Error('Error saving article.');
     res.json({ article: result });
@@ -62,7 +78,7 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['adm
 
 router.get('/', async (req, res, next) => {
   try {
-    const articles = await Article.find({ publication_status: 'published' }).select('-created -citations -updated -body').populate('authors').sort('-publication_date');
+    const articles = await Article.find({ publication_status: 'published' }).select('-created -citations -updated -body.raw -body.parsed').populate('authors').sort('-publication_date');
     res.json({ articles });
   } catch (error) {
     res.status(500).send({ error });

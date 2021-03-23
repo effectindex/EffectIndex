@@ -48,6 +48,9 @@ const article = new Schema({
       parsed: {
         type: Array,
         required: true
+      },
+      length: {
+        type: Number,
       }
     },
     featured: {

@@ -18,10 +18,13 @@
               v-if="publicationDate"
               class="publication-date"
             >
-              {{ publicationDate }} ·
+              {{ publicationDate }}
             </div>
-            <div class="read-time">
-              {{ readTime }} Minute Read
+            <div
+              v-if="readTime"
+              class="read-time"
+            >
+              · {{ readTime }} Minute Read
             </div> 
           </div>
         </div>
@@ -79,11 +82,11 @@ export default {
   },
   computed: {
     readTime() {
-      if (this.article && this.article.body && this.article.body.raw) {
-        const { raw } = this.article.body;
-        return Math.round(raw.length / 1200);
+      if (this.article && this.article.body && this.article.body.length) {
+        const { length } = this.article.body;
+        return Math.round(length / 1200);
       } else {
-        return 'Unknown';
+        return undefined;
       }
     },
     publicationDate() {

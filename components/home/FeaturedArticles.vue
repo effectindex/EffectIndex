@@ -1,8 +1,8 @@
 <template>
   <Panel
     icon="file-invoice.svg"
-    title="Featured Articles"
-    description="Recommended firsthand accounts of hallucinogenic experiences"
+    title="Featured Article"
+    description="Analyses that go beyond individual subjective effects"
   >
     <template v-slot:content>
       <div class="featuredArticles">
