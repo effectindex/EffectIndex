@@ -180,7 +180,7 @@ export default {
   }
 
   .info {
-    color: #777;
+    color: #999;
     margin: 0.5em 0;
   }
 

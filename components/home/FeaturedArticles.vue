@@ -76,19 +76,25 @@ export default {
   .featuredArticle >>> .articleDescription {
     margin: 0;
     margin-top: 1em;
+    font-size: 0.95em;
     font-style: italic;
-
-  }
-
-  .featuredArticle >>> .articleSubstance {
-    flex: 1;
-    line-height: 1em;
-    padding-left: 6px;
+    color: #666;
   }
 
   .featuredArticle >>> .articleAuthors {
     font-size: 0.9em;
     font-style: italic;
+  }
+
+  .featuredArticle >>> .articleInfo {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.9em;
+    color: #AAA;
+  }
+
+  .featuredArticle >>> .articleInfo .separator {
+    margin: 0 5px;
   }
 
   .featuredArticle:hover {
