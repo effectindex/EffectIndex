@@ -76,6 +76,19 @@ export default {
 .columns {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+}
+
+@media(max-width: 800px) {
+  .columns {
+    flex-direction: column;
+  }
+
+  .column:not(:last-child) {
+    margin-right: 0em;
+  }
+
+  .column {
+    margin-bottom: 1em;
+  }
 }
 </style>
