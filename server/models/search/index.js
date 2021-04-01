@@ -2,40 +2,28 @@ const express = require('express');
 const router = express.Router();
 const Effect = require('../effects/Effect');
 const Report = require('../reports/Report');
+const Article = require('../articles/Article');
 
 router.post("/", async (req, res, next) => {
   const query = req.body.query;
   if (!query) res.sendStatus(204);
   else {
-    const effectResults = await searchEffects(query)
-      .catch((err) => next(err));
+    try {
+      const effects = await searchEffects(query);
+      const reports = await searchReports(query);
+      const articles = await searchArticles(query);
 
-    const reportResults = await searchReports(query)
-      .catch((err) => next(err));
-
-    let results = [];
-
-    effectResults.forEach((result) => {
-      results.push(
-        {
-          _id: result._id,
-          type: 'effect',
-          data: result
-        }
-      );
-    });
-
-    reportResults.forEach((result) => {
-      results.push(
-        {
-          _id: result._id,
-          type: 'report',
-          data: result
-        }
-      );
-    });
-
-    res.send(results);
+      const results = {
+        effects,
+        reports,
+        articles,
+        total_results: effects.length + reports.length + articles.length
+      };
+      
+      res.send(results);
+    } catch (err) {
+      next(err);
+    }
   }
 });
 
@@ -69,5 +57,22 @@ async function searchReports(query) {
 
   return results;
 };
+
+async function searchArticles(query) {
+  const results = await Article.find({
+    $text: {
+      $search: query
+    },
+    'publication_status': 'published'
+  })
+  .select('_id title subtitle authors publication_date featured slug short_description social_media_image')
+  .populate('authors')
+  .exec()
+  .catch((err) => {
+    throw new Error(err);
+  });
+
+  return results;
+}
 
 module.exports = router;

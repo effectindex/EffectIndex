@@ -29,32 +29,46 @@
     </div>
 
     <div
-      v-show="results.length"
+      v-show="results"
       class="searchResults"
     >
       <hr>
 
       <div 
-        v-show="effectResults.length"
+        v-if="effectResults"
         class="effectResults"
       >
         <h1> Effects - {{ effectResults.length + (effectResults.length > 1 ? ' results' : ' result') }} </h1>
         <effect-result
-          v-for="result in effectResults"
-          :key="result._id"
-          :effect="result.data"
+          v-for="effect in effectResults"
+          :key="effect._id"
+          :effect="effect"
         />
       </div>
 
+      <ul 
+        v-if="articleResults"
+        class="articleResults"
+      >
+        <h1>
+          Articles - {{ articleResults.length + (articleResults.length > 1 ? ' results' : ' result') }}
+        </h1>
+        <article-list-item
+          v-for="article in articleResults"
+          :key="article._id"
+          :article="article"
+        />
+      </ul>
+
       <div 
-        v-show="reportResults.length"
+        v-if="reportResults"
         class="effectResults"
       >
         <h1> Reports - {{ reportResults.length + (reportResults.length > 1 ? ' results' : ' result') }} </h1>
         <report-result
-          v-for="result in reportResults"
-          :key="result._id"
-          :report="result.data"
+          v-for="report in reportResults"
+          :key="report._id"
+          :report="report.data"
         />
       </div>
     </div>
@@ -64,6 +78,7 @@
 <script>
 import EffectResult from "@/components/search/EffectResult";
 import ReportResult from "@/components/search/ReportResult";
+import ArticleListItem from "@/components/articles/ArticleListItem";
 import Icon from '@/components/Icon';
 import { debounce } from "lodash";
 
@@ -71,20 +86,25 @@ export default {
   components: {
     EffectResult,
     ReportResult,
+    ArticleListItem,
     Icon
   },
   scrollToTop: true,
   computed: {
     results() {
-      return this.$store.state.search_results;
+      return this.effectResults || this.reportResults || this.articleResults;
     },
 
     effectResults() {
-      return this.$store.state.search_results.filter((result) => result.type === 'effect');
+      return this.$store.state.search_results.effects;
     },
 
     reportResults() {
-      return this.$store.state.search_results.filter((result) => result.type === 'report');
+      return this.$store.state.search_results.reports;
+    },
+
+    articleResults() {
+      return this.$store.state.search_results.articles;
     },
 
     searchInput() {
@@ -161,6 +181,12 @@ export default {
 
   .clearButton:hover {
     opacity: 0.7;
+  }
+
+  .articleResults {
+    list-style: none;
+    padding-left: 0;
+    font-size: unset;
   }
 
 </style>

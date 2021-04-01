@@ -42,7 +42,8 @@ export default {
   },
   created() {
     let subscription = this.$store.subscribe((mutation, state) => {
-      if (mutation.type === 'set_search_results' && state.search_results.length) {
+      const { total_results } = state.search_results;
+      if (mutation.type === 'set_search_results' && (total_results > 0)) {
         this.$router.push('/search');
       }
     });

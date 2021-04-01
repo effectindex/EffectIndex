@@ -40,10 +40,13 @@
       </div>
     </div>
     <div
-      v-if="!short"
+      v-show="!short || hasTags"
       class="bottom"
     >
-      <div class="authors">
+      <div
+        v-if="!short"
+        class="authors"
+      >
         <author-info
           v-for="author in article.authors"
           :key="author._id"
@@ -95,6 +98,14 @@ export default {
       } else {
         return undefined;
       }
+    },
+    hasTags() {
+      const { article } = this;
+      if (article) {
+        const { tags } = article;
+        return tags && tags.length;
+      }
+      return false;
     },
     publicationDate() {
       if (this.article) {
@@ -162,8 +173,6 @@ export default {
     justify-content: center;
   }
 
-
-
   .titles {
     line-height: 1.5em;
   }
@@ -189,6 +198,10 @@ export default {
   .info {
     color: #999;
     margin: 0.5em 0;
+  }
+
+  .bottom div:only-child {
+    margin-left: auto;
   }
 
   .authors {

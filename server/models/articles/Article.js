@@ -63,6 +63,12 @@ const article = new Schema({
   }
 );
 
+article.index({
+  title: "text",
+  tags: "text",
+  'body.raw': "text"
+});
+
 const Article = mongoose.model("Article", article);
 
 module.exports = Article;

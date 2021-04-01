@@ -25,7 +25,7 @@
     <div v-else-if="viewMode === 'author'">
       <div
         v-for="author in sortedAuthors"
-        :key="author"
+        :key="author._id"
         class="author-articles"
       >
         <author-info :author="author" />

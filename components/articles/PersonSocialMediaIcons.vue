@@ -55,8 +55,22 @@ export default {
 
 <style>
 .person-social-media-icons {
-  opacity: 0.5;
   margin-top: 5px;
+}
+
+.person-social-media-icons img {
+  opacity: 0.5;
+  transition: all 0.25s;
+  top: 0;
+  left: 0;
+  position: relative;
+}
+
+.person-social-media-icons img:hover {
+  opacity: 1;
+  top: -4px;
+  left: -4px;
+  filter:drop-shadow(4px 4px 2px #AAA);
 }
 
 .person-social-media-icons .icon {

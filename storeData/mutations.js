@@ -54,7 +54,22 @@ export const mutations = {
     state.modal.resource = data.resource;
   },
   set_search_results(state, results) {
-    state.search_results = Array.isArray(results) ? results : [];
+    if (typeof results === 'object') {
+      const { articles, effects, reports, total_results } = results;
+      state.search_results = {
+        articles,
+        effects,
+        reports,
+        total_results
+      };
+    } else {
+      state.search_results = {
+        articles: [],
+        effects: [],
+        reports: [],
+        total_results: 0
+      };
+    }
   },
   change_search_input(state, input) {
     if (input) state.search_input = input;
