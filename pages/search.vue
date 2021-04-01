@@ -68,7 +68,7 @@
         <report-result
           v-for="report in reportResults"
           :key="report._id"
-          :report="report.data"
+          :report="report"
         />
       </div>
     </div>
