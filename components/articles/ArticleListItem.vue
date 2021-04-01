@@ -39,7 +39,10 @@
         <img :src="article.social_media_image">
       </div>
     </div>
-    <div class="bottom">
+    <div
+      v-if="!short"
+      class="bottom"
+    >
       <div class="authors">
         <author-info
           v-for="author in article.authors"
@@ -78,6 +81,10 @@ export default {
       default: () => ({
         name: undefined
       })
+    },
+    short: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

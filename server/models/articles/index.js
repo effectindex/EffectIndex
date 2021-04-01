@@ -8,6 +8,7 @@ const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
 const Article = require('./Article');
+const People = require('../persons/Person');
 
 const parse = require('../../../lib/vcode2/parse').default;
 
@@ -79,7 +80,9 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['adm
 router.get('/', async (req, res, next) => {
   try {
     const articles = await Article.find({ publication_status: 'published' }).select('-created -citations -updated -body.raw -body.parsed').populate('authors').sort('-publication_date');
-    res.json({ articles });
+    const authorIds = [...new Set(articles.map(article => article.authors.map(author => author._id)).flat())];
+    const authors = await People.find({ '_id': { $in: authorIds } });
+    res.json({ articles, authors });
   } catch (error) {
     res.status(500).send({ error });
   }
