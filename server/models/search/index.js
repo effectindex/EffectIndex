@@ -19,7 +19,7 @@ router.post("/", async (req, res, next) => {
         articles,
         total_results: effects.length + reports.length + articles.length
       };
-      
+
       res.send(results);
     } catch (err) {
       next(err);
@@ -65,7 +65,7 @@ async function searchArticles(query) {
     },
     'publication_status': 'published'
   })
-  .select('_id title subtitle authors publication_date featured slug short_description social_media_image')
+  .select('_id title subtitle tags authors publication_date featured slug short_description social_media_image')
   .populate('authors')
   .exec()
   .catch((err) => {
