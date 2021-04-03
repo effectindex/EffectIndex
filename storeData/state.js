@@ -25,5 +25,6 @@ export const state = () => ({
   admin: {
     userlist: [],
     invitations: []
-  }
+  },
+  redirects: undefined
 });

@@ -86,7 +86,7 @@
     text-align: center;
     color: #AAA;
     font-size: 30px;
-    line-height: 30px;
+    line-height: 35px;
   }
 
   .submit-redirect-button {

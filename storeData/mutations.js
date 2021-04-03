@@ -2,6 +2,9 @@ export const mutations = {
   toggle_pullout(state) {
     state.navbar_pullout = !state.navbar_pullout;
   },
+  close_pullout(state) {
+    state.navbar_pullout = false;
+  },
   set_blog_posts(state, posts) {
     state.blogPosts = posts;
   },
@@ -76,5 +79,8 @@ export const mutations = {
   },
   clear_search_input(state) {
     state.search_input = "";
+  },
+  set_redirects(state, redirects) {
+    state.redirects = redirects;
   }
 };

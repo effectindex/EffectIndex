@@ -30,7 +30,7 @@ module.exports = {
   loading: { color: "#FFFFFF" },
 
   router: {
-    middleware: 'redirect'
+    middleware: ['redirect', 'closeNavOnNav']
   },
 
   serverMiddleware: [{

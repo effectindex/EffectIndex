@@ -1,12 +1,15 @@
-export default async function({ route, $axios, redirect }) {
+// Fetches and stores redirects, redirects if redirect matches current route.
+export default async function({ route, redirect, store }) {
   try {
-    const { redirects } = await $axios.$get(`/api/redirects`);
-    const { fullPath } = route;
-    const foundRedirect = redirects.find( r => r.from === fullPath.slice(1));
-    if (foundRedirect) {
-      redirect('/' + foundRedirect.to);
+    const { redirects } = store.state.redirects ? store.state : await store.dispatch('getRedirects');
+    if (Array.isArray(redirects)) {
+      const foundRedirect = redirects.find( r => r.from === route.fullPath.slice(1));
+      if (foundRedirect && (route.fullPath !== ('/' + foundRedirect.to))) {
+        redirect('/' + foundRedirect.to);
+      }
     }
   } catch (error) {
+    console.log('Redirect middleware error:');
     console.log(error);
   }
 };

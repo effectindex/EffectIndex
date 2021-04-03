@@ -2,26 +2,45 @@
   <div class="redirect-details">
     <div class="redirect-details-info">
       <div class="redirect-from">
-        <span class="domain">https://www.effectindex.com/</span>{{ from }}
+        <client-only>
+          <nuxt-link
+            class="redirect-link"
+            :to="'/' + from"
+          >
+            <span class="domain"> {{ hostname + '/' }}</span>{{ from }}
+          </nuxt-link>
+        </client-only>
       </div>
       <div class="redirect-separator">
         &#129046;
       </div>
       <div class="redirect-to">
-        <span class="domain">https://www.effectindex.com/</span>{{ to }}
+        <client-only>
+          <nuxt-link
+            class="redirect-link"
+            :to="'/' + to"
+          >
+            <span class="domain"> {{ hostname + '/' }}</span>{{ to }}
+          </nuxt-link>
+        </client-only>
       </div>
     </div>
     <div
       class="redirect-details-controls"
     >
-      <a
+      <button
         class="edit-button"
         @click="edit"
-      > Edit </a>
-      <a
+      >
+        Edit
+      </button>
+      <div style="width: 10px;" />
+      <button
         class="delete-button"
         @click="deleteRedirect" 
-      > Delete </a> 
+      >
+        Delete
+      </button> 
     </div>
   </div>
 </template>
@@ -36,6 +55,13 @@ export default {
     to: {
       type: String,
       default: 'unknown'
+    }
+  },
+  computed: {
+    hostname() {
+      return process.client ?
+        window.location.hostname + (window.location.port ? ':' + window.location.port : '') :
+        '';
     }
   },
   methods: {
@@ -66,12 +92,18 @@ export default {
     width: 150px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .redirect-link {
+    color: #666;
   }
 
   .redirect-separator {
     width: 20px;
     margin: 0 1em;
     color: #888;
+    line-height: 27px;
   }
 
   .delete-button {
@@ -82,7 +114,16 @@ export default {
     color: #BBB;
   }
 
-  a {
+  button {
+    flex: 1;
+    background-color: #F3F3F3;
+    border: 1px solid #CCC;
+    transition: all 0.25s ease;
     cursor: pointer;
+    height: 25px;
+  }
+
+  button:hover {
+    background-color: #DDD;
   }
 </style>

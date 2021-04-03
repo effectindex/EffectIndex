@@ -1,9 +1,11 @@
 <template>
   <li class="pulloutMenu__itemContainer">
-    <a 
+    <nuxt-link 
       v-if="!children"
-      :href="location"
-    > {{ name }} </a>
+      :to="location"
+    >
+      {{ name }}
+    </nuxt-link>
     <a 
       v-else
       @click="toggleExpanded()"
@@ -21,7 +23,6 @@
         <nuxt-link
           v-if="!child.external"
           :to="child.location"
-          @click.native="togglePullout()"
         >
           {{ child.name }}
         </nuxt-link>
@@ -59,9 +60,6 @@ export default {
   methods: {
     toggleExpanded() {
       this.expanded = !this.expanded;
-    },
-    togglePullout() {
-      this.$store.dispatch("togglePullout");
     },
     checkItemAccess(scope) {
       if (Array.isArray(scope)) {

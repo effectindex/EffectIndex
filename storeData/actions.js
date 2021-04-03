@@ -3,6 +3,9 @@ export const actions = {
   togglePullout({ commit }) {
     commit("toggle_pullout");
   },
+  closePullout({ commit }) {
+    commit("close_pullout");
+  },
   // Blog Posts
   async deleteBlogPost({ dispatch }, id) {
     let deleted = await this.$axios.$get("/api/blog/" + id + "/delete");
@@ -412,5 +415,15 @@ export const actions = {
   },
   changeSearch({ commit, dispatch }, query) {
     commit("change_search_input", query);
+  },
+  // Redirects
+  async getRedirects({ commit }) {
+    try {
+      const { redirects } = await this.$axios.$get('/api/redirects');
+      commit("set_redirects", redirects);
+      return { redirects };
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

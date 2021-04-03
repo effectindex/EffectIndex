@@ -85,6 +85,7 @@ export default {
     display: flex;
     width: 150px;
     margin-left: 15px;
+    align-items: center;
   }
 
   .redirect-separator {
@@ -116,6 +117,7 @@ export default {
     border: 1px solid #CCC;
     transition: all 0.25s ease;
     cursor: pointer;
+    height: 25px;
   }
 
   button:hover {
