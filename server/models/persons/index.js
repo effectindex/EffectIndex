@@ -36,13 +36,11 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin'])
 });
 
 router.put('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
-  console.log('huh');
   const { _id } = req.params;
   const { person } = req.body;
 
   try {
     person.gravatar_hash = (person.email && person.email.length) ? md5(person.email.trim().toLowerCase()) : undefined;
-    console.log(person);
     const result = await Person.findByIdAndUpdate(_id, { ...person });
     res.json({ result });
   } catch (err) {

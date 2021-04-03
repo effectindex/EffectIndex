@@ -47,6 +47,11 @@
                   Reports
                 </nuxt-link>
               </li>
+              <li v-show="role.admin">
+                <nuxt-link to="/admin/redirects">
+                  Redirects
+                </nuxt-link>
+              </li>
             </ul>
 
             <div 
@@ -106,7 +111,7 @@ export default {
     Icon
   },
   computed: {
-    role() {
+    role () {
       const auth = this.$store.state.auth;
       const user = auth.user;
       if (user) return user.scope;

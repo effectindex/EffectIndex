@@ -11,7 +11,8 @@ const blog = require("./blog/"),
   profiles = require("./profiles/"),
   reports = require("./reports/"),
   server = require("./server/"),
-  search = require("./search/");
+  search = require("./search/"),
+  redirects = require("./redirects");
 
 const errorHandler = function(err, req, res, next) {
   if (err["type"] === "API") {
@@ -40,6 +41,7 @@ router
   .use("/reports", reports)
   .use("/server", server)
   .use("/search", search)
+  .use("/redirects", redirects)
 
   .use(errorHandler);
 
