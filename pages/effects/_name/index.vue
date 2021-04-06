@@ -252,7 +252,7 @@ export default {
           if (this.effect[name].length > 0) return true;
         } else if (typeof this.effect[name] === 'string') {
           if (this.effect[name].length > 0) return true;
-        } else if (typeof this.effect[name] === 'object') {
+        } else if (this.effect[name] && typeof this.effect[name] === 'object') {
           if (this.effect[name].raw && this.effect[name].raw.length > 0) return true;
         }
       }
