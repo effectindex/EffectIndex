@@ -4,7 +4,7 @@ import Reference from "./components/Reference";
 import HeaderedTextbox from "./components/HeaderedTextbox";
 import SubarticleAnchor from "./components/SubarticleAnchor";
 import SeparatedTextbox from "./components/SeparatedTextbox";
-import Quotation from "./components/Quotation";
+import Quote from "./components/Quote";
 
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
@@ -135,9 +135,9 @@ export default {
             { props: { ...properties } },
             renderNodes(children)
           );
-        case "quotation":
+        case "quote":
           return createElement(
-            Quotation,
+            Quote,
             { props: { ...properties } },
             renderNodes(children)
           );

@@ -1,9 +1,8 @@
 <template>
   <div class="quotation">
-    <Markdown
-      class="quotationContent"
-      :body="body"
-    /> 
+    <p class="quotationContent">
+      <slot />>
+    </p>
     <p class="quotationAuthor">
       <span 
         v-if="!profile"
@@ -34,12 +33,7 @@
 </template>
 
 <script>
-import Markdown from './Markdown';
-
 export default {
-  components: {
-    Markdown
-  },
   props: {
     author: {
       type: String,
@@ -55,9 +49,6 @@ export default {
       let profile = this.$store.state.profiles.find((profile) => profile.username === this.profile);
 
       return profile ? '/img/profiles/cropped/' + profile.profileImageCropped : undefined;
-    },
-    body () {
-      return this.$slots.default ? this.$slots.default[0].text : undefined;
     }
   },
   beforeCreate() {
