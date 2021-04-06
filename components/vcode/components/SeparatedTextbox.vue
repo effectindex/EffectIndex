@@ -42,6 +42,7 @@ export default {
     margin: 0;
     display: flex;
     flex-direction: row;
+    margin: 1em 0;
   }
 
   .separatedTextbox h4 {

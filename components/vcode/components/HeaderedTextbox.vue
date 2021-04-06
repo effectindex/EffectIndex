@@ -72,6 +72,7 @@ h3, h4 {
 
 .headeredTextbox {
   border: 1px solid rgb(221, 221, 221);
+  margin: 1em 0;
 }
 
 .headersContainer {

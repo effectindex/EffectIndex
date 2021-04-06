@@ -5,10 +5,10 @@ import HeaderedTextbox from "./components/HeaderedTextbox";
 import SubarticleAnchor from "./components/SubarticleAnchor";
 import SeparatedTextbox from "./components/SeparatedTextbox";
 import Quote from "./components/Quote";
+import Markdown from "./components/Markdown";
 
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
-import Markdown from "@/components/vcode/components/Markdown";
 
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 

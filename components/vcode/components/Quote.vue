@@ -1,7 +1,7 @@
 <template>
   <div class="quotation">
     <p class="quotationContent">
-      <slot />>
+      <slot />
     </p>
     <p class="quotationAuthor">
       <span 
