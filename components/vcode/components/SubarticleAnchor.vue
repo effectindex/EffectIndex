@@ -1,18 +1,10 @@
 <template>
-  <div>
-    <h3 
-      v-if="!size || size === 'h3'"
-      :id="id"
-    >
-      <slot />
-    </h3>
-    <h4 
-      v-else-if="size === 'h4'"
-      :id="id"
-    >
-      <slot />
-    </h4>
-  </div>
+  <span
+    :id="id"
+    class="subarticle-anchor"
+  >
+    <slot />
+  </span>
 </template>
 
 <script>
@@ -22,10 +14,6 @@ export default {
       type: String,
       default: ""
     },
-    size: {
-      type: String,
-      default: ""
-    }
   }
 };
 </script>

@@ -6,20 +6,15 @@
     <h4 v-else>
       {{ label }}
     </h4>
-    <Markdown 
-      class="body"
-      :body="body"
-    />
+    <p class="body">
+      <slot />
+    </p>
   </div>
 </template>
 
 <script>
-import Markdown from './Markdown';
 
 export default {
-  components: {
-    Markdown
-  },
   props: {
     a: {
       type: String,
