@@ -19,6 +19,12 @@
         :highlight="highlighter"
         @input="codeModified"
       />
+      <button
+        class="convert-button"
+        @click="convertViscidcode"
+      >
+        Convert Viscidcode
+      </button>
     </client-only>
     <div v-else>
       <rendered-vcode
@@ -30,13 +36,14 @@
 
 <script>
 import { PrismEditor } from 'vue-prism-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
+import { highlight } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import vcode2 from '@/lib/vcode2/prism-vcode2.js';
 import 'vue-prism-editor/dist/prismeditor.min.css'; 
 import 'prismjs/themes/prism-tomorrow.css';
 import RenderedVcode from './rendered';
+import convert from './convert';
 
 export default {
   components: {
@@ -68,6 +75,9 @@ export default {
     },
     codeModified(code) {
       this.$emit('input', code);
+    },
+    convertViscidcode() {
+      this.$emit('input', convert(this.value));
     }
   }
 };
@@ -91,6 +101,13 @@ export default {
     flex-direction: row;
   }
 
+  .convert-button {
+    margin: 2px 0;
+    height: 30px;
+    width: auto;
+    padding: 5px;
+    background-color: #DDD;
+  }
 
   .tabSelector a {
     display: block;

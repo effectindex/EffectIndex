@@ -5,7 +5,7 @@
         :filename="icon"
         class="categoryIcon"
       />
-      <div v-show="hasSection('description_raw')">
+      <div v-show="hasSection('description_raw') || hasSection('description')">
         <h1> 
           {{ effect.name }}       
           <client-only>
@@ -22,7 +22,14 @@
             </nuxt-link>
           </client-only>
         </h1>
-        <formatted-document :document="effect.description_formatted" />
+        <rendered-vcode
+          v-if="isVcode"
+          :body="effect.description.parsed"
+        />
+        <formatted-document
+          v-else
+          :document="effect.description_formatted"
+        />
       </div>
 
       <div
@@ -54,26 +61,47 @@
         />
       </div>
 
-      <div v-if="hasSection('analysis_raw')">
+      <div v-if="hasSection('analysis_raw') || hasSection('analysis')">
         <hr>
         <h3>Analysis</h3>
-        <formatted-document :document="effect.analysis_formatted" />
+        <rendered-vcode
+          v-if="isVcode"
+          :body="effect.analysis.parsed"
+        />
+        <formatted-document
+          v-else
+          :document="effect.analysis_formatted"
+        />
       </div>
 
       <div 
-        v-if="hasSection('style_variations_raw')"
+        v-if="hasSection('style_variations_raw') || hasSection('style_variations')"
       >
         <hr>
         <h3 id="variations">
           Style Variations
         </h3>
-        <formatted-document :document="effect.style_variations_formatted" />
+        <rendered-vcode
+          v-if="isVcode"
+          :body="effect.style_variations.parsed"
+        />
+        <formatted-document
+          v-else
+          :document="effect.style_variations_formatted"
+        />
       </div>
 
-      <div v-if="hasSection('personal_commentary_raw')">
+      <div v-if="hasSection('personal_commentary_raw') || hasSection('personal_commentary')">
         <hr>
         <h3>Personal Commentary</h3>
-        <formatted-document :document="effect.personal_commentary_formatted" />
+        <rendered-vcode
+          v-if="isVcode"
+          :body="effect.personal_commentary.parsed"
+        />
+        <formatted-document
+          v-else
+          :document="effect.personal_commentary_formatted"
+        />
       </div>
 
       <div v-if="hasSection('related_reports')">
@@ -161,6 +189,7 @@ import Tag from "@/components/effects/Tag";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import Icon from '@/components/Icon';
 import RelatedReports from '@/components/effects/RelatedReports';
+import RenderedVcode from '@/components/vcode/rendered';
 
 export default {
   name: 'Effect',
@@ -172,7 +201,8 @@ export default {
     Tag,
     AudioPlayer,
     Icon,
-    RelatedReports
+    RelatedReports,
+    RenderedVcode
   },
   computed: {
     icon() {
@@ -198,6 +228,9 @@ export default {
       }
 
       return "user.svg";
+    },
+    isVcode() {
+      return this.effect.markup_format === 'vcode';
     }
   },
   scrollToTop: true,
@@ -217,8 +250,10 @@ export default {
       if (name in this.effect) {
         if (Array.isArray(this.effect[name])) {
           if (this.effect[name].length > 0) return true;
-        } else if (typeof this.effect[name] === "string") {
+        } else if (typeof this.effect[name] === 'string') {
           if (this.effect[name].length > 0) return true;
+        } else if (typeof this.effect[name] === 'object') {
+          if (this.effect[name].raw && this.effect[name].raw.length > 0) return true;
         }
       }
       return false;

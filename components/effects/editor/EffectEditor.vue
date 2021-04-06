@@ -9,10 +9,30 @@
     </div>
 
     <div>
+      <label> Markup Format </label>
+      <select
+        v-model="markup_format"
+        class="effectEditor__input"
+      >
+        <option value="viscidcode">
+          viscidcode
+        </option>
+        <option value="vcode">
+          vcode
+        </option>
+      </select>
+    </div>
+
+    <div>
       <label> Description </label>
       <textarea
+        v-if="viscidcode"
         v-model="description"
         class="effectEditor__textarea effectEditor__description"
+      />
+      <vcode-editor
+        v-else
+        v-model="description"
       />
     </div>
 
@@ -37,38 +57,53 @@
       <div>
         <label> Long Summary </label>
         <textarea
+          v-if="viscidcode"
           v-model="long_summary"
           class="effectEditor__textarea effectEditor__longSummary"
+        />
+        <vcode-editor
+          v-else
+          v-model="long_summary"
         />
       </div>
 
       <div>
         <label>Analysis</label>
         <textarea
+          v-if="viscidcode"
           v-model="analysis"
           class="effectEditor__textarea effectEditor__analysis"
+        />
+        <vcode-editor
+          v-else
+          v-model="analysis"
         />
       </div>
 
       <div>
         <label>Style Variations</label>
         <textarea
+          v-if="viscidcode"
           v-model="style_variations"
           class="effectEditor__textarea effectEditor__style_variations"
+        />
+        <vcode-editor
+          v-else
+          v-model="style_variations"
         />
       </div>
 
       <div>
         <label>Personal Commentary</label>
         <textarea
+          v-if="viscidcode"
           v-model="personal_commentary"
           class="effectEditor__textarea effectEditor__personal_commentary"
         />
-      </div>
-
-      <div>
-        <label> Related Substances </label>
-        <substance-input v-model="related_substances" />
+        <vcode-editor
+          v-else
+          v-model="personal_commentary"
+        />
       </div>
 
       <div>
@@ -170,22 +205,22 @@
 
 <script>
 import CitationInput from "@/components/editors/CitationInput";
-import SubstanceInput from "@/components/effects/editor/SubstanceInput";
 import LinkInput from "@/components/effects/editor/LinkInput";
 import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";
 import TagInput from "@/components/effects/editor/TagInput";
 import ContributorInput from "@/components/effects/editor/ContributorInput";
 import SubarticleInput from "@/components/effects/editor/SubarticleInput";
+import VcodeEditor from "@/components/vcode/editor";
 
 export default {
   components: {
     CitationInput,
-    SubstanceInput,
     LinkInput,
     SeeAlsoInput,
     TagInput,
     ContributorInput,
     SubarticleInput,
+    VcodeEditor
   },
   props: {
     effect: {
@@ -194,17 +229,17 @@ export default {
     }
   },
   data () {
-    const { _id, name, description_raw, citations, url, related_substances, external_links, 
+    const { _id, name, markup_format, description_raw, citations, url, external_links, 
     see_also, tags, contributors, summary_raw, long_summary_raw, analysis_raw, style_variations_raw,
     personal_commentary_raw, gallery_order, social_media_image, subarticles, featured } = this.effect ? this.effect : {};
     return {
       showDetails: false,
       id: _id,
       name: name ? name : "",
+      markup_format: markup_format ? markup_format : 'viscidcode',
       description: description_raw ? description_raw : "",
       citations: citations ? citations : [],
       url: url ? url : "",
-      related_substances: related_substances ? related_substances : [],
       external_links: external_links ? external_links : [],
       see_also: see_also ? see_also : [],
       tags: tags ? tags : [],
@@ -239,6 +274,11 @@ export default {
       return replications.filter(
         replication => replication.associated_effects.indexOf(this.id) >= 0
       );
+    },
+
+    viscidcode () {
+      const { markup_format } = this;
+      return !markup_format || (markup_format === 'viscidcode');
     }
   },
   mounted() {
@@ -252,6 +292,7 @@ export default {
       this.$emit(this.effect ? (update ? "update-effect" : "edit-effect") : "new-effect", {
         id: this.id,
         name: this.name,
+        markup_format: this.markup_format,
         description: this.description,
         citations: this.citations,
         related_substances: this.related_substances,

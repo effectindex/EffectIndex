@@ -3,11 +3,12 @@ import Category from "@/components/Category";
 import CaptionedImage from "@/components/CaptionedImage";
 import Reference from "@/components/Reference";
 import HeaderedTextbox from "@/components/vcode/components/HeaderedTextbox";
+import Markdown from "@/components/vcode/components/Markdown";
 
 export default {
   functional: true,
   render(createElement, context) {
-    const { body } = context.props;
+    const body = typeof context.props.body === 'string' ? JSON.parse(context.props.body) : context.props.body;
     const type = context.props.type || 'div';
     
     const renderNodes = (nodes) => 
@@ -57,13 +58,9 @@ export default {
             renderNodes(children)
           );
         case "br":
-          return createElement(
-            "br"
-          );
+          return createElement("br");
         case "hr":
-          return createElement(
-            "hr"
-          );
+          return createElement("hr");
         case "category":
           return createElement(
             Category,
@@ -114,6 +111,11 @@ export default {
           return createElement(
             "ol",
             renderNodes(children)
+          );
+        case "markdown":
+          return createElement(
+            Markdown,
+            { props: { ...properties } },
           );
         default:
           break;

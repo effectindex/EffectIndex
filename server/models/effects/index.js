@@ -23,7 +23,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
 
     if (!('effect' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
 
-    const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
+    const { name, markup_format, description, summary, long_summary, analysis, style_variations, personal_commentary,
       contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
       featured, subarticles } = req.body.effect;
 
@@ -31,6 +31,10 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       name,
       url: kebab(name),
       tags,
+      markup_format,
+      description: {
+        raw: description
+      },
       description_raw: description,
       description_formatted: JSON.stringify(parser.parse(description)),
       related_substances,
@@ -39,13 +43,25 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       external_links,
       citations,
       summary_raw: summary,
+      long_summary: {
+        raw: long_summary
+      },
       long_summary_raw: long_summary,
       long_summary_formatted: JSON.stringify(parser.parse(long_summary)),
       contributors,
+      analysis: {
+        raw: analysis
+      },
       analysis_raw: analysis,
       analysis_formatted: JSON.stringify(parser.parse(analysis)),
+      style_variations: {
+        raw: style_variations
+      },
       style_variations_raw: style_variations,
       style_variations_formatted: JSON.stringify(parser.parse(style_variations)),
+      personal_commentary: {
+        raw: personal_commentary
+      },
       personal_commentary_raw: personal_commentary,
       personal_commentary_formatted: JSON.stringify(parser.parse(personal_commentary)),
       social_media_image,
@@ -124,7 +140,7 @@ router.get('/:url', async (req, res) => {
 });
 
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
-  const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
+  const { name, markup_format, description, summary, long_summary, analysis, style_variations, personal_commentary,
   contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
   featured, subarticles } = req.body;
 
@@ -132,15 +148,30 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
     let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
       name,
       url: kebab(name),
+      markup_format,
+      description: {
+        raw: description
+      },
       description_raw: description,
       description_formatted: JSON.stringify(parser.parse(description)),
-      summary_raw: summary,
+      long_summary: {
+        raw: long_summary
+      },
       long_summary_raw: long_summary,
       long_summary_formatted: JSON.stringify(parser.parse(long_summary)),
+      analysis: {
+        raw: analysis
+      },
       analysis_raw: analysis,
       analysis_formatted: JSON.stringify(parser.parse(analysis)),
+      style_variations: {
+        raw: style_variations
+      },
       style_variations_raw: style_variations,
       style_variations_formatted: JSON.stringify(parser.parse(style_variations)),
+      personal_commentary: {
+        raw: personal_commentary
+      },
       personal_commentary_raw: personal_commentary,
       personal_commentary_formatted: JSON.stringify(parser.parse(personal_commentary)),
       contributors,

@@ -18,7 +18,12 @@
       </nuxt-link>
     </div>
     <div>
+      <rendered-vcode
+        v-if="isVcode"
+        :body="long_summary"
+      />
       <formatted-document
+        v-else
         :document="long_summary"
       />
     </div>
@@ -27,10 +32,12 @@
 
 <script>
 import FormattedDocument from "@/components/effects/FormattedDocument";
+import RenderedVcode from '@/components/vcode/rendered';
 
 export default {
   components: {
-    FormattedDocument
+    FormattedDocument,
+    RenderedVcode
   },
   props: {
     effect: {
@@ -47,8 +54,12 @@ export default {
     }
   },
   computed: {
+    isVcode() {
+      return this.effect.markup_format === 'vcode';
+    },
+
     long_summary() {
-      return this.effect.long_summary_formatted ? this.effect.long_summary_formatted : undefined;
+      return this.isVcode ? this.effect.long_summary.parsed : this.effect.long_summary_formatted;
     },
     replications() {
       return this.$store.state.replications;
