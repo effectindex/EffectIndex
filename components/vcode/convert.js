@@ -74,7 +74,7 @@ function toVcode(parsed) {
           str += createVcodeTag('ext-link', props, value);
           break;
         case 'horizontal-line':
-          str += createVcodeTag('horizontal-line');
+          str += createVcodeTag('hr');
           break;
         default:
           break;

@@ -1,9 +1,16 @@
 <script>
+import CaptionedImage from "./components/CaptionedImage";
+import Reference from "./components/Reference";
+import HeaderedTextbox from "./components/HeaderedTextbox";
+import SubarticleAnchor from "./components/SubarticleAnchor";
+import SeparatedTextbox from "./components/SeparatedTextbox";
+import Quotation from "./components/Quotation";
+
 import Category from "@/components/Category";
-import CaptionedImage from "@/components/CaptionedImage";
-import Reference from "@/components/Reference";
-import HeaderedTextbox from "@/components/vcode/components/HeaderedTextbox";
+import ExtLink from "@/components/ExtLink";
 import Markdown from "@/components/vcode/components/Markdown";
+
+import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 
 export default {
   functional: true,
@@ -93,7 +100,7 @@ export default {
         case "ext-link":
           if (properties && 'to' in properties) {
             const { to } = properties;
-            return createElement("a", { attrs: { href: to } },  renderNodes(children));
+            return createElement(ExtLink, { attrs: { href: to } },  renderNodes(children));
           } else {
             return createElement('span', { attrs: { style: 'color: red;' } }, renderNodes(children));
           }
@@ -116,6 +123,29 @@ export default {
           return createElement(
             Markdown,
             { props: { ...properties } },
+          );
+        case "audio":
+          return createElement(
+            AudioPlayer,
+            { props: { ...properties } },
+          );
+        case "separated-textbox":
+          return createElement(
+            SeparatedTextbox,
+            { props: { ...properties } },
+            renderNodes(children)
+          );
+        case "quotation":
+          return createElement(
+            Quotation,
+            { props: { ...properties } },
+            renderNodes(children)
+          );
+        case "subarticle":
+          return createElement(
+            SubarticleAnchor,
+            { props: { ...properties } },
+            renderNodes(children)
           );
         default:
           break;
