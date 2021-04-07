@@ -60,7 +60,7 @@ export default {
     color: #DDD;
     padding: 12px;
     padding-left: calc(12px + 1em);
-    margin-bottom: 0;
+    margin: 0;
     width: 100%; 
   }
 

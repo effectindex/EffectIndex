@@ -284,8 +284,7 @@ main {
 .pageContent ul {
   padding: 0;
   padding-left: 2em;
-  margin-bottom: 1em;
-  color: #666;
+  margin: 1em 0;
 }
 
 .pageContent h4 {

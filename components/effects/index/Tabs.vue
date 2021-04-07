@@ -57,7 +57,6 @@ export default {
   z-index: 1;
   text-align: center;
   display: block;
-  color: #3d9991;
   cursor: pointer;
   padding: 0.3em 0.5em;
   border: 1px solid #DDD;
@@ -75,7 +74,6 @@ export default {
 
 .selected {
   background-color: #FFF;
-  text-decoration: underline;
   border-bottom: 0;
 }
 

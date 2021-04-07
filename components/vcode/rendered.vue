@@ -6,6 +6,7 @@ import SubarticleAnchor from "./components/SubarticleAnchor";
 import SeparatedTextbox from "./components/SeparatedTextbox";
 import Quote from "./components/Quote";
 import Markdown from "./components/Markdown";
+import UnorderedList from "./components/UnorderedList";
 
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
@@ -106,7 +107,8 @@ export default {
           }
         case "ul":
           return createElement(
-            "ul",
+            UnorderedList,
+            { props: { ...properties }},
             renderNodes(children)
           );
         case "li":

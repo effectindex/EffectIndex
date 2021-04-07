@@ -149,9 +149,12 @@ export default {
   margin-bottom: 0;
 }
 
+.article h2, .article h3, .article h4 {
+  margin: 1em 0;
+}
+
 .article h2 {
   font-size: 32px;
-  font-weight: bold;
   letter-spacing: 1px;
 }
 
@@ -162,7 +165,6 @@ export default {
 
 .article h4 {
   font-size: 24.5px;
-  margin: 0;
   text-transform: none;
   letter-spacing: unset;
 }

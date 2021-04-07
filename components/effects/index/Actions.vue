@@ -64,7 +64,7 @@ export default {
 <style scoped>
 
 .action {
-  padding: 1em 0.5em;
+  padding: 0.5em;
 }
 
 .action:not(:last-child) {

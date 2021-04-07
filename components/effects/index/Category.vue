@@ -71,7 +71,7 @@ export default {
   font-size: 14pt;
   margin: 0;
   text-align: left;
-  padding: 0.25em 0.5em;
+  padding: 0.5em;
   background-color: rgb(240, 240, 240);
   border-bottom: 1px solid #DDD;
   letter-spacing: 1px;
