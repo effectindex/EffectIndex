@@ -204,6 +204,14 @@ export default {
     RelatedReports,
     RenderedVcode
   },
+  data() {
+    return {
+      effect: {
+        type: Object,
+        default: () => ({})
+      }
+    };
+  },
   computed: {
     icon() {
       let tags = this.effect["tags"];
@@ -234,10 +242,15 @@ export default {
     }
   },
   scrollToTop: true,
-  async asyncData({ store, params, error }) {
-    let { effect } = await store.dispatch("getEffect", params.name);
-    if (!effect) error({ statusCode: 404, message: "Effect not found." });
-    return { effect };
+  async fetch() {
+    try {
+      const { name } = this.$route.params;
+      const { effect } = await this.$axios.$get(`/api/effects/${name}`);
+      if (effect) this.effect = effect;
+      else this.$nuxt.error({ statusCode: 404, message: 'Effect not found' });
+    } catch (error) {
+      console.log(error);
+    }
   },
   mounted() {
     let s = this.$route.query.s;

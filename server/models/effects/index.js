@@ -156,6 +156,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
       },
       description_raw: description,
       description_formatted: JSON.stringify(parser.parse(description)),
+      summary_raw: summary,
       long_summary: {
         raw: long_summary
       },
