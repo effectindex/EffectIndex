@@ -86,7 +86,9 @@ router.get('/', async (req, res) => {
     let effects = await Effect
       .find()
       .sort({ name: 1 })
-      .select('-description_raw -description_formatted -analysis_raw -analysis_formatted -long_summary_raw')
+      .select(
+        '_id tags markup_format featured subarticles name url social_media_image long_summary long_summary_raw long_summary_formatted ' +
+        'summary_raw')
       .exec();
     res.send({ effects });
   } catch (error) {

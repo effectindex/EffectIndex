@@ -82,8 +82,12 @@ export default {
   .categories__panelEffectList {
     padding-left: 0;
     color: #AAA;
-    margin-bottom: 0;
+    margin: 0;
   }
+
+ .categories__panelEffectList ul {
+   margin: 0;
+ }
 
   .categories__panelEffectList li {
     margin-left: 1em;
