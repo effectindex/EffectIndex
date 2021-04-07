@@ -11,22 +11,22 @@
       <span 
         v-else
       > 
-        <nuxt-link :to="`/profiles/${profile}`">
-          <div 
-            v-if="profileImage"
-            class="quotationProfileImageContainer"
-          >
+        
+        <div 
+          v-if="profileImage"
+          class="quotationProfileImageContainer"
+        >
+          <nuxt-link :to="`/profiles/${profile}`">
             <img 
-              v-if="profileImage"
               :src="profileImage"
               class="quotationProfileImage"
             >
-            <span> <span class="quotationDash"> - </span> {{ author }} </span>
-          </div>
-          <span 
-            v-else
-          > <span class="quotationDash"> - </span> {{ author }} </span>
-        </nuxt-link>
+          </nuxt-link>
+          <span> <span class="quotationDash"> - </span> <nuxt-link :to="`/profiles/${profile}`"> {{ author }} </nuxt-link> </span>
+        </div>
+        <span 
+          v-else
+        > <span class="quotationDash"> - </span> {{ author }} </span>
       </span>
     </p>
   </div>
@@ -42,17 +42,25 @@ export default {
     profile: { 
       type: String,
       default: undefined
-    }
+    },
   },
-  computed: {
-    profileImage() {
-      let profile = this.$store.state.profiles.find((profile) => profile.username === this.profile);
-
-      return profile ? '/img/profiles/cropped/' + profile.profileImageCropped : undefined;
-    }
+  data() {
+    return {
+      profileImage: undefined
+    };
   },
-  beforeCreate() {
-    if (this.$store.state.profiles.length < 1) this.$store.dispatch("getProfiles");
+  async fetch() {
+    try {
+      if (this.profile) {
+        const { profile } = await this.$axios.$get(`/api/profiles/user/${this.profile}`);
+        if (profile) {
+          const { profileImageCropped } = profile;
+            this.profileImage = profileImageCropped ? `/img/profiles/cropped/${profileImageCropped}` : undefined;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>

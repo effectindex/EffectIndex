@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent">
-    <article v-show="effect.name">
+    <article>
       <Icon
         :filename="icon"
         class="categoryIcon"
@@ -32,34 +32,36 @@
         />
       </div>
 
-      <div
-        v-if="hasSection('replications')"
-        class="effect__gallery"
-      >
-        <hr>
-        <h3>Replication Gallery</h3>
-        <light-box
-          :image-set="effect.replications"
-          :order="effect.gallery_order"
-          base="/img/gallery/"
-        />
-      </div>
+      <client-only>
+        <div
+          v-if="hasSection('replications')"
+          class="effect__gallery"
+        >
+          <hr>
+          <h3>Replication Gallery</h3>
+          <light-box
+            :image-set="effect.replications"
+            :order="effect.gallery_order"
+            base="/img/gallery/"
+          />
+        </div>
 
-      <div
-        v-if="hasSection('audio_replications')"
-      >
-        <hr>
-        <h3 style="margin-bottom: 2em;">
-          Audio Replications
-        </h3>
-        <audio-player
-          v-for="(replication, index) in effect.audio_replications"
-          :key="index"
-          :src="`/audio/${replication.resource}`"
-          :title="replication.title"
-          :artist="replication.artist"
-        />
-      </div>
+        <div
+          v-if="hasSection('audio_replications')"
+        >
+          <hr>
+          <h3 style="margin-bottom: 2em;">
+            Audio Replications
+          </h3>
+          <audio-player
+            v-for="(replication, index) in effect.audio_replications"
+            :key="index"
+            :src="`/audio/${replication.resource}`"
+            :title="replication.title"
+            :artist="replication.artist"
+          />
+        </div>
+      </client-only>
 
       <div v-if="hasSection('analysis_raw') || hasSection('analysis')">
         <hr>
@@ -174,9 +176,6 @@
         </span>
       </div>
     </article>
-    <div v-if="!effect.name">
-      <h1> Effect Not Found </h1>
-    </div>
   </div>
 </template>
 
