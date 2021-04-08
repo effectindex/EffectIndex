@@ -20,6 +20,10 @@ export default {
     list-style: disc;
   }
 
+  ul >>> li {
+    margin: 0.5em 0;
+  }
+
   ul.square {
     list-style:square;
   }
