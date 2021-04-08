@@ -101,11 +101,12 @@ export default {
     flex-direction: row;
   }
 
-  .convert-button {
+  .vcodeEditor .convert-button {
     margin: 2px 0;
     height: 30px;
-    width: auto;
-    padding: 5px;
+    font-size: 14px;
+    width: unset;
+    padding: 0 10px;
     background-color: #DDD;
   }
 
