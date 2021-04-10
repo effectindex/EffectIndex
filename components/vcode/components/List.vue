@@ -1,12 +1,22 @@
 <template>
-  <ul :class="listStyle">
+  <ul
+    v-if="!ordered "
+    :class="listStyle"
+  >
     <slot />
   </ul>
+  <ol v-else>
+    <slot />
+  </ol>
 </template>
 
 <script>
 export default {
   props: {
+    ordered: {
+      type: Boolean,
+      default: false
+    },
     listStyle: {
       type: String,
       default: 'disc'
@@ -20,7 +30,12 @@ export default {
     list-style: disc;
   }
 
-  ul >>> li {
+  ul.none {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul >>> li, ol >>> li {
     margin: 0.5em 0;
   }
 

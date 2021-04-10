@@ -30,7 +30,7 @@
     },
     methods: {
       async submitPost(article) {
-        const results = await this.$axios.post('/api/articles', { article });
+        const results = await this.$axios.$post('/api/articles', { article });
       }
     },
     middleware: ['auth']

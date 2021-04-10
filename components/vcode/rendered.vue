@@ -6,7 +6,9 @@ import SubarticleAnchor from "./components/SubarticleAnchor";
 import SeparatedTextbox from "./components/SeparatedTextbox";
 import Quote from "./components/Quote";
 import Markdown from "./components/Markdown";
-import UnorderedList from "./components/UnorderedList";
+import List from "./components/List";
+import Columns from "./components/Columns";
+import Column from "./components/Column";
 
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
@@ -107,8 +109,8 @@ export default {
           }
         case "ul":
           return createElement(
-            UnorderedList,
-            { props: { ...properties }},
+            List,
+            { props: { ordered: false, ...properties }},
             renderNodes(children)
           );
         case "li":
@@ -118,7 +120,8 @@ export default {
           );
         case "ol":
           return createElement(
-            "ol",
+            List,
+            { props: { ordered: true, ...properties }},
             renderNodes(children)
           );
         case "markdown":
@@ -147,6 +150,16 @@ export default {
           return createElement(
             SubarticleAnchor,
             { props: { ...properties } },
+            renderNodes(children)
+          );
+        case "columns":
+          return createElement(
+            Columns, { props: { ...properties }},
+            renderNodes(children)
+          );
+        case "column":
+          return createElement(
+            Column, { props: { ...properties }},
             renderNodes(children)
           );
         default:

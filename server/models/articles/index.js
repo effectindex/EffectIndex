@@ -48,6 +48,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
     if (!result) throw new API_Error('Error saving article.');
     res.json({ article: result });
   } catch (error) {
+    console.log(error);
     res.status(500).send({ error });
   }
 });
