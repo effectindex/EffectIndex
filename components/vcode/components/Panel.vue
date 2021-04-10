@@ -1,8 +1,8 @@
 <template>
-  <div class="column">
+  <div class="panel">
     <div
       v-if="title"
-      class="column-header"
+      class="panel-header"
     >
       <h4> {{ title }} </h4>
       <Icon
@@ -10,7 +10,7 @@
         :filename="icon"
       />
     </div>
-    <div class="column-content">
+    <div class="panel-content">
       <slot />
     </div>
   </div>
@@ -37,16 +37,21 @@ export default {
 </script>
 
 <style scoped>
-  h4 {
-    margin: 0;
-  }
-
   .icon {
     height: 24px;
     width: 24px;
     opacity: 0.75;
   }
-  .column-header {
+
+  .panel {
+    border: 1px solid #DDD;
+  }
+
+  .panel:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .panel-header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -59,19 +64,25 @@ export default {
       letter-spacing: 1px;
   }
 
-  .column-content {
-    margin: 0.5em;
-  }
-
-  .column-content >>> ul {
+  .panel-header h4 {
     margin: 0;
   }
 
-  .column-content >>> ul li {
+  .panel-content >>> ul {
+    margin: 0;
+    padding-bottom: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .panel-content >>> ul:not(:last-child) {
+    border-bottom: 1px solid #DDD;
+  }
+
+  .panel-content >>> ul li {
     margin: 0.25em;
   }
 
-  .column-content >>> h1, .column-content >>> h2, .column-content >>> h3, .column-content >>> h4 {
-    margin: 0.5em 0;
+  .panel-content >>> h1, .panel-content >>> h2, .panel-content >>> h3, .panel-content >>> h4 {
+    margin: 0.5em;
   }
 </style>

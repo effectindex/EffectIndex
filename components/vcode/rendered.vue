@@ -9,6 +9,7 @@ import Markdown from "./components/Markdown";
 import List from "./components/List";
 import Columns from "./components/Columns";
 import Column from "./components/Column";
+import Panel from "./components/Panel";
 
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
@@ -160,6 +161,11 @@ export default {
         case "column":
           return createElement(
             Column, { props: { ...properties }},
+            renderNodes(children)
+          );
+        case "panel":
+          return createElement(
+            Panel, { props: { ...properties }},
             renderNodes(children)
           );
         default:
