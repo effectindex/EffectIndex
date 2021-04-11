@@ -168,6 +168,11 @@ export default {
             Panel, { props: { ...properties }},
             renderNodes(children)
           );
+        case "sup":
+          return createElement(
+            'sup',
+            renderNodes(children)
+          );
         default:
           break;
       }
