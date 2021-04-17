@@ -29,6 +29,7 @@
     <div v-else>
       <rendered-vcode
         :body="formatted"
+        :data="data"
       />
     </div>
   </div>
@@ -54,6 +55,10 @@ export default {
     value: {
       type: String,
       default: undefined
+    },
+    data: {
+      type: Object,
+      default: () => ({})
     }
   },
   data () {

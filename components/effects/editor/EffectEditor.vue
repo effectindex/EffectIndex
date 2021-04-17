@@ -38,6 +38,7 @@
       <vcode-editor
         v-else
         v-model="description"
+        :data="$data"
       />
     </div>
 

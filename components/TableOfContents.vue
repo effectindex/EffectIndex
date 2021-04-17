@@ -1,7 +1,7 @@
 <template>
   <div
     class="table-of-contents"
-    :class="{ floated }"
+    :class="{ floatLeft, floatRight, top }"
   >
     <div class="table-of-contents-content">
       <h4> Contents </h4>
@@ -35,9 +35,21 @@ export default {
       type: Array,
       default: () => ([])
     },
-    floated: {
+    float: {
       type: String,
       default: undefined
+    },
+    top: {
+      type: String,
+      default: undefined
+    }
+  },
+  computed: {
+    floatLeft () {
+      return this.float ? this.float.toLowerCase() === 'left' : false;
+    },
+    floatRight () {
+      return this.float ? this.float.toLowerCase() === 'right' : false;
     }
   }
 };
@@ -55,9 +67,18 @@ export default {
     padding: 0.5em 1em;
   }
 
-  .table-of-contents.floated {
+  .table-of-contents.floatLeft {
     float: left;
-    margin-right: 1em;
+    margin: 1em 1em 1em 0;
+  }
+
+  .table-of-contents.floatRight {
+    float: right;
+    margin: 1em 0 1em 1em;
+  }
+
+  .table-of-contents.float.top {
+    margin-top: 0;
   }
 
   .table-of-contents h4 {
