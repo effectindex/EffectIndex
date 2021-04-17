@@ -13,6 +13,10 @@ const effectSchema = new mongoose.Schema({
     enum: ['viscidcode', 'vcode'],
     default: 'viscidcode'
   },
+  toc: {
+    type: Array,
+    default: []
+  },
   description: Vcode,
   description_raw: String,
   description_formatted: String,

@@ -25,13 +25,14 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
 
     const { name, markup_format, description, summary, long_summary, analysis, style_variations, personal_commentary,
       contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
-      featured, subarticles } = req.body.effect;
+      featured, subarticles, toc } = req.body.effect;
 
     const effect = new Effect({
       name,
       url: kebab(name),
       tags,
       markup_format,
+      toc,
       description: {
         raw: description
       },
@@ -144,13 +145,14 @@ router.get('/:url', async (req, res) => {
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
   const { name, markup_format, description, summary, long_summary, analysis, style_variations, personal_commentary,
   contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
-  featured, subarticles } = req.body;
+  featured, subarticles, toc } = req.body;
 
   try {
     let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
       name,
       url: kebab(name),
       markup_format,
+      toc,
       description: {
         raw: description
       },

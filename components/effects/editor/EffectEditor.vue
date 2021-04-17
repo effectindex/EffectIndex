@@ -24,6 +24,11 @@
     </div>
 
     <div>
+      <label> Table of Contents </label>
+      <table-of-contents-input v-model="toc" />
+    </div>
+
+    <div>
       <label> Description </label>
       <textarea
         v-if="viscidcode"
@@ -210,6 +215,7 @@ import SeeAlsoInput from "@/components/effects/editor/SeeAlsoInput";
 import TagInput from "@/components/effects/editor/TagInput";
 import ContributorInput from "@/components/effects/editor/ContributorInput";
 import SubarticleInput from "@/components/effects/editor/SubarticleInput";
+import TableOfContentsInput from "@/components/editors/TableOfContentsInput";
 import VcodeEditor from "@/components/vcode/editor";
 
 export default {
@@ -220,7 +226,8 @@ export default {
     TagInput,
     ContributorInput,
     SubarticleInput,
-    VcodeEditor
+    VcodeEditor,
+    TableOfContentsInput
   },
   props: {
     effect: {
@@ -231,7 +238,7 @@ export default {
   data () {
     const { _id, name, markup_format, description_raw, citations, url, external_links, 
     see_also, tags, contributors, summary_raw, long_summary_raw, analysis_raw, style_variations_raw,
-    personal_commentary_raw, gallery_order, social_media_image, subarticles, featured } = this.effect ? this.effect : {};
+    personal_commentary_raw, gallery_order, social_media_image, subarticles, featured, toc } = this.effect ? this.effect : {};
     return {
       showDetails: false,
       id: _id,
@@ -252,7 +259,8 @@ export default {
       gallery_order: gallery_order ? gallery_order : [],
       social_media_image: social_media_image ? social_media_image : "",
       subarticles: subarticles ? subarticles : [],
-      featured: featured ? featured : false
+      featured: featured ? featured : false,
+      toc: toc ? toc : []
     };
   },
   computed: {
@@ -308,7 +316,8 @@ export default {
         gallery_order: this.gallery_order,
         social_media_image: this.social_media_image,
         subarticles: this.subarticles,
-        featured: this.featured
+        featured: this.featured,
+        toc: this.toc
       });
     },
     makeGalleryOrder() {

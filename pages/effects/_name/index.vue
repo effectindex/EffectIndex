@@ -22,6 +22,10 @@
             </nuxt-link>
           </client-only>
         </h1>
+        <table-of-contents
+          v-if="effect.toc && effect.toc.length"
+          :toc="effect.toc"
+        />
         <rendered-vcode
           v-if="isVcode"
           :body="effect.description.parsed"
@@ -189,6 +193,7 @@ import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import Icon from '@/components/Icon';
 import RelatedReports from '@/components/effects/RelatedReports';
 import RenderedVcode from '@/components/vcode/rendered';
+import TableOfContents from '@/components/TableOfContents';
 
 export default {
   name: 'Effect',
@@ -201,7 +206,8 @@ export default {
     AudioPlayer,
     Icon,
     RelatedReports,
-    RenderedVcode
+    RenderedVcode,
+    TableOfContents
   },
   data() {
     return {

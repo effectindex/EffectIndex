@@ -56,16 +56,19 @@ export default {
         case "h1":
           return createElement(
             "h2",
+            { attrs: { id: properties.id }},
             renderNodes(children)
           );
         case "h2":
           return createElement(
             "h3",
+            { attrs: { id: properties.id }},
             renderNodes(children)
           );
         case "h3":
           return createElement(
             "h4",
+            { attrs: { id: properties.id }},
             renderNodes(children)
           );
         case "br":
@@ -178,7 +181,7 @@ export default {
       }
     }
 
-    return createElement(type, { class: "vcodeDocument" }, renderNodes(body));
+    return createElement(type, { class: "vcode-document" }, renderNodes(body));
   }
 };
 
