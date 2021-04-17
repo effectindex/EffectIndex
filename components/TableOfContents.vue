@@ -77,6 +77,17 @@ export default {
     margin: 1em 0 1em 1em;
   }
 
+  @media (max-width: 600px) {
+    .table-of-contents-content {
+      display: block;
+    }
+
+    .table-of-contents.floatLeft, .table-of-contents.floatRight {
+      float:none;
+      margin: 0;
+    }
+  }
+
   .table-of-contents.top {
     margin-top: 0;
   }
