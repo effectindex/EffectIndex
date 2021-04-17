@@ -77,7 +77,7 @@ export default {
     margin: 1em 0 1em 1em;
   }
 
-  .table-of-contents.float.top {
+  .table-of-contents.top {
     margin-top: 0;
   }
 
