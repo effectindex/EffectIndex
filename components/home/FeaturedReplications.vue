@@ -14,6 +14,18 @@
         class="replicationImage"
         @click="toggleModal"
       >
+        <div style="position:relative; padding-bottom:56.25%; height: 290px;">
+          <iframe
+            v-if="replication && (replication.type === 'gfycat')"
+            :src="`https://gfycat.com/ifr/${replication.resource}`"
+            frameborder="0"
+            scrolling="no"
+            width="100%"
+            height="100%"
+            style="position:absolute;top:0;left:0;"
+            allowfullscreen
+          />
+        </div>
         <div 
           class="replicationControls previous"
           @click.stop="previousImage"
@@ -33,6 +45,7 @@
           />
         </div>
         <div 
+          v-if="replication.type === 'image'"
           class="replicationImageDescription"
           @click.stop
         >
@@ -78,7 +91,7 @@ export default {
   computed: {
     featuredReplications() {
       const featuredReplicationFilter = (replication) => (
-        (replication.type === 'image') && (replication.featured));
+        (replication.type === 'image' || replication.type === 'gfycat') && (replication.featured));
 
       const featuredReplications = this.$store.state.replications
         .filter(featuredReplicationFilter);
@@ -105,8 +118,10 @@ export default {
     },
 
     imageUrl() {
-      let prefix = '/img/gallery/';
-      return `url("${prefix + this.replication.resource}"`; 
+      if (this.replication.type === 'image') {
+        const prefix = '/img/gallery';
+        return `url("${prefix}/${this.replication.resource}"`; 
+      } else return undefined;
     },
 
     modalData() {
@@ -181,11 +196,13 @@ export default {
     position: relative;
     min-width: 250px;
     height: 250px;
+    border: 1px solid #EEE;
     background-color: rgb(50, 50, 50);
     background-size: auto 250px;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    overflow:hidden;
   }
 
   .replicationControls {
