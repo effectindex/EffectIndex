@@ -13,6 +13,7 @@ import Panel from "./components/Panel";
 
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
+import TableOfContents from "@/components/TableOfContents";
 
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 
@@ -21,6 +22,7 @@ export default {
   render(createElement, context) {
     const body = typeof context.props.body === 'string' ? JSON.parse(context.props.body) : context.props.body;
     const type = context.props.type || 'div';
+    const data = context.props.data || {};
     
     const renderNodes = (nodes) => 
        Array.isArray(nodes) ? nodes.map( node => typeof node === 'string' ? node : renderNode(node)) : undefined;
@@ -175,6 +177,11 @@ export default {
           return createElement(
             'sup',
             renderNodes(children)
+          );
+        case "toc":
+          return createElement(
+            TableOfContents,
+            { props: { toc: data.toc, ...properties }}
           );
         default:
           break;

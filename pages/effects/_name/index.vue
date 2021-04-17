@@ -22,12 +22,9 @@
             </nuxt-link>
           </client-only>
         </h1>
-        <table-of-contents
-          v-if="effect.toc && effect.toc.length"
-          :toc="effect.toc"
-        />
         <rendered-vcode
           v-if="isVcode"
+          :data="effect"
           :body="effect.description.parsed"
         />
         <formatted-document
@@ -193,7 +190,6 @@ import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import Icon from '@/components/Icon';
 import RelatedReports from '@/components/effects/RelatedReports';
 import RenderedVcode from '@/components/vcode/rendered';
-import TableOfContents from '@/components/TableOfContents';
 
 export default {
   name: 'Effect',
@@ -206,8 +202,7 @@ export default {
     AudioPlayer,
     Icon,
     RelatedReports,
-    RenderedVcode,
-    TableOfContents
+    RenderedVcode
   },
   data() {
     return {
