@@ -14,15 +14,17 @@
         class="replicationImage"
         @click="toggleModal"
       >
-        <div style="position:relative; padding-bottom:56.25%; height: 290px;">
+        <div
+          v-if="replication && (replication.type === 'gfycat')" 
+          style="position:relative; height: 300px;"
+        >
           <iframe
-            v-if="replication && (replication.type === 'gfycat')"
-            :src="`https://gfycat.com/ifr/${replication.resource}`"
+            :src="`https://gfycat.com/ifr/${replication.resource}?controls=0`"
             frameborder="0"
             scrolling="no"
             width="100%"
             height="100%"
-            style="position:absolute;top:0;left:0;"
+            style="position:absolute;top:-5px;left:0;"
             allowfullscreen
           />
         </div>
@@ -45,7 +47,6 @@
           />
         </div>
         <div 
-          v-if="replication.type === 'image'"
           class="replicationImageDescription"
           @click.stop
         >
