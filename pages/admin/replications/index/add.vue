@@ -1,7 +1,10 @@
 <template>
   <div class="pageContent">
     <hr>
-    <replication-editor @new-replication="submitReplication" />
+    <replication-editor 
+      @new-replication="submitReplication"
+      @update-replication="submitReplication" 
+    />
   </div>
 </template>
 
@@ -15,11 +18,22 @@ export default {
   middleware: ["auth"],
   methods: {
     async submitReplication(replication) {
-      let returnedReplication = await this.$store.dispatch(
-        "submitReplication",
-        replication
-      );
-      this.$router.push("/admin/replications/list");
+      try {
+        let returnedReplication = await this.$store.dispatch(
+          "submitReplication",
+          replication
+        );
+        this.$router.push("/admin/replications/list");
+      } catch (error) {
+        console.log(error);
+        this.$toasted.show(
+          'There was an error saving the replication.',
+          {
+            duration: 2000,
+            type: 'error'
+          }
+        );
+      }
     }
   }
 };

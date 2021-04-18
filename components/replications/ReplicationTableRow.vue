@@ -5,10 +5,19 @@
         {{ replication.title }}
       </nuxt-link>
     </td>
+    <td style="text-align: center;"> 
+      <Icon
+        v-if="replication.featured"
+        filename="star.svg"
+      />
+    </td>
     <td style="width: 150px;">
       <ext-link :href="replication.artist_url">
         {{ replication.artist }}
       </ext-link>
+    </td>
+    <td style="font-style: italic;">
+      {{ replication.type }}
     </td>
     <td style="width: 150px;"> 
       <img
@@ -17,9 +26,6 @@
           (replication.thumbnail ? replication.thumbnail : replication.resource)"
         class="replicationTableRow__thumbnail"
       >
-    </td>
-    <td style="font-style: italic;">
-      {{ replication.type }}
     </td>
     <td>
       <a 
@@ -72,6 +78,7 @@ export default {
 }
 
 .icon {
+  display: inline-block;
   height: 18px;
   width: 18px;
   opacity: 0.6;

@@ -7,7 +7,6 @@ const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
 const Report = require('./Report');
-const Effect = require('../effects/Effect');
 
 router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
   if (!'report' in req.body) throw API_Error('SUBMIT_REPORT_ERROR', 'The request was invalid.');

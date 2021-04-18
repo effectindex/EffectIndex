@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const slugs = require("mongoose-url-slugs");
+
+const slug = require('mongoose-slug-updater');
+
+mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;
 
@@ -7,6 +10,11 @@ const replicationSchema = new Schema({
     title: {
       type: String,
       required: true
+    },
+    url: {
+      type: String,
+      slug: ["title"],
+      unique: true
     },
     type: {
       type: String,
@@ -39,12 +47,6 @@ const replicationSchema = new Schema({
     }
   }
 );
-
-replicationSchema.plugin(slugs('title', {
-  update: true,
-  alwaysRecreate: true,
-  field: 'url'
-}));
 
 const Replication = mongoose.model("Replication", replicationSchema);
 

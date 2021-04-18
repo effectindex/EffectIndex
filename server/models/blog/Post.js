@@ -1,20 +1,22 @@
-const slugs = require("mongoose-url-slugs");
-
 const mongoose = require("mongoose");
+
+const slug = require('mongoose-slug-updater');
+
+mongoose.plugin(slug);
+
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
+const post = new Schema({
   author: String,
   title: String,
   datetime: Date,
-  body: String
+  body: String,
+  slug: {
+    type: String,
+    slug: 'title'
+  }
 });
 
-postSchema.plugin(slugs('title', {
-  update: true,
-  alwaysRecreate: true
-}));
-
-const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", post);
 
 module.exports = Post;

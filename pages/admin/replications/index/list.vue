@@ -63,6 +63,24 @@
             </a>
           </td>
           <td>
+            <a 
+              class="sortArrow"
+              @click="sortBy('featured', 'descending')"
+            >
+              <Icon
+                filename="arrow-down.svg"
+              />
+            </a>
+            <a 
+              class="sortArrow"
+              @click="sortBy('featured', 'ascending')"
+            >
+              <Icon
+                filename="arrow-up.svg"
+              />
+            </a>
+          </td>
+          <td>
             Artist 
             <a 
               class="sortArrow"
@@ -80,14 +98,6 @@
                 filename="arrow-up.svg"
               />
             </a>
-          </td>
-          <td>
-            Thumb
-            <input
-              v-model="options.thumbs"
-              style="display: inline; margin-left: 0.5em;"
-              type="checkbox"
-            >
           </td>
           <td>
             Type 
@@ -108,11 +118,19 @@
               />
             </a>
           </td>
+          <td>
+            Thumb
+            <input
+              v-model="options.thumbs"
+              style="display: inline; margin-left: 0.5em;"
+              type="checkbox"
+            >
+          </td>
         </tr>
       </thead>
       <tbody>
         <replication-table-row 
-          v-for="replication in filteredReplications"
+          v-for="replication in sortedReplications"
           :key="replication._id"
           :replication="replication"
           :thumbs="options.thumbs"
@@ -125,10 +143,11 @@
 
 <script>
 import ReplicationTableRow from "@/components/replications/ReplicationTableRow.vue";
-import { debounce } from 'lodash';
+import { debounce, sortBy } from 'lodash';
 import Icon from '@/components/Icon';
 
 export default {
+  name: 'ReplicationManagementList',
   components: {
     ReplicationTableRow,
     Icon
@@ -137,6 +156,7 @@ export default {
     return {
       filter: "",
       focused: false,
+      thumbs: false,
       options: {
         thumbs: false,
         sortBy: {
@@ -157,34 +177,25 @@ export default {
       return this.effects.filter((effect) => effect.name.toLowerCase().indexOf(this.filter.toLowerCase()) > -1);;
     },
     filteredReplications() {
-      let filter = this.filter.toLowerCase();
       if (!this.filter) return this.replications;
     
       let effectIds = this.filteredEffects.map(effect => effect._id);
 
-      let filteredReplications = this.replications.filter(replication =>
-        replication.associated_effects.some(associated_effect =>
-          effectIds.indexOf(associated_effect) > -1));
+      let filteredReplications = this.replications.filter(
+        replication => replication.associated_effects.some(
+          associated_effect => effectIds.includes(associated_effect)
+      ));
 
       return filteredReplications;
     },
     sortedReplications() {
-    let sortBy = this.options.sortBy;
-    let replications = this.replications.slice();
+      const { column, direction } = this.options.sortBy;
+      if (column && direction) {
+        const sorted = sortBy(this.replications, [column.toLowerCase()]);
+        return direction === 'ascending' ? sorted : sorted.reverse();
+      } else return this.replications;
 
-    let compareFunction = (column, direction) => {
-      return function(a, b) {
-        a = a[column].toUpperCase();
-        b = b[column].toUpperCase();
-        
-        return (sortBy.direction === 'ascending' ? (a <= b) : (a >= b));
-      };
-    };
-
-    if (sortBy.column && sortBy.direction) {
-      return replications.sort(compareFunction(sortBy.column));
-    } else return replications;
-  },
+    }
   },
   async fetch({ store }) {
     await store.dispatch("getReplications");
@@ -231,7 +242,7 @@ export default {
       this.filter = e.target.value;
     }, 150)
   }
-};
+  };
 </script>
 
 <style scoped>
@@ -242,7 +253,6 @@ export default {
 
 .replicationTable {
   width: 100%;
-  max-width: 800px;
 }
 
 .inputContainer {
@@ -296,6 +306,10 @@ thead {
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+thead td {
+  white-space: nowrap;
 }
 
 .replicationTableHeaderRow > td{

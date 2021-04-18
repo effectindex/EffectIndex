@@ -1,6 +1,8 @@
-const slugs = require("mongoose-url-slugs");
-
 const mongoose = require("mongoose");
+
+const slug = require('mongoose-slug-updater');
+
+mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;
 
@@ -8,6 +10,10 @@ const reportSchema = new Schema({
   title: {
     type: String,
     index: true
+  },
+  slug: {
+    type: String,
+    slug: "title"
   },
   form_link: String,
   subject: {
@@ -64,11 +70,6 @@ const reportSchema = new Schema({
 }, 
   {minimize: false}
 );
-
-reportSchema.plugin(slugs('title', {
-  update: true,
-  alwaysRecreate: true
-}));
 
 reportSchema.index({
   title: 'text',

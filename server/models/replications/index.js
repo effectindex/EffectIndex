@@ -29,9 +29,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       featured: r.featured
     });
     
-    let returnedReplication = await replication.save().catch((err) => {
-      throw API_Error('REPLICATION_SAVE_ERROR', err);
-    });
+    let returnedReplication = await replication.save();
 
     res.send({ replication: returnedReplication });
 
@@ -92,18 +90,16 @@ router.get('/:url', async (req, res) => {
 
 router.post('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res) => {
   try {
-    if (!('replication' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
-    let replication = req.body.replication;
-    if (replication) {
-
-      let r = await Replication.findById(req.params.id).exec();
-      ['title', 'artist', 'artist_url', 'description', 'date', 'resource', 'thumbnail', 'type', 'associated_effects', 'associated_substances', 'featured']
-      .forEach((field) => r[field] = replication[field]);
-
-      let updatedReplication = await r.save();
-      if (!updatedReplication) throw API_Error('UPDATE_REPLICATION_ERROR', 'The replication was not successfully updated.');
-      res.send({ effect: updatedReplication });
+    const { replication } = req.body;
+    if (!replication) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
+    delete replication.id;
+    const result = await Replication.findById(req.params.id).exec();
+    for (const field in replication) {
+      result[field] = replication[field];
     }
+    const updated = await result.save();
+    if (!updated) throw API_Error('UPDATE_REPLICATION_ERROR', 'The replication was not successfully updated.');
+    res.send({ updated });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });
