@@ -58,19 +58,19 @@ export default {
         case "h1":
           return createElement(
             "h2",
-            { attrs: { id: properties.id }},
+            { attrs: { id: properties ? properties.id : undefined }},
             renderNodes(children)
           );
         case "h2":
           return createElement(
             "h3",
-            { attrs: { id: properties.id }},
+            { attrs: { id: properties ? properties.id : undefined }},
             renderNodes(children)
           );
         case "h3":
           return createElement(
             "h4",
-            { attrs: { id: properties.id }},
+            { attrs: { id: properties ? properties.id : undefined }},
             renderNodes(children)
           );
         case "br":
