@@ -85,12 +85,11 @@ export default {
   methods: {
     hasSection(name) {
       if (name in this.data) {
-        if (Array.isArray(this.data[name])) {
-          if (this.data[name].length > 0) return true;
-        } else if (typeof this.data[name] === 'string') {
-          if (this.data[name].length > 0) return true;
-        } else if (this.data[name] && typeof this.data[name] === 'object') {
-          if (this.data[name].raw && this.data[name].raw.length > 0) return true;
+        const section = this.data[name];
+        if (Array.isArray(section) || typeof section === 'string') {
+          if (section.length > 0) return true;
+        } else if (section && typeof section === 'object') {
+          if (section.raw && section.raw.length > 0) return true;
         }
       }
       return false;

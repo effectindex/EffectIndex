@@ -29,14 +29,35 @@
         </h4>
       </div>
     </div>
-    <div class="body">
-      <slot />
+    <div
+      class="body"
+      :class="imageAlignment"
+    >
+      <div class="body-text">
+        <slot />
+      </div>
+      <captioned-image 
+        v-if="imageSrc || imageGfycat" 
+        :src="imageSrc"
+        :width="imageWidth"
+        :height="imageHeight"
+        :artist="imageArtist"
+        :url="imageUrl"
+        :title="imageTitle"
+        :caption="imageCaption"
+        :gfycat="imageGfycat"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import CaptionedImage from './HeaderedTextboxCaptionedImage';
+
 export default {
+  components: {
+    CaptionedImage
+  },
   props: {
     label: {
       type: String,
@@ -57,6 +78,47 @@ export default {
     subHeader: {
       type: String,
       default: undefined
+    },
+    imageSrc: {
+      type: String,
+      default: ""
+    },
+    imageAlign: {
+      type: String,
+      default: ""
+    },
+    imageWidth: {
+      type: String,
+      default: ""
+    },
+    imageHeight: {
+      type: String,
+      default: ""
+    },
+    imageArtist: {
+      type: String,
+      default: ""
+    },
+    imageUrl: {
+      type: String,
+      default: ""
+    },
+    imageTitle: {
+      type: String,
+      default: ""
+    },
+    imageCaption: {
+      type: String,
+      default: ""
+    },
+    imageGfycat: {
+      type: String,
+      default: ""
+    }
+  },
+  computed: {
+    imageAlignment() {
+      return this.imageAlign.toLowerCase() === 'left' ? 'left' : 'right';
     }
   }
 };
@@ -74,8 +136,6 @@ export default {
   text-transform: none;
   letter-spacing: unset;
 }
-
-
 
 .headeredTextbox > .headersContainer {
   display: flex;
@@ -112,15 +172,32 @@ export default {
 }
 
 .headeredTextbox .body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: #FAFAFA;
   padding: 20px;
 }
 
-.headeredTextbox .body p {
+.headeredTextbox .body > .body-text {
+  margin-right: 2em;
+}
+
+.headeredTextbox .body.left > .body-text {
+  margin-right: 0;
+  margin-left: 2em;
+}
+
+.headeredTextbox .body.left {
+  flex-direction: row-reverse;
+}
+
+.headeredTextbox .body-text p {
+  flex: 1;
   margin: 0;
 }
 
-.headeredTextbox .body p:not(:last-of-type) {
+.headeredTextbox .body-text p:not(:last-of-type) {
   margin-bottom: 1em;
 }
 
@@ -140,6 +217,17 @@ export default {
   
   .headeredTextbox .body {
     padding: 10px;
+    flex-direction: column;
+  }
+
+  .headeredTextbox .body > .body-text, .headeredTextbox .body.left > .body-text {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+
+  .headeredTextbox .body.left {
+    flex-direction: column;
   }
 
   .headeredTextbox .label {

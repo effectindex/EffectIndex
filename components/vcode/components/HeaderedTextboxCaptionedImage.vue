@@ -1,7 +1,6 @@
 <template>
   <figure 
-    :class="float + ' ' + (border ? 'withBorder' : '')"
-    :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }"
+    :style="{ maxWidth: (width ? width + 'px' : '100%') }"
     class="captionedImage"
   >
     <img 
@@ -13,6 +12,7 @@
     <div 
       v-else-if="gfycat"
       :style="{
+        minWidth: width ? width + 'px' : 'none',
         maxWidth: width ? width + 'px' : 'none',
         height: height ? height + 'px' : 'auto',
         marginBottom: '0.5em'
@@ -67,10 +67,6 @@ export default {
       type: String,
       default: ""
     },
-    align: {
-      type: String,
-      default: ""
-    },
     width: {
       type: String,
       default: ""
@@ -102,29 +98,9 @@ export default {
     top: {
       type: String,
       default: ""
-    },
-    border: {
-      type: String,
-      default: ""
-    },
-    imageRoutes: {
-      type: String,
-      default: undefined
     }
   },
   computed: {
-    float() {
-      switch (this.align.toLowerCase()) {
-        case "right":
-          return "floatRight";
-        case "left":
-          return "floatLeft";
-        case "center":
-          return "alignCenter";
-        default:
-          return "floatRight";
-      }
-    },
     modalData() {
       const { gfycat, src } = this;
       return gfycat ? 
@@ -142,29 +118,6 @@ export default {
 </script>
 
 <style scoped>
-.floatRight {
-  float: right;
-  margin: 2em;
-  margin-right: 0;
-}
-
-.floatLeft {
-  float: left;
-  margin: 2em;
-  margin-left: 0;
-}
-
-.alignCenter {
-  display: block;
-  margin: 0 auto;
-}
-
-.withBorder {
-  border: 1px solid #EEE;
-  background-color: rgb(252, 252, 252);
-  padding: 6px;
-}
-
 .captionedImage img {
   cursor: pointer;
   width: 100%;
@@ -192,12 +145,5 @@ export default {
 
 .artistTitle {
   font-size: 14px;
-}
-
-@media (max-width: 500px) {
-  .floatRight, .floatLeft {
-    float: none;
-    margin: 1em auto;
-  }
 }
 </style>
