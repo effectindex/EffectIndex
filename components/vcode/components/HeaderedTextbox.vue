@@ -62,26 +62,28 @@ export default {
 };
 </script>
 
-<style scoped>
-
-h3, h4 {
-  margin: 0;
-  text-transform: none;
-  letter-spacing: unset;
-}
+<style>
 
 .headeredTextbox {
   border: 1px solid rgb(221, 221, 221);
   margin: 1em 0;
 }
 
-.headersContainer {
+.headeredTextbox > .headersContainer h3, .headeredTextbox > .headersContainer h4 {
+  margin: 0;
+  text-transform: none;
+  letter-spacing: unset;
+}
+
+
+
+.headeredTextbox > .headersContainer {
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
 
-.label {
+.headeredTextbox .label {
   white-space: pre-line;
   color: white;
   padding: 5px 15px 5px 20px;
@@ -92,55 +94,55 @@ h3, h4 {
   align-items: center;
 }
 
-.headers {
+.headeredTextbox .headers {
   display: flex;
   align-items: center;
   padding: 5px 0;
   margin-left: 10px;
 }
 
-.mainHeader {
+.headeredTextbox .mainHeader {
   margin-right: 5px;
   font-size: 20px;
 }
 
-.subHeader {
+.headeredTextbox .subHeader {
   color: #AAA;
   font-size: 18px;;
 }
 
-.body {
+.headeredTextbox .body {
   background-color: #FAFAFA;
   padding: 20px;
 }
 
-.body p {
+.headeredTextbox .body p {
   margin: 0;
 }
 
-.body p:not(:last-of-type) {
+.headeredTextbox .body p:not(:last-of-type) {
   margin-bottom: 1em;
 }
 
 @media (max-width: 600px) {
-  h3 {
+  .headeredTextbox h3 {
     font-size: 20px;
   }
 
-  .headers {
+  .headeredTextbox .headers {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .separator {
+  .headeredTextbox .separator {
     display: none;
   }
   
-  .body {
+  .headeredTextbox .body {
     padding: 10px;
   }
 
-  .label {
+  .headeredTextbox .label {
     padding: 5px 15px 5px 10px;
   }
 }

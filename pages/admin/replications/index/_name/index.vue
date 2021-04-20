@@ -21,18 +21,18 @@ export default {
   },
   methods: {
     async submitReplication(replication) {
-      let returnedReplication = await this.$store.dispatch(
+      await this.$store.dispatch(
         "updateReplication",
         replication
       );
 
-        this.$toasted.show(
-          'The replication has been successfully saved.',
-          {
-            duration: 2000,
-            type: 'success'
-          }
-        );
+      this.$toasted.show(
+        'The replication has been successfully saved.',
+        {
+          duration: 2000,
+          type: 'success'
+        }
+      );
 
 
       this.$router.push("/admin/replications/list");

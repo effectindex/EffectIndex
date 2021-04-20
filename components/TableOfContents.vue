@@ -22,6 +22,33 @@
             </li>
           </ul>
         </li>
+        <li v-show="hasSection('replications')">
+          <a href="#replication-gallery"> Replication Gallery </a>
+        </li>
+        <li v-show="hasSection('audio_replications')">
+          <a href="#audio-replications"> Replication Gallery </a>
+        </li>
+        <li v-show="hasSection('analysis')">
+          <a href="#analysis"> Analysis </a>
+        </li>
+        <li v-show="hasSection('style_variations')">
+          <a href="#style-variations"> Style Variations </a>
+        </li>
+        <li v-show="hasSection('personal_commentary')">
+          <a href="#personal-commentary"> Personal Commentary </a>
+        </li>
+        <li v-show="hasSection('related_reports')">
+          <a href="#related-reports"> Related Reports </a>
+        </li>
+        <li v-show="hasSection('see_also')">
+          <a href="#see-also"> See Also </a>
+        </li>
+        <li v-show="hasSection('external_links')">
+          <a href="#external-links"> External Links </a>
+        </li>
+        <li v-show="hasSection('citations')">
+          <a href="#references"> References </a>
+        </li>
       </ol>
     </div>
   </div>
@@ -31,9 +58,9 @@
 export default {
   name: 'TableOfContents',
   props: {
-    toc: {
-      type: Array,
-      default: () => ([])
+    data: {
+      type: Object,
+      default: () => ({})
     },
     float: {
       type: String,
@@ -45,11 +72,28 @@ export default {
     }
   },
   computed: {
+    toc () {
+      return this.data && this.data.toc ? this.data.toc : [];
+    },
     floatLeft () {
       return this.float ? this.float.toLowerCase() === 'left' : false;
     },
     floatRight () {
       return this.float ? this.float.toLowerCase() === 'right' : false;
+    }
+  },
+  methods: {
+    hasSection(name) {
+      if (name in this.data) {
+        if (Array.isArray(this.data[name])) {
+          if (this.data[name].length > 0) return true;
+        } else if (typeof this.data[name] === 'string') {
+          if (this.data[name].length > 0) return true;
+        } else if (this.data[name] && typeof this.data[name] === 'object') {
+          if (this.data[name].raw && this.data[name].raw.length > 0) return true;
+        }
+      }
+      return false;
     }
   }
 };
@@ -94,6 +138,7 @@ export default {
 
   .table-of-contents h4 {
     margin: 0;
+    text-align: center;
     margin-bottom: 0.5em;
   }
 
@@ -105,5 +150,9 @@ export default {
   .table-of-contents ul {
     list-style: none;
     padding-left: 0.5em;
+  }
+
+  .table-of-contents li {
+    padding-left: 0.25em;
   }
 </style>

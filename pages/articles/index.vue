@@ -79,15 +79,12 @@ export default {
     },
     sortedArticles () {
       const { articles } = this;
-      if (articles) return this.sortDirection ? articles : articles.slice().reverse();
-      else return undefined;
+      if (articles) {
+        return this.sortDirection ? articles : articles.slice().reverse();
+      } else return undefined;
     },
     articlesSortedByTitle() {
-      const byTitle = this.articles.slice().sort(
-        (a, b) => {
-          return a.title.toLowerCase() < b.title.toLowerCase();
-        });
-      
+      const byTitle = this.articles.slice().sort((a, b) => a.title.toLowerCase() < b.title.toLowerCase());
       return this.sortDirection ? byTitle : byTitle.reverse();
     }
   },

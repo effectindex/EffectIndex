@@ -39,7 +39,9 @@
           class="effect__gallery"
         >
           <hr>
-          <h3>Replication Gallery</h3>
+          <h3 id="replication-gallery">
+            Replication Gallery
+          </h3>
           <light-box
             :image-set="effect.replications"
             :order="effect.gallery_order"
@@ -51,7 +53,10 @@
           v-if="hasSection('audio_replications')"
         >
           <hr>
-          <h3 style="margin-bottom: 2em;">
+          <h3
+            id="audio-replications"
+            style="margin-bottom: 2em;"
+          >
             Audio Replications
           </h3>
           <audio-player
@@ -66,7 +71,9 @@
 
       <div v-if="hasSection('analysis_raw') || hasSection('analysis')">
         <hr>
-        <h3>Analysis</h3>
+        <h3 id="analysis">
+          Analysis
+        </h3>
         <rendered-vcode
           v-if="isVcode"
           :body="effect.analysis.parsed"
@@ -81,7 +88,7 @@
         v-if="hasSection('style_variations_raw') || hasSection('style_variations')"
       >
         <hr>
-        <h3 id="variations">
+        <h3 id="style-variations">
           Style Variations
         </h3>
         <rendered-vcode
@@ -96,7 +103,9 @@
 
       <div v-if="hasSection('personal_commentary_raw') || hasSection('personal_commentary')">
         <hr>
-        <h3>Personal Commentary</h3>
+        <h3 id="personal-commentary">
+          Personal Commentary
+        </h3>
         <rendered-vcode
           v-if="isVcode"
           :body="effect.personal_commentary.parsed"
@@ -109,7 +118,9 @@
 
       <div v-if="hasSection('related_reports')">
         <hr>
-        <h3> Related Reports </h3>
+        <h3 id="related-reports">
+          Related Reports
+        </h3>
         <related-reports 
           :reports="effect.related_reports" 
         />
@@ -118,7 +129,9 @@
       <div v-if="hasSection('see_also') || hasSection('external_links')">
         <hr>
         <div v-if="hasSection('see_also')">
-          <h3> See Also </h3>
+          <h3 id="see-also">
+            See Also
+          </h3>
           <ul>
             <li
               v-for="(link, index) in effect.see_also"
@@ -134,7 +147,9 @@
         </div>
 
         <div v-if="hasSection('external_links')">
-          <h3> External Links </h3>
+          <h3 id="external-links">
+            External Links
+          </h3>
           <ul>
             <li
               v-for="(link, index) in effect.external_links"
@@ -150,7 +165,9 @@
 
       <div v-if="hasSection('citations')">
         <hr>
-        <h3> References </h3>
+        <h3 id="references">
+          References
+        </h3>
         <citation-list :citations="effect.citations" />
       </div>
 
@@ -166,7 +183,9 @@
 
       <div v-if="hasSection('contributors')">
         <hr>
-        <h3> Contributors </h3>
+        <h3 id="contributors">
+          Contributors
+        </h3>
         <p> The following people contributed to the content of this article: </p>
         <span
           v-for="contributor in effect.contributors"

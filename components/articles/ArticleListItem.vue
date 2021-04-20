@@ -12,7 +12,9 @@
               filename="star.svg"
             />
           </h3>
-          <h4> {{ article.subtitle }} </h4>
+          <h4 v-if="article.subtitle">
+            {{ article.subtitle }}
+          </h4>
           <div class="info">
             <div
               v-if="publicationDate"

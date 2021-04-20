@@ -23,7 +23,7 @@ export default {
     const body = typeof context.props.body === 'string' ? JSON.parse(context.props.body) : context.props.body;
     const type = context.props.type || 'div';
     const data = context.props.data || {};
-    
+
     const renderNodes = (nodes) => 
        Array.isArray(nodes) ? nodes.map( node => typeof node === 'string' ? node : renderNode(node)) : undefined;
     
@@ -181,7 +181,7 @@ export default {
         case "toc":
           return createElement(
             TableOfContents,
-            { props: { toc: data.toc, ...properties }}
+            { props: { data, ...properties }}
           );
         default:
           break;

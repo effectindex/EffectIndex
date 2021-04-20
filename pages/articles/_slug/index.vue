@@ -1,6 +1,6 @@
 <template>
   <article
-    v-if="article"
+    v-show="article"
     class="pageContent article"
   >
     <admin-toolbar 
