@@ -10,23 +10,32 @@
         @click="changeTab('preview')"
       > Preview </a>
     </div>
-    <client-only
-      v-if="tab === 'edit'"
+    <div
+      v-show="tab === 'edit'"
+      ref="editTab"
+      class="edit-tab"
     >
-      <prism-editor
-        :value="value"
-        class="my-editor"
-        :highlight="highlighter"
-        @input="codeModified"
-      />
-      <button
-        class="convert-button"
-        @click="convertViscidcode"
-      >
-        Convert Viscidcode
-      </button>
-    </client-only>
-    <div v-else>
+      <client-only>
+        <prism-editor
+          ref="prism"
+          :value="value"
+          class="my-editor"
+          :highlight="highlighter"
+          @input="codeModified"
+        />
+        <button
+          class="convert-button"
+          @click="convertViscidcode"
+        >
+          Convert Viscidcode
+        </button>
+      </client-only>
+    </div>
+    <div
+      v-show="tab === 'preview'"
+      ref="previewTab"
+      class="preview-tab"
+    >
       <rendered-vcode
         :body="formatted"
         :data="data"
@@ -63,7 +72,9 @@ export default {
   },
   data () {
     return {
-      tab: 'edit'
+      tab: 'edit',
+      editScrollX: 0,
+      previewScrollX: 0
     };
   },
   computed: {
@@ -71,11 +82,32 @@ export default {
       return this.$vcode2(this.value);
     }
   },
+  watch: {
+    tab: function() {
+      if (this.$refs.previewTab) {
+        this.$refs.previewTab.scrollTop = this.previewScrollX;
+        console.log('Setting preview');
+      }
+
+      if (this.$refs.prism) {
+        this.$refs.prism.$el.scrollTop = this.editScrollX;
+        console.log('Setting editor');
+      }
+    }
+  },
   methods: {
     highlighter(code) {
       return highlight(code, vcode2);
     },
     changeTab(tab) {
+      if (this.$refs.prism) {
+        this.editScrollX = this.$refs.prism.$el.scrollTop;
+      } 
+      
+      if (this.$refs.previewTab) {
+        this.previewScrollX = this.$refs.previewTab.scrollTop;
+      }
+      
       this.tab = tab;
     },
     codeModified(code) {
@@ -128,6 +160,11 @@ export default {
   .tabSelector a.selected {
     background-color: #2d2d2d;
     color: #EEE;
+  }
+
+  .preview-tab {
+    max-height: 800px;
+    overflow: scroll;
   }
 
   .my-editor {
