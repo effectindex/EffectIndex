@@ -101,6 +101,7 @@ export default {
 <style scoped>
   .table-of-contents {
     display: block;
+    margin: 1em 0;
   }
 
   .table-of-contents-content {
