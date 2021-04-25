@@ -1,14 +1,16 @@
 <template>
   <div class="pageContent">
     <article
-      v-show="!$fetchState.pending && article"
       class="article"
     >
-      <admin-toolbar 
-        v-if="$auth.hasScope('editor')"
-        :item-id="article._id"
-        item-url="/admin/articles"
-      />
+      <client-only>
+        <admin-toolbar 
+          v-if="$auth.hasScope('editor')"
+          :item-id="article._id"
+          item-url="/admin/articles"
+        />
+      </client-only>
+
       <h1 class="title">
         {{ article.title }}
       </h1>
@@ -25,7 +27,7 @@
           :body="article.body.parsed"
         />
       </div>
-
+      
       <div
         v-if="hasSection('citations')"
         class="citations"
@@ -46,16 +48,7 @@
           :key="tag"
           :value="tag"
         />
-      </div>
-    </article>
-    <article v-show="!$fetchState.pending && !article">
-      <h1> Article was not found. </h1>
-      <p>
-        The article you requested doesn't exist. Try searching the 
-        <nuxt-link to="/articles">
-          article index.
-        </nuxt-link>
-      </p>
+      </div> 
     </article>
   </div>
 </template>
@@ -75,16 +68,23 @@ export default {
   },
   data() {
     return {
-      article: undefined
+      article: () => ({
+        title: undefined,
+        subtitle: undefined,
+        _id: undefined,
+        citations: [],
+        tags: [],
+        body: {
+          parsed: []
+        }
+      })
     };
   },
   async fetch() {
     try {
       const { slug } = this.$route.params;
       const { article } = await this.$axios.$get(`/api/articles/${slug}`);
-      if (article) {
-        this.article = article;
-      }
+      this.article = article;
     } catch (error) {
       console.log(error);
     }
