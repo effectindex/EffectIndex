@@ -9,8 +9,11 @@ export default {
     const images = [];
 
     for (const item of items) {
-      const image = item.children.find(child => child.name === 'image');
-      if (image) images.push(image);
+      const { children } = item;
+      if (children) {
+        const image = children.find(child => child.name === 'image');
+        if (image) images.push(image);
+      }
     }
 
     return createElement(Comparison, { props: { ...props, items, description, images } });
