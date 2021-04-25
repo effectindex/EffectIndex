@@ -78,10 +78,15 @@ export default {
 
   .panel-content >>> ul {
     margin: 1em 0;
+    padding-left: 1em;
+  }
+
+  .panel-content >>> ul ul {
+    margin: 0;
   }
 
   .panel-content >>> ul li {
-    margin: 0.25em;
+    margin: 0em;
   }
 
   .panel-content >>> h1, .panel-content >>> h2, .panel-content >>> h3, .panel-content >>> h4 {

@@ -1,56 +1,66 @@
 <template>
-  <article
-    v-show="article"
-    class="pageContent article"
-  >
-    <admin-toolbar 
-      v-if="$auth.hasScope('editor')"
-      :item-id="article._id"
-      item-url="/admin/articles"
-    />
-    <h1 class="title">
-      {{ article.title }}
-    </h1>
-    <h2 class="subtitle">
-      {{ article.subtitle }}
-    </h2>
-
-    <byline :article="article" />
-
-    <hr style="margin: 2em 0;">
-
-    <div class="body">
-      <rendered-vcode
-        :body="article.body.parsed"
-      />
-    </div>
-
-    <div
-      v-if="hasSection('citations')"
-      class="citations"
+  <div class="pageContent">
+    <article
+      v-if="!$fetchState.pending && article"
+      class="article"
     >
-      <hr>
-      <h3> References </h3>
-      <citation-list :citations="article.citations" />
-    </div>
-
-    <div
-      v-if="hasSection('tags')"
-      class="tags"
-    >
-      <hr>
-      <h3> Tags </h3>
-      <tag
-        v-for="tag in article.tags"
-        :key="tag"
-        :value="tag"
+      <admin-toolbar 
+        v-if="$auth.hasScope('editor')"
+        :item-id="article._id"
+        item-url="/admin/articles"
       />
-    </div>
-  </article>
+      <h1 class="title">
+        {{ article.title }}
+      </h1>
+      <h2 class="subtitle">
+        {{ article.subtitle }}
+      </h2>
+
+      <byline :article="article" />
+
+      <hr style="margin: 2em 0;">
+
+      <div class="body">
+        <vcode
+          :body="article.body.parsed"
+        />
+      </div>
+
+      <div
+        v-if="hasSection('citations')"
+        class="citations"
+      >
+        <hr>
+        <h3> References </h3>
+        <citation-list :citations="article.citations" />
+      </div>
+
+      <div
+        v-if="hasSection('tags')"
+        class="tags"
+      >
+        <hr>
+        <h3> Tags </h3>
+        <tag
+          v-for="tag in article.tags"
+          :key="tag"
+          :value="tag"
+        />
+      </div>
+    </article>
+    <article v-else-if="!$fetchState.pending && !article">
+      <h1> Article was not found. </h1>
+      <p>
+        The article you requested doesn't exist. Try searching the 
+        <nuxt-link to="/articles">
+          article index.
+        </nuxt-link>
+      </p>
+    </article>
+  </div>
 </template>
 
 <script>
-import RenderedVcode from '@/components/vcode/rendered';
 import AdminToolbar from '@/components/AdminToolbar';
 import Byline from '@/components/articles/Byline';
 import CitationList from '@/components/CitationList';
@@ -58,7 +68,6 @@ import Tag from '@/components/articles/Tag';
 
 export default {
   components: {
-    RenderedVcode,
     AdminToolbar,
     Byline,
     CitationList,

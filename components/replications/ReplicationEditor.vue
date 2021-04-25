@@ -168,10 +168,9 @@
         Save
       </button>
       <nuxt-link 
-        tag="button"
         to="/admin/replications/list"
       >
-        Cancel
+        <button> Cancel </button>
       </nuxt-link>
     </div>
   </div>

@@ -22,7 +22,7 @@
             </nuxt-link>
           </client-only>
         </h1>
-        <rendered-vcode
+        <vcode
           v-if="isVcode"
           :data="effect"
           :body="effect.description.parsed"
@@ -74,7 +74,7 @@
         <h3 id="analysis">
           Analysis
         </h3>
-        <rendered-vcode
+        <vcode
           v-if="isVcode"
           :body="effect.analysis.parsed"
         />
@@ -91,7 +91,7 @@
         <h3 id="style-variations">
           Style Variations
         </h3>
-        <rendered-vcode
+        <vcode
           v-if="isVcode"
           :body="effect.style_variations.parsed"
         />
@@ -106,7 +106,7 @@
         <h3 id="personal-commentary">
           Personal Commentary
         </h3>
-        <rendered-vcode
+        <vcode
           v-if="isVcode"
           :body="effect.personal_commentary.parsed"
         />
@@ -208,7 +208,6 @@ import Tag from "@/components/effects/Tag";
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import Icon from '@/components/Icon';
 import RelatedReports from '@/components/effects/RelatedReports';
-import RenderedVcode from '@/components/vcode/rendered';
 
 export default {
   name: 'Effect',
@@ -220,8 +219,7 @@ export default {
     Tag,
     AudioPlayer,
     Icon,
-    RelatedReports,
-    RenderedVcode
+    RelatedReports
   },
   data() {
     return {

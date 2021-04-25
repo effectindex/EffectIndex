@@ -36,7 +36,7 @@
       ref="previewTab"
       class="preview-tab"
     >
-      <rendered-vcode
+      <vcode
         :body="formatted"
         :data="data"
       />
@@ -52,13 +52,11 @@ import 'prismjs/components/prism-javascript';
 import vcode2 from '@/lib/vcode2/prism-vcode2.js';
 import 'vue-prism-editor/dist/prismeditor.min.css'; 
 import 'prismjs/themes/prism-tomorrow.css';
-import RenderedVcode from './rendered';
 import convert from './convert';
 
 export default {
   components: {
-    PrismEditor,
-    RenderedVcode
+    PrismEditor
   },
   props: {
     value: {
@@ -86,12 +84,10 @@ export default {
     tab: function() {
       if (this.$refs.previewTab) {
         this.$refs.previewTab.scrollTop = this.previewScrollX;
-        console.log('Setting preview');
       }
 
       if (this.$refs.prism) {
         this.$refs.prism.$el.scrollTop = this.editScrollX;
-        console.log('Setting editor');
       }
     }
   },
@@ -107,7 +103,7 @@ export default {
       if (this.$refs.previewTab) {
         this.previewScrollX = this.$refs.previewTab.scrollTop;
       }
-      
+
       this.tab = tab;
     },
     codeModified(code) {

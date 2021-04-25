@@ -18,7 +18,7 @@
       </nuxt-link>
     </div>
     <div>
-      <rendered-vcode
+      <vcode
         v-if="isVcode"
         :body="long_summary"
       />
@@ -32,12 +32,10 @@
 
 <script>
 import FormattedDocument from "@/components/effects/FormattedDocument";
-import RenderedVcode from '@/components/vcode/rendered';
 
 export default {
   components: {
     FormattedDocument,
-    RenderedVcode
   },
   props: {
     effect: {

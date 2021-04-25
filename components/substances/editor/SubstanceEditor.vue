@@ -168,9 +168,8 @@
       </button>
       <nuxt-link
         :to="'/substances/' + url"
-        tag="button"
       >
-        Cancel
+        <button> Cancel </button>
       </nuxt-link>
     </div>
   </div>

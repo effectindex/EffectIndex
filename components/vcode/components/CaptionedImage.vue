@@ -7,7 +7,7 @@
     <img 
       v-if="src"
       :src="src" 
-      :height="(height ? height + 'px' : 'auto')"
+      :style="`max-width: 100%; max-height: ${(height ? height + 'px' : 'auto')}`"
       @click.stop="toggleModal"
     >
     <div 
@@ -47,9 +47,13 @@
           v-else
           class="artist"
         > {{ artist }} </span>
-        <span v-show="caption"> - </span>
       </span>
-      {{ caption }}
+      <div
+        v-show="caption"
+        class="caption"
+      >
+        {{ caption }}
+      </div>
     </figcaption>
   </figure>
 </template>
@@ -59,6 +63,7 @@
 import ExtLink from "@/components/ExtLink";
 
 export default {
+  name: 'VcodeCaptionedImage',
   components: {
     ExtLink
   },
@@ -110,10 +115,15 @@ export default {
     imageRoutes: {
       type: String,
       default: undefined
+    },
+    noMargin: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     float() {
+      if (this.noMargin) return "noMargin";
       switch (this.align.toLowerCase()) {
         case "right":
           return "floatRight";
@@ -154,6 +164,10 @@ export default {
   margin-left: 0;
 }
 
+.noMargin {
+  margin: 0;
+}
+
 .alignCenter {
   display: block;
   margin: 0 auto;
@@ -167,7 +181,6 @@ export default {
 
 .captionedImage img {
   cursor: pointer;
-  width: 100%;
 }
 
 .artistTitle {
@@ -192,6 +205,9 @@ export default {
 
 .artistTitle {
   font-size: 14px;
+}
+.caption {
+  margin-top: 0.5em 0;
 }
 
 @media (max-width: 500px) {
