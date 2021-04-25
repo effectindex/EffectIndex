@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <article
-      v-if="!$fetchState.pending && article"
+      v-show="!$fetchState.pending && article"
       class="article"
     >
       <admin-toolbar 
@@ -48,7 +48,7 @@
         />
       </div>
     </article>
-    <article v-else-if="!$fetchState.pending && !article">
+    <article v-show="!$fetchState.pending && !article">
       <h1> Article was not found. </h1>
       <p>
         The article you requested doesn't exist. Try searching the 
