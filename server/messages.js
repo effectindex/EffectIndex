@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 
-module.exports = `
+module.exports = {
+  logo: function() { console.log(chalk.grey(`
                    ddddhyyyyyhdddd
               ddhs+:.\`         \`.:+shdd
             ddy/-\`    ${chalk.red(`.:+syyys+:\``)}     ./shd
@@ -18,4 +19,16 @@ module.exports = `
             dhs+-\`    ${chalk.keyword("orange")(`.-/+++/-.`)}    \`-/shd
                 dhyo+:-.......-:+oyhd
                       dddhhhddd
-`;
+`)); },
+preconnect: function() { console.log(chalk.yellow(`Attempting mongoose connection...`)); },
+connected: function(name) {
+  console.log(chalk.green(`Connected to database: ${name}`));
+},
+up: function(host, port) {
+  console.log(chalk.green.bold(`Effect Index up on ${host}:${port}`));
+},
+error: function() { console.log(chalk.red.bold(`Error connecting to database.`)); }
+
+
+
+};

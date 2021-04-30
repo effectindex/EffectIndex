@@ -142,6 +142,10 @@ export default {
     align-items: center;
   }
 
+  .comparison .show-images-button a {
+    cursor: pointer;
+  }
+
   .comparison figure {
     margin: 0.5em;
   }

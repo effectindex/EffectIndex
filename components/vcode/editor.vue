@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     formatted () {
-      return this.$vcode2(this.value);
+      return this.$vcode(this.value);
     }
   },
   watch: {

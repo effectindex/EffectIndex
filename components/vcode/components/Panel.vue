@@ -1,5 +1,8 @@
 <template>
-  <div class="panel">
+  <div
+    class="panel"
+    :style="{ width }"
+  >
     <div
       v-if="title"
       class="panel-header"
@@ -31,6 +34,10 @@ export default {
     icon: {
       type: String,
       default: undefined
+    },
+    width: {
+      type: String,
+      default: 'auto'
     }
   }
 };

@@ -9,18 +9,20 @@
           >
             {{ report.title }}
           </h1>
-          <div
-            v-if="$auth.loggedIn"
-          >
-            <nuxt-link 
-              :to="`/admin/reports/${report._id}`"
+          <client-only>
+            <div
+              v-if="$auth.loggedIn"
             >
-              <Icon
-                style="height: 20px; width: 20px; opacity: 0.6; margin-left: 15px;"
-                filename="edit.svg"
-              />
-            </nuxt-link>
-          </div>
+              <nuxt-link 
+                :to="`/admin/reports/${report._id}`"
+              >
+                <Icon
+                  style="height: 20px; width: 20px; opacity: 0.6; margin-left: 15px;"
+                  filename="edit.svg"
+                />
+              </nuxt-link>
+            </div>
+          </client-only>
         </div>
         <div
           v-show="report.subject.name"

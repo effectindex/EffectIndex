@@ -89,7 +89,7 @@ module.exports = {
   plugins: [
     { src: "~/plugins/vue-toasted", mode: 'client' },
     { src: "~/plugins/vue2-touch-events", mode: 'client' },
-    { src: "~/plugins/vcode2-parse" },
+    { src: "~/plugins/vcode-parse" },
     { src: "~/plugins/vcode" }
   ],
 

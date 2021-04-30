@@ -168,19 +168,25 @@ export default {
 
 .headeredTextbox .subHeader {
   color: #AAA;
-  font-size: 18px;;
+  font-size: 18px;
+}
+
+.headeredTextbox h4.subHeader {
+  margin-left: 5px;
 }
 
 .headeredTextbox .body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   background-color: #FAFAFA;
   padding: 20px;
 }
 
 .headeredTextbox .body > .body-text {
   margin-right: 2em;
+  flex: 1;
 }
 
 .headeredTextbox .body.left > .body-text {
@@ -220,14 +226,12 @@ export default {
     flex-direction: column;
   }
 
-  .headeredTextbox .body > .body-text, .headeredTextbox .body.left > .body-text {
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 1em;
+  .headeredTextbox .body.left {
+    flex-direction: column-reverse;
   }
 
-  .headeredTextbox .body.left {
-    flex-direction: column;
+  .headeredTextbox .body > .body-text, .headeredTextbox .body.left > .body-text {
+    margin: 1em 0;
   }
 
   .headeredTextbox .label {

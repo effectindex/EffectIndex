@@ -1,8 +1,6 @@
 const path = require("path");
 require('dotenv').config({ path: path.join(__dirname, '.env') });
-const chalk = require("chalk");
-const logo = chalk.grey(require('./logo'));
-const log = console.log;
+const messages = require('./messages.js');
 
 const express = require("express");
 
@@ -30,16 +28,16 @@ config.dev = !(process.env.NODE_ENV === "production");
 
 async function start() {
   while(true) {
-    log(chalk.yellow(`Attempting mongoose connection...`));
+    messages.preconnect();
     try {
       const connection = await mongoose.connect(config.server.mongooseUri, { useNewUrlParser: true, useUnifiedTopology: true });
-      if (config.dev) log(logo);
-      log(chalk.green(`Connected to database: ${connection.connections[0].name}`));
+      if (config.dev) messages.logo();
+      messages.connected(connection.connections[0].name);
       await firstRun();
-      log(chalk.green.bold(`Effect Index up on ${host}:${port}`));
+      messages.up(host, port);
       break;
     } catch (error) {
-      log(chalk.red.bold(`Error connecting to database.`));
+      messages.error;
       if (!config.dev) process.exit(0);
     }
   }

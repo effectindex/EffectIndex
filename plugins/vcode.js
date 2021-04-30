@@ -1,4 +1,4 @@
 import Vue from 'vue';
-import rendered from '@/components/vcode/rendered';
+import vcode from '@/components/vcode/vcode';
 
-Vue.component('vcode', rendered);
+Vue.component('vcode', vcode);

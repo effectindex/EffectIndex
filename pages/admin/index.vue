@@ -72,8 +72,8 @@
             <h3> Documentation </h3>
             <ul>
               <li>
-                <nuxt-link to="/admin/cheatsheet">
-                  Viscidcode Cheat Sheet
+                <nuxt-link to="/admin/vcode">
+                  VCode Components
                 </nuxt-link>
               </li>
               <li>

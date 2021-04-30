@@ -4,21 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: undefined
-    },
-    icon: {
-      type: String,
-      default: undefined
-    }
-  }
-};
-</script>
-
 <style scoped>
   .column {
       flex: 1;
