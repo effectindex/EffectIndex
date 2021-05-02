@@ -1,5 +1,6 @@
 <template>
   <article-editor
+    v-show="!$fetchState.pending"
     class="pageContent"
     :article="article"
     :people="people"

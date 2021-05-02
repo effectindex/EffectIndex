@@ -23,7 +23,7 @@ export default {
   methods: {
     async submitEffect(effect) {
       
-      let returnedEffect = await this.$store.dispatch("updateEffect", effect);
+      const submitted = await this.$store.dispatch("updateEffect", effect);
 
         this.$toasted.show(
           'The effect has been successfully updated.',
@@ -34,10 +34,10 @@ export default {
         );
 
       
-      this.$router.push("/effects/" + returnedEffect.url);
+      this.$router.push("/effects/" + submitted.url);
     },
     async updateEffect(effect) {
-      let returnedEffect = await this.$store.dispatch("updateEffect", effect);
+      const updated = await this.$store.dispatch("updateEffect", effect);
 
         this.$toasted.show(
           'The effect has been successfully updated.',

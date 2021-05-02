@@ -2,13 +2,20 @@
   <div class="vcodeEditor">
     <div class="tabSelector">
       <a
+        class="edit"
         :class="{ selected: tab === 'edit' }"
         @click="changeTab('edit')"
       > Edit </a>
       <a
+        class="preview"
         :class="{ selected: tab === 'preview' }"
         @click="changeTab('preview')"
       > Preview </a>
+      <a
+        class="documentation"
+        target="_blank"
+        href="/admin/vcode"
+      > Documentation </a>
     </div>
     <div
       v-show="tab === 'edit'"
@@ -23,12 +30,6 @@
           :highlight="highlighter"
           @input="codeModified"
         />
-        <button
-          class="convert-button"
-          @click="convertViscidcode"
-        >
-          Convert Viscidcode
-        </button>
       </client-only>
     </div>
     <div
@@ -52,7 +53,6 @@ import 'prismjs/components/prism-javascript';
 import vcode2 from '@/lib/vcode2/prism-vcode2.js';
 import 'vue-prism-editor/dist/prismeditor.min.css'; 
 import 'prismjs/themes/prism-tomorrow.css';
-import convert from './convert';
 
 export default {
   components: {
@@ -153,13 +153,32 @@ export default {
     color: #333;
   }
 
+
+
+  .tabSelector a.edit {
+    background-color: #EFD;
+  }
+
+  .tabSelector a.preview {
+    background-color: #DEF;
+  }
+
+  .tabSelector a.documentation {
+    background-color: rgb(220, 220, 220);
+    flex: none;
+    font-weight: normal;
+    padding: 10px;
+  }
+
   .tabSelector a.selected {
     background-color: #2d2d2d;
     color: #EEE;
   }
 
+
   .preview-tab {
     max-height: 800px;
+    padding: 0.5em 0;
     overflow: scroll;
   }
 
@@ -195,5 +214,6 @@ export default {
   .vtag .value {
     color: rgb(146, 46, 171);
   }
+
 
 </style>

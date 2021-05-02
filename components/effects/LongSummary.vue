@@ -19,24 +19,14 @@
     </div>
     <div>
       <vcode
-        v-if="isVcode"
-        :body="long_summary"
-      />
-      <formatted-document
-        v-else
-        :document="long_summary"
+        :body="effect.long_summary"
       />
     </div>
   </div>
 </template>
 
 <script>
-import FormattedDocument from "@/components/effects/FormattedDocument";
-
 export default {
-  components: {
-    FormattedDocument,
-  },
   props: {
     effect: {
       type: Object,
@@ -52,13 +42,6 @@ export default {
     }
   },
   computed: {
-    isVcode() {
-      return this.effect.markup_format === 'vcode';
-    },
-
-    long_summary() {
-      return this.isVcode ? this.effect.long_summary.parsed : this.effect.long_summary_formatted;
-    },
     replications() {
       return this.$store.state.replications;
     },

@@ -9,34 +9,13 @@
     </div>
 
     <div>
-      <label> Markup Format </label>
-      <select
-        v-model="markup_format"
-        class="effectEditor__input"
-      >
-        <option value="viscidcode">
-          viscidcode
-        </option>
-        <option value="vcode">
-          vcode
-        </option>
-      </select>
-    </div>
-
-    <div>
       <label> Table of Contents </label>
       <table-of-contents-input v-model="toc" />
     </div>
 
     <div>
       <label> Description </label>
-      <textarea
-        v-if="viscidcode"
-        v-model="description"
-        class="effectEditor__textarea effectEditor__description"
-      />
       <vcode-editor
-        v-else
         v-model="description"
         :data="$data"
       />
@@ -62,52 +41,28 @@
 
       <div>
         <label> Long Summary </label>
-        <textarea
-          v-if="viscidcode"
-          v-model="long_summary"
-          class="effectEditor__textarea effectEditor__longSummary"
-        />
         <vcode-editor
-          v-else
           v-model="long_summary"
         />
       </div>
 
       <div>
         <label>Analysis</label>
-        <textarea
-          v-if="viscidcode"
-          v-model="analysis"
-          class="effectEditor__textarea effectEditor__analysis"
-        />
         <vcode-editor
-          v-else
           v-model="analysis"
         />
       </div>
 
       <div>
         <label>Style Variations</label>
-        <textarea
-          v-if="viscidcode"
-          v-model="style_variations"
-          class="effectEditor__textarea effectEditor__style_variations"
-        />
         <vcode-editor
-          v-else
           v-model="style_variations"
         />
       </div>
 
       <div>
         <label>Personal Commentary</label>
-        <textarea
-          v-if="viscidcode"
-          v-model="personal_commentary"
-          class="effectEditor__textarea effectEditor__personal_commentary"
-        />
         <vcode-editor
-          v-else
           v-model="personal_commentary"
         />
       </div>
@@ -236,26 +191,25 @@ export default {
     }
   },
   data () {
-    const { _id, name, markup_format, description_raw, citations, url, external_links, 
-    see_also, tags, contributors, summary_raw, long_summary_raw, analysis_raw, style_variations_raw,
-    personal_commentary_raw, gallery_order, social_media_image, subarticles, featured, toc } = this.effect ? this.effect : {};
+    const { _id, name, description, citations, url, external_links, 
+    see_also, tags, contributors, summary, long_summary, analysis, style_variations,
+    personal_commentary, gallery_order, social_media_image, subarticles, featured, toc } = this.effect ? this.effect : {};
     return {
       showDetails: false,
       id: _id,
       name: name ? name : "",
-      markup_format: markup_format ? markup_format : 'viscidcode',
-      description: description_raw ? description_raw : "",
+      description: description ? description.raw : "",
       citations: citations ? citations : [],
       url: url ? url : "",
       external_links: external_links ? external_links : [],
       see_also: see_also ? see_also : [],
       tags: tags ? tags : [],
       contributors: contributors ? contributors : [],
-      summary: summary_raw ? summary_raw : "",
-      long_summary: long_summary_raw ? long_summary_raw : "",
-      analysis: analysis_raw ? analysis_raw : "",
-      style_variations: style_variations_raw ? style_variations_raw : "",
-      personal_commentary: personal_commentary_raw ? personal_commentary_raw : "",
+      summary: summary ? summary.raw : "",
+      long_summary: long_summary ? long_summary.raw : "",
+      analysis: analysis ? analysis.raw : "",
+      style_variations: style_variations ? style_variations.raw : "",
+      personal_commentary: personal_commentary ? personal_commentary.raw : "",
       gallery_order: gallery_order ? gallery_order : [],
       social_media_image: social_media_image ? social_media_image : "",
       subarticles: subarticles ? subarticles : [],
@@ -282,11 +236,6 @@ export default {
       return replications.filter(
         replication => replication.associated_effects.indexOf(this.id) >= 0
       );
-    },
-
-    viscidcode () {
-      const { markup_format } = this;
-      return !markup_format || (markup_format === 'viscidcode');
     }
   },
   mounted() {
@@ -300,7 +249,6 @@ export default {
       this.$emit(this.effect ? (update ? "update-effect" : "edit-effect") : "new-effect", {
         id: this.id,
         name: this.name,
-        markup_format: this.markup_format,
         description: this.description,
         citations: this.citations,
         related_substances: this.related_substances,

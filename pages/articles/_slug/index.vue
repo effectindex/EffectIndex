@@ -1,6 +1,7 @@
 <template>
   <div class="pageContent">
     <article
+      v-show="!$fetchState.pending"
       class="article"
     >
       <client-only>
@@ -24,7 +25,7 @@
 
       <div class="body">
         <vcode
-          :body="article.body.parsed"
+          :body="article.body"
         />
       </div>
       
@@ -83,7 +84,7 @@ export default {
   async fetch() {
     try {
       const { slug } = this.$route.params;
-      const { article } = await this.$axios.$get(`/api/articles/${slug}`);
+      const { article } = await this.$axios.$get(`/api/articles/${ slug }`);
       this.article = article;
     } catch (error) {
       console.log(error);

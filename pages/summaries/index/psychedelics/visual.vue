@@ -152,9 +152,6 @@ export default {
       return this.$store.state.effects;
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
-  },
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);

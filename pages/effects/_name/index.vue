@@ -1,37 +1,31 @@
 <template>
   <div class="pageContent">
-    <article>
+    <article v-show="!$fetchState.pending">
       <Icon
         :filename="icon"
         class="categoryIcon"
       />
-      <div v-show="hasSection('description_raw') || hasSection('description')">
-        <h1> 
-          {{ effect.name }}       
-          <client-only>
-            <nuxt-link
-              v-if="$auth.loggedIn"
-              :to="'/admin/effects/' + effect.url"
-              append
-            >
-              <Icon
-                filename="edit.svg"
-                style="display: inline-block; margin-left: 10px; height: 20px; width: 20px;"
-                color="#27635d"
-              />
-            </nuxt-link>
-          </client-only>
-        </h1>
-        <vcode
-          v-if="isVcode"
-          :data="effect"
-          :body="effect.description.parsed"
-        />
-        <formatted-document
-          v-else
-          :document="effect.description_formatted"
-        />
-      </div>
+      <h1> 
+        {{ effect.name }}       
+        <client-only>
+          <nuxt-link
+            v-if="$auth.loggedIn"
+            :to="'/admin/effects/' + effect.url"
+            append
+          >
+            <Icon
+              filename="edit.svg"
+              style="display: inline-block; margin-left: 10px; height: 20px; width: 20px;"
+              color="#27635d"
+            />
+          </nuxt-link>
+        </client-only>
+      </h1>
+      <vcode
+        v-if="hasSection('description')"
+        :data="effect"
+        :body="effect.description"
+      />
 
       <client-only>
         <div
@@ -69,50 +63,35 @@
         </div>
       </client-only>
 
-      <div v-if="hasSection('analysis_raw') || hasSection('analysis')">
+      <div v-if="hasSection('analysis')">
         <hr>
         <h3 id="analysis">
           Analysis
         </h3>
         <vcode
-          v-if="isVcode"
-          :body="effect.analysis.parsed"
-        />
-        <formatted-document
-          v-else
-          :document="effect.analysis_formatted"
+          :body="effect.analysis"
         />
       </div>
 
       <div 
-        v-if="hasSection('style_variations_raw') || hasSection('style_variations')"
+        v-if="hasSection('style_variations')"
       >
         <hr>
         <h3 id="style-variations">
           Style Variations
         </h3>
         <vcode
-          v-if="isVcode"
-          :body="effect.style_variations.parsed"
-        />
-        <formatted-document
-          v-else
-          :document="effect.style_variations_formatted"
+          :body="effect.style_variations"
         />
       </div>
 
-      <div v-if="hasSection('personal_commentary_raw') || hasSection('personal_commentary')">
+      <div v-if="hasSection('personal_commentary')">
         <hr>
         <h3 id="personal-commentary">
           Personal Commentary
         </h3>
         <vcode
-          v-if="isVcode"
-          :body="effect.personal_commentary.parsed"
-        />
-        <formatted-document
-          v-else
-          :document="effect.personal_commentary_formatted"
+          :body="effect.personal_commentary"
         />
       </div>
 
@@ -126,7 +105,7 @@
         />
       </div>
 
-      <div v-if="hasSection('see_also') || hasSection('external_links')">
+      <div v-if="hasSection('external_links')">
         <hr>
         <div v-if="hasSection('see_also')">
           <h3 id="see-also">
@@ -200,7 +179,6 @@
 </template>
 
 <script>
-import FormattedDocument from "@/components/effects/FormattedDocument";
 import CitationList from "@/components/CitationList";
 import LightBox from "@/components/gallery/LightBox";
 import ExtLink from "@/components/ExtLink";
@@ -209,10 +187,10 @@ import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import Icon from '@/components/Icon';
 import RelatedReports from '@/components/effects/RelatedReports';
 
+
 export default {
   name: 'Effect',
   components: {
-    FormattedDocument,
     CitationList,
     LightBox,
     ExtLink,
@@ -254,9 +232,6 @@ export default {
 
       return "user.svg";
     },
-    isVcode() {
-      return this.effect.markup_format === 'vcode';
-    }
   },
   scrollToTop: true,
   async fetch() {

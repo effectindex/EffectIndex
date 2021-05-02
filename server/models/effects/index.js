@@ -10,61 +10,33 @@ const Effect = require('./Effect');
 const Replication = require('../replications/Replication');
 const Report = require('../reports/Report');
 
-const DocumentParser = require('../../../lib/DocumentParser');
-const parser = new DocumentParser();
-
-function kebab(text) {
-  return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
-}
-
 router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
 
   try {
 
     if (!('effect' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
 
-    const { name, markup_format, description, summary, long_summary, analysis, style_variations, personal_commentary,
+    const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
       contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
       featured, subarticles, toc } = req.body.effect;
 
     const effect = new Effect({
       name,
-      url: kebab(name),
+      url: name,
       tags,
-      markup_format,
       toc,
-      description: {
-        raw: description
-      },
-      description_raw: description,
-      description_formatted: JSON.stringify(parser.parse(description)),
+      ['description.raw']: description,
+      ['long_summary.raw']: long_summary,
+      ['analysis.raw']: analysis,
+      ['style_variations.raw']: style_variations,
+      ['personal_commentary.raw']: personal_commentary,
       related_substances,
       gallery_order,
       see_also,
       external_links,
       citations,
       summary_raw: summary,
-      long_summary: {
-        raw: long_summary
-      },
-      long_summary_raw: long_summary,
-      long_summary_formatted: JSON.stringify(parser.parse(long_summary)),
       contributors,
-      analysis: {
-        raw: analysis
-      },
-      analysis_raw: analysis,
-      analysis_formatted: JSON.stringify(parser.parse(analysis)),
-      style_variations: {
-        raw: style_variations
-      },
-      style_variations_raw: style_variations,
-      style_variations_formatted: JSON.stringify(parser.parse(style_variations)),
-      personal_commentary: {
-        raw: personal_commentary
-      },
-      personal_commentary_raw: personal_commentary,
-      personal_commentary_formatted: JSON.stringify(parser.parse(personal_commentary)),
       social_media_image,
       featured,
       subarticles,
@@ -88,8 +60,7 @@ router.get('/', async (req, res) => {
       .find()
       .sort({ name: 1 })
       .select(
-        '_id tags markup_format featured subarticles name url social_media_image long_summary long_summary_raw long_summary_formatted ' +
-        'summary_raw')
+        '_id tags markup_format featured subarticles name url social_media_image long_summary summary_raw')
       .exec();
     res.send({ effects });
   } catch (error) {
@@ -143,55 +114,43 @@ router.get('/:url', async (req, res) => {
 });
 
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
-  const { name, markup_format, description, summary, long_summary, analysis, style_variations, personal_commentary,
+  const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
   contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
   featured, subarticles, toc } = req.body;
 
+  const _id = req.params.id;
+
   try {
-    let updatedEffect = await Effect.findByIdAndUpdate(req.params.id, {
+
+    const effect = await Effect.findById(_id);
+
+    effect.description.raw = description;
+    effect.long_summary.raw = long_summary;
+    effect.analysis.raw = analysis;
+    effect.style_variations.raw = style_variations;
+    effect.personal_commentary.raw = personal_commentary;
+
+    Object.assign(effect, {
+      url: name,
       name,
-      url: kebab(name),
-      markup_format,
       toc,
-      description: {
-        raw: description
-      },
-      description_raw: description,
-      description_formatted: JSON.stringify(parser.parse(description)),
-      summary_raw: summary,
-      long_summary: {
-        raw: long_summary
-      },
-      long_summary_raw: long_summary,
-      long_summary_formatted: JSON.stringify(parser.parse(long_summary)),
-      analysis: {
-        raw: analysis
-      },
-      analysis_raw: analysis,
-      analysis_formatted: JSON.stringify(parser.parse(analysis)),
-      style_variations: {
-        raw: style_variations
-      },
-      style_variations_raw: style_variations,
-      style_variations_formatted: JSON.stringify(parser.parse(style_variations)),
-      personal_commentary: {
-        raw: personal_commentary
-      },
-      personal_commentary_raw: personal_commentary,
-      personal_commentary_formatted: JSON.stringify(parser.parse(personal_commentary)),
       contributors,
       related_substances,
       external_links,
+      summary_raw: summary,
       see_also,
       tags,
       citations,
       gallery_order,
       social_media_image,
       featured,
-      subarticles,
-    }, { new: true }).exec();
+      subarticles
+    });
 
-    res.send({ effect: updatedEffect });
+    const updated = await effect.save();
+
+    res.send({ effect: updated });
+
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });

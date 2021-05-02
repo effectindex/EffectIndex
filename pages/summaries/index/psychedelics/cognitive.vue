@@ -2,12 +2,12 @@
   <div class="pageContent effectCategories">
     <div>
       <Icon
-        filename="cogs.svg"
+        filename="user.svg"
         class="categoryIcon"
       />
-      <h1> Miscellaneous Effects of Psychedelics </h1>
+      <h1> Cognitive Effects of Psychedelics </h1>
       <div class="categoryDescription">
-        <p> This article breaks down the subjective miscellaneous effects of the psychedelic experience into simple and easy to understand descriptions with accompanying image replications. This is done without resorting to metaphor, analogy, or personal trip reports. </p>
+        <p> This article breaks down the subjective cognitive effects of the psychedelic experience into simple and easy to understand descriptions with accompanying image replications. This is done without resorting to metaphor, analogy, or personal trip reports. </p>
         <p> These descriptions are not specific to any particular substance but are applicable to the effects which commonly occur in various forms under the influence of almost any psychedelic compound. This includes, but is not limited to, both classical and research chemical psychedelics, such as: </p>
         <p style="font-style: italic;">
           LSD, Psilocybin mushrooms, DMT, Ayahuasca, Mescaline, 5-MeO-MiPT, 2C-B, LSA, AL-LAD, ALD-52, 1P-LSD, 2C-B-Fly, 2C-C, 2C-D, 2C-E, 2C-P, 4-AcO-DMT, 4-HO-MET, 4-HO-MiPT, 5-MeO-DMT, DPT, and DOC.
@@ -19,68 +19,67 @@
 
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
-        Auditory Effects
+        Cognitive Amplifications
         <Icon 
-          filename="volume-up.svg"
+          filename="arrow-up.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription">
-        <b> Auditory effects </b> are any subjective effect which directly alters a person's sense of hearing.
+        <b> Cognitive amplifications </b> are defined as any subjective effect that increases, enhances, or intensifies a facet of a person's sense of cognition.
       </p>
 
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'auditory')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'enhancement')"
         :key="effect._id"
         :index="i"
         :effect="effect"
       />
     </div>
 
-
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
-        Tactile Effects
+        Cognitive Suppressions
         <Icon 
-          filename="hand-paper.svg"
+          filename="arrow-down.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription">
-        <b> Tactile effects </b> are any subjective effect which directly alters a person's sense of touch.
+        <b> Cognitive suppressions </b> are any subjective effect which decreases or lowers the intensity of an aspect of a person's cognition.
       </p>
 
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'tactile')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'suppression')"
         :key="effect._id"
         :index="i"
         :effect="effect"
       />
     </div>
 
-
-
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
-        Multisensory Effects
+        Novel States
         <Icon 
-          filename="cogs.svg"
+          filename="lightbulb.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription"> 
-        <b> Multisensory effects </b> are any subjective effect which directly alters two or more senses simultaneously. <br> <br> 
-        Although some hallucinatory effects may affect multiple senses at one time they are usually 
-        not categorized as 'multisensory effects' unless they do so consistently.
-        For example, while experiences with autonomous entities may sometimes have a tactile component to them, more often
-        than not they are primarily a visual experience and are therefore classified as such.
+        A <b> novel cognitive state </b> is any cognitive effect which does not
+        merely amplify or suppress familiar states of mind, but rather induces an experience that is qualitatively
+        different from that of ordinary consciousness. <br> <br>
+        Although many transpersonal and psychological effects also technically fit into this definition, they are
+        excluded from this category of effects as they have their own defining qualities which standard novel states do not. 
       </p>
         
+        
+      
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'multisensory')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'novel')"
         :key="effect._id"
         :index="i"
         :effect="effect"
@@ -89,22 +88,21 @@
 
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
-        Physical Effects
+        Psychological States
         <Icon 
-          filename="heart-rate.svg"
+          filename="psychological.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription">
-        <b> Physical effects </b> are any subjective effect which directly affects an aspect of a person's physical body.
-        <br> <br>
-        Although many uncomfortable physical effects also technically fit into this definition, they are excluded from this category of
-        effects as they have their own defining qualities which standard physical effects do not.
+        <b> Psychological effects </b> are any cognitive effect that is either 
+        established within the psychological literature or arises as a result of the complex interplay between other 
+        more simplistic components such as cognitive enhancements and suppressions.
       </p>
-        
+
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'psychological state')"
         :key="effect._id"
         :index="i"
         :effect="effect"
@@ -113,23 +111,22 @@
 
     <div class="effectsContainer">
       <h3 class="titleContainer"> 
-        Uncomfortable Effects
+        Transpersonal States
         <Icon 
-          filename="frown.svg"
+          filename="infinity.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription">
-        An <b> uncomfortable physical effect </b> is any 
-        substance-induced alteration of a person's physical state which is unpleasant, undesirable,
-        painful, or otherwise a source of distress. In most cases they indicate a temporary part 
-        of a substance's interaction with the body. However, in certain contexts, they can also 
-        indicate the need for attention or even medical treatment if they become dangerously severe.
+        <b> Transpersonal states </b> are any subjective effect which feels as if it alters
+        a person's cognition in a manner which relates to or contains information regarding their place in the universe,
+        the inner workings of reality or consciousness, and the context of their existence. The fullest manifestation of 
+        these effects fall under what are sometimes called "peak", "transcendent" or "transformative" experiences.
       </p>
         
       <long-summary 
-        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'uncomfortable')"
+        v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'transpersonal state')"
         :key="effect._id"
         :index="i"
         :effect="effect"
@@ -144,13 +141,13 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/summaries/psychedelics/cognitive">
-          Cognitive Psychedelic Effects
+        <nuxt-link to="/summaries/psychedelics/visual">
+          Visual Psychedelic Effects
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/summaries/psychedelics/visual">
-          Visual Psychedelic Effects
+        <nuxt-link to="/summaries/psychedelics/miscellaneous">
+          Miscellaneous Psychedelic Effects
         </nuxt-link>
       </li>
     </ul>
@@ -168,7 +165,7 @@ export default {
   },
   head() {
     return {
-      title: "Miscellaneous Psychedelic Effects"
+      title: "Cognitive Psychedelic Effects"
     };
   },
   scrollToTop: true,
@@ -181,9 +178,6 @@ export default {
     effects() {
       return this.$store.state.effects;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("getEffects");
   },
   mounted() {
     if (this.linkedEffect) {
