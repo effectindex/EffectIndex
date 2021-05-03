@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent">
-    <article v-show="!$fetchState.pending">
+    <article>
       <Icon
         :filename="icon"
         class="categoryIcon"
@@ -199,14 +199,6 @@ export default {
     Icon,
     RelatedReports
   },
-  data() {
-    return {
-      effect: {
-        type: Object,
-        default: () => ({})
-      }
-    };
-  },
   computed: {
     icon() {
       let tags = this.effect["tags"];
@@ -234,12 +226,15 @@ export default {
     },
   },
   scrollToTop: true,
-  async fetch() {
+  async asyncData({ params, $axios, error }) {
     try {
-      const { name } = this.$route.params;
-      const { effect } = await this.$axios.$get(`/api/effects/${name}`);
-      if (effect) this.effect = effect;
-      else this.$nuxt.error({ statusCode: 404, message: 'Effect not found' });
+      const { name } = params;
+      const { effect } = await $axios.$get(`/api/effects/${name}`);
+      if (effect) {
+        return { effect };
+      } else {
+        error({ statusCode: 404, message: 'Effect not found' });
+      }
     } catch (error) {
       console.log(error);
     }

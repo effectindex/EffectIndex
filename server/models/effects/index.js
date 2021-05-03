@@ -60,10 +60,11 @@ router.get('/', async (req, res) => {
       .find()
       .sort({ name: 1 })
       .select(
-        '_id tags markup_format featured subarticles name url social_media_image long_summary summary_raw')
+        '_id tags featured subarticles name url social_media_image long_summary.parsed summary_raw')
       .exec();
     res.send({ effects });
   } catch (error) {
+    console.log(error);
     res.status(500).send({ error });
   }
 

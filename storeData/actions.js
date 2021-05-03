@@ -289,7 +289,7 @@ export const actions = {
   // Articles {
   async getArticles({ commit }) {
     try {
-      const { articles } = await this.$axios.$get('/api/articles/');
+      const { articles } = await this.$axios.$get('/api/articles');
       commit ("set_articles", articles);
     } catch (error) {
       throw new Error(error);
@@ -348,7 +348,7 @@ export const actions = {
   // Reports 
   async getReports({ commit }) {
     try {
-      let { reports } = await this.$axios.$get("/api/reports/");
+      let { reports } = await this.$axios.$get("/api/reports");
       commit("set_reports", reports);
     } catch (error) {
       throw new Error(error);
