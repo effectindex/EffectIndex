@@ -6,7 +6,7 @@
     >
       <header-nav />
       <main class="page">
-        <nuxt keep-alive />
+        <nuxt />
       </main>
       <custom-footer />
     </div>
