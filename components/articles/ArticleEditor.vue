@@ -135,11 +135,16 @@ export default {
     async submitArticle () {
       try {
         if (this.isNew) {
-          const { article } = await this.$axios.$post('/api/articles', { article: this.article });
+          const submission = { ...this.article };
+          delete submission.body.parsed;
+          const { article } = await this.$axios.$post('/api/articles', { article: submission });
           this.$router.push(`/articles/${article.slug}`);
         } else {
           const { _id } = this.article;
-          const { article } = await this.$axios.$post(`/api/articles/${_id}`, { article: this.article });
+          const submission = { ...this.article };
+          delete submission.body.parsed;
+          const { article } = await this.$axios.$post(`/api/articles/${_id}`, { article: submission });
+          
           this.$router.push(`/articles/${article.slug}`);
         }
       } catch (error) {

@@ -1,7 +1,6 @@
 <template>
   <div class="pageContent">
     <article
-      v-show="!$fetchState.pending"
       class="article"
     >
       <client-only>
@@ -69,7 +68,7 @@ export default {
   },
   data() {
     return {
-      article: () => ({
+      article: {
         title: undefined,
         subtitle: undefined,
         _id: undefined,
@@ -78,16 +77,16 @@ export default {
         body: {
           parsed: []
         }
-      })
+      }
     };
   },
-  async fetch() {
+  async asyncData({ params, $axios, error }) {
     try {
-      const { slug } = this.$route.params;
-      const { article } = await this.$axios.$get(`/api/articles/${ slug }`);
-      this.article = article;
-    } catch (error) {
-      console.log(error);
+      const { slug } = params;
+      const { article } = await $axios.$get(`/api/articles/${ slug }`);
+      return { article };
+    } catch (e) {
+      error({ statusCode: 404, message: 'That article could not be found.' });
     }
   },
   methods: {

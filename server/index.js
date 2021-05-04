@@ -19,7 +19,7 @@ const firstRun = require("./models/firstRun");
 app.set("port", port);
 
 // Import API Routes
-app.use(express.json());
+app.use(express.json({ limit: "1mb" }));
 app.use(api);
 
 // Import and Set Nuxt.js options

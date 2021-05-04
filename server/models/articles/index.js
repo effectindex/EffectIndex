@@ -110,9 +110,13 @@ router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasRoles([
 
 router.get('/:slug', async (req, res, next) => {
   try {
-    const slug = req.params.slug;
-    const article = await Article.findOne({ slug }).or({ publication_status: ['published', 'unlisted'], }).populate('authors');;
-    res.json({ article });
+    const { slug } = req.params;
+    const article = await Article.findOne({ slug }).or({ publication_status: ['published', 'unlisted'], }).populate('authors');
+    if (article) {
+      res.json({ article });
+    } else {
+      throw new Error('Article not found.');
+    }
   } catch (error) {
     res.sendStatus(404);
   }
