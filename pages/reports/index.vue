@@ -111,10 +111,10 @@ export default {
   },
   computed: {
     reports() {
-      return this.$store.state.reports;
+      return this.$store.state.reports.list;
     },
     profileNames() {
-      return this.$store.state.profiles.map(profile => profile.username);
+      return this.$store.state.profiles.list.map(profile => profile.username);
     },
     substances() {
       let substanceList = new Set();
@@ -152,8 +152,8 @@ export default {
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getReports");
-    await store.dispatch("getProfiles");
+    await store.dispatch("reports/get");
+    await store.dispatch("profiles/get");
   },
   methods: {
     hasProfile(name) {

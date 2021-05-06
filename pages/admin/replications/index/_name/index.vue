@@ -16,7 +16,7 @@ export default {
   },
   middleware: ["auth"],
   async asyncData({ store, params }) {
-    let { replication } = await store.dispatch("getReplication", params.name);
+    let { replication } = await store.dispatch("replications/getReplication", params.name);
     return { replication };
   },
   methods: {

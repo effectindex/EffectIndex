@@ -46,11 +46,11 @@ export default {
   async asyncData({ store, params, error }) {
     let username = params.username;
 
-    let { profile } = await store.dispatch("getProfileByName", username);
+    let { profile } = await store.dispatch("profiles/getProfileByName", username);
     if (!profile) return;
 
     let { replications } = await store.dispatch(
-      "getReplicationsByArtist",
+      "replications/getReplicationsByArtist",
       username
     );
 

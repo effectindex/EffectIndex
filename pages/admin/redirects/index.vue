@@ -47,7 +47,7 @@ export default {
         await this.$axios.$post('/api/redirects', { redirect });
         this.$refs.redirectInput.clearFields();
         this.$toasted.show('The redirect was successfully added.', { duration: 2000, type: 'success' });
-        this.$store.dispatch('getRedirects');
+        this.$store.dispatch('redirects/get');
         this.$fetch();
       } catch (error) {
         this.$toasted.show('There was an error adding the redirect.', { duration: 2000, type: 'success' });
@@ -59,7 +59,7 @@ export default {
       try {
         await this.$axios.$delete(`/api/redirects/${id}`);
         this.$toasted.show('The redirect was successfully deleted.', { duration: 2000, type: 'success' });
-        this.$store.dispatch('getRedirects');
+        this.$store.dispatch('redirects/get');
         this.$fetch();
       } catch (error) {
         this.$toasted.show('There was an error deleting the redirect.', { duration: 2000, type: 'success' });
@@ -72,7 +72,7 @@ export default {
       try {
         await this.$axios.$put(`/api/redirects/${_id}`, { redirect });
         this.$toasted.show('The redirect was successfully updated.', { duration: 2000, type: 'success' });
-        this.$store.dispatch('getRedirects');
+        this.$store.dispatch('redirects/get');
         this.$fetch();
       } catch (error) {
         this.$toasted.show('There was an error updating the redirect.', { duration: 2000, type: 'success' });

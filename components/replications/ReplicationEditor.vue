@@ -211,8 +211,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("getEffects");
-    this.$store.dispatch("getSubstances");
+    this.$store.dispatch("effects/get");
   },
 
   methods: {

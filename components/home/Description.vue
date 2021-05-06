@@ -69,7 +69,7 @@ data() {
 },
 computed: {
   effectCount() {
-    return this.$store.state.effects.length;
+    return this.$store.state.effects.list.length;
   }
 },
 methods: {

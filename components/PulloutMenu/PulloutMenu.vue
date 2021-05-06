@@ -28,7 +28,7 @@ export default {
     PulloutItem
   },
   computed: {
-    navbarPullout() { return this.$store.state.navbar_pullout; },
+    navbarPullout() { return this.$store.state.pullout_menu.active; },
     navigation() { return this.$store.state.navigation; }
   },
   methods: {

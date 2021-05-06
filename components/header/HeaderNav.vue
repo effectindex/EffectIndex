@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     navbarPullout() {
-      return this.$store.state.navbar_pullout;
+      return this.$store.state.pullout_menu.active;
     }
   }
 };

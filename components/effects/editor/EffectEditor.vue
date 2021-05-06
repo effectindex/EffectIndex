@@ -239,7 +239,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getGallery");
+    this.$store.dispatch("gallery/get");
   },
   methods: {
     toggleDetails() {

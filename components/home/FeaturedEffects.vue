@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     featuredEffects() {
-      return this.$store.state.effects.filter((effect) => effect.featured);
+      return this.$store.state.effects.list.filter((effect) => effect.featured);
     },
 
     visualEffects() {

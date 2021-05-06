@@ -58,15 +58,15 @@ export default {
   },
   computed: {
     profiles() {
-      return this.$store.state.profiles;
+      return this.$store.state.profiles.list;
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getProfiles");
+    await store.dispatch("profiles/get");
   },
   methods: {
     async deleteProfile(id) {
-      await this.$store.dispatch("deleteProfile", id);
+      await this.$store.dispatch("profiles/delete", id);
 
         this.$toasted.show(
           'The profile was successfully deleted. You\'re a horrible person.',

@@ -50,11 +50,11 @@ export default {
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getInvitations");
+    await store.dispatch("admin/getInvitations");
   },
   methods: {
     async deleteInvitation(id) {
-      await this.$store.dispatch("deleteInvitation", id);
+      await this.$store.dispatch("admin/deleteInvitation", id);
     },
     formatDate(date) {
       return fecha.format(new Date(date), "MMMM D, YYYY");

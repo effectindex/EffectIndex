@@ -16,13 +16,13 @@
       PostEditor
     },
     async asyncData ({ store, params }) {
-      let { post } = await store.dispatch('getSingleBlogPost', params.slug);
+      let { post } = await store.dispatch('blog/getPost', params.slug);
       return { post };
     },
     methods: {
       async submitPost(post) {
         post._id = this.post._id;
-        await this.$store.dispatch('updateBlogPost', post);
+        await this.$store.dispatch('blog/updatePost', post);
         this.$router.push('/blog');
       }
     },

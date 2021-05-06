@@ -19,15 +19,15 @@ export default {
   scrollToTop: true,
   computed: {
     blogPosts() {
-      return this.$store.state.blogPosts;
+      return this.$store.state.blog.posts;
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getBlogPosts");
+    await store.dispatch("blog/getPosts");
   },
   methods: {
     async deletePost(id) {
-      this.$store.dispatch("deleteBlogPost", id);
+      this.$store.dispatch("blog/deletePost", id);
     }
   },
   head () {

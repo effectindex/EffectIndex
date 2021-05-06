@@ -61,15 +61,15 @@ export default {
   },
   computed: {
     reports () {
-      return this.$store.state.reports;
+      return this.$store.state.reports.list;
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getReports");
+    await store.dispatch("reports/get");
   },
   methods: {
     async deleteReport(id) {
-      await this.$store.dispatch('deleteReport', id);
+      await this.$store.dispatch('reports/delete', id);
 
       this.$toasted.show(
         'The report has been successfully deleted.',

@@ -94,7 +94,7 @@ export default {
       const featuredReplicationFilter = (replication) => (
         (replication.type === 'image' || replication.type === 'gfycat') && (replication.featured));
 
-      const featuredReplications = this.$store.state.replications
+      const featuredReplications = this.$store.state.replications.list
         .filter(featuredReplicationFilter);
 
       return shuffle(featuredReplications);
@@ -107,7 +107,7 @@ export default {
     },
 
     effects() {
-      return this.$store.state.effects;
+      return this.$store.state.effects.list;
     },
 
     replicatedEffects() {
@@ -149,8 +149,8 @@ export default {
   },
   methods: {
     toggleModal() {
-      this.$store.commit("set_modal_data", this.modalData);
-      this.$store.commit("toggle_modal");
+      this.$store.commit("modal/set_data", this.modalData);
+      this.$store.commit("modal/toggle");
     },
 
     nextImage() {

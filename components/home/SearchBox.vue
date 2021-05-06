@@ -15,7 +15,7 @@
         @input="changeSearchInput"
       >
       <div 
-        v-show="searchInput.length"
+        v-show="searchInput"
         class="clearButton"
         @click="clear"
       >
@@ -37,27 +37,27 @@ export default {
   },
   computed: {
     searchInput() {
-      return this.$store.state.search_input;
+      return this.$store.state.search.input;
     }
   },
   created() {
     let subscription = this.$store.subscribe((mutation, state) => {
-      const { total_results } = state.search_results;
-      if (mutation.type === 'set_search_results' && (total_results > 0)) {
+      const { total_results } = state.search.results;
+      if (mutation.type === 'search/set_results' && (total_results > 0)) {
         this.$router.push('/search');
       }
     });
   },
   methods: {
     changeSearchInput(e) {
-      this.$store.dispatch('changeSearch', e.target.value);
+      this.$store.commit('search/change_input', e.target.value);
       this.performSearch();
     },
     performSearch: debounce(function() {
-      this.$store.dispatch('search', this.searchInput);
+      this.$store.dispatch('search/search', this.searchInput);
     }, 400, {trailing: true}),
     clear() {
-      this.$store.commit('clear_search_input');
+      this.$store.commit('search/clear_input');
       this.$refs.searchInput.focus();
     }
   },

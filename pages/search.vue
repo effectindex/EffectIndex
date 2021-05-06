@@ -96,25 +96,25 @@ export default {
     },
 
     effectResults() {
-      return this.$store.state.search_results.effects;
+      return this.$store.state.search.results.effects;
     },
 
     reportResults() {
-      return this.$store.state.search_results.reports;
+      return this.$store.state.search.results.reports;
     },
 
     articleResults() {
-      return this.$store.state.search_results.articles;
+      return this.$store.state.search.results.articles;
     },
 
     searchInput() {
-      return this.$store.state.search_input;
+      return this.$store.state.search.input;
     }
   },
   async fetch({ store, route }) {
     if (route.query.q) {
-      await store.dispatch('search', route.query.q);
-      store.commit('change_search_input', route.query.q);
+      await store.dispatch('search/search', route.query.q);
+      store.commit('search/change_input', route.query.q);
     }
   },
   watchQuery: ['q'],
@@ -122,20 +122,20 @@ export default {
     this.$refs.searchInput.focus();
   },
   destroyed() {
-    this.$store.commit('clear_search_input');
+    this.$store.commit('search/clear_input');
   },
   methods: {
     changeSearchInput(e) {
-      this.$store.dispatch('changeSearch', e.target.value);
+      this.$store.commit('search/change_input', e.target.value);
       this.performSearch();
     },
 
     performSearch: debounce(function() {
-      this.$store.dispatch('search', this.searchInput);
+      this.$store.dispatch('search/search', this.searchInput);
     }, 400, {trailing: true}),
 
     clear() {
-      this.$store.commit('clear_search_input');
+      this.$store.commit('search/clear_input');
       this.$refs.searchInput.focus();
     }
   }

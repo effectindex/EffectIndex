@@ -26,13 +26,13 @@ export default {
   },
   computed: {
     audioReplications() {
-      return this.$store.state.replications.filter(
+      return this.$store.state.replications.list.filter(
         (replication) => (replication.type === 'audio'));
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getReplications");
-    await store.dispatch("getEffects");
+    await store.dispatch("replicatons/get");
+    await store.dispatch("effects/get");
   },
   head() {
     return {

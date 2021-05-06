@@ -71,7 +71,7 @@ export default {
       let replication = this.replication;
       if (!Array.isArray(replication.associated_effects)) return undefined;
 
-      return this.$store.state.effects.filter(
+      return this.$store.state.effects.list.filter(
         (effect) => replication.associated_effects.includes(effect._id));
     },
     associatedSubstances() {

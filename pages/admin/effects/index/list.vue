@@ -40,20 +40,20 @@ export default {
   computed: {
     filteredEffects() {
       return this.filter
-        ? this.$store.state.effects.filter(effect =>
+        ? this.$store.state.effects.list.filter(effect =>
             effect.tags.some(tag => tag.indexOf(this.filter) > -1)
           )
-        : this.$store.state.effects;
+        : this.$store.state.effects.list;
     }
   },
   mounted() {
-    this.$store.dispatch("getEffects");
+    this.$store.dispatch("effects/get");
   },
   middleware: ["auth"],
   scrollToTop: true,
   methods: {
     deleteEffect(id) {
-      this.$store.dispatch("deleteEffect", id);
+      this.$store.dispatch("effects/delete", id);
 
         this.$toasted.show(
           'The effect has been deleted.',

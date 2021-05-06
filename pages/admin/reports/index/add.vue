@@ -17,7 +17,7 @@
     methods: {
       async submitReport(report) {
         try {
-          let result = this.$store.dispatch("submitReport", report);
+          let result = this.$store.dispatch("reports/submit", report);
 
           this.$toasted.show(
             'The report has been successfully added.',
