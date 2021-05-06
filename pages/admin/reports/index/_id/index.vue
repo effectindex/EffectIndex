@@ -18,7 +18,7 @@ export default {
   },
   async asyncData({ params, store }) {
     try {
-      let { reportData, sectionVisibility } = await store.dispatch('getReportById', params.id);
+      let { reportData, sectionVisibility } = await store.dispatch('reports/getReportById', params.id);
       return { reportData, sectionVisibility };
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ export default {
   methods: {
     async updateReport(report) {
       try {
-        let response = await this.$store.dispatch('updateReport', report);
+        let response = await this.$store.dispatch('reports/update', report);
 
         this.$toasted.show(
           'The report has been successfully updated.',

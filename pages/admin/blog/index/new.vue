@@ -16,7 +16,7 @@
     },
     methods: {
       async submitPost(post) {
-        this.$store.dispatch('submitBlogPost', post).then(this.$router.push('/blog/'));
+        this.$store.dispatch('blog/submitPost', post).then(this.$router.push('/blog/'));
       }
     },
     middleware: ['auth']

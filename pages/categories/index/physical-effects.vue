@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     effects() {
-      return this.$store.state.effects;
+      return this.$store.state.effects.list;
     }
   }
 };

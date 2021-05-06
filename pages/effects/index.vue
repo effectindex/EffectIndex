@@ -410,12 +410,12 @@ export default {
   },
   computed: {
     effects() {
-      return this.$store.state.effects;
+      return this.$store.state.effects.list;
     },
   },
   watchQuery: ['type'],
   async fetch ({ store }) {
-    await store.dispatch("getEffects");
+    await store.dispatch("effects/get");
   },
   methods: {
     filterEffectsByTag(...tags) {

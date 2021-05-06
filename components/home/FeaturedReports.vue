@@ -44,7 +44,7 @@ export default {
 
   computed: {
     reports() {
-      return this.$store.state.reports;
+      return this.$store.state.reports.list;
     },
     featuredReports() {
       const shuffledReports = shuffle(this.reports.filter((report) => report.featured));

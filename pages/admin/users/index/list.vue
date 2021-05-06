@@ -53,11 +53,11 @@ export default {
   },
   computed: {
     users() {
-      return this.$store.state.admin.userlist;
+      return this.$store.state.admin.users;
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getAllUsers");
+    await store.dispatch("admin/getAllUsers");
   },
   methods: {
     listRoles(user) {
@@ -70,7 +70,7 @@ export default {
       return roles.join(", ");
     },
     async deleteUser(id) {
-      await this.$store.dispatch("deleteUser", id);
+      await this.$store.dispatch("admin/deleteUser", id);
 
         this.$toasted.show(
           'The user has been successfully deleted.',

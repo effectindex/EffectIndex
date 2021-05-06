@@ -129,7 +129,7 @@ export default {
   computed: {
     profile() {
       let profile = undefined;
-      let profiles = this.$store.state.profiles;
+      let profiles = this.$store.state.profiles.list;
       profile = profiles.find(
         profile => profile.username === this.report.subject.name
       );
@@ -146,13 +146,13 @@ export default {
     }
   },
   async asyncData({ store, params, error }) {
-    let report = await store.dispatch("getReportBySlug", params.slug);
+    let report = await store.dispatch("reports/getReportBySlug", params.slug);
     if (!report)
       error({ statusCode: 404, message: "That report does not exist." });
     return report;
   },
   async fetch({ store }) {
-    await store.dispatch("getProfiles");
+    await store.dispatch("profiles/get");
   },
   head() {
     return {

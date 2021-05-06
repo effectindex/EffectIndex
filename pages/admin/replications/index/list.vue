@@ -168,10 +168,10 @@ export default {
   },
   computed: {
     replications() {
-      return this.$store.state.replications;
+      return this.$store.state.replications.list;
     },
     effects() {
-      return this.$store.state.effects;
+      return this.$store.state.effects.list;
     },
     filteredEffects() {
       return this.effects.filter((effect) => effect.name.toLowerCase().indexOf(this.filter.toLowerCase()) > -1);;
@@ -198,8 +198,8 @@ export default {
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getReplications");
-    await store.dispatch("getEffects");
+    await store.dispatch("replications/get");
+    await store.dispatch("effects/get");
   },
   middleware: ["auth"],
   scrollToTop: true,
@@ -211,7 +211,7 @@ export default {
       } 
     },
     deleteReplication(id) {
-      this.$store.dispatch("deleteReplication", id);
+      this.$store.dispatch("replications/delete", id);
 
         this.$toasted.show(
           'The replication has been successfully deleted.',

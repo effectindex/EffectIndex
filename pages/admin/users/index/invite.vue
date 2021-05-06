@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     async generateInviteURL() {
-      let { invitation } = await this.$store.dispatch("generateInvitation", this.expiration);
+      let { invitation } = await this.$store.dispatch("admin/generateInvitation", this.expiration);
       this.generatedInvitation = invitation;
 
         this.$toasted.show(

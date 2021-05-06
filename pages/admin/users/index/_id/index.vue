@@ -47,13 +47,13 @@ export default {
     };
   },
   async asyncData({ store, params }) {
-    let { user } = await store.dispatch("getUser", params.id);
+    let { user } = await store.dispatch("admin/getUser", params.id);
     return { user };
   },
   methods: {
     async submit() {
       this.success = false;
-      let response = await this.$store.dispatch("updateUser", { user: this.user });
+      let response = await this.$store.dispatch("admin/updateUser", { user: this.user });
       if (response) this.success = true;
         this.$toasted.show(
           'The user has been successfully updated.',

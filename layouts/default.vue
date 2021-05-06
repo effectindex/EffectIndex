@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     navbarPullout() {
-      return this.$store.state.navbar_pullout;
+      return this.$store.state.pullout_menu.active;
     },
     modalActive() {
       return this.$store.state.modal.active;
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     toggleModal() {
-      this.$store.commit("toggle_modal");
+      this.$store.commit("modal/toggle");
     }
   },
   head() {

@@ -46,16 +46,16 @@ export default {
 
   computed: {
     imageReplications() {
-      return this.$store.state.replications.filter((replication) => replication.type === 'image');
+      return this.$store.state.replications.list.filter((replication) => replication.type === 'image');
     }
   },
 
   async fetch({ store }) {
     await Promise.all([
-      store.dispatch("getEffects"),
-      store.dispatch("getReplications"),
-      store.dispatch("getReports"),
-      store.dispatch("getArticles")
+      store.dispatch("effects/get"),
+      store.dispatch("replications/get"),
+      store.dispatch("reports/get"),
+      store.dispatch("articles/get")
     ]);
   }
 };

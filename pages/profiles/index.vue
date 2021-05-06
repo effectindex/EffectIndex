@@ -38,11 +38,11 @@ export default {
   },
   computed: {
     profiles() {
-      return this.$store.state.profiles;
+      return this.$store.state.profiles.list;
     }
   },
   async asyncData({ store }) {
-    await store.dispatch("getProfiles");
+    await store.dispatch("profiles/get");
   },
   scrollToTop: true,
   head() {

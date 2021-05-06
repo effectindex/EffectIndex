@@ -20,7 +20,7 @@ export default {
     async submitReplication(replication) {
       try {
         let returnedReplication = await this.$store.dispatch(
-          "submitReplication",
+          "replications/submit",
           replication
         );
         this.$router.push("/admin/replications/list");

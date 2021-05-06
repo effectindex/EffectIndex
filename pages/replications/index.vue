@@ -86,7 +86,7 @@ export default {
     }
   },
   async fetch({ store }) {
-    await store.dispatch("getGallery");
+    await store.dispatch("gallery/get");
   },
   methods: {
     scroll() {
@@ -97,10 +97,10 @@ export default {
 
       if (!prev) {
         let index = ((this.current_index + 1) >= this.replicated_effects.length) ? 0 : this.current_index + 1;
-        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[index]._id);
+        this.$store.dispatch("gallery/setGallerySelectedEffect", this.replicated_effects[index]._id);
       } else {
         let index = ((this.current_index - 1) <= 0) ? this.replicated_effects.length - 1 : this.current_index - 1;
-        this.$store.dispatch("setGallerySelectedEffect", this.replicated_effects[index]._id);
+        this.$store.dispatch("gallery/setGallerySelectedEffect", this.replicated_effects[index]._id);
       }
     },
   },

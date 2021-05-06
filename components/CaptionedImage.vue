@@ -161,8 +161,8 @@ export default {
   },
   methods: {
     toggleModal() {
-      this.$store.commit("set_modal_data", this.modalData);
-      this.$store.commit("toggle_modal");
+      this.$store.commit("modal/set_data", this.modalData);
+      this.$store.commit("modal/toggle");
     }
   },
 };

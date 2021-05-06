@@ -20,14 +20,14 @@ export default {
     BlogPost
   },
   async asyncData({ store, params, error }) {
-    let { post } = await store.dispatch("getSingleBlogPost", params.slug);
+    let { post } = await store.dispatch("blog/getPost", params.slug);
     if (!post) error({statusCode: 404, message: 'Blog post not found.'});
     return { post };
   },
   methods: {
     async deletePost(id) {
       this.$store
-        .dispatch("deleteBlogPost", id)
+        .dispatch("blog/deletePost", id)
         .then(this.$router.push("/blog/"));
     }
   },

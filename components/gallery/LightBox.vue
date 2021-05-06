@@ -239,8 +239,8 @@ export default {
         resource: (this.currentImage.type === 'image') ? this.base + this.currentImage.resource : this.currentImage.resource 
       };
 
-      this.$store.commit("set_modal_data", data);
-      this.$store.commit("toggle_modal");
+      this.$store.commit("modal/set_data", data);
+      this.$store.commit("modal/toggle");
     }
   }
 };

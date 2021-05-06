@@ -56,7 +56,7 @@ export default {
       this.errorMessage = "";
 
       try {
-        let newUser = await this.$store.dispatch("register", this.user);
+        let newUser = await this.$store.dispatch("admin/register", this.user);
         if (newUser) {
           this.success = true;
           this.$router.push("/user/login");

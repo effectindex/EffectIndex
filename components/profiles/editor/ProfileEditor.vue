@@ -78,7 +78,7 @@ export default {
       let profile = this.profile;
       delete profile._id;
 
-      let response = await this.$store.dispatch("submitProfile", { profile });
+      let response = await this.$store.dispatch("profiles/submit", { profile });
       if (response) {
         this.success = true;
         this.profile = response.profile;
@@ -95,7 +95,7 @@ export default {
     },
     async updateProfile() {
       let profile = this.profile;
-      let response = await this.$store.dispatch("updateProfile", { profile });
+      let response = await this.$store.dispatch("profiles/update", { profile });
 
       if (response) {
         this.success = true;
@@ -114,7 +114,7 @@ export default {
     },
     async grabProfile() {
       if (this.id) {
-        let { profile } = await this.$store.dispatch("getProfileById", this.id);
+        let { profile } = await this.$store.dispatch("profiles/getProfileById", this.id);
         if (profile) this.profile = profile;
       }
     }

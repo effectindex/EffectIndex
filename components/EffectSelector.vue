@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     selectEffect(effectId) {
-      this.$store.dispatch("setGallerySelectedEffect", effectId);
+      this.$store.dispatch("gallery/setSelectedEffect", effectId);
       this.$emit('effectSelected');
     }
   }

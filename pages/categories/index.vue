@@ -12,7 +12,7 @@
       };
     },
     async fetch ({ store }) {
-      await store.dispatch("getEffects");
+      await store.dispatch("effects/get");
     },
   };
 </script>

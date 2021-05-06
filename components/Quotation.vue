@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     profileImage() {
-      let profile = this.$store.state.profiles.find((profile) => profile.username === this.profile);
+      let profile = this.$store.state.profiles.list.find((profile) => profile.username === this.profile);
 
       return profile ? '/img/profiles/cropped/' + profile.profileImageCropped : undefined;
     },
@@ -61,7 +61,7 @@ export default {
     }
   },
   beforeCreate() {
-    if (this.$store.state.profiles.length < 1) this.$store.dispatch("getProfiles");
+    if (this.$store.state.profiles.list.length < 1) this.$store.dispatch("profiles/get");
   },
 };
 </script>

@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     replications() {
-      return this.$store.state.replications;
+      return this.$store.state.replications.list;
     },
     odd() {
       return (this.index % 2) ? true : false;
