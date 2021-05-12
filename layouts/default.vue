@@ -352,7 +352,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .searchResult .titleAuthor h3 {
@@ -367,6 +366,8 @@ main {
 .searchResult .substanceDose {
   text-align: right;
   flex: 1;
+  margin-left: 20px;
+  min-width: 150px;
   max-width: 300px;
 }
 
