@@ -56,8 +56,23 @@ export default {
     },
     async deletePerson(person) {
       try {
-        let result = await this.$axios.delete(`/api/persons/${person._id}`);
-        this.$fetch();
+
+        this.$toasted.show('Really delete?', {
+          action: [{
+              text: 'Yes, delete!',
+              onClick: async (e, toastObject) => {
+                await this.$axios.delete(`/api/persons/${person._id}`);
+                toastObject.goAway(0);
+                this.$fetch();
+              }
+            },
+            {
+              text: 'No, keep!',
+              onClick: (e, toastObject) => toastObject.goAway()
+            }]
+        });
+
+
       } catch (error) {
         console.log(error);
       }

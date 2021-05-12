@@ -7,17 +7,24 @@ const API_Error = require('../ApiError');
 const hasRoles = require('../HasRoles');
 
 const Invitation = require('./Invitation');
+const User = require('../users/User.js');
 
 router.post('/generate', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
-  let { expiration } = req.body;
-
+  const { user } = req;
   try {
+    const { _id } = user;
+    const creator = await User.findById(_id);
+    const invitation = new Invitation({
+      createdBy: creator._id
+    });
 
-    let invitation = new Invitation({ expiration });
-    let returnedInvitation = await invitation.save()
-      .catch((err) => { console.log(err); throw API_Error("SAVE_ERROR", "The invitation failed to save."); });
-    res.send({ invitation: returnedInvitation });
+    const saved = await invitation.save();
 
+    if (!saved) {
+      throw API_Error('SAVE_ERROR', 'The invitation failed to save.');
+    }
+
+    res.send({ code: saved._id });
   } catch (err) {
     next(err);
   }
@@ -38,8 +45,11 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['adm
 
 router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
   try {
-    let invitations = await Invitation.find().exec();
-    res.send(invitations);
+    let invitations = await Invitation
+      .find()
+      .populate('usedBy createdBy')
+      .exec();
+    res.send({ invitations });
   } catch (err) {
     next(err);
   }

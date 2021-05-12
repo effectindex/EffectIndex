@@ -1,70 +1,111 @@
 <template>
-  <div>
-    <hr>
-    <h1> Invitations </h1>
-
+  <div
+    class="pageContent"
+  >
+    <h2> Invitations </h2>
     <table>
       <thead>
-        <td> Created </td> <td> Used </td> <td> Used By </td> <td> URL </td> <td />
+        <tr>
+          <td> ID </td>
+          <td> Created on </td>
+          <td> Created by </td>
+          <td> Used by </td>
+          <td />
+        </tr>
       </thead>
-      <tr 
-        v-for="invitation in invitations"
-        :key="invitation._id"
-      >
-        <td> {{ formatDate(invitation.created) }} </td>
-        <td> {{ Boolean(invitation.used) ? 'Yes' : 'No' }} </td>
-        <td> {{ Boolean(invitation.used) ? invitation.usedBy : '' }} </td>
-        <td> {{ hostname + '/user/register/' + invitation._id }} </td>
-        <td>
-          <a 
-            class="delete"
-            style="color: red; cursor: pointer;"
-            @click="deleteInvitation(invitation._id)"
-          >          
-            <Icon
-              filename="times.svg"
-              color="red"
-              style="cursor: pointer; height: 1em; width: 1em;"
-            /> 
-          </a>
-        </td>
-      </tr>
+      <tbody>
+        <tr
+          v-for="invitation in invitations"
+          :key="invitation._id"
+        >
+          <td>
+            {{ invitation._id }} <a
+              class="copy"
+              @click="copyCode(invitation._id)"
+            > (copy) </a>
+          </td>
+          <td> {{ parseDate(invitation.created) }} </td>
+          <td> {{ invitation.createdBy ? invitation.createdBy.username : '' }} </td>
+          <td> {{ invitation.usedBy ? invitation.usedBy.username : '' }} </td>
+          <td>
+            <a
+              class="delete"
+              @click="deleteInvitation(invitation._id)"
+            > Delete </a>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
 
 <script>
-import fecha from "fecha";
-import Icon from '@/components/Icon';
+import fecha from 'fecha';
 
 export default {
-  components: {
-    Icon
+  data() {
+    return {
+      invitations: []
+    };
   },
-  computed: {
-    invitations() {
-      return this.$store.state.admin.invitations;
-    },
-    hostname() {
-      return process.env.BASE_URL;
+  async fetch() {
+    try {
+      const { invitations } = await this.$axios.$get('/api/invitations');
+      this.invitations = invitations;
+    } catch (error) {
+      console.log(error);
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("admin/getInvitations");
-  },
   methods: {
-    async deleteInvitation(id) {
-      await this.$store.dispatch("admin/deleteInvitation", id);
+    parseDate(date) {
+      try {
+      const formatted = fecha.format(new Date(date), 'DD/MM/YYYY hh:mm:ss');
+      return formatted;
+      } catch (error) {
+        console.log(error);
+      }
     },
-    formatDate(date) {
-      return fecha.format(new Date(date), "MMMM D, YYYY");
+    copyCode(code) {
+      const { protocol, hostname, port } = window.location;
+      const url = `${protocol}//${hostname}${port ? ':' + port : ''}/user/register/${code}`;
+       this.$toasted.show('Registration URL copied to clipboard', { type: 'success', duration: 2000 });
+      navigator.clipboard.writeText(url);
+    },
+    async deleteInvitation(id) {
+      try {
+        await this.$axios.$delete(`/api/invitations/${id}`);
+        this.$toasted.show('The invitation was successfully deleted.', { type: 'success', duration: 2000 });
+        this.$fetch();
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 };
 </script>
 
 <style scoped>
-.delete {
+table {
+  width: 100%;
+}
+
+table thead {
+  font-weight: bold;
+}
+
+a {
   cursor: pointer;
+}
+
+.delete {
+  color: red;
+}
+
+a.copy {
+  color: green;
+}
+
+.page-controls {
+  margin: 1em 0;
 }
 </style>

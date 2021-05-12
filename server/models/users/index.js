@@ -12,6 +12,19 @@ const Invitation = require('../invitations/Invitation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+  try {
+    const users = await User.find()
+      .select('_id username person roles')
+      .populate('person')
+      .exec();
+    res.send({ users });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 router.post('/add', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
 
   const user = req.body.user;
@@ -31,37 +44,37 @@ router.post('/add', secured({secret: config.server.jwtSecret}), hasRoles(['admin
 });
 
 router.post('/register', async (req, res, next) => {
-  let user = req.body.user;
-  let scope = undefined;
-  let invitation = undefined;
+
+  const { user } = req.body;
 
   try {
-    let userCount = await User.count().exec();
 
-    if (userCount > 0) {
-      if (!('inviteCode' in user)) throw API_Error('REGISTRATION_ERROR', 'The invitation code was invalid.');
-      if (!user.inviteCode) throw API_Error('REGISTRATION_ERROR', 'An invitation code is required.');
-      invitation = await Invitation.findById(user.inviteCode).exec();
-      if (!invitation) throw API_Error('REGISTRATION_ERROR', 'Invitation not found.');
-      if ((invitation.used === true) || (invitation.expires < Date.now())) throw API_Error('REGISTRATION_ERROR', 'Invitation is invalid or expired.');
-      if (!('username' in user) || !('password' in user)) throw API_Error('REGISTRATION_ERROR', 'Invalid registration details.');
-    } else if (userCount === 0) scope = { admin: true, editor: false };
+    if (!user || !'username' in user || !'password' in user)  throw API_ERROR('REGISTRATION_ERROR', 'Invalid registration details.');
+    if (!user.inviteCode) throw API_Error('REGISTRATION_ERROR', 'An invitation code is required to register.');
 
-    let username = String(user.username);
-    let password = String(user.password);
+    const invitation = await Invitation.findById(user.inviteCode).exec();
+
+    if (!invitation) throw API_Error('REGISTRATION_ERROR', 'Invitation was not found.');
+    if (invitation.user) throw API_ERROR('REGISTRATION_ERROR', 'Invitation is invalid.');
+
+    const { username, password } = user;
 
     if (username.length < 4 || username.length > 15) throw API_Error('REGISTRATION_ERROR', 'Username must be between 4 and 15 characters.');
     if (password.length < 6) throw API_Error('REGISTRATION_ERROR', 'The password must be 6 or more characters.');
 
     let hash = await bcrypt.hash(password, 10);
 
-    let newUser = new User({ username, hash, scope });
+    let newUser = new User({ username, hash });
 
-    let returnedUser = await newUser.save();
+    let saved = await newUser.save();
 
-    if (returnedUser && invitation) await invitation.update({ used: true, usedBy: returnedUser.username }).exec();
+    if (saved) {
+      invitation.used = true;
+      invitation.usedBy = saved._id;
+      invitation.save();
+    } 
 
-    res.send({ user: { username: returnedUser.username, _id: returnedUser._id } });
+    res.sendStatus(200);
 
   } catch (err) {
     if (err.code === 11000) next(API_Error('REGISTRATION_ERROR', 'Username already in use.'));
@@ -69,24 +82,38 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-router.get('/user', secured({secret: config.server.jwtSecret}), (req, res, next) => {
+router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res, next) => {
   try {
-    let user = req.user;
-    if (!user) throw API_Error('LOGIN_ERROR', 'User is not logged in.');
-    res.send({ user });
-  } catch (error) { next(error); }
+    const { user } = req;
+    if (user && '_id' in user) {
+      const data = await User.findById(user._id);
+      if (data) {
+        const { username, roles } = data;
+        res.send({ user: {
+          username,
+          roles
+        }});
+      } else {
+        throw new API_Error('AUTHENTICATION_ERROR', 'User with provided ID was not found.');
+      }
+    } else {
+      throw new API_Error('AUTHENTICATION_ERROR', 'User ID not provided.');
+    } 
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post('/login', async (req, res, next) => {
   try {
     if (!('user' in req.body)) throw API_Error('LOGIN_ERROR', 'The login request was invalid.');
-    let user = req.body.user;
+    const { user } = req.body;
     if (!('username' in user) || !('password' in user)) throw API_Error('LOGIN_ERROR', 'A username and password is required.');
-    let foundUser = await User.findOne({ username: user.username }).exec();
+    const foundUser = await User.findOne({ username: user.username }).exec();
     if (!foundUser) throw API_Error('LOGIN_ERROR', 'Username not found.');
-    let validPassword = await bcrypt.compare(String(user.password), foundUser.hash);
+    const validPassword = await bcrypt.compare(String(user.password), foundUser.hash);
     if (!validPassword) throw API_Error('LOGIN_ERROR', 'Incorrect password.');
-    let token = jwt.sign({ username: foundUser.username, scope: foundUser.scope }, config.server.jwtSecret);
+    const token = jwt.sign({ username: foundUser.username, _id: foundUser._id, roles: foundUser.roles }, config.server.jwtSecret);
     res.send({ token });
   } catch (error) {
     next(error);
@@ -98,16 +125,6 @@ router.post('/logout', async (req, res, next) => {
   res.sendStatus(500);
 });
 
-router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
-  try {
-    let userList = await User.find()
-      .select('_id username scope')
-      .exec();
-    res.send(userList);
-  } catch (err) {
-    next(err);
-  }
-});
 
 router.get('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
   const id = req.params.id;

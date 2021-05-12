@@ -1,92 +1,132 @@
 <template>
-  <div class="inviteUsers">
-    <hr>
-    <h3> Invite Users </h3>
-    
-    <label for="inviteUsers__label"> Expiration (optional) </label>
-    <client-only>
-      <datepicker 
-        v-model="expiration"
-        :disabled-dates="disabledDates"
-        :clear-button="true"
-        name="expiration"
-        format="dsu MMMM, yyyy"
-      />
-    </client-only>
-    <button @click="generateInviteURL">
-      Generate
-    </button>
-    <div 
-      v-if="generatedInvitation"
-      class="generatedInvitation"
-    >
-      <div class="success">
-        Invitation Generated
-      </div>
-      <input
-        ref="inviteURLInput"
-        :value="inviteURL"
+  <div class="pageContent generate-invitation">
+    <h2> Generate Invitation </h2>
+
+    <p> Generated invitations are invalid after being unclaimed for 24 hours. </p>
+
+    <div class="generate-invitation-container">
+      <button
+        v-if="!code"
+        class="generate-invitation-button"
+        @click="generateInvitation"
       >
-      <button @click="copyURL">
-        Copy
+        Generate
       </button>
+
+      <div
+        v-else
+        class="invitation-code-container"
+      >
+        <h3> Invitation Generated! </h3>
+        <div class="invitation-code">
+          <div class="code-container">
+            <span class="description"> Invitation code: </span>
+            <span class="code"> {{ code }} </span>
+          </div>
+          <div class="url-container">
+            <span class="description"> Registration URL: </span>
+            <span class="url"> {{ url }} </span>
+          </div>
+        </div>
+        <div
+          class="copy-controls"
+        >
+          <a
+            href="#"
+            @click="copy"
+          > Copy registration URL </a>
+
+          <a @click="clear"> Generate another? </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Datepicker from "vuejs-datepicker";
-
 export default {
-  components: {
-    Datepicker
-  },
   data() {
     return {
-      expiration: undefined,
-      generatedInvitation: undefined
+      code: undefined
     };
   },
   computed: {
-    disabledDates() {
-      return { to: new Date(Date.now()) };
-    },
-    inviteURL() {
-      let hostname = this.hostname;
-      return this.generatedInvitation ? hostname + "/user/register/" + this.generatedInvitation._id : "";
-    },
-    hostname() {
-      return process.env.BASE_URL;
+    url() {
+      if (this.code && !process.server) {
+        const { port, protocol, hostname } = window.location;
+        return `${protocol}//${hostname}${port ? ':' + port : ''}/user/register/${this.code}`;
+      } else {
+        return undefined;
+      }
     }
   },
   methods: {
-    async generateInviteURL() {
-      let { invitation } = await this.$store.dispatch("admin/generateInvitation", this.expiration);
-      this.generatedInvitation = invitation;
-
-        this.$toasted.show(
-          'Invitation generated. Copy and paste the invitation to the person you\'d like to invite.',
-          {
-            duration: 2000,
-            type: 'success'
-          }
-        );
-
-
+    async generateInvitation() {
+      try {
+        const { code } = await this.$axios.$post('/api/invitations/generate');
+        this.$toasted.show('Invitation successfully generated.', {
+          type: 'success',
+          duration: 2000
+        });
+        this.code = code;
+      } catch (error) {
+        this.$toasted.show('Error generating invitation.', { type: 'error', duration: 2000 });
+        console.log(error);
+      }
     },
-    clearExpiration() {
-      this.expiration = undefined;
+    async copy() {
+      this.$toasted.show('Registration URL copied to clipboard', { type: 'success', duration: 2000 });
+      navigator.clipboard.writeText(this.url);
     },
-    copyURL() {
-      this.$refs.inviteURLInput.select();
-      document.execCommand("copy");
+    clear() {
+      this.code = undefined;
     }
   }
 };
 </script>
 
 <style scoped>
-.generatedInvitation {
+
+button.generate-invitation-button {
+  padding: 10px;
+  background-color: #EEE;
+  border: 1px solid #CCC;
+  color: #666;
+  width: 200px;
+  cursor: pointer;
+}
+
+.invitation-code-container {
+  background-color: #F6F6F6;
+  border: 1px solid #CCC;
+  padding: 1em;
+}
+
+.invitation-code-container h3 {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.generate-invitation-container {
   margin: 2em 0;
+}
+
+
+.code-container .description, .url-container .description {
+  font-weight: bold;
+}
+
+.copy-controls {
+  margin-top: 1em;
+}
+
+.copy-controls a {
+  display: inline-block;
+  margin-right: 2em;
+  cursor: pointer;
+}
+
+.copied {
+  color: green;
 }
 </style>

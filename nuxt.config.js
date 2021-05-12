@@ -58,12 +58,15 @@ module.exports = {
           },
           logout: { url: "/api/users/logout", method: "post" },
           user: { url: "/api/users/user", method: "get", propertyName: "user" }
+        },
+        token: {
+          maxAge: 60 * 60 * 24 * 30
         }
         // tokenRequired: true,
         // tokenType: 'bearer',
       }
     },
-    scopeKey: "scope"
+    scopeKey: "roles"
   },
 
   workbox: {
@@ -100,7 +103,7 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     "@nuxtjs/pwa",
     "@nuxtjs/axios",
-    "@nuxtjs/auth",
+    "@nuxtjs/auth-next",
     "@nuxtjs/markdownit",
     "@nuxtjs/sitemap",
     ["vue-scrollto/nuxt", { force: true, duration: 500 }],

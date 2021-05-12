@@ -14,7 +14,7 @@
         "scope": ["admin", "editor", "artist"]
       },
       { "name": "Blog", "location": "/admin/blog/list", "scope": ["admin"] },
-      { "name": "Users", "location": "/admin/users/list", "scope": ["admin"] },
+      { "name": "Users", "location": "/admin/users", "scope": ["admin"] },
       {
         "name": "Articles",
         "location": "/admin/articles/list",

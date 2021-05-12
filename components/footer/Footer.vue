@@ -17,7 +17,7 @@
           alt="Reddit"
         >
       </a>
-      <a href="https://www.youtube.com/channel/UCV5-ybqHFU6xQWhnFZBJlOA">
+      <a href="https://www.youtube.com/channel/UCUJnH-MsFgAgvCVHplxqJOQ">
         <img
           src="/sm-icon-youtube.svg"
           height="32"
