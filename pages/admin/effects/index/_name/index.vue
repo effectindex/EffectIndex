@@ -1,10 +1,12 @@
 <template>
   <div class="pageContent">
-    <effect-editor
-      :effect="effect"
-      @edit-effect="submitEffect"
-      @update-effect="updateEffect"
-    />
+    <client-only>
+      <effect-editor
+        :effect="effect"
+        @edit-effect="submitEffect"
+        @update-effect="updateEffect"
+      />
+    </client-only>
   </div>
 </template>
 
