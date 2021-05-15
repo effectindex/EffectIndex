@@ -41,7 +41,7 @@
 </template>
 
 <script>
-  import RoleList from '@/components/RoleList';
+  import RoleList from '@/components/admin/RoleList';
   import Icon from '@/components/Icon';
 
   export default {
@@ -60,9 +60,20 @@
         users: []
       };
     },
-    async asyncData({ $axios }) {
-      const { users } = await $axios.$get('/api/users');
-      return { users };
+    async fetch() {
+      const { users } = await this.$axios.$get('/api/users');
+      this.users = users;
+    },
+    methods: {
+      async deleteUser(_id) {
+        try {
+          await this.$axios.$delete(`/api/users/${_id}`);
+          this.$fetch();
+          this.$toasted.show('The user was successfully purged from existence.', { type: 'success', duration: 2000 });
+        } catch(error) {
+          console.log(error);
+        }
+      }
     }
   };
 </script>

@@ -4,7 +4,8 @@
       v-for="(role, key) in roles"
       :key="key"
     >
-      {{ role }}
+      <!-- eslint-disable-next-line -->
+      {{ role }}{{ key < (roles.length - 1) ? ',&nbsp;' : ' ' }}
     </li>
   </ul>
 </template>
@@ -25,5 +26,9 @@ export default {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.role-list li {
+  display: inline-block;
 }
 </style>

@@ -1,139 +1,34 @@
 <template>
-  <div class="pageContent admin">
+  <div class="pageContent">
     <Icon
       filename="trash.svg"
       class="categoryIcon"
     />
     <h1> Administration </h1>
-    <p> The place to do secret things when nobody's looking. </p>
-    <client-only>
-      <div v-if="$auth.loggedIn">
-        <nuxt-link to="/user/logout">
-          Log out
-        </nuxt-link>
-        <div class="tasksContainer">
-          <div 
-            class="taskContainer"
-          >
-            <h3> Admin </h3>
-            <ul>
-              <li v-show="role.editor || role.admin">
-                <nuxt-link to="/admin/effects/list">
-                  Effects
-                </nuxt-link>
-              </li>
-              <li v-show="role.editor || role.admin">
-                <nuxt-link to="/admin/replications/list">
-                  Replications
-                </nuxt-link>
-              </li>
-              <li v-show="role.admin">
-                <nuxt-link to="/admin/blog/list">
-                  Blog
-                </nuxt-link>
-              </li>
-              <li v-show="role.admin">
-                <nuxt-link to="/admin/users/list">
-                  Users
-                </nuxt-link>
-              </li>
-              <li v-show="role.admin">
-                <nuxt-link to="/admin/users/profiles">
-                  Profiles
-                </nuxt-link>
-              </li>
-              <li v-show="role.admin">
-                <nuxt-link to="/admin/reports/list">
-                  Reports
-                </nuxt-link>
-              </li>
-              <li v-show="role.admin">
-                <nuxt-link to="/admin/redirects">
-                  Redirects
-                </nuxt-link>
-              </li>
-            </ul>
-
-            <div 
-              v-show="role.admin"
-              class="serverOptionsContainer"
-            >
-              <h3> Danger Zone </h3>
-              <a 
-                class="dangerZone"
-                @click="restartServer"
-              > Restart Server </a>
-            </div>
-          </div>
-
-          <div 
-            class="taskContainer"
-          >
-            <h3> Documentation </h3>
-            <ul>
-              <li>
-                <nuxt-link to="/admin/vcode">
-                  VCode Components
-                </nuxt-link>
-              </li>
-              <li>
-                <nuxt-link to="/admin/missing">
-                  Missing Data
-                </nuxt-link>
-              </li>
-              <li>
-                <ext-link href="https://trello.com/b/TAqyU405/effect-index">
-                  Trello
-                </ext-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </client-only>
-    <nuxt-link 
-      v-show="!$auth.loggedIn" 
-      to="/user/login"
-    >
-      Log in
+    <nuxt-link to="/admin/redirects">
+      Redirects
+    </nuxt-link>
+    <nuxt-link to="/admin">
+      Users
+    </nuxt-link>
+    <nuxt-link to="/admin/blog">
+      Blog
     </nuxt-link>
     <nuxt-child style="margin: 2em 0;" />
   </div>
 </template>
 
 <script>
-import ExtLink from "@/components/ExtLink";
 import Icon from '@/components/Icon';
 
 export default {
+  middleware: 'auth',
   components: {
-    ExtLink,
     Icon
-  },
-  computed: {
-    role () {
-      const auth = this.$store.state.auth;
-      const user = auth.user;
-      if (user) return user.scope;
-      else return {};
-    }
-  },
-  methods: {
-    async restartServer() {
-      this.$store.dispatch("restartServer");
-        this.$toasted.show(
-          'Please wait while the server restarts.',
-          {
-            duration: 2000,
-            type: 'error'
-          }
-        );
-
-    }
   },
   head() {
     return {
-      title: "Admin"
+      title: "Administration"
     };
   },
   scrollToTop: true

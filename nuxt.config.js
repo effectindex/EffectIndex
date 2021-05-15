@@ -66,7 +66,7 @@ module.exports = {
         // tokenType: 'bearer',
       }
     },
-    scopeKey: "roles"
+    scopeKey: "permissions"
   },
 
   workbox: {

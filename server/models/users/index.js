@@ -11,6 +11,7 @@ const Invitation = require('../invitations/Invitation');
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { isValidObjectId } = require('mongoose');
 
 router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
   try {
@@ -88,10 +89,11 @@ router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res,
     if (user && '_id' in user) {
       const data = await User.findById(user._id);
       if (data) {
-        const { username, roles } = data;
+        const { username, permissions } = data;
+        console.log('Permissions: ', permissions);
         res.send({ user: {
           username,
-          roles
+          permissions
         }});
       } else {
         throw new API_Error('AUTHENTICATION_ERROR', 'User with provided ID was not found.');
@@ -122,45 +124,52 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/logout', async (req, res, next) => {
   if ('user' in req) delete req.user;
-  res.sendStatus(500);
+  res.sendStatus(200);
 });
 
 
-router.get('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
-  const id = req.params.id;
+router.get('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+  const { _id } = req.params;
+  
   try {
-    let user = await User.findById(id)
-      .select('_id username scope')
+    if (!isValidObjectId(_id)) throw new API_Error('UserID Invalid.');
+    const user = await User.findById(_id)
+      .select('_id username roles person permissions')
+      .populate('person')
       .exec();
-
     res.send({ user });
   } catch (err) {
     next(err);
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async(req, res, next) => {
+router.post('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async(req, res, next) => {
 
-  const id = req.params.id;
-  const userData = req.body.user;
+  const { _id } = req.params;
+  const { user } = req.body;
 
   try {
-    if (!userData) throw API_Error('UPDATE_USER_ERROR', 'New user data invalid.');
-    let updatedUser = await User.findByIdAndUpdate(id, userData)
-      .select('_id username scope')
-      .exec();
-    res.send(updatedUser);
+    if (!isValidObjectId(_id)) throw new API_Error('UserID Invalid.');
+    if (!user) throw API_Error('UPDATE_USER_ERROR', 'New user data invalid.');
+
+    const updated = await User.findById(_id);
+
+    updated.roles = user.roles;
+
+    await updated.save();
+
+    res.sendStatus(200);
   } catch (err) {
     next(err);
   }
 });
 
-router.delete('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
-  const id = req.params.id;
+router.delete('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+  const { _id } = req.params;
 
   try {
-    let deletedUser = await User.findByIdAndRemove(id);
-    res.send({ user: deletedUser });
+    await User.findByIdAndRemove(_id);
+    res.sendStatus(200);
   } catch (err) {
     next(err);
   }
