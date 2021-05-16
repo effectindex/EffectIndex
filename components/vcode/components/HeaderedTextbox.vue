@@ -1,7 +1,7 @@
 <template>
   <div 
-    class="headeredTextbox"
     :id="id"
+    class="headeredTextbox"
   >
     <div 
       class="headersContainer"
