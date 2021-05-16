@@ -1,5 +1,8 @@
 <template>
-  <div class="headeredTextbox">
+  <div 
+    class="headeredTextbox"
+    :id="id"
+  >
     <div 
       class="headersContainer"
       :style="`background-color: ${headerBackground}`"
@@ -114,6 +117,10 @@ export default {
     imageGfycat: {
       type: String,
       default: ""
+    },
+    id: {
+      type: String,
+      default: undefined
     }
   },
   computed: {
