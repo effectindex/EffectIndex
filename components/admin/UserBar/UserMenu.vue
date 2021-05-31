@@ -2,7 +2,12 @@
   <ul class="user-menu">
     <li v-if="$auth.hasScope('admin')">
       <nuxt-link to="/admin">
-        Admin
+        Misc
+      </nuxt-link>
+    </li>   
+    <li v-if="$auth.hasScope('admin')">
+      <nuxt-link to="/admin/users">
+        Users
       </nuxt-link>
     </li>
     <li v-if="$auth.hasScope('all-replications') || $auth.hasScope('own-replications')">

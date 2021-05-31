@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent admin redirects">
-    <h1> Redirect Management </h1>
+    <h1> Redirects </h1>
     <ul class="redirects-list">
       <redirect-input
         ref="redirectInput"

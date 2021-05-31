@@ -27,7 +27,7 @@ export default {
         );
 
 
-      this.$router.push("/admin/effects/list");
+      this.$router.push("/admin/effects");
     }
   }
 };

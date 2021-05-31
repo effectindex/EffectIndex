@@ -74,7 +74,7 @@
         v-if="!person._id"
         type="submit"
       >
-        Create New
+        Save
       </button>
       <button
         v-else

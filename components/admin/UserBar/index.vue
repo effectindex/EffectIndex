@@ -26,7 +26,7 @@ export default {
     padding: 5px 10px;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 6;
   }
 
   .user-bar-content {

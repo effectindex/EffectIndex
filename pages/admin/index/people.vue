@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent admin people">
-    <h1> People Management </h1>
+    <h1> People </h1>
     <add-person
       @submit="newPerson"
     />

@@ -28,7 +28,7 @@
           );
 
 
-          this.$router.push("/admin/reports/list");
+          this.$router.push("/admin/reports");
         } catch (error) {
           console.log(error);
         }

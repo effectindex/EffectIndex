@@ -1,5 +1,8 @@
 <template>
-  <div class="headeredTextbox">
+  <div
+    :id="id"
+    class="headeredTextbox"
+  >
     <div 
       class="headersContainer"
       :style="`background-color: ${headerBackground}`"

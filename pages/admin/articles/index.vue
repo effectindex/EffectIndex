@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent articleManagement">
-    <h1> Article Management </h1>
+    <h1> Articles </h1>
     <nuxt-link 
       class="articleManagement__link"
-      to="/admin/articles/list"
+      to="/admin/articles"
     >
       Articles
     </nuxt-link>

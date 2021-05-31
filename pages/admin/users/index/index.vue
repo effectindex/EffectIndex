@@ -2,19 +2,19 @@
   <div class="pageContent">
     <div class="page-controls">
       <nuxt-link 
-        to="/admin"
+        to="/admin/users"
       >
         Users
       </nuxt-link>
 
       <nuxt-link
-        to="/admin/invite"
+        to="/admin/users/invite"
         class="create-invitation-link"
       >
         Generate an Invitation
       </nuxt-link>
       <nuxt-link
-        to="/admin/invitations"
+        to="/admin/users/invitations"
         class="create-invitation-link"
       >
         Manage Invitations

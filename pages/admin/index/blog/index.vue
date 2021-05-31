@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent blogManagement">
-    <h1> Blog Management </h1>
+    <h1> Blog </h1>
     <nuxt-link 
       class="blogManagement__link"
       to="/admin/blog/list"

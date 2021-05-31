@@ -83,6 +83,38 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
+router.post('/changePassword', secured({secret: config.server.jwtSecret}), async (req, res, next) => {
+  try {
+    if (!req.user) throw API_Error('CHANGE_PASSWORD_ERROR', 'User must be logged in to change their password.');
+    
+    const { oldPassword, newPassword, confirmation } = req.body;
+
+    if (!oldPassword || !newPassword || !confirmation ) throw API_Error('CHANGE_PASSWORD_ERROR', 'Invalid password change request.');
+
+    if (newPassword !== confirmation) throw API_Error('CHANGE_PASSWORD_ERROR', 'New password and confirmation do not match.');
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) throw API_Error('CHANGE_PASSWORD_ERROR', 'Logged-in user does not have an account.');
+
+    const oldPasswordMatches = await bcrypt.compare(oldPassword, user.hash);
+
+    if (!oldPasswordMatches) throw API_Error('CHANGE_PASSWORD_ERROR', 'Old password is not correct.');
+    
+    const hash = await bcrypt.hash(newPassword, 10);
+
+    user.hash = hash;
+
+    await user.save();
+
+    res.sendStatus(200);
+    
+    
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res, next) => {
   try {
     const { user } = req;
@@ -90,7 +122,6 @@ router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res,
       const data = await User.findById(user._id);
       if (data) {
         const { username, permissions } = data;
-        console.log('Permissions: ', permissions);
         res.send({ user: {
           username,
           permissions
@@ -174,5 +205,7 @@ router.delete('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['ad
     next(err);
   }
 });
+
+
 
 module.exports = router;

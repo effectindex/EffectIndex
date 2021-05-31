@@ -35,7 +35,7 @@ export default {
       );
 
 
-      this.$router.push("/admin/replications/list");
+      this.$router.push("/admin/replications");
     }
   }
 };

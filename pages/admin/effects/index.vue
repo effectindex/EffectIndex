@@ -1,9 +1,9 @@
 <template>
   <div class="pageContent effectManagement">
-    <h1> Effect Management </h1>
+    <h1> Effects </h1>
     <nuxt-link
       class="effectManagement__link"
-      to="/admin/effects/list"
+      to="/admin/effects"
     >
       Effect List
     </nuxt-link>

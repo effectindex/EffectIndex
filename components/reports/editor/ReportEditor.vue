@@ -200,7 +200,7 @@
     <div class="reportEditor__inputReportButtonContainer">
       <nuxt-link
         class="reportEditor__cancelLink"
-        to="/admin/reports/list"
+        to="/admin/reports"
       >
         Cancel
       </nuxt-link>

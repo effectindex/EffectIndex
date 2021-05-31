@@ -23,7 +23,7 @@ export default {
           "replications/submit",
           replication
         );
-        this.$router.push("/admin/replications/list");
+        this.$router.push("/admin/replications");
       } catch (error) {
         console.log(error);
         this.$toasted.show(
