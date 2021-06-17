@@ -8,7 +8,11 @@
       >
     </div>
     <div>
-      <label> Artist: </label>
+      <label> Artist (Person): </label>
+      <person-input v-model="person" />
+    </div>
+    <div>
+      <label> Artist (Freetext): </label>
       <input 
         v-model="artist"
         class="input__singleLine"
@@ -25,7 +29,7 @@
       <label> Associated Effects: </label>
       <ul class="effectList">
         <li 
-          v-for="effect in $store.state.effects"
+          v-for="effect in effects"
           :key="effect.id"
         >
           <input
@@ -35,23 +39,6 @@
             type="checkbox"
             class="effectList__checkbox"
           > {{ effect.name }}
-        </li>
-      </ul>
-    </div>
-    <div>
-      <label>Associated Substances:</label>
-      <ul class="substanceList">
-        <li
-          v-for="substance in $store.state.substances"
-          :key="substance.id"
-        >
-          <input
-            :id="substance.name"
-            v-model="associated_substances"
-            :value="substance._id"
-            type="checkbox"
-            class="substanceList__checkbox"
-          > {{ substance.name }}
         </li>
       </ul>
     </div>
@@ -178,10 +165,12 @@
 
 <script>
 import AudioPlayer from "@/components/replications/audio/AudioPlayer.vue";
+import PersonInput from "@/components/people/PersonInput";
 
 export default {
   components: {
-    AudioPlayer
+    AudioPlayer,
+    PersonInput
   },
   props: {
     replication: {
@@ -197,6 +186,7 @@ export default {
       type: this.replication ? this.replication.type : "",
       title: this.replication ? this.replication.title : "",
       url: this.replication ? this.replication.url : "",
+      person: this.replication ? this.replication.person : undefined,
       artist: this.replication ? this.replication.artist : "",
       artist_url: this.replication ? this.replication.artist_url : "",
       description: this.replication ? this.replication.description : "",
@@ -204,11 +194,13 @@ export default {
       associated_effects: this.replication
         ? this.replication.associated_effects
         : [],
-      associated_substances: this.replication
-        ? this.replication.associated_substances
-        : [],
       featured: this.replication ? this.replication.featured : false,
     };
+  },
+  computed: {
+    effects() {
+      return this.$store.state.effects.list;
+    }
   },
   mounted() {
     this.$store.dispatch("effects/get");
@@ -216,9 +208,10 @@ export default {
 
   methods: {
     submitReplication() {
-      let replication = {
+      const replication = {
         id: this.id,
         type: this.type,
+        person: this.person ? this.person._id : undefined,
         resource: this.resource,
         thumbnail: this.thumbnail,
         title: this.title,
@@ -227,7 +220,6 @@ export default {
         description: this.description,
         date: this.date,
         associated_effects: this.associated_effects,
-        associated_substances: this.associated_substances,
         featured: this.featured
       };
 
@@ -242,18 +234,6 @@ export default {
 </script>
 
 <style scoped>
-.effectList, .substanceList {
-  columns: 3;
-  font-size: 14px;
-  color: black;
-  list-style: none;
-  padding: 0;
-}
-
-.effectList__checkbox, .substanceList__checkbox {
-  margin-right: 1em;
-}
-
 label {
   display: block;
   margin: 1em 0;
@@ -307,7 +287,7 @@ textarea {
   width: 100%;
 }
 
-.effectEditor__showHide, .substanceEditor_showHide {
+.effectEditor__showHide {
   font-size: 14px;
   text-align: right;
   user-select: none;
@@ -333,5 +313,22 @@ button {
 
 button:hover {
   opacity: 1;
+}
+
+.effectList {
+  list-style: none;
+  padding: 0;
+  columns: 3;
+  font-size: 14px;
+}
+
+.effectList li {
+  display: flex;
+  align-items: center;
+  margin: 0.25em 0;
+}
+
+.effectList li input {
+  margin-right: 1em;
 }
 </style>

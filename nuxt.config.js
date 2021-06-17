@@ -1,6 +1,5 @@
-const pkg = require("./package");
-// import {default as MinifyPlugin} from "babel-minify-webpack-plugin";
 require("dotenv").config();
+const pkg = require("./package");
 const axios = require('axios');
 
 module.exports = {
@@ -169,22 +168,28 @@ module.exports = {
       '/admin/**'
     ],
     routes: async function() {
-      let results = await axios.get('http://localhost:3000/api/effects');
-      const { effects } = results.data;
+      try {
+        const results = await Promise.all([
+          axios.get('http://localhost:3000/api/effects'),
+          axios.get('http://localhost:3000/api/articles'),
+          axios.get('http://localhost:3000/api/blog'),
+          axios.get('http://localhost:3000/api/reports'),
+        ]);
 
-      results = await axios.get('http://localhost:3000/api/reports');
-      const { reports } = results.data;
+        const [{ effects }, { articles }, { posts }, { reports }] = results.map(result => result.data);
 
-      results = await axios.get('http://localhost:3000/api/blog');
-      const { posts } = results.data;
+        const routes = [
+          ...effects.map(effect => `/effects/${effect.url}`),
+          ...reports.map(report => `/reports/${report.slug}`),
+          ...posts.map(post => `/blog/${post.slug}`),
+          ...articles.map(article => `/articles/${article.slug}`)
+        ];
 
-      const routes = [
-        ...effects.map(effect => `/effects/${effect.url}`),
-        ...reports.map(report => `/reports/${report.slug}`),
-        ...posts.map(post => `/blog/${post.slug}`)
-      ];
-
-      return routes;
+        return routes;
+      } catch (error) {
+        console.log(`Could not generate sitemap. `, error);
+        return [];
+      }
     }
   }
 };

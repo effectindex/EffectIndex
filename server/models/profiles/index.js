@@ -10,7 +10,7 @@ const mime = require('mime');
 const MAX_FILE_SIZE = 10485760; // 10 MB
 
 const API_Error = require('../ApiError');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 
 const Profile = require('./Profile');
 
@@ -51,7 +51,7 @@ const storage = multer.diskStorage({
 
 const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).any();
 
-router.post('/upload', secured({ secret }), hasRoles(['admin', 'editor']), uploadAny, async(req, res, next) => {
+router.post('/upload', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   try {
     const profile = { profileImageFull: undefined, profileImageCropped: undefined };
     const { files } = req;
@@ -77,7 +77,7 @@ router.post('/upload', secured({ secret }), hasRoles(['admin', 'editor']), uploa
   }
 });
 
-router.post('/', secured({ secret }), hasRoles(['admin']), async(req, res, next) => {
+router.post('/', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_ADD_ERROR', 'The submitted request is invalid.');
     if (typeof (req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
@@ -92,7 +92,7 @@ router.post('/', secured({ secret }), hasRoles(['admin']), async(req, res, next)
   }
 });
 
-router.put('/:id', secured({ secret }), uploadAny, async(req, res, next) => {
+router.put('/:id', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_UPDATE_ERROR', 'The submitted request is invalid.');
@@ -107,7 +107,7 @@ router.put('/:id', secured({ secret }), uploadAny, async(req, res, next) => {
   }
 });
 
-router.delete('/:id', secured({ secret }), hasRoles(['admin']), async(req, res, next) => {
+router.delete('/:id', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('DELETE_PROFILE_ERROR', 'An ID must be supplied.');
@@ -118,7 +118,7 @@ router.delete('/:id', secured({ secret }), hasRoles(['admin']), async(req, res, 
   }
 });
 
-router.get('/:id', secured({ secret }), hasRoles(['admin', 'editor']), async(req, res, next) => {
+router.get('/:id', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('GET_PROFILE_ERROR', 'An ID is required.');

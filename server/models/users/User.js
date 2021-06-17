@@ -25,10 +25,11 @@ UserSchema.virtual('permissions').get(function() {
   if (roles.includes('admin')) permissions.add('admin');
   
   if (roles.includes('editor') || roles.includes('admin')) {
-    permissions.add('all-effects');
+    permissions.add('admin-effects');
     permissions.add('all-replications');
     permissions.add('all-reports');
     permissions.add('all-articles');
+    permissions.add('manage-blog');
   }
 
   if (roles.includes('replications-moderator')) permissions.add('all-replications');
@@ -37,8 +38,8 @@ UserSchema.virtual('permissions').get(function() {
   if (roles.includes('articles-moderator')) permissions.add('all-articles');
   else if (roles.includes('articles')) permissions.add('own-articles');
 
-  if (roles.includes('effects-moderator')) permissions.add('all-effects');
-  else if (roles.includes('effects')) permissions.add('own-effects');
+  if (roles.includes('effects-moderator')) permissions.add('admin-effects');
+  else if (roles.includes('effects')) permissions.add('edit-effects');
 
   if (roles.includes('reports-moderator')) permissions.add('all-reports');
   else if (roles.includes('reports')) permissions.add('own-reports');

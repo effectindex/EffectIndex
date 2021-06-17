@@ -127,10 +127,10 @@ router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res,
           permissions
         }});
       } else {
-        throw new API_Error('AUTHENTICATION_ERROR', 'User with provided ID was not found.');
+        throw API_Error('AUTHENTICATION_ERROR', 'User with provided ID was not found.');
       }
     } else {
-      throw new API_Error('AUTHENTICATION_ERROR', 'User ID not provided.');
+      throw API_Error('AUTHENTICATION_ERROR', 'User ID not provided.');
     } 
   } catch (error) {
     next(error);
@@ -163,7 +163,7 @@ router.get('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   const { _id } = req.params;
   
   try {
-    if (!isValidObjectId(_id)) throw new API_Error('UserID Invalid.');
+    if (!isValidObjectId(_id)) throw API_Error('UserID Invalid.');
     const user = await User.findById(_id)
       .select('_id username roles person permissions')
       .populate('person')
@@ -180,7 +180,7 @@ router.post('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admi
   const { user } = req.body;
 
   try {
-    if (!isValidObjectId(_id)) throw new API_Error('UserID Invalid.');
+    if (!isValidObjectId(_id)) throw API_Error('UserID Invalid.');
     if (!user) throw API_Error('UPDATE_USER_ERROR', 'New user data invalid.');
 
     const updated = await User.findById(_id);

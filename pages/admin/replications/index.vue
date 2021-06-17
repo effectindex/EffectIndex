@@ -3,7 +3,7 @@
     <h1> Replications </h1>
     <nuxt-link
       class="replicationManagement__link"
-      to="/admin/replications/list"
+      to="/admin/replications"
     >
       Replication List
     </nuxt-link>

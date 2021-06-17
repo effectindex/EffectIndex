@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       selectedRole: undefined,
-      availableRoles: ['admin', 'editor', 'reports', 'effects', 'replications', 'articles', 'reports-moderator', 'effects-moderator', 'replications-moderator', 'articles-moderator']
+      availableRoles: ['admin', 'editor', 'reports', 'effects', 'replications', 'articles', 'effects-moderator', 'reports-moderator', 'replications-moderator', 'articles-moderator']
     };
   },
   methods: {

@@ -251,7 +251,6 @@ export default {
         name: this.name,
         description: this.description,
         citations: this.citations,
-        related_substances: this.related_substances,
         external_links: this.external_links,
         see_also: this.see_also,
         tags: this.tags,

@@ -23,7 +23,7 @@
     <div class="people__inputField">
       <h3> Bio </h3>
       <vcode-input 
-        v-model="person.bio"
+        v-model="bio_raw"
       />
     </div>
 
@@ -110,19 +110,30 @@ export default {
         alias: undefined,
         email: undefined,
         social_media: [],
-        bio: '\n\n\n',
+        bio: {
+          raw: '',
+          parsed: undefined,
+          length: undefined,
+        },
         tags: undefined,
         profile_url: undefined
       })
     }
   },
+  data() {
+    return {
+      bio_raw: this.person && this.person.bio ? this.person.bio.raw : undefined
+    };
+  },
   methods: {
-    handleSubmit(e) {
-        if (this.person._id) {
-          this.$emit('update', this.person);
-        } else {
-          this.$emit('submit', this.person);
-        }
+    handleSubmit() {
+        const person = {
+          ...this.person,
+          bio: this.bio_raw
+        };
+
+        if (this.person._id) this.$emit('update', person);
+        else this.$emit('submit', person);
     }
   }
 };

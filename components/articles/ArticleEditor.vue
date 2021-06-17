@@ -108,7 +108,7 @@ export default {
         body: {
           raw: '\n\n\n\n'
         },
-        publication_status: 'draft',
+        publication_status: 'unlisted',
         publication_date: undefined,
         short_description: undefined,
         social_media_image: undefined,

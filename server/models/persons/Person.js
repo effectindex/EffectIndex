@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const parse = require("../../../lib/vcode2/parse").default;
+const Vcode = require('../Vcode');
 
 const socialMedia = new Schema({
   value: String,
@@ -25,11 +25,7 @@ const Person = mongoose.model("Person", {
   social_media: {
     type: [socialMedia]
   },
-  bio: String,
-  bio_parsed: {
-    type: Array,
-    set: bio => parse(bio)
-  },
+  bio: Vcode,
   tags: [String]
 });
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const config = require ('../../../nuxt.config.js');
 
 const secured = require('express-jwt');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 const API_Error = require('../ApiError');
 
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin']), async (req, res, next) => {
+router.post('/', secured({ secret: config.server.jwtSecret }), hasPerms('admin'), async (req, res, next) => {
   const { redirect } = req.body;
 
   try {
@@ -33,7 +33,7 @@ router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin'
   }
 });
 
-router.put('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
   const { redirect } = req.body;
 
@@ -47,7 +47,7 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   }
 });
 
-router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin']), async (req, res, next) => {
+router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
   try {
     if (!ObjectId.isValid(_id)) throw API_Error('UPDATE_REDIRECT_ERROR', 'Invalid redirect ID.');

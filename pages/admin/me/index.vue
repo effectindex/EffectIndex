@@ -18,7 +18,7 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/admin/me/logout">
+        <nuxt-link to="/user/logout">
           Logout
         </nuxt-link>
       </li>

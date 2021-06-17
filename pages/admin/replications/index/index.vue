@@ -229,9 +229,6 @@ export default {
     selectEffectName(name) {
       this.filter = name.toLowerCase();
     },
-    selectSubstanceName(name) {
-      this.filter = name.toLowerCase();
-    },
     focus() {
       this.focused = true;
     },

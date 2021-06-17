@@ -40,7 +40,7 @@ export default {
   methods: {
     async newPerson(person) {
       try {
-        let result = await this.$axios.post('/api/persons', { person });
+        await this.$axios.post('/api/persons', { person });
         this.$fetch();
       } catch (error) {
         console.log(error);
@@ -48,7 +48,7 @@ export default {
     },
     async updatePerson(person) {
       try {
-        let result = await this.$axios.put(`/api/persons/${person._id}`, { person });
+        await this.$axios.put(`/api/persons/${person._id}`, { person });
         this.$fetch();
       } catch (error) {
         console.log(error);

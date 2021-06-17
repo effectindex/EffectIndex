@@ -7,6 +7,10 @@ mongoose.plugin(slug);
 const Schema = mongoose.Schema;
 
 const replicationSchema = new Schema({
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "user"
+    },
     title: {
       type: String,
       required: true
@@ -19,6 +23,10 @@ const replicationSchema = new Schema({
     type: {
       type: String,
       required: true
+    },
+    person: {
+      type: Schema.Types.ObjectId,
+      ref: "Person"
     },
     artist: String,
     artist_url: String,
