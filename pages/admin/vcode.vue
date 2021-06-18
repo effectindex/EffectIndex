@@ -465,6 +465,11 @@ props: [
         description: 'A horizontal rulebar.',
         code: `[p] The people above are from Boston. [hr /] The people below are from a homestay here in Mebuluk and were just a delight to meet. [/p] `,
       },
+      horizontalRuleTransparent: {
+        name: 'hrt',
+        description: 'A partially transparent horizontal rulebar.',
+        code: `[p] The people above are from Boston. [hrt /] The people below are from a homestay here in Mebuluk and were just a delight to meet. [/p] `,
+      },
       internalLink: {
         name: 'int-link',
         description: 'A link to a resource INTERNAL to the Subjective Effect Index website.',

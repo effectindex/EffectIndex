@@ -78,6 +78,8 @@ function renderVcode(createElement, data, body) {
         return createElement("br");
       case "hr":
         return createElement("hr");
+      case "hrt":
+        return createElement("hrt");
       case "category":
         return createElement(
           Category,
