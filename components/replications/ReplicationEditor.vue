@@ -39,23 +39,6 @@
       </ul>
     </div>
     <div>
-      <label>Associated Substances:</label>
-      <ul class="substanceList">
-        <li
-          v-for="substance in $store.state.substances"
-          :key="substance.id"
-        >
-          <input
-            :id="substance.name"
-            v-model="associated_substances"
-            :value="substance._id"
-            type="checkbox"
-            class="substanceList__checkbox"
-          > {{ substance.name }}
-        </li>
-      </ul>
-    </div>
-    <div>
       <label> Description: </label>
       <textarea 
         v-model="description"
