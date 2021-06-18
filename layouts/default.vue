@@ -291,15 +291,10 @@ main {
   font-size: 18px;
 }
 
-.pageContent hr,
-.pageContent hrt {
+.pageContent hr {
   margin: 50px 0;
   border: 0;
   border-top: 1px solid #ccc;
-}
-
-.pageContent hrt {
-  opacity: 0.5;
 }
 
 /* Effect Categories */
@@ -327,8 +322,7 @@ main {
   opacity: 0.75;
 }
 
-.effectCategories hr,
-.effectCategories hrt {
+.effectCategories hr {
   clear: both;
 }
 

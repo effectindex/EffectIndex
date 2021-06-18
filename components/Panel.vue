@@ -36,11 +36,6 @@ export default {
     margin: 0.5em 0;
   }
 
-  hrt {
-    margin: 0.5em 0;
-    opacity: 0.5;
-  }
-
   .panel {
     flex: 1;
     min-width: 250px;
