@@ -1,6 +1,6 @@
 <template>
   <hr
-    :style="`opacity: ${hrOpacity}`"
+    :style="`opacity: ${opacity}`"
   >
 </template>
 
@@ -8,12 +8,12 @@
 
 export default {
     props: {
-        hrOpacity: {
-            type: String
+        opacity: {
+            type: String,
             default: "1.0"
         }
     }
-}
+};
 
 </script>
 

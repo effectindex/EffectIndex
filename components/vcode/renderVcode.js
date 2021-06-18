@@ -14,6 +14,7 @@ import Comparison from "./components/Comparison/";
 import Category from "@/components/Category";
 import ExtLink from "@/components/ExtLink";
 import TableOfContents from "@/components/TableOfContents";
+import HorizontalRule from "@/components/vcode/HorizontalRule";
 
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 
@@ -77,7 +78,10 @@ function renderVcode(createElement, data, body) {
       case "br":
         return createElement("br");
       case "hr":
-        return createElement("hr");
+        return createElement(
+          HorizontalRule,
+            { props: { ...properties }}
+        );
       case "category":
         return createElement(
           Category,
