@@ -5,7 +5,6 @@ const config = require ('../../../nuxt.config.js');
 const secured = require('express-jwt');
 
 const API_Error = require('../ApiError');
-const hasRoles = require('../HasRoles');
 const hasPerms = require('../HasPerms');
 
 const Article = require('./Article');

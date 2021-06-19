@@ -38,12 +38,12 @@ const storage = multer.diskStorage({
     const croppedImagesDirectory = 'static/img/profiles/cropped';
 
     if (file.fieldname === 'fullImageData') {
-      const directory = await mkdirp(fullImagesDirectory);
+      await mkdirp(fullImagesDirectory);
       cb(null, fullImagesDirectory);
     }
 
     if (file.fieldname === 'croppedImageData') {
-      const directory = await mkdirp(croppedImagesDirectory);
+      await mkdirp(croppedImagesDirectory);
       cb(null, croppedImagesDirectory);
     }
   }
@@ -63,7 +63,7 @@ router.post('/upload', secured({ secret }), hasPerms('admin'), uploadAny, async(
       }
 
       try {
-        const updatedRecord = await Profile.findOneAndUpdate({ username: req.body.username }, profile);
+        await Profile.findOneAndUpdate({ username: req.body.username }, profile);
       } catch (error) {
         throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
       }

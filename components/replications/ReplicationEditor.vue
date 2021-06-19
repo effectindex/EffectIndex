@@ -25,37 +25,7 @@
         class="input__singleLine"
       >
     </div>
-    <div>
-      <label> Associated Effects: </label>
-      <ul class="effectList">
-        <li 
-          v-for="effect in effects"
-          :key="effect.id"
-        >
-          <input
-            :id="effect.name"
-            v-model="associated_effects"
-            :value="effect._id"
-            type="checkbox"
-            class="effectList__checkbox"
-          > {{ effect.name }}
-        </li>
-      </ul>
-    </div>
-    <div>
-      <label> Description: </label>
-      <textarea 
-        v-model="description"
-        class="input__textarea"
-      />
-    </div>
-    <div>
-      <label> Date: </label>
-      <input
-        v-model="date" 
-        class="input__singleLine"
-      >
-    </div>
+
     <div class="input__typeSelector">
       <label> Type: </label>
       <input 
@@ -150,6 +120,39 @@
       </label>
     </div>
 
+    <div>
+      <label> Associated Effects: </label>
+      <ul class="effectList">
+        <li 
+          v-for="effect in effects"
+          :key="effect.id"
+        >
+          <input
+            :id="effect.name"
+            v-model="associated_effects"
+            :value="effect._id"
+            type="checkbox"
+            class="effectList__checkbox"
+          > {{ effect.name }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <label> Description: </label>
+      <textarea 
+        v-model="description"
+        class="input__textarea"
+      />
+    </div>
+    <div>
+      <label> Date: </label>
+      <input
+        v-model="date" 
+        class="input__singleLine"
+      >
+    </div>
+    
+
     <div class="replication__buttons">
       <button @click="submitReplication()">
         Save
@@ -175,7 +178,7 @@ export default {
   props: {
     replication: {
       type: Object,
-      default: () => null
+      default: undefined
     }
   },
   data() {
@@ -208,25 +211,10 @@ export default {
 
   methods: {
     submitReplication() {
-      const replication = {
-        id: this.id,
-        type: this.type,
-        person: this.person ? this.person._id : undefined,
-        resource: this.resource,
-        thumbnail: this.thumbnail,
-        title: this.title,
-        artist: this.artist,
-        artist_url: this.artist_url,
-        description: this.description,
-        date: this.date,
-        associated_effects: this.associated_effects,
-        featured: this.featured
-      };
+      const { id, type, person, resource, thumbnail, title, artist, artist_url, description, date, associated_effects, featured } = this;
+      const replication = { id, type, person, resource, thumbnail, title, artist, artist_url, description, date, associated_effects, featured };
 
-      this.$emit(
-        this.replication ? "edit-replication" : "new-replication",
-        replication
-      );
+      this.$emit(this.replication ? "edit-replication" : "new-replication", replication);
     }
   },
   middleware: ["auth"]

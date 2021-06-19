@@ -3,7 +3,7 @@ const router = express.Router();
 const config = require ('../../../nuxt.config.js');
 
 const secured = require('express-jwt');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 const API_Error = require('../ApiError');
 
 const User = require('./User');
@@ -13,7 +13,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { isValidObjectId } = require('mongoose');
 
-router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
   try {
     const users = await User.find()
       .select('_id username person roles')
@@ -26,7 +26,7 @@ router.get('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin']),
 });
 
 
-router.post('/add', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+router.post('/add', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
 
   const user = req.body.user;
 
@@ -159,7 +159,7 @@ router.post('/logout', async (req, res, next) => {
 });
 
 
-router.get('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+router.get('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
   
   try {
@@ -174,7 +174,7 @@ router.get('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   }
 });
 
-router.post('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async(req, res, next) => {
+router.post('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async(req, res, next) => {
 
   const { _id } = req.params;
   const { user } = req.body;
@@ -195,7 +195,7 @@ router.post('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admi
   }
 });
 
-router.delete('/:_id', secured({secret: config.server.jwtSecret}), hasRoles(['admin']), async (req, res, next) => {
+router.delete('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
 
   try {

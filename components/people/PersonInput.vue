@@ -1,7 +1,7 @@
 <template>
   <div class="personInput">
     <select
-      :value="value ? value._id : ''"
+      :value="value"
       @change="handleChange"
     >
       <option
@@ -30,7 +30,7 @@
 export default {
   props: {
     value: {
-      type: Object,
+      type: String,
       default: undefined
     }
   },
@@ -51,7 +51,7 @@ export default {
     handleChange(e) {
       const { value } = e.target;
       const person = this.people.find(person => person._id === value);
-      this.$emit('input', person);
+      this.$emit('input', person._id);
     },
     clearPerson() {
       this.$emit('input', undefined);
@@ -68,7 +68,8 @@ export default {
 .personInput select {
   padding: 0.5em;
   background-color: transparent;
-  border: 1px solid #AAA;
+  border: 1px solid #cccccc;
+  margin-right: 1em;
 
 }
 

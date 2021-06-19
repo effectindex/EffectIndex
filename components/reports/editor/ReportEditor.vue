@@ -275,7 +275,7 @@ export default {
   methods: {
     submitReport() {
       this.$emit(this.report ? "edit-report" : "new-report", {
-        reportData: this.reportData,
+        report: this.reportData,
         sectionVisibility: this.sectionVisibility
       });
     },

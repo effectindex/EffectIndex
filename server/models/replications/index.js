@@ -129,8 +129,6 @@ router.post('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('all-
 
     if (!result) throw API_Error('UPDATE_REPLICATION_ERROR', 'The replication was not successfully updated.');
 
-    console.log(result);
-
     res.sendStatus(200);
 
   } catch (error) {

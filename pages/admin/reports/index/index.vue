@@ -59,13 +59,18 @@ export default {
   components: {
     Icon
   },
-  computed: {
-    reports () {
-      return this.$store.state.reports.list;
-    }
+  data() {
+    return {
+      reports: () => ([])
+    };
   },
-  async fetch({ store }) {
-    await store.dispatch("reports/get");
+  async fetch() {
+    try {
+      const { reports } = await this.$axios.$get('/api/reports/admin');
+      return this.reports = reports;
+    } catch (error) {
+      this.$toasted.show('There was an error fetching the reports.', { duration: 2000, type: 'error' });
+    }
   },
   methods: {
     async deleteReport(id) {
@@ -78,6 +83,8 @@ export default {
           type: 'success'
         }
       );
+
+      this.$fetch();
 
 
     }

@@ -25,7 +25,7 @@
         Articles
       </nuxt-link>
     </li>
-    <li v-if="$auth.hasScope('all-effects') || $auth.hasScope('own-effects')">
+    <li v-if="$auth.hasScope('admin-effects') || $auth.hasScope('own-effects')">
       <nuxt-link to="/admin/effects">
         Effects
       </nuxt-link>
