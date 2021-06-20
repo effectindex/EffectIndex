@@ -4,7 +4,7 @@ const config = require('../../../nuxt.config.js');
 const secured = require('express-jwt');
 
 const API_Error = require('../ApiError');
-const hasPerms = require('../hasPerms');
+const hasPerms = require('../HasPerms');
 
 const Effect = require('./Effect');
 const Replication = require('../replications/Replication');
