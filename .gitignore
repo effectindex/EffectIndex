@@ -20,3 +20,4 @@ static/audio/**
 
 .env
 ecosystem.config.js
+effectindex/
