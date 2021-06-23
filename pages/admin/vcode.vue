@@ -283,6 +283,7 @@ props: [
         label="Level 69"
         header="A Superior Example"
         subHeader="Of a headered textbox"
+        icon="sun.svg"
         imageSrc="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2020/10/13142931/Close-up-of-a-Rottweiler-laying-down-outdoors.jpeg"
         imageWidth="300"
         imageAlign="left"
