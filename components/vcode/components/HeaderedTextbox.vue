@@ -7,30 +7,38 @@
       class="headersContainer"
       :style="`background-color: ${headerBackground}`"
     >
-      <h4 
-        v-show="label"
-        class="label"
-        :style="`background-color: ${labelBackground}`"
+      <div
+        class="headersContainerText"
       >
-        <span style="white-space: pre;">{{ label }}</span>
-      </h4>
-      <div 
-        v-show="header || subHeader"
-        class="headers"
-      >
-        <h3
-          v-show="header" 
-          class="mainHeader"
+        <h4 
+          v-show="label"
+          class="label"
+          :style="`background-color: ${labelBackground}`"
         >
-          {{ header }}
-        </h3>
-        <h4
-          v-show="subHeader" 
-          class="subHeader"
-        >
-          <span class="separator">-</span> {{ subHeader }}
+          <span style="white-space: pre;">{{ label }}</span>
         </h4>
+        <div 
+          v-show="header || subHeader"
+          class="headers"
+        >
+          <h3
+            v-show="header" 
+            class="mainHeader"
+          >
+            {{ header }}
+          </h3>
+          <h4
+            v-show="subHeader" 
+            class="subHeader"
+          >
+            <span class="separator">-</span> {{ subHeader }}
+          </h4>
+        </div>
       </div>
+      <Icon
+        v-if="icon"
+        :filename="icon"
+      />
     </div>
     <div
       class="body"
@@ -56,10 +64,12 @@
 
 <script>
 import CaptionedImage from './HeaderedTextboxCaptionedImage';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    CaptionedImage
+    CaptionedImage,
+    Icon
   },
   props: {
     label: {
@@ -121,6 +131,10 @@ export default {
     id: {
       type: String,
       default: undefined
+    },
+    icon: {
+      type: String,
+      default: undefined
     }
   },
   computed: {
@@ -130,6 +144,21 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.icon {
+  height: 25px;
+  width: 25px;
+  opacity: 0.6;
+  margin: 0.5em;
+}
+
+.headersContainer, .headersContainerText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+</style>
 
 <style>
 
