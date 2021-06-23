@@ -146,21 +146,6 @@ export default {
 </script>
 
 <style scoped>
-.icon {
-  height: 25px;
-  width: 25px;
-  opacity: 0.6;
-  margin: 0.5em;
-}
-
-.headersContainer, .headersContainerText {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-</style>
-
-<style>
 
 .headeredTextbox {
   border: 1px solid rgb(221, 221, 221);
@@ -171,12 +156,6 @@ export default {
   margin: 0;
   text-transform: none;
   letter-spacing: unset;
-}
-
-.headeredTextbox > .headersContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
 }
 
 .headeredTextbox .label {
@@ -273,6 +252,19 @@ export default {
   .headeredTextbox .label {
     padding: 5px 15px 5px 10px;
   }
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+  opacity: 0.6;
+  margin: 0.5em;
+}
+
+.headersContainer, .headersContainerText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 </style>
