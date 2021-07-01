@@ -28,13 +28,11 @@ export default {
   },
   methods: {
     async updateProfile(person) {
-      const result = await this.$axios.$put('/api/persons/me', { person });
-      console.log(result);
+      await this.$axios.$post('/api/persons/me', { person });
     },
     async saveProfile(person) {
       try {
-        const result = await this.$axios.$post('/api/persons/me', { person });
-        console.log(person);
+        await this.$axios.$post('/api/persons/me', { person });
       } catch(error) {
         console.log(error);
       }

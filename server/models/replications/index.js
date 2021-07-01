@@ -60,13 +60,58 @@ router.get('/gallery', async (req, res, next) => {
   }
 });
 
-router.get('/', async (req, res, next) => {
+router.get('/featured', async (req, res, next) => {
 
   try {
     
-    const replications = await Replication.find().sort({ type: 'desc' }).exec();
+    const replications = await Replication
+      .find({ featured: true })
+      .select('-user')
+      .populate({
+        path: 'person',
+        select: 'alias full_name'
+      })
+      .sort({ type: 'desc' })
+      .exec();
 
     res.send({ replications });
+
+  } catch (error) {
+    next(error);
+  }
+
+});
+
+
+
+
+router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
+  try {
+    
+    const { user } = req;
+
+    let replications;
+
+    if (user.can('all-replications')) {
+
+      replications = await Replication.find()
+        .populate({
+          path: 'person',
+          select: '_id alias full_name'
+        })
+        .sort({ type: 'desc' })
+        .exec();
+      } else {
+        replications = await Replication.find({ user: user._id })
+          .populate({
+            path: 'person',
+            select: '_id alias full_name'
+          })
+          .sort({ type: 'desc' })
+          .exec();
+      }
+
+      res.send({ replications });
 
   } catch (error) {
     next(error);
@@ -77,7 +122,16 @@ router.get('/', async (req, res, next) => {
 router.get('/byartist/:artist', async (req, res, next) => {
   const { artist } = req.params;
   try {
-    const replications = await Replication.find({ artist }).exec();
+    const replications = await Replication
+    .find({ artist })
+    .select('-user')
+    .populate({
+      path: 'person',
+      select: 'alias full_name'
+    })
+    .sort({ type: 'desc' })
+    .exec();
+
     res.send({ replications });
   } catch (error) {
     next(error);
@@ -89,7 +143,7 @@ router.get('/:url', async (req, res, next) => {
     let replication = await Replication.findOne({ url: req.params.url }).exec();
     res.send({ replication });
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
@@ -110,6 +164,8 @@ router.post('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('all-
     const { title, artist, artist_url, description, date, resource, thumbnail, type, associated_effects, featured, person } = replication;
 
     const rep = await Replication.findById(id).exec();
+
+    if (!user.can('all-replications') && String(rep.user) !== user._id) throw API_Error('UPDATE_REPLICATION_ERROR', 'Cannot edit replications that are not your own.');
 
     if (!rep) throw API_Error('UPDATE_REPLICATION_ERROR', 'Replication was not found');
 
@@ -136,12 +192,19 @@ router.post('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('all-
   }
 });
 
-router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
+router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
   try {
-    let deletedReplication = await Replication.findByIdAndRemove(req.params.id).exec();
-    res.send({ replication: deletedReplication });
+    const { user } = req;
+    const { _id } = req.params;
+    let replication = await Replication.findById(_id).exec();
+
+    if (!user.can('all-replications') && (String(replication.user) !== user._id)) throw API_Error('UPDATE_REPLICATION_ERROR', 'Cannot delete replications that are not your own.');
+
+    await replication.deleteOne();
+
+    res.sendStatus(200);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 

@@ -7,13 +7,16 @@ const UserSchema = new Schema({
     unique: true
   },
   hash: String,
-  person: {
-    type: Schema.Types.ObjectId,
-    ref: 'Person'
-  },
   roles: {
     type: Array,
     default: []
+  }
+}, {
+  toJSON: {
+    virtuals: true
+  },
+  toObject: {
+    virtuals: true
   }
 });
 
@@ -46,6 +49,16 @@ UserSchema.virtual('permissions').get(function() {
 
   return [...permissions];
 
+});
+
+UserSchema.virtual('identity', {
+  ref: 'Person',
+  localField: '_id',
+  foreignField: 'user',
+  justOne: true,
+  getters: true
+}).get(function(value, virtual, doc) {
+  return value ? value._id : null;
 });
 
 const User = mongoose.model("User", UserSchema);

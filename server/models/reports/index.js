@@ -102,8 +102,11 @@ router.get('/admin', secured({ secret: config.server.jwtSecret }), hasPerms('own
 
 router.get('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async(req, res, next) => {
   try {
+    const { user } = req;
     const id = mongoose.Types.ObjectId(req.params.id);
     const report = await Report.findById(id).exec();
+
+    if (!user.can('all-reports') && (String(report.user) !== user._id)) throw API_Error('GET_REPORT_ERROR', 'Cannot edit reports that are not yours');
 
     if (!report) throw API_Error('GET_REPORT_ERROR', 'The report could not be found.');
     const sectionVisibility = report.sectionVisibility;

@@ -17,9 +17,17 @@ export const actions = {
       throw new Error(error);
     }
   },
+  async featured({ commit }) {
+    try {
+      let { replications } = await this.$axios.$get("/api/replications/featured");
+      commit("set", replications);
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
   async getReplication(_, name) {
     try {
-      let { replication } = await this.$axios.$get("/api/replications/" + name);
+      let { replication } = await this.$axios.$get(`/api/replications/${name}`);
       return { replication };
     } catch (error) {
       throw new Error(error);
@@ -27,7 +35,7 @@ export const actions = {
   },
   async getReplicationsByArtist(_, artist) {
     try {
-      let { replications } = await this.$axios.$get("/api/replications/byartist/" + artist);
+      let { replications } = await this.$axios.$get(`/api/replications/byartist/${artist}`);
       return { replications };
     } catch (error) {
       throw new Error(error);
@@ -52,17 +60,6 @@ export const actions = {
       );
       await dispatch("get");
       return updatedReplication;
-    } catch (error) {
-      throw new Error(error);
-    }
-  },
-  async delete({ dispatch }, id) {
-    try {
-      let { replication: deletedReplication } = await this.$axios.$delete(
-        "/api/replications/" + id
-      );
-      await dispatch("get");
-      return deletedReplication;
     } catch (error) {
       throw new Error(error);
     }

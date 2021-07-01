@@ -75,18 +75,40 @@ export default {
   methods: {
     async deleteArticle(id) {
       try {
-        const result = await this.$axios.delete(`/api/articles/${id}`);
-
-        this.$toasted.show(
-          'The report has been successfully deleted.',
-          {
-            duration: 2000,
-            type: 'success'
-          }
-        );
-
-        this.$fetch();
-
+        
+        this.$toasted.show('Really delete?', {
+          action: [{
+              text: 'Yes, delete!',
+              onClick: async (e, toastObject) => {
+                try {
+                  await this.$axios.delete(`/api/articles/${id}`);
+                  toastObject.goAway(0);
+                  this.$toasted.show(
+                    'The report has been successfully deleted.',
+                    {
+                      duration: 2000,
+                      type: 'success'
+                    }
+                  );
+                  this.$fetch();
+                } catch (error) {
+                  if (error.response) {
+                    this.$toasted.show(error.response.data.message, 
+                    {
+                      duration: 2000,
+                      type: 'error'
+                    });
+                  } else {
+                    console.log(error);
+                  }
+                }
+              }
+            },
+            {
+              text: 'No, keep!',
+              onClick: (e, toastObject) => toastObject.goAway()
+            }]
+        });        
       } catch (error) {
         console.log(error);
       }

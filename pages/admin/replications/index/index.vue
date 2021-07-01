@@ -210,18 +210,37 @@ export default {
         this.options.sortBy.direction = direction;
       } 
     },
-    deleteReplication(id) {
-      this.$store.dispatch("replications/delete", id);
+    async deleteReplication(id) {
 
-        this.$toasted.show(
-          'The replication has been successfully deleted.',
-          {
-            duration: 2000,
-            type: 'success'
+
+      this.$toasted.show('Really delete?', {
+        action: [{
+          text: 'Yes, delete!',
+          onClick: async (e, toastObject) => {
+            try {
+              await this.$axios.$delete(`/api/replications/${id}`);
+              toastObject.goAway(0);
+              this.$store.dispatch("replications/get");
+              this.$toasted.show(
+                'The replication has been successfully deleted.',
+                { duration: 2000, type: 'success' }
+              );
+            } catch (e) {
+              if (e.response) {
+                const { error } = e.response.data;
+                this.$toasted.show(error.message, { duration: 2000, type: 'error' });
+                toastObject.goAway(0);
+              } else {
+                console.log(e);
+              }
+            }
           }
-        );
-
-
+        },
+        {
+          text: 'No, keep!',
+          onClick: (e, toastObject) => toastObject.goAway()
+        }]
+      });        
     },
     clearFilter() {
       this.filter = "";

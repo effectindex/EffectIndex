@@ -16,9 +16,11 @@ const { isValidObjectId } = require('mongoose');
 router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
   try {
     const users = await User.find()
-      .select('_id username person roles')
-      .populate('person')
+      .select('username identity roles')
+      .populate('identity')
       .exec();
+
+      console.log(users);
     res.send({ users });
   } catch (err) {
     next(err);
@@ -60,7 +62,7 @@ router.post('/register', async (req, res, next) => {
 
     const { username, password } = user;
 
-    if (username.length < 4 || username.length > 15) throw API_Error('REGISTRATION_ERROR', 'Username must be between 4 and 15 characters.');
+    if (username.length < 2 || username.length > 15) throw API_Error('REGISTRATION_ERROR', 'Username must be between 4 and 15 characters.');
     if (password.length < 6) throw API_Error('REGISTRATION_ERROR', 'The password must be 6 or more characters.');
 
     let hash = await bcrypt.hash(password, 10);
@@ -119,7 +121,7 @@ router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res,
   try {
     const { user } = req;
     if (user && '_id' in user) {
-      const data = await User.findById(user._id);
+      const data = await User.findById(user._id).exec();
       if (data) {
         const { username, permissions } = data;
         res.send({ user: {

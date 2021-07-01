@@ -1,18 +1,6 @@
 <template>
   <div class="role-input">
-    <div class="add-roles">
-      <select v-model="selectedRole">
-        <option
-          v-for="(role, index) in availableRoles"
-          :key="index"
-        >
-          {{ role }}
-        </option>
-      </select>
-      <button @click="addRole">
-        Add Role
-      </button>
-    </div>
+    <h3> Roles: </h3>
     <ul
       v-if="value"
       class="user-role-list"
@@ -29,6 +17,15 @@
             color="red"
           />
         </a>
+      </li>
+    </ul>
+    <h3> Available Roles: </h3>
+    <ul class="add-roles">
+      <li
+        v-for="(role, index) in filteredRoles"
+        :key="index"
+      >
+        <a @click="giveRole(role)"> {{ role }} </a>
       </li>
     </ul>
   </div>
@@ -53,6 +50,11 @@ export default {
       availableRoles: ['admin', 'editor', 'reports', 'effects', 'replications', 'articles', 'effects-moderator', 'reports-moderator', 'replications-moderator', 'articles-moderator']
     };
   },
+  computed: {
+    filteredRoles() {
+      return this.availableRoles.filter(role => !this.value.includes(role));
+    }
+  },
   methods: {
     addRole() {
       if (this.selectedRole) {
@@ -61,6 +63,11 @@ export default {
     },
     removeRole(index) {
       this.$emit('input', this.value.filter((role, i) => index !== i));
+    },
+    giveRole(role) {
+      if (!this.value.includes(role)) {
+        this.$emit('input', [...this.value, role]);
+      }
     }
   }
 };
@@ -70,6 +77,20 @@ export default {
 .icon {
   height: 1em;
   width: 1em;
+}
+
+ul.add-roles {
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.add-roles li {
+  display: block;
+  cursor: pointer;
+  margin-right: 1em;
+  white-space: nowrap;
 }
 
 .role-list-item {
@@ -99,23 +120,6 @@ export default {
 
 .role {
   padding-bottom: 2px;
-}
-
-.add-roles {
-  display: flex;
-  align-items: center;
-}
-
-.add-roles select {
-  height: 30px;
-  border: 1px solid #CCC;
-  font-size: 18px;
-}
-
-.add-roles button {
-  height: 30px;
-  border: 1px solid #CCC;
-  margin-left: 1em;
 }
 
 .user-role-list {

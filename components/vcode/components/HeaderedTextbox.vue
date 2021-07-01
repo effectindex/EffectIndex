@@ -62,6 +62,10 @@ export default {
     CaptionedImage
   },
   props: {
+    id: {
+      type: String,
+      default: undefined,
+    },
     label: {
       type: String,
       default: undefined

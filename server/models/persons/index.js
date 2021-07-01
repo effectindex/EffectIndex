@@ -46,56 +46,48 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), async (req, res
 
     const { not_public, full_name, alias, email, social_media, bio, tags } = req.body.person;
 
-    const person = new Person({
-      user: mongoose.Types.ObjectId(_id),
-      not_public,
-      full_name,
-      alias,
-      email,
-      gravatar_hash: email && email.length ? md5(email.trim().toLowerCase()) : undefined,
-      social_media,
-      'bio.raw': bio,
-      tags
-    });
-
-    const saved = await person.save();
-    res.json({ person: saved });
-
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.put('/me', secured({ secret: config.server.jwtSecret }), async (req, res, next) => {
-  try {
-    const { user } = req;
-
-    if (!user) throw API_Error('UPDATE_SELF_PROFILE_ERROR', 'User is not logged in.');
-
-    if (!req.body || !req.body.person) throw API_Error('UPDATE_SELF_PROFILE-ERROR', 'Invalid update data');
-
-    const { not_public, full_name, alias, email, social_media, bio, tags } = req.body.person;
-
     const userId = mongoose.Types.ObjectId(user._id);
 
-    const person = await Person.findOne({ user: userId });
+    const found = await Person.findOne({ user: userId });
 
-    person.not_public = not_public;
-    person.full_name = full_name;
-    person.alias = alias;
-    person.email = email;
-    person.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
-    person.social_media = social_media;
-    person.bio = { raw: bio };
-    person.tags = tags;
+    if (!found) {
 
-    const saved = await person.save();
-    res.json({ person: saved });
+      const person = new Person({
+        user: mongoose.Types.ObjectId(_id),
+        not_public,
+        full_name,
+        alias,
+        email,
+        gravatar_hash: email && email.length ? md5(email.trim().toLowerCase()) : undefined,
+        social_media,
+        'bio.raw': bio,
+        tags
+      });
+
+      const saved = await person.save();
+      res.json({ person: saved });
+    
+    } else {
+
+        found.not_public = not_public;
+        found.full_name = full_name;
+        found.alias = alias;
+        found.email = email;
+        found.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
+        found.social_media = social_media;
+        found.bio = { raw: bio };
+        found.tags = tags;
+    
+        const saved = await found.save();
+        res.json({ person: saved });
+
+    }
 
   } catch (error) {
     next(error);
   }
 });
+
 
 router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
   const { person } = req.body;

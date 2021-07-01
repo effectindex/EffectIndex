@@ -53,7 +53,7 @@ export default {
   async fetch({ store }) {
     await Promise.all([
       store.dispatch("effects/get"),
-      store.dispatch("replications/get"),
+      store.dispatch("replications/featured"),
       store.dispatch("reports/get"),
       store.dispatch("articles/get")
     ]);

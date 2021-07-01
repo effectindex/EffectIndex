@@ -16,7 +16,7 @@ const hasPerms = function(...perms) {
         if (!user) throw API_Error('PERMISSION_ERROR', 'User requesting specified resource cannot be found.');
 
         const { permissions } = user;
-        if (!permissions || !permissions.some(permission => perms.includes(permission))) throw API_Error('PERMISSION_ERROR', 'User does not have permission for requested API endpoint.', 500)
+        if (!permissions || !permissions.some(permission => perms.includes(permission))) throw API_Error('PERMISSION_ERROR', 'User does not have permission for requested API endpoint.', 403);
         else {
           req.user.permissions = permissions;
           req.user.can = hasPermission.bind(req.user);

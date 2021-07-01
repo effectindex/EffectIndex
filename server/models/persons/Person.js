@@ -26,7 +26,11 @@ const Person = mongoose.model("Person", {
     type: [socialMedia]
   },
   bio: Vcode,
-  tags: [String]
+  tags: [String],
+  image: String,
+  image_cropped: String,
+  featured: Boolean
 });
+
 
 module.exports = Person;
