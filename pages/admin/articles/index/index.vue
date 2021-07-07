@@ -3,10 +3,10 @@
     <hr>
     <table style="width: 100%;">
       <thead>
-        <tr>
-          <td> Title </td>
+        <tr style="font-weight: bold;">
           <td> Author </td>
-          <td> Tags </td>
+          <td> Date Published </td>
+          <td> Title </td>
           <td />
         </tr>
       </thead>
@@ -15,22 +15,21 @@
           v-for="article in articles"
           :key="article._id"
         >
+          <td>
+            <span
+              v-for="(author, index) in article.authors"
+              :key="index"
+            > {{ author.full_name || author.alias }} </span>
+          </td>
+          <td>
+            {{ formatDate(article.publication_date) }}
+          </td>
           <td> 
             <nuxt-link :to="'/articles/' + article.slug">
               {{ article.title }}
             </nuxt-link>
           </td>
-          <td> {{ article.author ? article.author.name : '' }} </td>
-          <td>
-            <span 
-              v-for="tag in article.tags"
-              :key="tag"
-              class="articleTag"
-            >
-              {{ tag }}
-            </span>
-          </td>
-          <td style="display: flex;">
+          <td style="display: flex; justify-content: flex-end;">
             <nuxt-link :to="'/admin/articles/' + article._id">
               <Icon
                 filename="edit.svg"
@@ -53,6 +52,7 @@
 
 <script>
 import Icon from '@/components/Icon';
+import fecha from "fecha";
 
 export default {
   components: {
@@ -73,6 +73,9 @@ export default {
     }
   },
   methods: {
+    formatDate(date) {
+      return date ? fecha.format(new Date(date), "dddd, MMMM DD YYYY") : undefined;
+    },
     async deleteArticle(id) {
       try {
         

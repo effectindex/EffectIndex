@@ -19,6 +19,7 @@
         v-for="effect in filteredEffects"
         :key="effect._id"
         :effect="effect"
+        :can-delete="canDelete"
         @deleteEffect="deleteEffect"
       />
     </table>
@@ -44,6 +45,10 @@ export default {
             effect.tags.some(tag => tag.indexOf(this.filter) > -1)
           )
         : this.$store.state.effects.list;
+    },
+    canDelete() {
+      console.log('a');
+      return this.$auth.hasScope('admin-effects');
     }
   },
   mounted() {
@@ -53,16 +58,86 @@ export default {
   scrollToTop: true,
   methods: {
     deleteEffect(id) {
-      this.$store.dispatch("effects/delete", id);
+      
 
-        this.$toasted.show(
-          'The effect has been deleted.',
-          {
-            duration: 2000,
-            type: 'success'
-          }
-        );
+ try {
+        
+        this.$toasted.show('Really delete?', {
+          action: [{
+              text: 'Yes, delete!',
+              onClick: async (e, toastObject) => {
+                try {
+                  await this.$store.dispatch("effects/delete", id);
+                  toastObject.goAway(0);
+                  this.$toasted.show(
+                    'The effect has been successfully deleted.',
+                    {
+                      duration: 2000,
+                      type: 'success'
+                    }
+                  );
+                  this.$store.dispatch("effects/get");
+                } catch (error) {
+                  if (error.response) {
+                    this.$toasted.show(error.response.data.message, 
+                    {
+                      duration: 2000,
+                      type: 'error'
+                    });
+                  } else {
+                    console.log(error);
+                  }
+                }
+              }
+            },
+            {
+              text: 'No, keep!',
+              onClick: (e, toastObject) => toastObject.goAway()
+            }]
+        });        
+      } catch (error) {
+        console.log(error);
+      }
 
+
+//  try {
+        
+//         this.$toasted.show('Really delete?', {
+//           action: [{
+//               text: 'Yes, delete!',
+//               onClick: async (e, toastObject) => {
+//                 try {
+//                   await this.$axios.delete(`/api/articles/${id}`);
+//                   toastObject.goAway(0);
+//                   this.$toasted.show(
+//                     'The report has been successfully deleted.',
+//                     {
+//                       duration: 2000,
+//                       type: 'success'
+//                     }
+//                   );
+//                   this.$fetch();
+//                 } catch (error) {
+//                   if (error.response) {
+//                     this.$toasted.show(error.response.data.message, 
+//                     {
+//                       duration: 2000,
+//                       type: 'error'
+//                     });
+//                   } else {
+//                     console.log(error);
+//                   }
+//                 }
+//               }
+//             },
+//             {
+//               text: 'No, keep!',
+//               onClick: (e, toastObject) => toastObject.goAway()
+//             }]
+//         });        
+//       } catch (error) {
+//         console.log(error);
+//       }
 
     },
     clearFilter() {

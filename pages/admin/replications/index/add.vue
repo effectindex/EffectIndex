@@ -19,15 +19,14 @@ export default {
   methods: {
     async submitReplication(replication) {
       try {
-        let returnedReplication = await this.$store.dispatch(
+        const response = await this.$store.dispatch(
           "replications/submit",
           replication
         );
         this.$router.push("/admin/replications");
       } catch (error) {
-        console.log(error);
         this.$toasted.show(
-          'There was an error saving the replication.',
+          'There was an error saving the replication. ',
           {
             duration: 2000,
             type: 'error'

@@ -23,6 +23,7 @@
     </td>
     <td>
       <a 
+        v-show="canDelete"
         style="cursor: pointer;"
         @click="deleteEffect(effect._id)"
       >
@@ -47,6 +48,10 @@ export default {
     effect: {
       type: Object,
       default: () => null
+    },
+    canDelete: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {

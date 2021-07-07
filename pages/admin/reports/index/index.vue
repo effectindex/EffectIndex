@@ -74,15 +74,40 @@ export default {
   },
   methods: {
     async deleteReport(id) {
-      await this.$store.dispatch('reports/delete', id);
 
-      this.$toasted.show(
-        'The report has been successfully deleted.',
-        {
-          duration: 2000,
-          type: 'success'
-        }
-      );
+this.$toasted.show('Really delete?', {
+          action: [{
+              text: 'Yes, delete!',
+              onClick: async (e, toastObject) => {
+                try {
+                  await this.$store.dispatch('reports/delete', id);
+                  toastObject.goAway(0);
+                  this.$toasted.show(
+                    'The report has been successfully deleted.',
+                    {
+                      duration: 2000,
+                      type: 'success'
+                    }
+                  );
+                  this.$fetch();
+                } catch (error) {
+                  if (error.response) {
+                    this.$toasted.show(error.response.data.message, 
+                    {
+                      duration: 2000,
+                      type: 'error'
+                    });
+                  } else {
+                    console.log(error);
+                  }
+                }
+              }
+            },
+            {
+              text: 'No, keep!',
+              onClick: (e, toastObject) => toastObject.goAway()
+            }]
+        }); 
 
       this.$fetch();
 

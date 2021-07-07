@@ -21,7 +21,6 @@ const article = new Schema({
       type: Date
     },
     user: {
-      required: true,
       type: mongoose.Schema.ObjectId,
       ref: 'User'
     },

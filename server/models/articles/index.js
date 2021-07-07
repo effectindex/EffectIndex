@@ -73,7 +73,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-ar
     article.subtitle = subtitle;
     article.publication_status = publication_status;
     article.publication_date = publication_date;
-    article.article = authors.map(author => author._id);
+    article.authors = authors.map(author => author._id);
     article.citations = citations;
     article.updated = new Date();
     article.short_description = short_description;

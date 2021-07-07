@@ -19,8 +19,6 @@ router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), a
       .select('username identity roles')
       .populate('identity')
       .exec();
-
-      console.log(users);
     res.send({ users });
   } catch (err) {
     next(err);
