@@ -1,6 +1,6 @@
 <template>
   <ul
-    v-if="!ordered "
+    v-if="!ordered"
     :class="listStyle"
   >
     <slot />
@@ -19,13 +19,15 @@ export default {
     },
     listStyle: {
       type: String,
-      default: 'disc'
+      default: "disc"
     }
   }
 };
 </script>
 
 <style scoped>
+
+
   ul.circle {
     list-style: disc;
   }
@@ -35,20 +37,21 @@ export default {
     padding-left: 0;
   }
 
-  ul >>> li, ol >>> li {
+  ul >>> li,
+  ol >>> li {
     margin: 0.5em 0;
   }
 
   ul.square {
-    list-style:square;
+    list-style: square;
   }
 
   ul.dash {
-    list-style: none; 
+    list-style: none;
   }
 
   ul.dash >>> li:before {
-    content: '\2013';
+    content: "\2013";
     position: relative;
     left: -10px;
   }
