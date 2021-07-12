@@ -149,7 +149,7 @@ export default {
 }
 
 .article ul li {
-  color: black;
+  color:#757575;
   margin: 1em 0;
 }
 
@@ -174,7 +174,7 @@ export default {
 
 .article h4 {
   font-size: 24.5px;
-  text-transform: none;
+  text-transform: uppercase;
   letter-spacing: unset;
 }
 
