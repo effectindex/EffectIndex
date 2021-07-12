@@ -88,11 +88,17 @@ export default {
 
   .panel-content {
     margin: 0;
+    padding: 0.5em 1em;
+  }
+
+  .panel-content >>> p:not(:last-child) {
+    margin-bottom: 1em;
   }
 
   .panel-content >>> ul {
     margin: 0;
     padding-left: 0;
+    margin-left: 1em;
   }
 
   .panel-content >>> ul h4 {
@@ -111,7 +117,7 @@ export default {
   }
 
   .panel-content >>> ul li {
-    margin: 0.5em 0 0.5em 2em;
+    margin: 0.5em 0 0.5em 0em;
     font-weight: 300;
   }
 
