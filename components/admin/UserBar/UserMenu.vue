@@ -10,6 +10,11 @@
         Users
       </nuxt-link>
     </li>
+    <li v-if="$auth.hasScope('admin')">
+      <nuxt-link to="/admin/people">
+        People
+      </nuxt-link>
+    </li>
     <li v-if="$auth.hasScope('all-replications') || $auth.hasScope('own-replications')">
       <nuxt-link to="/admin/replications">
         Replications 

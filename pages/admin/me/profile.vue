@@ -28,13 +28,21 @@ export default {
   },
   methods: {
     async updateProfile(person) {
-      await this.$axios.$post('/api/persons/me', { person });
+      try {
+        await this.$axios.$post('/api/persons/me', { person });
+        this.$toasted.show('Your profile was successfully updated.', { duration: 2000, type: 'success' });
+      } catch (error) {
+        console.log(error);
+        this.$toasted.show('There was an error updating your profile.', { duration: 2000, type: 'error' });
+      }
     },
     async saveProfile(person) {
       try {
         await this.$axios.$post('/api/persons/me', { person });
+        this.$toasted.show('Your profile was successfully saved.', { duration: 2000, type: 'success' });
       } catch(error) {
         console.log(error);
+        this.$toasted.show('There was an error saving your profile.', { duration: 2000, type: 'error' });
       }
     }
   }

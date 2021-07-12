@@ -7,8 +7,61 @@ const secured = require('express-jwt');
 const hasPerms = require('../HasPerms');
 const API_Error = require('../ApiError');
 
+const uniqueSlug = require('unique-slug');
+
 const Person = require('./Person');
+const User = require('../users/User');
+
 const mongoose = require('mongoose');
+
+
+
+const multer = require('multer');
+const mkdirp = require('mkdirp');
+const mime = require('mime');
+
+const MAX_FILE_SIZE = 10485760; // 10 MB
+const STATIC_ASSETS_DIRECTORY = 'static/';
+const TEMPORARY_IMAGE_DIRECTORY = 'temp/';
+
+
+// Generates the filename for a given file
+const filename = (req, file, cb) => {
+  const extension = mime.extension(file.mimetype);
+  const filename = `${uniqueSlug()}.${extension}`;
+  cb(null, filename.toLowerCase());
+};
+
+// Generates the destination directory for a given file
+const destination = async (req, file, cb) => {
+  const tempDirectory = STATIC_ASSETS_DIRECTORY + TEMPORARY_IMAGE_DIRECTORY;
+  await mkdirp(tempDirectory);
+  cb(null, tempDirectory);
+};
+
+const storage = multer.diskStorage({ filename, destination });
+
+const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).any();
+
+router.post('/imageUpload', secured({ secret: config.server.jwtSecret }), hasPerms('own-person', 'all-people'), uploadAny, async(req, res, next) => {
+  try {
+    const { files } = req;
+    if (Array.isArray(files) && files.length) {
+      const file = files.shift();
+      try {
+        res.json({ imageUrl: TEMPORARY_IMAGE_DIRECTORY + file.filename });
+      } catch (error) {
+        console.log(error);
+        throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
+      }
+    } else {
+      throw API_Error('UPLOAD_IMAGE_ERROR', 'No files were selected for upload.');
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 router.get('/', async (req, res, next) => {
   try {
@@ -34,7 +87,7 @@ router.get('/me', secured({ secret: config.server.jwtSecret }), async(req, res, 
   }
 });
 
-router.post('/me', secured({ secret: config.server.jwtSecret }), async (req, res, next) => {
+router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-profile'), async (req, res, next) => {
   try {
     const { user } = req;
 
@@ -44,11 +97,9 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), async (req, res
     
     if (!req.body || !req.body.person) throw API_Error('UPDATE_SELF_PROFILE-ERROR', 'Invalid update data');
 
-    const { not_public, full_name, alias, email, social_media, bio, tags } = req.body.person;
+    const { not_public, full_name, alias, email, social_media, bio, tags, image } = req.body.person;
 
-    const userId = mongoose.Types.ObjectId(user._id);
-
-    const found = await Person.findOne({ user: userId });
+    const found = await Person.findOne({ user: _id });
 
     if (!found) {
 
@@ -61,10 +112,17 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), async (req, res
         gravatar_hash: email && email.length ? md5(email.trim().toLowerCase()) : undefined,
         social_media,
         'bio.raw': bio,
-        tags
+        image
       });
 
+      if (user.can('admin')) {
+        person.tags = tags;
+      }
+
       const saved = await person.save();
+
+      await User.findOneAndUpdate({ _id }, { identity: saved._id });
+
       res.json({ person: saved });
     
     } else {
@@ -76,7 +134,11 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), async (req, res
         found.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
         found.social_media = social_media;
         found.bio = { raw: bio };
-        found.tags = tags;
+        found.image = image;
+
+        if (user.can('admin')) {
+          person.tags = tags;
+        }
     
         const saved = await found.save();
         res.json({ person: saved });

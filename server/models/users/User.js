@@ -10,6 +10,10 @@ const UserSchema = new Schema({
   roles: {
     type: Array,
     default: []
+  },
+  identity: {
+    type: Schema.Types.ObjectId,
+    ref: 'Person'
   }
 }, {
   toJSON: {
@@ -25,7 +29,13 @@ UserSchema.virtual('permissions').get(function() {
 
   const permissions = new Set();
 
-  if (roles.includes('admin')) permissions.add('admin');
+  permissions.add('own-person');
+
+  if (roles.includes('admin')) {
+    permissions.add('admin');
+    permissions.add('all-people');
+    permissions.add('all-people');
+  }
   
   if (roles.includes('editor') || roles.includes('admin')) {
     permissions.add('admin-effects');
@@ -51,15 +61,12 @@ UserSchema.virtual('permissions').get(function() {
 
 });
 
-UserSchema.virtual('identity', {
-  ref: 'Person',
-  localField: '_id',
-  foreignField: 'user',
-  justOne: true,
-  getters: true
-}).get(function(value, virtual, doc) {
-  return value ? value._id : null;
-});
+// UserSchema.virtual('identity', {
+//   ref: 'Person',
+//   localField: '_id',
+//   foreignField: 'user',
+//   justOne: true
+// });
 
 const User = mongoose.model("User", UserSchema);
 

@@ -31,7 +31,7 @@
 
 <script>
 import Icon from '@/components/Icon';
-import PersonDetails from './PersonDetails.vue';
+import PersonDetails from './PersonDetails';
 
 export default {
   components: {

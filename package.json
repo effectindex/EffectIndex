@@ -43,6 +43,8 @@
     "prismjs": "^1.22.0",
     "regenerator-runtime": "^0.13.7",
     "shelljs": "^0.8.4",
+    "unique-slug": "^2.0.2",
+    "vue-advanced-cropper": "^1.7.0",
     "vue-analytics": "^5.22.1",
     "vue-prism-editor": "^1.2.2",
     "vue-scrollto": "^2.18.2",

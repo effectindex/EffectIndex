@@ -17,7 +17,7 @@
         <td>
           <role-list :roles="user.roles" />
         </td>
-        <td />
+        <td> {{ user.identity ? user.identity.full_name || user.identity.alias : undefined }} </td>
         <td>
           <div class="user-controls">
             <nuxt-link :to="`/admin/users/${user._id}`">

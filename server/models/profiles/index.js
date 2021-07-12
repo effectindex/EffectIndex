@@ -51,19 +51,14 @@ const storage = multer.diskStorage({
 
 const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).any();
 
-router.post('/upload', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
+router.post('/imageUpload', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   try {
-    const profile = { profileImageFull: undefined, profileImageCropped: undefined };
     const { files } = req;
+    const { personId } = req.body;
 
     if (Array.isArray(files) && files.length) {
-      for (const file of files) {
-        if (file.fieldname === 'fullImageData') profile.profileImageFull = file.filename;
-        if (file.fieldname === 'croppedImageData') profile.profileImageCropped = file.filename;
-      }
-
       try {
-        await Profile.findOneAndUpdate({ username: req.body.username }, profile);
+        await Profile.findOneAndUpdate({ id: personId }, { image: files[0].filename });
       } catch (error) {
         throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
       }

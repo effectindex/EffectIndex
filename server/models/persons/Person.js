@@ -26,7 +26,9 @@ const Person = mongoose.model("Person", {
     type: [socialMedia]
   },
   bio: Vcode,
-  tags: [String],
+  tags: {
+    type: [String],
+  },
   image: String,
   image_cropped: String,
   featured: Boolean

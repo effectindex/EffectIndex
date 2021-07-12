@@ -45,8 +45,23 @@
     <div class="people__inputField">
       <h3> Tags </h3>
       <tag-input 
-        v-model="person.tags" 
+        v-model="person.tags"
+        :disabled="!this.$auth.hasScope('admin')"
       />
+    </div>
+
+    <div class="people__inputField">
+      <h3> Profile Image </h3>
+      <div v-if="person.profile_image">
+        <img
+          src="person.profile_image"
+          alt="Profile Image"
+        >
+        <button> Clear </button>
+      </div>
+      <client-only>
+        <image-upload :person-id="person._id" />
+      </client-only>
     </div>
 
     <div class="people__inputField">
@@ -93,12 +108,14 @@
 import TagInput from '@/components/editors/TagInput';
 import VcodeInput from '@/components/vcode/editor';
 import SocialMediaInput from './SocialMediaInput';
+import ImageUpload from './ImageUpload';
 
 export default {
   components: {
     TagInput,
     VcodeInput,
-    SocialMediaInput
+    SocialMediaInput,
+    ImageUpload
   },
   props: {
     person: {
