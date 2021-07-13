@@ -18,7 +18,7 @@
       > Documentation </a>
     </div>
     <div
-      v-show="tab === 'edit'"
+      v-if="tab === 'edit'"
       ref="editTab"
       class="edit-tab"
     >
@@ -38,6 +38,7 @@
       class="preview-tab"
     >
       <vcode
+        v-if="tab === 'preview'"
         :body="formatted"
         :data="data"
       />
@@ -48,8 +49,6 @@
 <script>
 import { PrismEditor } from 'vue-prism-editor';
 import { highlight } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
 import vcode2 from '@/lib/vcode2/prism-vcode2.js';
 import 'vue-prism-editor/dist/prismeditor.min.css'; 
 import 'prismjs/themes/prism-tomorrow.css';
