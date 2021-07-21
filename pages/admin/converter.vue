@@ -18,14 +18,14 @@
       > Documentation </a>
     </div>
     <div
-      v-if="tab === 'edit'"
+      v-show="tab === 'edit'"
       ref="editTab"
       class="edit-tab"
     >
       <client-only>
         <prism-editor
           ref="prism"
-          :value="value"
+          v-model="value"
           class="my-editor"
           :highlight="highlighter"
           @input="codeModified"
@@ -38,17 +38,21 @@
       class="preview-tab"
     >
       <vcode
-        v-if="tab === 'preview'"
         :body="formatted"
-        :data="data"
       />
     </div>
+    <button @click="convertViscidcode()">
+      Convert Old Viscidcode
+    </button>
   </div>
 </template>
 
 <script>
 import { PrismEditor } from 'vue-prism-editor';
 import { highlight } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import convert from '@/components/vcode/convert.js';
 import vcode2 from '@/lib/vcode2/prism-vcode2.js';
 import 'vue-prism-editor/dist/prismeditor.min.css'; 
 import 'prismjs/themes/prism-tomorrow.css';
@@ -57,18 +61,9 @@ export default {
   components: {
     PrismEditor
   },
-  props: {
-    value: {
-      type: String,
-      default: undefined
-    },
-    data: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  data () {
+  data() {
     return {
+      value: undefined,
       tab: 'edit',
       editScrollX: 0,
       previewScrollX: 0
@@ -105,11 +100,8 @@ export default {
 
       this.tab = tab;
     },
-    codeModified(code) {
-      this.$emit('input', code);
-    },
     convertViscidcode() {
-      this.$emit('input', convert(this.value));
+      this.value = convert(this.value);
     }
   }
 };

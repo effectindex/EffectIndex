@@ -192,7 +192,7 @@ export default {
   },
   data () {
     const { _id, name, description, citations, url, external_links, 
-    see_also, tags, contributors, summary, long_summary, analysis, style_variations,
+    see_also, tags, contributors, summary_raw, long_summary, analysis, style_variations,
     personal_commentary, gallery_order, social_media_image, subarticles, featured, toc } = this.effect ? this.effect : {};
     return {
       showDetails: false,
@@ -205,7 +205,7 @@ export default {
       see_also: see_also ? see_also : [],
       tags: tags ? tags : [],
       contributors: contributors ? contributors : [],
-      summary: summary ? summary.raw : "",
+      summary: summary_raw ? summary_raw : "",
       long_summary: long_summary ? long_summary.raw : "",
       analysis: analysis ? analysis.raw : "",
       style_variations: style_variations ? style_variations.raw : "",

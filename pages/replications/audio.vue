@@ -31,7 +31,7 @@ export default {
     }
   },
   async fetch({ store }) {
-    await store.dispatch("replicatons/get");
+    await store.dispatch("replications/get");
     await store.dispatch("effects/get");
   },
   head() {

@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div 
     :id="id"
     class="headeredTextbox"
   >
@@ -7,30 +7,38 @@
       class="headersContainer"
       :style="`background-color: ${headerBackground}`"
     >
-      <h4 
-        v-show="label"
-        class="label"
-        :style="`background-color: ${labelBackground}`"
+      <div
+        class="headersContainerText"
       >
-        <span style="white-space: pre;">{{ label }}</span>
-      </h4>
-      <div 
-        v-show="header || subHeader"
-        class="headers"
-      >
-        <h3
-          v-show="header" 
-          class="mainHeader"
+        <h4 
+          v-show="label"
+          class="label"
+          :style="`background-color: ${labelBackground}`"
         >
-          {{ header }}
-        </h3>
-        <h4
-          v-show="subHeader" 
-          class="subHeader"
-        >
-          <span class="separator">-</span> {{ subHeader }}
+          <span style="white-space: pre;">{{ label }}</span>
         </h4>
+        <div 
+          v-show="header || subHeader"
+          class="headers"
+        >
+          <h3
+            v-show="header" 
+            class="mainHeader"
+          >
+            {{ header }}
+          </h3>
+          <h4
+            v-show="subHeader" 
+            class="subHeader"
+          >
+            <span class="separator">-</span> {{ subHeader }}
+          </h4>
+        </div>
       </div>
+      <Icon
+        v-if="icon"
+        :filename="icon"
+      />
     </div>
     <div
       class="body"
@@ -56,10 +64,12 @@
 
 <script>
 import CaptionedImage from './HeaderedTextboxCaptionedImage';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
-    CaptionedImage
+    CaptionedImage,
+    Icon
   },
   props: {
     id: {
@@ -121,6 +131,14 @@ export default {
     imageGfycat: {
       type: String,
       default: ""
+    },
+    id: {
+      type: String,
+      default: undefined
+    },
+    icon: {
+      type: String,
+      default: undefined
     }
   },
   computed: {
@@ -131,7 +149,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .headeredTextbox {
   border: 1px solid rgb(221, 221, 221);
@@ -142,12 +160,6 @@ export default {
   margin: 0;
   text-transform: none;
   letter-spacing: unset;
-}
-
-.headeredTextbox > .headersContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
 }
 
 .headeredTextbox .label {
@@ -244,6 +256,19 @@ export default {
   .headeredTextbox .label {
     padding: 5px 15px 5px 10px;
   }
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+  opacity: 0.6;
+  margin: 0.5em;
+}
+
+.headersContainer, .headersContainerText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 </style>

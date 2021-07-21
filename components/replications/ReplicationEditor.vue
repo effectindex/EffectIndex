@@ -25,7 +25,37 @@
         class="input__singleLine"
       >
     </div>
-
+    <div>
+      <label> Associated Effects: </label>
+      <ul class="effectList">
+        <li 
+          v-for="effect in $store.state.effects"
+          :key="effect.id"
+        >
+          <input
+            :id="effect.name"
+            v-model="associated_effects"
+            :value="effect._id"
+            type="checkbox"
+            class="effectList__checkbox"
+          > {{ effect.name }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <label> Description: </label>
+      <textarea 
+        v-model="description"
+        class="input__textarea"
+      />
+    </div>
+    <div>
+      <label> Date: </label>
+      <input
+        v-model="date" 
+        class="input__singleLine"
+      >
+    </div>
     <div class="input__typeSelector">
       <label> Type: </label>
       <input 

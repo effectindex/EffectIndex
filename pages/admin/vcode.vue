@@ -279,14 +279,20 @@ props: [
         name: 'Headered Textbox',
         description: 'A text box with label and optional image.',
         code: `[headered-textbox
+        id="level-69"
         label="Level 69"
         header="A Superior Example"
         subHeader="Of a headered textbox"
+        icon="sun.svg"
         imageSrc="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2020/10/13142931/Close-up-of-a-Rottweiler-laying-down-outdoors.jpeg"
         imageWidth="300"
         imageAlign="left"
         ] When black dogs do psychedelic drugs, what was the research behind this one? "I used MDMA as a way to change something around in my life. It was something that I didn't know what I was doing, but it made everything feel a lot better." One of the experiments found that white dogs could be significantly more excited by a small amount of psychedelics than black dogs.  [/headered-textbox]`,
         props: [
+          {
+            name: 'id',
+            description: 'Id of the headered textbox, as defined in the editor. Used for linking in the Table of Contents'
+           },
           {
             name: 'label',
             description: 'The text that appears as the label in the top left of the textbox. If none is specified, there will be no label.'
@@ -306,6 +312,10 @@ props: [
           {
             name: 'subHeader',
             description: 'A subtitle for the textbox.'
+           },
+          {
+            name: 'icon',
+            description: 'Filename of the icon. (e.g. eye.svg) Icon files are stored in the project directory under /static/icons/. '
            },
           {
             name: 'imageSrc',

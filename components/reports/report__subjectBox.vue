@@ -54,8 +54,11 @@ export default {
   },
   computed: {
     filteredSubjectProperties() {
+      const order = ['name', 'trip_date', 'age', 'setting', 'gender', 'height', 'weight', 'medications'];
+
       return Object.keys(this.subject)
-      .filter(key => key !== 'pdf_url');
+      .filter(key => key !== 'pdf_url' && this.subject[key] !== "")
+      .sort((x, y) => order.indexOf(x) - order.indexOf(y));
     }
   },
   methods: {
