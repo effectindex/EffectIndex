@@ -4,6 +4,10 @@
       <span :class="{ expanded }">
         {{ person.full_name }}
       </span>
+      <person-admin-input
+        :person="person"
+        @save="savePersonMeta"
+      />
       <div class="controls">
         <a @click="editPerson">
           <icon
@@ -32,11 +36,13 @@
 <script>
 import Icon from '@/components/Icon';
 import PersonDetails from './PersonDetails';
+import PersonAdminInput from './PersonAdminInput.vue';
 
 export default {
   components: {
     Icon,
-    PersonDetails
+    PersonDetails,
+    PersonAdminInput
   },
   props: {
     person: {
@@ -57,6 +63,10 @@ export default {
       this.$emit('update', this.person);
       this.expanded = false;
     },
+    savePersonMeta(person) {
+      const { _id, role, featured } = person;
+      this.$emit('saveMeta', { _id, role, featured: !!featured });
+    },
     editPerson() {
       this.expanded = !this.expanded;
     }
@@ -68,6 +78,7 @@ export default {
   .info {
     display: flex;
     flex-direction: row;
+    align-items: center;
     height: 25px;
   }
 
@@ -93,4 +104,6 @@ export default {
   .person .controls a:hover {
     opacity: 1;
   }
+
+
 </style>

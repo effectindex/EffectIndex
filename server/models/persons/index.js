@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const md5 = require('md5');
 const router = express.Router();
@@ -11,51 +12,90 @@ const uniqueSlug = require('unique-slug');
 
 const Person = require('./Person');
 const User = require('../users/User');
+const { readdir, unlink, access } = require('fs/promises');
 
 const mongoose = require('mongoose');
 
-
-
+const sharp = require('sharp');
 const multer = require('multer');
 const mkdirp = require('mkdirp');
 const mime = require('mime');
 
 const MAX_FILE_SIZE = 10485760; // 10 MB
-const STATIC_ASSETS_DIRECTORY = 'static/';
-const TEMPORARY_IMAGE_DIRECTORY = 'temp/';
+const STATIC_DIR = 'static';
+const TEMP_DIR = 'img/temp';
+const IMAGE_DIR = 'img/profiles';
+
 
 
 // Generates the filename for a given file
 const filename = (req, file, cb) => {
-  const extension = mime.extension(file.mimetype);
+  const extension = mime.getExtension(file.mimetype);
   const filename = `${uniqueSlug()}.${extension}`;
   cb(null, filename.toLowerCase());
 };
 
 // Generates the destination directory for a given file
 const destination = async (req, file, cb) => {
-  const tempDirectory = STATIC_ASSETS_DIRECTORY + TEMPORARY_IMAGE_DIRECTORY;
-  await mkdirp(tempDirectory);
-  cb(null, tempDirectory);
+  const destination = path.join(STATIC_DIR, TEMP_DIR);
+  await mkdirp(destination);
+  await clearDirectory(destination);
+  cb(null, destination);
 };
 
 const storage = multer.diskStorage({ filename, destination });
 
-const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).any();
+const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).single('profileImage');
+
+async function clearDirectory(directory) {
+  try {
+    const files = await readdir(directory);
+    for (const file of files) {
+      unlink(path.join(directory, file));
+    }
+  } catch (error) {
+    throw new Error("Error clearing directory.");
+  }
+}
 
 router.post('/imageUpload', secured({ secret: config.server.jwtSecret }), hasPerms('own-person', 'all-people'), uploadAny, async(req, res, next) => {
   try {
-    const { files } = req;
-    if (Array.isArray(files) && files.length) {
-      const file = files.shift();
+    const { file } = req;
+    if (file) {
       try {
-        res.json({ imageUrl: TEMPORARY_IMAGE_DIRECTORY + file.filename });
+        res.json({ path: TEMP_DIR + '/', filename: file.filename });
       } catch (error) {
         console.log(error);
         throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
       }
     } else {
       throw API_Error('UPLOAD_IMAGE_ERROR', 'No files were selected for upload.');
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/imageCrop', secured({ secret: config.server.jwtSecret }), hasPerms('own-person', 'all-people'), async(req, res, next) => {
+  try {
+    const { filename, coordinates } = req.body;
+    if (filename && coordinates) {
+
+      const destinationFilename = uniqueSlug() + filename;
+      const { left, top, height, width } = coordinates;
+      const destinationDir = path.join(STATIC_DIR, IMAGE_DIR, req.user._id);
+      const tempDir = path.join(STATIC_DIR, TEMP_DIR);
+
+      await mkdirp(destinationDir);
+      await clearDirectory(destinationDir);
+      await sharp(path.join(tempDir, filename))
+        .extract({ left, top, height, width })
+        .resize(300, 300)
+        .toFile(path.join(destinationDir, destinationFilename));
+
+      res.json({ path: `${IMAGE_DIR}/${req.user._id}/`, filename: destinationFilename });
+    } else {
+      throw API_Error('CROP_IMAGE_ERROR', 'Invalid crop request.');
     }
   } catch (error) {
     next(error);
@@ -87,7 +127,9 @@ router.get('/me', secured({ secret: config.server.jwtSecret }), async(req, res, 
   }
 });
 
-router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-profile'), async (req, res, next) => {
+
+
+router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-person'), async (req, res, next) => {
   try {
     const { user } = req;
 
@@ -97,7 +139,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-
     
     if (!req.body || !req.body.person) throw API_Error('UPDATE_SELF_PROFILE-ERROR', 'Invalid update data');
 
-    const { not_public, full_name, alias, email, social_media, bio, tags, image } = req.body.person;
+    const { not_public, full_name, alias, email, social_media, bio, tags, image, profile_image } = req.body.person;
 
     const found = await Person.findOne({ user: _id });
 
@@ -111,6 +153,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-
         email,
         gravatar_hash: email && email.length ? md5(email.trim().toLowerCase()) : undefined,
         social_media,
+        profile_image,
         'bio.raw': bio,
         image
       });
@@ -129,6 +172,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-
 
         found.not_public = not_public;
         found.full_name = full_name;
+        found.profile_image = profile_image;
         found.alias = alias;
         found.email = email;
         found.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
@@ -136,11 +180,10 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-
         found.bio = { raw: bio };
         found.image = image;
 
-        if (user.can('admin')) {
-          person.tags = tags;
-        }
+        if (user.can('admin')) found.tags = tags;
     
         const saved = await found.save();
+
         res.json({ person: saved });
 
     }
@@ -151,7 +194,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('edit-
 });
 
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-people'), async (req, res, next) => {
   const { person } = req.body;
 
   try {
@@ -166,7 +209,30 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), 
   }
 });
 
-router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.put('/meta/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('all-people'), async (req, res, next) => {
+  const { _id } = req.params;
+  const { person } = req.body;
+
+  try {
+    const foundPerson = await Person.findById(_id);
+
+    if (foundPerson) {
+      foundPerson.featured = person.featured;
+      foundPerson.role = person.role;
+
+      await foundPerson.save();
+
+      res.sendStatus(200);
+    } else {
+      throw API_Error('UPDATE_PERSON_META_ERROR', 'Person not found.', 404);
+    }
+  } catch (error) {
+    next(error);
+  }
+
+});
+
+router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-people'), async (req, res, next) => {
   const { _id } = req.params;
   const { person } = req.body;
 
@@ -179,7 +245,7 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'
   }
 });
 
-router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('admin'), async (req, res, next) => {
+router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('all-people'), async (req, res, next) => {
   const { _id } = req.params;
   try {
     const result = await Person.deleteOne({ _id });

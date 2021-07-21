@@ -34,7 +34,7 @@ UserSchema.virtual('permissions').get(function() {
   if (roles.includes('admin')) {
     permissions.add('admin');
     permissions.add('all-people');
-    permissions.add('all-people');
+    permissions.add('own-person');
   }
   
   if (roles.includes('editor') || roles.includes('admin')) {

@@ -17,6 +17,7 @@ const Person = mongoose.model("Person", {
   full_name: String,
   alias: String,
   email: String,
+  role: String,
   gravatar_hash: String,
   user: {
     type: Schema.Types.ObjectId,
@@ -29,8 +30,7 @@ const Person = mongoose.model("Person", {
   tags: {
     type: [String],
   },
-  image: String,
-  image_cropped: String,
+  profile_image: String,
   featured: Boolean
 });
 

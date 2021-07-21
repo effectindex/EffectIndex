@@ -52,15 +52,8 @@
 
     <div class="people__inputField">
       <h3> Profile Image </h3>
-      <div v-if="person.profile_image">
-        <img
-          src="person.profile_image"
-          alt="Profile Image"
-        >
-        <button> Clear </button>
-      </div>
       <client-only>
-        <image-upload :person-id="person._id" />
+        <image-upload v-model="person.profile_image" />
       </client-only>
     </div>
 
@@ -133,6 +126,7 @@ export default {
           length: undefined,
         },
         tags: undefined,
+        profile_image: undefined,
         profile_url: undefined
       })
     }
@@ -148,6 +142,8 @@ export default {
           ...this.person,
           bio: this.bio_raw
         };
+
+        console.log(person);
 
         if (this.person._id) this.$emit('update', person);
         else this.$emit('submit', person);

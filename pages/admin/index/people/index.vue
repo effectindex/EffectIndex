@@ -10,6 +10,7 @@
       :person="person" 
       @delete="deletePerson"
       @update="updatePerson"
+      @saveMeta="saveMeta"
     />
   </div>
 </template>
@@ -50,6 +51,13 @@ export default {
       try {
         await this.$axios.put(`/api/persons/${person._id}`, { person });
         this.$fetch();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async saveMeta(person) {
+      try {
+        await this.$axios.$put(`/api/persons/meta/${person._id}`, { person });
       } catch (error) {
         console.log(error);
       }
