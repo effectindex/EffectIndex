@@ -13,7 +13,6 @@ const socialMedia = new Schema({
 });
 
 const Person = mongoose.model("Person", {
-  not_public: Boolean,
   full_name: String,
   alias: String,
   email: String,
@@ -31,7 +30,14 @@ const Person = mongoose.model("Person", {
     type: [String],
   },
   profile_image: String,
-  featured: Boolean
+  profile_url: {
+    type: String,
+    set: function(name) {
+      return name.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
+    }
+  },
+  featured: Boolean,
+  private: Boolean
 });
 
 

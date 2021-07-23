@@ -9,7 +9,7 @@
     </div>
     <div>
       <label> Artist (Person): </label>
-      <person-input v-model="person" />
+      <person-dropdown v-model="person" />
     </div>
     <div>
       <label> Artist (Freetext): </label>
@@ -198,12 +198,12 @@
 
 <script>
 import AudioPlayer from "@/components/replications/audio/AudioPlayer.vue";
-import PersonInput from "@/components/people/PersonInput";
+import PersonDropdown from "@/components/people/PersonDropdown";
 
 export default {
   components: {
     AudioPlayer,
-    PersonInput
+    PersonDropdown
   },
   props: {
     replication: {

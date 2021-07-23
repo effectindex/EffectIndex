@@ -17,7 +17,17 @@
         <td>
           <role-list :roles="user.roles" />
         </td>
-        <td> {{ user.identity ? user.identity.full_name || user.identity.alias : undefined }} </td>
+        <td v-if="user.identity"> 
+          <nuxt-link
+            v-if="user.identity.profile_url"
+            :to="`/people/${user.identity.profile_url}`"
+          >
+            {{ user.identity.full_name || user.identity.alias }}
+          </nuxt-link>
+        </td>
+        <td v-else>
+          {{ user.identity ? user.identity.full_name || user.identity.alias : undefined }}
+        </td>
         <td>
           <div class="user-controls">
             <nuxt-link :to="`/admin/users/${user._id}`">

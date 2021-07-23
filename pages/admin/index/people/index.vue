@@ -42,23 +42,29 @@ export default {
     async newPerson(person) {
       try {
         await this.$axios.post('/api/persons', { person });
+        this.$toasted.show('The person was successfully created.', { duration: 2000, type: 'success' });
         this.$fetch();
       } catch (error) {
+        this.$toasted.show('There was an error saving the person. Check console.', { duration: 2000, type: 'error' });
         console.log(error);
       }
     },
     async updatePerson(person) {
       try {
         await this.$axios.put(`/api/persons/${person._id}`, { person });
+        this.$toasted.show('The person was successfully updated.', { duration: 2000, type: 'success' });
         this.$fetch();
       } catch (error) {
+        this.$toasted.show('There was an error updating the person. Check console.', { duration: 2000, type: 'error' });
         console.log(error);
       }
     },
     async saveMeta(person) {
       try {
         await this.$axios.$put(`/api/persons/meta/${person._id}`, { person });
+        this.$toasted.show('Person metadata was successfully saved.', { duration: 2000, type: 'success' });
       } catch (error) {
+        this.$toasted.show('Metadata was not successfully saved. Check console.', { duration: 2000, type: 'error' });
         console.log(error);
       }
     },
@@ -82,6 +88,7 @@ export default {
 
 
       } catch (error) {
+        this.$toasted.show('There was an error deleting the person. Check console.', { duration: 2000, type: 'error' });
         console.log(error);
       }
     }

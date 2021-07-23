@@ -2,7 +2,7 @@
   <div class="person">
     <div class="info">
       <span :class="{ expanded }">
-        {{ person.full_name }}
+        {{ person.full_name || person.alias }}
       </span>
       <person-admin-input
         :person="person"

@@ -132,10 +132,6 @@ export default {
       type: String,
       default: ""
     },
-    id: {
-      type: String,
-      default: undefined
-    },
     icon: {
       type: String,
       default: undefined

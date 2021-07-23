@@ -1,5 +1,5 @@
 <template>
-  <div class="personInput">
+  <div class="personDropdown">
     <select
       :value="value"
       @change="handleChange"
@@ -61,11 +61,11 @@ export default {
 </script>
 
 <style scoped>
-.personInput, .personInput select, .personInput option {
+.personDropdown, .personDropdown select, .personDropdown option {
     outline: none;
 }
 
-.personInput select {
+.personDropdown select {
   padding: 0.5em;
   background-color: transparent;
   border: 1px solid #cccccc;
@@ -73,7 +73,7 @@ export default {
 
 }
 
-.personInput option {
+.personDropdown option {
   background-color: transparent;
 }
 </style>

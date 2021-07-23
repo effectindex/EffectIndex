@@ -115,7 +115,6 @@ export default {
       type: Object,
       default: () => ({
         _id: undefined,
-        not_public: true,
         full_name: undefined,
         alias: undefined,
         email: undefined,
@@ -127,7 +126,8 @@ export default {
         },
         tags: undefined,
         profile_image: undefined,
-        profile_url: undefined
+        profile_url: undefined,
+        private: undefined
       })
     }
   },
@@ -142,8 +142,6 @@ export default {
           ...this.person,
           bio: this.bio_raw
         };
-
-        console.log(person);
 
         if (this.person._id) this.$emit('update', person);
         else this.$emit('submit', person);

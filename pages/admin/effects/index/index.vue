@@ -47,7 +47,6 @@ export default {
         : this.$store.state.effects.list;
     },
     canDelete() {
-      console.log('a');
       return this.$auth.hasScope('admin-effects');
     }
   },

@@ -38,7 +38,7 @@
   "Community": {
     "location": "/discord-chat",
     "children": [
-      { "name": "People", "location": "/profiles/" },
+      { "name": "People", "location": "/people/" },
       { "name": "Discord", "location": "/discord-chat/" },
       { "name": "Contact", "location": "/contact" }
     ]

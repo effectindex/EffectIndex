@@ -87,7 +87,6 @@ router.post('/imageCrop', secured({ secret: config.server.jwtSecret }), hasPerms
       const tempDir = path.join(STATIC_DIR, TEMP_DIR);
 
       await mkdirp(destinationDir);
-      await clearDirectory(destinationDir);
       await sharp(path.join(tempDir, filename))
         .extract({ left, top, height, width })
         .resize(300, 300)
@@ -112,6 +111,15 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/featured', async (req, res, next) => {
+  try {
+    const people = await Person.find({ featured: true });
+    res.json({ people });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/me', secured({ secret: config.server.jwtSecret }), async(req, res, next) => {
   try {
     const { user } = req;
@@ -128,6 +136,26 @@ router.get('/me', secured({ secret: config.server.jwtSecret }), async(req, res, 
 });
 
 
+router.get('/:profile_url', async (req, res, next) => {
+  const { profile_url } = req.params;
+
+  try {
+
+    if (!profile_url) throw API_Error('GET_PERSON_ERROR', 'A profile URL is required.');
+
+    const person = await Person.findOne({ profile_url });
+
+    if (!person) throw API_Error('GET_PERSON_ERROR', 'The person was not found.', 404);
+
+    if (person.private) throw API_Error('GET_PERSON_ERROR', 'That profile is private.', 500);
+
+    res.json({ person });
+
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-person'), async (req, res, next) => {
   try {
@@ -139,7 +167,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
     
     if (!req.body || !req.body.person) throw API_Error('UPDATE_SELF_PROFILE-ERROR', 'Invalid update data');
 
-    const { not_public, full_name, alias, email, social_media, bio, tags, image, profile_image } = req.body.person;
+    const { private, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = req.body.person;
 
     const found = await Person.findOne({ user: _id });
 
@@ -147,18 +175,19 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
 
       const person = new Person({
         user: mongoose.Types.ObjectId(_id),
-        not_public,
+        private,
         full_name,
         alias,
         email,
         gravatar_hash: email && email.length ? md5(email.trim().toLowerCase()) : undefined,
+        profile_url: profile_url ? profile_url : full_name || alias,
         social_media,
         profile_image,
         'bio.raw': bio,
         image
       });
 
-      if (user.can('admin')) {
+      if (user.can('all-people')) {
         person.tags = tags;
       }
 
@@ -170,9 +199,10 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
     
     } else {
 
-        found.not_public = not_public;
+        found.private = private;
         found.full_name = full_name;
         found.profile_image = profile_image;
+        found.profile_url = profile_url ? profile_url : full_name || alias;
         found.alias = alias;
         found.email = email;
         found.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
@@ -180,7 +210,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
         found.bio = { raw: bio };
         found.image = image;
 
-        if (user.can('admin')) found.tags = tags;
+        if (user.can('all-people')) found.tags = tags;
     
         const saved = await found.save();
 
@@ -195,15 +225,31 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
 
 
 router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-people'), async (req, res, next) => {
-  const { person } = req.body;
-
   try {
+    const { person } = req.body;
+
     if (!person) throw API_Error('ADD_PERSON_ERROR', 'New person data invalid.');
 
-    person.gravatar_hash = (person.email && person.email.length) ? md5(person.email.trim().toLowerCase()) : undefined;
+    const { private, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = person;
 
-    const result = await Person.create(person);
-    res.send({ person: result });
+    const newPerson = new Person({
+      private,
+      full_name,
+      alias,
+      email,
+      gravatar_hash: email && email.length ? md5(email.trim().toLowerCase()) : undefined,
+      social_media,
+      profile_image,
+      profile_url: profile_url ? profile_url : full_name || alias,
+      'bio.raw': bio,
+      tags,
+      image
+    });
+
+    const savedPerson = await newPerson.save();
+
+    res.json({ person: savedPerson });
+    
   } catch (err) {
     next(err);
   }
@@ -233,13 +279,38 @@ router.put('/meta/:_id', secured({ secret: config.server.jwtSecret }), hasPerms(
 });
 
 router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-people'), async (req, res, next) => {
-  const { _id } = req.params;
-  const { person } = req.body;
+  const { user } = req;
 
   try {
-    person.gravatar_hash = (person.email && person.email.length) ? md5(person.email.trim().toLowerCase()) : undefined;
-    const result = await Person.findByIdAndUpdate(_id, { ...person });
-    res.json({ result });
+    const { _id } = req.params;
+    const { person } = req.body;
+
+    if (!_id || !person) throw API_Error('UPDATE_PERSON_ERROR', 'The request to update a person was invalid.');
+
+    const { private, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = person;
+
+    const found = await Person.findOne({ _id });
+
+    if (found) {
+      found.private = private;
+      found.full_name = full_name;
+      found.profile_image = profile_image;
+      found.profile_url = profile_url ? profile_url : full_name || alias;
+      found.alias = alias;
+      found.email = email;
+      found.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
+      found.social_media = social_media;
+      found.bio = { raw: bio.raw || '' };
+      found.image = image;
+
+      if (user.can('all-people')) found.tags = tags;
+  
+      const saved = await found.save();
+
+      res.json({ person: saved });
+    } else {
+      throw API_Error('UPDATE_PERSON_ERROR', 'Specified person was not found.');
+    }
   } catch (err) {
     next(err);
   }
