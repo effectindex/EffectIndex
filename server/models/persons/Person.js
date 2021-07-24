@@ -37,7 +37,7 @@ const Person = mongoose.model("Person", {
     }
   },
   featured: Boolean,
-  private: Boolean
+  isPrivate: Boolean
 });
 
 

@@ -147,7 +147,7 @@ router.get('/:profile_url', async (req, res, next) => {
 
     if (!person) throw API_Error('GET_PERSON_ERROR', 'The person was not found.', 404);
 
-    if (person.private) throw API_Error('GET_PERSON_ERROR', 'That profile is private.', 500);
+    if (person.isPrivate) throw API_Error('GET_PERSON_ERROR', 'That profile is private.', 500);
 
     res.json({ person });
 
@@ -167,7 +167,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
     
     if (!req.body || !req.body.person) throw API_Error('UPDATE_SELF_PROFILE-ERROR', 'Invalid update data');
 
-    const { private, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = req.body.person;
+    const { isPrivate, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = req.body.person;
 
     const found = await Person.findOne({ user: _id });
 
@@ -175,7 +175,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
 
       const person = new Person({
         user: mongoose.Types.ObjectId(_id),
-        private,
+        isPrivate,
         full_name,
         alias,
         email,
@@ -199,7 +199,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
     
     } else {
 
-        found.private = private;
+        found.isPrivate = isPrivate;
         found.full_name = full_name;
         found.profile_image = profile_image;
         found.profile_url = profile_url ? profile_url : full_name || alias;
@@ -230,10 +230,10 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-peopl
 
     if (!person) throw API_Error('ADD_PERSON_ERROR', 'New person data invalid.');
 
-    const { private, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = person;
+    const { isPrivate, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = person;
 
     const newPerson = new Person({
-      private,
+      isPrivate,
       full_name,
       alias,
       email,
@@ -287,12 +287,12 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-pe
 
     if (!_id || !person) throw API_Error('UPDATE_PERSON_ERROR', 'The request to update a person was invalid.');
 
-    const { private, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = person;
+    const { isPrivate, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = person;
 
     const found = await Person.findOne({ _id });
 
     if (found) {
-      found.private = private;
+      found.isPrivate = isPrivate;
       found.full_name = full_name;
       found.profile_image = profile_image;
       found.profile_url = profile_url ? profile_url : full_name || alias;

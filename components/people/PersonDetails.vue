@@ -71,7 +71,7 @@
     <div class="people__inputField">
       Private? 
       <input
-        v-model="person.private"
+        v-model="person.isPrivate"
         class="people__inputPrivateCheckbox"
         type="checkbox"
       >
@@ -127,7 +127,7 @@ export default {
         tags: undefined,
         profile_image: undefined,
         profile_url: undefined,
-        private: undefined
+        isPrivate: undefined
       })
     }
   },
