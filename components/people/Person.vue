@@ -59,8 +59,8 @@ export default {
     deletePerson() {
       this.$emit('delete', this.person);
     },
-    updatePerson() {
-      this.$emit('update', this.person);
+    updatePerson(person) {
+      this.$emit('update', person);
       this.expanded = false;
     },
     savePersonMeta(person) {

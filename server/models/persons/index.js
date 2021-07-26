@@ -300,7 +300,7 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-pe
       found.email = email;
       found.gravatar_hash = email && email.length ? md5(email.trim().toLowerCase()) : undefined,
       found.social_media = social_media;
-      found.bio = { raw: bio.raw || '' };
+      found.bio = { raw: bio };
       found.image = image;
 
       if (user.can('all-people')) found.tags = tags;

@@ -6,7 +6,7 @@
       </nuxt-link>
     </div>
     <div class="logout">
-      <a @click="() => $auth.logout()"> (logout) </a>
+      <a @click="logout"> (logout) </a>
     </div>
   </div>
 </template>
@@ -17,6 +17,23 @@ export default {
     user: {
       type: Object,
       default: undefined
+    }
+  },
+  methods: {
+    async logout() {
+      try {
+        await this.$auth.logout();
+
+        this.$toasted.show(
+          'You have been logged out.',
+          {
+            duration: 2000,
+            type: 'success'
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 };
