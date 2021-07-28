@@ -1,11 +1,11 @@
 <template>
   <div class="pageContent">
     <div v-if="person">
-      <img
+      <captioned-image
         v-show="person.profile_image"
-        style="float: right;"
+        float="right"
         :src="'/' + person.profile_image"
-      >
+      />
       <h1> {{ person.full_name || person.alias }} </h1>
       <vcode
         v-if="person.bio && person.bio.parsed"
@@ -17,10 +17,12 @@
 
 <script>
 import vcode from "@/components/vcode/vcode";
+import CaptionedImage from "@/components/CaptionedImage";
 
 export default {
   components: {
-    vcode
+    vcode,
+    CaptionedImage
   },
   data() {
     return {
