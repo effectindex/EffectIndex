@@ -1,50 +1,25 @@
 <template>
   <div class="pageContent">
     <h1> The Team </h1>
-    <div
-      v-for="(role, index) in roles"
-      :key="index"
-    >
-      <h3> {{ role }} </h3>
-      <div
-        v-for="person in peopleWithRole(role)"
-        :key="person._id"
-        class="peopleList"
-      >
-        <div class="personContainer">
-          <nuxt-link :to="person.profile_url ? `/people/${person.profile_url}` : '/people'">
-            <img
-              v-if="person.profile_image"
-              :src="'/' + person.profile_image"
-              :alt="`Profile image of ${person.full_name || person.alias}`"
-            >
-          </nuxt-link> <br>
-          <span class="personName"> {{ person.full_name || person.alias }} </span>
-        </div>
-      </div>
-    </div>
+    <people-profile-list :people="people" />
   </div>
 </template>
 
 <script>
+import PeopleProfileList from "@/components/people/PeopleProfileList";
+
 export default {
+
+  components: {
+    PeopleProfileList
+  },
   data() {
     return {
       people: []
     };
   },
 
-  computed: {
-    roles() {
-      const roles = [];
-      for (const person of this.people) {
-        if (!roles.includes(person.role)) {
-          roles.push(person.role);
-        }
-      }
-      return roles;
-    }
-  },
+
   async fetch() {
     try {
       const { people } = await this.$axios.$get('/api/persons/featured');
@@ -54,11 +29,7 @@ export default {
     }
   },
 
-  methods: {
-    peopleWithRole(role) {
-      return this.people.filter(person => person.role === role);
-    },
-  }
+
 };
 </script>
 

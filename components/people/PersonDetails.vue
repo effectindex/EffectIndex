@@ -2,7 +2,6 @@
   <form 
     class="people__personDetails"
     @submit.prevent="handleSubmit"
-    @keydown.enter.prevent
   >
     <div class="people__inputField">
       <h3> Full Name </h3>
