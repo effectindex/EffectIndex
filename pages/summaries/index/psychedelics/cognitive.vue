@@ -136,11 +136,6 @@
     <h3> See Also </h3>
     <ul>
       <li>
-        <nuxt-link to="/substances/">
-          Substance Index
-        </nuxt-link>
-      </li>
-      <li>
         <nuxt-link to="/summaries/psychedelics/visual">
           Visual Psychedelic Effects
         </nuxt-link>

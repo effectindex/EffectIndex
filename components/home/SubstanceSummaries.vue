@@ -32,11 +32,6 @@
         </li>
       </ul>
     </template>
-    <template v-slot:stub>
-      For more, see the <nuxt-link to="/substances/">
-        Substance Index.
-      </nuxt-link>
-    </template>
   </Panel>
 </template>
 

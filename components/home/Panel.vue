@@ -21,7 +21,10 @@
         class="content"
       />
     </div>
-    <div class="stub">
+    <div
+      v-show="$slots.stub"
+      class="stub"
+    >
       <slot 
         name="stub"
       />
