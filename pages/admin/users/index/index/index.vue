@@ -77,10 +77,34 @@
     methods: {
       async deleteUser(_id) {
         try {
-          await this.$axios.$delete(`/api/users/${_id}`);
-          this.$fetch();
-          this.$toasted.show('The user was successfully purged from existence.', { type: 'success', duration: 2000 });
-        } catch(error) {
+          this.$toasted.show('Really delete?', {
+            action: [{
+                text: 'Yes, delete!',
+                onClick: async (e, toastObject) => {
+                  try {
+                    await this.$axios.$delete(`/api/users/${_id}`);
+                    toastObject.goAway(0);
+                    this.$toasted.show('The user was successfully purged from existence.', { type: 'success', duration: 2000 });
+                    this.$fetch();
+                  } catch (error) {
+                    if (error.response) {
+                      this.$toasted.show(error.response.data.message, 
+                      {
+                        duration: 2000,
+                        type: 'error'
+                      });
+                    } else {
+                      console.log(error);
+                    }
+                  }
+                }
+              },
+              {
+                text: 'No, keep!',
+                onClick: (e, toastObject) => toastObject.goAway()
+              }]
+          });        
+        } catch (error) {
           console.log(error);
         }
       }
