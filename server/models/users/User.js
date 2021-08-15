@@ -61,13 +61,6 @@ UserSchema.virtual('permissions').get(function() {
 
 });
 
-// UserSchema.virtual('identity', {
-//   ref: 'Person',
-//   localField: '_id',
-//   foreignField: 'user',
-//   justOne: true
-// });
-
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
