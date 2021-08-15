@@ -1,6 +1,6 @@
 <template>
   <div class="pageContent">
-    <h1> Misc Adminstration </h1>
+    <h1> Misc Administration </h1>
 
     <ul class="admin-menu">
       <li>
@@ -25,6 +25,17 @@
     <nuxt-child />
   </div>
 </template>
+
+<script>
+export default {
+  middleware: ['auth'],
+  head() {
+    return {
+      title: "Misc Administration"
+    };
+  }
+};
+</script>
 
 <style scoped>
 .admin-menu {

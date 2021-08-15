@@ -28,6 +28,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Manage User"
+    };
+  },
   middleware: 'auth',
   computed: {
     username() {

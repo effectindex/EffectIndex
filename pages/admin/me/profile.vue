@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <h1> Your Profile </h1>
-    <person-details 
+    <person-details
       :person="person"
       @update="updateProfile"
       @submit="saveProfile"
@@ -13,6 +13,11 @@
 import PersonDetails from '@/components/people/PersonDetails';
 
 export default {
+  head() {
+    return {
+      title: "Your Profile"
+    };
+  },
   components: {
     PersonDetails
   },
