@@ -4,6 +4,7 @@
       <captioned-image
         v-show="person.profile_image"
         float="right"
+        rounding="10px"
         :src="'/' + person.profile_image"
       />
       <h1> {{ person.full_name || person.alias }} </h1>
