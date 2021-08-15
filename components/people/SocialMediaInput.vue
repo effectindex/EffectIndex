@@ -18,6 +18,7 @@
         <input
           v-model="socialMediaValue"
           type="text"
+          @keydown="handleKeyDown"
         >
       </div>
       <div class="socialMediaInput__inputControls">
@@ -92,6 +93,11 @@ export default {
     },
     removeSocialMedia (index) {
       this.$emit('input', this.value.filter( (val, i) => i !== index ));
+    },
+    handleKeyDown(e) {
+      if (e.key === 'Enter') {
+        this.addSocialMedia();
+      }
     }
   }
 };

@@ -1,7 +1,6 @@
 <template>
-  <form 
+  <div 
     class="people__personDetails"
-    @submit.prevent="handleSubmit"
   >
     <div class="people__inputField">
       <h3> Full Name </h3>
@@ -79,13 +78,13 @@
     <div class="people__controls">
       <button
         v-if="!person._id"
-        type="submit"
+        @click="handleSubmit"
       >
         Save
       </button>
       <button
         v-else
-        type="submit"
+        @click="handleSubmit"
       >
         Update
       </button>
@@ -93,7 +92,7 @@
         Reset
       </button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
