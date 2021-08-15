@@ -4,10 +4,10 @@
     <add-person
       @submit="newPerson"
     />
-    <person 
+    <person
       v-for="person in people"
       :key="person._id"
-      :person="person" 
+      :person="person"
       @delete="deletePerson"
       @update="updatePerson"
       @saveMeta="saveMeta"
@@ -20,6 +20,11 @@ import AddPerson from '@/components/people/AddPerson';
 import Person from '@/components/people/Person';
 
 export default {
+  head() {
+    return {
+      title: "Manage People"
+    };
+  },
   components: {
     AddPerson,
     Person
