@@ -1,6 +1,6 @@
 <template>
   <figure
-    :class="float + ' ' + (border ? 'withBorder' : '') + ' ' + (rounding ? 'withRounding' : '')"
+    :class="float + ' ' + (border ? 'withBorder' : '')"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }"
     class="captionedImage"
   >
@@ -8,6 +8,7 @@
       v-show="imageSrc.src"
       :src="imageSrc.src"
       :height="(height ? height + 'px' : 'auto')"
+      :style="{ borderRadius: (rounding ? rounding: '0') }"
       @click.stop="toggleModal"
     >
     <div
@@ -194,10 +195,6 @@ export default {
   border: 1px solid #EEE;
   background-color: rgb(252, 252, 252);
   padding: 6px;
-}
-
-.withRounding img {
-  border-radius: 10px;
 }
 
 .captionedImage img {
