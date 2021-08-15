@@ -28,7 +28,15 @@
           v-show="report.subject.name"
           class="report__titleAuthor"
         >
-          <span v-if="profile">
+          <span v-if="report.person">
+            by 
+            <nuxt-link
+              v-if="report.person.profile_url"
+              :to="`/people/${report.person.profile_url}`"
+            > {{ report.person.full_name || report.person.alias }} </nuxt-link>
+            <span v-else> {{ report.person.full_name || report.person.alias }} </span>
+          </span>
+          <span v-else-if="profile">
             by <nuxt-link :to="'/profiles/' + profile.username"> {{ report.subject.name }} </nuxt-link>
           </span>
           <span v-else>

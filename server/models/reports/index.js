@@ -128,6 +128,7 @@ router.get('/slug/:slug', async(req, res, next) => {
       .findOne({ slug })
       .select('-user -sectionVisibility')
       .populate('related_effects', 'name url tags')
+      .populate('person', 'full_name alias gravatar_hash social_media profile_url')
       .lean()
       .exec();
 

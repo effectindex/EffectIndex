@@ -24,6 +24,12 @@
           class="reportEditor__inputTitle"
         >
       </label>
+      <label> Person? 
+        <person-input
+          v-model="reportData.person"
+          @clear="reportData.person = null"
+        />
+      </label>
       <label> Trip Date 
         <input
           v-model="reportData.subject.trip_date"
@@ -220,6 +226,7 @@ import SectionHeader from './SectionHeader';
 import SubstancesInput from './SubstancesInput';
 import TagInput from './TagInput';
 import EffectInput from './EffectInput';
+import PersonInput from '@/components/editors/PersonInput';
 
 export default {
   components: {
@@ -227,7 +234,8 @@ export default {
     LogInput,
     SubstancesInput,
     TagInput,
-    EffectInput
+    EffectInput,
+    PersonInput
   },
   props: {
     report: {
@@ -258,6 +266,7 @@ export default {
         title: this.report ? this.report.title : undefined,
         form_link: this.report ? this.report.form_link : undefined,
         subject: this.report ? this.report.subject : {},
+        person: this.report ? this.report.person : undefined,
         substances: this.report ? this.report.substances : [],
         related_effects: this.report ? this.report.related_effects : [],
         introduction: this.report ? this.report.introduction : undefined,
