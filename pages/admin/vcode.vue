@@ -27,7 +27,7 @@
       </ul>
     </div>
 
-    <example 
+    <example
       id="captioned-image"
       name="Captioned Image"
       v-bind="captionedImage"
@@ -159,6 +159,11 @@
 import Example from '@/components/vcode/example';
 
 export default {
+  head() {
+    return {
+      title: "VCode Documentation"
+    };
+  },
   components: {
     Example
   },
@@ -213,7 +218,7 @@ export default {
               description: 'Adds a border around the image if true.'
             }
           ],
-          code: `[captioned-image 
+          code: `[captioned-image
     src="https://smartcdn.prod.postmedia.digital/canoe/wp-content/uploads/2019/07/gettyimages-910314172-e1564420108411.jpg"
     width="300"
     artist="Bob the Dog"
@@ -229,19 +234,19 @@ export default {
         description: 'Identifies a set of columns, used for laying out content in parallel horizontally. Used in conjuction with the \'column\' component as its child to denote particular columns.',
         code: `[columns]
   [column]
-    [ul] 
+    [ul]
       [li] List Item One [/li]
       [li] List Item Three [/li]
       [li] List Item Four [/li]
     [/ul]
   [/column]
-  
+
   [column]
     [p] There is nothing like a few columns in your document to make you feel good about yourself. [/p]
   [/column]
 
   [column]
-    [ul] 
+    [ul]
       [li] List Item One [/li]
       [li] List Item Three [/li]
       [li] List Item Four [/li]
@@ -252,7 +257,7 @@ export default {
       panel: {
         name: 'Panel',
         description: 'A panel with title and icon. Can be used in columns.',
-        code: `[panel title="The Seasons" icon="eye.svg"] 
+        code: `[panel title="The Seasons" icon="eye.svg"]
    [ul]
      [li] Season 1 [/li]
      [li] Season 2 [/li]
@@ -382,7 +387,7 @@ props: [
       quote: {
         name: 'Quote',
         description: 'A texbox with a grey background and a signature with image from a SEI user.',
-        code: `[quote author="Josie Kins" profile="Josie"] 
+        code: `[quote author="Josie Kins" profile="Josie"]
    [p]The reason I created the Subjective Effect Index was to present the subfactors of a complex situation in a more comprehensible and easily digested form, allowing people to assess, through feelings, that certain conditions and situations do or do not represent an "effect" on themselves.[/p]
    [p]I use the S.E.I. to assess a person's current mental and emotional state.[/p]
    [p]The Vividness and Stereotype Follow Through components of the S.E.I. are not in themselves a psychological diagnosis.[/p]
@@ -480,7 +485,7 @@ props: [
         description: 'A link to a resource INTERNAL to the Subjective Effect Index website.',
         code: 'It is best not to speak directly to [int-link to="/effects/autonomous-entities"]autonomous entities[/int-link], rather, send a letter.',
         props: [
-          { 
+          {
             name: 'to',
             description: `Absolute path or relative website path. If the leading '/' is omitted, the link will be relative from the current directory.`
           }

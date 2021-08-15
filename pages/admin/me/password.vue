@@ -43,6 +43,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Change Password"
+    };
+  },
   data() {
     return {
       oldPassword: undefined,

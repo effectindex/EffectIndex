@@ -23,6 +23,11 @@ import RedirectListItem from '@/components/redirects/RedirectListItem';
 import RedirectInput from '@/components/redirects/RedirectInput';
 
 export default {
+  head() {
+    return {
+      title: "Manage Redirects"
+    };
+  },
   middleware: ['auth'],
   components: {
     RedirectListItem,
