@@ -1,16 +1,17 @@
 <template>
-  <figure 
+  <figure
     :class="float + ' ' + (border ? 'withBorder' : '')"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }"
     class="captionedImage"
   >
-    <img 
+    <img
       v-show="imageSrc.src"
-      :src="imageSrc.src" 
+      :src="imageSrc.src"
       :height="(height ? height + 'px' : 'auto')"
+      :style="{ borderRadius: (rounding ? rounding: '0') }"
       @click.stop="toggleModal"
     >
-    <div 
+    <div
       v-show="gfycat"
       :style="{
         maxWidth: width ? width + 'px' : 'none',
@@ -33,17 +34,17 @@
       />
     </div>
     <figcaption class="captionedImage__caption">
-      <span 
+      <span
         v-show="(title || imageSrc.title) && (artist || imageSrc.artist)"
         class="artistTitle"
       >
         <span class="title"> {{ title || imageSrc.title }} </span> by
-        <span 
+        <span
           v-if="url"
         >
           <ext-link :href="url"> {{ artist || imageSrc.artist }} </ext-link>
         </span>
-        <span 
+        <span
           v-else
           class="artist"
         > {{ artist || imageSrc.artist }} </span>
@@ -104,6 +105,10 @@ export default {
       default: ""
     },
     border: {
+      type: String,
+      default: ""
+    },
+    rounding: {
       type: String,
       default: ""
     },
