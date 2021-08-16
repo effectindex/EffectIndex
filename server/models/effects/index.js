@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   try {
     const effects = await Effect.find()
       .select('_id tags featured subarticles name url social_media_image long_summary.parsed summary_raw')
-      .sort({ name: 'desc' })
+      .sort({ name: 'asc' })
       .exec();
     res.send({ effects });
   } catch (error) {
