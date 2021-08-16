@@ -9,7 +9,7 @@
         :key="person._id"
         :value="person._id"
       >
-        {{ person.full_name || person.alias }}
+        {{ personName(person) }}
       </option>
     </select>
 
@@ -35,6 +35,7 @@ export default {
   },
   async fetch() {
     try {
+      /* Will only respond with public profiles */
       const { people } = await this.$axios.$get('/api/persons');
       this.people = people;
     } catch (error) {
@@ -48,6 +49,10 @@ export default {
     clear() {
       this.selected = undefined;
       this.$emit('clear');
+    },
+    personName(person) {
+      const { full_name, alias } = person;
+      return `${full_name ? full_name : ''}${full_name && alias ? ' ' : ''}${alias ? '\"' + alias + '\"' : ''}`;
     }
   }
 };

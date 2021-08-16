@@ -36,8 +36,7 @@ export default {
   },
   async fetch() {
     try {
-      const results = await this.$axios.get('/api/persons');
-      const { people } = results.data;
+      const { people } = await this.$axios.$get('/api/persons/all');
       this.people = people;
     } catch (error) {
       console.log(error);

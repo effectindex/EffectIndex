@@ -104,6 +104,15 @@ router.post('/imageCrop', secured({ secret: config.server.jwtSecret }), hasPerms
 
 router.get('/', async (req, res, next) => {
   try {
+    const people = await Person.find({ isPrivate: { $ne: true }});
+    res.json({ people });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/all', secured({ secret: config.server.jwtSecret }), async (req, res, next) => {
+  try {
     const people = await Person.find();
     res.json({ people });
   } catch (err) {
