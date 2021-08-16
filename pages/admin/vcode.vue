@@ -216,10 +216,14 @@ export default {
             {
               name: 'border',
               description: 'Adds a border around the image if true.'
+            },
+            {
+              name: 'rounding',
+              description: 'Adds rounded corners to the image (e.g., 10px).'
             }
           ],
           code: `[captioned-image
-    src="https://smartcdn.prod.postmedia.digital/canoe/wp-content/uploads/2019/07/gettyimages-910314172-e1564420108411.jpg"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Kittyply_edit1.jpg/800px-Kittyply_edit1.jpg"
     width="300"
     artist="Bob the Dog"
     url="http://www.bob.com"
@@ -227,7 +231,8 @@ export default {
     align="left"
     top="true"
     caption="Bob the Dog's most despised enemy"
-    border="true" /]`
+    border="true"
+    rounding="10px" /]`
       },
       columns: {
         name: 'columns',
