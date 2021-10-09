@@ -16,7 +16,7 @@ BROWSER_BASE_URL=/
 # A secret for the JSON Web Tokens
 jwtSecret=change_this_to_something_other_than_this
 ```
-5. (optional) Download a [dump of the database](https://effectindex.com/ei-database.zip) and use the MongoDB mongorestore utility to restore it.
+5. (optional) Download a [dump of the database](https://effectindex.com/effectindex-dump.tar.gz) and use the MongoDB mongorestore utility to restore it.
   - Extract the zip file to a folder
   - `sudo mongorestore --db ~/path/to/extracted_db ~/path/to/restore/to`
 6. (optional) Run `sudo mongod --dbpath=/path/to/your/restored/db` to start the MongoDB daemon with your extracted database. Make sure to stop the daemon from step 1 if you're doing this.
