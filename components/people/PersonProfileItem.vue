@@ -34,10 +34,6 @@ export default {
         margin: 10px;
     }
 
-    li.peopleListItem:first-of-type {
-        margin-left: 0;
-    }
-
     li.peopleListItem figure {
         text-align: center;
     }

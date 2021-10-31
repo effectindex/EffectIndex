@@ -55,4 +55,8 @@ export default {
         list-style: none;
         padding-left: 0;
     }
+
+    ul.peopleList > li.peopleListItem {
+        display: inline-block;
+    }
 </style>
