@@ -57,6 +57,6 @@ export default {
     }
 
     ul.peopleList > li.peopleListItem {
-	    display: inline-block;
+        display: inline-block;
     }
 </style>
