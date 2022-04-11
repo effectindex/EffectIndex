@@ -35,6 +35,18 @@
       </li>
       <li> <b>Paypal</b> - effectindex@gmail.com </li>
     </ul>
+
+    <h3> Ethereum </h3>
+    <div class="crypto-donation">
+      <a href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78" target="_blank">
+        <img src="/eth_qrcode.png" width="132" height="132" />
+      </a>
+      <h2>
+        <a href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78" target="_blank">
+          0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78 
+        </a>
+      </h2>
+    </div>
   </div>
 </template>
 
@@ -64,10 +76,37 @@ export default {
   text-align: center;
 }
 
+.crypto-donation {
+  display: flex;
+  max-width: 300px;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+
+}
+
+.crypto-donation h2 {
+  font-size: 20px;
+}
+
 @media (max-width: 500px) {
   .float {
     float: none;
     margin: 1em auto;
   }
+  .crypto-donation {
+    padding: 1em;
+    display: flex;
+    max-width: none;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 25px;
+  }
+  .crypto-donation h2 {
+    font-size: 16px;
+  }
 }
+
+
 </style>
