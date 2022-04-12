@@ -35,8 +35,10 @@
     <ul class="rulesList">
       <li>You must be at least 18+ years old.</li>
       <li>Please be polite and reasonable.</li>
-      <li>You may not discuss any drug sources.</li>
+      <li>You may not discuss any drug sources. Not even in DMs.</li>
       <li>Keep specific topics within their relevant channels.</li>
+      <li>This community is inclusive and does not accept any kind of racism, homophobia, sexism, transphobia, ableism, general hatefulness, etc, etc. </li>
+      <li>This community is relatively Safe For Work (SFW), please do not post overtly sexual or edgy content. This includes hornyposting and excessive shitposting.</li>
     </ul>  
     <img
       height="350px"
