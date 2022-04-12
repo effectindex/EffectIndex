@@ -15,6 +15,14 @@ const reportSchema = new Schema({
     type: String,
     slug: "title"
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  person: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Person'
+  },
   form_link: String,
   subject: {
     name: String,

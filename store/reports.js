@@ -41,9 +41,9 @@ export const actions = {
       throw new Error(error);
     }
   },
-  async update({ dispatch }, report) {
+  async update({ dispatch }, { report, sectionVisibility}) {
     try {
-      const response = await this.$axios.$put("/api/reports/" + report.reportData._id, report);
+      const response = await this.$axios.$put(`/api/reports/${report._id}`, { report, sectionVisibility });
       await dispatch("get");
     } catch (error) {
       throw new Error(error);

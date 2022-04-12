@@ -4,7 +4,6 @@ const blog = require("./blog/"),
   persons = require('./persons/'),
   articles = require('./articles/'),
   effects = require("./effects/"),
-  substances = require("./substances/"),
   replications = require("./replications/"),
   users = require("./users/"),
   invitations = require("./invitations/"),
@@ -17,7 +16,7 @@ const blog = require("./blog/"),
 const errorHandler = function(err, req, res, next) {
   if (err["type"] === "API") {
     let error = { name: err["name"], message: err["message"] };
-    res.status(400).send({ error });
+    res.status(err["code"]).send({ error });
   } else if (err.name == 'UnauthorizedError') {
     let error = { name: "Invalid JWT", message: "The JWT is invalid." };
     res.status(401).send({ error });
@@ -33,7 +32,6 @@ router
   .use("/articles", articles)
   .use("/blog", blog)
   .use("/effects", effects)
-  .use("/substances", substances)
   .use("/replications", replications)
   .use("/users", users)
   .use("/invitations", invitations)

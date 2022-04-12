@@ -47,6 +47,7 @@ export default {
     let username = params.username;
 
     let { profile } = await store.dispatch("profiles/getProfileByName", username);
+    
     if (!profile) return;
 
     let { replications } = await store.dispatch(

@@ -5,13 +5,17 @@ const Invitation = mongoose.model("Invitation", {
     type: Date,
     default: Date.now
   },
-  expires: Date,
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
   used: {
     type: Boolean,
     default: false
   },
   usedBy: {
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 

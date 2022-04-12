@@ -10,7 +10,7 @@ const mime = require('mime');
 const MAX_FILE_SIZE = 10485760; // 10 MB
 
 const API_Error = require('../ApiError');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 
 const Profile = require('./Profile');
 
@@ -38,12 +38,12 @@ const storage = multer.diskStorage({
     const croppedImagesDirectory = 'static/img/profiles/cropped';
 
     if (file.fieldname === 'fullImageData') {
-      const directory = await mkdirp(fullImagesDirectory);
+      await mkdirp(fullImagesDirectory);
       cb(null, fullImagesDirectory);
     }
 
     if (file.fieldname === 'croppedImageData') {
-      const directory = await mkdirp(croppedImagesDirectory);
+      await mkdirp(croppedImagesDirectory);
       cb(null, croppedImagesDirectory);
     }
   }
@@ -51,19 +51,14 @@ const storage = multer.diskStorage({
 
 const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).any();
 
-router.post('/upload', secured({ secret }), hasRoles(['admin', 'editor']), uploadAny, async(req, res, next) => {
+router.post('/imageUpload', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   try {
-    const profile = { profileImageFull: undefined, profileImageCropped: undefined };
     const { files } = req;
+    const { personId } = req.body;
 
     if (Array.isArray(files) && files.length) {
-      for (const file of files) {
-        if (file.fieldname === 'fullImageData') profile.profileImageFull = file.filename;
-        if (file.fieldname === 'croppedImageData') profile.profileImageCropped = file.filename;
-      }
-
       try {
-        const updatedRecord = await Profile.findOneAndUpdate({ username: req.body.username }, profile);
+        await Profile.findOneAndUpdate({ id: personId }, { image: files[0].filename });
       } catch (error) {
         throw API_Error('UPLOAD_IMAGE_ERROR', 'Failed to update user profile.');
       }
@@ -77,7 +72,7 @@ router.post('/upload', secured({ secret }), hasRoles(['admin', 'editor']), uploa
   }
 });
 
-router.post('/', secured({ secret }), hasRoles(['admin']), async(req, res, next) => {
+router.post('/', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_ADD_ERROR', 'The submitted request is invalid.');
     if (typeof (req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
@@ -92,7 +87,7 @@ router.post('/', secured({ secret }), hasRoles(['admin']), async(req, res, next)
   }
 });
 
-router.put('/:id', secured({ secret }), uploadAny, async(req, res, next) => {
+router.put('/:id', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_UPDATE_ERROR', 'The submitted request is invalid.');
@@ -107,7 +102,7 @@ router.put('/:id', secured({ secret }), uploadAny, async(req, res, next) => {
   }
 });
 
-router.delete('/:id', secured({ secret }), hasRoles(['admin']), async(req, res, next) => {
+router.delete('/:id', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('DELETE_PROFILE_ERROR', 'An ID must be supplied.');
@@ -118,7 +113,7 @@ router.delete('/:id', secured({ secret }), hasRoles(['admin']), async(req, res, 
   }
 });
 
-router.get('/:id', secured({ secret }), hasRoles(['admin', 'editor']), async(req, res, next) => {
+router.get('/:id', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('GET_PROFILE_ERROR', 'An ID is required.');

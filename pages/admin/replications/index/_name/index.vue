@@ -16,13 +16,15 @@ export default {
   },
   middleware: ["auth"],
   async asyncData({ store, params }) {
-    let { replication } = await store.dispatch("replications/getReplication", params.name);
+    const { name } = params;
+    const { replication } = await store.dispatch("replications/getReplication", name);
     return { replication };
   },
   methods: {
     async submitReplication(replication) {
+
       await this.$store.dispatch(
-        "updateReplication",
+        "replications/update",
         replication
       );
 
@@ -34,8 +36,7 @@ export default {
         }
       );
 
-
-      this.$router.push("/admin/replications/list");
+      this.$router.push("/admin/replications");
     }
   }
 };

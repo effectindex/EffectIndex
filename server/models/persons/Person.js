@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const parse = require("../../../lib/vcode2/parse").default;
+const Vcode = require('../Vcode');
 
 const socialMedia = new Schema({
   value: String,
@@ -13,10 +13,10 @@ const socialMedia = new Schema({
 });
 
 const Person = mongoose.model("Person", {
-  not_public: Boolean,
   full_name: String,
   alias: String,
   email: String,
+  role: String,
   gravatar_hash: String,
   user: {
     type: Schema.Types.ObjectId,
@@ -25,12 +25,20 @@ const Person = mongoose.model("Person", {
   social_media: {
     type: [socialMedia]
   },
-  bio: String,
-  bio_parsed: {
-    type: Array,
-    set: bio => parse(bio)
+  bio: Vcode,
+  tags: {
+    type: [String],
   },
-  tags: [String]
+  profile_image: String,
+  profile_url: {
+    type: String,
+    set: function(name) {
+      return name.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
+    }
+  },
+  featured: Boolean,
+  isPrivate: Boolean
 });
+
 
 module.exports = Person;

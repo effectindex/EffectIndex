@@ -4,24 +4,24 @@
       <slot />
     </div>
     <div class="quotationAuthor">
-      <span 
+      <span
         v-if="!profile"
         class="quotationAuthorName"
       > <span class="quotationDash"> - </span> {{ author }} </span>
-      <div 
+      <div
         v-else
-      > 
-        <div 
+      >
+        <div
           v-if="profileImage"
           class="quotationProfileImageContainer"
         >
-          <nuxt-link :to="`/profiles/${profile}`">
-            <img 
+          <nuxt-link :to="`/people/${profile}`">
+            <img
               :src="profileImage"
               class="quotationProfileImage"
             >
           </nuxt-link>
-          <span> <span class="quotationDash"> - </span> <nuxt-link :to="`/profiles/${profile}`"> {{ author }} </nuxt-link> </span>
+          <span> <span class="quotationDash"> - </span> <nuxt-link :to="`/people/${profile}`"> {{ author }} </nuxt-link> </span>
         </div>
         <span v-else> <span class="quotationDash"> - </span> {{ author }} </span>
       </div>
@@ -36,7 +36,7 @@ export default {
       type: String,
       default: ""
     },
-    profile: { 
+    profile: { /* technically this should be called person, but keeping it as this for backwards compat */
       type: String,
       default: undefined
     },
@@ -49,10 +49,9 @@ export default {
   async fetch() {
     try {
       if (this.profile) {
-        const { profile } = await this.$axios.$get(`/api/profiles/user/${this.profile}`);
-        if (profile) {
-          const { profileImageCropped } = profile;
-            this.profileImage = profileImageCropped ? `/img/profiles/cropped/${profileImageCropped}` : undefined;
+        const {person} = await this.$axios.$get(`/api/persons/${this.profile}`);
+        if (person) {
+          this.profileImage = person.profile_image ? `/${person.profile_image}` : undefined;
         }
       }
     } catch (error) {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="effect-editor">
     <div>
       <label> Name </label>
       <input
@@ -251,7 +251,6 @@ export default {
         name: this.name,
         description: this.description,
         citations: this.citations,
-        related_substances: this.related_substances,
         external_links: this.external_links,
         see_also: this.see_also,
         tags: this.tags,
@@ -306,7 +305,7 @@ export default {
 </script>
 
 <style>
-label {
+.effect-editor label {
   display: block;
   margin: 1em 0;
   font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -356,11 +355,11 @@ label {
   user-select: none;
 }
 
-a {
+.effect-editor a {
   cursor: pointer;
 }
 
-button {
+.effect-editor button {
   background-color: transparent;
   border: 1px solid #ccc;
   width: 100px;

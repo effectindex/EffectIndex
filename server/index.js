@@ -1,6 +1,6 @@
 const path = require("path");
 require('dotenv').config({ path: path.join(__dirname, '.env') });
-const messages = require('./messages.js');
+const Messages = require('./messages.js');
 
 const express = require("express");
 
@@ -26,18 +26,20 @@ app.use(api);
 let config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
 
+const message = new Messages();
+
 async function start() {
   while(true) {
-    messages.preconnect();
+    message.preconnect;
     try {
       const connection = await mongoose.connect(config.server.mongooseUri, { useNewUrlParser: true, useUnifiedTopology: true });
-      if (config.dev) messages.logo();
-      messages.connected(connection.connections[0].name);
+      if (config.dev) message.logo;
+      message.connected(connection.connections[0].name);
       await firstRun();
-      messages.up(host, port);
+      message.up(host, port);
       break;
     } catch (error) {
-      messages.error;
+      message.error;
       if (!config.dev) process.exit(0);
     }
   }

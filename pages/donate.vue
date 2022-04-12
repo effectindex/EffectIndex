@@ -38,11 +38,21 @@
 
     <h3> Ethereum </h3>
     <div class="crypto-donation">
-      <a href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78" target="_blank">
-        <img src="/eth_qrcode.png" width="132" height="132" />
+      <a 
+        href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78" 
+        target="_blank"
+      >
+        <img 
+          src="/eth_qrcode.png" 
+          width="132" 
+          height="132" 
+        >
       </a>
       <h2>
-        <a href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78" target="_blank">
+        <a 
+          href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78"
+          target="_blank"
+        >
           0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78 
         </a>
       </h2>

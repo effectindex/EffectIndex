@@ -9,7 +9,7 @@
         {{ effect.name }}       
         <client-only>
           <nuxt-link
-            v-if="$auth.loggedIn"
+            v-if="$auth.hasScope('edit-effects') || $auth.hasScope('admin-effects')"
             :to="'/admin/effects/' + effect.url"
             append
           >

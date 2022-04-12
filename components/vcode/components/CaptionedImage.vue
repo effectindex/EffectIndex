@@ -1,16 +1,16 @@
 <template>
-  <figure 
+  <figure
     :class="float + ' ' + (border ? 'withBorder' : '')"
     :style="{ maxWidth: (width ? width + 'px' : '100%'), marginTop: (top ? '0' : '2em') }"
     class="captionedImage"
   >
-    <img 
+    <img
       v-if="src"
-      :src="src" 
-      :style="`max-width: 100%; max-height: ${(height ? height + 'px' : 'auto')}`"
+      :src="src"
+      :style="`max-width: 100%; max-height: ${(height ? height + 'px' : 'auto')}; border-radius: ${(rounding ? rounding: '0')}`"
       @click.stop="toggleModal"
     >
-    <div 
+    <div
       v-else-if="gfycat"
       :style="{
         maxWidth: width ? width + 'px' : 'none',
@@ -33,17 +33,17 @@
       />
     </div>
     <figcaption class="captionedImage__caption">
-      <span 
+      <span
         v-show="(title) && (artist)"
         class="artistTitle"
       >
         <span class="title"> {{ title }} </span> by
-        <span 
+        <span
           v-if="url"
         >
           <ext-link :href="url"> {{ artist }} </ext-link>
         </span>
-        <span 
+        <span
           v-else
           class="artist"
         > {{ artist }} </span>
@@ -112,6 +112,10 @@ export default {
       type: String,
       default: ""
     },
+    rounding: {
+      type: String,
+      default: ""
+    },
     imageRoutes: {
       type: String,
       default: undefined
@@ -137,7 +141,7 @@ export default {
     },
     modalData() {
       const { gfycat, src } = this;
-      return gfycat ? 
+      return gfycat ?
       { type: 'gfycat', resource: gfycat } :
       { type: 'image', resource: src };
     },

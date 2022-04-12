@@ -1,56 +1,78 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const config = require('../../../nuxt.config.js');
 const secured = require('express-jwt');
 
 const API_Error = require('../ApiError');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 
+const mongoose = require('mongoose');
 const Report = require('./Report');
 
-router.post('/', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
+router.post('/', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
   if (!'report' in req.body) throw API_Error('SUBMIT_REPORT_ERROR', 'The request was invalid.');
+  const { user } = req;
   try {
-    let report = req.body.reportData;
-    if ('sectionVisibility' in req.body) report.sectionVisibility = req.body.sectionVisibility;
-    report = new Report(report);
-    let savedReport = await report.save();
+    const { report, sectionVisibility } = req.body;
+
+    report.sectionVisbility = sectionVisibility;
+    report.user = mongoose.Types.ObjectId(user._id);
+
+    const newReport = new Report(report);
+    const savedReport = await newReport.save();
+
     if (!savedReport) throw API_Error('SUBMIT_REPORT_ERROR', 'The report failed to save.');
 
-    res.status(200).send({ report: savedReport });
+    res.json({ report: savedReport });
 
   } catch (error) {
     next(error);
   }
 });
 
-router.put('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
-  if (!'reportData' in req.body) throw API_Error('UPDATE_REPORT_ERROR', 'The request was invalid.');
+router.put('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+  if (!'report' in req.body) throw API_Error('UPDATE_REPORT_ERROR', 'The request was invalid.');
+  const { user } = req;
   try {
-    let { reportData, sectionVisibility } = req.body;
-    reportData.sectionVisibility = sectionVisibility;
+    const { report, sectionVisibility } = req.body;
+    report.sectionVisibility = sectionVisibility;
 
-    let report = await Report
-      .findById(req.params.id)
-      .exec();
+    const updatedReport = await Report.findById(req.params.id).exec();
 
-    if (!report) throw API_Error('UPDATE_REPORT_ERROR', 'The report could not be found.');
-    for (let field in reportData) report[field] = reportData[field];
-    let result = report.save();
-    if (!result) throw API_Error('UPDATE_REPORT_ERROR', 'The report failed to update.');
+    if (!updatedReport) throw API_Error('UPDATE_REPORT_ERROR', 'The report could not be found.');
+
+    if (!user.can('all-reports') && (user._id !== String(updatedReport.user))) {
+      throw API_Error('UPDATE_REPORT_ERROR', 'The user does not have access to modify this report.');
+    }
+
+    for (const field in report) {
+      updatedReport[field] = report[field];
+    }
+
+    const savedReport = await updatedReport.save();
+
+    if (!savedReport) throw API_Error('UPDATE_REPORT_ERROR', 'The report failed to update.');
     res.sendStatus(200);
   } catch (error) {
     next(error);
   }
 });
 
-router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async (req, res, next) => {
-  try {
-    let response = await Report
-      .findByIdAndRemove(req.params.id)
-      .exec();
+router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+  const { user } = req;
 
-    if (!response) throw API_Error('DELETE_REPORT_ERROR', 'The report failed to delete.');
+  try {
+
+    const _id = mongoose.Types.ObjectId(req.params.id);
+
+    if (!_id) throw API_Error('DELETE_REPORT_ERROR', 'Invalid request.');
+
+    const report = await Report.findById(_id).exec();
+
+    if (!user.can('all-reports') && (String(report.user) !==  user._id)) {
+      throw API_Error('DELETE_REPORT_ERROR', 'Cannot delete reports that are not your own.');
+    }
+
+    await report.deleteOne();
 
     res.sendStatus(200);
   } catch (error) {
@@ -58,46 +80,59 @@ router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['a
   }
 });
 
-router.get('/all', async (req, res, next) => {
+router.get('/admin', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+  const { user } = req;
   try {
-    let reports = await Report
-      .find()
-      .populate('related_effects', 'name')
-      .exec();
-    if (!reports) throw API_Error('GET_REPORTS_ERROR', 'The server failed to retrieve the reports.');
-    res.status(200).send({ reports });
+
+    const _id = mongoose.Types.ObjectId(user._id);
+
+    if (!user.can('all-reports')) {
+      const reports = await Report.find({ user: _id }).select('title subject featured tags slug');
+      res.json({ reports });
+    } else {
+      const reports = await Report.find().select('title subject featured tags slug');
+      res.json({ reports });
+    }
+
   } catch (error) {
     next(error);
   }
+
 });
 
-router.get('/:id', secured({ secret: config.server.jwtSecret }), hasRoles(['admin', 'editor']), async(req, res, next) => {
+router.get('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async(req, res, next) => {
   try {
-    let reportData = await Report
-      .findById(req.params.id)
-      .exec();
+    const { user } = req;
+    const id = mongoose.Types.ObjectId(req.params.id);
+    const report = await Report.findById(id).exec();
 
-    if (!reportData) throw API_Error('GET_REPORT_ERROR', 'The report could not be found.');
-    const sectionVisibility = reportData.sectionVisibility;
-    delete reportData.sectionVisibility;
-    res.send({ reportData, sectionVisibility });
+    if (!user.can('all-reports') && (String(report.user) !== user._id)) throw API_Error('GET_REPORT_ERROR', 'Cannot edit reports that are not yours');
+
+    if (!report) throw API_Error('GET_REPORT_ERROR', 'The report could not be found.');
+    const sectionVisibility = report.sectionVisibility;
+    delete report.sectionVisibility;
+    res.send({ reportData: report, sectionVisibility });
   } catch (error) {
     next(error);
   }
 });
 
 router.get('/slug/:slug', async(req, res, next) => {
-  let slug = req.params.slug;
+  const { slug } = req.params;
+
   try {
+
+    if (!slug) throw API_Error('GET_REPORT_ERROR', 'Invalid slug.');
+
     let report = await Report
       .findOne({ slug })
+      .select('-user -sectionVisibility')
       .populate('related_effects', 'name url tags')
+      .populate('person', 'full_name alias gravatar_hash social_media profile_url')
       .lean()
       .exec();
 
     if (!report) throw API_Error('GET_REPORT_ERROR', 'The specified report could not be found.');
-
-    delete report.sectionVisibility;
 
     res.send({ report });
 
@@ -106,14 +141,18 @@ router.get('/slug/:slug', async(req, res, next) => {
   }
 });
 
+
+
+
+
+
 router.get('/', async (req, res, next) => {
   try {
-    let reports = await Report
-      .find()
+    const reports = await Report.find()
       .select('title subject substances featured tags related_effects slug')
       .exec();
     if (!reports) throw API_Error('GET_REPORTS_ERROR', 'The server failed to retrieve the reports.');
-    res.status(200).send({ reports });
+    res.json({ reports });
   } catch (error) {
     next(error);
   }
@@ -122,9 +161,8 @@ router.get('/', async (req, res, next) => {
 router.post('/search', async (req, res, next) => {
   try {
     const { term } = req.body;
-    if (!term) {
-      res.sendStatus(200);
-    } else {
+    if (!term) res.sendStatus(200);
+    else {
       const results = await Report
       .find({ 
         $or: [

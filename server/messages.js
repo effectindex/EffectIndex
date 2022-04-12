@@ -1,7 +1,8 @@
 const chalk = require('chalk');
 
-module.exports = {
-  logo: function() { console.log(chalk.grey(`
+class Messages {
+  get logo() {
+     console.log(chalk.grey(`
                    ddddhyyyyyhdddd
               ddhs+:.\`         \`.:+shdd
             ddy/-\`    ${chalk.red(`.:+syyys+:\``)}     ./shd
@@ -18,17 +19,25 @@ module.exports = {
           hs:.     ${chalk.red(`\`/shhysosyhhs:\``)}     \`-ohd
             dhs+-\`    ${chalk.keyword("orange")(`.-/+++/-.`)}    \`-/shd
                 dhyo+:-.......-:+oyhd
-                      dddhhhddd
-`)); },
-preconnect: function() { console.log(chalk.yellow(`Attempting mongoose connection...`)); },
-connected: function(name) {
-  console.log(chalk.green(`Connected to database: ${name}`));
-},
-up: function(host, port) {
-  console.log(chalk.green.bold(`Effect Index up on ${host}:${port}`));
-},
-error: function() { console.log(chalk.red.bold(`Error connecting to database.`)); }
+                      dddhhhddd`));
+  }
 
+  get preconnect() {
+    console.log(chalk.yellow(`Attempting connection to the MongoDB database..`));
+  }
 
+  connected(name) {
+    console.log(chalk.green(`Connected to database: ${name}`));
+  }
 
+  up(host, port) {
+    console.log(chalk.green.bold(`Effect Index up on ${host}:${port}`));
+  }
+
+  get error() {
+    console.log(chalk.red.bold(`Error connecting to database.`));
+  }
 };
+
+
+module.exports = Messages;

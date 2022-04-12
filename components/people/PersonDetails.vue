@@ -1,8 +1,6 @@
 <template>
-  <form 
+  <div 
     class="people__personDetails"
-    @submit.prevent="handleSubmit"
-    @keydown.enter.prevent
   >
     <div class="people__inputField">
       <h3> Full Name </h3>
@@ -23,7 +21,7 @@
     <div class="people__inputField">
       <h3> Bio </h3>
       <vcode-input 
-        v-model="person.bio"
+        v-model="bio_raw"
       />
     </div>
 
@@ -45,8 +43,16 @@
     <div class="people__inputField">
       <h3> Tags </h3>
       <tag-input 
-        v-model="person.tags" 
+        v-model="person.tags"
+        :disabled="!this.$auth.hasScope('admin')"
       />
+    </div>
+
+    <div class="people__inputField">
+      <h3> Profile Image </h3>
+      <client-only>
+        <image-upload v-model="person.profile_image" />
+      </client-only>
     </div>
 
     <div class="people__inputField">
@@ -63,7 +69,7 @@
     <div class="people__inputField">
       Private? 
       <input
-        v-model="person.private"
+        v-model="person.isPrivate"
         class="people__inputPrivateCheckbox"
         type="checkbox"
       >
@@ -72,13 +78,13 @@
     <div class="people__controls">
       <button
         v-if="!person._id"
-        type="submit"
+        @click="handleSubmit"
       >
-        Create New
+        Save
       </button>
       <button
         v-else
-        type="submit"
+        @click="handleSubmit"
       >
         Update
       </button>
@@ -86,43 +92,57 @@
         Reset
       </button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
 import TagInput from '@/components/editors/TagInput';
 import VcodeInput from '@/components/vcode/editor';
 import SocialMediaInput from './SocialMediaInput';
+import ImageUpload from './ImageUpload';
 
 export default {
   components: {
     TagInput,
     VcodeInput,
-    SocialMediaInput
+    SocialMediaInput,
+    ImageUpload
   },
   props: {
     person: {
       type: Object,
       default: () => ({
         _id: undefined,
-        not_public: true,
         full_name: undefined,
         alias: undefined,
         email: undefined,
         social_media: [],
-        bio: '\n\n\n',
+        bio: {
+          raw: '',
+          parsed: undefined,
+          length: undefined,
+        },
         tags: undefined,
-        profile_url: undefined
+        profile_image: undefined,
+        profile_url: undefined,
+        isPrivate: undefined
       })
     }
   },
+  data() {
+    return {
+      bio_raw: this.person && this.person.bio ? this.person.bio.raw : undefined
+    };
+  },
   methods: {
-    handleSubmit(e) {
-        if (this.person._id) {
-          this.$emit('update', this.person);
-        } else {
-          this.$emit('submit', this.person);
-        }
+    handleSubmit() {
+        const person = {
+          ...this.person,
+          bio: this.bio_raw
+        };
+
+        if (this.person._id) this.$emit('update', person);
+        else this.$emit('submit', person);
     }
   }
 };

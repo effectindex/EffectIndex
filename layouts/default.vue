@@ -5,6 +5,9 @@
       class="mainContainer"
     >
       <header-nav />
+      <client-only>
+        <user-bar v-if="$auth.loggedIn" />
+      </client-only>
       <main class="page">
         <nuxt />
       </main>
@@ -26,6 +29,7 @@ import HeaderNav from "@/components/header/HeaderNav.vue";
 import CustomFooter from "@/components/footer/Footer.vue";
 import PulloutMenu from "@/components/PulloutMenu/PulloutMenu.vue";
 import Modal from "@/components/Modal";
+import UserBar from "@/components/admin/UserBar/";
 
 export default {
   name: 'EffectIndex',
@@ -33,7 +37,8 @@ export default {
     HeaderNav,
     CustomFooter,
     PulloutMenu,
-    Modal
+    Modal,
+    UserBar
   },
   computed: {
     navbarPullout() {

@@ -1,42 +1,4 @@
 {
-  "Admin": {
-    "location": "/admin",
-    "scope": ["admin", "editor", "artist", "user"],
-    "children": [
-      {
-        "name": "Effects",
-        "location": "/admin/effects/list",
-        "scope": ["admin", "editor"]
-      },
-      {
-        "name": "Replications",
-        "location": "/admin/replications/list",
-        "scope": ["admin", "editor", "artist"]
-      },
-      { "name": "Blog", "location": "/admin/blog/list", "scope": ["admin"] },
-      { "name": "Users", "location": "/admin/users/list", "scope": ["admin"] },
-      {
-        "name": "Articles",
-        "location": "/admin/articles/list",
-        "scope": ["admin", "editor"]
-      },
-      {
-        "name": "Reports",
-        "location": "/admin/reports/list",
-        "scope": ["admin", "editor"]
-      },
-      {
-        "name": "People",
-        "location": "/admin/people",
-        "scope": ["admin", "editor"]
-      },
-      {
-        "name": "Logout",
-        "location": "/user/logout",
-        "scope": ["admin", "editor", "artist", "user"]
-      }
-    ]
-  },
   "Home": {
     "location": "/"
   },
@@ -76,7 +38,7 @@
   "Community": {
     "location": "/discord-chat",
     "children": [
-      { "name": "People", "location": "/profiles/" },
+      { "name": "People", "location": "/people/" },
       { "name": "Discord", "location": "/discord-chat/" },
       { "name": "Contact", "location": "/contact" }
     ]

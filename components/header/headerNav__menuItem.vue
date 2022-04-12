@@ -133,7 +133,7 @@ export default {
   position: absolute;
   overflow: hidden;
   left: 2px;
-  z-index: 3;
+  z-index: 7;
   top: 70px;
   list-style: none;
   padding: 1em 0 1em 0;

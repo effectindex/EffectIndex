@@ -1,11 +1,11 @@
 <template>
   <div class="pageContent reportManagement">
-    <h1> Report Management </h1>
+    <h1> Reports </h1>
     <nuxt-link 
       class="reportManagement__link"
-      to="/admin/reports/list"
+      to="/admin/reports"
     >
-      List Reports
+      All Reports
     </nuxt-link>
     <nuxt-link 
       class="reportManagement__link"

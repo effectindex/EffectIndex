@@ -8,9 +8,7 @@ const effectSchema = new mongoose.Schema({
   },
   url: {
     type: String,
-    set: function(name) {
-      return name.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
-    }
+    set: name => name.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '')
   },
   tags: [String],
   toc: {
@@ -29,7 +27,6 @@ const effectSchema = new mongoose.Schema({
   personal_commentary: Vcode,
   contributors: Array,
   citations: Array,
-  related_substances: Array,
   see_also: Array,
   external_links: Array,
   social_media_image: String,

@@ -16,6 +16,12 @@ export default {
   components: {
     ReportEditor
   },
+  data() {
+    return {
+      reportData: undefined,
+      sectionVisibility: undefined
+    };
+  },
   async asyncData({ params, store }) {
     try {
       let { reportData, sectionVisibility } = await store.dispatch('reports/getReportById', params.id);

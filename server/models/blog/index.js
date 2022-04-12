@@ -5,11 +5,11 @@ const config = require ('../../../nuxt.config.js');
 const secured = require('express-jwt');
 
 const API_Error = require('../ApiError');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 
 const Post = require('./Post');
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('manage-blog'), async (req, res, next) => {
   try {
 
     if (!req.body || (!req.body.title || !req.body.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
@@ -28,18 +28,20 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
     res.send({ post: returnedPost });
 
   } catch (error) {
-    res.status(500).send({ error });
+    next(error);
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
+router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('manage-blog'), async(req, res, next) => {
   try {
 
-    let post = await Post.findById(req.params.id).exec();
-    post.title = req.body.title;
-    post.body = req.body.body;
+    const post = await Post.findById(req.params.id).exec();
+    const { title, body } = req.body;
 
-    let result = await post.save();
+    post.title = title;
+    post.body = body;
+
+    await post.save();
 
     res.sendStatus(200);
 
@@ -48,45 +50,44 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   }
 });
 
-router.get('/:id/delete', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async(req, res) => {
+router.get('/:id/delete', secured({secret: config.server.jwtSecret}), hasPerms('manage-blog'), async(req, res, next) => {
   try {
 
-    let deleted = await Post.findByIdAndRemove(req.params.id).exec().catch((error) => {
-      throw API_Error('DELETE_POST_ERROR', error);
-    });
+    const post = await Post.findById(req.params.id);
 
-    res.send(deleted);
+    if (!post) throw API_Error('DELETE_POST_ERROR', 'Cannot find post to delete.');
+
+    await post.delete();
+
+    res.sendStatus(200);
 
   } catch (error) {
     res.status(500).send({ error });
   }
 });
 
-router.get('/:slug', async(req, res) => {
+router.get('/:slug', async(req, res, next) => {
   try {
-    let post = await Post.findOne({ slug: req.params.slug }).catch((err) => {
-      throw API_Error('POST_NOT_FOUND', err);
-    });
+    const { slug } = req.params;
+
+    const post = await Post.findOne({ slug });
+
+    if (!post) throw API_Error('GET_POST_ERROR', 'Post not found.', 404);
 
     res.send({ post });
 
   } catch (error) {
-    res.status(500).send({ error });
+    next(error);
   }
 });
 
 
-router.get('/', async(req, res) => {
+router.get('/', async(req, res, next) => {
   try {
-    let posts = await Post
-      .find()
-      .setOptions({
-        maxTimeMS: 500
-      })
-      .sort({ datetime: 'desc' });
+    const posts = await Post.find().sort({ datetime: 'desc' });
     res.send({ posts });
   } catch (error) {
-    res.status(500).send({ error });
+    next(error);
   }
 });
 

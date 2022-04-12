@@ -4,23 +4,35 @@ const config = require('../../../nuxt.config.js');
 const secured = require('express-jwt');
 
 const API_Error = require('../ApiError');
-const hasRoles = require('../HasRoles');
+const hasPerms = require('../HasPerms');
 
 const Effect = require('./Effect');
 const Replication = require('../replications/Replication');
 const Report = require('../reports/Report');
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+router.get('/', async (req, res) => {
+  try {
+    const effects = await Effect.find()
+      .select('_id tags featured subarticles name url social_media_image long_summary.parsed summary_raw')
+      .sort({ name: 'asc' })
+      .exec();
+    res.send({ effects });
+  } catch (error) {
+    next(error);
+  }
+});
 
+
+router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('admin-effects'), async (req, res) => {
   try {
 
     if (!('effect' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
 
     const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
-      contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
+      contributors, external_links, see_also, tags, citations, gallery_order, social_media_image,
       featured, subarticles, toc } = req.body.effect;
 
-    const effect = new Effect({
+    const e = new Effect({
       name,
       url: name,
       tags,
@@ -30,7 +42,6 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       ['analysis.raw']: analysis,
       ['style_variations.raw']: style_variations,
       ['personal_commentary.raw']: personal_commentary,
-      related_substances,
       gallery_order,
       see_also,
       external_links,
@@ -42,51 +53,37 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 
       subarticles,
     });
 
-    let returnedEffect = await effect.save().catch((err) => {
-      throw API_Error('EFFECT_SAVE_ERROR', err);
-    });
+    const effect = await e.save();
 
-    res.send({ effect: returnedEffect });
+    res.json({ effect });
 
   } catch (error) {
-    res.status(500).send({ error });
+    next(error);
   }
 
 });
 
-router.get('/', async (req, res) => {
-  try {
-    let effects = await Effect
-      .find()
-      .sort({ name: 1 })
-      .select(
-        '_id tags featured subarticles name url social_media_image long_summary.parsed summary_raw')
-      .exec();
-    res.send({ effects });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({ error });
-  }
-
-});
-
-router.get('/admin/:slug', async (req, res) => {
+router.get('/admin/:slug', secured({secret: config.server.jwtSecret}), hasPerms('admin-effects', 'edit-effects'), async (req, res) => {
   try {
     const { slug } = req.params;
     const effect = await Effect.findOne({ url: slug });
-    if (effect) {
-      effect.replications = await Replication.find({
-        type: { $in: ['image', 'gfycat'] },
-        associated_effects: effect._id
-       });
-       effect.audio_replications = await Replication.find({
-        type: { $in: ['audio'] },
-        associated_effects: effect._id
-      });
-    }
+
+    if (!effect) throw API_Error('GET_EFFECT_ERROR', 'The specified effect (by slug) was not found.', 404);
+
+    effect.replications = await Replication.find({
+      type: { $in: ['image', 'gfycat'] },
+      associated_effects: effect._id
+    });
+
+    effect.audio_replications = await Replication.find({
+      type: { $in: ['audio'] },
+      associated_effects: effect._id
+    });
+    
     res.json({ effect });
+
   } catch (error) {
-    res.status(500).send({ error });
+    next(error);
   }
 });
 
@@ -114,9 +111,9 @@ router.get('/:url', async (req, res) => {
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('edit-effects', 'admin-effects'), async (req, res) => {
   const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
-  contributors, related_substances, external_links, see_also, tags, citations, gallery_order, social_media_image,
+  contributors, external_links, see_also, tags, citations, gallery_order, social_media_image,
   featured, subarticles, toc } = req.body;
 
   const _id = req.params.id;
@@ -136,7 +133,6 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
       name,
       toc,
       contributors,
-      related_substances,
       external_links,
       summary_raw: summary,
       see_also,
@@ -158,10 +154,10 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', secured({secret: config.server.jwtSecret}), hasPerms('admin-effects'), async (req, res) => {
   try {
-    let deletedEffect = await Effect.findByIdAndRemove(req.params.id).exec();
-    res.send({ effect: deletedEffect });
+    const deleted = await Effect.findByIdAndRemove(req.params.id).exec();
+    res.send({ effect: deleted });
   } catch (error) {
     res.status(500).send({ error });
   }

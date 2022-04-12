@@ -14,6 +14,7 @@ const article = new Schema({
     publication_status: {
       type: String,
       enum: ['published', 'unpublished', 'draft', 'unlisted'],
+      default: 'unlisted',
       required: true
     },
     publication_date: {
@@ -58,7 +59,10 @@ const article = new Schema({
       default: false
     },
     slug: {
-      type: String
+      type: String,
+      set: function(slug) {
+        return slug.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
+      }
     }
   }
 );

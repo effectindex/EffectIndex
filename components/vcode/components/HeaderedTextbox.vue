@@ -72,6 +72,10 @@ export default {
     Icon
   },
   props: {
+    id: {
+      type: String,
+      default: undefined,
+    },
     label: {
       type: String,
       default: undefined
@@ -127,10 +131,6 @@ export default {
     imageGfycat: {
       type: String,
       default: ""
-    },
-    id: {
-      type: String,
-      default: undefined
     },
     icon: {
       type: String,

@@ -1,143 +1,100 @@
 <template>
-  <div class="pageContent userManagement">
-    <h1> User Management </h1>
-    <nuxt-link 
-      class="userManagement__link"
-      to="/admin/users/list"
-    >
-      List Users
-    </nuxt-link>
-    <nuxt-link 
-      class="userManagement__link"
-      to="/admin/users/invite"
-    >
-      Invite Users
-    </nuxt-link>
-    <nuxt-link 
-      class="userManagement__link"
-      to="/admin/users/invitations"
-    >
-      Invitations
-    </nuxt-link>
-    <nuxt-link 
-      class="userManagement__link"
-      to="/admin/users/profiles/"
-    >
-      List Profiles
-    </nuxt-link>
-    <nuxt-link 
-      class="userManagement__link" 
-      to="/admin/users/profiles/add"
-    >
-      Add Profile
-    </nuxt-link>
-    <nuxt-child />
+  <div class="pageContent">
+    <Icon
+      filename="user.svg"
+      class="categoryIcon"
+    />
+    <h1> Users </h1>
+    <nuxt-child style="margin: 2em 0;" />
   </div>
 </template>
 
 <script>
-  export default {
-    middleware: ['auth'],
-    head() {
-      return {
-        title: "Modify Users"
-      };
-    }
-  };
+import Icon from '@/components/Icon';
+
+export default {
+  middleware: 'auth',
+  components: {
+    Icon
+  },
+  head() {
+    return {
+      title: "Administration"
+    };
+  },
+  scrollToTop: true
+};
 </script>
 
-<style>
-  .userManagement__link
-  {
-      display: inline-block;
-      padding: 0.25em;
-      margin-right: 1em;
-  }
+<style scoped>
 
-  .userManagement label {
-      display: block;
-      margin: 1em 0;
-      font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+.tasksContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  }
+.taskContainer:first-child {
+  margin-left: 0;
+}
 
-  .userManagement input {
-      font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-      border: 1px solid #CCCCCC;
-      padding: 0.5em 1em;
-      font-size: 16px;
-      width: 100%;
-  }
+.taskContainer:last-child {
+  margin-right: 0;
+}
 
-  .userManagement input[type=checkbox] {
-      width: auto;
-  }
+.dangerZone {
+  display: block;
+  cursor: pointer;
+  color: white;
+  border: 3px solid yellow;
+  margin: 1em;
+  font-weight: bold;
+  background-color: red;
+  padding: 0.5em;
+}
 
-  .userManagement input[type=radio] {
-      width: auto;
-      margin-left: 0 1em;
-  }
+.dangerZone:hover {
+  color: orange;
+}
 
-  .userManagement select {
-      width: 20em;
-      font-size: 16px;
-      font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-      padding: 0.5em 1em;
-      border: 1px solid #CCCCCC;
-  }
+.taskContainer {
+  border: 1px solid #eee;
+  padding: 1em;
+  margin: 0.5em;
+  flex: 1;
+  min-width: 400px;
+  background-color: rgb(252, 252, 252);
+}
 
-  .userManagement button {
-      font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-      display: inline-block;
-      font-size: 16px;
-      background-color: transparent;
-      transition: opacity 0.25s ease;
-      border: 1px solid #CCC;
-      width: 100px;
-      padding: 1em;
-      margin: 1em 1em 0 0;
-      opacity: 0.6;
-      cursor: pointer;
-  }
+.taskContainer h3 {
+  margin: 0;
+  margin-bottom: 1em;
+}
 
-  .userManagement textarea {
-      font-family: "titillium web", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-      border: 1px solid #CCCCCC;
-      padding: 0.5em 1em;
-      font-size: 16px;
-      height: 400px;
-      width: 100%;     
-  }
+.serverOptionsContainer {
+  padding: 0.5em;
+  border: 2px solid #666;
+  margin: 1em 0;
+  text-align: center;
+}
 
-  .userManagement button:hover {
-      opacity: 1;
-  }
+.serverOptionsContainer h3 {
+  margin: 0.25em 0 1em 0;
+}
 
-  .userManagement .errorMessage {
-      font-weight: bold;
-      color: red;
-  }
+.admin {
+  background-color: white;
+  height: 100vh;
+  padding: 2em;
+}
 
-  .userManagement .success {
-      color: green;
-  }
+ul {
+  list-style: none;
+  padding: 0;
+}
 
-  .userManagement thead {
-      font-weight: bold;
-  }
-
-  .userManagement td {
-      min-width: 150px;
-  }
-
-  .nuxt-link-exact-active {
-    text-decoration: underline;
-  }
+p {
+  font-style: italic;
+  font-size: 0.9em;
+}
 </style>
