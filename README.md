@@ -4,10 +4,12 @@
 
 ## Installation
 
-1. Install Node and MongoDB, get the MongoDB server running.
-2. Clone the Repo
-3. `npm install`
-4. Create a .env file in the base directory with the following content:
+1. Install Git, Node and MongoDB
+2. Run `sudo mongod --dbpath="$HOME"/.config/mongodb`. Feel free to edit this path, this is where the database will be stored.
+3. `git clone https://github.com/effectindex/EffectIndex`
+4. `cd EffectIndex`
+5. `npm install`
+6. (optional) Create a `.env` file in the `EffectIndex` directory with the following contents:
 ```bash
 # URL of the server 
 BASE_URL=http://localhost:3000/
@@ -18,7 +20,6 @@ jwtSecret=change_this_to_something_other_than_this
 ```
 5. (optional) Download a [dump of the database](https://effectindex.com/effectindex-dump.tar.gz) and use the MongoDB mongorestore utility to restore it. Make sure there are no trailing spaces, as this causes issues.
   - Extract the zip file to a folder
-  - `cd` to said folder (inside the `dump` folder)
-  - `sudo mongorestore --db effectindex /full/path/to/restore/to`
-6. (optional) Run `sudo mongod --dbpath=/full/path/to/your/restored/db` to start the MongoDB daemon with your extracted database. Make sure to stop the daemon from step 1 if you're doing this.
-7. Use 'npm run dev' to run the development server, 'npm run build' to build the production site, and 'npm run start' to start the production site.
+  - `cd` to said folder (eg, inside the `dump` folder, make sure it contains an `effectindex` folder)
+  - `sudo mongorestore --db effectindex "$HOME/.config/mongodb"`
+6. Use `npm run dev` to run the development server, `npm run build` to build the production site, and `npm run start` to start the production site.
