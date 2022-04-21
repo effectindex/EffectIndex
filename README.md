@@ -22,3 +22,5 @@ jwtSecret=change_this_to_something_other_than_this
   - Extract the zip file to a folder
   - `mongorestore --db effectindex dump/effectindex`
 6. Use `npm run dev` to run the development server, `npm run build` to build the production site, and `npm run start` to start the production site.
+
+**Note:** If your computer supports IPv6, you MUST use `--ipv6` when running `mongod`, otherwise EffectIndex will fail to connect to the database.
