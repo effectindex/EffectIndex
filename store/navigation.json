@@ -25,7 +25,7 @@
     "location": "/reports/"
   },
   "Project": {
-    "location": "/blog",
+    "location": "/about",
     "children": [
       { "name": "About", "location": "/about" },
       { "name": "Articles", "location": "/articles" },
