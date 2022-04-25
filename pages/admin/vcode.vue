@@ -175,7 +175,7 @@ export default {
         props: [
           {
             name: 'src',
-            description: 'If not using a gfycat, the URL of the image. (http://www.website.com/images/image.jpg for remote images, /static/images/image.jpg for local images.'
+            description: 'If not using a GfyCat, the URL of the image. (https://www.website.com/images/image.jpg for remote images, /static/images/image.jpg for local images.'
           },
           {
             name: 'align',
@@ -226,7 +226,7 @@ export default {
    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Kittyply_edit1.jpg/800px-Kittyply_edit1.jpg"
    width="300"
    artist="Bob the Dog"
-   url="http://www.bob.com"
+   url="https://www.bob.com"
    title="My Rival"
    align="left"
    top="true"
@@ -564,7 +564,6 @@ export default {
   background-color: #F8F8F8;
   padding: 0.5em;
   border: 1px solid #CCC;
-  display: inline-block;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -591,6 +590,6 @@ pre {
 }
 
 h3 {
-  margin: 0em 0;
+  margin: 0 0;
 }
 </style>
