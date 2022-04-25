@@ -498,7 +498,7 @@ export default {
       externalLink: {
         name: 'ext-link',
         description: 'A link to a resource EXTERNAL to the Subjective Effect Index website.',
-        code: 'This website is far superior to that degenerate [ext-link to="https://www.psychonautwiki.org"] PsychonautWiki.[/ext-link]',
+        code: 'This website has a pretty neat [ext-link to="https://www.youtube.com/c/Josikinz"]YouTube channel[/ext-link].',
         props: [{
           name: 'To',
           description: 'URL of the external website.'
