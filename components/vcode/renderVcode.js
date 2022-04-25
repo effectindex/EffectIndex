@@ -118,6 +118,8 @@ function renderVcode(createElement, data, body) {
         } else {
           return createElement('span', { attrs: { style: 'color: red;' } }, createNodes(children, data));
         }
+      case "details":
+        return createElement(ShowDetails, {props: {ordered: false, ...properties}}, createNodes(children, data));
       case "ul":
         return createElement(
           List,
