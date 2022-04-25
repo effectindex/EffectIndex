@@ -17,39 +17,40 @@ import TableOfContents from "@/components/TableOfContents";
 import HorizontalRule from "@/components/vcode/HorizontalRule";
 
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
+import ShowDetails from "@/components/ShowDetails";
 
 function renderVcode(createElement, data, body) {
 
   return createNodes(body, data);
 
 
-  function createNodes (nodes, data) {
-    return Array.isArray(nodes) ? nodes.map( node => typeof node === 'string' ? node : createNode(node, data)) : undefined;
+  function createNodes(nodes, data) {
+    return Array.isArray(nodes) ? nodes.map(node => typeof node === 'string' ? node : createNode(node, data)) : undefined;
   }
-  
+
   function createNode(node, data) {
-    const { name, properties, children } = node;
+    const {name, properties, children} = node;
     switch (name) {
-      case "comparison": 
-        return createElement(Comparison, { props: { ...properties } }, children);
+      case "comparison":
+        return createElement(Comparison, {props: {...properties}}, children);
       case "headered-textbox":
-        return createElement(HeaderedTextbox, { props: { ...properties } }, createNodes(children, data));
+        return createElement(HeaderedTextbox, {props: {...properties}}, createNodes(children, data));
       case "i":
         return createElement(
           "span",
-          { style: { fontStyle: "italic" } },
+          {style: {fontStyle: "italic"}},
           createNodes(children, data)
         );
       case "b":
         return createElement(
           "span",
-          { style: { fontWeight: "bold" } },
+          {style: {fontWeight: "bold"}},
           createNodes(children, data)
         );
       case "u":
         return createElement(
           "span",
-          { style: { textDecoration: "underline" }},
+          {style: {textDecoration: "underline"}},
           createNodes(children, data)
         );
       case "p":
@@ -60,19 +61,19 @@ function renderVcode(createElement, data, body) {
       case "h1":
         return createElement(
           "h2",
-          { attrs: { id: properties ? properties.id : undefined }},
+          {attrs: {id: properties ? properties.id : undefined}},
           createNodes(children, data)
         );
       case "h2":
         return createElement(
           "h3",
-          { attrs: { id: properties ? properties.id : undefined }},
+          {attrs: {id: properties ? properties.id : undefined}},
           createNodes(children, data)
         );
       case "h3":
         return createElement(
           "h4",
-          { attrs: { id: properties ? properties.id : undefined }},
+          {attrs: {id: properties ? properties.id : undefined}},
           createNodes(children, data)
         );
       case "br":
@@ -80,50 +81,50 @@ function renderVcode(createElement, data, body) {
       case "hr":
         return createElement(
           HorizontalRule,
-            { props: { ...properties }}
+          {props: {...properties}}
         );
       case "category":
         return createElement(
           Category,
-          { props: { ...properties } },
+          {props: {...properties}},
           createNodes(children, data)
         );
       case "captioned-image":
         return createElement(
           CaptionedImage,
-          { props: { ...properties } },
+          {props: {...properties}},
           createNodes(children, data)
         );
       case "ref":
         return createElement(
           Reference,
-          { props: { ...properties } },
+          {props: {...properties}},
         );
       case "int-link":
         if (properties && 'to' in properties) {
           return createElement(
             "nuxt-link",
-            { props: { ...properties } },
+            {props: {...properties}},
             createNodes(children, data)
           );
         } else return createElement(
           "span",
-          { attrs: { style: 'color: red;' } },
+          {attrs: {style: 'color: red;'}},
           createNodes(children, data)
         );
       case "ext-link":
         if (properties && 'to' in properties) {
-          const { to } = properties;
-          return createElement(ExtLink, { attrs: { href: to } },  createNodes(children, data));
+          const {to} = properties;
+          return createElement(ExtLink, {attrs: {href: to}}, createNodes(children, data));
         } else {
-          return createElement('span', { attrs: { style: 'color: red;' } }, createNodes(children, data));
+          return createElement('span', {attrs: {style: 'color: red;'}}, createNodes(children, data));
         }
       case "details":
         return createElement(ShowDetails, {props: {ordered: false, ...properties}}, createNodes(children, data));
       case "ul":
         return createElement(
           List,
-          { props: { ordered: false, ...properties }},
+          {props: {ordered: false, ...properties}},
           createNodes(children, data)
         );
       case "li":
@@ -134,50 +135,50 @@ function renderVcode(createElement, data, body) {
       case "ol":
         return createElement(
           List,
-          { props: { ordered: true, ...properties }},
+          {props: {ordered: true, ...properties}},
           createNodes(children, data)
         );
       case "markdown":
         return createElement(
           Markdown,
-          { props: { ...properties } },
+          {props: {...properties}},
         );
       case "audio":
         return createElement(
           AudioPlayer,
-          { props: { ...properties } },
+          {props: {...properties}},
         );
       case "separated-textbox":
         return createElement(
           SeparatedTextbox,
-          { props: { ...properties } },
+          {props: {...properties}},
           createNodes(children, data)
         );
       case "quote":
         return createElement(
           Quote,
-          { props: { ...properties } },
+          {props: {...properties}},
           createNodes(children, data)
         );
       case "subarticle":
         return createElement(
           SubarticleAnchor,
-          { props: { ...properties } },
+          {props: {...properties}},
           createNodes(children, data)
         );
       case "columns":
         return createElement(
-          Columns, { props: { ...properties }},
+          Columns, {props: {...properties}},
           createNodes(children, data)
         );
       case "column":
         return createElement(
-          Column, { props: { ...properties }},
+          Column, {props: {...properties}},
           createNodes(children, data)
         );
       case "panel":
         return createElement(
-          Panel, { props: { ...properties }},
+          Panel, {props: {...properties}},
           createNodes(children, data)
         );
       case "sup":
@@ -188,7 +189,7 @@ function renderVcode(createElement, data, body) {
       case "toc":
         return createElement(
           TableOfContents,
-          { props: { data, ...properties }}
+          {props: {data, ...properties}}
         );
       default:
         break;
