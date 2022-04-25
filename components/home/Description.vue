@@ -7,12 +7,12 @@
       of the <nuxt-link to="/effects/">
         Subjective Effect Index
       </nuxt-link> (SEI), which contains {{ effectCount }} effect
-      descriptions that exist to serve as a comprehensive map of all potential experiences that can occur under the influence of any 
-      class of psychoactive compound, particularly hallucinogens. 
+      descriptions that exist to serve as a comprehensive map of all potential experiences that can occur under the influence of any
+      class of psychoactive compound, particularly hallucinogens.
     </p>
 
     <transition name="fade">
-      <div 
+      <div
         v-show="hiddenIntro"
         class="hiddenIntro"
       >
@@ -36,16 +36,15 @@
       </div>
     </transition>
 
-    <div 
+    <div
       style="display: inline-block;"
       class="whiteButton"
       @click="toggleIntro"
-    > 
+    >
       read {{ hiddenIntro ? 'less' : 'more' }}
     </div>
 
     <nuxt-link
-      v-show="hiddenIntro"
       style="display: inline-block; margin-left: 1em;"
       class="pageContent whiteButton"
       to="/about"
@@ -91,9 +90,5 @@ methods: {
 }
 .fade-enter {
   opacity: 0;
-}
-.readButton {
-  font-size: 12pt;
-  cursor: pointer;
 }
 </style>
