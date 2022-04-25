@@ -14,7 +14,7 @@
       class="whiteButton"
       @click="toggleIntro"
     >
-      read {{ hiddenIntro ? 'less' : 'more' }}
+      {{ hiddenIntro ? getOpenedText() : getClosedText() }}
     </div>
   </div>
 </template>
@@ -22,7 +22,11 @@
 <script>
 export default {
   props: {
-    details: {
+    opened: {
+      type: String,
+      default: ""
+    },
+    closed: {
       type: String,
       default: ""
     }
@@ -35,6 +39,12 @@ export default {
   methods: {
     toggleIntro() {
       this.hiddenIntro = !this.hiddenIntro;
+    },
+    getClosedText() {
+      return this.$props["closed"] ? this.$props["closed"] : "Read More";
+    },
+    getOpenedText() {
+      return this.$props["opened"] ? this.$props["opened"] : "Read Less";
     }
   }
 };
