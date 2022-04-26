@@ -1,19 +1,13 @@
 <template>
   <ul class="roleList">
     <li
-      v-for="(role, index) in roles"
+      v-for="(peopleRow, index) in getPeople()"
       :key="index"
       class="role"
     >
-      <h3 v-show="role">
-        {{ role }}
-      </h3>
-
-      <ul
-        class="peopleList"
-      >
+      <ul class="peopleList">
         <person-profile-item
-          v-for="person in filterPeopleByRole(role)"
+          v-for="person in peopleRow"
           :key="person._id"
           :person="person"
         />
@@ -26,37 +20,48 @@
 import PersonProfileItem from "./PersonProfileItem";
 
 export default {
-    components: {
-        PersonProfileItem
-    },
+  components: {
+    PersonProfileItem
+  },
 
-    props: {
-        people: {
-            type: Array,
-            default: () => ([])
-        }
-    },
-    computed: {
-        roles() {
-            return [...new Set(this.people.map(person => person.role))];
-        }
-    },
-    methods: {
-        filterPeopleByRole(role) {
-            return this.people.filter(person => person.role === role);
-        },
+  props: {
+    people: {
+      type: Array,
+      default: () => ([])
     }
+  },
+  methods: {
+    getPeople() {
+      // TODO: This should be editable via the website somewhere
+      const order = {"Founder": 1, "Proofreader": 2, "Developer": 3};
+      const people = this.people.sort(function (a, b) {
+        return order[a.role] - order[b.role];
+      });
+
+      const chunkSize = 3;
+      const chunks = [];
+      for (let i = 0; i < people.length; i += chunkSize) {
+        chunks.push(people.slice(i, i + chunkSize));
+      }
+      return chunks;
+    }
+  }
 
 };
 </script>
 
 <style scoped>
-    ul.roleList, ul.peopleList {
-        list-style: none;
-        padding-left: 0;
-    }
+ul.role {
+  margin-bottom: 0;
+}
 
-    ul.peopleList > li.peopleListItem {
-        display: inline-block;
-    }
+ul.roleList, ul.peopleList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+ul.peopleList > li.peopleListItem {
+  display: inline-block;
+}
 </style>
