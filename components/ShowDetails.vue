@@ -11,7 +11,7 @@
 
     <div
       style="display: inline-block;"
-      class="whiteButton"
+      class="whiteButton showDetails"
       @click="toggleIntro"
     >
       {{ hiddenIntro ? getOpenedText() : getClosedText() }}
