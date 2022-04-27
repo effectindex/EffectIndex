@@ -1,7 +1,7 @@
 <template>
   <ul class="roleList">
     <li
-      v-for="(peopleRow, index) in getPeople()"
+      v-for="(peopleRow, index) in getPeople"
       :key="index"
       class="role"
     >
@@ -30,11 +30,12 @@ export default {
       default: () => ([])
     }
   },
-  methods: {
+  computed: {
     getPeople() {
       // TODO: This should be editable via the website somewhere
       const order = {"Founder": 1, "Developer": 2, "Editor": 3, "Proofreader": 4, "Former Dev": 5};
-      const people = this.people.sort(function (a, b) {
+      let people = this.people;
+      people = people.sort(function (a, b) {
         return order[a.role] - order[b.role];
       });
 
