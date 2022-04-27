@@ -33,7 +33,7 @@ export default {
 
 .roleInfo {
   text-align: left;
-  font-size: 22px;
+  font-size: 21px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 400;
