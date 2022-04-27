@@ -33,7 +33,7 @@ export default {
   computed: {
     getPeople() {
       // TODO: This should be editable via the website somewhere
-      const order = {"Founder": 1, "Developer": 2, "Editor": 3, "Proofreader": 4, "Former Dev": 5};
+      const order = {"Founder": 1, "Developer": 2, "Editor": 3, "Neural Network Dev": 4, "Proofreader": 5, "Former Dev": 6};
       let people = this.people;
       people = people.sort(function (a, b) {
         return order[a.role] - order[b.role];
