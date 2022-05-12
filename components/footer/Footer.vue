@@ -1,15 +1,7 @@
 <template>
   <footer>
     <div class="footer__social">
-      <a href="https://www.facebook.com/EffectIndex/">
-        <img
-          src="/sm-icon-facebook.svg"
-          height="32"
-          width="32"
-          alt="Facebook"
-        >
-      </a>
-      <a href="http://reddit.com/r/replications">
+      <a href="https://reddit.com/r/replications">
         <img
           src="/sm-icon-reddit.svg"
           height="32"
@@ -17,7 +9,7 @@
           alt="Reddit"
         >
       </a>
-      <a href="https://www.youtube.com/channel/UCUJnH-MsFgAgvCVHplxqJOQ">
+      <a href="https://www.youtube.com/c/Josikinz">
         <img
           src="/sm-icon-youtube.svg"
           height="32"
@@ -33,21 +25,29 @@
           alt="GitHub"
         >
       </a>
+      <a href="https://www.facebook.com/EffectIndex/">
+        <img
+          src="/sm-icon-facebook.svg"
+          height="32"
+          width="32"
+          alt="Facebook"
+        >
+      </a>
     </div>
     <div class="footer__secret">
       <p>
         <a
           rel="license"
-          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         ><img
           alt="Creative Commons License"
           style="border-width:0"
           src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
-        ></a><br><small><i><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        ></a><br><small><i><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
           &copy; This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
         </a></i></small><br>
       </p>
-      <p class="footer__memorium">
+      <p class="footer__memoriam">
         In loving memory of Phillip Edmunds.
       </p>
     </div>
@@ -95,7 +95,7 @@ footer > p {
   padding: 2em 0;
 }
 
-.footer__memorium {
+.footer__memoriam {
   font-style: italic;
   color: #1f1f1f;
   padding: 0;
