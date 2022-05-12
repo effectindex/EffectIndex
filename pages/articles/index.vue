@@ -70,7 +70,7 @@ export default {
       articles: undefined,
       authors: undefined,
       viewMode: 'publishDate', // publishDate, author, title
-      sortDirection: false // true -> asc, false -> desc
+      sortDirection: true // true -> asc, false -> desc
     };
   },
   computed: {
