@@ -25,9 +25,9 @@
           alt="GitHub"
         >
       </a>
-      <a href="https://www.facebook.com/EffectIndex/">
+      <a href="/discord-chat">
         <img
-          src="/sm-icon-facebook.svg"
+          src="/sm-icon-discord.svg"
           height="32"
           width="32"
           alt="Facebook"
