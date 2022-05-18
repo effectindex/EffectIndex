@@ -17,20 +17,20 @@
           alt="YouTube"
         >
       </a>
-      <a href="https://github.com/effectindex/EffectIndex">
-        <img
-          src="/sm-icon-github.svg"
-          height="32"
-          width="32"
-          alt="GitHub"
-        >
-      </a>
       <a href="/discord-chat">
         <img
           src="/sm-icon-discord.svg"
           height="32"
           width="32"
           alt="Facebook"
+        >
+      </a>
+      <a href="https://github.com/effectindex/EffectIndex">
+        <img
+          src="/sm-icon-github.svg"
+          height="32"
+          width="32"
+          alt="GitHub"
         >
       </a>
     </div>
