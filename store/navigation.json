@@ -36,10 +36,10 @@
     ]
   },
   "Community": {
-    "location": "/discord-chat",
+    "location": "/discord",
     "children": [
       { "name": "People", "location": "/people" },
-      { "name": "Discord", "location": "/discord-chat" },
+      { "name": "Discord", "location": "/discord" },
       { "name": "Contact", "location": "/contact" }
     ]
   }

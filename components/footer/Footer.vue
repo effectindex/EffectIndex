@@ -17,7 +17,7 @@
           alt="YouTube"
         >
       </a>
-      <a href="/discord-chat">
+      <a href="/discord">
         <img
           src="/sm-icon-discord.svg"
           height="32"

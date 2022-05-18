@@ -11,9 +11,9 @@
     <p>
       Effect Index serves as the platform for the <nuxt-link to="/effects">
         Subjective Effect Index (SEI),
-      </nuxt-link> 
-      a resource containing formalised documentation of the vast number of distinct 
-      subjective states that may occur under the influence of hallucinogens. We strive 
+      </nuxt-link>
+      a resource containing formalised documentation of the vast number of distinct
+      subjective states that may occur under the influence of hallucinogens. We strive
       to comprehensively document and describe the wide variety of potential hallucinogenic
       experiences. The SEI is presented in an easily readable format that contains not only
       descriptions, but also image, video, and audio <nuxt-link to="/replications">
@@ -51,7 +51,7 @@
       within both our <ext-link href="http://reddit.com/r/replications">
         subreddit
       </ext-link>
-      and our <nuxt-link to="/discord-chat">
+      and our <nuxt-link to="/discord">
         Discord.
       </nuxt-link>
     </p>
