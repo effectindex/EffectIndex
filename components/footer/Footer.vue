@@ -1,14 +1,6 @@
 <template>
   <footer>
     <div class="footer__social">
-      <a href="https://reddit.com/r/replications">
-        <img
-          src="/sm-icon-reddit.svg"
-          height="32"
-          width="32"
-          alt="Reddit"
-        >
-      </a>
       <a href="https://www.youtube.com/c/Josikinz">
         <img
           src="/sm-icon-youtube.svg"
@@ -23,6 +15,14 @@
           height="32"
           width="32"
           alt="Facebook"
+        >
+      </a>
+      <a href="https://reddit.com/r/replications">
+        <img
+          src="/sm-icon-reddit.svg"
+          height="32"
+          width="32"
+          alt="Reddit"
         >
       </a>
       <a href="https://github.com/effectindex/EffectIndex">
