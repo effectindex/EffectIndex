@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <h1>
-      Search 
+      Search
       <Icon
         filename="search.svg"
         class="categoryIcon"
@@ -9,14 +9,14 @@
     </h1>
 
     <div class="inputContainer">
-      <input 
+      <input
         ref="searchInput"
         :value="searchInput"
         type="text"
         class="searchInput"
         @input="changeSearchInput"
       >
-      <div 
+      <div
         v-show="searchInput.length"
         class="clearButton"
         @click="clear"
@@ -34,7 +34,7 @@
     >
       <hr>
 
-      <div 
+      <div
         v-if="effectResults"
         class="effectResults"
       >
@@ -46,7 +46,7 @@
         />
       </div>
 
-      <ul 
+      <ul
         v-if="articleResults"
         class="articleResults"
       >
@@ -60,7 +60,7 @@
         />
       </ul>
 
-      <div 
+      <div
         v-if="reportResults"
         class="effectResults"
       >
@@ -110,6 +110,11 @@ export default {
     searchInput() {
       return this.$store.state.search.input;
     }
+  },
+  head() {
+    return {
+      title: "Search"
+    };
   },
   async fetch({ store, route }) {
     if (route.query.q) {
