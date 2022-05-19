@@ -30,6 +30,11 @@ export default {
       person: undefined
     };
   },
+  head() {
+    return {
+      title: "People" // Ideally, the page title would be updated to `profile.full_name` after, but for some reason this is called after fetch, which overrides the page title change
+    };
+  },
   async fetch() {
     try {
       const profile_url = this.$route.params.url;

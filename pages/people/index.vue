@@ -9,7 +9,6 @@
 import PeopleProfileList from "@/components/people/PeopleProfileList";
 
 export default {
-
   components: {
     PeopleProfileList
   },
@@ -18,18 +17,19 @@ export default {
       people: []
     };
   },
-
-
+  head() {
+    return {
+      title: "People"
+    };
+  },
   async fetch() {
     try {
-      const { people } = await this.$axios.$get('/api/persons/featured');
+      const {people} = await this.$axios.$get('/api/persons/featured');
       this.people = people;
     } catch (error) {
       console.log(error);
     }
   },
-
-
 };
 </script>
 

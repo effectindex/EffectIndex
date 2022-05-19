@@ -22,7 +22,7 @@ import Person from '@/components/people/Person';
 export default {
   head() {
     return {
-      title: "Manage People"
+      title: "Modify People"
     };
   },
   components: {
