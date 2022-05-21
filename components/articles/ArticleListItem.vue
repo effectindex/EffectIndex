@@ -8,7 +8,7 @@
               {{ article.title }}
             </nuxt-link>
             <icon
-              v-if="article.featured"
+              v-if="article.featured && showFeaturedIcon"
               filename="star.svg"
             />
           </h3>
@@ -27,10 +27,13 @@
               class="read-time"
             >
               · {{ readTime }} Minute Read
-            </div> 
+            </div>
           </div>
         </div>
-        <p v-show="article.short_description">
+        <p
+          v-show="article.short_description"
+          class="short-description"
+        >
           {{ article.short_description }}
         </p>
       </div>
@@ -42,11 +45,11 @@
       </div>
     </div>
     <div
-      v-show="!short || hasTags"
+      v-show="showAuthor || showTags"
       class="bottom"
     >
       <div
-        v-if="!short"
+        v-if="showAuthor"
         class="authors"
       >
         <author-info
@@ -56,7 +59,10 @@
           :social-media="false"
         />
       </div>
-      <div class="tags">
+      <div
+        v-if="showTags"
+        class="tags"
+      >
         <tag
           v-for="(tag, index) in article.tags"
           :key="index"
@@ -90,6 +96,18 @@ export default {
     short: {
       type: Boolean,
       default: false
+    },
+    showFeaturedIcon: {
+      type: Boolean,
+      default: true
+    },
+    showAuthor: {
+      type: Boolean,
+      default: true
+    },
+    showTags: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -127,7 +145,6 @@ export default {
     margin: 1em 0;
     background-color: #fbfbfb;
     border: 1px solid #E8E8E8;
-    border-bottom: 1px solid #D8D8D8;
   }
 
   .column-container {
@@ -145,19 +162,17 @@ export default {
     display: inline-block;
     height: 30px;
     width: 30px;
-    margin-left: 1em;
+    margin-left: 0.5em;
     opacity: 0.7;
   }
 
   .bottom {
-    margin-top: 20px;
     display: flex;
     justify-content: space-between;
   }
 
-
   .article-list-item p {
-    padding: 1em 0;
+    padding: 0 0 0.5em;
     font-style: italic;
   }
 
@@ -200,6 +215,10 @@ export default {
   .info {
     color: #999;
     margin: 0.5em 0;
+  }
+
+  .short-description {
+    margin: 0;
   }
 
   .bottom div:only-child {

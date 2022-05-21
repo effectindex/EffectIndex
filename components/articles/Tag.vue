@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="tag"
     @click="clickTag(value)"
   >
@@ -31,10 +31,9 @@ export default {
   top: 0;
   left: 0;
   background-color: #2e2e2e;
-  padding-left: 10px;
   margin: 10px 10px 0 0;
   padding: 6px 12px;
-  border-radius: 5%;
+  border-radius: 5px;
   cursor: pointer;
   opacity: 0.85;
   transition: all 0.2s;

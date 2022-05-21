@@ -33,7 +33,6 @@
           <article-list-item
             v-for="article in articlesByAuthor(author._id)"
             :key="article._id"
-            :short="true"
             :article="article"
           />
         </ul>

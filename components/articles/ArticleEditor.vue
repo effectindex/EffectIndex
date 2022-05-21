@@ -175,9 +175,8 @@ export default {
   font-weight: normal;
   font-size: 20px;
   font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0.25em 0;
-  margin-top: 1em;
+  Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 1em 0 0.25em;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
