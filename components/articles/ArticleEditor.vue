@@ -1,13 +1,13 @@
 <template>
   <div class="articleEditor">
-    <input 
+    <input
       v-model="article.title"
       type="text"
       placeholder="Title"
       class="articleEditor__titleInput"
     >
 
-    <input 
+    <input
       v-model="article.subtitle"
       type="text"
       placeholder="Subtitle"
@@ -15,7 +15,7 @@
     >
 
     <h2> Body </h2>
-    <vcode-editor 
+    <vcode-editor
       v-model="article.body.raw"
     />
     <div class="articleEditor__showMore">
@@ -23,7 +23,7 @@
       <span v-else> <a @click="toggleMore"> Show less </a> </span>
     </div>
     <div
-      v-show="more" 
+      v-show="more"
       class="articleEditor__more"
     >
       <h2> Authors </h2>
@@ -45,17 +45,17 @@
       />
 
       <h2> Citations </h2>
-      <citation-input 
-        v-model="article.citations" 
+      <citation-input
+        v-model="article.citations"
       />
 
       <h2> Short Description </h2>
-      <textarea 
+      <textarea
         v-model="article.short_description"
         class="articleEditor__shortDescriptionTextarea"
       />
       <h2> Social Media Image </h2>
-      <input 
+      <input
         v-model="article.social_media_image"
         type="text"
         class="articleEditor__socialMediaImageInput"
@@ -66,17 +66,27 @@
       />
 
       <div>
-        <label for="featured"> Featured? </label>
-        <input
-          v-model="article.featured"
-          type="checkbox"
-          name="featured"
-        >
+        <div class="pinOptions">
+          <label for="featured"> Featured? </label>
+          <input
+            v-model="article.featured"
+            type="checkbox"
+            name="featured"
+          >
+        </div>
+        <div class="pinOptions pinnedRight">
+          <label for="frontpage"> Frontpage? </label>
+          <input
+            v-model="article.frontpage"
+            type="checkbox"
+            name="frontpage"
+          >
+        </div>
       </div>
     </div>
     <button @click="submitArticle">
       {{ isNew ? 'Save' : 'Update' }}
-    </button> 
+    </button>
   </div>
 </template>
 
@@ -132,26 +142,26 @@ export default {
     }
   },
   methods: {
-    async submitArticle () {
+    async submitArticle() {
       try {
         if (this.isNew) {
-          const submission = { ...this.article };
+          const submission = {...this.article};
           delete submission.body.parsed;
-          const { article } = await this.$axios.$post('/api/articles', { article: submission });
+          const {article} = await this.$axios.$post('/api/articles', {article: submission});
           this.$router.push(`/articles/${article.slug}`);
         } else {
-          const { _id } = this.article;
-          const submission = { ...this.article };
+          const {_id} = this.article;
+          const submission = {...this.article};
           delete submission.body.parsed;
-          const { article } = await this.$axios.$post(`/api/articles/${_id}`, { article: submission });
-          
+          const {article} = await this.$axios.$post(`/api/articles/${_id}`, {article: submission});
+
           this.$router.push(`/articles/${article.slug}`);
         }
       } catch (error) {
         console.log(error);
       }
     },
-    toggleMore () {
+    toggleMore() {
       this.more = !this.more;
     }
   }
@@ -225,5 +235,13 @@ export default {
 
 .articleEditor button:hover {
   background-color: #CCC;
+}
+
+.pinOptions {
+  display: inline-block;
+}
+
+.pinnedRight {
+  margin-left: 20px;
 }
 </style>

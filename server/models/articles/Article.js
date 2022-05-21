@@ -29,8 +29,8 @@ const article = new Schema({
       default: Date.now
     },
     authors: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Person'
+      type: mongoose.Schema.ObjectId,
+      ref: 'Person'
     }],
     citations: {
       type: Array
@@ -58,9 +58,13 @@ const article = new Schema({
       type: Boolean,
       default: false
     },
+    frontpage: {
+      type: Boolean,
+      default: false
+    },
     slug: {
       type: String,
-      set: function(slug) {
+      set: function (slug) {
         return slug.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
       }
     }

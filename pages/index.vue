@@ -1,6 +1,7 @@
 <template>
   <div class="pageContent">
     <Description />
+    <FrontpageArticle />
     <Columns>
       <Column>
         <SubstanceSummaries />
@@ -25,15 +26,16 @@ import FeaturedReplications from '@/components/home/FeaturedReplications';
 import FeaturedEffects from '@/components/home/FeaturedEffects';
 import FeaturedReports from '@/components/home/FeaturedReports';
 import FeaturedArticles from '@/components/home/FeaturedArticles';
+import FrontpageArticle from "@/components/home/FrontpageArticle";
 import SubstanceSummaries from '@/components/home/SubstanceSummaries';
 import Column from '@/components/home/Column';
 import Columns from '@/components/home/Columns';
-
 
 export default {
   name: 'Home',
   scrollToTop: true,
   components: {
+    FrontpageArticle,
     Description,
     Column,
     Columns,
