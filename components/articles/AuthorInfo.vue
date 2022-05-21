@@ -6,7 +6,7 @@
       v-if="avatar"
       class="author-image"
     >
-      <gravatar :hash="author.gravatar_hash" />
+      <PersonProfileImage :profile-image="author.profile_image" />
     </div>
     <div class="name-container">
       <div class="name">
@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import Gravatar from '@/components/Gravatar';
+import PersonProfileImage from '@/components/people/PersonProfileImage';
 import PersonSocialMediaIcons from './PersonSocialMediaIcons';
 
 export default {
   components: {
-    Gravatar,
+    PersonProfileImage,
     PersonSocialMediaIcons
   },
   props: {
