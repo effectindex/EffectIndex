@@ -23,7 +23,7 @@ export default {
       return this.$store.state.articles.list;
     },
     pinnedArticle() {
-      const articles = this.articles.filter((article) => article.featured);
+      const articles = this.articles.filter((article) => article.frontpage);
       console.log(articles);
       return articles[0];
     }
