@@ -2,7 +2,7 @@
   <div class="profileIcon">
     <img
       class="image"
-      :src="`${image}`"
+      :src="`/${image}`"
     >
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
     image() {
       // Default to some nice icon if someone doesn't have one
       if (!this.profileImage || this.profileImage === "") {
-        return "/indy_iphone_square.png";
+        return "indy_iphone_square.png";
       }
       return this.profileImage;
     }
