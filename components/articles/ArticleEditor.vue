@@ -123,7 +123,8 @@ export default {
         short_description: undefined,
         social_media_image: undefined,
         tags: undefined,
-        featured: undefined
+        featured: undefined,
+        frontpage: undefined
       })
     },
     people: {

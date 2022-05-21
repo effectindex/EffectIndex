@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const config = require ('../../../nuxt.config.js');
+const config = require('../../../nuxt.config.js');
 
 const secured = require('express-jwt');
 
@@ -27,7 +27,7 @@ function getBodyLength(parsed) {
 
 router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-articles', 'own-articles'), async (req, res, next) => {
   try {
-    const { article } = req.body;
+    const {article} = req.body;
     article.authors = article.authors.map(author => author._id);
     delete article._id;
     const parsed = parse(article.body.raw);
@@ -44,15 +44,16 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-artic
       }
     }).save();
     if (!result) throw API_Error('Error saving article.');
-    res.json({ article: result });
+    res.json({article: result});
+    console.log(result);
   } catch (error) {
-    res.status(500).send({ error });
+    res.status(500).send({error});
   }
 });
 
 router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const {id} = req.params;
 
     const article = await Article.findById(id);
 
@@ -64,9 +65,11 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-ar
 
     if (!req.body.article) throw API_Error('UPDATE_ARTICLE_ERROR', 'Invalid request.');
 
-    const { title, subtitle, publication_status, publication_date, 
-      created, authors, citations, short_description, social_media_image, 
-      tags, body, featured } = req.body.article;
+    const {
+      title, subtitle, publication_status, publication_date,
+      created, authors, citations, short_description, social_media_image,
+      tags, body, featured, frontpage
+    } = req.body.article;
 
     article.title = title;
     article.created = created;
@@ -84,13 +87,13 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-ar
     article.body.length = getBodyLength(article.body.parsed);
     article.slug = title;
     article.featured = featured;
+    article.frontpage = frontpage;
 
     const result = await article.save();
 
     if (!result) throw API_Error('UPDATE_ARTICLE_ERROR', 'Error saving article.');
 
-    res.json({ article: result });
-
+    res.json({article: result});
   } catch (error) {
     next(error);
   }
@@ -98,66 +101,65 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-ar
 
 router.delete('/:id', secured({secret: config.server.jwtSecret}), hasPerms('all-articles', 'own-articles'), async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const { user } = req;
+    const {id} = req.params;
+    const {user} = req;
     if (!mongoose.isValidObjectId(id)) throw API_Error('DELETE_ARTICLE_ERROR', 'ID is not a valid ObjectID');
 
     const article = await Article.findById(id);
-    
+
     if (!article) throw API_Error('DELETE_ARTICLE_ERROR', 'Article could not be found.');
 
     if (!user.can('all-articles') && (String(article.user) !== user._id)) throw API_Error('DELETE_ARTICLE_ERROR', 'Article does not belong to user.', 500);
 
     await article.deleteOne();
-
     res.sendStatus(200);
   } catch (error) {
-    res.status(500).send({ error });
+    res.status(500).send({error});
   }
 
 });
 
 router.get('/', async (req, res, next) => {
   try {
-    const articles = await Article.find({ publication_status: 'published' }).select('-created -citations -updated -body.raw -body.parsed').populate('authors').sort('-publication_date');
+    const articles = await Article.find({publication_status: 'published'}).select('-created -citations -updated -body.raw -body.parsed').populate('authors').sort('-publication_date');
     const authorIds = [...new Set(articles.map(article => article.authors.map(author => author._id)).flat())];
-    const authors = await People.find({ '_id': { $in: authorIds } });
-    res.json({ articles, authors });
+    const authors = await People.find({'_id': {$in: authorIds}});
+    res.json({articles, authors});
   } catch (error) {
-    res.status(500).send({ error });
+    res.status(500).send({error});
   }
 });
 
-router.get('/admin', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'),  async (req, res, next) => {
+router.get('/admin', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
   try {
-    const { user } = req;
+    const {user} = req;
     let articles;
 
-    if (!user.can('all-articles')) articles = await Article.find({ user: req.user._id }).populate('authors');
+    if (!user.can('all-articles')) articles = await Article.find({user: req.user._id}).populate('authors');
     else articles = await Article.find().populate('authors');
 
-    res.json({ articles });
+    res.json({articles});
   } catch (error) {
-    res.status(500).send({ error });
+    res.status(500).send({error});
   }
 });
 
 router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
   try {
-    const { _id } = req.params;
-    const { user } = req;
+    const {_id} = req.params;
+    const {user} = req;
 
     if (!mongoose.isValidObjectId(_id)) throw API_Error('GET_ARTICLE_ERROR', 'Specified ID is not valid.');
 
-    const article = await Article.findOne({ _id }).populate('authors');
+    const article = await Article.findOne({_id}).populate('authors');
 
     if (!article) throw API_Error('GET_ARTICLE_ERROR', 'Article with specified ID was not found.', 404);
 
     if (!user.can('all-articles')) {
-      if (String(article.user) === user._id) res.json({ article });
+      if (String(article.user) === user._id) res.json({article});
       else throw API_Error('GET_ARTICLE_ERROR', 'Article does not belong to user.', 500);
-    } else res.json({ article });
-  
+    } else res.json({article});
+
   } catch (error) {
     next(error);
   }
@@ -165,9 +167,9 @@ router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasPerms('
 
 router.get('/:slug', async (req, res, next) => {
   try {
-    const { slug } = req.params;
-    const article = await Article.findOne({ slug }).or({ publication_status: ['published', 'unlisted'], }).populate('authors');
-    if (article) res.json({ article });
+    const {slug} = req.params;
+    const article = await Article.findOne({slug}).or({publication_status: ['published', 'unlisted'],}).populate('authors');
+    if (article) res.json({article});
     else throw new Error('Article not found.');
   } catch (error) {
     next(error);

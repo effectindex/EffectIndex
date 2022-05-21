@@ -24,7 +24,6 @@ export default {
     },
     pinnedArticle() {
       const articles = this.articles.filter((article) => article.frontpage);
-      console.log(articles);
       return articles[0];
     }
   }
