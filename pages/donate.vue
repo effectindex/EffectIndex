@@ -8,6 +8,7 @@
       />
     </h1>
 
+    <FrontpageArticle />
     <img
       class="float"
       height="350px"
@@ -38,22 +39,22 @@
 
     <h3> Ethereum </h3>
     <div class="crypto-donation">
-      <a 
-        href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78" 
+      <a
+        href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78"
         target="_blank"
       >
-        <img 
-          src="/eth_qrcode.png" 
-          width="132" 
-          height="132" 
+        <img
+          src="/eth_qrcode.png"
+          width="132"
+          height="132"
         >
       </a>
       <h2>
-        <a 
+        <a
           href="https://etherscan.io/address/0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78"
           target="_blank"
         >
-          0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78 
+          0xaaAcEF54d563CE7d3Cff5bE5cBeEcAbAf5816f78
         </a>
       </h2>
     </div>
@@ -63,9 +64,11 @@
 <script>
 import ExtLink from "@/components/ExtLink";
 import Icon from '@/components/Icon';
+import FrontpageArticle from "@/components/home/FrontpageArticle";
 
 export default {
   components: {
+    FrontpageArticle,
     ExtLink,
     Icon
   },
@@ -73,7 +76,8 @@ export default {
     return {
       title: "Donate"
     };
-  }
+  },
+  async fetch ( { store } ) { await store.dispatch('articles/get'); },
 };
 </script>
 
