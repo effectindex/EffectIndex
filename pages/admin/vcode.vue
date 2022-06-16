@@ -35,6 +35,12 @@
     />
 
     <example
+      id="youtube-embed"
+      name="Youtube Embed"
+      v-bind="youtubeEmbed"
+    />
+
+    <example
       id="columns"
       name="Columns"
       v-bind="columns"
@@ -240,6 +246,11 @@ export default {
    caption="Bob the Dog's most despised enemy"
    border="true"
    rounding="10px" /]`
+      },
+      youtubeEmbed: {
+        name: 'youtube-embed',
+        description: 'Embed a youtube video',
+        code: `[youtube-embed src="uf_HSwd9ahA" /]`
       },
       columns: {
         name: 'columns',

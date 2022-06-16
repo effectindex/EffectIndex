@@ -18,6 +18,7 @@ import HorizontalRule from "@/components/vcode/HorizontalRule";
 
 import AudioPlayer from "@/components/replications/audio/AudioPlayer";
 import ShowDetails from "@/components/ShowDetails";
+import YoutubeEmbed from "@/components/vcode/components/YoutubeEmbed";
 
 function renderVcode(createElement, data, body) {
 
@@ -92,6 +93,12 @@ function renderVcode(createElement, data, body) {
       case "captioned-image":
         return createElement(
           CaptionedImage,
+          {props: {...properties}},
+          createNodes(children, data)
+        );
+      case "youtube-embed":
+        return createElement(
+          YoutubeEmbed,
           {props: {...properties}},
           createNodes(children, data)
         );
