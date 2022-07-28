@@ -11,7 +11,7 @@
 5. `npm install`
 6. Create a `.env` file in the `EffectIndex` directory with the following contents:
 ```bash
-# URL of the server 
+# URL of the server
 BASE_URL=http://localhost:3000/
 # Base URL for Axios ('/' unless running in some directory)
 BROWSER_BASE_URL=/
