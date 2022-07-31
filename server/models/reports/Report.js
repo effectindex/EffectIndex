@@ -45,9 +45,6 @@ const reportSchema = new Schema({
   introduction: {
     type: String
   },
-  description: {
-    type: String
-  },
   onset: [{
     time: String,
     description: String,
@@ -75,7 +72,7 @@ const reportSchema = new Schema({
     type: Boolean,
     default: false
   }
-}, 
+},
   {minimize: false}
 );
 
@@ -84,7 +81,6 @@ reportSchema.index({
   'subject.name': 'text',
   'substances.name': 'text',
   introduction: 'text',
-  description: 'text',
   tags: 'text'
 });
 

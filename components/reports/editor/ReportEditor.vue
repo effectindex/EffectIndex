@@ -1,6 +1,6 @@
 <template>
   <div class="reportEditor">
-    <label> Title 
+    <label> Title
       <input
         v-model="reportData.title"
         class="reportEditor__inputTitle"
@@ -8,71 +8,71 @@
     </label>
 
     <section-header
-      :visibility="sectionVisibility.subject" 
+      :visibility="sectionVisibility.subject"
       title="Subject Information"
       name="subject"
       @toggle="toggleVisibility"
     />
 
-    <div 
+    <div
       v-show="sectionVisibility['subject']"
       class="section"
     >
-      <label> Name 
+      <label> Name
         <input
           v-model="reportData.subject.name"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Person? 
+      <label> Person?
         <person-input
           v-model="reportData.person"
           @clear="reportData.person = null"
         />
       </label>
-      <label> Trip Date 
+      <label> Trip Date
         <input
           v-model="reportData.subject.trip_date"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Age 
+      <label> Age
         <input
           v-model="reportData.subject.age"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Setting 
+      <label> Setting
         <input
           v-model="reportData.subject.setting"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Gender 
+      <label> Gender
         <input
           v-model="reportData.subject.gender"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Height 
+      <label> Height
         <input
           v-model="reportData.subject.height"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Weight 
+      <label> Weight
         <input
           v-model="reportData.subject.weight"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Medications 
+      <label> Medications
         <input
           v-model="reportData.subject.medications"
           class="reportEditor__inputTitle"
         >
       </label>
-      <label> Tracker PDF 
+      <label> Tracker PDF
         <input
           v-model="reportData.subject.pdf_url"
           class="reportEditor__inputTitle"
@@ -81,90 +81,77 @@
     </div>
 
     <section-header
-      :visibility="sectionVisibility.substances" 
+      :visibility="sectionVisibility.substances"
       title="Substance Information"
       name="substances"
       @toggle="toggleVisibility"
     />
-    
+
     <substances-input
       v-show="sectionVisibility.substances"
       v-model="reportData.substances"
     />
 
     <section-header
-      :visibility="sectionVisibility.introduction" 
+      :visibility="sectionVisibility.introduction"
       title="Introduction"
       name="introduction"
       @toggle="toggleVisibility"
     />
-      
+
     <textarea
       v-show="sectionVisibility.introduction"
-      v-model="reportData.introduction" 
+      v-model="reportData.introduction"
       class="reportEditor__textarea"
     />
 
     <section-header
-      :visibility="sectionVisibility.description" 
-      title="Description"
-      name="description"
-      @toggle="toggleVisibility"
-    />
-      
-    <textarea
-      v-show="sectionVisibility.description"
-      v-model="reportData.description" 
-      class="reportEditor__textarea"
-    />
-
-    <section-header
-      :visibility="sectionVisibility.onset" 
+      :visibility="sectionVisibility.onset"
       title="Onset"
       name="onset"
       @toggle="toggleVisibility"
     />
 
-    <log-input 
+    <log-input
       v-show="sectionVisibility['onset']"
       v-model="reportData.onset"
     />
 
     <section-header
-      :visibility="sectionVisibility.peak" 
+      :visibility="sectionVisibility.peak"
       title="Peak"
       name="peak"
       @toggle="toggleVisibility"
     />
 
-    <log-input 
+    <log-input
       v-show="sectionVisibility['peak']"
       v-model="reportData.peak"
     />
 
     <section-header
-      :visibility="sectionVisibility.offset" 
+      :visibility="sectionVisibility.offset"
       title="Offset"
       name="offset"
       @toggle="toggleVisibility"
     />
 
-    <log-input 
+    <log-input
       v-show="sectionVisibility['offset']"
       v-model="reportData.offset"
     />
 
 
     <section-header
-      :visibility="sectionVisibility.conclusion" 
+      :visibility="sectionVisibility.conclusion"
       title="Conclusion"
       name="conclusion"
       @toggle="toggleVisibility"
     />
-      
+
     <textarea
       v-show="sectionVisibility.conclusion"
-      v-model="reportData.conclusion" 
+      v-model="reportData.conclusion"
       class="reportEditor__textarea"
     />
 
@@ -194,8 +181,8 @@
 
     <div>
       <label for="featured">
-        Featured 
-        <input 
+        Featured
+        <input
           id="featured"
           v-model="reportData.featured"
           type="checkbox"
@@ -210,7 +197,7 @@
       >
         Cancel
       </nuxt-link>
-      <button 
+      <button
         class="reportEditor__inputReportButton"
         @click="submitReport()"
       >
@@ -251,10 +238,10 @@ export default {
   },
   data() {
     const sections = ['subject', 'substances', 'onset', 'peak', 'offset',
-        'introduction', 'description', 'conclusion', 'tags', 'relatedEffects'];
+        'introduction', 'conclusion', 'tags', 'relatedEffects'];
 
     const sectionVisibility = Object.fromEntries(
-        sections.map( this.visibility ? 
+        sections.map( this.visibility ?
           section => this.visibility[section] ? [section, this.visibility[section]] : [section, false] :
           section => [section, false]
         )
@@ -270,7 +257,6 @@ export default {
         substances: this.report ? this.report.substances : [],
         related_effects: this.report ? this.report.related_effects : [],
         introduction: this.report ? this.report.introduction : undefined,
-        description: this.report ? this.report.description : undefined,
         onset: this.report ? this.report.onset : [],
         peak: this.report ? this.report.peak : [],
         offset: this.report ? this.report.offset : [],

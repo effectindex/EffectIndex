@@ -13,7 +13,7 @@
             <div
               v-if="$auth.loggedIn"
             >
-              <nuxt-link 
+              <nuxt-link
                 :to="`/admin/reports/${report._id}`"
               >
                 <Icon
@@ -29,7 +29,7 @@
           class="report__titleAuthor"
         >
           <span v-if="report.person">
-            by 
+            by
             <nuxt-link
               v-if="report.person.profile_url"
               :to="`/people/${report.person.profile_url}`"
@@ -69,14 +69,6 @@
       header="Introduction"
     />
 
-    <text-box
-      v-if="report.description"
-      :text="report.description"
-      icon="comment.svg"
-      header-colour="#EEE"
-      header="Description"
-    />
-
     <div class="report__logsContainer">
       <log-box
         v-if="report.onset.length"
@@ -110,7 +102,7 @@
 
     <related-effects
       v-if="hasRelatedEffects"
-      :effects="report.related_effects" 
+      :effects="report.related_effects"
     />
   </article>
 </template>
@@ -234,7 +226,7 @@ h1 {
 .report__textBox {
   margin: 1em 0;
   background-color: #fbfbfb;
-  border: 1px solid #cccccc;  
+  border: 1px solid #cccccc;
 }
 
 .report__textBoxText {
