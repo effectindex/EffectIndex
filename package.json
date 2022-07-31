@@ -46,6 +46,7 @@
     "regenerator-runtime": "^0.13.7",
     "sharp": "^0.28.3",
     "shelljs": "^0.8.4",
+    "terser": "^4.8.1",
     "unique-slug": "^2.0.2",
     "vue-advanced-cropper": "^1.7.0",
     "vue-analytics": "^5.22.1",
