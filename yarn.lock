@@ -4078,10 +4078,10 @@
   dependencies:
     "ms" "^2.1.1"
 
-"debug@^4.0.1", "debug@^4.1.0", "debug@^4.1.1":
-  "integrity" "sha512-IX2ncY78vDTjZMFUdmsvIRFY2Cf4FnD0wRs+nQwJU8Lu99/tPFdb0VybiiMTPe3I6rQmwsqQqRBvxU+bZ/I8sg=="
-  "resolved" "https://registry.npmjs.org/debug/-/debug-4.2.0.tgz"
-  "version" "4.2.0"
+"debug@^4.0.1", "debug@^4.1.0", "debug@^4.1.1", "debug@^4.3.1":
+  "integrity" "sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ=="
+  "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.1.tgz"
+  "version" "4.3.1"
   dependencies:
     "ms" "2.1.2"
 

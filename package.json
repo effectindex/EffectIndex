@@ -25,6 +25,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
+    "debug": "^4.3.1",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
