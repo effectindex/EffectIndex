@@ -1766,8 +1766,6 @@
     "es6-promisify" "^5.0.0"
 
 "agent-base@~4.2.1":
-  "integrity" "sha512-JVwXMr9nHYTUXsBFKUqhJwvlcYU/blreOEUkhNR2eXZIvwd+c+o5V4MgDPKWnMS/56awN3TRzIP+KoPn+roQtg=="
-  "resolved" "https://registry.npmjs.org/agent-base/-/agent-base-4.2.1.tgz"
   "version" "4.2.1"
   dependencies:
     "es6-promisify" "^5.0.0"
@@ -1808,8 +1806,6 @@
     "uri-js" "^4.2.2"
 
 "ajv@^6.12.3":
-  "integrity" "sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g=="
-  "resolved" "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz"
   "version" "6.12.6"
   dependencies:
     "fast-deep-equal" "^3.1.1"
@@ -1957,8 +1953,6 @@
   "version" "2.0.0"
 
 "aproba@^1.1.2":
-  "integrity" "sha512-Y9J6ZjXtoYh8RnXVCMOU/ttDmk1aBjunq9vO0ta5x85WDQiQfUF9sIPBITdbiiIVcBo03Hi3jMxigBtsddlXRw=="
-  "resolved" "https://registry.npmjs.org/aproba/-/aproba-1.2.0.tgz"
   "version" "1.2.0"
 
 "archy@~1.0.0":
@@ -5218,8 +5212,6 @@
   "version" "0.5.2"
 
 "from2@^1.3.0":
-  "integrity" "sha1-iEE7qqX5pZfP3pIh2GmGzTwGHf0="
-  "resolved" "https://registry.npmjs.org/from2/-/from2-1.3.0.tgz"
   "version" "1.3.0"
   dependencies:
     "inherits" "~2.0.1"
@@ -7513,32 +7505,24 @@
     "minipass" "^3.0.0"
 
 "minipass@^2.3.5":
-  "integrity" "sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg=="
-  "resolved" "https://registry.npmjs.org/minipass/-/minipass-2.9.0.tgz"
   "version" "2.9.0"
   dependencies:
     "safe-buffer" "^5.1.2"
     "yallist" "^3.0.0"
 
 "minipass@^2.6.0":
-  "integrity" "sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg=="
-  "resolved" "https://registry.npmjs.org/minipass/-/minipass-2.9.0.tgz"
   "version" "2.9.0"
   dependencies:
     "safe-buffer" "^5.1.2"
     "yallist" "^3.0.0"
 
 "minipass@^2.8.6":
-  "integrity" "sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg=="
-  "resolved" "https://registry.npmjs.org/minipass/-/minipass-2.9.0.tgz"
   "version" "2.9.0"
   dependencies:
     "safe-buffer" "^5.1.2"
     "yallist" "^3.0.0"
 
 "minipass@^2.9.0":
-  "integrity" "sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg=="
-  "resolved" "https://registry.npmjs.org/minipass/-/minipass-2.9.0.tgz"
   "version" "2.9.0"
   dependencies:
     "safe-buffer" "^5.1.2"
@@ -10419,8 +10403,6 @@
   "version" "0.1.15"
 
 "retry@^0.10.0":
-  "integrity" "sha1-52OI0heZLCUnUCQdPTlW/tmNj/Q="
-  "resolved" "https://registry.npmjs.org/retry/-/retry-0.10.1.tgz"
   "version" "0.10.1"
 
 "retry@^0.12.0":
@@ -11298,8 +11280,6 @@
     "strip-ansi" "^5.1.0"
 
 "string-width@^3.1.0":
-  "integrity" "sha512-vafcv6KjVZKSgz06oM/H6GDBrAtz8vdhQakGjFIvNrHA6y3HCF1CInLy+QLq8dTJPQ1b+KDUqDFctkdRW44e1w=="
-  "resolved" "https://registry.npmjs.org/string-width/-/string-width-3.1.0.tgz"
   "version" "3.1.0"
   dependencies:
     "emoji-regex" "^7.0.1"
