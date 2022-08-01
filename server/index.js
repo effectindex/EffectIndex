@@ -5,8 +5,6 @@ const Messages = require('./messages.js');
 const express = require("express");
 
 const mongoose = require("mongoose");
-mongoose.set("useCreateIndex", true);
-mongoose.set("useFindAndModify", false);
 
 const api = require("./models/");
 
