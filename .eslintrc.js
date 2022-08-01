@@ -19,6 +19,9 @@ module.exports = {
   // add your custom rules here
   rules: {
     "semi": "warn",
-    "vue/no-v-html": "off"
+    "vue/no-v-html": "off",
+    "vue/multi-word-component-names": "off",
+    "vue/v-slot-style": "off",
+    "vue/no-mutating-props": "off"
   }
 }
