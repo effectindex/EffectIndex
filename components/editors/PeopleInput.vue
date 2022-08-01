@@ -1,7 +1,7 @@
 <template>
   <div class="peopleInput">
     <div class="controlsContainer">
-      <select v-model="selected"> 
+      <select v-model="selected">
         <option
           v-for="person in people"
           :key="person._id"
@@ -35,7 +35,7 @@ export default {
   props: {
     people: {
       type: Array,
-      default: () => ({})
+      default: () => ([])
     },
     value: {
       type: Array,
