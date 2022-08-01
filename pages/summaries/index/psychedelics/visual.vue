@@ -27,7 +27,7 @@
     <hr>
     <div>
       <div class="effectsContainer">
-        <h3 class="titleContainer"> 
+        <h3 class="titleContainer">
           Visual Amplifications
           <Icon
             filename="arrow-up.svg"
@@ -39,7 +39,7 @@
           <b> Visual amplifications </b> are defined as any subjective effect that increases, enhances, or intensifies a facet of a person's sense of sight.
         </p>
 
-        <long-summary 
+        <long-summary
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'enhancement')"
           :key="effect._id"
           :index="i"
@@ -49,7 +49,7 @@
 
       <div class="effectsContainer">
         <h3 class="titleContainer">
-          Visual Distortions 
+          Visual Distortions
           <Icon
             filename="distortions.svg"
             class="actionIcon"
@@ -58,7 +58,7 @@
         <p class="actionDescription">
           <b> Visual distortions </b> are any subjective effect which alters and changes the perception or appearance of pre-existing visual data without adding any entirely new content.
         </p>
-        <long-summary 
+        <long-summary
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'distortion')"
           :key="effect._id"
           :index="i"
@@ -77,13 +77,13 @@
         <p class="actionDescription">
           <b> Geometric patterns </b> are defined as any subjective effect that introduces complex arrays of shapes, colours, symbols, patterns, geometry, form constants, and fractals to one's field of vision.
         </p>
-        <long-summary 
+        <long-summary
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'geometric')"
           :key="effect._id"
           :index="i"
           :effect="effect"
         />
-      </div>     
+      </div>
 
       <div class="effectsContainer">
         <h3 class="titleContainer">
@@ -96,7 +96,7 @@
         <p class="actionDescription">
           <b> Hallucinatory states </b> are any subjective effect which changes the perception or appearance of pre-existing visual data by adding entirely new content in a manner which is similar to that of dreams.
         </p>
-        <long-summary 
+        <long-summary
           v-for="(effect, i) in filterEffectsByTag('psychedelic', 'visual', 'hallucinatory state')"
           :key="effect._id"
           :index="i"
@@ -131,15 +131,15 @@ export default {
     LongSummary,
     Icon
   },
-  head() {
-    return {
-      title: "Visual Psychedelic Effects"
-    };
-  },
   scrollToTop: true,
   data () {
     return {
       linkedEffect: this.$route.query.e
+    };
+  },
+  head() {
+    return {
+      title: "Visual Psychedelic Effects"
     };
   },
   computed: {
@@ -147,12 +147,12 @@ export default {
       return this.$store.state.effects.list;
     }
   },
+  watchQuery: ['e'],
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);
     }
   },
-  watchQuery: ['e'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>

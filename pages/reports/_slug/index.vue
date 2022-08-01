@@ -126,25 +126,7 @@ export default {
     RelatedEffects,
     Icon
   },
-  computed: {
-    profile() {
-      let profile = undefined;
-      let profiles = this.$store.state.profiles.list;
-      profile = profiles.find(
-        profile => profile.username === this.report.subject.name
-      );
-      return profile;
-    },
-    description() {
-      let substances = this.report.substances.map((substance) => substance.name);
-      let substanceList = '';
-      substances.forEach((substance, index) => substanceList += (substance + (index < substances.length - 1 ? ', ' : '')));
-      return `A ${substanceList} report from ${this.report.subject.name} on Effect Index.`;
-    },
-    hasRelatedEffects() {
-      return this.report.related_effects && (this.report.related_effects.length > 0);
-    }
-  },
+  scrollToTop: true,
   async asyncData({ store, params, error }) {
     let report = await store.dispatch("reports/getReportBySlug", params.slug);
     if (!report)
@@ -166,7 +148,25 @@ export default {
       ]
     };
   },
-  scrollToTop: true
+  computed: {
+    profile() {
+      let profile = undefined;
+      let profiles = this.$store.state.profiles.list;
+      profile = profiles.find(
+        profile => profile.username === this.report.subject.name
+      );
+      return profile;
+    },
+    description() {
+      let substances = this.report.substances.map((substance) => substance.name);
+      let substanceList = '';
+      substances.forEach((substance, index) => substanceList += (substance + (index < substances.length - 1 ? ', ' : '')));
+      return `A ${substanceList} report from ${this.report.subject.name} on Effect Index.`;
+    },
+    hasRelatedEffects() {
+      return this.report.related_effects && (this.report.related_effects.length > 0);
+    }
+  }
 };
 </script>
 

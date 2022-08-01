@@ -14,11 +14,11 @@
     components: {
       PostEditor
     },
+    middleware: ['auth'],
     methods: {
       async submitPost(post) {
         this.$store.dispatch('blog/submitPost', post).then(this.$router.push('/blog/'));
       }
-    },
-    middleware: ['auth']
+    }
   };
 </script>

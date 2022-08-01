@@ -3,11 +3,11 @@
     <Icon
       filename="file-signature.svg"
       class="categoryIcon"
-    /> 
+    />
     <h1> Trip Reports </h1>
 
     <p>
-      The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports that describe the subjective experiences our community members undergo while under the influence of various 
+      The <strong>trip reports section</strong> of Effect Index exists to showcase our collection of high quality, consistently formatted trip reports that describe the subjective experiences our community members undergo while under the influence of various
       hallucinogenic substances.
       These reports are then used as anecdotal accounts that further support the existence of the various documented states within our <nuxt-link to="/effects">
         Subjective Effect Index.
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div 
+      <div
         v-if="sortedSubstances.indexOf('Combinations') > 0"
         class="report__substanceList"
       >
@@ -47,7 +47,7 @@
             :report="report"
             :profile-name="hasProfile(report.subject.name)"
           />
-        </div>        
+        </div>
       </div>
     </div>
 
@@ -109,6 +109,15 @@ export default {
       }
     };
   },
+  async fetch({ store }) {
+    await store.dispatch("reports/get");
+    await store.dispatch("profiles/get");
+  },
+  head() {
+    return {
+      title: "Trip Reports"
+    };
+  },
   computed: {
     reports() {
       return this.$store.state.reports.list;
@@ -151,17 +160,13 @@ export default {
       return this.viewMode.direction ? sorted : sorted.reverse();
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("reports/get");
-    await store.dispatch("profiles/get");
-  },
   methods: {
     hasProfile(name) {
       return this.profileNames[this.profileNames.indexOf(name)];
     },
     filterReportsBySubstance(name) {
         return name === 'Combinations' ?
-        this.reports.filter((report) => Array.isArray(report.substances) && report.substances.length > 1) : 
+        this.reports.filter((report) => Array.isArray(report.substances) && report.substances.length > 1) :
         this.reports.filter((report) => Array.isArray(report.substances) && report.substances.find((substance) => substance.name === name));
     },
     filterReportsByAuthor(author) {
@@ -172,11 +177,6 @@ export default {
         this.viewMode.direction = !this.viewMode.direction;
       else this.viewMode.name = view;
     }
-  },
-  head() {
-    return {
-      title: "Trip Reports"
-    };
   }
 };
 </script>

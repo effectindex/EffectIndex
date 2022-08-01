@@ -12,18 +12,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr 
+        <tr
           v-for="report in reports"
           :key="report._id"
         >
-          <td> 
+          <td>
             <nuxt-link :to="'/reports/' + report.slug">
               {{ report.title }}
             </nuxt-link>
           </td>
           <td> {{ report.subject ? report.subject.name : '' }} </td>
           <td>
-            <span 
+            <span
               v-for="tag in report.tags"
               :key="tag"
               class="reportTag"
@@ -36,9 +36,9 @@
               <Icon
                 filename="edit.svg"
                 style="cursor: pointer; height: 1em; width: 1em; padding-right: 2em;"
-              /> 
-            </nuxt-link> 
-            <a @click="deleteReport(report._id)"> 
+              />
+            </nuxt-link>
+            <a @click="deleteReport(report._id)">
               <Icon
                 filename="times.svg"
                 style="height: 1em; width: 1em; cursor: pointer;"
@@ -92,7 +92,7 @@ this.$toasted.show('Really delete?', {
                   this.$fetch();
                 } catch (error) {
                   if (error.response) {
-                    this.$toasted.show(error.response.data.message, 
+                    this.$toasted.show(error.response.data.message,
                     {
                       duration: 2000,
                       type: 'error'
@@ -107,7 +107,7 @@ this.$toasted.show('Really delete?', {
               text: 'No, keep!',
               onClick: (e, toastObject) => toastObject.goAway()
             }]
-        }); 
+        });
 
       this.$fetch();
 

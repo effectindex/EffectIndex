@@ -6,13 +6,13 @@
 
 <script>
   export default {
+    async fetch ({ store }) {
+      await store.dispatch("effects/get");
+    },
     head() {
       return {
         title: "Categories"
       };
-    },
-    async fetch ({ store }) {
-      await store.dispatch("effects/get");
     },
   };
 </script>

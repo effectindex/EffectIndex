@@ -6,17 +6,17 @@
     />
     <h1> Subjective Effect Index </h1>
     <description />
-    <tabs 
+    <tabs
       :tabs="['All', 'Sensory', 'Cognitive', 'Physical']"
       :active-tab="activeTab"
       @selectTab="selectTab"
     >
-      <tab 
-        slot="All" 
+      <tab
+        slot="All"
         style="padding-top: 1em;"
       >
         <column>
-          <category 
+          <category
             icon="eye.svg"
             title="Visual Effects"
             page="/categories/visual-effects"
@@ -40,7 +40,7 @@
               :effects="filterEffectsByTag('visual', 'geometric')"
               title="Geometric Patterns"
               page="/categories/geometric-patterns"
-            />          
+            />
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States"
@@ -48,7 +48,7 @@
             />
           </category>
 
-          <category 
+          <category
             icon="volume-up.svg"
             title="Auditory Effects"
             page="/categories/auditory-effects"
@@ -56,7 +56,7 @@
             <actions :effects="filterEffectsByTag('auditory')" />
           </category>
 
-          <category 
+          <category
             icon="hand-paper.svg"
             title="Tactile Effects"
             page="/categories/tactile-effects"
@@ -64,34 +64,34 @@
             <actions :effects="filterEffectsByTag('tactile')" />
           </category>
 
-          <category 
+          <category
             icon="utensils.svg"
             title="Smell &amp; Taste Effects"
             page="/categories/smell-and-taste-effects"
           >
-            <actions 
+            <actions
               :effects="filterEffectsByTag('gustatory')"
               title="Gustatory Effects"
             />
-            <actions 
+            <actions
               :effects="filterEffectsByTag('olfactory')"
               title="Olfactory Effects"
             />
           </category>
 
-          <category 
+          <category
             icon="cogs.svg"
             title="Multisensory Effects"
             page="/categories/multisensory-effects"
           >
-            <actions 
+            <actions
               :effects="filterEffectsByTag('multisensory')"
             />
           </category>
         </column>
 
         <column>
-          <category  
+          <category
             icon="user.svg"
             title="Cognitive Effects"
             page="/categories/cognitive-effects"
@@ -120,12 +120,12 @@
               :effects="filterEffectsByTag('cognitive', 'transpersonal state')"
               page="/categories/transpersonal-states"
               title="Transpersonal States"
-            />          
+            />
           </category>
         </column>
 
         <column>
-          <category  
+          <category
             icon="heart-rate.svg"
             title="Physical Effects"
             page="/categories/physical-effects"
@@ -160,18 +160,18 @@
               page="/categories/neurological-effects"
               title="Neurological"
             />
-          </category> 
+          </category>
         </column>
       </tab>
-      
+
       <tab slot="Sensory">
-        <blob> 
+        <blob>
           <p>
-            <b> Sensory effects </b> are subjective effects that directly alter a person's senses. These can include any combination of sight, sound, touch, taste, and smell. 
+            <b> Sensory effects </b> are subjective effects that directly alter a person's senses. These can include any combination of sight, sound, touch, taste, and smell.
           </p>
         </blob>
         <column>
-          <category 
+          <category
             icon="eye.svg"
             title="Visual Effects"
             page="/categories/visual-effects"
@@ -195,7 +195,7 @@
               :effects="filterEffectsByTag('visual', 'geometric')"
               title="Geometric Patterns"
               page="/categories/geometric-patterns"
-            />          
+            />
             <actions
               :effects="filterEffectsByTag('visual', 'hallucinatory state')"
               title="Hallucinatory States"
@@ -205,7 +205,7 @@
         </column>
 
         <column>
-          <category 
+          <category
             icon="volume-up.svg"
             title="Auditory Effects"
             page="/categories/auditory-effects"
@@ -213,7 +213,7 @@
             <actions :effects="filterEffectsByTag('auditory')" />
           </category>
 
-          <category 
+          <category
             icon="hand-paper.svg"
             title="Tactile Effects"
             page="/categories/tactile-effects"
@@ -221,16 +221,16 @@
             <actions :effects="filterEffectsByTag('tactile')" />
           </category>
 
-          <category 
+          <category
             icon="utensils.svg"
             title="Smell &amp; Taste Effects"
             page="/categories/smell-and-taste-effects"
           >
-            <actions 
+            <actions
               :effects="filterEffectsByTag('gustatory')"
               title="Gustatory Effects"
             />
-            <actions 
+            <actions
               :effects="filterEffectsByTag('olfactory')"
               title="Olfactory Effects"
             />
@@ -238,12 +238,12 @@
         </column>
 
         <column>
-          <category 
+          <category
             icon="cogs.svg"
             title="Multisensory Effects"
             page="/categories/multisensory-effects"
           >
-            <actions 
+            <actions
               :effects="filterEffectsByTag('multisensory')"
             />
           </category>
@@ -251,14 +251,14 @@
       </tab>
 
       <tab slot="Cognitive">
-        <blob> 
+        <blob>
           <p>
             <b> Cognitive effects </b> are subjective effects that directly alter or introduce new content to an element of a person's cognition.
           </p>
         </blob>
 
         <column>
-          <category 
+          <category
             icon="arrow-up.svg"
             title="Amplifications"
             page="/categories/cognitive-amplifications"
@@ -267,7 +267,7 @@
               :effects="filterEffectsByTag('cognitive', 'amplification')"
             />
           </category>
-          <category  
+          <category
             icon="arrow-down.svg"
             title="Suppressions"
             page="/categories/cognitive-suppressions"
@@ -287,7 +287,7 @@
               :effects="filterEffectsByTag('cognitive', 'novel')"
             />
           </category>
-          <category  
+          <category
             icon="psychological.svg"
             title="Psychological States"
             page="/categories/psychological-states"
@@ -311,13 +311,13 @@
       </tab>
 
       <tab slot="Physical">
-        <blob> 
+        <blob>
           <p>
             <b> Physical effects </b> are subjective effects that directly affect part of a person's physical body.
           </p>
         </blob>
         <column>
-          <category 
+          <category
             icon="arrow-up.svg"
             title="Amplifications"
             page="/categories/physical-amplifications"
@@ -325,7 +325,7 @@
             <actions :effects="filterEffectsByTag('physical', 'amplification')" />
           </category>
 
-          <category 
+          <category
             icon="arrow-down.svg"
             title="Suppressions"
             page="/categories/physical-suppressions"
@@ -333,30 +333,30 @@
             <actions :effects="filterEffectsByTag('physical', 'suppression')" />
           </category>
 
-          <category 
+          <category
             icon="cogs.svg"
             title="Alterations"
             page="/categories/physical-alterations"
           >
-            <actions 
+            <actions
               :effects="filterEffectsByTag('physical', 'alteration')"
             />
           </category>
         </column>
 
         <column>
-          <category 
+          <category
             icon="child.svg"
             title="Uncomfortable bodily effects"
             page="/categories/uncomfortable-bodily-effects"
           >
-            <actions 
+            <actions
               :effects="filterEffectsByTag('physical', 'bodily')"
             />
           </category>
         </column>
         <column>
-          <category 
+          <category
             icon="brain.svg"
             title="Neurological"
             page="/categories/neurological-effects"
@@ -364,14 +364,14 @@
             <actions :effects="filterEffectsByTag('physical', 'neurological')" />
           </category>
 
-          <category 
+          <category
             icon="heart.svg"
             title="Cardiovascular"
             page="/categories/cardiovascular-effects"
           >
             <actions :effects="filterEffectsByTag('physical', 'cardiovascular')" />
           </category>
-        </column>      
+        </column>
       </tab>
     </tabs>
   </div>
@@ -398,14 +398,17 @@ export default {
     Blob,
     Icon
   },
-  head() {
-    return {
-      title: "Subjective Effect Index"
-    };
-  },
   data() {
     return {
       activeTab: this.$route.query.type
+    };
+  },
+  async fetch ({ store }) {
+    await store.dispatch("effects/get");
+  },
+  head() {
+    return {
+      title: "Subjective Effect Index"
     };
   },
   computed: {
@@ -414,9 +417,6 @@ export default {
     },
   },
   watchQuery: ['type'],
-  async fetch ({ store }) {
-    await store.dispatch("effects/get");
-  },
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>

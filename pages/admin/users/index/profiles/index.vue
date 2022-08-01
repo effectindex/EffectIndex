@@ -56,13 +56,13 @@ export default {
   components: {
     Icon
   },
+  async fetch({ store }) {
+    await store.dispatch("profiles/get");
+  },
   computed: {
     profiles() {
       return this.$store.state.profiles.list;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("profiles/get");
   },
   methods: {
     async deleteProfile(id) {

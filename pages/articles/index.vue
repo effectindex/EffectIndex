@@ -72,6 +72,15 @@ export default {
       sortDirection: true // true -> asc, false -> desc
     };
   },
+  async fetch() {
+    try {
+      const { articles, authors } = await this.$axios.$get('/api/articles');
+      this.articles = articles;
+      this.authors = authors;
+    } catch (error) {
+      console.log(error);
+    }
+  },
   computed: {
     sortedAuthors () {
       return this.sortDirection ? this.authors : this.authors.slice().reverse();
@@ -85,15 +94,6 @@ export default {
     articlesSortedByTitle() {
       const byTitle = this.articles.slice().sort((a, b) => a.title.toLowerCase() < b.title.toLowerCase());
       return this.sortDirection ? byTitle : byTitle.reverse();
-    }
-  },
-  async fetch() {
-    try {
-      const { articles, authors } = await this.$axios.$get('/api/articles');
-      this.articles = articles;
-      this.authors = authors;
-    } catch (error) {
-      console.log(error);
     }
   },
   methods: {

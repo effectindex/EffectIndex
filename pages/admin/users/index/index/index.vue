@@ -1,7 +1,7 @@
 <template>
   <table>
     <thead>
-      <tr> 
+      <tr>
         <th> Username </th>
         <th> Roles </th>
         <th> Identity </th>
@@ -17,7 +17,7 @@
         <td>
           <role-list :roles="user.roles" />
         </td>
-        <td v-if="user.identity"> 
+        <td v-if="user.identity">
           <nuxt-link
             v-if="user.identity.profile_url"
             :to="`/people/${user.identity.profile_url}`"
@@ -55,16 +55,11 @@
   import Icon from '@/components/Icon';
 
   export default {
-    middleware: ['auth'],
     components: {
       RoleList,
       Icon
     },
-    head() {
-      return {
-        title: "Modify Users"
-      };
-    },
+    middleware: ['auth'],
     data() {
       return {
         users: []
@@ -73,6 +68,11 @@
     async fetch() {
       const { users } = await this.$axios.$get('/api/users');
       this.users = users;
+    },
+    head() {
+      return {
+        title: "Modify Users"
+      };
     },
     methods: {
       async deleteUser(_id) {
@@ -88,7 +88,7 @@
                     this.$fetch();
                   } catch (error) {
                     if (error.response) {
-                      this.$toasted.show(error.response.data.message, 
+                      this.$toasted.show(error.response.data.message,
                       {
                         duration: 2000,
                         type: 'error'
@@ -103,7 +103,7 @@
                 text: 'No, keep!',
                 onClick: (e, toastObject) => toastObject.goAway()
               }]
-          });        
+          });
         } catch (error) {
           console.log(error);
         }
@@ -143,7 +143,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    
+
   }
 
   .icon {

@@ -184,6 +184,7 @@ export default {
     VcodeEditor,
     TableOfContentsInput
   },
+  middleware: ["auth"],
   props: {
     effect: {
       type: Object,
@@ -191,7 +192,7 @@ export default {
     }
   },
   data () {
-    const { _id, name, description, citations, url, external_links, 
+    const { _id, name, description, citations, url, external_links,
     see_also, tags, contributors, summary_raw, long_summary, analysis, style_variations,
     personal_commentary, gallery_order, social_media_image, subarticles, featured, toc } = this.effect ? this.effect : {};
     return {
@@ -300,7 +301,6 @@ export default {
       this.gallery_order.splice(index, 1);
     }
   },
-  middleware: ["auth"],
 };
 </script>
 

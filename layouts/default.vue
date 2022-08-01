@@ -1,6 +1,6 @@
 <template>
   <div class="layoutContainer">
-    <div 
+    <div
       :class="{ mainContainerPulledout: navbarPullout }"
       class="mainContainer"
     >
@@ -19,7 +19,7 @@
       :active="modalActive"
       :type="modalData.type"
       :src="(modalData.type === 'image') ? modalData.resource : modalData.resource"
-      @toggleModal="toggleModal" 
+      @toggleModal="toggleModal"
     />
   </div>
 </template>
@@ -39,25 +39,6 @@ export default {
     PulloutMenu,
     Modal,
     UserBar
-  },
-  computed: {
-    navbarPullout() {
-      return this.$store.state.pullout_menu.active;
-    },
-    modalActive() {
-      return this.$store.state.modal.active;
-    },
-    modalData() {
-      return {
-        type: this.$store.state.modal.type,
-        resource: this.$store.state.modal.resource
-      };
-    }
-  },
-  methods: {
-    toggleModal() {
-      this.$store.commit("modal/toggle");
-    }
   },
   head() {
     return {
@@ -80,6 +61,25 @@ export default {
         { name: 'twitter:image:alt', hid: 'twitter:image:alt', content: 'Effect Index Logo' }
       ]
     };
+  },
+  computed: {
+    navbarPullout() {
+      return this.$store.state.pullout_menu.active;
+    },
+    modalActive() {
+      return this.$store.state.modal.active;
+    },
+    modalData() {
+      return {
+        type: this.$store.state.modal.type,
+        resource: this.$store.state.modal.resource
+      };
+    }
+  },
+  methods: {
+    toggleModal() {
+      this.$store.commit("modal/toggle");
+    }
   }
 };
 </script>

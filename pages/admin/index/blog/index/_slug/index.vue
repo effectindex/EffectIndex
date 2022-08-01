@@ -1,7 +1,7 @@
 <template>
   <div>
     <hr>
-    <post-editor 
+    <post-editor
       :post="post"
       @edit-post="submitPost"
     />
@@ -15,6 +15,7 @@
     components: {
       PostEditor
     },
+    middleware: ['auth'],
     async asyncData ({ store, params }) {
       let { post } = await store.dispatch('blog/getPost', params.slug);
       return { post };
@@ -25,7 +26,6 @@
         await this.$store.dispatch('blog/updatePost', post);
         this.$router.push('/blog');
       }
-    },
-    middleware: ['auth']
+    }
   };
 </script>

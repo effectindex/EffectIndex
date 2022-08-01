@@ -2,9 +2,9 @@
   <div class="pageContent">
     <hr>
     <h4> Effects </h4>
-    <label for="effectFilter"> Filter by Tag: 
+    <label for="effectFilter"> Filter by Tag:
       <input
-        v-model="filter" 
+        v-model="filter"
         type="text"
         class="filterInput"
       > <a @click="clearFilter"> (clear) </a> </label>
@@ -15,7 +15,7 @@
           <td> Tags </td>
         </tr>
       </thead>
-      <effect-table-row 
+      <effect-table-row
         v-for="effect in filteredEffects"
         :key="effect._id"
         :effect="effect"
@@ -32,6 +32,8 @@ export default {
   components: {
     EffectTableRow
   },
+  middleware: ["auth"],
+  scrollToTop: true,
   data() {
     return {
       filter: ""
@@ -49,8 +51,6 @@ export default {
   mounted() {
     this.$store.dispatch("effects/get");
   },
-  middleware: ["auth"],
-  scrollToTop: true,
   methods: {
     deleteEffect(id) {
       this.$store.dispatch("effects/delete", id);

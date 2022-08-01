@@ -13,11 +13,6 @@
 import PersonDetails from '@/components/people/PersonDetails';
 
 export default {
-  head() {
-    return {
-      title: "Your Profile"
-    };
-  },
   components: {
     PersonDetails
   },
@@ -30,6 +25,11 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  head() {
+    return {
+      title: "Your Profile"
+    };
   },
   methods: {
     async updateProfile(person) {

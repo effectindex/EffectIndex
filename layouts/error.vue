@@ -37,13 +37,13 @@
 
 <script>
 export default {
+  layout: "blog",
   props: {
     error: {
       type: [Object, Error],
       default: undefined
     }
-  },
-  layout: "blog" // you can set a custom layout for the error page
+  } // you can set a custom layout for the error page
 };
 </script>
 

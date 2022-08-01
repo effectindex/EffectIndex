@@ -13,16 +13,16 @@
 import Icon from '@/components/Icon';
 
 export default {
-  middleware: 'auth',
   components: {
     Icon
   },
+  middleware: 'auth',
+  scrollToTop: true,
   head() {
     return {
       title: "Administration"
     };
-  },
-  scrollToTop: true
+  }
 };
 </script>
 

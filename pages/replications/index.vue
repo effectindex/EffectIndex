@@ -5,7 +5,7 @@
       class="categoryIcon"
     />
     <h1> Replications </h1>
-    <p> 
+    <p>
       <span class="bold"> Replications </span> are image, video, and audio recreations of the sensory experiences produced by various subjective effects that a user may encounter under the influence of hallucinogens. Replications may be created intentionally or unintentionally, as long as they accurately convey the effect being shown. They serve the purpose of documenting certain experiences in a level of detail that descriptive language is incapable of describing.
     </p>
     <p>
@@ -14,7 +14,7 @@
 
     <hr>
 
-    <h3 
+    <h3
       ref="lightbox"
       style="text-align: center;"
     >
@@ -33,7 +33,7 @@
 
     <hr>
     <h3> Effect Galleries </h3>
-    <effect-selector 
+    <effect-selector
       :effects="replicated_effects"
       :selected="selected_effect_id"
       @effectSelected="scroll"
@@ -51,6 +51,14 @@ export default {
     EffectSelector,
     LightBox,
     Icon
+  },
+  async fetch({ store }) {
+    await store.dispatch("gallery/get");
+  },
+  head() {
+    return {
+      title: "Replications"
+    };
   },
   computed: {
     replicated_effects() {
@@ -85,9 +93,6 @@ export default {
       );
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("gallery/get");
-  },
   methods: {
     scroll() {
       this.$scrollTo(this.$refs.lightbox, 800);
@@ -103,11 +108,6 @@ export default {
         this.$store.dispatch("gallery/setGallerySelectedEffect", this.replicated_effects[index]._id);
       }
     },
-  },
-  head() {
-    return {
-      title: "Replications"
-    };
   }
 };
 </script>

@@ -8,11 +8,11 @@
       </label>
 
       <label> Roles </label>
-      <input 
+      <input
         v-model="user.scope.admin"
         type="checkbox"
       > Admin <br>
-      <input 
+      <input
         v-model="user.scope.editor"
         type="checkbox"
       > Editor <br>
@@ -32,6 +32,10 @@
 
 <script>
 export default {
+  async asyncData({ store, params }) {
+    let { user } = await store.dispatch("admin/getUser", params.id);
+    return { user };
+  },
   data() {
     return {
       success: false,
@@ -45,10 +49,6 @@ export default {
         }
       }
     };
-  },
-  async asyncData({ store, params }) {
-    let { user } = await store.dispatch("admin/getUser", params.id);
-    return { user };
   },
   methods: {
     async submit() {

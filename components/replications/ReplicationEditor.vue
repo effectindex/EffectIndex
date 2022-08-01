@@ -2,7 +2,7 @@
   <div>
     <div>
       <label> Title: </label>
-      <input 
+      <input
         v-model="title"
         class="input__singleLine"
       >
@@ -13,14 +13,14 @@
     </div>
     <div>
       <label> Artist (Freetext): </label>
-      <input 
+      <input
         v-model="artist"
         class="input__singleLine"
       >
     </div>
     <div>
       <label> Artist Webpage: </label>
-      <input 
+      <input
         v-model="artist_url"
         class="input__singleLine"
       >
@@ -28,7 +28,7 @@
     <div>
       <label> Associated Effects: </label>
       <ul class="effectList">
-        <li 
+        <li
           v-for="effect in $store.state.effects"
           :key="effect.id"
         >
@@ -44,7 +44,7 @@
     </div>
     <div>
       <label> Description: </label>
-      <textarea 
+      <textarea
         v-model="description"
         class="input__textarea"
       />
@@ -52,38 +52,38 @@
     <div>
       <label> Date: </label>
       <input
-        v-model="date" 
+        v-model="date"
         class="input__singleLine"
       >
     </div>
     <div class="input__typeSelector">
       <label> Type: </label>
-      <input 
-        id="radioButton__image" 
+      <input
+        id="radioButton__image"
         v-model="type"
         type="radio"
-        value="image" 
+        value="image"
       >
       <label for="radioButton__image"> Image </label>
-      <input 
-        id="radioButton__gfycat" 
+      <input
+        id="radioButton__gfycat"
         v-model="type"
-        type="radio" 
-        value="gfycat" 
+        type="radio"
+        value="gfycat"
       >
       <label for="radioButton__image"> Gfycat </label>
-      <input 
-        id="radioButton__audio" 
+      <input
+        id="radioButton__audio"
         v-model="type"
-        type="radio" 
-        value="audio" 
+        type="radio"
+        value="audio"
       >
       <label for="radioButton__image"> Audio </label>
     </div>
 
     <div>
       <label> {{ type === 'gfycat' ? 'Gfycat ID' : 'Filename' }}: </label>
-      <input 
+      <input
         v-model="resource"
         class="input__singleLine"
       >
@@ -96,8 +96,8 @@
       >
     </div>
 
-    <div 
-      v-if="(type === 'image')" 
+    <div
+      v-if="(type === 'image')"
       class="replicationEditor__imagePreview"
     >
       <img
@@ -105,31 +105,31 @@
         :src="'/img/gallery/' + resource"
         height="200"
       >
-      <img 
+      <img
         v-show="resource"
         :src="'/img/gallery/thumbnails/' + resource"
       >
     </div>
 
-    <div 
+    <div
       v-else-if="(type === 'gfycat')"
       class="replicationEditor__gfycatPreview"
     >
-      <iframe 
+      <iframe
         :src="'https://gfycat.com/ifr/' + resource"
-        frameborder="0" 
-        scrolling="no" 
-        height="200" 
+        frameborder="0"
+        scrolling="no"
+        height="200"
       />
-      <img 
-        v-show="thumbnail || (type === 'gfycat')" 
+      <img
+        v-show="thumbnail || (type === 'gfycat')"
         :src="thumbnail ?
-          ('/img/gallery/thumbnails/' + thumbnail) : 'https://thumbs.gfycat.com/' + resource + '-mobile.jpg'" 
+          ('/img/gallery/thumbnails/' + thumbnail) : 'https://thumbs.gfycat.com/' + resource + '-mobile.jpg'"
         style="max-width: 300px;"
       >
     </div>
 
-    <div 
+    <div
       v-else-if="(type === 'audio')"
     >
       <audio-player
@@ -141,8 +141,8 @@
 
     <div>
       <label for="featured">
-        Featured 
-        <input 
+        Featured
+        <input
           id="featured"
           v-model="featured"
           type="checkbox"
@@ -153,7 +153,7 @@
     <div>
       <label> Associated Effects: </label>
       <ul class="effectList">
-        <li 
+        <li
           v-for="effect in effects"
           :key="effect.id"
         >
@@ -169,7 +169,7 @@
     </div>
     <div>
       <label> Description: </label>
-      <textarea 
+      <textarea
         v-model="description"
         class="input__textarea"
       />
@@ -177,17 +177,17 @@
     <div>
       <label> Date: </label>
       <input
-        v-model="date" 
+        v-model="date"
         class="input__singleLine"
       >
     </div>
-    
+
 
     <div class="replication__buttons">
       <button @click="submitReplication()">
         Save
       </button>
-      <nuxt-link 
+      <nuxt-link
         to="/admin/replications"
       >
         <button> Cancel </button>
@@ -205,6 +205,7 @@ export default {
     AudioPlayer,
     PersonDropdown
   },
+  middleware: ["auth"],
   props: {
     replication: {
       type: Object,
@@ -246,8 +247,7 @@ export default {
 
       this.$emit(this.replication ? "edit-replication" : "new-replication", replication);
     }
-  },
-  middleware: ["auth"]
+  }
 };
 </script>
 

@@ -14,6 +14,7 @@
     components: {
       ReportEditor
     },
+    middleware: ["auth"],
     methods: {
       async submitReport(report) {
         try {
@@ -34,7 +35,6 @@
           console.log(error);
         }
       }
-    },
-    middleware: ["auth"]
+    }
   };
 </script>

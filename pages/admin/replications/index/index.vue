@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
     <hr>
-    <label for="effectFilter"> 
+    <label for="effectFilter">
       <span style="font-weight: bold;"> Filter by Effect: </span>
       <div class="inputContainer">
         <input
@@ -12,27 +12,27 @@
           @focus="focus"
           @blur="blur"
         >
-        <a 
+        <a
           style="padding: 0.5em; cursor: pointer;"
           @click="clearFilter"
-        > 
+        >
           <Icon
             filename="times.svg"
             color="red"
           />
         </a>
-        <div 
+        <div
           :class="{ active: (focused && filter) }"
           class="filterListContainer"
         >
           <ul
             class="filterList"
-          > 
-            <li 
+          >
+            <li
               v-for="effect in filteredEffects.slice(0, 5)"
               :key="effect._id"
             > <a @click="selectEffectName(effect.name)"> {{ effect.name }} </a> </li>
-            <li 
+            <li
               v-show="filteredEffects.length > 5"
               style="font-weight: bold;"
             > ... </li>
@@ -44,8 +44,8 @@
       <thead>
         <tr class="replicationTableHeaderRow">
           <td>
-            Title 
-            <a 
+            Title
+            <a
               class="sortArrow"
               @click="sortBy('title', 'descending')"
             >
@@ -53,7 +53,7 @@
                 filename="arrow-down.svg"
               />
             </a>
-            <a 
+            <a
               class="sortArrow"
               @click="sortBy('title', 'ascending')"
             >
@@ -63,7 +63,7 @@
             </a>
           </td>
           <td>
-            <a 
+            <a
               class="sortArrow"
               @click="sortBy('featured', 'descending')"
             >
@@ -71,7 +71,7 @@
                 filename="arrow-down.svg"
               />
             </a>
-            <a 
+            <a
               class="sortArrow"
               @click="sortBy('featured', 'ascending')"
             >
@@ -81,8 +81,8 @@
             </a>
           </td>
           <td>
-            Artist 
-            <a 
+            Artist
+            <a
               class="sortArrow"
               @click="sortBy('artist', 'descending')"
             >
@@ -90,7 +90,7 @@
                 filename="arrow-down.svg"
               />
             </a>
-            <a 
+            <a
               class="sortArrow"
               @click="sortBy('artist', 'ascending')"
             >
@@ -100,8 +100,8 @@
             </a>
           </td>
           <td>
-            Type 
-            <a 
+            Type
+            <a
               class="sortArrow"
               @click="sortBy('type', 'descending')"
             >
@@ -109,7 +109,7 @@
                 filename="arrow-down.svg"
               />
             </a>
-            <a 
+            <a
               class="sortArrow"
               @click="sortBy('type', 'ascending')"
             >
@@ -129,7 +129,7 @@
         </tr>
       </thead>
       <tbody>
-        <replication-table-row 
+        <replication-table-row
           v-for="replication in sortedReplications"
           :key="replication._id"
           :replication="replication"
@@ -152,6 +152,8 @@ export default {
     ReplicationTableRow,
     Icon
   },
+  middleware: ["auth"],
+  scrollToTop: true,
   data() {
     return {
       filter: "",
@@ -166,6 +168,10 @@ export default {
       }
     };
   },
+  async fetch({ store }) {
+    await store.dispatch("replications/get");
+    await store.dispatch("effects/get");
+  },
   computed: {
     replications() {
       return this.$store.state.replications.list;
@@ -178,7 +184,7 @@ export default {
     },
     filteredReplications() {
       if (!this.filter) return this.replications;
-    
+
       let effectIds = this.filteredEffects.map(effect => effect._id);
 
       let filteredReplications = this.replications.filter(
@@ -197,18 +203,12 @@ export default {
 
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("replications/get");
-    await store.dispatch("effects/get");
-  },
-  middleware: ["auth"],
-  scrollToTop: true,
   methods: {
     sortBy(column, direction) {
       if (column && direction) {
         this.options.sortBy.column = column;
         this.options.sortBy.direction = direction;
-      } 
+      }
     },
     async deleteReplication(id) {
 
@@ -240,7 +240,7 @@ export default {
           text: 'No, keep!',
           onClick: (e, toastObject) => toastObject.goAway()
         }]
-      });        
+      });
     },
     clearFilter() {
       this.filter = "";

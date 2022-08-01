@@ -24,12 +24,6 @@ export default {
     AudioReplication,
     Icon
   },
-  computed: {
-    audioReplications() {
-      return this.$store.state.replications.list.filter(
-        (replication) => (replication.type === 'audio'));
-    }
-  },
   async fetch({ store }) {
     await store.dispatch("replications/get");
     await store.dispatch("effects/get");
@@ -38,6 +32,12 @@ export default {
     return {
       title: "Audio Replications"
     };
+  },
+  computed: {
+    audioReplications() {
+      return this.$store.state.replications.list.filter(
+        (replication) => (replication.type === 'audio'));
+    }
   }
 };
 </script>

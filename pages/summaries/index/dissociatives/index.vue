@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent effectCategories">
     <div>
-      <img 
+      <img
         style="opacity: 0.6;"
         class="fa categoryIcon"
         src="/icons/disconnective.svg"
@@ -19,13 +19,13 @@
         </p>
 
         <p>
-          These descriptions are not specific to any particular substance but are applicable to the effects 
+          These descriptions are not specific to any particular substance but are applicable to the effects
           which commonly occur in various forms under the influence of almost any dissociative compound. This
           includes, but is not limited to, both classical and research chemical dissociatives, such as:
         </p>
 
         <p>
-          <i> Ketamine, MXE, PCP, DXM, DCK, 3-MeO-PCP, O-PCE, 3-HO-PCE, 3-HO-PCP, 3-MeO-PCE, 4-MeO-PCP, PCE, 
+          <i> Ketamine, MXE, PCP, DXM, DCK, 3-MeO-PCP, O-PCE, 3-HO-PCE, 3-HO-PCP, 3-MeO-PCE, 4-MeO-PCP, PCE,
             Diphenidine, Ephenidine, Methoxphenidine </i>
         </p>
 
@@ -34,31 +34,31 @@
     </div>
     <hr>
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Disconnective Effects
-        <img 
+        <img
           style="opacity: 0.8;"
           class="actionIcon"
           src="/icons/disconnective.svg"
         >
       </h3>
 
-      <p class="actionDescription"> 
-        <b> Disconnective effects </b> are any subjective effect which feels as if it detaches or disconnects one from the external environment, 
+      <p class="actionDescription">
+        <b> Disconnective effects </b> are any subjective effect which feels as if it detaches or disconnects one from the external environment,
         their senses, and their consciousness. <br> <br>
 
         These effects are typically associated with dissociative hallucinogens and likely
         occur due to the way in which these compounds function as NMDA receptor antagonists.
         This means they bind to the receptor, but do not activate it and block other
-        neurotransmitters from doing so. The result is a dose-dependent decrease in the 
+        neurotransmitters from doing so. The result is a dose-dependent decrease in the
         passing of electrical signals across the brain and an overall disconnection of neurons,
         which leads to states of disconnection between conscious parts of the brain and its
-        sensory organs. 
+        sensory organs.
       </p>
 
 
-      <long-summary 
-        v-for="(effect, i) in getEffectsInSpecificOrder('physical disconnection', 'cognitive disconnection', 'visual disconnection', 
+      <long-summary
+        v-for="(effect, i) in getEffectsInSpecificOrder('physical disconnection', 'cognitive disconnection', 'visual disconnection',
                                                         'detachment plateaus')"
         :key="effect._id"
         :index="i"
@@ -67,7 +67,7 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Miscellaneous Sensory Effects
         <Icon
           filename="cogs.svg"
@@ -75,12 +75,12 @@
         />
       </h3>
 
-      <p class="actionDescription"> 
-        In this context, <b> miscellaneous sensory effects </b> are any subjective experience which alters a person's visual, tactile, or 
+      <p class="actionDescription">
+        In this context, <b> miscellaneous sensory effects </b> are any subjective experience which alters a person's visual, tactile, or
         gustatory senses.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('dissociative', 'sensory')
           .filter((effect) => (effect.tags.indexOf('disconnective') === -1))"
         :key="effect._id"
@@ -90,7 +90,7 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Cognitive Effects
         <Icon
           filename="user.svg"
@@ -98,11 +98,11 @@
         />
       </h3>
 
-      <p class="actionDescription"> 
+      <p class="actionDescription">
         <b> Cognitive effects </b> are any subjective experience which directly alter or introduce new content to an element of a person's cognition.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('dissociative', 'cognitive').filter(effect => !effect.tags.includes('disconnective'))"
         :key="effect._id"
         :index="i"
@@ -111,7 +111,7 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Physical Effects
         <Icon
           filename="heart-rate.svg"
@@ -119,11 +119,11 @@
         />
       </h3>
 
-      <p class="actionDescription"> 
-        <b> Physical effects </b> are any subjective experience which directly affects an aspect of a person's physical body. 
+      <p class="actionDescription">
+        <b> Physical effects </b> are any subjective experience which directly affects an aspect of a person's physical body.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('dissociative', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
         :key="effect._id"
         :index="i"
@@ -157,15 +157,15 @@ export default {
     LongSummary,
     Icon
   },
-  head() {
-    return {
-      title: "Dissociative Effects"
-    };
-  },
   scrollToTop: true,
   data () {
     return {
       linkedEffect: this.$route.query.e
+    };
+  },
+  head() {
+    return {
+      title: "Dissociative Effects"
     };
   },
   computed: {
@@ -173,12 +173,12 @@ export default {
       return this.$store.state.effects.list;
     }
   },
+  watchQuery: ['e'],
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);
     }
   },
-  watchQuery: ['e'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>

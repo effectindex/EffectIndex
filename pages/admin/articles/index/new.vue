@@ -15,6 +15,7 @@
     components: {
       ArticleEditor
     },
+    middleware: ['auth'],
     data() {
       return {
         people: undefined
@@ -32,7 +33,6 @@
       async submitPost(article) {
         const results = await this.$axios.$post('/api/articles', { article });
       }
-    },
-    middleware: ['auth']
+    }
   };
 </script>

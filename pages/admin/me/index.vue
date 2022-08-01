@@ -28,12 +28,12 @@
 
 <script>
 export default {
+  middleware: 'auth',
   head() {
     return {
       title: "Manage User"
     };
   },
-  middleware: 'auth',
   computed: {
     username() {
       return this.$auth.user.username;

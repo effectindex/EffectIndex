@@ -72,12 +72,12 @@ export default {
     ExtLink,
     Icon
   },
+  async fetch ( { store } ) { await store.dispatch('articles/get'); },
   head() {
     return {
       title: "Donate"
     };
   },
-  async fetch ( { store } ) { await store.dispatch('articles/get'); },
 };
 </script>
 

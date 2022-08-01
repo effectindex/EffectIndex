@@ -18,9 +18,9 @@
     <hr>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Auditory Effects
-        <Icon 
+        <Icon
           filename="volume-up.svg"
           class="actionIcon"
         />
@@ -30,7 +30,7 @@
         <b> Auditory effects </b> are any subjective effect which directly alters a person's sense of hearing.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'auditory')"
         :key="effect._id"
         :index="i"
@@ -40,9 +40,9 @@
 
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Tactile Effects
-        <Icon 
+        <Icon
           filename="hand-paper.svg"
           class="actionIcon"
         />
@@ -52,7 +52,7 @@
         <b> Tactile effects </b> are any subjective effect which directly alters a person's sense of touch.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'tactile')"
         :key="effect._id"
         :index="i"
@@ -63,23 +63,23 @@
 
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Multisensory Effects
-        <Icon 
+        <Icon
           filename="cogs.svg"
           class="actionIcon"
         />
       </h3>
 
-      <p class="actionDescription"> 
-        <b> Multisensory effects </b> are any subjective effect which directly alters two or more senses simultaneously. <br> <br> 
-        Although some hallucinatory effects may affect multiple senses at one time they are usually 
+      <p class="actionDescription">
+        <b> Multisensory effects </b> are any subjective effect which directly alters two or more senses simultaneously. <br> <br>
+        Although some hallucinatory effects may affect multiple senses at one time they are usually
         not categorized as 'multisensory effects' unless they do so consistently.
         For example, while experiences with autonomous entities may sometimes have a tactile component to them, more often
         than not they are primarily a visual experience and are therefore classified as such.
       </p>
-        
-      <long-summary 
+
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'multisensory')"
         :key="effect._id"
         :index="i"
@@ -88,9 +88,9 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Physical Effects
-        <Icon 
+        <Icon
           filename="heart-rate.svg"
           class="actionIcon"
         />
@@ -102,8 +102,8 @@
         Although many uncomfortable physical effects also technically fit into this definition, they are excluded from this category of
         effects as they have their own defining qualities which standard physical effects do not.
       </p>
-        
-      <long-summary 
+
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'physical').filter((effect) => !effect.tags.includes('uncomfortable'))"
         :key="effect._id"
         :index="i"
@@ -112,23 +112,23 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Uncomfortable Effects
-        <Icon 
+        <Icon
           filename="frown.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription">
-        An <b> uncomfortable physical effect </b> is any 
+        An <b> uncomfortable physical effect </b> is any
         substance-induced alteration of a person's physical state which is unpleasant, undesirable,
-        painful, or otherwise a source of distress. In most cases they indicate a temporary part 
-        of a substance's interaction with the body. However, in certain contexts, they can also 
+        painful, or otherwise a source of distress. In most cases they indicate a temporary part
+        of a substance's interaction with the body. However, in certain contexts, they can also
         indicate the need for attention or even medical treatment if they become dangerously severe.
       </p>
-        
-      <long-summary 
+
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'miscellaneous', 'uncomfortable')"
         :key="effect._id"
         :index="i"
@@ -161,15 +161,15 @@ export default {
     LongSummary,
     Icon
   },
-  head() {
-    return {
-      title: "Miscellaneous Psychedelic Effects"
-    };
-  },
   scrollToTop: true,
   data () {
     return {
       linkedEffect: this.$route.query.e
+    };
+  },
+  head() {
+    return {
+      title: "Miscellaneous Psychedelic Effects"
     };
   },
   computed: {
@@ -177,12 +177,12 @@ export default {
       return this.$store.state.effects.list;
     }
   },
+  watchQuery: ['e'],
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);
     }
   },
-  watchQuery: ['e'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>

@@ -224,6 +224,7 @@ export default {
     EffectInput,
     PersonInput
   },
+  middleware: ["auth"],
   props: {
     report: {
       type: Object,
@@ -277,8 +278,7 @@ export default {
     toggleVisibility(section) {
       this.sectionVisibility[section] = !this.sectionVisibility[section];
     }
-  },
-  middleware: ["auth"]
+  }
 };
 </script>
 

@@ -172,11 +172,6 @@
 import Example from '@/components/vcode/example';
 
 export default {
-  head() {
-    return {
-      title: "VCode Documentation"
-    };
-  },
   components: {
     Example
   },
@@ -586,6 +581,11 @@ export default {
         description: 'Superscript Text.',
         code: 'I\'m way down here. [sup] I\'m way up here! [/sup]',
       }
+    };
+  },
+  head() {
+    return {
+      title: "VCode Documentation"
     };
   }
 };

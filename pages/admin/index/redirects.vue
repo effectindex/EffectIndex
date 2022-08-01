@@ -23,16 +23,11 @@ import RedirectListItem from '@/components/redirects/RedirectListItem';
 import RedirectInput from '@/components/redirects/RedirectInput';
 
 export default {
-  head() {
-    return {
-      title: "Manage Redirects"
-    };
-  },
-  middleware: ['auth'],
   components: {
     RedirectListItem,
     RedirectInput
   },
+  middleware: ['auth'],
   data() {
     return {
       redirects: undefined
@@ -45,6 +40,11 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  head() {
+    return {
+      title: "Manage Redirects"
+    };
   },
   methods: {
     async submitRedirect(redirect) {

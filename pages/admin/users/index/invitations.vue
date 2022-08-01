@@ -7,7 +7,7 @@
       <thead>
         <td> Created </td> <td> Used </td> <td> Used By </td> <td> URL </td> <td />
       </thead>
-      <tr 
+      <tr
         v-for="invitation in invitations"
         :key="invitation._id"
       >
@@ -16,16 +16,16 @@
         <td> {{ Boolean(invitation.used) ? invitation.usedBy : '' }} </td>
         <td> {{ hostname + '/user/register/' + invitation._id }} </td>
         <td>
-          <a 
+          <a
             class="delete"
             style="color: red; cursor: pointer;"
             @click="deleteInvitation(invitation._id)"
-          >          
+          >
             <Icon
               filename="times.svg"
               color="red"
               style="cursor: pointer; height: 1em; width: 1em;"
-            /> 
+            />
           </a>
         </td>
       </tr>
@@ -41,6 +41,9 @@ export default {
   components: {
     Icon
   },
+  async fetch({ store }) {
+    await store.dispatch("admin/getInvitations");
+  },
   computed: {
     invitations() {
       return this.$store.state.admin.invitations;
@@ -48,9 +51,6 @@ export default {
     hostname() {
       return process.env.BASE_URL;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("admin/getInvitations");
   },
   methods: {
     async deleteInvitation(id) {

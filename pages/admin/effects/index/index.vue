@@ -2,9 +2,9 @@
   <div class="pageContent">
     <hr>
     <h4> Effects </h4>
-    <label for="effectFilter"> Filter by Tag: 
+    <label for="effectFilter"> Filter by Tag:
       <input
-        v-model="filter" 
+        v-model="filter"
         type="text"
         class="filterInput"
       > <a @click="clearFilter"> (clear) </a> </label>
@@ -15,7 +15,7 @@
           <td> Tags </td>
         </tr>
       </thead>
-      <effect-table-row 
+      <effect-table-row
         v-for="effect in filteredEffects"
         :key="effect._id"
         :effect="effect"
@@ -33,6 +33,8 @@ export default {
   components: {
     EffectTableRow
   },
+  middleware: ["auth"],
+  scrollToTop: true,
   data() {
     return {
       filter: ""
@@ -53,14 +55,12 @@ export default {
   mounted() {
     this.$store.dispatch("effects/get");
   },
-  middleware: ["auth"],
-  scrollToTop: true,
   methods: {
     deleteEffect(id) {
-      
+
 
  try {
-        
+
         this.$toasted.show('Really delete?', {
           action: [{
               text: 'Yes, delete!',
@@ -78,7 +78,7 @@ export default {
                   this.$store.dispatch("effects/get");
                 } catch (error) {
                   if (error.response) {
-                    this.$toasted.show(error.response.data.message, 
+                    this.$toasted.show(error.response.data.message,
                     {
                       duration: 2000,
                       type: 'error'
@@ -93,14 +93,14 @@ export default {
               text: 'No, keep!',
               onClick: (e, toastObject) => toastObject.goAway()
             }]
-        });        
+        });
       } catch (error) {
         console.log(error);
       }
 
 
 //  try {
-        
+
 //         this.$toasted.show('Really delete?', {
 //           action: [{
 //               text: 'Yes, delete!',
@@ -118,7 +118,7 @@ export default {
 //                   this.$fetch();
 //                 } catch (error) {
 //                   if (error.response) {
-//                     this.$toasted.show(error.response.data.message, 
+//                     this.$toasted.show(error.response.data.message,
 //                     {
 //                       duration: 2000,
 //                       type: 'error'
@@ -133,7 +133,7 @@ export default {
 //               text: 'No, keep!',
 //               onClick: (e, toastObject) => toastObject.goAway()
 //             }]
-//         });        
+//         });
 //       } catch (error) {
 //         console.log(error);
 //       }

@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="people__personDetails"
   >
     <div class="people__inputField">
@@ -20,7 +20,7 @@
 
     <div class="people__inputField">
       <h3> Bio </h3>
-      <vcode-input 
+      <vcode-input
         v-model="bio_raw"
       />
     </div>
@@ -42,9 +42,9 @@
 
     <div class="people__inputField">
       <h3> Tags </h3>
-      <tag-input 
+      <tag-input
         v-model="person.tags"
-        :disabled="!this.$auth.hasScope('admin')"
+        :disabled="/* eslint-disable vue/this-in-template */!this.$auth.hasScope('admin')"
       />
     </div>
 
@@ -58,7 +58,7 @@
     <div class="people__inputField">
       <h3> Profile Url </h3>
       <h4 style="text-transform: none; letter-spacing: unset;">
-        (/people/<b>?</b> e.g.: mark-gillis)
+        (/people/<strong>?</strong> e.g.: mark-gillis)
         <input
           v-model="person.profile_url"
           type="text"
@@ -67,7 +67,7 @@
     </div>
 
     <div class="people__inputField">
-      Private? 
+      Private?
       <input
         v-model="person.isPrivate"
         class="people__inputPrivateCheckbox"
@@ -136,13 +136,16 @@ export default {
   },
   methods: {
     handleSubmit() {
-        const person = {
-          ...this.person,
-          bio: this.bio_raw
-        };
+      const person = {
+        ...this.person,
+        bio: this.bio_raw
+      };
 
-        if (this.person._id) this.$emit('update', person);
-        else this.$emit('submit', person);
+      if (this.person._id) {
+        this.$emit('update', person);
+      } else {
+        this.$emit('submit', person);
+      }
     }
   }
 };

@@ -90,6 +90,17 @@ export default {
     Icon
   },
   scrollToTop: true,
+  async fetch({ store, route }) {
+    if (route.query.q) {
+      await store.dispatch('search/search', route.query.q);
+      store.commit('search/change_input', route.query.q);
+    }
+  },
+  head() {
+    return {
+      title: "Search"
+    };
+  },
   computed: {
     results() {
       return this.effectResults || this.reportResults || this.articleResults;
@@ -109,17 +120,6 @@ export default {
 
     searchInput() {
       return this.$store.state.search.input;
-    }
-  },
-  head() {
-    return {
-      title: "Search"
-    };
-  },
-  async fetch({ store, route }) {
-    if (route.query.q) {
-      await store.dispatch('search/search', route.query.q);
-      store.commit('search/change_input', route.query.q);
     }
   },
   watchQuery: ['q'],

@@ -1,7 +1,7 @@
 <template>
   <div class="postEditor">
     <div>
-      <label> Title 
+      <label> Title
         <input
           v-model="title"
           class="postEditor__inputTitle"
@@ -10,7 +10,7 @@
     </div>
     <div>
       <textarea
-        v-model="body" 
+        v-model="body"
         class="postEditor__inputBody"
       />
     </div>
@@ -21,7 +21,7 @@
       >
         Cancel
       </nuxt-link>
-      <button 
+      <button
         class="postEditor__inputPostButton"
         @click="submitPost()"
       >
@@ -33,6 +33,7 @@
 
 <script>
 export default {
+  middleware: ["auth"],
   props: {
     post: {
       type: Object,
@@ -54,8 +55,7 @@ export default {
         slug: this.post ? this.post.slug : null
       });
     }
-  },
-  middleware: ["auth"]
+  }
 };
 </script>
 

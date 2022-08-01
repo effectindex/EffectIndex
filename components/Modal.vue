@@ -2,28 +2,28 @@
   <transition
     name="fade"
   >
-    <div 
+    <div
       v-show="active"
       class="modal"
       @click="toggleModal"
     >
-      <div 
+      <div
         v-if="type === 'image'"
         :style="{ backgroundImage: url }"
         class="modalImageContainer"
         @click.stop="toggleModal"
       >
-        <a 
+        <a
           class="fileButton"
           @click.stop="popout"
-        > 
+        >
           <Icon
             filename="external-link.svg"
             color="white"
           />
         </a>
       </div>
-      <div 
+      <div
         v-else-if="(type === 'gfycat') && active"
         style="position:relative;height: 100%;"
         class="modalImageContainer"
@@ -38,7 +38,7 @@
           allow="autoplay"
           allowfullscreen
         />
-        <div 
+        <div
           class="cover"
           @click.stop="toggleModal"
         />
@@ -68,17 +68,17 @@ export default {
       default: false
     }
   },
-  computed: {
-    url() {
-      return `url("${this.src}")`;
-    }
-  },
   head() {
     return {
       htmlAttrs: {
         class: this.active ? "modal-active" : ""
       }
     };
+  },
+  computed: {
+    url() {
+      return `url("${this.src}")`;
+    }
   },
   methods: {
     toggleModal() {

@@ -5,8 +5,8 @@
         :filename="icon"
         class="categoryIcon"
       />
-      <h1> 
-        {{ effect.name }}       
+      <h1>
+        {{ effect.name }}
         <client-only>
           <nuxt-link
             v-if="$auth.hasScope('edit-effects') || $auth.hasScope('admin-effects')"
@@ -73,7 +73,7 @@
         />
       </div>
 
-      <div 
+      <div
         v-if="hasSection('style_variations')"
       >
         <hr>
@@ -100,8 +100,8 @@
         <h3 id="related-reports">
           Related Reports
         </h3>
-        <related-reports 
-          :reports="effect.related_reports" 
+        <related-reports
+          :reports="effect.related_reports"
         />
       </div>
 
@@ -199,6 +199,34 @@ export default {
     Icon,
     RelatedReports
   },
+  scrollToTop: true,
+  async asyncData({ params, $axios, error }) {
+    try {
+      const { name } = params;
+      const { effect } = await $axios.$get(`/api/effects/${name}`);
+      if (effect) {
+        return { effect };
+      } else {
+        error({ statusCode: 404, message: 'Effect not found' });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  head() {
+    return {
+      title: this.effect.name,
+      meta: [
+        { name: 'description', hid: 'description', content: this.effect.summary_raw },
+        { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.effect.name}` },
+        { name: 'og:description', hid: 'og:description', content: this.effect.summary_raw },
+        { name: 'og:image', hid: 'og:image', content: this.effect.social_media_image },
+        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.effect.name}` },
+        { name: 'twitter:description', hid: 'twitter:description', content: this.effect.summary_raw },
+        { name: 'twitter:image', hid: 'twitter:image', content: this.effect.social_media_image },
+      ]
+    };
+  },
   computed: {
     icon() {
       let tags = this.effect["tags"];
@@ -225,20 +253,6 @@ export default {
       return "user.svg";
     },
   },
-  scrollToTop: true,
-  async asyncData({ params, $axios, error }) {
-    try {
-      const { name } = params;
-      const { effect } = await $axios.$get(`/api/effects/${name}`);
-      if (effect) {
-        return { effect };
-      } else {
-        error({ statusCode: 404, message: 'Effect not found' });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  },
   mounted() {
     let s = this.$route.query.s;
     if (s) {
@@ -258,20 +272,6 @@ export default {
       }
       return false;
     }
-  },
-  head() {
-    return {
-      title: this.effect.name,
-      meta: [
-        { name: 'description', hid: 'description', content: this.effect.summary_raw },
-        { name: 'og:title', hid: 'og:title', content: `Effect Index - ${this.effect.name}` },
-        { name: 'og:description', hid: 'og:description', content: this.effect.summary_raw },
-        { name: 'og:image', hid: 'og:image', content: this.effect.social_media_image },
-        { name: 'twitter:title', hid: 'twitter:title', content: `Effect Index - ${this.effect.name}` },
-        { name: 'twitter:description', hid: 'twitter:description', content: this.effect.summary_raw },
-        { name: 'twitter:image', hid: 'twitter:image', content: this.effect.social_media_image },
-      ]
-    };
   }
 };
 </script>

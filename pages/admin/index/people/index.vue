@@ -20,11 +20,6 @@ import AddPerson from '@/components/people/AddPerson';
 import Person from '@/components/people/Person';
 
 export default {
-  head() {
-    return {
-      title: "Modify People"
-    };
-  },
   components: {
     AddPerson,
     Person
@@ -41,6 +36,11 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  head() {
+    return {
+      title: "Modify People"
+    };
   },
   methods: {
     async newPerson(person) {

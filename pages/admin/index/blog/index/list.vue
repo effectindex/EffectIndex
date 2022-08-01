@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr 
+        <tr
           v-for="post in blogPosts"
           :key="post._id"
         >
@@ -22,16 +22,16 @@
             </nuxt-link>
           </td>
           <td> {{ formatDate(post.datetime) }} </td>
-          <td style="width: 30px;"> 
+          <td style="width: 30px;">
             <nuxt-link :to="'/admin/blog/' + post.slug">
               <Icon
                 filename="edit.svg"
                 style="height: 1em; width: 1em;"
               />
-            </nuxt-link> 
+            </nuxt-link>
           </td>
-          <td style="width: 30px;"> 
-            <a 
+          <td style="width: 30px;">
+            <a
               style="cursor: pointer;"
               @click="deletePost(post._id)"
             >
@@ -56,13 +56,13 @@ export default {
       Icon
     },
     scrollToTop: true,
+    async fetch ( { store } ) { await store.dispatch('blog/getPosts'); },
     computed: {
       blogPosts() {
         return this.$store.state.blog.posts;
       }
     },
-    async fetch ( { store } ) { await store.dispatch('blog/getPosts'); },
-    methods: { 
+    methods: {
       async deletePost( id ) { this.$store.dispatch('blog/deletePost', id); },
       formatDate: (date) => fecha.format(new Date(date), 'MMMM D, YYYY hh:mm:ss')
     },

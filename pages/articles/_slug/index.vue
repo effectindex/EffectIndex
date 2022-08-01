@@ -4,7 +4,7 @@
       class="article"
     >
       <client-only>
-        <admin-toolbar 
+        <admin-toolbar
           v-if="$auth.hasScope('editor')"
           :item-id="article._id"
           item-url="/admin/articles"
@@ -27,7 +27,7 @@
           :body="article.body"
         />
       </div>
-      
+
       <div
         v-if="hasSection('citations')"
         class="citations"
@@ -48,7 +48,7 @@
           :key="tag"
           :value="tag"
         />
-      </div> 
+      </div>
     </article>
   </div>
 </template>
@@ -66,6 +66,15 @@ export default {
     CitationList,
     Tag
   },
+  async asyncData({ params, $axios, error }) {
+    try {
+      const { slug } = params;
+      const { article } = await $axios.$get(`/api/articles/${ slug }`);
+      return { article };
+    } catch (e) {
+      error({ statusCode: 404, message: 'That article could not be found.' });
+    }
+  },
   data() {
     return {
       article: {
@@ -79,26 +88,6 @@ export default {
         }
       }
     };
-  },
-  async asyncData({ params, $axios, error }) {
-    try {
-      const { slug } = params;
-      const { article } = await $axios.$get(`/api/articles/${ slug }`);
-      return { article };
-    } catch (e) {
-      error({ statusCode: 404, message: 'That article could not be found.' });
-    }
-  },
-  methods: {
-    hasSection(name) {
-      const { article } = this;
-      if (name in article) {
-        const section = article[name];
-        if (Array.isArray(section) && (section.length > 0)) return true;
-        if ((typeof section === "string") && (section.length > 0)) return true;
-      }
-      return false;
-    }
   },
   head() {
     function names(authors) {
@@ -126,6 +115,17 @@ export default {
           { name: 'twitter:image', hid: 'twitter:image', content: article.social_media_image },
         ]
       };
+    }
+  },
+  methods: {
+    hasSection(name) {
+      const { article } = this;
+      if (name in article) {
+        const section = article[name];
+        if (Array.isArray(section) && (section.length > 0)) return true;
+        if ((typeof section === "string") && (section.length > 0)) return true;
+      }
+      return false;
     }
   }
 };

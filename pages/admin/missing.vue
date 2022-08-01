@@ -32,13 +32,13 @@
 
 <script>
 export default {
+  async fetch({ store }) {
+    await store.dispatch("effects/get");
+  },
   computed: {
     effects() {
       return this.$store.state.effects.list;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("effects/get");
   },
   methods: {
     hasField(entity, name) {
@@ -46,8 +46,8 @@ export default {
       if (name in entity) {
         if ((typeof entity[name]) === 'string') {
           if (entity[name].length > 0) return true;
-        } 
-      } 
+        }
+      }
       return false;
     }
   }

@@ -18,9 +18,9 @@
     <hr>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Cognitive Amplifications
-        <Icon 
+        <Icon
           filename="arrow-up.svg"
           class="actionIcon"
         />
@@ -30,7 +30,7 @@
         <b> Cognitive amplifications </b> are defined as any subjective effect that increases, enhances, or intensifies a facet of a person's sense of cognition.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'enhancement')"
         :key="effect._id"
         :index="i"
@@ -39,9 +39,9 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Cognitive Suppressions
-        <Icon 
+        <Icon
           filename="arrow-down.svg"
           class="actionIcon"
         />
@@ -51,7 +51,7 @@
         <b> Cognitive suppressions </b> are any subjective effect which decreases or lowers the intensity of an aspect of a person's cognition.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'suppression')"
         :key="effect._id"
         :index="i"
@@ -60,25 +60,25 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Novel States
-        <Icon 
+        <Icon
           filename="lightbulb.svg"
           class="actionIcon"
         />
       </h3>
 
-      <p class="actionDescription"> 
+      <p class="actionDescription">
         A <b> novel cognitive state </b> is any cognitive effect which does not
         merely amplify or suppress familiar states of mind, but rather induces an experience that is qualitatively
         different from that of ordinary consciousness. <br> <br>
         Although many transpersonal and psychological effects also technically fit into this definition, they are
-        excluded from this category of effects as they have their own defining qualities which standard novel states do not. 
+        excluded from this category of effects as they have their own defining qualities which standard novel states do not.
       </p>
-        
-        
-      
-      <long-summary 
+
+
+
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'novel')"
         :key="effect._id"
         :index="i"
@@ -87,21 +87,21 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Psychological States
-        <Icon 
+        <Icon
           filename="psychological.svg"
           class="actionIcon"
         />
       </h3>
 
       <p class="actionDescription">
-        <b> Psychological effects </b> are any cognitive effect that is either 
-        established within the psychological literature or arises as a result of the complex interplay between other 
+        <b> Psychological effects </b> are any cognitive effect that is either
+        established within the psychological literature or arises as a result of the complex interplay between other
         more simplistic components such as cognitive enhancements and suppressions.
       </p>
 
-      <long-summary 
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'psychological state')"
         :key="effect._id"
         :index="i"
@@ -110,9 +110,9 @@
     </div>
 
     <div class="effectsContainer">
-      <h3 class="titleContainer"> 
+      <h3 class="titleContainer">
         Transpersonal States
-        <Icon 
+        <Icon
           filename="infinity.svg"
           class="actionIcon"
         />
@@ -121,11 +121,11 @@
       <p class="actionDescription">
         <b> Transpersonal states </b> are any subjective effect which feels as if it alters
         a person's cognition in a manner which relates to or contains information regarding their place in the universe,
-        the inner workings of reality or consciousness, and the context of their existence. The fullest manifestation of 
+        the inner workings of reality or consciousness, and the context of their existence. The fullest manifestation of
         these effects fall under what are sometimes called "peak", "transcendent" or "transformative" experiences.
       </p>
-        
-      <long-summary 
+
+      <long-summary
         v-for="(effect, i) in filterEffectsByTag('psychedelic', 'cognitive', 'transpersonal state')"
         :key="effect._id"
         :index="i"
@@ -158,15 +158,15 @@ export default {
     LongSummary,
     Icon
   },
-  head() {
-    return {
-      title: "Cognitive Psychedelic Effects"
-    };
-  },
   scrollToTop: true,
   data () {
     return {
       linkedEffect: this.$route.query.e
+    };
+  },
+  head() {
+    return {
+      title: "Cognitive Psychedelic Effects"
     };
   },
   computed: {
@@ -174,12 +174,12 @@ export default {
       return this.$store.state.effects.list;
     }
   },
+  watchQuery: ['e'],
   mounted() {
     if (this.linkedEffect) {
       this.$scrollTo(`#${this.linkedEffect}`);
     }
   },
-  watchQuery: ['e'],
   methods: {
     filterEffectsByTag(...tags) {
       return this.effects.filter(effect =>

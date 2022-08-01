@@ -36,19 +36,19 @@ export default {
   components: {
     Icon
   },
-  computed: {
-    profiles() {
-      return this.$store.state.profiles.list;
-    }
-  },
+  scrollToTop: true,
   async asyncData({ store }) {
     await store.dispatch("profiles/get");
   },
-  scrollToTop: true,
   head() {
     return {
       title: "Contributors"
     };
+  },
+  computed: {
+    profiles() {
+      return this.$store.state.profiles.list;
+    }
   }
 };
 </script>

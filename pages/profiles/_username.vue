@@ -37,17 +37,11 @@ export default {
     LightBox
   },
   scrollToTop: true,
-  data() {
-    return {
-      profile: {},
-      replications: []
-    };
-  },
   async asyncData({ store, params, error }) {
     let username = params.username;
 
     let { profile } = await store.dispatch("profiles/getProfileByName", username);
-    
+
     if (!profile) return;
 
     let { replications } = await store.dispatch(
@@ -56,6 +50,12 @@ export default {
     );
 
     return { profile, replications };
+  },
+  data() {
+    return {
+      profile: {},
+      replications: []
+    };
   },
   head() {
     return {

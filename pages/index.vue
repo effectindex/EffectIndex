@@ -33,7 +33,6 @@ import Columns from '@/components/home/Columns';
 
 export default {
   name: 'Home',
-  scrollToTop: true,
   components: {
     FrontpageArticle,
     Description,
@@ -45,12 +44,7 @@ export default {
     FeaturedReplications,
     FeaturedArticles
   },
-
-  computed: {
-    imageReplications() {
-      return this.$store.state.replications.list.filter((replication) => replication.type === 'image');
-    }
-  },
+  scrollToTop: true,
 
   async fetch({ store }) {
     await Promise.all([
@@ -59,6 +53,12 @@ export default {
       store.dispatch("reports/get"),
       store.dispatch("articles/get")
     ]);
+  },
+
+  computed: {
+    imageReplications() {
+      return this.$store.state.replications.list.filter((replication) => replication.type === 'image');
+    }
   }
 };
 </script>

@@ -17,11 +17,6 @@ export default {
       people: []
     };
   },
-  head() {
-    return {
-      title: "People"
-    };
-  },
   async fetch() {
     try {
       const {people} = await this.$axios.$get('/api/persons/featured');
@@ -29,6 +24,11 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  head() {
+    return {
+      title: "People"
+    };
   },
 };
 </script>

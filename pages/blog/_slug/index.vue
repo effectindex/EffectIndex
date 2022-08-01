@@ -1,10 +1,10 @@
 <template>
   <div class="pageContent blog">
-    <blog-post 
+    <blog-post
       v-if="post"
       :post="post"
       @delete-post="deletePost"
-    /> 
+    />
 
     <nuxt-link to="/blog">
       ... back
@@ -27,17 +27,17 @@ export default {
       error({ statusCode: 404, message: err.message });
     }
   },
+  head() {
+    return {
+      title: this.post.title
+    };
+  },
   methods: {
     async deletePost(id) {
       this.$store
         .dispatch("blog/deletePost", id)
         .then(this.$router.push("/blog/"));
     }
-  },
-  head() {
-    return {
-      title: this.post.title
-    };
   }
 };
 </script>

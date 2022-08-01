@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr 
+        <tr
           v-for="user in users"
           :key="user._id"
         >
@@ -21,16 +21,16 @@
             </nuxt-link>
           </td>
           <td> {{ listRoles(user) }} </td>
-          <td style="display: flex; justify-content: space-evenly;"> 
+          <td style="display: flex; justify-content: space-evenly;">
             <nuxt-link :to="'/admin/users/' + user._id">
               <Icon
                 filename="edit.svg"
                 style="cursor: pointer; height: 1em; width: 1em;"
               />
             </nuxt-link>
-            <a 
+            <a
               @click="deleteUser(user._id)"
-            > 
+            >
               <Icon
                 filename="times.svg"
                 style="cursor: pointer; height: 1em; width: 1em;"
@@ -51,13 +51,13 @@ export default {
   components: {
     Icon
   },
+  async fetch({ store }) {
+    await store.dispatch("admin/getAllUsers");
+  },
   computed: {
     users() {
       return this.$store.state.admin.users;
     }
-  },
-  async fetch({ store }) {
-    await store.dispatch("admin/getAllUsers");
   },
   methods: {
     listRoles(user) {

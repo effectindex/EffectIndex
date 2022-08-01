@@ -1,11 +1,11 @@
 <template>
   <div class="pageContent blog">
-    <blog-post 
+    <blog-post
       v-for="post in blogPosts"
       :key="post._id"
       :post="post"
       @delete-post="deletePost"
-    /> 
+    />
   </div>
 </template>
 
@@ -17,21 +17,21 @@ export default {
     BlogPost
   },
   scrollToTop: true,
+  async fetch({ store }) {
+    await store.dispatch("blog/getPosts");
+  },
+  head () {
+    return { title: "Blog" };
+  },
   computed: {
     blogPosts() {
       return this.$store.state.blog.posts;
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("blog/getPosts");
-  },
   methods: {
     async deletePost(id) {
       this.$store.dispatch("blog/deletePost", id);
     }
-  },
-  head () {
-    return { title: "Blog" };
   }
 };
 </script>
