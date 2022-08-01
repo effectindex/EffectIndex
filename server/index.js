@@ -22,7 +22,7 @@ app.use(api);
 
 // Import and Set Nuxt.js options
 let config = require("../nuxt.config.js");
-config.dev = !(process.env.NODE_ENV === "production");
+config.dev = (process.env.NODE_ENV !== "production");
 
 const message = new Messages();
 
