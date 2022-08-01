@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', secured({ secret: config.server.jwtSecret }), hasPerms('admin'), async (req, res, next) => {
+router.post('/', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('admin'), async (req, res, next) => {
   const { redirect } = req.body;
 
   try {
@@ -33,7 +33,7 @@ router.post('/', secured({ secret: config.server.jwtSecret }), hasPerms('admin')
   }
 });
 
-router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.put('/:_id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
   const { redirect } = req.body;
 
@@ -47,7 +47,7 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'
   }
 });
 
-router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('admin'), async (req, res, next) => {
+router.delete('/:_id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
   try {
     if (!ObjectId.isValid(_id)) throw API_Error('UPDATE_REDIRECT_ERROR', 'Invalid redirect ID.');

@@ -8,7 +8,7 @@ const hasPerms = require('../HasPerms');
 const mongoose = require('mongoose');
 const Report = require('./Report');
 
-router.post('/', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+router.post('/', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
   if (!'report' in req.body) throw API_Error('SUBMIT_REPORT_ERROR', 'The request was invalid.');
   const { user } = req;
   try {
@@ -29,7 +29,7 @@ router.post('/', secured({ secret: config.server.jwtSecret }), hasPerms('own-rep
   }
 });
 
-router.put('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+router.put('/:id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
   if (!'report' in req.body) throw API_Error('UPDATE_REPORT_ERROR', 'The request was invalid.');
   const { user } = req;
   try {
@@ -57,7 +57,7 @@ router.put('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-r
   }
 });
 
-router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+router.delete('/:id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
   const { user } = req;
 
   try {
@@ -80,7 +80,7 @@ router.delete('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('ow
   }
 });
 
-router.get('/admin', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
+router.get('/admin', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-reports', 'all-reports'), async (req, res, next) => {
   const { user } = req;
   try {
 
@@ -100,7 +100,7 @@ router.get('/admin', secured({ secret: config.server.jwtSecret }), hasPerms('own
 
 });
 
-router.get('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('own-reports', 'all-reports'), async(req, res, next) => {
+router.get('/:id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-reports', 'all-reports'), async(req, res, next) => {
   try {
     const { user } = req;
     const id = mongoose.Types.ObjectId(req.params.id);
@@ -164,7 +164,7 @@ router.post('/search', async (req, res, next) => {
     if (!term) res.sendStatus(200);
     else {
       const results = await Report
-      .find({ 
+      .find({
         $or: [
           { title: { $regex: term } },
           { 'subject.name': { $regex: term } }

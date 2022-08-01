@@ -9,7 +9,7 @@ const hasPerms = require('../HasPerms');
 const Invitation = require('./Invitation');
 const User = require('../users/User.js');
 
-router.post('/generate', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.post('/generate', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   const { user } = req;
   try {
     const { _id } = user;
@@ -30,7 +30,7 @@ router.post('/generate', secured({secret: config.server.jwtSecret}), hasPerms('a
   }
 });
 
-router.delete('/:id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.delete('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   try {
     if ('id' in req.params) {
       const { id } = req.params;
@@ -43,7 +43,7 @@ router.delete('/:id', secured({secret: config.server.jwtSecret}), hasPerms('admi
   }
 });
 
-router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.get('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   try {
     const invitations = await Invitation
       .find()

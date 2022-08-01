@@ -58,7 +58,7 @@ async function clearDirectory(directory) {
   }
 }
 
-router.post('/imageUpload', secured({ secret: config.server.jwtSecret }), hasPerms('own-person', 'all-people'), uploadAny, async(req, res, next) => {
+router.post('/imageUpload', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-person', 'all-people'), uploadAny, async(req, res, next) => {
   try {
     const { file } = req;
     if (file) {
@@ -76,7 +76,7 @@ router.post('/imageUpload', secured({ secret: config.server.jwtSecret }), hasPer
   }
 });
 
-router.post('/imageCrop', secured({ secret: config.server.jwtSecret }), hasPerms('own-person', 'all-people'), async(req, res, next) => {
+router.post('/imageCrop', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-person', 'all-people'), async(req, res, next) => {
   try {
     const { filename, coordinates } = req.body;
     if (filename && coordinates) {
@@ -111,7 +111,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/all', secured({ secret: config.server.jwtSecret }), async (req, res, next) => {
+router.get('/all', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     const people = await Person.find();
     res.json({ people });
@@ -129,7 +129,7 @@ router.get('/featured', async (req, res, next) => {
   }
 });
 
-router.get('/me', secured({ secret: config.server.jwtSecret }), async(req, res, next) => {
+router.get('/me', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), async(req, res, next) => {
   try {
     const { user } = req;
 
@@ -166,14 +166,14 @@ router.get('/:profile_url', async (req, res, next) => {
 });
 
 
-router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-person'), async (req, res, next) => {
+router.post('/me', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('own-person'), async (req, res, next) => {
   try {
     const { user } = req;
 
     if (!user) throw API_Error('SAVE_SELF_PROFILE_ERROR', 'User is not logged in.');
 
     const { _id } = req.user;
-    
+
     if (!req.body || !req.body.person) throw API_Error('UPDATE_SELF_PROFILE-ERROR', 'Invalid update data');
 
     const { isPrivate, full_name, alias, email, social_media, bio, tags, image, profile_image, profile_url } = req.body.person;
@@ -205,7 +205,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
       await User.findOneAndUpdate({ _id }, { identity: saved._id });
 
       res.json({ person: saved });
-    
+
     } else {
 
         found.isPrivate = isPrivate;
@@ -220,7 +220,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
         found.image = image;
 
         if (user.can('all-people')) found.tags = tags;
-    
+
         const saved = await found.save();
 
         res.json({ person: saved });
@@ -233,7 +233,7 @@ router.post('/me', secured({ secret: config.server.jwtSecret }), hasPerms('own-p
 });
 
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-people'), async (req, res, next) => {
+router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('all-people'), async (req, res, next) => {
   try {
     const { person } = req.body;
 
@@ -258,13 +258,13 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-peopl
     const savedPerson = await newPerson.save();
 
     res.json({ person: savedPerson });
-    
+
   } catch (err) {
     next(err);
   }
 });
 
-router.put('/meta/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('all-people'), async (req, res, next) => {
+router.put('/meta/:_id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('all-people'), async (req, res, next) => {
   const { _id } = req.params;
   const { person } = req.body;
 
@@ -287,7 +287,7 @@ router.put('/meta/:_id', secured({ secret: config.server.jwtSecret }), hasPerms(
 
 });
 
-router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-people'), async (req, res, next) => {
+router.put('/:_id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('all-people'), async (req, res, next) => {
   const { user } = req;
 
   try {
@@ -313,7 +313,7 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-pe
       found.image = image;
 
       if (user.can('all-people')) found.tags = tags;
-  
+
       const saved = await found.save();
 
       res.json({ person: saved });
@@ -325,7 +325,7 @@ router.put('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('all-pe
   }
 });
 
-router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('all-people'), async (req, res, next) => {
+router.delete('/:_id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('all-people'), async (req, res, next) => {
   const { _id } = req.params;
   try {
     const result = await Person.deleteOne({ _id });

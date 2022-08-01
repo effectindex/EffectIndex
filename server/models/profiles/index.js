@@ -51,7 +51,7 @@ const storage = multer.diskStorage({
 
 const uploadAny = multer({ storage, limits: { fileSize: MAX_FILE_SIZE } }).any();
 
-router.post('/imageUpload', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
+router.post('/imageUpload', secured({ secret, algorithms: ['HS256'] }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   try {
     const { files } = req;
     const { personId } = req.body;
@@ -72,7 +72,7 @@ router.post('/imageUpload', secured({ secret }), hasPerms('admin'), uploadAny, a
   }
 });
 
-router.post('/', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
+router.post('/', secured({ secret, algorithms: ['HS256'] }), hasPerms('admin'), async(req, res, next) => {
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_ADD_ERROR', 'The submitted request is invalid.');
     if (typeof (req.body.profile) === 'string') req.body.profile = JSON.parse(req.body.profile);
@@ -87,7 +87,7 @@ router.post('/', secured({ secret }), hasPerms('admin'), async(req, res, next) =
   }
 });
 
-router.put('/:id', secured({ secret }), hasPerms('admin'), uploadAny, async(req, res, next) => {
+router.put('/:id', secured({ secret, algorithms: ['HS256'] }), hasPerms('admin'), uploadAny, async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!('profile' in req.body)) throw API_Error('PROFILE_UPDATE_ERROR', 'The submitted request is invalid.');
@@ -102,7 +102,7 @@ router.put('/:id', secured({ secret }), hasPerms('admin'), uploadAny, async(req,
   }
 });
 
-router.delete('/:id', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
+router.delete('/:id', secured({ secret, algorithms: ['HS256'] }), hasPerms('admin'), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('DELETE_PROFILE_ERROR', 'An ID must be supplied.');
@@ -113,7 +113,7 @@ router.delete('/:id', secured({ secret }), hasPerms('admin'), async(req, res, ne
   }
 });
 
-router.get('/:id', secured({ secret }), hasPerms('admin'), async(req, res, next) => {
+router.get('/:id', secured({ secret, algorithms: ['HS256'] }), hasPerms('admin'), async(req, res, next) => {
   let id = req.params.id;
   try {
     if (!id) throw API_Error('GET_PROFILE_ERROR', 'An ID is required.');

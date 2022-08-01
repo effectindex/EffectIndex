@@ -25,7 +25,7 @@ function getBodyLength(parsed) {
   return length;
 }
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-articles', 'own-articles'), async (req, res, next) => {
+router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('all-articles', 'own-articles'), async (req, res, next) => {
   try {
     const {article} = req.body;
     article.authors = article.authors.map(author => author._id);
@@ -51,7 +51,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-artic
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
+router.post('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
   try {
     const {id} = req.params;
 
@@ -99,7 +99,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('own-ar
   }
 });
 
-router.delete('/:id', secured({secret: config.server.jwtSecret}), hasPerms('all-articles', 'own-articles'), async (req, res, next) => {
+router.delete('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('all-articles', 'own-articles'), async (req, res, next) => {
   try {
     const {id} = req.params;
     const {user} = req;
@@ -130,7 +130,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/admin', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
+router.get('/admin', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
   try {
     const {user} = req;
     let articles;
@@ -144,7 +144,7 @@ router.get('/admin', secured({secret: config.server.jwtSecret}), hasPerms('own-a
   }
 });
 
-router.get('/admin/:_id', secured({secret: config.server.jwtSecret}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
+router.get('/admin/:_id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('own-articles', 'all-articles'), async (req, res, next) => {
   try {
     const {_id} = req.params;
     const {user} = req;

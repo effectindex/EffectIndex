@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('admin-effects'), async (req, res) => {
+router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin-effects'), async (req, res) => {
   try {
 
     if (!('effect' in req.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
@@ -63,7 +63,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('admin-eff
 
 });
 
-router.get('/admin/:slug', secured({secret: config.server.jwtSecret}), hasPerms('admin-effects', 'edit-effects'), async (req, res) => {
+router.get('/admin/:slug', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin-effects', 'edit-effects'), async (req, res) => {
   try {
     const { slug } = req.params;
     const effect = await Effect.findOne({ url: slug });
@@ -79,7 +79,7 @@ router.get('/admin/:slug', secured({secret: config.server.jwtSecret}), hasPerms(
       type: { $in: ['audio'] },
       associated_effects: effect._id
     });
-    
+
     res.json({ effect });
 
   } catch (error) {
@@ -111,7 +111,7 @@ router.get('/:url', async (req, res) => {
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('edit-effects', 'admin-effects'), async (req, res) => {
+router.post('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('edit-effects', 'admin-effects'), async (req, res) => {
   const { name, description, summary, long_summary, analysis, style_variations, personal_commentary,
   contributors, external_links, see_also, tags, citations, gallery_order, social_media_image,
   featured, subarticles, toc } = req.body;
@@ -154,7 +154,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('edit-e
   }
 });
 
-router.delete('/:id', secured({secret: config.server.jwtSecret}), hasPerms('admin-effects'), async (req, res) => {
+router.delete('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin-effects'), async (req, res) => {
   try {
     const deleted = await Effect.findByIdAndRemove(req.params.id).exec();
     res.send({ effect: deleted });

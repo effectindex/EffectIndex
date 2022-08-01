@@ -8,7 +8,7 @@ const API_Error = require('../ApiError');
 
 const shell = require('shelljs');
 
-router.get("/restart", secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.get("/restart", secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   res.sendStatus(200);
   shell.exec('../restart');
 });

@@ -9,7 +9,7 @@ const hasPerms = require('../HasPerms');
 
 const Post = require('./Post');
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('manage-blog'), async (req, res, next) => {
+router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('manage-blog'), async (req, res, next) => {
   try {
 
     if (!req.body || (!req.body.title || !req.body.body)) throw API_Error('INVALID_REQUEST', 'The request was invalid.');
@@ -32,7 +32,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('manage-bl
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('manage-blog'), async(req, res, next) => {
+router.post('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('manage-blog'), async(req, res, next) => {
   try {
 
     const post = await Post.findById(req.params.id).exec();
@@ -50,7 +50,7 @@ router.post('/:id', secured({secret: config.server.jwtSecret}), hasPerms('manage
   }
 });
 
-router.get('/:id/delete', secured({secret: config.server.jwtSecret}), hasPerms('manage-blog'), async(req, res, next) => {
+router.get('/:id/delete', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('manage-blog'), async(req, res, next) => {
   try {
 
     const post = await Post.findById(req.params.id);

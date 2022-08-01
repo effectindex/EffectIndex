@@ -16,7 +16,7 @@ function kebab(text) {
   return text.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-z\-]/gi, '');
 }
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasRoles(['admin', 'editor']), async (req, res) => {
 
   try {
 
@@ -97,7 +97,7 @@ router.get('/:url', async (req, res) => {
   }
 });
 
-router.post('/:id', secured({secret: config.server.jwtSecret}), hasRoles(['admin', 'editor']), async (req, res) => {
+router.post('/:id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasRoles(['admin', 'editor']), async (req, res) => {
   try {
     let updatedSubstance = await Substance.findByIdAndUpdate(req.params.id, {
       name: req.body.name,

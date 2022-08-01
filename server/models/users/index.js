@@ -13,7 +13,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { isValidObjectId } = require('mongoose');
 
-router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.get('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   try {
     const users = await User.find()
       .select('username identity roles')
@@ -26,7 +26,7 @@ router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('admin'), a
 });
 
 
-router.post('/add', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.post('/add', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
 
   const user = req.body.user;
 
@@ -73,7 +73,7 @@ router.post('/register', async (req, res, next) => {
       invitation.used = true;
       invitation.usedBy = saved._id;
       invitation.save();
-    } 
+    }
 
     res.sendStatus(200);
 
@@ -83,10 +83,10 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-router.post('/changePassword', secured({secret: config.server.jwtSecret}), async (req, res, next) => {
+router.post('/changePassword', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), async (req, res, next) => {
   try {
     if (!req.user) throw API_Error('CHANGE_PASSWORD_ERROR', 'User must be logged in to change their password.');
-    
+
     const { oldPassword, newPassword, confirmation } = req.body;
 
     if (!oldPassword || !newPassword || !confirmation ) throw API_Error('CHANGE_PASSWORD_ERROR', 'Invalid password change request.');
@@ -100,7 +100,7 @@ router.post('/changePassword', secured({secret: config.server.jwtSecret}), async
     const oldPasswordMatches = await bcrypt.compare(oldPassword, user.hash);
 
     if (!oldPasswordMatches) throw API_Error('CHANGE_PASSWORD_ERROR', 'Old password is not correct.');
-    
+
     const hash = await bcrypt.hash(newPassword, 10);
 
     user.hash = hash;
@@ -108,14 +108,14 @@ router.post('/changePassword', secured({secret: config.server.jwtSecret}), async
     await user.save();
 
     res.sendStatus(200);
-    
-    
+
+
   } catch (error) {
     next(error);
   }
 });
 
-router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res, next) => {
+router.get('/user', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), async (req, res, next) => {
   try {
     const { user } = req;
     if (user && '_id' in user) {
@@ -131,7 +131,7 @@ router.get('/user', secured({secret: config.server.jwtSecret}), async (req, res,
       }
     } else {
       throw API_Error('AUTHENTICATION_ERROR', 'User ID not provided.');
-    } 
+    }
   } catch (error) {
     next(error);
   }
@@ -159,9 +159,9 @@ router.post('/logout', async (req, res, next) => {
 });
 
 
-router.get('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.get('/:_id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
-  
+
   try {
     if (!isValidObjectId(_id)) throw API_Error('UserID Invalid.');
     const user = await User.findById(_id)
@@ -174,7 +174,7 @@ router.get('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'
   }
 });
 
-router.post('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async(req, res, next) => {
+router.post('/:_id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async(req, res, next) => {
 
   const { _id } = req.params;
   const { user } = req.body;
@@ -195,7 +195,7 @@ router.post('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin
   }
 });
 
-router.delete('/:_id', secured({secret: config.server.jwtSecret}), hasPerms('admin'), async (req, res, next) => {
+router.delete('/:_id', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('admin'), async (req, res, next) => {
   const { _id } = req.params;
 
   try {

@@ -10,7 +10,7 @@ const Replication = require('./Replication');
 const Effect = require('../effects/Effect');
 const mongoose = require('mongoose');
 
-router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
+router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
   try {
 
     const { user } = req;
@@ -37,7 +37,7 @@ router.post('/', secured({secret: config.server.jwtSecret}), hasPerms('all-repli
       associated_effects,
       featured,
     }).save();
-    
+
     res.json({ replication: saved });
 
   } catch (error) {
@@ -63,7 +63,7 @@ router.get('/gallery', async (req, res, next) => {
 router.get('/featured', async (req, res, next) => {
 
   try {
-    
+
     const replications = await Replication
       .find({ featured: true })
       .select('-user')
@@ -85,9 +85,9 @@ router.get('/featured', async (req, res, next) => {
 
 
 
-router.get('/', secured({secret: config.server.jwtSecret}), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
+router.get('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
   try {
-    
+
     const { user } = req;
 
     let replications;
@@ -147,7 +147,7 @@ router.get('/:url', async (req, res, next) => {
   }
 });
 
-router.post('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
+router.post('/:id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
   try {
     const { user } = req;
 
@@ -192,7 +192,7 @@ router.post('/:id', secured({ secret: config.server.jwtSecret }), hasPerms('all-
   }
 });
 
-router.delete('/:_id', secured({ secret: config.server.jwtSecret }), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
+router.delete('/:_id', secured({ secret: config.server.jwtSecret, algorithms: ['HS256'] }), hasPerms('all-replications', 'own-replications'), async (req, res, next) => {
   try {
     const { user } = req;
     const { _id } = req.params;
