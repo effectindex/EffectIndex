@@ -8,7 +8,6 @@ const API_Error = require('../ApiError');
 const hasPerms = require('../HasPerms');
 
 const Post = require('./Post');
-
 router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']}), hasPerms('manage-blog'), async (req, res, next) => {
   try {
 

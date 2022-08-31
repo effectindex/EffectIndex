@@ -22,3 +22,8 @@ static/audio/**
 ecosystem.config.js
 .directory
 .idea/
+
+
+
+# Location for local files to be ignored
+/local

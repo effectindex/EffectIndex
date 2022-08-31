@@ -49,7 +49,7 @@ export default {
       return this.$store.state.admin.invitations;
     },
     hostname() {
-      return process.env.BASE_URL;
+      return this.$config.BASE_URL;
     }
   },
   methods: {

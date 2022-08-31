@@ -37,6 +37,7 @@
 <script>
 import Datepicker from "vuejs-datepicker";
 
+
 export default {
   components: {
     Datepicker
@@ -56,7 +57,7 @@ export default {
       return this.generatedInvitation ? hostname + "/user/register/" + this.generatedInvitation._id : "";
     },
     hostname() {
-      return process.env.BASE_URL;
+      return this.$config.BASE_URL;
     }
   },
   methods: {

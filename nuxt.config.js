@@ -2,6 +2,20 @@ require("dotenv").config();
 const pkg = require("./package");
 const axios = require('axios');
 
+const env = {
+  BASE_URL: process.env.BASE_URL || "http://localhost:3000",
+  PORT: process.env.WEB_PORT || "3000",
+  BROWSER_BASE_URL: process.env.BROWSER_BASE_URL || "/",
+  JWT_SECRET: process.env.jwtSecret || "eefiejfirjfr",
+  MONGO_URL: process.env.MONGO_URL || "mongodb://localhost:27017/",
+  DATABASE_NAME: process.env.DATABASE_NAME || "effectindex",
+  HOST: process.env.HOST || "127.0.0.1",
+  HOST_NAME: process.env.HOST_NAME || "https://www.effectindex.com",
+  NODE_ENV: process.env.NODE_ENV || "development"
+};
+
+
+
 module.exports = {
   /*
   ** Headers of the page
@@ -22,7 +36,12 @@ module.exports = {
       }
     ]
   },
+  env,
 
+  publicRuntimeConfig:{
+    BASE_URL:env.BASE_URL,
+
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -130,8 +149,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.BASE_URL || 'http://localhost:3000',
-    browserBaseURL: process.env.BROWSER_BASE_URL || 'http://localhost:3000'
+    baseURL: env.BASE_URL,
+    browserBaseURL: env.BROWSER_BASE_URL
   },
 
   /*
@@ -158,22 +177,24 @@ module.exports = {
   },
 
   server: {
-    jwtSecret: process.env.jwtSecret,
-    mongooseUri: `mongodb://localhost:27017/${process.env.DATABASE_NAME ? process.env.DATABASE_NAME : 'effectindex'}`
+    jwtSecret: env.JWT_SECRET,
+    mongooseUri: env.MONGO_URL+env.DATABASE_NAME,
+    port: env.PORT,
+    host: env.HOST
   },
 
   sitemap: {
-    hostname: "https://www.effectindex.com",
+    hostname: env.HOST_NAME,
     exclude: [
       '/admin/**'
     ],
     routes: async function() {
       try {
         const results = await Promise.all([
-          axios.get('http://localhost:3000/api/effects'),
-          axios.get('http://localhost:3000/api/articles'),
-          axios.get('http://localhost:3000/api/blog'),
-          axios.get('http://localhost:3000/api/reports'),
+          axios.get(`${env.BASE_URL}/api/effects`),
+          axios.get(`${env.BASE_URL}/api/articles`),
+          axios.get(`${env.BASE_URL}/api/blog`),
+          axios.get(`${env.BASE_URL}/api/reports`),
         ]);
 
         const [{ effects }, { articles }, { posts }, { reports }] = results.map(result => result.data);
