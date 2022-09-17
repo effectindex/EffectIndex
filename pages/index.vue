@@ -4,6 +4,11 @@
     <FrontpageArticle />
     <Columns>
       <Column>
+        <FeaturedSponsor
+          sponsor-name="Emergence Benefactors"
+          sponsor-link="https://ebenefactors.org/"
+          sponsor-icon-path="/ebenefactors.png"
+        />
         <SubstanceSummaries />
         <FeaturedEffects />
         <FeaturedArticles />
@@ -22,10 +27,11 @@
 
 <script>
 import Description from '@/components/home/Description';
-import FeaturedReplications from '@/components/home/FeaturedReplications';
 import FeaturedEffects from '@/components/home/FeaturedEffects';
 import FeaturedReports from '@/components/home/FeaturedReports';
+import FeaturedReplications from '@/components/home/FeaturedReplications';
 import FeaturedArticles from '@/components/home/FeaturedArticles';
+import FeaturedSponsor from '@/components/home/FeaturedSponsor';
 import FrontpageArticle from "@/components/home/FrontpageArticle";
 import SubstanceSummaries from '@/components/home/SubstanceSummaries';
 import Column from '@/components/home/Column';
@@ -42,7 +48,8 @@ export default {
     FeaturedEffects,
     FeaturedReports,
     FeaturedReplications,
-    FeaturedArticles
+    FeaturedArticles,
+    FeaturedSponsor
   },
   scrollToTop: true,
 
