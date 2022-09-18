@@ -47,9 +47,6 @@
           &copy; This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
         </a></i></small><br>
       </p>
-      <p class="footer__memoriam">
-        In loving memory of Phillip Edmunds.
-      </p>
     </div>
   </footer>
 </template>
@@ -93,12 +90,6 @@ footer {
 
 footer > p {
   padding: 2em 0;
-}
-
-.footer__memoriam {
-  font-style: italic;
-  color: #1f1f1f;
-  padding: 0;
 }
 
 footer a {
