@@ -25,7 +25,7 @@
     <h3> Options </h3>
     <ul>
       <li>
-        <b>Patreon</b> - <ext-link href="https://www.patreon.com/SubjectiveEffectIndex">
+        <b>Patreon</b> - <ext-link href="https://www.patreon.com/JosieKins">
           Effect Index Patreon
         </ext-link>
       </li>
