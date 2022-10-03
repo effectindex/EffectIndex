@@ -120,7 +120,7 @@ export default {
   },
   computed: {
     reports() {
-      return this.$store.state.reports.list;
+      return this.$store.state.reports.list.filter((report) => !report.unpublished);
     },
     profileNames() {
       return this.$store.state.profiles.list.map(profile => profile.username);
