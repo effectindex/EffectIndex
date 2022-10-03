@@ -188,6 +188,14 @@
           type="checkbox"
         >
       </label>
+      <label for="unpublished">
+        Unpublished
+        <input
+          id="unpublished"
+          v-model="reportData.unpublished"
+          type="checkbox"
+        >
+      </label>
     </div>
 
     <div class="reportEditor__inputReportButtonContainer">
@@ -264,6 +272,7 @@ export default {
         conclusion: this.report ? this.report.conclusion : undefined,
         tags: this.report ? this.report.tags : [],
         featured: this.report ? this.report.featured : false,
+        unpublished: this.report ? this.report.unpublished : false,
       },
       sectionVisibility
     };

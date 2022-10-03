@@ -71,6 +71,10 @@ const reportSchema = new Schema({
   featured: {
     type: Boolean,
     default: false
+  },
+  unpublished: {
+    type: Boolean,
+    default: false
   }
 },
   {minimize: false}

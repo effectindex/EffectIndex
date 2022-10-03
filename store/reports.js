@@ -28,6 +28,9 @@ export const actions = {
   async getReportBySlug({ commit }, slug) {
     try {
       const { report } = await this.$axios.$get("/api/reports/slug/" + slug);
+      if (report.unpublished === true) {
+        return undefined;
+      }
       return { report };
     } catch (error) {
       return undefined;
