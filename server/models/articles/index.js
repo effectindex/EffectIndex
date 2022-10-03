@@ -45,7 +45,6 @@ router.post('/', secured({secret: config.server.jwtSecret, algorithms: ['HS256']
     }).save();
     if (!result) throw API_Error('Error saving article.');
     res.json({article: result});
-    console.log(result);
   } catch (error) {
     res.status(500).send({error});
   }
