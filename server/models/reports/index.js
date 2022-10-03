@@ -132,7 +132,7 @@ router.get('/slug/:slug', async(req, res, next) => {
       .lean()
       .exec();
 
-    if (!report) throw API_Error('GET_REPORT_ERROR', 'The specified report could not be found.');
+    if (!report || report.unpublished === true) throw API_Error('GET_REPORT_ERROR', 'The specified report could not be found.');
 
     res.send({ report });
 
@@ -149,7 +149,7 @@ router.get('/slug/:slug', async(req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     const reports = await Report.find()
-      .select('title subject substances featured tags related_effects slug')
+      .select('title subject substances featured unpublished tags related_effects slug')
       .exec();
     if (!reports) throw API_Error('GET_REPORTS_ERROR', 'The server failed to retrieve the reports.');
     res.json({ reports });
