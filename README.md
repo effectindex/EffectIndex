@@ -9,10 +9,12 @@
 3. `git clone https://github.com/effectindex/EffectIndex`
 4. `cd EffectIndex`
 5. `npm install`
-6. Create a `.env` file in the `EffectIndex` directory with the following contents:
+6. Create a `.env` file in the `EffectIndex` directory with the following contents (please reference .env.example):
 ```bash
+# Port for webserver 
+PORT=3000
 # URL of the server
-BASE_URL=http://localhost:3000/
+BASE_URL=http://localhost:$PORT/
 # Base URL for Axios ('/' unless running in some directory)
 BROWSER_BASE_URL=/
 # A secret for the JSON Web Tokens
