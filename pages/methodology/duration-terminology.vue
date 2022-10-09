@@ -32,7 +32,7 @@
       </li>
       <li>
         <nuxt-link to="/effects/">
-          Subjective effect index
+          Subjective Effect Index
         </nuxt-link>
       </li>
       <li>

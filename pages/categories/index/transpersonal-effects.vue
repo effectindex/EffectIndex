@@ -25,7 +25,7 @@
 
     <p>
       It should be noted that these mind-states are the least reproducible of all effects within the <nuxt-link to="/effects/">
-        subjective effect index.
+        Subjective Effect Index.
       </nuxt-link> Simply taking more of a given substance does not necessarily increase the chances of having these states occur. Instead, they seem to rely more on contextual factors, such as the person's set and setting.
     </p>
     
