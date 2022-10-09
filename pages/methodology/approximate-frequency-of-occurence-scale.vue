@@ -12,8 +12,8 @@
       This rating scale serves as a tool for providing approximations of the likelihood that a given subjective effect will occur.
     </p>
     <p>
-      It is primarily used within our substance documentation articles that can be found listed 
-      <nuxt-link to="/substances/">
+      It is primarily used within our substance documentation articles that can be found among substance articles
+      <nuxt-link to="/articles/">
         here.
       </nuxt-link>
     </p>
@@ -41,8 +41,8 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/substances/">
-          Substance index
+        <nuxt-link to="/articles/">
+          Articles
         </nuxt-link>
       </li>
     </ul>

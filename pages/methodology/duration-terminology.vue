@@ -36,8 +36,8 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/substances/">
-          Substance index
+        <nuxt-link to="/articles/">
+          Articles
         </nuxt-link>
       </li>
     </ul>

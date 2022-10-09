@@ -33,8 +33,8 @@
       </ul>
     </template>
     <template v-slot:stub>
-      For more, see the <nuxt-link to="/substances/">
-        Substance Index.
+      For more, see the <nuxt-link to="/articles/">
+        articles section.
       </nuxt-link>
     </template>
   </Panel>
