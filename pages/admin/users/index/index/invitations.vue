@@ -26,7 +26,11 @@
           </td>
           <td> {{ parseDate(invitation.created) }} </td>
           <td> {{ invitation.createdBy ? invitation.createdBy.username : '' }} </td>
-          <td> {{ invitation.usedBy ? invitation.usedBy.username : '' }} </td>
+          <td
+            :class="invitation.usedBy ? 'usedInvitation' : invitation.used ? 'expiredInvitation' : 'unusedInvitation'"
+          >
+            {{ invitation.usedBy ? invitation.usedBy.username : invitation.used ? '[EXPIRED]' : '' }}
+          </td>
           <td>
             <a
               class="delete"
@@ -107,5 +111,9 @@ a.copy {
 
 .page-controls {
   margin: 1em 0;
+}
+
+.expiredInvitation {
+  color: red;
 }
 </style>
