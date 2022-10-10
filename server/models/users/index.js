@@ -72,7 +72,7 @@ router.post('/register', async (req, res, next) => {
     if (saved) {
       invitation.used = true;
       invitation.usedBy = saved._id;
-      invitation.save();
+      await invitation.save();
     }
 
     res.sendStatus(200);
