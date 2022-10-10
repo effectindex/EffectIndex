@@ -50,13 +50,13 @@ router.post('/register', async (req, res, next) => {
 
   try {
 
-    if (!user || !'username' in user || !'password' in user)  throw API_ERROR('REGISTRATION_ERROR', 'Invalid registration details.');
+    if (!user || !'username' in user || !'password' in user)  throw API_Error('REGISTRATION_ERROR', 'Invalid registration details.');
     if (!user.inviteCode) throw API_Error('REGISTRATION_ERROR', 'An invitation code is required to register.');
 
     const invitation = await Invitation.findById(user.inviteCode).exec();
 
     if (!invitation) throw API_Error('REGISTRATION_ERROR', 'Invitation was not found.');
-    if (invitation.user) throw API_ERROR('REGISTRATION_ERROR', 'Invitation is invalid.');
+    if (invitation.used) throw API_Error('REGISTRATION_ERROR', 'Invitation is invalid.');
 
     const { username, password } = user;
 
