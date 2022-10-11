@@ -60,8 +60,7 @@ export default {
 <style scoped>
 
 .sponsorIcon {
-  width: 100%;
-  height: 100%;
+  height: 190px;
   object-fit: contain;
 }
 
