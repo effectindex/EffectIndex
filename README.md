@@ -23,4 +23,6 @@ jwtSecret=change_this_to_something_other_than_this
   - `mongorestore --db effectindex dump/effectindex`
 6. Use `npm run dev` to run the development server, `npm run build` to build the production site, and `npm run start` to start the production site.
 
+**Note:** If your Node version is newer than 16, you will get an error upon startup. If you have `nvm` installed, `nvm use` while in the `EffectIndex` directory will automatically use the right version.
+
 **Note:** If your computer supports IPv6, you MUST use `--ipv6` when running `mongod`, otherwise EffectIndex will fail to connect to the database.
