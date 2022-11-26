@@ -49,13 +49,13 @@ async function searchReports(query) {
       $search: query
     }
   })
-  .select('_id title subject substances tags slug')
+  .select('_id title subject substances unpublished tags slug')
   .exec()
   .catch((err) => {
     throw new Error(err);
   });
 
-  return results;
+  return results.filter((report) => !report.unpublished);
 };
 
 async function searchArticles(query) {
