@@ -55,7 +55,7 @@
     "vue-analytics": "^5.22.1",
     "vue-prism-editor": "^1.3.0",
     "vue-scrollto": "^2.20.0",
-    "vue-server-renderer": "^2.6.14",
+    "vue-server-renderer": "^2.7.14",
     "vue-tabs-component": "^1.5.0",
     "vue-toasted": "^1.1.28",
     "vue2-touch-events": "^3.2.2",
