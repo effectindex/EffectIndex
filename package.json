@@ -44,7 +44,7 @@
     "nuxt": "^2.15.8",
     "parse-path": "^5.0.0",
     "parse-url": "^8.1.0",
-    "prismjs": "^1.28.0",
+    "prismjs": "^1.29.0",
     "regenerator-runtime": "^0.13.9",
     "sharp": "^0.30.7",
     "shelljs": "^0.8.5",
