@@ -42,7 +42,7 @@
     "multer": "^1.4.5-lts.1",
     "npm": "^8.15.1",
     "nuxt": "^2.15.8",
-    "parse-path": "^5.0.0",
+    "parse-path": "^7.0.0",
     "parse-url": "^8.1.0",
     "prismjs": "^1.28.0",
     "regenerator-runtime": "^0.13.9",
