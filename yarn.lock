@@ -9749,9 +9749,9 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
 
-vue-advanced-cropper@^1.11.2:
-  version "1.11.2"
-  resolved "https://registry.npmjs.org/vue-advanced-cropper/-/vue-advanced-cropper-1.11.2.tgz"
+vue-advanced-cropper@^1.11.6:
+  version "1.11.6"
+  resolved "https://registry.yarnpkg.com/vue-advanced-cropper/-/vue-advanced-cropper-1.11.6.tgz#38f824e515747d749168e20de6d5eeea1a8d508b"
   dependencies:
     classnames "^2.2.6"
     debounce "^1.2.0"
