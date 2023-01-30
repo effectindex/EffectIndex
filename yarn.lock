@@ -7317,12 +7317,6 @@ parse-path@^4.0.0:
     qs "^6.9.4"
     query-string "^6.13.8"
 
-parse-path@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/parse-path/-/parse-path-5.0.0.tgz"
-  dependencies:
-    protocols "^2.0.0"
-
 parse-path@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/parse-path/-/parse-path-7.0.0.tgz"
