@@ -1394,9 +1394,9 @@
     webpack-node-externals "^3.0.0"
     webpackbar "^4.0.0"
 
-"@nuxtjs/auth-next@^5.0.0-1648802546.c9880dc":
-  version "5.0.0-1648802546.c9880dc"
-  resolved "https://registry.npmjs.org/@nuxtjs/auth-next/-/auth-next-5.0.0-1648802546.c9880dc.tgz"
+"@nuxtjs/auth-next@^5.0.0-1667386184.dfbbb54":
+  version "5.0.0-1667386184.dfbbb54"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/auth-next/-/auth-next-5.0.0-1667386184.dfbbb54.tgz#54404436adda39bf2fe751e799551b2cf626b7c1"
   dependencies:
     "@nuxtjs/axios" "^5.13.6"
     axios "^0.26.1"
@@ -3878,11 +3878,7 @@ defu@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/defu/-/defu-4.0.1.tgz"
 
-defu@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/defu/-/defu-5.0.0.tgz"
-
-defu@^5.0.1:
+defu@^5.0.0, defu@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/defu/-/defu-5.0.1.tgz"
 
