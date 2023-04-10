@@ -60,7 +60,7 @@
     "vue-toasted": "^1.1.28",
     "vue2-touch-events": "^3.2.2",
     "vuejs-datepicker": "^1.6.2",
-    "wavesurfer.js": "^6.2.0"
+    "wavesurfer.js": "^6.6.3"
   },
   "devDependencies": {
     "@nuxt/types": "~2.15.0",
