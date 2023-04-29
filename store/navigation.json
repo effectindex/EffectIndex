@@ -21,7 +21,8 @@
     ]
   },
   "Trip Reports": {
-    "location": "https://subjective.report/"
+    "location": "https://subjective.report",
+    "external": true
   },
   "Project": {
     "location": "/about",
