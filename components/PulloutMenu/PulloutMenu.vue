@@ -1,15 +1,16 @@
 <template>
   <div :class="'navbarPullout ' + (navbarPullout ? 'active' : '')">
     <div class="navbarPullout__menu">
-      <ul 
+      <ul
         v-for="(item, name) in navigation"
         v-show="checkItemAccess(item.scope)"
         :key="name"
       >
-        <pullout-item 
+        <pullout-item
           v-show="checkItemAccess(item.scope)"
           :name="name"
           :location="item.location"
+          :external="item.external"
           :children="item.children"
         />
       </ul>

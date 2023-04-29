@@ -1,15 +1,21 @@
 <template>
-  <div 
+  <div
     v-show="access"
     class="headerNav__menuItem"
   >
-    <nuxt-link 
+    <a
+      v-if="external"
+      :href="location"
+      target="_blank"
+    > {{ name }} </a>
+    <nuxt-link
+      v-else
       :to="location"
       class="headerNav__menuItemLink"
     >
       {{ name }}
     </nuxt-link>
-    <ul 
+    <ul
       v-if="subMenuItems"
       class="headerNav__dropdown"
     >
@@ -18,7 +24,7 @@
         v-show="itemAccess(item.scope)"
         :key="index"
       >
-        <a 
+        <a
           v-if="item.external"
           :href="item.location"
           target="_blank"
@@ -40,6 +46,10 @@ export default {
     location: {
       type: String,
       default: ""
+    },
+    external: {
+      type: Boolean,
+      default: false
     },
     name: {
       type: String,

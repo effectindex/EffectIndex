@@ -1,12 +1,17 @@
 <template>
   <li class="pulloutMenu__itemContainer">
-    <nuxt-link 
-      v-if="!children"
+    <a
+      v-if="!children && external"
+      :href="location"
+      target="_blank"
+    > {{ name }} </a>
+    <nuxt-link
+      v-else-if="!children"
       :to="location"
     >
       {{ name }}
     </nuxt-link>
-    <a 
+    <a
       v-else
       @click="toggleExpanded()"
     >
@@ -26,7 +31,7 @@
         >
           {{ child.name }}
         </nuxt-link>
-        <a 
+        <a
           v-else
           :href="child.location"
           target="_blank"
@@ -46,6 +51,10 @@ export default {
     location: {
       type: String,
       default: ""
+    },
+    external: {
+      type: Boolean,
+      default: false
     },
     children: {
       type: Array,
@@ -70,7 +79,7 @@ export default {
       } else return true;
     }
   },
-  
+
 };
 </script>
 

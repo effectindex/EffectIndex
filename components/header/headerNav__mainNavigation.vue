@@ -4,6 +4,7 @@
       v-for="(navItem, name) in navigation"
       :key="navItem.name"
       :location="navItem.location"
+      :external="navItem.external"
       :name="name"
       :sub-menu-items="navItem.children"
       :scope="navItem.scope"
