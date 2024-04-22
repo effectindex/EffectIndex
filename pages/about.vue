@@ -33,7 +33,7 @@
       Effect Index was initially founded as a side project on 30 June, 2017 by <nuxt-link to="/profiles/Josie">
         Josie Kins,
       </nuxt-link> the
-      founder of <ext-link href="http://www.psychonautwiki.org">
+      founder of <ext-link href="https://psychonautwiki.org">
         PsychonautWiki
       </ext-link> and
       <ext-link href="http://disregardeverythingisay.com/">

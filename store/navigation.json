@@ -20,10 +20,6 @@
       { "name": "Tutorials", "location": "/replications/tutorials" }
     ]
   },
-  "Trip Reports": {
-    "location": "https://subjective.report",
-    "external": true
-  },
   "Project": {
     "location": "/about",
     "children": [
